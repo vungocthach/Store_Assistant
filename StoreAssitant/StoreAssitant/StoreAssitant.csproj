@@ -32,8 +32,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ComponentFactory.Krypton.Docking">
+      <HintPath>..\Krypton-master\Bin\ComponentFactory.Krypton.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Navigator">
+      <HintPath>..\Krypton-master\Bin\ComponentFactory.Krypton.Navigator.dll</HintPath>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Toolkit">
+      <HintPath>..\Krypton-master\Bin\ComponentFactory.Krypton.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,6 +74,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -77,6 +88,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_shopping-shop-buy-discount-18_4038845.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_13_3319631.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_45_Account_Google_Product_Logo_Brand_5764262.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_Cashier-2_379335.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_humans_1216581.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_51_5027845.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_45_Account_Google_Product_Logo_Brand_57642621.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder_21_4698594.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

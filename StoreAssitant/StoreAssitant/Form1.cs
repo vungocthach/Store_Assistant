@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComponentFactory.Krypton.Navigator;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,14 @@ namespace StoreAssitant
         public Form1()
         {
             InitializeComponent();
+
+            kryptonNavigator1.GotFocus += KryptonNavigator1_GotFocus;
+        }
+
+        private void KryptonNavigator1_GotFocus(object sender, EventArgs e)
+        {
+            KryptonNavigator navigator = (KryptonNavigator)sender;
+            navigator.SelectedPage.Focus();
         }
     }
 }
