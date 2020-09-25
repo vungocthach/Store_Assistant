@@ -16,7 +16,6 @@ namespace StoreAssitant
         public Form1()
         {
             InitializeComponent();
-
             kryptonNavigator1.GotFocus += KryptonNavigator1_GotFocus;
         }
 
