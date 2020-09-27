@@ -207,10 +207,11 @@
             // 
             // productBox1
             // 
-            this.productBox1.CustomProductName = "";
-            this.productBox1.Location = new System.Drawing.Point(0, 22);
+            this.productBox1.Location = new System.Drawing.Point(-2, 3);
             this.productBox1.Name = "productBox1";
-            this.productBox1.ProductImage = null;
+            this.productBox1.PDImage = null;
+            this.productBox1.PDName = "Nhập tên sản phẩm";
+            this.productBox1.PDPrice = 12000;
             this.productBox1.Size = new System.Drawing.Size(500, 600);
             this.productBox1.TabIndex = 0;
             // 

@@ -54,18 +54,22 @@
             this.txtb_Name.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtb_Name.Location = new System.Drawing.Point(179, 194);
             this.txtb_Name.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.txtb_Name.MaxLength = 50;
             this.txtb_Name.Name = "txtb_Name";
             this.txtb_Name.Size = new System.Drawing.Size(272, 30);
             this.txtb_Name.TabIndex = 1;
+            this.txtb_Name.Text = "Nhập tên sản phẩm";
             // 
             // txtb_Price
             // 
             this.txtb_Price.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtb_Price.Location = new System.Drawing.Point(179, 237);
             this.txtb_Price.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.txtb_Price.MaxLength = 20;
             this.txtb_Price.Name = "txtb_Price";
             this.txtb_Price.Size = new System.Drawing.Size(272, 30);
             this.txtb_Price.TabIndex = 3;
+            this.txtb_Price.Text = "12000";
             // 
             // label2
             // 
@@ -79,6 +83,7 @@
             // 
             // txtb_Tag
             // 
+            this.txtb_Tag.Enabled = false;
             this.txtb_Tag.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtb_Tag.Location = new System.Drawing.Point(179, 280);
             this.txtb_Tag.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);

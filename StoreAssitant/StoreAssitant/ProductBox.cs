@@ -15,30 +15,23 @@ namespace StoreAssitant
 {
     public partial class ProductBox : UserControl
     {
-        ProductInfo info;
-
-        /*
-        private RectangleF imgRectFMaximum;
-        private Margins imgMargin;
-        private Padding imgPadding;
-        */
 
         [Category("My Properties"), Description("Image of product")]
-        public Image ProductImage
+        public Image PDImage
         {
-            get { return info.Image; }
+            get { return label_Image.Image; }
             set
             {
-                info.Image = value;
-                DrawImage();
+                label_Image.Image = value;
+                ResizeImage();
                 Invalidate();
             }
         }
 
         [Category("My Properties"), Description("Image of product")]
-        public int ProductPrice
+        public int PDPrice
         {
-            get { return info.Price; }
+            get { return int.Parse(txtb_Price.Text.Trim()); }
             set
             {
                 txtb_Price.Text = value.ToString();
@@ -50,72 +43,97 @@ namespace StoreAssitant
         /// Should use SetCustomProductName/GetCustomProductName instead
         /// </summary>
         [Category("My Properties"), Description("Name of product")]
-        public string CustomProductName
+        public string PDName
         {
-            get { return GetCustomProductName(); }
-            set { SetCustomProductName(value); }
+            get { return GetPDName(); }
+            set { SetPDName(value); }
         }
+
 
         /// <summary>
         /// Get name of the product item
         /// </summary>
-        public string GetCustomProductName() { return info.Name; }
+        public string GetPDName() { return txtb_Name.Text; }
 
         /// <exception cref = "InvalidNameException">Thrown when string-name contains invalid character</exception>
         /// <summary>
         /// Set name of the product item
         /// </summary>
-        public void SetCustomProductName(string value)
+        public void SetPDName(string value)
         {
-            string filter = (@",./;'[]-=<>?:{ }_+|~!@#$%^&*()""`");
-            foreach (char c in filter)
-            {
-                if (value.Contains(c)) { throw new InvalidNameException(string.Format("Name must not contain any of characters below : {0}", filter)); }
-            }
-            info.Name = value.Trim();
-            txtb_Name.Text = info.Name;
+            txtb_Name.Text = value.Trim();
             Invalidate();
         }
 
         public ProductBox()
         {
             InitializeComponent();
-            info = new ProductInfo();
-            /*
-            imgMargin = new Margins(0,0,0,0);
-            imgPadding = new Padding(0, 0, 0, 0);
 
-            imgRectFMaximum = new RectangleF(imgPadding.Left + imgMargin.Left, imgMargin.Top + imgPadding.Top, this.Width - imgMargin.Right - imgPadding.Right, txtb_Name.Location.Y - imgMargin.Bottom - imgPadding.Bottom);
-            */
             label_Image.Click += new EventHandler((object sender, EventArgs e) => {
                 string path = GetPath();
                 if (path != null && File.Exists(path))
                 {
-                    this.ProductImage = Image.FromFile(path);
+                    this.PDImage = Image.FromFile(path);
                 }
             });
 
-            txtb_Name.LostFocus += Txtb_Name_LostFocus;
+            txtb_Name.TextChanged += Name_UpdateChanged;
+            txtb_Name.LostFocus += Txtb_CheckEmpty;
+            txtb_Price.TextChanged += Price_UpdateChanged;
+            txtb_Price.LostFocus += Txtb_CheckEmpty;
+
         }
 
-        private void Txtb_Name_LostFocus(object sender, EventArgs e)
+        private void Txtb_CheckEmpty(object sender, EventArgs e)
         {
+            TextBox txtb = (TextBox)sender;
+            if (txtb.Text == string.Empty)
+            {
+                MessageBox.Show("Đây là thông tin bắt buộc");
+                txtb.SelectAll();
+            }
+        }
+
+        private void Name_UpdateChanged(object sender, EventArgs e)
+        {
+            TextBox txtb = (TextBox)sender;
+            if (TSRuleManager.HasInvalidCharacter(txtb.Text))
+            {
+                MessageBox.Show("Vui lòng không nhập các kí tự đặc biệt");
+                txtb.SelectAll();
+            }
+            if (txtb.Text.Length > 50)
+            {
+                MessageBox.Show("Vui lòng nhập tên có độ dài ngắn hơn 50 kí tự");
+                txtb.SelectAll();
+            }
+        }
+
+        private void Price_UpdateChanged(object sender, EventArgs e)
+        {
+            TextBox txtb = (TextBox)sender;
             try
             {
-                SetCustomProductName(txtb_Name.Text);
+                int.Parse(txtb.Text);
             }
-            catch (InvalidNameException ex)
+            catch (FormatException)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Vui lòng chỉ nhập số nguyên dương");
+                txtb.SelectAll();
+            }
+            catch (OverflowException)
+            {
+                MessageBox.Show(string.Format("Vui lòng nhập giá trị từ 0 đến {0}", int.MaxValue));
+                txtb.SelectAll();
             }
         }
 
-        private void DrawImage()
+        private void ResizeImage()
         {
-            if (info.Image != null )
+            if (label_Image.Image != null )
             {
                 label_Image.Text = string.Empty;
-                Bitmap bmp = new Bitmap(info.Image, label_Image.Size);
+                Bitmap bmp = new Bitmap(label_Image.Image, label_Image.Size);
                 label_Image.Image = bmp;
             }
             else
@@ -155,7 +173,8 @@ namespace StoreAssitant
 
     public class InvalidNameException : Exception
     {
-        public InvalidNameException(string message)
+        public InvalidNameException() : base() { }
+        public InvalidNameException(string message) : base(message)
         {
             Console.WriteLine(string.Format("Invalid Name Exception {0}Message : {1} {0}Source : {2}", Environment.NewLine, message, this.Source));
         }
