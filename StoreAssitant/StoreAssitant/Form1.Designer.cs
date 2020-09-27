@@ -70,6 +70,7 @@
             this.kryptonNavigator1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonNavigator1.Group.GroupBorderStyle = ComponentFactory.Krypton.Toolkit.PaletteBorderStyle.ControlRibbon;
             this.kryptonNavigator1.Location = new System.Drawing.Point(0, 0);
+            this.kryptonNavigator1.Margin = new System.Windows.Forms.Padding(2);
             this.kryptonNavigator1.Name = "kryptonNavigator1";
             this.kryptonNavigator1.NavigatorMode = ComponentFactory.Krypton.Navigator.NavigatorMode.BarRibbonTabGroup;
             this.kryptonNavigator1.Pages.AddRange(new ComponentFactory.Krypton.Navigator.KryptonPage[] {
@@ -80,7 +81,7 @@
             this.krPage_Setting,
             this.krPage_Account});
             this.kryptonNavigator1.SelectedIndex = 0;
-            this.kryptonNavigator1.Size = new System.Drawing.Size(1082, 833);
+            this.kryptonNavigator1.Size = new System.Drawing.Size(812, 609);
             this.kryptonNavigator1.TabIndex = 0;
             this.kryptonNavigator1.Text = "kryptonNavigator1";
             this.kryptonNavigator1.ToolTips.AllowButtonSpecToolTips = true;
@@ -92,7 +93,8 @@
             this.krPage_Cashier.Flags = 65534;
             this.krPage_Cashier.ImageMedium = global::StoreAssitant.Properties.Resources.iconfinder_shopping_shop_buy_discount_18_4038845;
             this.krPage_Cashier.LastVisibleSet = true;
-            this.krPage_Cashier.MinimumSize = new System.Drawing.Size(50, 50);
+            this.krPage_Cashier.Margin = new System.Windows.Forms.Padding(2);
+            this.krPage_Cashier.MinimumSize = new System.Drawing.Size(38, 41);
             this.krPage_Cashier.Name = "krPage_Cashier";
             this.krPage_Cashier.OverrideFocus.CheckButton.Back.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.False;
             this.krPage_Cashier.OverrideFocus.CheckButton.Border.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.False;
@@ -101,7 +103,7 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.krPage_Cashier.OverrideFocus.CheckButton.Content.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.False;
             this.krPage_Cashier.OverrideFocus.CheckButton.Content.DrawFocus = ComponentFactory.Krypton.Toolkit.InheritBool.False;
-            this.krPage_Cashier.Size = new System.Drawing.Size(1078, 772);
+            this.krPage_Cashier.Size = new System.Drawing.Size(808, 548);
             this.krPage_Cashier.Text = "Thu Ngân";
             this.krPage_Cashier.TextDescription = "Description";
             this.krPage_Cashier.TextTitle = "Thu Ngân";
@@ -113,9 +115,14 @@
             this.krSplit_Cashier.Cursor = System.Windows.Forms.Cursors.Default;
             this.krSplit_Cashier.Dock = System.Windows.Forms.DockStyle.Fill;
             this.krSplit_Cashier.Location = new System.Drawing.Point(0, 0);
+            this.krSplit_Cashier.Margin = new System.Windows.Forms.Padding(2);
             this.krSplit_Cashier.Name = "krSplit_Cashier";
-            this.krSplit_Cashier.Size = new System.Drawing.Size(1078, 772);
-            this.krSplit_Cashier.SplitterDistance = 502;
+            // 
+            // krSplit_Cashier.Panel2
+            // 
+            this.krSplit_Cashier.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.krSplit_Cashier_Panel2_Paint);
+            this.krSplit_Cashier.Size = new System.Drawing.Size(808, 548);
+            this.krSplit_Cashier.SplitterDistance = 376;
             this.krSplit_Cashier.TabIndex = 0;
             // 
             // krPage_Manager
@@ -125,9 +132,10 @@
             this.krPage_Manager.Flags = 65534;
             this.krPage_Manager.ImageMedium = global::StoreAssitant.Properties.Resources.iconfinder_45_Account_Google_Product_Logo_Brand_57642621;
             this.krPage_Manager.LastVisibleSet = true;
-            this.krPage_Manager.MinimumSize = new System.Drawing.Size(50, 50);
+            this.krPage_Manager.Margin = new System.Windows.Forms.Padding(2);
+            this.krPage_Manager.MinimumSize = new System.Drawing.Size(38, 41);
             this.krPage_Manager.Name = "krPage_Manager";
-            this.krPage_Manager.Size = new System.Drawing.Size(1078, 772);
+            this.krPage_Manager.Size = new System.Drawing.Size(808, 548);
             this.krPage_Manager.Text = "Quản Lý";
             this.krPage_Manager.TextTitle = "Quản Lý";
             this.krPage_Manager.ToolTipTitle = "Page ToolTip";
@@ -138,9 +146,10 @@
             this.krSplit_Manager.Cursor = System.Windows.Forms.Cursors.Default;
             this.krSplit_Manager.Dock = System.Windows.Forms.DockStyle.Fill;
             this.krSplit_Manager.Location = new System.Drawing.Point(0, 0);
+            this.krSplit_Manager.Margin = new System.Windows.Forms.Padding(2);
             this.krSplit_Manager.Name = "krSplit_Manager";
-            this.krSplit_Manager.Size = new System.Drawing.Size(1078, 772);
-            this.krSplit_Manager.SplitterDistance = 512;
+            this.krSplit_Manager.Size = new System.Drawing.Size(808, 548);
+            this.krSplit_Manager.SplitterDistance = 383;
             this.krSplit_Manager.TabIndex = 0;
             // 
             // krPage_Statistic
@@ -149,9 +158,10 @@
             this.krPage_Statistic.Flags = 65534;
             this.krPage_Statistic.ImageMedium = global::StoreAssitant.Properties.Resources.iconfinder_13_3319631;
             this.krPage_Statistic.LastVisibleSet = true;
-            this.krPage_Statistic.MinimumSize = new System.Drawing.Size(50, 50);
+            this.krPage_Statistic.Margin = new System.Windows.Forms.Padding(2);
+            this.krPage_Statistic.MinimumSize = new System.Drawing.Size(38, 41);
             this.krPage_Statistic.Name = "krPage_Statistic";
-            this.krPage_Statistic.Size = new System.Drawing.Size(1078, 772);
+            this.krPage_Statistic.Size = new System.Drawing.Size(808, 627);
             this.krPage_Statistic.Text = "Thống Kê";
             this.krPage_Statistic.TextTitle = "Thống Kê";
             this.krPage_Statistic.ToolTipTitle = "Page ToolTip";
@@ -163,9 +173,10 @@
             this.krPage_Compare.Flags = 65534;
             this.krPage_Compare.ImageMedium = global::StoreAssitant.Properties.Resources.iconfinder_51_5027845;
             this.krPage_Compare.LastVisibleSet = true;
-            this.krPage_Compare.MinimumSize = new System.Drawing.Size(50, 50);
+            this.krPage_Compare.Margin = new System.Windows.Forms.Padding(2);
+            this.krPage_Compare.MinimumSize = new System.Drawing.Size(38, 41);
             this.krPage_Compare.Name = "krPage_Compare";
-            this.krPage_Compare.Size = new System.Drawing.Size(1078, 772);
+            this.krPage_Compare.Size = new System.Drawing.Size(808, 627);
             this.krPage_Compare.Text = "So Sánh";
             this.krPage_Compare.TextTitle = "So Sánh";
             this.krPage_Compare.ToolTipTitle = "Page ToolTip";
@@ -177,9 +188,10 @@
             this.krPage_Setting.Flags = 65534;
             this.krPage_Setting.ImageMedium = global::StoreAssitant.Properties.Resources.iconfinder_21_4698594;
             this.krPage_Setting.LastVisibleSet = true;
-            this.krPage_Setting.MinimumSize = new System.Drawing.Size(50, 50);
+            this.krPage_Setting.Margin = new System.Windows.Forms.Padding(2);
+            this.krPage_Setting.MinimumSize = new System.Drawing.Size(38, 41);
             this.krPage_Setting.Name = "krPage_Setting";
-            this.krPage_Setting.Size = new System.Drawing.Size(1078, 772);
+            this.krPage_Setting.Size = new System.Drawing.Size(808, 627);
             this.krPage_Setting.Text = "Cài Đặt";
             this.krPage_Setting.TextTitle = "Cài Đặt";
             this.krPage_Setting.ToolTipTitle = "Page ToolTip";
@@ -191,9 +203,10 @@
             this.krPage_Account.Flags = 65534;
             this.krPage_Account.ImageMedium = global::StoreAssitant.Properties.Resources.iconfinder_humans_1216581;
             this.krPage_Account.LastVisibleSet = true;
-            this.krPage_Account.MinimumSize = new System.Drawing.Size(50, 50);
+            this.krPage_Account.Margin = new System.Windows.Forms.Padding(2);
+            this.krPage_Account.MinimumSize = new System.Drawing.Size(38, 41);
             this.krPage_Account.Name = "krPage_Account";
-            this.krPage_Account.Size = new System.Drawing.Size(1078, 772);
+            this.krPage_Account.Size = new System.Drawing.Size(808, 627);
             this.krPage_Account.Text = "Tài Khoản";
             this.krPage_Account.TextTitle = "Tài Khoản";
             this.krPage_Account.ToolTipTitle = "Page ToolTip";
@@ -201,10 +214,11 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1082, 833);
+            this.ClientSize = new System.Drawing.Size(812, 609);
             this.Controls.Add(this.kryptonNavigator1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Store Assistant";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).EndInit();

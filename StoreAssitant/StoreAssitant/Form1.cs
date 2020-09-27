@@ -25,5 +25,10 @@ namespace StoreAssitant
             KryptonNavigator navigator = (KryptonNavigator)sender;
             navigator.SelectedPage.Focus();
         }
+
+        private void krSplit_Cashier_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
