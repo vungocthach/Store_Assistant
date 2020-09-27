@@ -37,6 +37,7 @@
             this.krPage_Compare = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Setting = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Account = new ComponentFactory.Krypton.Navigator.KryptonPage();
+            this.tableControl1 = new StoreAssitant.TableControl();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Cashier)).BeginInit();
@@ -54,6 +55,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Statistic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Compare)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Setting)).BeginInit();
+            this.krPage_Setting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Account)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,7 +81,7 @@
             this.krPage_Compare,
             this.krPage_Setting,
             this.krPage_Account});
-            this.kryptonNavigator1.SelectedIndex = 0;
+            this.kryptonNavigator1.SelectedIndex = 4;
             this.kryptonNavigator1.Size = new System.Drawing.Size(1082, 833);
             this.kryptonNavigator1.TabIndex = 0;
             this.kryptonNavigator1.Text = "kryptonNavigator1";
@@ -174,6 +176,7 @@
             // krPage_Setting
             // 
             this.krPage_Setting.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.krPage_Setting.Controls.Add(this.tableControl1);
             this.krPage_Setting.Flags = 65534;
             this.krPage_Setting.ImageMedium = global::StoreAssitant.Properties.Resources.iconfinder_21_4698594;
             this.krPage_Setting.LastVisibleSet = true;
@@ -198,6 +201,13 @@
             this.krPage_Account.TextTitle = "Tài Khoản";
             this.krPage_Account.ToolTipTitle = "Page ToolTip";
             this.krPage_Account.UniqueName = "29A1A40B666C4707C98FE0D28B7F49DD";
+            // 
+            // tableControl1
+            // 
+            this.tableControl1.Location = new System.Drawing.Point(144, 61);
+            this.tableControl1.Name = "tableControl1";
+            this.tableControl1.Size = new System.Drawing.Size(139, 142);
+            this.tableControl1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -224,6 +234,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Statistic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Compare)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Setting)).EndInit();
+            this.krPage_Setting.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Account)).EndInit();
             this.ResumeLayout(false);
 
@@ -240,6 +251,7 @@
         private ComponentFactory.Krypton.Navigator.KryptonPage krPage_Account;
         private ComponentFactory.Krypton.Toolkit.KryptonSplitContainer krSplit_Cashier;
         private ComponentFactory.Krypton.Toolkit.KryptonSplitContainer krSplit_Manager;
+        private TableControl tableControl1;
     }
 }
 
