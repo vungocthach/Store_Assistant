@@ -7,16 +7,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography.X509Certificates;
 
 namespace StoreAssitant
 {
-    public partial class TableControl : UserControl
+    public partial class TableControl : UserControl 
     {
         public TableControl()
         {
             InitializeComponent();
             this.SizeChanged += TableControl_SizeChanged;
+            Table_Image.MouseHover += TableControl_MouseHover;
+            Table_Name.MouseHover += TableControl_MouseHover;
+            Table_Image.MouseLeave += TableControl_MouseLeave;
             this.MinimumSize = new Size(Table_Name.Size.Width, Table_Name.Size.Height * 4);
+        }
+
+        private void TableControl_MouseHover(object sender, EventArgs e)
+        {
+            Table_Image.BackColor = this.BackColor = Color.GhostWhite;
+        }
+        private void TableControl_MouseLeave(object sender, EventArgs e)
+        {
+            Table_Image.BackColor = this.BackColor = System.Drawing.SystemColors.Control;
+        }
+
+        public void setData(TableControlInfor Infor)
+        {
+            Table_Name.Text = Infor.Table_name;
+            Table_Image.BackgroundImage = Infor.Table_image;
         }
 
         private void TableControl_SizeChanged(object sender, EventArgs e)
@@ -45,5 +64,12 @@ namespace StoreAssitant
                 Invalidate();
             }
         }
+
+
+    }
+    public class TableControlInfor
+    {
+        public string Table_name;
+        public Image Table_image;
     }
 }

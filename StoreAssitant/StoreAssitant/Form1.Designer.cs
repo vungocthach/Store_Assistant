@@ -34,8 +34,8 @@
             this.krPage_Manager = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krSplit_Manager = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             this.krPage_Statistic = new ComponentFactory.Krypton.Navigator.KryptonPage();
-            this.krPage_Compare = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Setting = new ComponentFactory.Krypton.Navigator.KryptonPage();
+            this.krPage_Compare = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Account = new ComponentFactory.Krypton.Navigator.KryptonPage();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
@@ -52,8 +52,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.krSplit_Manager.Panel2)).BeginInit();
             this.krSplit_Manager.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Statistic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.krPage_Compare)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Setting)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.krPage_Compare)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Account)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,7 +79,7 @@
             this.krPage_Setting,
             this.krPage_Compare,
             this.krPage_Account});
-            this.kryptonNavigator1.SelectedIndex = 4;
+            this.kryptonNavigator1.SelectedIndex = 0;
             this.kryptonNavigator1.Size = new System.Drawing.Size(1082, 833);
             this.kryptonNavigator1.TabIndex = 0;
             this.kryptonNavigator1.Text = "kryptonNavigator1";
@@ -157,20 +157,6 @@
             this.krPage_Statistic.ToolTipTitle = "Page ToolTip";
             this.krPage_Statistic.UniqueName = "63A53B984CEF407D80BF22DD37C86130";
             // 
-            // krPage_Compare
-            // 
-            this.krPage_Compare.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
-            this.krPage_Compare.Flags = 65534;
-            this.krPage_Compare.ImageMedium = global::StoreAssitant.Properties.Resources.iconfinder_51_5027845;
-            this.krPage_Compare.LastVisibleSet = true;
-            this.krPage_Compare.MinimumSize = new System.Drawing.Size(50, 50);
-            this.krPage_Compare.Name = "krPage_Compare";
-            this.krPage_Compare.Size = new System.Drawing.Size(1078, 772);
-            this.krPage_Compare.Text = "So Sánh";
-            this.krPage_Compare.TextTitle = "So Sánh";
-            this.krPage_Compare.ToolTipTitle = "Page ToolTip";
-            this.krPage_Compare.UniqueName = "70E04151CD72421574B935D9BFB02EA1";
-            // 
             // krPage_Setting
             // 
             this.krPage_Setting.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
@@ -184,6 +170,20 @@
             this.krPage_Setting.TextTitle = "Cài Đặt";
             this.krPage_Setting.ToolTipTitle = "Page ToolTip";
             this.krPage_Setting.UniqueName = "E78AB1709FA246255796E09FE4A65912";
+            // 
+            // krPage_Compare
+            // 
+            this.krPage_Compare.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.krPage_Compare.Flags = 65534;
+            this.krPage_Compare.ImageMedium = global::StoreAssitant.Properties.Resources.iconfinder_51_5027845;
+            this.krPage_Compare.LastVisibleSet = true;
+            this.krPage_Compare.MinimumSize = new System.Drawing.Size(50, 50);
+            this.krPage_Compare.Name = "krPage_Compare";
+            this.krPage_Compare.Size = new System.Drawing.Size(1078, 772);
+            this.krPage_Compare.Text = "So Sánh";
+            this.krPage_Compare.TextTitle = "So Sánh";
+            this.krPage_Compare.ToolTipTitle = "Page ToolTip";
+            this.krPage_Compare.UniqueName = "70E04151CD72421574B935D9BFB02EA1";
             // 
             // krPage_Account
             // 
@@ -222,8 +222,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.krSplit_Manager)).EndInit();
             this.krSplit_Manager.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Statistic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.krPage_Compare)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Setting)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.krPage_Compare)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Account)).EndInit();
             this.ResumeLayout(false);
 

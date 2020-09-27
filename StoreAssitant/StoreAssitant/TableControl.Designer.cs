@@ -36,8 +36,10 @@
             // 
             // Table_Image
             // 
+            this.Table_Image.BackColor = System.Drawing.SystemColors.Control;
             this.Table_Image.BackgroundImage = global::StoreAssitant.Properties.Resources.Artboard_1;
             this.Table_Image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Table_Image.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Table_Image.Location = new System.Drawing.Point(0, 0);
             this.Table_Image.Name = "Table_Image";
             this.Table_Image.Size = new System.Drawing.Size(150, 110);
@@ -74,9 +76,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.Table_Name);
             this.Controls.Add(this.Table_Image);
             this.Name = "TableControl";
+            this.Size = new System.Drawing.Size(148, 148);
             this.ResumeLayout(false);
             this.PerformLayout();
 
