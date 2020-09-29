@@ -28,52 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ControlSearch));
-            this.labelImage = new System.Windows.Forms.Label();
-            this.richTextBoxSearch = new System.Windows.Forms.RichTextBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.panelSearch = new System.Windows.Forms.Panel();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // labelImage
+            // panelSearch
             // 
-            this.labelImage.Image = ((System.Drawing.Image)(resources.GetObject("labelImage.Image")));
-            this.labelImage.Location = new System.Drawing.Point(3, 1);
-            this.labelImage.Name = "labelImage";
-            this.labelImage.Size = new System.Drawing.Size(26, 34);
-            this.labelImage.TabIndex = 1;
+            this.panelSearch.Location = new System.Drawing.Point(29, 44);
+            this.panelSearch.Name = "panelSearch";
+            this.panelSearch.Size = new System.Drawing.Size(308, 32);
+            this.panelSearch.TabIndex = 1;
             // 
-            // richTextBoxSearch
+            // buttonSearch
             // 
-            this.richTextBoxSearch.EnableAutoDragDrop = true;
-            this.richTextBoxSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.richTextBoxSearch.Location = new System.Drawing.Point(32, 1);
-            this.richTextBoxSearch.Name = "richTextBoxSearch";
-            this.richTextBoxSearch.Size = new System.Drawing.Size(207, 34);
-            this.richTextBoxSearch.TabIndex = 2;
-            this.richTextBoxSearch.Text = "Search ";
+            this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearch.Location = new System.Drawing.Point(275, 82);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(52, 29);
+            this.buttonSearch.TabIndex = 1;
+            this.buttonSearch.Text = "Search";
+            this.buttonSearch.UseVisualStyleBackColor = true;
             // 
-            // contextMenuStrip1
+            // textBoxSearch
             // 
-            this.contextMenuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.textBoxSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.textBoxSearch.Location = new System.Drawing.Point(29, 82);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(254, 29);
+            this.textBoxSearch.TabIndex = 0;
             // 
             // ControlSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.richTextBoxSearch);
-            this.Controls.Add(this.labelImage);
+            this.Controls.Add(this.buttonSearch);
+            this.Controls.Add(this.panelSearch);
+            this.Controls.Add(this.textBoxSearch);
             this.Name = "ControlSearch";
-            this.Size = new System.Drawing.Size(430, 111);
+            this.Size = new System.Drawing.Size(486, 177);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label labelImage;
-        private System.Windows.Forms.RichTextBox richTextBoxSearch;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Panel panelSearch;
+        private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.TextBox textBoxSearch;
     }
 }

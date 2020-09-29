@@ -29,45 +29,31 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ControlProduct));
-            this.labelImage = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
+            this.panelImage = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // labelImage
+            // panelImage
             // 
-            this.labelImage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelImage.Image = ((System.Drawing.Image)(resources.GetObject("labelImage.Image")));
-            this.labelImage.Location = new System.Drawing.Point(4, 3);
-            this.labelImage.MinimumSize = new System.Drawing.Size(146, 140);
-            this.labelImage.Name = "labelImage";
-            this.labelImage.Size = new System.Drawing.Size(146, 140);
-            this.labelImage.TabIndex = 0;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.labelImage);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(153, 143);
-            this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panelImage.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panelImage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelImage.BackgroundImage")));
+            this.panelImage.Location = new System.Drawing.Point(31, 34);
+            this.panelImage.MinimumSize = new System.Drawing.Size(165, 145);
+            this.panelImage.Name = "panelImage";
+            this.panelImage.Size = new System.Drawing.Size(165, 145);
+            this.panelImage.TabIndex = 1;
             // 
             // ControlProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelImage);
             this.Name = "ControlProduct";
             this.Size = new System.Drawing.Size(277, 236);
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label labelImage;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelImage;
     }
 }

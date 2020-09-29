@@ -37,6 +37,7 @@
             this.krPage_Compare = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Setting = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Account = new ComponentFactory.Krypton.Navigator.KryptonPage();
+            this.menuView1 = new StoreAssitant.MenuView();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Cashier)).BeginInit();
@@ -44,6 +45,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.krSplit_Cashier)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.krSplit_Cashier.Panel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.krSplit_Cashier.Panel2)).BeginInit();
+            this.krSplit_Cashier.Panel2.SuspendLayout();
             this.krSplit_Cashier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Manager)).BeginInit();
             this.krPage_Manager.SuspendLayout();
@@ -120,6 +122,7 @@
             // 
             // krSplit_Cashier.Panel2
             // 
+            this.krSplit_Cashier.Panel2.Controls.Add(this.menuView1);
             this.krSplit_Cashier.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.krSplit_Cashier_Panel2_Paint);
             this.krSplit_Cashier.Size = new System.Drawing.Size(808, 548);
             this.krSplit_Cashier.SplitterDistance = 376;
@@ -212,6 +215,13 @@
             this.krPage_Account.ToolTipTitle = "Page ToolTip";
             this.krPage_Account.UniqueName = "29A1A40B666C4707C98FE0D28B7F49DD";
             // 
+            // menuView1
+            // 
+            this.menuView1.Location = new System.Drawing.Point(3, 0);
+            this.menuView1.Name = "menuView1";
+            this.menuView1.Size = new System.Drawing.Size(426, 550);
+            this.menuView1.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -227,6 +237,7 @@
             this.krPage_Cashier.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.krSplit_Cashier.Panel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.krSplit_Cashier.Panel2)).EndInit();
+            this.krSplit_Cashier.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.krSplit_Cashier)).EndInit();
             this.krSplit_Cashier.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Manager)).EndInit();
@@ -254,6 +265,7 @@
         private ComponentFactory.Krypton.Navigator.KryptonPage krPage_Account;
         private ComponentFactory.Krypton.Toolkit.KryptonSplitContainer krSplit_Cashier;
         private ComponentFactory.Krypton.Toolkit.KryptonSplitContainer krSplit_Manager;
+        private MenuView menuView1;
     }
 }
 

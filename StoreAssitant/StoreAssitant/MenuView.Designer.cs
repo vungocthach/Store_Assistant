@@ -28,30 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.controlSearch1 = new StoreAssitant.ControlSearch();
-            this.controlProduct1 = new StoreAssitant.ControlProduct();
+            this.ControlTitle = new StoreAssitant.TitleControl();
+            this.controlSearch = new StoreAssitant.ControlSearch();
+            this.controlProduct = new StoreAssitant.ControlProduct();
             this.SuspendLayout();
             // 
-            // controlSearch1
+            // ControlTitle
             // 
-            this.controlSearch1.Location = new System.Drawing.Point(3, 3);
-            this.controlSearch1.Name = "controlSearch1";
-            this.controlSearch1.Size = new System.Drawing.Size(350, 35);
-            this.controlSearch1.TabIndex = 2;
+            this.ControlTitle.Location = new System.Drawing.Point(0, 0);
+            this.ControlTitle.Name = "ControlTitle";
+            this.ControlTitle.Size = new System.Drawing.Size(825, 50);
+            this.ControlTitle.TabIndex = 5;
+            this.ControlTitle.Load += new System.EventHandler(this.titleControl1_Load);
             // 
-            // controlProduct1
+            // controlSearch
             // 
-            this.controlProduct1.Location = new System.Drawing.Point(26, 44);
-            this.controlProduct1.Name = "controlProduct1";
-            this.controlProduct1.Size = new System.Drawing.Size(160, 151);
-            this.controlProduct1.TabIndex = 1;
+            this.controlSearch.Location = new System.Drawing.Point(0, 69);
+            this.controlSearch.Name = "controlSearch";
+            this.controlSearch.Size = new System.Drawing.Size(324, 29);
+            this.controlSearch.TabIndex = 4;
+            // 
+            // controlProduct
+            // 
+            this.controlProduct.Location = new System.Drawing.Point(14, 116);
+            this.controlProduct.MinimumSize = new System.Drawing.Size(125, 127);
+            this.controlProduct.Name = "controlProduct";
+            this.controlProduct.Size = new System.Drawing.Size(125, 127);
+            this.controlProduct.TabIndex = 3;
+            this.controlProduct.Load += new System.EventHandler(this.controlProduct1_Load);
             // 
             // MenuView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.controlSearch1);
-            this.Controls.Add(this.controlProduct1);
+            this.Controls.Add(this.ControlTitle);
+            this.Controls.Add(this.controlSearch);
+            this.Controls.Add(this.controlProduct);
             this.Name = "MenuView";
             this.Size = new System.Drawing.Size(825, 439);
             this.ResumeLayout(false);
@@ -59,7 +71,8 @@
         }
 
         #endregion
-        private ControlProduct controlProduct1;
-        private ControlSearch controlSearch1;
+        private ControlProduct controlProduct;
+        private ControlSearch controlSearch;
+        private TitleControl ControlTitle;
     }
 }

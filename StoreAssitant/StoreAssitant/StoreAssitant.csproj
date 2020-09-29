@@ -90,6 +90,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TitleControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TitleControl.Designer.cs">
+      <DependentUpon>TitleControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ControlProduct.resx">
       <DependentUpon>ControlProduct.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,6 +118,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TitleControl.resx">
+      <DependentUpon>TitleControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
