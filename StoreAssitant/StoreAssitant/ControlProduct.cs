@@ -16,12 +16,20 @@ namespace StoreAssitant
         {
             InitializeComponent();
             this.SizeChanged += ControlProduct_SizeChanged;
-            this.MouseHover += ControlProduct_MouseHover;
+            panelImage.MouseHover += ControlProduct_MouseHover;
+            panelImage.MouseLeave += PanelImage_MouseLeave;
+        }
+
+        private void PanelImage_MouseLeave(object sender, EventArgs e)
+        {
+            panelImage.BackColor = SystemColors.Control;
+            panelImage.BorderStyle = BorderStyle.None;
         }
 
         private void ControlProduct_MouseHover(object sender, EventArgs e)
         {
-            this.BackColor =  Color.SlateGray;
+            panelImage.BackColor =  SystemColors.ActiveCaption;
+            panelImage.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void ControlProduct_SizeChanged(object sender, EventArgs e)
@@ -30,6 +38,9 @@ namespace StoreAssitant
             panelImage.Size = new Size (panelImage.Parent.Width, panelImage.Parent.Height);
         }
 
-       
+        private void panelImage_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

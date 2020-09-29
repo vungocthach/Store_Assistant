@@ -18,6 +18,12 @@ namespace StoreAssitant
             InitializeComponent();
 
             kryptonNavigator1.GotFocus += KryptonNavigator1_GotFocus;
+            this.SizeChanged += Form1_SizeChanged;
+        }
+
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            //MenuView
         }
 
         private void KryptonNavigator1_GotFocus(object sender, EventArgs e)

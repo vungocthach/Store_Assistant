@@ -35,16 +35,17 @@
             // labelImage
             // 
             this.labelImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelImage.Image = global::StoreAssitant.Properties.Resources._120427285_648274679154155_8374726593261554204_n;
             this.labelImage.Location = new System.Drawing.Point(64, 27);
             this.labelImage.Name = "labelImage";
-            this.labelImage.Size = new System.Drawing.Size(64, 38);
+            this.labelImage.Size = new System.Drawing.Size(58, 38);
             this.labelImage.TabIndex = 2;
             // 
             // labelTitle
             // 
             this.labelTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.labelTitle.Location = new System.Drawing.Point(127, 27);
+            this.labelTitle.Location = new System.Drawing.Point(121, 27);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(212, 38);
             this.labelTitle.TabIndex = 3;

@@ -27,10 +27,10 @@ namespace StoreAssitant
         private void MenuView_SizeChanged(object sender, EventArgs e)
         {
             ControlTitle.Location = new Point(0, 0);
-            ControlTitle.Size = new Size(this.Width, Convert.ToInt32(this.Height * 0.125));
-            controlSearch.Location = new Point(0, Convert.ToInt32(this.Height * 0.16));
+            ControlTitle.Size = new Size(this.Width, Convert.ToInt32(this.Height * 0.1));
+            controlSearch.Location = new Point(0, Convert.ToInt32(this.Height * 0.12));
             controlSearch.Size = new Size(Convert.ToInt32(this.Width * 0.8), Convert.ToInt32(this.Height * 0.07));
-            controlProduct.Location = new Point(Convert.ToInt32(this.Width * 0.02), Convert.ToInt32(this.Height * 0.26));
+            controlProduct.Location = new Point(Convert.ToInt32(this.Width * 0.02), Convert.ToInt32(this.Height * 0.20));
             //controlProduct.Size = new Size();
         }
 
@@ -39,7 +39,7 @@ namespace StoreAssitant
 
         }
 
-        private void controlProduct1_Load(object sender, EventArgs e)
+        private void controlProduct_Load(object sender, EventArgs e)
         {
 
         }

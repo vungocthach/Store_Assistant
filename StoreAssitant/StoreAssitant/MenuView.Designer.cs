@@ -28,51 +28,51 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ControlTitle = new StoreAssitant.TitleControl();
-            this.controlSearch = new StoreAssitant.ControlSearch();
             this.controlProduct = new StoreAssitant.ControlProduct();
+            this.controlSearch = new StoreAssitant.ControlSearch();
+            this.ControlTitle = new StoreAssitant.TitleControl();
             this.SuspendLayout();
             // 
-            // ControlTitle
+            // controlProduct
             // 
-            this.ControlTitle.Location = new System.Drawing.Point(0, 0);
-            this.ControlTitle.Name = "ControlTitle";
-            this.ControlTitle.Size = new System.Drawing.Size(747, 50);
-            this.ControlTitle.TabIndex = 5;
-            this.ControlTitle.Load += new System.EventHandler(this.titleControl1_Load);
+            this.controlProduct.BackColor = System.Drawing.SystemColors.Control;
+            this.controlProduct.ForeColor = System.Drawing.SystemColors.Control;
+            this.controlProduct.Location = new System.Drawing.Point(19, 124);
+            this.controlProduct.MinimumSize = new System.Drawing.Size(165, 145);
+            this.controlProduct.Name = "controlProduct";
+            this.controlProduct.Size = new System.Drawing.Size(165, 145);
+            this.controlProduct.TabIndex = 6;
             // 
             // controlSearch
             // 
             this.controlSearch.Location = new System.Drawing.Point(0, 69);
             this.controlSearch.Name = "controlSearch";
-            this.controlSearch.Size = new System.Drawing.Size(255, 29);
+            this.controlSearch.Size = new System.Drawing.Size(344, 29);
             this.controlSearch.TabIndex = 4;
             // 
-            // controlProduct
+            // ControlTitle
             // 
-            this.controlProduct.Location = new System.Drawing.Point(14, 116);
-            this.controlProduct.MinimumSize = new System.Drawing.Size(125, 127);
-            this.controlProduct.Name = "controlProduct";
-            this.controlProduct.Size = new System.Drawing.Size(125, 127);
-            this.controlProduct.TabIndex = 3;
-            this.controlProduct.Load += new System.EventHandler(this.controlProduct1_Load);
+            this.ControlTitle.Location = new System.Drawing.Point(0, 4);
+            this.ControlTitle.Name = "ControlTitle";
+            this.ControlTitle.Size = new System.Drawing.Size(634, 54);
+            this.ControlTitle.TabIndex = 7;
             // 
             // MenuView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ControlTitle);
-            this.Controls.Add(this.controlSearch);
             this.Controls.Add(this.controlProduct);
+            this.Controls.Add(this.controlSearch);
             this.Name = "MenuView";
-            this.Size = new System.Drawing.Size(747, 439);
+            this.Size = new System.Drawing.Size(635, 439);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private ControlProduct controlProduct;
         private ControlSearch controlSearch;
+        private ControlProduct controlProduct;
         private TitleControl ControlTitle;
     }
 }
