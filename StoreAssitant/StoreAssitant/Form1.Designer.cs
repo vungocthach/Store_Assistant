@@ -217,6 +217,7 @@
             // 
             // menuView1
             // 
+            this.menuView1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.menuView1.Location = new System.Drawing.Point(0, 0);
             this.menuView1.Name = "menuView1";
             this.menuView1.Size = new System.Drawing.Size(429, 565);
