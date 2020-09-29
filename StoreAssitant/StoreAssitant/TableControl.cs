@@ -11,25 +11,48 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace StoreAssitant
 {
-    public partial class TableControl : UserControl 
+    public partial class TableControl : UserControl
     {
         public TableControl()
         {
             InitializeComponent();
+
             this.SizeChanged += TableControl_SizeChanged;
-            Table_Image.MouseHover += TableControl_MouseHover;
-            Table_Name.MouseHover += TableControl_MouseHover;
+            Table_Image.MouseEnter += TableControl_MouseEnter;
+            Table_Name.MouseEnter += TableControl_MouseEnter;
+            this.MouseEnter += TableControl_MouseEnter;
+
             Table_Image.MouseLeave += TableControl_MouseLeave;
+            Table_Name.MouseLeave += TableControl_MouseLeave;
+            this.MouseLeave += TableControl_MouseLeave;
+
+            Table_Image.MouseDown += TableControl_MouseDown;
+            Table_Name.MouseDown += TableControl_MouseDown;
+            this.MouseDown += TableControl_MouseDown;
+
+            Table_Image.MouseUp += TableControl_MouseUp;
+            Table_Name.MouseUp += TableControl_MouseUp;
+            this.MouseUp += TableControl_MouseUp;
+
             this.MinimumSize = new Size(Table_Name.Size.Width, Table_Name.Size.Height * 4);
         }
 
-        private void TableControl_MouseHover(object sender, EventArgs e)
+        private void TableControl_MouseEnter(object sender, EventArgs e)
         {
-            Table_Image.BackColor = this.BackColor = Color.GhostWhite;
+            Table_Image.BackColor = this.BackColor = System.Drawing.SystemColors.Window;
+            Invalidate();
         }
         private void TableControl_MouseLeave(object sender, EventArgs e)
         {
-            Table_Image.BackColor = this.BackColor = System.Drawing.SystemColors.Control;
+            Table_Image.BackColor = this.BackColor = Color.PapayaWhip;
+        }
+        private void TableControl_MouseDown(object sender, EventArgs e)
+        {
+            Table_Image.BackColor = this.BackColor = Color.LightSalmon;
+        }
+        private void TableControl_MouseUp(object sender, EventArgs e)
+        {
+            TableControl_MouseEnter(this, e);
         }
 
         public void setData(TableControlInfor Infor)
@@ -41,7 +64,7 @@ namespace StoreAssitant
         private void TableControl_SizeChanged(object sender, EventArgs e)
         {
             Table_Image.Size = new Size(this.Size.Width, this.Size.Height * 3 / 4);
-            Table_Name.Location = new Point((this.Size.Width - Table_Name.Size.Width)/2, (this.Size.Height + Table_Image.Height - Table_Name.Size.Height) / 2);
+            Table_Name.Location = new Point((this.Size.Width - Table_Name.Size.Width) / 2, (this.Size.Height + Table_Image.Height - Table_Name.Size.Height) / 2);
         }
 
         [Category("My properties"), Description("Change Name of table")]
@@ -64,8 +87,6 @@ namespace StoreAssitant
                 Invalidate();
             }
         }
-
-
     }
     public class TableControlInfor
     {

@@ -32,11 +32,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TableView));
             this.Table_TableControl = new System.Windows.Forms.FlowLayoutPanel();
             this.pay_Table = new System.Windows.Forms.Panel();
-            this.name_Table_Cashier = new System.Windows.Forms.Label();
+            this.TableCashier_name = new System.Windows.Forms.Label();
             this.Table_Cashier = new System.Windows.Forms.Panel();
-            this.image_Table_cashier = new System.Windows.Forms.Panel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.TableCashier_image = new System.Windows.Forms.Panel();
             this.tableControl1 = new StoreAssitant.TableControl();
+            this.panel_Add = new System.Windows.Forms.Panel();
             this.Table_TableControl.SuspendLayout();
             this.Table_Cashier.SuspendLayout();
             this.SuspendLayout();
@@ -45,6 +46,7 @@
             // 
             this.Table_TableControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Table_TableControl.Controls.Add(this.tableControl1);
+            this.Table_TableControl.Controls.Add(this.panel_Add);
             this.Table_TableControl.Location = new System.Drawing.Point(0, 57);
             this.Table_TableControl.Name = "Table_TableControl";
             this.Table_TableControl.Size = new System.Drawing.Size(555, 600);
@@ -57,32 +59,24 @@
             this.pay_Table.Size = new System.Drawing.Size(555, 45);
             this.pay_Table.TabIndex = 1;
             // 
-            // name_Table_Cashier
+            // TableCashier_name
             // 
-            this.name_Table_Cashier.AutoSize = true;
-            this.name_Table_Cashier.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.name_Table_Cashier.Location = new System.Drawing.Point(99, 6);
-            this.name_Table_Cashier.Name = "name_Table_Cashier";
-            this.name_Table_Cashier.Size = new System.Drawing.Size(351, 44);
-            this.name_Table_Cashier.TabIndex = 2;
-            this.name_Table_Cashier.Text = "THANH TOÁN BÀN";
+            this.TableCashier_name.AutoSize = true;
+            this.TableCashier_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TableCashier_name.Location = new System.Drawing.Point(99, 6);
+            this.TableCashier_name.Name = "TableCashier_name";
+            this.TableCashier_name.Size = new System.Drawing.Size(351, 44);
+            this.TableCashier_name.TabIndex = 2;
+            this.TableCashier_name.Text = "THANH TOÁN BÀN";
             // 
             // Table_Cashier
             // 
-            this.Table_Cashier.Controls.Add(this.image_Table_cashier);
-            this.Table_Cashier.Controls.Add(this.name_Table_Cashier);
+            this.Table_Cashier.Controls.Add(this.TableCashier_image);
+            this.Table_Cashier.Controls.Add(this.TableCashier_name);
             this.Table_Cashier.Location = new System.Drawing.Point(0, 0);
             this.Table_Cashier.Name = "Table_Cashier";
             this.Table_Cashier.Size = new System.Drawing.Size(555, 55);
             this.Table_Cashier.TabIndex = 3;
-            // 
-            // image_Table_cashier
-            // 
-            this.image_Table_cashier.BackgroundImage = global::StoreAssitant.Properties.Resources.thu_ngân;
-            this.image_Table_cashier.Location = new System.Drawing.Point(2, 2);
-            this.image_Table_cashier.Name = "image_Table_cashier";
-            this.image_Table_cashier.Size = new System.Drawing.Size(65, 50);
-            this.image_Table_cashier.TabIndex = 3;
             // 
             // contextMenuStrip1
             // 
@@ -90,6 +84,14 @@
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // TableCashier_image
+            // 
+            this.TableCashier_image.BackgroundImage = global::StoreAssitant.Properties.Resources.thu_ngân;
+            this.TableCashier_image.Location = new System.Drawing.Point(2, 2);
+            this.TableCashier_image.Name = "TableCashier_image";
+            this.TableCashier_image.Size = new System.Drawing.Size(65, 50);
+            this.TableCashier_image.TabIndex = 3;
             // 
             // tableControl1
             // 
@@ -101,6 +103,16 @@
             this.tableControl1.nameTable = "Name of Table";
             this.tableControl1.Size = new System.Drawing.Size(148, 148);
             this.tableControl1.TabIndex = 0;
+            // 
+            // panel_Add
+            // 
+            this.panel_Add.BackgroundImage = global::StoreAssitant.Properties.Resources.button_add;
+            this.panel_Add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel_Add.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_Add.Location = new System.Drawing.Point(157, 3);
+            this.panel_Add.Name = "panel_Add";
+            this.panel_Add.Size = new System.Drawing.Size(150, 150);
+            this.panel_Add.TabIndex = 1;
             // 
             // TableView
             // 
@@ -122,10 +134,11 @@
 
         private System.Windows.Forms.FlowLayoutPanel Table_TableControl;
         private System.Windows.Forms.Panel pay_Table;
-        private System.Windows.Forms.Label name_Table_Cashier;
+        private System.Windows.Forms.Label TableCashier_name;
         private System.Windows.Forms.Panel Table_Cashier;
-        private System.Windows.Forms.Panel image_Table_cashier;
+        private System.Windows.Forms.Panel TableCashier_image;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private TableControl tableControl1;
+        private System.Windows.Forms.Panel panel_Add;
     }
 }

@@ -73,6 +73,16 @@ namespace StoreAssitant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap button_add {
+            get {
+                object obj = ResourceManager.GetObject("button_add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_13_3319631 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_13_3319631", resourceCulture);
