@@ -83,7 +83,7 @@
             this.krPage_Setting,
             this.krPage_Account});
             this.kryptonNavigator1.SelectedIndex = 0;
-            this.kryptonNavigator1.Size = new System.Drawing.Size(812, 609);
+            this.kryptonNavigator1.Size = new System.Drawing.Size(812, 568);
             this.kryptonNavigator1.TabIndex = 0;
             this.kryptonNavigator1.Text = "kryptonNavigator1";
             this.kryptonNavigator1.ToolTips.AllowButtonSpecToolTips = true;
@@ -105,7 +105,7 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.krPage_Cashier.OverrideFocus.CheckButton.Content.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.False;
             this.krPage_Cashier.OverrideFocus.CheckButton.Content.DrawFocus = ComponentFactory.Krypton.Toolkit.InheritBool.False;
-            this.krPage_Cashier.Size = new System.Drawing.Size(808, 548);
+            this.krPage_Cashier.Size = new System.Drawing.Size(808, 507);
             this.krPage_Cashier.Text = "Thu Ngân";
             this.krPage_Cashier.TextDescription = "Description";
             this.krPage_Cashier.TextTitle = "Thu Ngân";
@@ -124,7 +124,7 @@
             // 
             this.krSplit_Cashier.Panel2.Controls.Add(this.menuView1);
             this.krSplit_Cashier.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.krSplit_Cashier_Panel2_Paint);
-            this.krSplit_Cashier.Size = new System.Drawing.Size(808, 548);
+            this.krSplit_Cashier.Size = new System.Drawing.Size(808, 507);
             this.krSplit_Cashier.SplitterDistance = 376;
             this.krSplit_Cashier.TabIndex = 0;
             // 
@@ -217,16 +217,16 @@
             // 
             // menuView1
             // 
-            this.menuView1.Location = new System.Drawing.Point(3, 0);
+            this.menuView1.Location = new System.Drawing.Point(0, 0);
             this.menuView1.Name = "menuView1";
-            this.menuView1.Size = new System.Drawing.Size(426, 550);
+            this.menuView1.Size = new System.Drawing.Size(429, 565);
             this.menuView1.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(812, 609);
+            this.ClientSize = new System.Drawing.Size(812, 568);
             this.Controls.Add(this.kryptonNavigator1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";

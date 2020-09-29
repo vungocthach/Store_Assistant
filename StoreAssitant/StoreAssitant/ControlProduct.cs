@@ -16,6 +16,12 @@ namespace StoreAssitant
         {
             InitializeComponent();
             this.SizeChanged += ControlProduct_SizeChanged;
+            this.MouseHover += ControlProduct_MouseHover;
+        }
+
+        private void ControlProduct_MouseHover(object sender, EventArgs e)
+        {
+            this.BackColor =  Color.SlateGray;
         }
 
         private void ControlProduct_SizeChanged(object sender, EventArgs e)

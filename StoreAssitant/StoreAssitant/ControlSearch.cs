@@ -27,5 +27,10 @@ namespace StoreAssitant
             buttonSearch.Location = new Point(textBoxSearch.Width,0 );
            
         }
+
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

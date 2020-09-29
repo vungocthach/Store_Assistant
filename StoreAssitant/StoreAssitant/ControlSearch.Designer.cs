@@ -44,6 +44,7 @@
             // 
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSearch.Location = new System.Drawing.Point(275, 82);
+            this.buttonSearch.MinimumSize = new System.Drawing.Size(52, 29);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(52, 29);
             this.buttonSearch.TabIndex = 1;
@@ -53,10 +54,12 @@
             // textBoxSearch
             // 
             this.textBoxSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.textBoxSearch.Location = new System.Drawing.Point(29, 82);
+            this.textBoxSearch.Location = new System.Drawing.Point(21, 82);
+            this.textBoxSearch.MinimumSize = new System.Drawing.Size(254, 29);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(254, 29);
             this.textBoxSearch.TabIndex = 0;
+            this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
             // 
             // ControlSearch
             // 

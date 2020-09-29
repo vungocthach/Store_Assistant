@@ -37,7 +37,7 @@
             // 
             this.ControlTitle.Location = new System.Drawing.Point(0, 0);
             this.ControlTitle.Name = "ControlTitle";
-            this.ControlTitle.Size = new System.Drawing.Size(825, 50);
+            this.ControlTitle.Size = new System.Drawing.Size(747, 50);
             this.ControlTitle.TabIndex = 5;
             this.ControlTitle.Load += new System.EventHandler(this.titleControl1_Load);
             // 
@@ -45,7 +45,7 @@
             // 
             this.controlSearch.Location = new System.Drawing.Point(0, 69);
             this.controlSearch.Name = "controlSearch";
-            this.controlSearch.Size = new System.Drawing.Size(324, 29);
+            this.controlSearch.Size = new System.Drawing.Size(255, 29);
             this.controlSearch.TabIndex = 4;
             // 
             // controlProduct
@@ -65,7 +65,7 @@
             this.Controls.Add(this.controlSearch);
             this.Controls.Add(this.controlProduct);
             this.Name = "MenuView";
-            this.Size = new System.Drawing.Size(825, 439);
+            this.Size = new System.Drawing.Size(747, 439);
             this.ResumeLayout(false);
 
         }
