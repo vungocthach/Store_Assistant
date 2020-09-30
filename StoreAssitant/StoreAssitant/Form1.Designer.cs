@@ -37,7 +37,7 @@
             this.krPage_Compare = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Setting = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Account = new ComponentFactory.Krypton.Navigator.KryptonPage();
-            this.menuView1 = new StoreAssitant.MenuView();
+            this.menuView = new StoreAssitant.MenuView();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Cashier)).BeginInit();
@@ -122,7 +122,7 @@
             // 
             // krSplit_Cashier.Panel2
             // 
-            this.krSplit_Cashier.Panel2.Controls.Add(this.menuView1);
+            this.krSplit_Cashier.Panel2.Controls.Add(this.menuView);
             this.krSplit_Cashier.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.krSplit_Cashier_Panel2_Paint);
             this.krSplit_Cashier.Size = new System.Drawing.Size(808, 507);
             this.krSplit_Cashier.SplitterDistance = 376;
@@ -215,12 +215,13 @@
             this.krPage_Account.ToolTipTitle = "Page ToolTip";
             this.krPage_Account.UniqueName = "29A1A40B666C4707C98FE0D28B7F49DD";
             // 
-            // menuView1
+            // menuView
             // 
-            this.menuView1.Location = new System.Drawing.Point(0, 0);
-            this.menuView1.Name = "menuView1";
-            this.menuView1.Size = new System.Drawing.Size(429, 507);
-            this.menuView1.TabIndex = 0;
+            this.menuView.AutoScroll = true;
+            this.menuView.Location = new System.Drawing.Point(4, 1);
+            this.menuView.Name = "menuView";
+            this.menuView.Size = new System.Drawing.Size(424, 503);
+            this.menuView.TabIndex = 0;
             // 
             // Form1
             // 
@@ -265,7 +266,7 @@
         private ComponentFactory.Krypton.Navigator.KryptonPage krPage_Account;
         private ComponentFactory.Krypton.Toolkit.KryptonSplitContainer krSplit_Cashier;
         private ComponentFactory.Krypton.Toolkit.KryptonSplitContainer krSplit_Manager;
-        private MenuView menuView1;
+        private MenuView menuView;
     }
 }
 

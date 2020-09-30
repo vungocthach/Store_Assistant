@@ -28,51 +28,65 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.controlProduct = new StoreAssitant.ControlProduct();
-            this.controlSearch = new StoreAssitant.ControlSearch();
             this.ControlTitle = new StoreAssitant.TitleControl();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.controlSearch = new StoreAssitant.ControlSearch();
+            this.controlProduct = new StoreAssitant.ControlProduct();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // controlProduct
-            // 
-            this.controlProduct.BackColor = System.Drawing.SystemColors.Control;
-            this.controlProduct.ForeColor = System.Drawing.SystemColors.Control;
-            this.controlProduct.Location = new System.Drawing.Point(19, 124);
-            this.controlProduct.MinimumSize = new System.Drawing.Size(165, 145);
-            this.controlProduct.Name = "controlProduct";
-            this.controlProduct.Size = new System.Drawing.Size(165, 145);
-            this.controlProduct.TabIndex = 6;
-            // 
-            // controlSearch
-            // 
-            this.controlSearch.Location = new System.Drawing.Point(0, 69);
-            this.controlSearch.Name = "controlSearch";
-            this.controlSearch.Size = new System.Drawing.Size(344, 29);
-            this.controlSearch.TabIndex = 4;
             // 
             // ControlTitle
             // 
-            this.ControlTitle.Location = new System.Drawing.Point(0, 4);
+            this.ControlTitle.Location = new System.Drawing.Point(0, 1);
             this.ControlTitle.Name = "ControlTitle";
-            this.ControlTitle.Size = new System.Drawing.Size(634, 54);
-            this.ControlTitle.TabIndex = 7;
+            this.ControlTitle.Size = new System.Drawing.Size(425, 39);
+            this.ControlTitle.TabIndex = 0;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.controlProduct);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 77);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(425, 10010);
+            this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // controlSearch
+            // 
+            this.controlSearch.Location = new System.Drawing.Point(0, 47);
+            this.controlSearch.Name = "controlSearch";
+            this.controlSearch.Size = new System.Drawing.Size(326, 31);
+            this.controlSearch.TabIndex = 2;
+            // 
+            // controlProduct
+            // 
+            this.controlProduct.BackColor = System.Drawing.Color.Azure;
+            this.controlProduct.ForeColor = System.Drawing.SystemColors.Control;
+            this.controlProduct.Location = new System.Drawing.Point(3, 3);
+            this.controlProduct.MinimumSize = new System.Drawing.Size(165, 145);
+            this.controlProduct.Name = "controlProduct";
+            this.controlProduct.Size = new System.Drawing.Size(165, 145);
+            this.controlProduct.TabIndex = 0;
             // 
             // MenuView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.ControlTitle);
-            this.Controls.Add(this.controlProduct);
+            this.AutoScroll = true;
             this.Controls.Add(this.controlSearch);
+            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.ControlTitle);
             this.Name = "MenuView";
-            this.Size = new System.Drawing.Size(635, 439);
+            this.Size = new System.Drawing.Size(427, 439);
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private ControlSearch controlSearch;
-        private ControlProduct controlProduct;
+
         private TitleControl ControlTitle;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private ControlProduct controlProduct;
+        private ControlSearch controlSearch;
     }
 }

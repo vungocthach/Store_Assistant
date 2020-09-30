@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace StoreAssitant
 {
@@ -18,6 +19,13 @@ namespace StoreAssitant
             this.SizeChanged += ControlProduct_SizeChanged;
             panelImage.MouseHover += ControlProduct_MouseHover;
             panelImage.MouseLeave += PanelImage_MouseLeave;
+            panelImage.Click += PanelImage_Click;
+        }
+
+        private void PanelImage_Click(object sender, EventArgs e)
+        {
+            panelImage.BorderStyle = BorderStyle.None;
+           // panelImage.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void PanelImage_MouseLeave(object sender, EventArgs e)
