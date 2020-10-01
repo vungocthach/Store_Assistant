@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.txtb_Name = new System.Windows.Forms.TextBox();
             this.txtb_Price = new System.Windows.Forms.TextBox();
@@ -37,13 +38,25 @@
             this.txtb_Description = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label_Image = new System.Windows.Forms.Label();
+            this.toolTip_Name = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip_Price = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip_Tag = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip_Des = new System.Windows.Forms.ToolTip(this.components);
+            this.pb_Err_Des = new System.Windows.Forms.PictureBox();
+            this.pb_Err_Tag = new System.Windows.Forms.PictureBox();
+            this.pb_Err_Price = new System.Windows.Forms.PictureBox();
+            this.pb_Err_Name = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Err_Des)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Err_Tag)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Err_Price)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Err_Name)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(44, 197);
+            this.label1.Location = new System.Drawing.Point(3, 197);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(129, 22);
             this.label1.TabIndex = 0;
@@ -52,30 +65,28 @@
             // txtb_Name
             // 
             this.txtb_Name.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtb_Name.Location = new System.Drawing.Point(179, 194);
+            this.txtb_Name.Location = new System.Drawing.Point(138, 194);
             this.txtb_Name.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.txtb_Name.MaxLength = 50;
             this.txtb_Name.Name = "txtb_Name";
-            this.txtb_Name.Size = new System.Drawing.Size(272, 30);
+            this.txtb_Name.Size = new System.Drawing.Size(288, 30);
             this.txtb_Name.TabIndex = 1;
-            this.txtb_Name.Text = "Nhập tên sản phẩm";
             // 
             // txtb_Price
             // 
             this.txtb_Price.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtb_Price.Location = new System.Drawing.Point(179, 237);
+            this.txtb_Price.Location = new System.Drawing.Point(138, 237);
             this.txtb_Price.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.txtb_Price.MaxLength = 20;
             this.txtb_Price.Name = "txtb_Price";
-            this.txtb_Price.Size = new System.Drawing.Size(272, 30);
+            this.txtb_Price.Size = new System.Drawing.Size(288, 30);
             this.txtb_Price.TabIndex = 3;
-            this.txtb_Price.Text = "12000";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(44, 240);
+            this.label2.Location = new System.Drawing.Point(3, 240);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 22);
             this.label2.TabIndex = 2;
@@ -83,19 +94,18 @@
             // 
             // txtb_Tag
             // 
-            this.txtb_Tag.Enabled = false;
             this.txtb_Tag.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtb_Tag.Location = new System.Drawing.Point(179, 280);
+            this.txtb_Tag.Location = new System.Drawing.Point(138, 280);
             this.txtb_Tag.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.txtb_Tag.Name = "txtb_Tag";
-            this.txtb_Tag.Size = new System.Drawing.Size(272, 30);
+            this.txtb_Tag.Size = new System.Drawing.Size(288, 30);
             this.txtb_Tag.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(44, 283);
+            this.label3.Location = new System.Drawing.Point(3, 283);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 22);
             this.label3.TabIndex = 4;
@@ -104,21 +114,21 @@
             // txtb_Description
             // 
             this.txtb_Description.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtb_Description.Location = new System.Drawing.Point(43, 364);
+            this.txtb_Description.Location = new System.Drawing.Point(15, 364);
             this.txtb_Description.Multiline = true;
             this.txtb_Description.Name = "txtb_Description";
-            this.txtb_Description.Size = new System.Drawing.Size(408, 210);
+            this.txtb_Description.Size = new System.Drawing.Size(423, 220);
             this.txtb_Description.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(44, 330);
+            this.label4.Location = new System.Drawing.Point(3, 330);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(121, 22);
+            this.label4.Size = new System.Drawing.Size(126, 22);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Mô tả chi tiết:";
+            this.label4.Text = "Mô tả chi tiết :";
             // 
             // label_Image
             // 
@@ -131,10 +141,58 @@
             this.label_Image.Text = "Thêm hình ảnh\r\n(+)";
             this.label_Image.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // pb_Err_Des
+            // 
+            this.pb_Err_Des.Image = global::StoreAssitant.Properties.Resources.iconfinder_caution_1055096;
+            this.pb_Err_Des.Location = new System.Drawing.Point(130, 324);
+            this.pb_Err_Des.Name = "pb_Err_Des";
+            this.pb_Err_Des.Size = new System.Drawing.Size(36, 36);
+            this.pb_Err_Des.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pb_Err_Des.TabIndex = 16;
+            this.pb_Err_Des.TabStop = false;
+            this.pb_Err_Des.Visible = false;
+            // 
+            // pb_Err_Tag
+            // 
+            this.pb_Err_Tag.Image = global::StoreAssitant.Properties.Resources.iconfinder_caution_1055096;
+            this.pb_Err_Tag.Location = new System.Drawing.Point(431, 278);
+            this.pb_Err_Tag.Name = "pb_Err_Tag";
+            this.pb_Err_Tag.Size = new System.Drawing.Size(36, 36);
+            this.pb_Err_Tag.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pb_Err_Tag.TabIndex = 15;
+            this.pb_Err_Tag.TabStop = false;
+            this.pb_Err_Tag.Visible = false;
+            // 
+            // pb_Err_Price
+            // 
+            this.pb_Err_Price.Image = global::StoreAssitant.Properties.Resources.iconfinder_caution_1055096;
+            this.pb_Err_Price.Location = new System.Drawing.Point(432, 236);
+            this.pb_Err_Price.Name = "pb_Err_Price";
+            this.pb_Err_Price.Size = new System.Drawing.Size(36, 36);
+            this.pb_Err_Price.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pb_Err_Price.TabIndex = 14;
+            this.pb_Err_Price.TabStop = false;
+            this.pb_Err_Price.Visible = false;
+            // 
+            // pb_Err_Name
+            // 
+            this.pb_Err_Name.Image = global::StoreAssitant.Properties.Resources.iconfinder_caution_1055096;
+            this.pb_Err_Name.Location = new System.Drawing.Point(431, 188);
+            this.pb_Err_Name.Name = "pb_Err_Name";
+            this.pb_Err_Name.Size = new System.Drawing.Size(36, 36);
+            this.pb_Err_Name.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pb_Err_Name.TabIndex = 13;
+            this.pb_Err_Name.TabStop = false;
+            this.pb_Err_Name.Visible = false;
+            // 
             // ProductBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.pb_Err_Des);
+            this.Controls.Add(this.pb_Err_Tag);
+            this.Controls.Add(this.pb_Err_Price);
+            this.Controls.Add(this.pb_Err_Name);
             this.Controls.Add(this.label_Image);
             this.Controls.Add(this.txtb_Description);
             this.Controls.Add(this.label4);
@@ -144,8 +202,13 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtb_Name);
             this.Controls.Add(this.label1);
+            this.MinimumSize = new System.Drawing.Size(400, 500);
             this.Name = "ProductBox";
-            this.Size = new System.Drawing.Size(500, 600);
+            this.Size = new System.Drawing.Size(467, 587);
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Err_Des)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Err_Tag)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Err_Price)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Err_Name)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,5 +225,13 @@
         private System.Windows.Forms.TextBox txtb_Description;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label_Image;
+        private System.Windows.Forms.ToolTip toolTip_Name;
+        private System.Windows.Forms.ToolTip toolTip_Price;
+        private System.Windows.Forms.ToolTip toolTip_Tag;
+        private System.Windows.Forms.ToolTip toolTip_Des;
+        private System.Windows.Forms.PictureBox pb_Err_Name;
+        private System.Windows.Forms.PictureBox pb_Err_Price;
+        private System.Windows.Forms.PictureBox pb_Err_Tag;
+        private System.Windows.Forms.PictureBox pb_Err_Des;
     }
 }

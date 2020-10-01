@@ -65,9 +65,39 @@ namespace StoreAssitant
             Invalidate();
         }
 
+        [Category("My Properties"), Description("Text of description about product")]
+        public string PDDescription
+        {
+            get { return txtb_Description.Text; }
+            set
+            {
+                txtb_Description.Text = value.Trim();
+            }
+        }
+
+        public char SeperateCharacter;
+
+        [Category("My Properties"), Description("Array of tags about product")]
+        public string[] PDTags
+        {
+            get { return ThunderStudio.TSString.SeperateString(txtb_Description.Text.Trim(), this.SeperateCharacter); }
+            set
+            {
+                StringBuilder builder = new StringBuilder();
+                foreach (string str in value)
+                {
+                    builder.Append(str);
+                    builder.Append(SeperateCharacter);
+                }
+                txtb_Tag.Text = builder.ToString();
+            }
+        }
+
         public ProductBox()
         {
             InitializeComponent();
+
+            SeperateCharacter = ';';
 
             label_Image.Click += new EventHandler((object sender, EventArgs e) => {
                 string path = GetPath();
@@ -78,9 +108,107 @@ namespace StoreAssitant
             });
 
             txtb_Name.TextChanged += Name_UpdateChanged;
-            txtb_Name.LostFocus += Txtb_CheckEmpty;
             txtb_Price.TextChanged += Price_UpdateChanged;
-            txtb_Price.LostFocus += Txtb_CheckEmpty;
+            txtb_Tag.TextChanged += Tag_UpdateChanged;
+
+            toolTip_Name.ToolTipIcon = ToolTipIcon.Error;
+            toolTip_Price.ToolTipIcon = ToolTipIcon.Error;
+            toolTip_Tag.ToolTipIcon = ToolTipIcon.Error;
+            toolTip_Des.ToolTipIcon = ToolTipIcon.Error;
+
+            txtb_Name.Tag = pb_Err_Name;
+            pb_Err_Name.Tag = toolTip_Name;
+            txtb_Price.Tag = pb_Err_Price;
+            pb_Err_Price.Tag = toolTip_Price;
+            txtb_Tag.Tag = pb_Err_Tag;
+            pb_Err_Tag.Tag = toolTip_Tag;
+            txtb_Description.Tag = pb_Err_Des;
+            pb_Err_Des.Tag = toolTip_Des;
+
+            this.SizeChanged += ProductBox_SizeChanged;
+        }
+
+        public bool FullCheck()
+        {
+            Name_UpdateChanged(txtb_Name, null);
+            Price_UpdateChanged(txtb_Price, null);
+            Tag_UpdateChanged(txtb_Tag, null);
+
+            if (pb_Err_Des.Visible || pb_Err_Name.Visible 
+                || pb_Err_Price.Visible || pb_Err_Tag.Visible)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private void SetErrorState(Control control, string message, string title)
+        {
+            Control error_image = (Control)control.Tag;
+            ToolTip toolTip = (ToolTip)error_image.Tag;
+
+            if (message != null)
+            {
+                error_image.Visible = true;
+
+                toolTip.RemoveAll();
+                toolTip.ToolTipTitle = title;
+                toolTip.SetToolTip(error_image, message);
+
+                control.BackColor = Color.LightPink;
+            }
+            else
+            {
+                throw new NullReferenceException("Variable message must not null");
+            }
+        }
+
+        private void RemoveErrorState(Control control)
+        {
+            Control error_image = (Control)control.Tag;
+            ToolTip toolTip = (ToolTip)error_image.Tag;
+
+            error_image.Visible = false;
+
+            control.BackColor = Color.White;
+        }
+
+        private void ProductBox_SizeChanged(object sender, EventArgs e)
+        {
+            AutoCenterOnParent_SizeChanged(label_Image);
+
+            pb_Err_Name.Location = new Point(this.Width - pb_Err_Name.Width - 5,
+                                                txtb_Name.Location.Y + (txtb_Name.Height - pb_Err_Name.Height) / 2);
+            pb_Err_Price.Location = new Point(this.Width - pb_Err_Price.Width - 5,
+                                                txtb_Price.Location.Y + (txtb_Price.Height - pb_Err_Price.Height) / 2);
+            pb_Err_Tag.Location = new Point(this.Width - pb_Err_Tag.Width - 5,
+                                                txtb_Tag.Location.Y + (txtb_Tag.Height - pb_Err_Tag.Height) / 2);
+            
+            txtb_Name.Width = pb_Err_Name.Location.X - txtb_Name.Location.X - 5;
+            txtb_Price.Width = pb_Err_Price.Location.X - txtb_Price.Location.X - 5;
+            txtb_Tag.Width = pb_Err_Tag.Location.X - txtb_Tag.Location.X - 5;
+
+            txtb_Description.Height = this.Height - txtb_Description.Location.Y - 5;
+            txtb_Description.Width = this.Width - txtb_Description.Location.X * 2;
+        }
+
+        private void AutoCenterOnParent_SizeChanged(Control target)
+        {
+            target.Location = new Point((target.Parent.Width - target.Width) / 2, target.Location.Y);
+        }
+
+        private void Tag_UpdateChanged(object sender, EventArgs e)
+        {
+            TextBox txtb = (TextBox)sender;
+            if (!ThunderStudio.TSString.IsMadeFrom(txtb.Text, "0123456789qwertyuiopasdfghjklzxcvbnm; "))
+            {
+                string message = string.Format("Chỉ nhập chữ cái thường, số và khoảng trắng{0}Phân cách giữa các tag bằng dấu chấm phẩy ';'", Environment.NewLine);
+                SetErrorState(txtb, message, "Lỗi nhập");
+            }
+            else
+            {
+                RemoveErrorState(txtb);
+            }
 
         }
 
@@ -89,23 +217,36 @@ namespace StoreAssitant
             TextBox txtb = (TextBox)sender;
             if (txtb.Text == string.Empty)
             {
-                MessageBox.Show("Đây là thông tin bắt buộc");
-                txtb.SelectAll();
+                string message = "Đây là thông tin bắt buộc.";
+                SetErrorState(txtb, message, "Không thể để trống");
+            }
+            else
+            {
+                RemoveErrorState(txtb);
             }
         }
 
         private void Name_UpdateChanged(object sender, EventArgs e)
         {
             TextBox txtb = (TextBox)sender;
-            if (TSRuleManager.HasInvalidCharacter(txtb.Text))
+            if (ThunderStudio.TSString.ContainAnyCharacterOf(txtb.Text, ("{}[]();.,><?/*&^%$#@!`~|\\")))
             {
-                MessageBox.Show("Vui lòng không nhập các kí tự đặc biệt");
-                txtb.SelectAll();
+                string message = "Vui lòng không nhập các kí tự đặc biệt";
+                SetErrorState(txtb, message, "Lỗi nhập");
             }
-            if (txtb.Text.Length > 50)
+            else if (txtb.Text.Length > 50)
             {
-                MessageBox.Show("Vui lòng nhập tên có độ dài ngắn hơn 50 kí tự");
-                txtb.SelectAll();
+                string message = "Vui lòng nhập tên có độ dài ngắn hơn 50 kí tự";
+                SetErrorState(txtb, message, "Lỗi nhập");
+            }
+            else if (txtb.Text == string.Empty)
+            {
+                string message = "Đây là thông tin bắt buộc";
+                SetErrorState(txtb, message, "Không thể để trống");
+            }
+            else
+            {
+                RemoveErrorState(txtb);
             }
         }
 
@@ -115,16 +256,25 @@ namespace StoreAssitant
             try
             {
                 int.Parse(txtb.Text);
+                if (txtb.Text == string.Empty)
+                {
+                    string message = "Đây là thông tin bắt buộc";
+                    SetErrorState(txtb, message, "Không thể để trống");
+                }
+                else
+                {
+                    RemoveErrorState(txtb);
+                }
             }
             catch (FormatException)
             {
-                MessageBox.Show("Vui lòng chỉ nhập số nguyên dương");
-                txtb.SelectAll();
+                string message = "Vui lòng chỉ nhập số nguyên dương";
+                SetErrorState(txtb, message, "Lỗi nhập");
             }
             catch (OverflowException)
             {
-                MessageBox.Show(string.Format("Vui lòng nhập giá trị từ 0 đến {0}", int.MaxValue));
-                txtb.SelectAll();
+                string message = string.Format("Vui lòng nhập giá trị từ 0 đến {0}", int.MaxValue);
+                SetErrorState(txtb, message, "Lỗi nhập");
             }
         }
 
@@ -169,6 +319,21 @@ namespace StoreAssitant
         public int Price { get; set; }
         public string[] Tags { get; set; }
         public string Description { get; set; }
+
+        public override string ToString()
+        {
+            StringBuilder buider = new StringBuilder();
+            buider.Append("Image :").Append(Image.ToString()).AppendLine();
+            buider.AppendFormat("Name : {0}").Append( Name).AppendLine();
+            buider.AppendFormat("Price : {0}").Append(Price).AppendLine();
+            buider.AppendFormat("Tags :").AppendLine();
+            foreach (string str in Tags)
+            {
+                buider.AppendLine(str);
+            }
+            buider.AppendFormat("Description : {0}").Append(Description).AppendLine();
+            return base.ToString();
+        }
     }
 
     public class InvalidNameException : Exception
