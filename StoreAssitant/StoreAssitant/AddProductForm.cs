@@ -41,6 +41,7 @@ namespace StoreAssitant
         public ProductInfo GetProductInfo()
         {
             ProductInfo productInfo = new ProductInfo();
+            productInfo.Image = productBox1.PDImage;
             productInfo.Name = productBox1.PDName;
             productInfo.Price = productBox1.PDPrice;
             productInfo.Tags = productBox1.PDTags;
@@ -51,6 +52,7 @@ namespace StoreAssitant
 
         public void SetProductInfo(ProductInfo info)
         {
+            productBox1.PDImage = info.Image;
             productBox1.PDName = info.Name;
             productBox1.PDPrice = info.Price;
             productBox1.PDTags = info.Tags;

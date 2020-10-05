@@ -80,7 +80,7 @@ namespace StoreAssitant
         [Category("My Properties"), Description("Array of tags about product")]
         public string[] PDTags
         {
-            get { return ThunderStudio.TSString.SeperateString(txtb_Description.Text.Trim(), this.SeperateCharacter); }
+            get { return ThunderStudio.TSString.SeperateString(txtb_Tag.Text.Trim(), this.SeperateCharacter); }
             set
             {
                 StringBuilder builder = new StringBuilder();
@@ -255,14 +255,15 @@ namespace StoreAssitant
             TextBox txtb = (TextBox)sender;
             try
             {
-                int.Parse(txtb.Text);
-                if (txtb.Text == string.Empty)
+                
+                if (txtb.Text.Trim() == string.Empty)
                 {
                     string message = "Đây là thông tin bắt buộc";
                     SetErrorState(txtb, message, "Không thể để trống");
                 }
                 else
                 {
+                    int.Parse(txtb.Text);
                     RemoveErrorState(txtb);
                 }
             }
@@ -323,25 +324,17 @@ namespace StoreAssitant
         public override string ToString()
         {
             StringBuilder buider = new StringBuilder();
-            buider.Append("Image :").Append(Image.ToString()).AppendLine();
-            buider.AppendFormat("Name : {0}").Append( Name).AppendLine();
-            buider.AppendFormat("Price : {0}").Append(Price).AppendLine();
-            buider.AppendFormat("Tags :").AppendLine();
+            if (Image == null) { buider.Append("Image : null").AppendLine(); }
+            else { buider.Append("Image : ").Append(Image.ToString()).AppendLine(); }
+            buider.Append("Name : ").Append( Name).AppendLine();
+            buider.Append("Price : ").Append(Price).AppendLine();
+            buider.Append("Tags : ");
             foreach (string str in Tags)
             {
                 buider.AppendLine(str);
             }
-            buider.AppendFormat("Description : {0}").Append(Description).AppendLine();
-            return base.ToString();
-        }
-    }
-
-    public class InvalidNameException : Exception
-    {
-        public InvalidNameException() : base() { }
-        public InvalidNameException(string message) : base(message)
-        {
-            Console.WriteLine(string.Format("Invalid Name Exception {0}Message : {1} {0}Source : {2}", Environment.NewLine, message, this.Source));
+            buider.Append("Description : ").Append(Description).AppendLine();
+            return buider.ToString();
         }
     }
 }
