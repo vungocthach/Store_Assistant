@@ -58,14 +58,15 @@ Ngày bắt đầu: 17/9/2020
 
 Các lộ trình này được áp dụng trước các ngày báo cáo đồ án tại lớp
 + Báo cáo lần 1: 
-	> Giao diện: hoàn thành giao diện màn hình bán hàng chính trên ứng dụng
+	> **Giao diện:** hoàn thành giao diện màn hình bán hàng chính trên ứng dụng
 	>* Hình ảnh bàn ăn
 	>* Hình ảnh món ăn
 	>* Khung chuyển tab giữa các giao diện
 	>* Hình ảnh thông tin món ăn có trong bàn
 	>* Hình ảnh khi thêm món ăn vào
-	> Lưu ý: hình ảnh về giao diện ban đầu đã có trên link ninjamock, truy cập vào link để có thể xem rõ hơn
-	> Tính năng: Thực hiện được các tính năng cơ bản sau
+	>  **Lưu ý:** hình ảnh về giao diện ban đầu đã có trên link ninjamock, truy cập vào link để có thể xem rõ hơn
+	>
+	> **Tính năng:**  thực hiện được các tính năng cơ bản sau
 	>* Thông tin món ăn có trong bàn
 	>* Thêm bàn mới vào giao diện
 	>* Thêm món ăn mới vào menu
