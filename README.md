@@ -18,13 +18,22 @@ Ngày bắt đầu: 17/9/2020
 + Flatform: 64bit (x64)
 + GUI: Windows Forms
 
+### Giao tiếp
+
++ Link trello - nhiệm vụ của các thành viên: https://trello.com/b/KslWAg2i/storeassistant
++ Link ninjamock - phác họa GUI: https://ninjamock.com/s/V1X74Gx
++ Họp nhóm và đưa ý kiến tại group riêng trên Messenger
+
 ### Đối tượng hướng tới
+
 + Các cửa hàng kinh doanh đồ ăn, thức uống trả trước hoặc trả sau 
 
 ### Mục tiêu
+
 + Nhằm giúp người dùng dễ dàng trong việc quản lý mua bán sản phẩm, kiểm kê thu chi doanh thu thuận tiện hơn. Store Assistant được xây dựng để hỗ trợ quản lý bán hàng, lưu lại thông tin thu chi và đưa ra so sánh 1 cách trực quan theo thời gian
 
 ### Tính năng
+
 + **Phân quyền quản lý** 
 	>* Đăng nhập với 2 cấp Manager hoặc Cashier
 + **Thao tác với MENU của cửa hàng**
@@ -34,7 +43,7 @@ Ngày bắt đầu: 17/9/2020
 	>* Thanh tìm kiếm thông minh nhanh chóng, chuẩn xác 
 + **Quản lý bàn đặt món**
 	>* Hiển thị thông tin gọi món của bàn
-	> * Dễ Dàng thêm/bớt số lượng bàn vào trong danh sách
+	>* Dễ Dàng thêm/bớt số lượng bàn vào trong danh sách
 + **Lịch sử bán hàng**
 	>* Lưu lại thông tin hóa đơn đã được bán
 + **Thống kê dữ liệu**
@@ -44,3 +53,23 @@ Ngày bắt đầu: 17/9/2020
 	>* Tự động tính thuế
 	>* Tự tạo 1 hóa đơn chi tiết khi thực hiện thanh toán
 	>* Giảm giá sản phẩm theo phần trăm(%) hoặc mã giảm giá 
+	
+### Lộ trình báo cáo
+
+Các lộ trình này được áp dụng trước các ngày báo cáo đồ án tại lớp
++ Báo cáo lần 1: 
+	> Giao diện: hoàn thành giao diện màn hình bán hàng chính trên ứng dụng
+	>* Hình ảnh bàn ăn
+	>* Hình ảnh món ăn
+	>* Khung chuyển tab giữa các giao diện
+	>* Hình ảnh thông tin món ăn có trong bàn
+	>* Hình ảnh khi thêm món ăn vào
+	> Lưu ý: hình ảnh về giao diện ban đầu đã có trên link ninjamock, truy cập vào link để có thể xem rõ hơn
+	> Tính năng: Thực hiện được các tính năng cơ bản sau
+	>* Thông tin món ăn có trong bàn
+	>* Thêm bàn mới vào giao diện
+	>* Thêm món ăn mới vào menu
+	>* Chọn món ăn cho bàn
+	>* Liên kết với hệ quản trị cơ sở dữ liệu SQL Server để lưu trữ thông tin các món ăn trong thực đơn
++ Báo cáo lần 2: Chưa cập nhật
++ Báo cáo lần 3: Hoàn thành và sửa lỗi toàn bộ project
