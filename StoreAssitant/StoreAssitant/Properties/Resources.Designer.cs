@@ -73,9 +73,9 @@ namespace StoreAssitant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Artboard_1 {
+        internal static System.Drawing.Bitmap _120427285_648274679154155_8374726593261554204_n {
             get {
-                object obj = ResourceManager.GetObject("Artboard_1", resourceCulture);
+                object obj = ResourceManager.GetObject("_120427285_648274679154155_8374726593261554204_n", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace StoreAssitant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _120427285_648274679154155_8374726593261554204_n {
+        internal static System.Drawing.Bitmap Artboard_1 {
             get {
-                object obj = ResourceManager.GetObject("_120427285_648274679154155_8374726593261554204_n", resourceCulture);
+                object obj = ResourceManager.GetObject("Artboard_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -126,16 +126,6 @@ namespace StoreAssitant.Properties {
         internal static System.Drawing.Bitmap iconfinder_45_Account_Google_Product_Logo_Brand_5764262 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_45_Account_Google_Product_Logo_Brand_5764262", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap iconfinder_45_Account_Google_Product_Logo_Brand_57642621 {
-            get {
-                object obj = ResourceManager.GetObject("iconfinder_45_Account_Google_Product_Logo_Brand_57642621", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

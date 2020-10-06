@@ -21,11 +21,12 @@ namespace StoreAssitant
 
         private void ControlSearch_SizeChanged(object sender, EventArgs e)
         {
-            textBoxSearch.Location = new Point(0, 0);
+            /*textBoxSearch.Location = new Point(0, 0);
             textBoxSearch.Size = new Size  (Convert.ToInt32(textBoxSearch.Parent.Width * 0.8), (textBoxSearch.Parent.Height) );
             buttonSearch.Size = new Size(Convert.ToInt32(textBoxSearch.Parent.Width - textBoxSearch.Width), textBoxSearch.Height);
             buttonSearch.Location = new Point(textBoxSearch.Width,0 );
-           
+           */
+            textBoxSearch.Width = this.Width - buttonSearch.Width - textBoxSearch.Margin.Right - buttonSearch.Margin.Left;
         }
 
         private void textBoxSearch_TextChanged(object sender, EventArgs e)

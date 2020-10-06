@@ -22,8 +22,7 @@ namespace StoreAssitant
 
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
-            menuView.Location = new Point(0, 0);
-            menuView.Size = new Size(menuView.Parent.Width, menuView.Parent.Height);
+            
         }
 
         private void OpenAddProductDialog()

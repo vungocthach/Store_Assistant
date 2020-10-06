@@ -28,37 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelImage = new System.Windows.Forms.Panel();
+            this.panelImage = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.panelImage)).BeginInit();
             this.SuspendLayout();
             // 
             // panelImage
             // 
-            this.panelImage.BackColor = System.Drawing.SystemColors.Control;
-            this.panelImage.BackgroundImage = global::StoreAssitant.Properties.Resources._120277592_792943121463048_8392671413067062045_n;
-            this.panelImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelImage.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panelImage.Location = new System.Drawing.Point(0, 1);
-            this.panelImage.MinimumSize = new System.Drawing.Size(165, 145);
+            this.panelImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelImage.Image = global::StoreAssitant.Properties.Resources.button_add;
+            this.panelImage.Location = new System.Drawing.Point(0, 0);
             this.panelImage.Name = "panelImage";
-            this.panelImage.Size = new System.Drawing.Size(165, 145);
-            this.panelImage.TabIndex = 1;
-            this.panelImage.Paint += new System.Windows.Forms.PaintEventHandler(this.panelImage_Paint);
+            this.panelImage.Size = new System.Drawing.Size(200, 200);
+            this.panelImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.panelImage.TabIndex = 0;
+            this.panelImage.TabStop = false;
             // 
             // ControlProduct
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.Controls.Add(this.panelImage);
             this.ForeColor = System.Drawing.SystemColors.Control;
-            this.MinimumSize = new System.Drawing.Size(165, 145);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(20, 20);
             this.Name = "ControlProduct";
-            this.Size = new System.Drawing.Size(165, 145);
+            this.Size = new System.Drawing.Size(200, 200);
+            ((System.ComponentModel.ISupportInitialize)(this.panelImage)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Panel panelImage;
+
+        private System.Windows.Forms.PictureBox panelImage;
     }
 }
