@@ -34,7 +34,24 @@ namespace StoreAssitant
             Table_Name.MouseUp += TableControl_MouseUp;
             this.MouseUp += TableControl_MouseUp;
 
+            this.MouseClick += TableControl_MouseClick;
+            Table_Image.MouseClick += TableControl_MouseClick;
+            Table_Name.MouseClick += TableControl_MouseClick;
             this.MinimumSize = new Size(Table_Name.Size.Width, Table_Name.Size.Height * 4);
+        }
+        //private dynamic link2 = null;
+        private void TableControl_MouseClick(object sender, MouseEventArgs e)
+        {
+            TableView link;
+            Control parent = this.Parent as UserControl;
+            if (parent==null)
+            {
+                link = this.Parent.Parent as TableView;
+            } else
+            {
+                link = parent.Parent.Parent as TableView;
+            }
+            if (link != null) link.on_btnTableClick();
         }
 
         private void TableControl_MouseEnter(object sender, EventArgs e)

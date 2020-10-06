@@ -13,68 +13,123 @@ namespace StoreAssitant
 {
     public partial class TableView : UserControl
     {
+        #region SETTING FIELDS
+        private int numberTable = 1;
+        public event EventHandler btnAddClick;
+        public event EventHandler btnTableClick;
+        #endregion
         public TableView()
         {
             InitializeComponent();
             this.SizeChanged += TableView_SizeChanged;
-            Table_Cashier.SizeChanged += TableView_SizeChanged;
-            panel_Add.MouseClick += Panel_Add_MouseClick;
+            tableCashier_pnl.SizeChanged += TableView_SizeChanged;
+
+            //event button add table click
+            tableAdd_pnl.MouseClick += Panel_Add_MouseClick;
+            tableAdd_pnl.MouseDown += TableAdd_pnl_MouseDown;
+            tableAdd_pnl.MouseUp += TableAdd_pnl_MouseUp;
+            tableAdd_pnl.MouseEnter += TableAdd_pnl_MouseEnter;
+            tableAdd_pnl.MouseLeave += TableAdd_pnl_MouseLeave;
+        }
+
+        #region BUTTON ADD TABLE EVENT
+        private void TableAdd_pnl_MouseLeave(object sender, EventArgs e)
+        {
+            tableAdd_pnl.BackColor = SystemColors.Control;
+            tableAdd_pnl.BorderStyle = BorderStyle.None;
+        }
+
+        private void TableAdd_pnl_MouseEnter(object sender, EventArgs e)
+        {
+            tableAdd_pnl.BackColor = SystemColors.ActiveCaption;
+            tableAdd_pnl.BorderStyle = BorderStyle.Fixed3D;
+        }
+
+        private void TableAdd_pnl_MouseUp(object sender, MouseEventArgs e)
+        {
+            tableAdd_pnl.BorderStyle = BorderStyle.Fixed3D;
+        }
+
+        private void TableAdd_pnl_MouseDown(object sender, MouseEventArgs e)
+        {
+            tableAdd_pnl.BorderStyle = BorderStyle.None;
+        }
+        #endregion
+
+        private void Panel_Add_MouseClick(object sender, MouseEventArgs e)
+        {
+            /*table_cashier_pnl.Controls.Remove(tableAdd_pnl);
+            table_cashier_pnl.Controls.Add(new TableControl() { Size = ItemSize }) ;
+            table_cashier_pnl.Controls.Add(tableAdd_pnl);
+            numberTable++;*/
+            on_btnAddClick();
+        }
+
+        private void TableView_btnTableClick(object sender, EventArgs e)
+        {
+            MessageBox.Show("Thể hiện TableInfor");
         }
 
         private void TableView_SizeChanged(object sender, EventArgs e)
         {
-            Table_TableControl.Height = this.Height - Table_Cashier.Location.Y - Table_Cashier.Height;
-            TableCashier_name.Location = new Point(TableCashier_image.Location.X + TableCashier_image.Width + (this.Width - TableCashier_image.Location.X - TableCashier_image.Width - TableCashier_name.Width)/ 2, TableCashier_name.Location.Y);
+            table_cashier_pnl.Height = this.Height - tableCashier_pnl.Location.Y - tableCashier_pnl.Height;
+            tableTitle_lb.Location = new Point(tableCashier_image.Location.X + tableCashier_image.Width + (this.Width - tableCashier_image.Location.X - tableCashier_image.Width - tableTitle_lb.Width)/ 2, tableTitle_lb.Location.Y);
         }
 
-        private int numberTable = 1;
-
-        private void Panel_Add_MouseClick(object sender, MouseEventArgs e)
+        public void on_btnTableClick()
         {
-            Table_TableControl.Controls.Remove(panel_Add);
-            Table_TableControl.Controls.Add(new TableControl() { Size = ItemSize }) ;
-            Table_TableControl.Controls.Add(panel_Add);
-            numberTable++;
+            if (btnTableClick != null)
+            {
+                btnTableClick(this, new EventArgs());
+            }
         }
+        public void on_btnAddClick()
+        {
+            if (btnAddClick != null)
+            {
+                btnAddClick(this, new EventArgs());
+            }
+        }
+
 
         public void setData(TableViewInfor Infor)
         {
-            TableCashier_name.Text = Infor.TableView_nameCashier;
-            TableCashier_image.BackgroundImage = Infor.TableView_imageCashier;
+            tableTitle_lb.Text = Infor.TableView_nameCashier;
+            tableCashier_image.BackgroundImage = Infor.TableView_imageCashier;
             numberTable = Infor.TableView_numberTable;
         }
 
 
-
+        #region SETTING PROPERTIES
         [Category("My properties"), Description("Change main name of the view Table")]
         public string nameCashierTable
         {
-            get => TableCashier_name.Text;
+            get => tableTitle_lb.Text;
             set
             {
-                TableCashier_name.Text = value;
+                tableTitle_lb.Text = value;
                 Invalidate();
             }
         }
         [Category("My properties"), Description("Change image icon of the view Table")]
         public Image imageCashierTable
         {
-            get => TableCashier_image.BackgroundImage;
+            get => tableCashier_image.BackgroundImage;
             set
             {
-                TableCashier_image.BackgroundImage = value;
+                tableCashier_image.BackgroundImage = value;
                 Invalidate();
             }
         }
         [Category("My Properties"), Description("Height of title in pixel")]
         public int TitleHeight
         {
-            get { return Table_Cashier.Height; }
+            get { return tableCashier_pnl.Height; }
             set
             {
                 if (value > 40)
                 {
-                    Table_Cashier.Height = value;
+                    tableCashier_pnl.Height = value;
                     Invalidate();
                 }
                 else { Debug.WriteLine("StoreAssistanct.MenuView.TittleHeight : Set height failed Value lower than minimum height"); }
@@ -85,21 +140,22 @@ namespace StoreAssitant
         {
             get
             {
-                if (Table_TableControl.Controls == null || Table_TableControl.Controls.Count < 1) { return System.Drawing.Size.Empty; }
+                if (table_cashier_pnl.Controls == null || table_cashier_pnl.Controls.Count < 1) { return System.Drawing.Size.Empty; }
                 else
                 {
-                    return Table_TableControl.Controls[0].Size;
+                    return table_cashier_pnl.Controls[0].Size;
                 }
             }
             set
             {
-                foreach (Control control in Table_TableControl.Controls)
+                foreach (Control control in table_cashier_pnl.Controls)
                 {
                     control.Size = value;
                 }
                 Invalidate();
             }
         }
+        #endregion
     }
     public class TableViewInfor
     {
