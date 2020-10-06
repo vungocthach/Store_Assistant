@@ -84,6 +84,7 @@
     </Compile>
     <Compile Include="Class Information\ProductInfo.cs" />
     <Compile Include="Class Information\TableInfo.cs" />
+    <Compile Include="DatabaseController.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +97,7 @@
     <Compile Include="MenuView.Designer.cs">
       <DependentUpon>MenuView.cs</DependentUpon>
     </Compile>
+    <Compile Include="SQLStatementManager.cs" />
     <Compile Include="TitleControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
