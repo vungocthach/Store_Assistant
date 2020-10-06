@@ -63,9 +63,29 @@ namespace StoreAssitant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _120277592_792943121463048_8392671413067062045_n {
+            get {
+                object obj = ResourceManager.GetObject("_120277592_792943121463048_8392671413067062045_n", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Artboard_1 {
             get {
                 object obj = ResourceManager.GetObject("Artboard_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _120427285_648274679154155_8374726593261554204_n {
+            get {
+                object obj = ResourceManager.GetObject("_120427285_648274679154155_8374726593261554204_n", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

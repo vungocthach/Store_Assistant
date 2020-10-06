@@ -17,6 +17,13 @@ namespace StoreAssitant
         {
             InitializeComponent();
             kryptonNavigator1.GotFocus += KryptonNavigator1_GotFocus;
+            this.SizeChanged += Form1_SizeChanged;
+        }
+
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            menuView.Location = new Point(0, 0);
+            menuView.Size = new Size(menuView.Parent.Width, menuView.Parent.Height);
         }
 
         private void OpenAddProductDialog()
@@ -35,6 +42,11 @@ namespace StoreAssitant
         {
             KryptonNavigator navigator = (KryptonNavigator)sender;
             navigator.SelectedPage.Focus();
+        }
+
+        private void krSplit_Cashier_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
