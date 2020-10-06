@@ -34,8 +34,8 @@
             this.krPage_Manager = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krSplit_Manager = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             this.krPage_Statistic = new ComponentFactory.Krypton.Navigator.KryptonPage();
-            this.krPage_Compare = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Setting = new ComponentFactory.Krypton.Navigator.KryptonPage();
+            this.krPage_Compare = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Account = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.menuView = new StoreAssitant.MenuView();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
@@ -54,8 +54,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.krSplit_Manager.Panel2)).BeginInit();
             this.krSplit_Manager.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Statistic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.krPage_Compare)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Setting)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.krPage_Compare)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Account)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,8 +79,8 @@
             this.krPage_Cashier,
             this.krPage_Manager,
             this.krPage_Statistic,
-            this.krPage_Compare,
             this.krPage_Setting,
+            this.krPage_Compare,
             this.krPage_Account});
             this.kryptonNavigator1.SelectedIndex = 0;
             this.kryptonNavigator1.Size = new System.Drawing.Size(812, 568);
@@ -115,7 +115,6 @@
             // krSplit_Cashier
             // 
             this.krSplit_Cashier.Cursor = System.Windows.Forms.Cursors.Default;
-            this.krSplit_Cashier.Dock = System.Windows.Forms.DockStyle.Fill;
             this.krSplit_Cashier.Location = new System.Drawing.Point(0, 0);
             this.krSplit_Cashier.Margin = new System.Windows.Forms.Padding(2);
             this.krSplit_Cashier.Name = "krSplit_Cashier";
@@ -126,6 +125,8 @@
             this.krSplit_Cashier.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.krSplit_Cashier_Panel2_Paint);
             this.krSplit_Cashier.Size = new System.Drawing.Size(808, 507);
             this.krSplit_Cashier.SplitterDistance = 376;
+            this.krSplit_Cashier.Size = new System.Drawing.Size(1078, 772);
+            this.krSplit_Cashier.SplitterDistance = 584;
             this.krSplit_Cashier.TabIndex = 0;
             // 
             // krPage_Manager
@@ -170,21 +171,6 @@
             this.krPage_Statistic.ToolTipTitle = "Page ToolTip";
             this.krPage_Statistic.UniqueName = "63A53B984CEF407D80BF22DD37C86130";
             // 
-            // krPage_Compare
-            // 
-            this.krPage_Compare.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
-            this.krPage_Compare.Flags = 65534;
-            this.krPage_Compare.ImageMedium = global::StoreAssitant.Properties.Resources.iconfinder_51_5027845;
-            this.krPage_Compare.LastVisibleSet = true;
-            this.krPage_Compare.Margin = new System.Windows.Forms.Padding(2);
-            this.krPage_Compare.MinimumSize = new System.Drawing.Size(38, 41);
-            this.krPage_Compare.Name = "krPage_Compare";
-            this.krPage_Compare.Size = new System.Drawing.Size(808, 627);
-            this.krPage_Compare.Text = "So Sánh";
-            this.krPage_Compare.TextTitle = "So Sánh";
-            this.krPage_Compare.ToolTipTitle = "Page ToolTip";
-            this.krPage_Compare.UniqueName = "70E04151CD72421574B935D9BFB02EA1";
-            // 
             // krPage_Setting
             // 
             this.krPage_Setting.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
@@ -199,6 +185,20 @@
             this.krPage_Setting.TextTitle = "Cài Đặt";
             this.krPage_Setting.ToolTipTitle = "Page ToolTip";
             this.krPage_Setting.UniqueName = "E78AB1709FA246255796E09FE4A65912";
+            // 
+            // krPage_Compare
+            // 
+            this.krPage_Compare.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.krPage_Compare.Flags = 65534;
+            this.krPage_Compare.ImageMedium = global::StoreAssitant.Properties.Resources.iconfinder_51_5027845;
+            this.krPage_Compare.LastVisibleSet = true;
+            this.krPage_Compare.MinimumSize = new System.Drawing.Size(50, 50);
+            this.krPage_Compare.Name = "krPage_Compare";
+            this.krPage_Compare.Size = new System.Drawing.Size(1078, 772);
+            this.krPage_Compare.Text = "So Sánh";
+            this.krPage_Compare.TextTitle = "So Sánh";
+            this.krPage_Compare.ToolTipTitle = "Page ToolTip";
+            this.krPage_Compare.UniqueName = "70E04151CD72421574B935D9BFB02EA1";
             // 
             // krPage_Account
             // 
@@ -225,9 +225,8 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(812, 568);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(1082, 833);
             this.Controls.Add(this.kryptonNavigator1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
@@ -248,8 +247,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.krSplit_Manager)).EndInit();
             this.krSplit_Manager.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Statistic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.krPage_Compare)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Setting)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.krPage_Compare)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Account)).EndInit();
             this.ResumeLayout(false);
 

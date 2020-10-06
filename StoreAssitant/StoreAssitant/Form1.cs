@@ -16,7 +16,6 @@ namespace StoreAssitant
         public Form1()
         {
             InitializeComponent();
-
             kryptonNavigator1.GotFocus += KryptonNavigator1_GotFocus;
             this.SizeChanged += Form1_SizeChanged;
         }
@@ -25,6 +24,18 @@ namespace StoreAssitant
         {
             menuView.Location = new Point(0, 0);
             menuView.Size = new Size(menuView.Parent.Width, menuView.Parent.Height);
+        }
+
+        private void OpenAddProductDialog()
+        {
+            using (AddProductForm form = new AddProductForm())
+            {
+                form.ClickSubmitOK += new EventHandler<ProductInfo>((object sender, ProductInfo info) =>
+                {
+                    // Do something with ProductInfo
+                });
+                form.ShowDialog();
+            }
         }
 
         private void KryptonNavigator1_GotFocus(object sender, EventArgs e)
