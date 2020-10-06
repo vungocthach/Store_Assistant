@@ -63,6 +63,26 @@ namespace StoreAssitant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Artboard_1 {
+            get {
+                object obj = ResourceManager.GetObject("Artboard_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap button_add {
+            get {
+                object obj = ResourceManager.GetObject("button_add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_13_3319631 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_13_3319631", resourceCulture);
@@ -146,6 +166,16 @@ namespace StoreAssitant.Properties {
         internal static System.Drawing.Bitmap iconfinder_shopping_shop_buy_discount_18_4038845 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_shopping-shop-buy-discount-18_4038845", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap thu_ngân {
+            get {
+                object obj = ResourceManager.GetObject("thu ngân", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

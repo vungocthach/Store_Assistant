@@ -34,8 +34,8 @@
             this.krPage_Manager = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krSplit_Manager = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             this.krPage_Statistic = new ComponentFactory.Krypton.Navigator.KryptonPage();
-            this.krPage_Compare = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Setting = new ComponentFactory.Krypton.Navigator.KryptonPage();
+            this.krPage_Compare = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Account = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.btn_Test = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
@@ -54,8 +54,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.krSplit_Manager.Panel2)).BeginInit();
             this.krSplit_Manager.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Statistic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.krPage_Compare)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Setting)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.krPage_Compare)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Account)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,8 +95,8 @@
             this.krPage_Cashier,
             this.krPage_Manager,
             this.krPage_Statistic,
-            this.krPage_Compare,
             this.krPage_Setting,
+            this.krPage_Compare,
             this.krPage_Account});
             this.kryptonNavigator1.Panel.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.PanelClient;
             this.kryptonNavigator1.SelectedIndex = 0;
@@ -265,8 +265,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.krSplit_Manager)).EndInit();
             this.krSplit_Manager.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Statistic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.krPage_Compare)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Setting)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.krPage_Compare)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Account)).EndInit();
             this.ResumeLayout(false);
 
