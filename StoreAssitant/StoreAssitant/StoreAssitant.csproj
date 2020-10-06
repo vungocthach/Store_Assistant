@@ -70,6 +70,8 @@
     <Compile Include="AddProductForm.Designer.cs">
       <DependentUpon>AddProductForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Class Information\ProductInfo.cs" />
+    <Compile Include="Class Information\TableInfo.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,7 +90,7 @@
     <EmbeddedResource Include="AddProductForm.resx">
       <DependentUpon>AddProductForm.cs</DependentUpon>
     </EmbeddedResource>
-<Compile Include="Mouse_move.cs" />
+    <Compile Include="Mouse_move.cs" />
     <Compile Include="TableControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
