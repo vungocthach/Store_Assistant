@@ -28,122 +28,109 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TableView));
-            this.Table_TableControl = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel_Add = new System.Windows.Forms.Panel();
-            this.pay_Table = new System.Windows.Forms.Panel();
-            this.TableCashier_name = new System.Windows.Forms.Label();
-            this.Table_Cashier = new System.Windows.Forms.Panel();
-            this.TableCashier_image = new System.Windows.Forms.Panel();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tableGUI_pnl = new System.Windows.Forms.FlowLayoutPanel();
+            this.tableAdd_pnl = new System.Windows.Forms.Panel();
+            this.tableTitle_lb = new System.Windows.Forms.Label();
+            this.tableTitle_pnl = new System.Windows.Forms.Panel();
+            this.tableIcon_pnl = new System.Windows.Forms.Panel();
             this.tableControl1 = new StoreAssitant.TableControl();
-            this.Table_TableControl.SuspendLayout();
-            this.Table_Cashier.SuspendLayout();
+            this.tableGUI_pnl.SuspendLayout();
+            this.tableTitle_pnl.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Table_TableControl
+            // tableGUI_pnl
             // 
-            this.Table_TableControl.AutoScroll = true;
-            this.Table_TableControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Table_TableControl.Controls.Add(this.tableControl1);
-            this.Table_TableControl.Controls.Add(this.panel_Add);
-            this.Table_TableControl.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Table_TableControl.Location = new System.Drawing.Point(0, 61);
-            this.Table_TableControl.Name = "Table_TableControl";
-            this.Table_TableControl.Size = new System.Drawing.Size(555, 639);
-            this.Table_TableControl.TabIndex = 0;
+            this.tableGUI_pnl.AutoScroll = true;
+            this.tableGUI_pnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tableGUI_pnl.Controls.Add(this.tableControl1);
+            this.tableGUI_pnl.Controls.Add(this.tableAdd_pnl);
+            this.tableGUI_pnl.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableGUI_pnl.Location = new System.Drawing.Point(0, 50);
+            this.tableGUI_pnl.Margin = new System.Windows.Forms.Padding(2);
+            this.tableGUI_pnl.Name = "tableGUI_pnl";
+            this.tableGUI_pnl.Size = new System.Drawing.Size(420, 520);
+            this.tableGUI_pnl.TabIndex = 0;
             // 
-            // panel_Add
+            // tableAdd_pnl
             // 
-            this.panel_Add.BackgroundImage = global::StoreAssitant.Properties.Resources.button_add;
-            this.panel_Add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel_Add.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_Add.Location = new System.Drawing.Point(157, 3);
-            this.panel_Add.Name = "panel_Add";
-            this.panel_Add.Size = new System.Drawing.Size(150, 150);
-            this.panel_Add.TabIndex = 1;
+            this.tableAdd_pnl.BackgroundImage = global::StoreAssitant.Properties.Resources.button_add;
+            this.tableAdd_pnl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tableAdd_pnl.Location = new System.Drawing.Point(118, 2);
+            this.tableAdd_pnl.Margin = new System.Windows.Forms.Padding(2);
+            this.tableAdd_pnl.Name = "tableAdd_pnl";
+            this.tableAdd_pnl.Size = new System.Drawing.Size(113, 122);
+            this.tableAdd_pnl.TabIndex = 1;
             // 
-            // pay_Table
+            // tableTitle_lb
             // 
-            this.pay_Table.Location = new System.Drawing.Point(0, 655);
-            this.pay_Table.Name = "pay_Table";
-            this.pay_Table.Size = new System.Drawing.Size(555, 45);
-            this.pay_Table.TabIndex = 1;
+            this.tableTitle_lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableTitle_lb.Location = new System.Drawing.Point(73, 7);
+            this.tableTitle_lb.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.tableTitle_lb.Name = "tableTitle_lb";
+            this.tableTitle_lb.Size = new System.Drawing.Size(287, 35);
+            this.tableTitle_lb.TabIndex = 2;
+            this.tableTitle_lb.Text = "THANH TOÁN BÀN";
+            this.tableTitle_lb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // TableCashier_name
+            // tableTitle_pnl
             // 
-            this.TableCashier_name.AutoSize = true;
-            this.TableCashier_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TableCashier_name.Location = new System.Drawing.Point(118, 2);
-            this.TableCashier_name.Name = "TableCashier_name";
-            this.TableCashier_name.Size = new System.Drawing.Size(351, 44);
-            this.TableCashier_name.TabIndex = 2;
-            this.TableCashier_name.Text = "THANH TOÁN BÀN";
+            this.tableTitle_pnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tableTitle_pnl.Controls.Add(this.tableIcon_pnl);
+            this.tableTitle_pnl.Controls.Add(this.tableTitle_lb);
+            this.tableTitle_pnl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableTitle_pnl.Location = new System.Drawing.Point(0, 0);
+            this.tableTitle_pnl.Margin = new System.Windows.Forms.Padding(2);
+            this.tableTitle_pnl.Name = "tableTitle_pnl";
+            this.tableTitle_pnl.Size = new System.Drawing.Size(420, 50);
+            this.tableTitle_pnl.TabIndex = 3;
             // 
-            // Table_Cashier
+            // tableIcon_pnl
             // 
-            this.Table_Cashier.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Table_Cashier.Controls.Add(this.TableCashier_image);
-            this.Table_Cashier.Controls.Add(this.TableCashier_name);
-            this.Table_Cashier.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Table_Cashier.Location = new System.Drawing.Point(0, 0);
-            this.Table_Cashier.Name = "Table_Cashier";
-            this.Table_Cashier.Size = new System.Drawing.Size(555, 55);
-            this.Table_Cashier.TabIndex = 3;
-            // 
-            // TableCashier_image
-            // 
-            this.TableCashier_image.BackgroundImage = global::StoreAssitant.Properties.Resources.thu_ngân;
-            this.TableCashier_image.Location = new System.Drawing.Point(2, 2);
-            this.TableCashier_image.Name = "TableCashier_image";
-            this.TableCashier_image.Size = new System.Drawing.Size(65, 50);
-            this.TableCashier_image.TabIndex = 3;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.tableIcon_pnl.BackgroundImage = global::StoreAssitant.Properties.Resources.thu_ngân;
+            this.tableIcon_pnl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tableIcon_pnl.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tableIcon_pnl.Location = new System.Drawing.Point(0, 0);
+            this.tableIcon_pnl.Margin = new System.Windows.Forms.Padding(2);
+            this.tableIcon_pnl.Name = "tableIcon_pnl";
+            this.tableIcon_pnl.Size = new System.Drawing.Size(50, 48);
+            this.tableIcon_pnl.TabIndex = 3;
             // 
             // tableControl1
             // 
             this.tableControl1.BackColor = System.Drawing.Color.PapayaWhip;
             this.tableControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableControl1.imageTable = ((System.Drawing.Image)(resources.GetObject("tableControl1.imageTable")));
-            this.tableControl1.Location = new System.Drawing.Point(3, 3);
-            this.tableControl1.MinimumSize = new System.Drawing.Size(101, 68);
+            this.tableControl1.Location = new System.Drawing.Point(2, 2);
+            this.tableControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.tableControl1.MinimumSize = new System.Drawing.Size(76, 56);
             this.tableControl1.Name = "tableControl1";
             this.tableControl1.nameTable = "Name of Table";
-            this.tableControl1.Size = new System.Drawing.Size(148, 148);
+            this.tableControl1.Size = new System.Drawing.Size(112, 121);
             this.tableControl1.TabIndex = 0;
             // 
             // TableView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.Table_Cashier);
-            this.Controls.Add(this.pay_Table);
-            this.Controls.Add(this.Table_TableControl);
+            this.Controls.Add(this.tableTitle_pnl);
+            this.Controls.Add(this.tableGUI_pnl);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "TableView";
-            this.Size = new System.Drawing.Size(555, 700);
-            this.Table_TableControl.ResumeLayout(false);
-            this.Table_Cashier.ResumeLayout(false);
-            this.Table_Cashier.PerformLayout();
+            this.Size = new System.Drawing.Size(420, 570);
+            this.tableGUI_pnl.ResumeLayout(false);
+            this.tableTitle_pnl.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel Table_TableControl;
-        private System.Windows.Forms.Panel pay_Table;
-        private System.Windows.Forms.Label TableCashier_name;
-        private System.Windows.Forms.Panel Table_Cashier;
-        private System.Windows.Forms.Panel TableCashier_image;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.FlowLayoutPanel tableGUI_pnl;
+        private System.Windows.Forms.Label tableTitle_lb;
+        private System.Windows.Forms.Panel tableTitle_pnl;
+        private System.Windows.Forms.Panel tableIcon_pnl;
         private TableControl tableControl1;
-        private System.Windows.Forms.Panel panel_Add;
+        private System.Windows.Forms.Panel tableAdd_pnl;
     }
 }
