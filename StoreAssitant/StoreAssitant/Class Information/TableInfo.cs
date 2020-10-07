@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace StoreAssitant
 {
-    internal class TableInfo
+    public class TableInfo
     {
         public string Name { get; set; }
         public int Id { get; set; }
-
+        public List<ProductInfo> ProductList { get; set; }
+        public List<int> NumberPoruduct { get; set; }
         public override string ToString()
         {
             return string.Format("StoreAssistant.TableInfo:( ID = {0}; Name = {1}; )", Id, Name);

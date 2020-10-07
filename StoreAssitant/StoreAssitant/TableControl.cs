@@ -13,43 +13,40 @@ namespace StoreAssitant
 {
     public partial class TableControl : UserControl
     {
+        private int iD;
         public TableControl()
         {
             InitializeComponent();
 
             this.SizeChanged += TableControl_SizeChanged;
-            table_Name.TextChanged += Table_Name_TextChanged;
+            tableName_lb.TextChanged += Table_Name_TextChanged;
 
-            table_Image.MouseEnter += TableControl_MouseEnter;
-            table_Name.MouseEnter += TableControl_MouseEnter;
+            tableImage_pnl.MouseEnter += TableControl_MouseEnter;
+            tableName_lb.MouseEnter += TableControl_MouseEnter;
             this.MouseEnter += TableControl_MouseEnter;
 
-            table_Image.MouseLeave += TableControl_MouseLeave;
-            table_Name.MouseLeave += TableControl_MouseLeave;
+            tableImage_pnl.MouseLeave += TableControl_MouseLeave;
+            tableName_lb.MouseLeave += TableControl_MouseLeave;
             this.MouseLeave += TableControl_MouseLeave;
 
-            table_Image.MouseDown += TableControl_MouseDown;
-            table_Name.MouseDown += TableControl_MouseDown;
+            tableImage_pnl.MouseDown += TableControl_MouseDown;
+            tableName_lb.MouseDown += TableControl_MouseDown;
             this.MouseDown += TableControl_MouseDown;
 
-            table_Image.MouseUp += TableControl_MouseUp;
-            table_Name.MouseUp += TableControl_MouseUp;
+            tableImage_pnl.MouseUp += TableControl_MouseUp;
+            tableName_lb.MouseUp += TableControl_MouseUp;
             this.MouseUp += TableControl_MouseUp;
 
             this.MouseClick += TableControl_MouseClick;
-            table_Image.MouseClick += TableControl_MouseClick;
-            table_Name.MouseClick += TableControl_MouseClick;
+            tableImage_pnl.MouseClick += TableControl_MouseClick;
+            tableName_lb.MouseClick += TableControl_MouseClick;
 
-            this.MinimumSize = new Size(table_Name.Size.Width, table_Name.Size.Height * 4);
-            table_Name.Location = new Point((this.Size.Width - table_Name.Size.Width) / 2, (this.Size.Height + table_Image.Height - table_Name.Size.Height) / 2);
+            this.MinimumSize = new Size(tableName_lb.Size.Width, tableName_lb.Size.Height * 4);
+            tableName_lb.Location = new Point((this.Size.Width - tableName_lb.Size.Width) / 2, (this.Size.Height + tableImage_pnl.Height - tableName_lb.Size.Height) / 2);
 
         }
-        public void setData(TableControlInfor Infor)
-        {
-            table_Name.Text = Infor.Table_name;
-            table_Image.BackgroundImage = Infor.Table_image;
-        }
 
+        #region EVENT MOUSE
         private void TableControl_MouseClick(object sender, MouseEventArgs e)
         {
             TableView link;
@@ -63,20 +60,18 @@ namespace StoreAssitant
             }
             if (link != null) link.on_btnTableClick();
         }
-
-        #region EVENT MOUSE
         private void TableControl_MouseEnter(object sender, EventArgs e)
         {
-            table_Image.BackColor = this.BackColor = System.Drawing.SystemColors.Window;
+            tableImage_pnl.BackColor = this.BackColor = System.Drawing.SystemColors.Window;
             Invalidate();
         }
         private void TableControl_MouseLeave(object sender, EventArgs e)
         {
-            table_Image.BackColor = this.BackColor = Color.PapayaWhip;
+            tableImage_pnl.BackColor = this.BackColor = Color.PapayaWhip;
         }
         private void TableControl_MouseDown(object sender, EventArgs e)
         {
-            table_Image.BackColor = this.BackColor = Color.LightSalmon;
+            tableImage_pnl.BackColor = this.BackColor = Color.LightSalmon;
         }
         private void TableControl_MouseUp(object sender, EventArgs e)
         {
@@ -87,13 +82,13 @@ namespace StoreAssitant
         #region EVENT CHANGE
         private void Table_Name_TextChanged(object sender, EventArgs e)
         {
-            table_Name.Location = new Point((this.Size.Width - table_Name.Size.Width) / 2, (this.Size.Height + table_Image.Height - table_Name.Size.Height) / 2);
+            tableName_lb.Location = new Point((this.Size.Width - tableName_lb.Size.Width) / 2, (this.Size.Height + tableImage_pnl.Height - tableName_lb.Size.Height) / 2);
         }
 
         private void TableControl_SizeChanged(object sender, EventArgs e)
         {
-            table_Image.Size = new Size(this.Size.Width, this.Size.Height * 3 / 4);
-            table_Name.Location = new Point((this.Size.Width - table_Name.Size.Width) / 2, (this.Size.Height + table_Image.Height - table_Name.Size.Height) / 2);
+            tableImage_pnl.Size = new Size(this.Size.Width, this.Size.Height * 3 / 4);
+            tableName_lb.Location = new Point((this.Size.Width - tableName_lb.Size.Width) / 2, (this.Size.Height + tableImage_pnl.Height - tableName_lb.Size.Height) / 2);
         }
         #endregion
 
@@ -101,28 +96,33 @@ namespace StoreAssitant
         [Category("My properties"), Description("Change Name of table")]
         public string nameTable
         {
-            get => table_Name.Text;
+            get => tableName_lb.Text;
             set
             {
-                table_Name.Text = value;
+                tableName_lb.Text = value;
                 Invalidate();
             }
         }
         [Category("My properties"), Description("Change Image of table")]
-        public Image imageTable
+        public Image ImageTable
         {
-            get => table_Image.BackgroundImage;
+            get => tableImage_pnl.BackgroundImage;
             set
             {
-                table_Image.BackgroundImage = value;
+                tableImage_pnl.BackgroundImage = value;
+                Invalidate();
+            }
+        }
+        [Category("My properties"), Description("Get the id of table")]
+        public int ID
+        {
+            get => iD;
+            set
+            {
+                iD = value;
                 Invalidate();
             }
         }
         #endregion
-    }
-    public class TableControlInfor
-    {
-        public string Table_name;
-        public Image Table_image;
     }
 }

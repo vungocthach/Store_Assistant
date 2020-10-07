@@ -21,55 +21,62 @@ namespace StoreAssitant
         public TableView()
         {
             InitializeComponent();
-            this.MinimumSize = new Size(tableTitle_lb.Location.X + tableTitle_lb.Size.Width, tableTitle_pnl.Height + tableControl1.MinimumSize.Height);
+            this.MinimumSize = new Size(tableTitle_lb.Location.X + tableTitle_lb.Size.Width, tableTitle_pnl.Height + tableAdd_btn.MinimumSize.Height);
 
             this.SizeChanged += TableView_SizeChanged;
             tableTitle_pnl.SizeChanged += TableView_SizeChanged;
 
             //event button add table click
-            tableAdd_pnl.MouseClick += Panel_Add_MouseClick;
-            tableAdd_pnl.MouseDown += TableAdd_pnl_MouseDown;
-            tableAdd_pnl.MouseUp += TableAdd_pnl_MouseUp;
-            tableAdd_pnl.MouseEnter += TableAdd_pnl_MouseEnter;
-            tableAdd_pnl.MouseLeave += TableAdd_pnl_MouseLeave;
+            tableAdd_btn.MouseClick += Panel_Add_MouseClick;
+            tableAdd_btn.MouseDown += TableAdd_pnl_MouseDown;
+            tableAdd_btn.MouseUp += TableAdd_pnl_MouseUp;
+            tableAdd_btn.MouseEnter += TableAdd_pnl_MouseEnter;
+            tableAdd_btn.MouseLeave += TableAdd_pnl_MouseLeave;
         }
-        public void setData(TableViewInfor Infor)
+
+        public void SetData(List<TableInfo> infor)
         {
-            tableTitle_lb.Text = Infor.TableView_nameCashier;
-            tableIcon_pnl.BackgroundImage = Infor.TableView_imageCashier;
-            //tableinfo = Infor.tableinfo;
+            this.tableinfo = infor;
+            foreach (TableInfo table in infor)
+            {
+                Add_Table(table);
+            }
         }
 
 
         #region BUTTON ADD TABLE EVENT
         private void TableAdd_pnl_MouseLeave(object sender, EventArgs e)
         {
-            tableAdd_pnl.BackColor = SystemColors.Control;
-            tableAdd_pnl.BorderStyle = BorderStyle.None;
+            tableAdd_btn.BackColor = SystemColors.Control;
+            tableAdd_btn.BorderStyle = BorderStyle.None;
         }
 
         private void TableAdd_pnl_MouseEnter(object sender, EventArgs e)
         {
-            tableAdd_pnl.BackColor = SystemColors.ActiveCaption;
-            tableAdd_pnl.BorderStyle = BorderStyle.Fixed3D;
+            tableAdd_btn.BackColor = SystemColors.ActiveCaption;
+            tableAdd_btn.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void TableAdd_pnl_MouseUp(object sender, MouseEventArgs e)
         {
-            tableAdd_pnl.BorderStyle = BorderStyle.Fixed3D;
+            tableAdd_btn.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void TableAdd_pnl_MouseDown(object sender, MouseEventArgs e)
         {
-            tableAdd_pnl.BorderStyle = BorderStyle.None;
+            tableAdd_btn.BorderStyle = BorderStyle.None;
         }
         #endregion
 
+        private void Add_Table(TableInfo table)
+        {
+            tableGUI_pnl.Controls.Remove(tableAdd_btn);
+            tableGUI_pnl.Controls.Add(new TableControl() { Size = ItemSize, nameTable = table.Name , ID = table.Id});
+            tableGUI_pnl.Controls.Add(tableAdd_btn);
+        }
         private void Panel_Add_MouseClick(object sender, MouseEventArgs e)
         {
-            tableGUI_pnl.Controls.Remove(tableAdd_pnl);
-            tableGUI_pnl.Controls.Add(new TableControl() { Size = ItemSize, nameTable = "BÀN " + (tableGUI_pnl.Controls.Count+1) });
-            tableGUI_pnl.Controls.Add(tableAdd_pnl);
+            MessageBox.Show("Đang mở rộng tính năng");
             on_btnAddClick();
         }
 
@@ -103,7 +110,7 @@ namespace StoreAssitant
 
         #region SETTING PROPERTIES
         [Category("My properties"), Description("Change main name of the view Table")]
-        public string nameCashierTable
+        public string NameCashierTable
         {
             get => tableTitle_lb.Text;
             set
@@ -113,7 +120,7 @@ namespace StoreAssitant
             }
         }
         [Category("My properties"), Description("Change image icon of the view Table")]
-        public Image imageCashierTable
+        public Image ImageCashierTable
         {
             get => tableIcon_pnl.BackgroundImage;
             set
@@ -125,7 +132,10 @@ namespace StoreAssitant
         [Category("My Properties"), Description("Height of title in pixel")]
         public int TitleHeight
         {
-            get { return tableTitle_pnl.Height; }
+            get
+            {
+                return tableTitle_pnl.Height;
+            }
             set
             {
                 if (value > 40)
@@ -156,12 +166,30 @@ namespace StoreAssitant
                 Invalidate();
             }
         }
+        [Category("My Properties"), Description("Image of table control")]
+        public Image ItemImage
+        {
+            get
+            {
+                if (tableGUI_pnl.Controls == null || tableGUI_pnl.Controls.Count < 2)
+                {
+                    return null;
+                }
+                else
+                {
+                    return (tableGUI_pnl.Controls[0] as TableControl).ImageTable; 
+                }
+            }
+            set
+            {
+                foreach (Control control in tableGUI_pnl.Controls)
+                {
+                    if (control != tableAdd_btn)
+                    control.BackgroundImage = value;
+                }
+                Invalidate();
+            }
+        }
         #endregion
-    }
-    public class TableViewInfor
-    {
-        //public List<TableInfo> tableinfo;
-        public string TableView_nameCashier;
-        public Image TableView_imageCashier;
     }
 }
