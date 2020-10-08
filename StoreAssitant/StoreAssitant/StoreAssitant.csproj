@@ -97,7 +97,16 @@
     <Compile Include="MenuView.Designer.cs">
       <DependentUpon>MenuView.cs</DependentUpon>
     </Compile>
+    
+    <Compile Include="TableBill.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TableBill.Designer.cs">
+      <DependentUpon>TableBill.cs</DependentUpon>
+    </Compile>
+
     <Compile Include="SQLStatementManager.cs" />
+
     <Compile Include="TitleControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -154,6 +163,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TableBill.resx">
+      <DependentUpon>TableBill.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TitleControl.resx">
       <DependentUpon>TitleControl.cs</DependentUpon>
     </EmbeddedResource>

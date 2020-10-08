@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TableView));
             this.tableGUI_pnl = new System.Windows.Forms.FlowLayoutPanel();
-            this.tableAdd_pnl = new System.Windows.Forms.Panel();
+            this.tableAdd_btn = new System.Windows.Forms.Panel();
             this.tableTitle_lb = new System.Windows.Forms.Label();
             this.tableTitle_pnl = new System.Windows.Forms.Panel();
             this.tableIcon_pnl = new System.Windows.Forms.Panel();
@@ -43,8 +43,8 @@
             // 
             this.tableGUI_pnl.AutoScroll = true;
             this.tableGUI_pnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tableGUI_pnl.Controls.Add(this.tableAdd_btn);
             this.tableGUI_pnl.Controls.Add(this.tableControl1);
-            this.tableGUI_pnl.Controls.Add(this.tableAdd_pnl);
             this.tableGUI_pnl.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableGUI_pnl.Location = new System.Drawing.Point(0, 50);
             this.tableGUI_pnl.Margin = new System.Windows.Forms.Padding(2);
@@ -52,15 +52,15 @@
             this.tableGUI_pnl.Size = new System.Drawing.Size(420, 520);
             this.tableGUI_pnl.TabIndex = 0;
             // 
-            // tableAdd_pnl
+            // tableAdd_btn
             // 
-            this.tableAdd_pnl.BackgroundImage = global::StoreAssitant.Properties.Resources.button_add;
-            this.tableAdd_pnl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tableAdd_pnl.Location = new System.Drawing.Point(118, 2);
-            this.tableAdd_pnl.Margin = new System.Windows.Forms.Padding(2);
-            this.tableAdd_pnl.Name = "tableAdd_pnl";
-            this.tableAdd_pnl.Size = new System.Drawing.Size(113, 122);
-            this.tableAdd_pnl.TabIndex = 1;
+            this.tableAdd_btn.BackgroundImage = global::StoreAssitant.Properties.Resources.button_add;
+            this.tableAdd_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tableAdd_btn.Location = new System.Drawing.Point(2, 2);
+            this.tableAdd_btn.Margin = new System.Windows.Forms.Padding(2);
+            this.tableAdd_btn.Name = "tableAdd_btn";
+            this.tableAdd_btn.Size = new System.Drawing.Size(113, 122);
+            this.tableAdd_btn.TabIndex = 1;
             // 
             // tableTitle_lb
             // 
@@ -100,14 +100,15 @@
             // 
             this.tableControl1.BackColor = System.Drawing.Color.PapayaWhip;
             this.tableControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tableControl1.imageTable = ((System.Drawing.Image)(resources.GetObject("tableControl1.imageTable")));
-            this.tableControl1.Location = new System.Drawing.Point(2, 2);
+            this.tableControl1.ID = 0;
+            this.tableControl1.ImageTable = ((System.Drawing.Image)(resources.GetObject("tableControl1.ImageTable")));
+            this.tableControl1.Location = new System.Drawing.Point(119, 2);
             this.tableControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.tableControl1.MinimumSize = new System.Drawing.Size(76, 56);
+            this.tableControl1.MinimumSize = new System.Drawing.Size(77, 52);
             this.tableControl1.Name = "tableControl1";
             this.tableControl1.nameTable = "Name of Table";
-            this.tableControl1.Size = new System.Drawing.Size(112, 121);
-            this.tableControl1.TabIndex = 0;
+            this.tableControl1.Size = new System.Drawing.Size(111, 120);
+            this.tableControl1.TabIndex = 2;
             // 
             // TableView
             // 
@@ -130,7 +131,7 @@
         private System.Windows.Forms.Label tableTitle_lb;
         private System.Windows.Forms.Panel tableTitle_pnl;
         private System.Windows.Forms.Panel tableIcon_pnl;
+        private System.Windows.Forms.Panel tableAdd_btn;
         private TableControl tableControl1;
-        private System.Windows.Forms.Panel tableAdd_pnl;
     }
 }

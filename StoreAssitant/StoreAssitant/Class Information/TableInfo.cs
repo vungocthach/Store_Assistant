@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace StoreAssitant
 {
-    internal class TableInfo
+    public class TableInfo
     {
         public string Name { get; set; }
         public int Id { get; set; }
+
+        public List<ProductInfo> ProductList { get; set; }
+        public List<int> NumberPoruduct { get; set; }
 
         public TableInfo() { Name = "tableName"; Id = 0; }
 

@@ -137,13 +137,13 @@
             // tableView1
             // 
             this.tableView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableView1.imageCashierTable = ((System.Drawing.Image)(resources.GetObject("tableView1.imageCashierTable")));
+            this.tableView1.ImageCashierTable = ((System.Drawing.Image)(resources.GetObject("tableView1.ImageCashierTable")));
             this.tableView1.ItemSize = new System.Drawing.Size(150, 150);
             this.tableView1.Location = new System.Drawing.Point(0, 0);
             this.tableView1.Margin = new System.Windows.Forms.Padding(2);
             this.tableView1.MinimumSize = new System.Drawing.Size(360, 106);
             this.tableView1.Name = "tableView1";
-            this.tableView1.nameCashierTable = "THANH TOÁN BÀN";
+            this.tableView1.NameCashierTable = "THANH TOÁN BÀN";
             this.tableView1.Size = new System.Drawing.Size(502, 772);
             this.tableView1.TabIndex = 0;
             this.tableView1.TitleHeight = 50;
