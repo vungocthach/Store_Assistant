@@ -37,10 +37,7 @@ namespace StoreAssitant
         public void SetData(List<TableInfo> infor)
         {
             this.tableinfo = infor;
-            foreach (TableInfo table in infor)
-            {
-                Add_Table(table);
-            }
+            Add_Table(infor);
         }
 
 
@@ -68,12 +65,16 @@ namespace StoreAssitant
         }
         #endregion
 
-        private void Add_Table(TableInfo table)
+        private void Add_Table(List<TableInfo> infor)
         {
             tableGUI_pnl.Controls.Remove(tableAdd_btn);
-            tableGUI_pnl.Controls.Add(new TableControl() { Size = ItemSize, nameTable = table.Name , ID = table.Id});
+            foreach (TableInfo table in infor)
+            {
+                tableGUI_pnl.Controls.Add(new TableControl() { Size = ItemSize, nameTable = table.Name, ID = table.Id });
+            }
             tableGUI_pnl.Controls.Add(tableAdd_btn);
         }
+
         private void Panel_Add_MouseClick(object sender, MouseEventArgs e)
         {
             MessageBox.Show("Đang mở rộng tính năng");
@@ -173,23 +174,28 @@ namespace StoreAssitant
             {
                 if (tableGUI_pnl.Controls == null || tableGUI_pnl.Controls.Count < 2)
                 {
-                    return null;
+
+                    return Properties.Resources.Artboard_1;
                 }
                 else
                 {
-                    return (tableGUI_pnl.Controls[0] as TableControl).ImageTable; 
+                    return (tableGUI_pnl.Controls[0] as TableControl).ImageTable;
                 }
             }
             set
             {
-                foreach (Control control in tableGUI_pnl.Controls)
+                if (tableGUI_pnl.Controls.Count > 1)
                 {
-                    if (control != tableAdd_btn)
-                    control.BackgroundImage = value;
+                    foreach (Control control in tableGUI_pnl.Controls)
+                    {
+                        if (control != tableAdd_btn)
+                            control.BackgroundImage = value;
+                    }
+                    Invalidate();
                 }
-                Invalidate();
             }
         }
         #endregion
+
     }
 }
