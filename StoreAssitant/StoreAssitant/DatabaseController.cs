@@ -18,7 +18,7 @@ namespace StoreAssitant
 
         bool ConnectToSQLServer(string username, string password, string serverName, string databaseName)
         {
-            connection = new SqlConnection(string.Format("User id = {0}; password = {1}; server = {2}; Initial Catalog = {3}; connection timeout = 30;", username, password, serverName, databaseName));
+            connection = new SqlConnection(SQLStatementManager.GetConnectionString(username, password, serverName, databaseName));
             try
             {
                 connection.Open();
@@ -31,9 +31,9 @@ namespace StoreAssitant
             }
         }
 
-        bool ConnectToSQLServer(string username, string password, string serverName, string databaseName, string port)
+        bool ConnectToSQLServer(string username, string password, string serverName, string databaseName, int port)
         {
-            connection = new SqlConnection(string.Format("User id = {0}; password = {1}; server = tcp:{2},{3}; Initial Catalog = {4}; connection timeout = 30;", username, password, serverName, port, databaseName));
+            connection = new SqlConnection(SQLStatementManager.GetConnectionString(username, password, serverName, port, databaseName));
             try
             {
                 connection.Open();
