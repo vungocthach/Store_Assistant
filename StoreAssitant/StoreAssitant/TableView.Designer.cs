@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TableView));
             this.tableGUI_pnl = new System.Windows.Forms.FlowLayoutPanel();
             this.tableAdd_btn = new System.Windows.Forms.Panel();
             this.tableTitle_lb = new System.Windows.Forms.Label();
             this.tableTitle_pnl = new System.Windows.Forms.Panel();
             this.tableIcon_pnl = new System.Windows.Forms.Panel();
+            this.tableControl1 = new StoreAssitant.TableControl();
             this.tableGUI_pnl.SuspendLayout();
             this.tableTitle_pnl.SuspendLayout();
             this.SuspendLayout();
@@ -42,6 +44,7 @@
             this.tableGUI_pnl.AutoScroll = true;
             this.tableGUI_pnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableGUI_pnl.Controls.Add(this.tableAdd_btn);
+            this.tableGUI_pnl.Controls.Add(this.tableControl1);
             this.tableGUI_pnl.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableGUI_pnl.Location = new System.Drawing.Point(0, 50);
             this.tableGUI_pnl.Margin = new System.Windows.Forms.Padding(2);
@@ -93,6 +96,20 @@
             this.tableIcon_pnl.Size = new System.Drawing.Size(50, 48);
             this.tableIcon_pnl.TabIndex = 3;
             // 
+            // tableControl1
+            // 
+            this.tableControl1.BackColor = System.Drawing.Color.PapayaWhip;
+            this.tableControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tableControl1.ID = 0;
+            this.tableControl1.ImageTable = ((System.Drawing.Image)(resources.GetObject("tableControl1.ImageTable")));
+            this.tableControl1.Location = new System.Drawing.Point(119, 2);
+            this.tableControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.tableControl1.MinimumSize = new System.Drawing.Size(77, 52);
+            this.tableControl1.Name = "tableControl1";
+            this.tableControl1.nameTable = "Name of Table";
+            this.tableControl1.Size = new System.Drawing.Size(111, 120);
+            this.tableControl1.TabIndex = 2;
+            // 
             // TableView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -115,5 +132,6 @@
         private System.Windows.Forms.Panel tableTitle_pnl;
         private System.Windows.Forms.Panel tableIcon_pnl;
         private System.Windows.Forms.Panel tableAdd_btn;
+        private TableControl tableControl1;
     }
 }

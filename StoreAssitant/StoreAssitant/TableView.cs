@@ -18,6 +18,7 @@ namespace StoreAssitant
         public event EventHandler btnTableClick;
         List<TableInfo> tableinfo;
         #endregion
+
         public TableView()
         {
             InitializeComponent();
@@ -25,21 +26,60 @@ namespace StoreAssitant
 
             this.SizeChanged += TableView_SizeChanged;
             tableTitle_pnl.SizeChanged += TableView_SizeChanged;
+            this.btnTableClick += TableView_btnTableClick;
+            tableAdd_btn.Click += TableAdd_btn_Click;
 
             //event button add table click
-            tableAdd_btn.MouseClick += Panel_Add_MouseClick;
             tableAdd_btn.MouseDown += TableAdd_pnl_MouseDown;
             tableAdd_btn.MouseUp += TableAdd_pnl_MouseUp;
             tableAdd_btn.MouseEnter += TableAdd_pnl_MouseEnter;
             tableAdd_btn.MouseLeave += TableAdd_pnl_MouseLeave;
         }
 
+        private void TableAdd_btn_Click(object sender, EventArgs e)
+        {
+            TableInfo table = new TableInfo();
+            table.Id = tableGUI_pnl.Controls.Count;
+            table.Name = "BÀN " + table.Id;
+            table.ProductList = new List<ProductInfo>();
+            table.NumberPoruduct = new List<int>();
+            tableinfo.Add(table);
+
+            tableGUI_pnl.Controls.Remove(tableAdd_btn);
+            tableGUI_pnl.Controls.Add(new TableControl() { Size = ItemSize, nameTable = table.Name, ID = table.Id });
+            tableGUI_pnl.Controls.Add(tableAdd_btn);
+            on_btnAddClick();
+        }
+
         public void SetData(List<TableInfo> infor)
         {
             this.tableinfo = infor;
-            Add_Table(infor);
+            Load_Tables(infor);
         }
 
+
+        private void Load_Tables(List<TableInfo> infor)
+        {
+            tableGUI_pnl.Controls.Remove(tableAdd_btn);
+            foreach (TableInfo table in infor)
+            {
+                tableGUI_pnl.Controls.Add(new TableControl() { Size = ItemSize, nameTable = table.Name, ID = table.Id });
+            }
+            tableGUI_pnl.Controls.Add(tableAdd_btn);
+        }
+
+
+
+        private void TableView_btnTableClick(object sender, EventArgs e)
+        {
+            MessageBox.Show("Thể hiện TableInfor");
+        }
+
+        private void TableView_SizeChanged(object sender, EventArgs e)
+        {
+            tableGUI_pnl.Height = this.Height - tableTitle_pnl.Location.Y - tableTitle_pnl.Height;
+            tableTitle_lb.Location = new Point(tableIcon_pnl.Location.X + tableIcon_pnl.Width + (this.Width - tableIcon_pnl.Location.X - tableIcon_pnl.Width - tableTitle_lb.Width)/ 2, tableTitle_lb.Location.Y);
+        }
 
         #region BUTTON ADD TABLE EVENT
         private void TableAdd_pnl_MouseLeave(object sender, EventArgs e)
@@ -64,33 +104,6 @@ namespace StoreAssitant
             tableAdd_btn.BorderStyle = BorderStyle.None;
         }
         #endregion
-
-        private void Add_Table(List<TableInfo> infor)
-        {
-            tableGUI_pnl.Controls.Remove(tableAdd_btn);
-            foreach (TableInfo table in infor)
-            {
-                tableGUI_pnl.Controls.Add(new TableControl() { Size = ItemSize, nameTable = table.Name, ID = table.Id });
-            }
-            tableGUI_pnl.Controls.Add(tableAdd_btn);
-        }
-
-        private void Panel_Add_MouseClick(object sender, MouseEventArgs e)
-        {
-            MessageBox.Show("Đang mở rộng tính năng");
-            on_btnAddClick();
-        }
-
-        private void TableView_btnTableClick(object sender, EventArgs e)
-        {
-            MessageBox.Show("Thể hiện TableInfor");
-        }
-
-        private void TableView_SizeChanged(object sender, EventArgs e)
-        {
-            tableGUI_pnl.Height = this.Height - tableTitle_pnl.Location.Y - tableTitle_pnl.Height;
-            tableTitle_lb.Location = new Point(tableIcon_pnl.Location.X + tableIcon_pnl.Width + (this.Width - tableIcon_pnl.Location.X - tableIcon_pnl.Width - tableTitle_lb.Width)/ 2, tableTitle_lb.Location.Y);
-        }
 
         #region CREATE EVENT CLICK
         public void on_btnTableClick()
@@ -196,6 +209,5 @@ namespace StoreAssitant
             }
         }
         #endregion
-
     }
 }

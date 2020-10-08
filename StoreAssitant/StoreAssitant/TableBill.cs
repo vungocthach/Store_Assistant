@@ -12,14 +12,16 @@ namespace StoreAssitant
 {
     public partial class TableBill : UserControl
     {
-        public TableBill()
+        public TableBill(TableInfo table)
         {
             InitializeComponent();
+
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             this.Hide();
         }
+
     }
 }
