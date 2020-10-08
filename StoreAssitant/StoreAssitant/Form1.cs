@@ -13,7 +13,9 @@ namespace StoreAssitant
 {
     public partial class Form1 : Form
     {
+     
         public Form1()
+
         {
             InitializeComponent();
             kryptonNavigator1.GotFocus += KryptonNavigator1_GotFocus;
@@ -43,9 +45,6 @@ namespace StoreAssitant
             navigator.SelectedPage.Focus();
         }
 
-        private void krSplit_Cashier_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+      
     }
 }
