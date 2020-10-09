@@ -32,6 +32,7 @@ namespace StoreAssitant
         {
            // if (addProduct != null)
         }
+
         public ControlProduct()
         {
             InitializeComponent();

@@ -21,7 +21,14 @@ namespace StoreAssitant
             kryptonNavigator1.GotFocus += KryptonNavigator1_GotFocus;
             this.SizeChanged += Form1_SizeChanged;
 
-            
+            try
+            {
+                DatabaseController databaseController = new DatabaseController();
+                databaseController.ConnectToSQLDatabase();
+                tableView1.SetData(databaseController.GetTableInfos());
+                databaseController.Disconnect();
+            }
+            catch (Exception e) { MessageBox.Show(e.Message); }
         }
 
         private void Form1_SizeChanged(object sender, EventArgs e)

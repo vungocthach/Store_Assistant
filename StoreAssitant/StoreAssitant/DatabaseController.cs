@@ -10,27 +10,37 @@ using System.Data;
 
 namespace StoreAssitant
 {
-    class DatabaseController
+    class DatabaseController :IDisposable
     {
         SqlConnection connection;
 
-        string username = "laptrnihtrucquan";
-        string password = "bangnhucthach@ktpm2019";
-        string serverName = "tcp:52.187.161.61,2001";
-        string databaseName = "DBStoreAssistant";
+        string username;
+        string password ;
+        string serverName ;
+        string databaseName;
 
-        string TB_TABLE = "TB_TABLE";
-        string[] TB_TABLE_COLUMNS = new string[2] { "ID", "TB_NAME" };
+        string TB_TABLE ;
+        string[] TB_TABLE_COLUMNS;
 
-        string TB_PRODUCT = "TB_PRODUCT";
-        string[] TB_PRODUCT_COLUMNS = new string[5] { "ID", "PD_NAME", "PRICE", "DESCRIP", "IMAGE_ID"};
+        string TB_PRODUCT;
+        string[] TB_PRODUCT_COLUMNS;
 
         public DatabaseController()
         {
+            username = "laptrinhtrucquan";
+            password = "bangnhucthach@ktpm2019";
+            serverName = "tcp:52.187.161.61,2001";
+            databaseName = "DBStoreAssistant";
+
+            TB_TABLE = "TB_TABLE";
+            TB_TABLE_COLUMNS = new string[2] { "ID", "TB_NAME" };
+            TB_PRODUCT = "TB_PRODUCT";
+            TB_PRODUCT_COLUMNS = new string[5] { "ID", "PD_NAME", "PRICE", "DESCRIP", "IMAGE_ID" };
+
             connection = new SqlConnection(SQLStatementManager.GetConnectionString(username, password, serverName, databaseName));
         }
 
-        bool ConnectToSQLDatabase()
+        public bool ConnectToSQLDatabase()
         {
             try
             {
@@ -41,6 +51,14 @@ namespace StoreAssitant
             {
                 Debug.WriteLine("StoreAssistant.DatabaseController.ConnectToSQLDatabase() error : " + e.Message);
                 return false;
+            }
+        }
+
+        public void Disconnect()
+        {
+            if (connection.State != ConnectionState.Closed)
+            {
+                connection.Close();
             }
         }
 
@@ -84,6 +102,11 @@ namespace StoreAssitant
             }
 
             return rs;
+        }
+
+        public void Dispose()
+        {
+            Disconnect();
         }
     }
 }
