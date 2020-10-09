@@ -34,6 +34,8 @@ namespace StoreAssitant
             tableAdd_btn.MouseUp += TableAdd_pnl_MouseUp;
             tableAdd_btn.MouseEnter += TableAdd_pnl_MouseEnter;
             tableAdd_btn.MouseLeave += TableAdd_pnl_MouseLeave;
+
+            SetData(null);
         }
 
         private void TableAdd_btn_Click(object sender, EventArgs e)
@@ -41,29 +43,33 @@ namespace StoreAssitant
             TableInfo table = new TableInfo();
             table.Id = tableGUI_pnl.Controls.Count;
             table.Name = "BÀN " + table.Id;
-            table.ProductList = new List<ProductInfo>();
-            table.NumberPoruduct = new List<int>();
+            table.ProductList = new List<Products>();
             tableinfo.Add(table);
 
+            TableControl newtable = new TableControl() { Size = ItemSize, nameTable = table.Name, ID = table.Id };
             tableGUI_pnl.Controls.Remove(tableAdd_btn);
-            tableGUI_pnl.Controls.Add(new TableControl() { Size = ItemSize, nameTable = table.Name, ID = table.Id });
+            tableGUI_pnl.Controls.Add(newtable);
             tableGUI_pnl.Controls.Add(tableAdd_btn);
             on_btnAddClick();
         }
 
         public void SetData(List<TableInfo> infor)
         {
-            this.tableinfo = infor;
-            Load_Tables(infor);
+            if (infor != null) this.tableinfo = infor;
+            else this.tableinfo = new List<TableInfo>();
+            Load_Tables();
         }
 
 
-        private void Load_Tables(List<TableInfo> infor)
+        private void Load_Tables()
         {
+            TableControl newtable = new TableControl() { Size = ItemSize};
             tableGUI_pnl.Controls.Remove(tableAdd_btn);
-            foreach (TableInfo table in infor)
+            foreach (TableInfo table in tableinfo)
             {
-                tableGUI_pnl.Controls.Add(new TableControl() { Size = ItemSize, nameTable = table.Name, ID = table.Id });
+                newtable.nameTable = table.Name;
+                newtable.ID = table.Id;
+                tableGUI_pnl.Controls.Add(newtable);
             }
             tableGUI_pnl.Controls.Add(tableAdd_btn);
         }
@@ -165,10 +171,10 @@ namespace StoreAssitant
         {
             get
             {
-                if (tableGUI_pnl.Controls == null || tableGUI_pnl.Controls.Count < 1) { return System.Drawing.Size.Empty; }
+                if (tableGUI_pnl.Controls == null || tableGUI_pnl.Controls.Count == 0) { return System.Drawing.Size.Empty; }
                 else
                 {
-                    return tableGUI_pnl.Controls[0].Size;
+                    return tableGUI_pnl.Controls[tableGUI_pnl.Controls.Count-1].Size;
                 }
             }
             set
@@ -197,15 +203,12 @@ namespace StoreAssitant
             }
             set
             {
-                if (tableGUI_pnl.Controls.Count > 1)
+                foreach (Control control in tableGUI_pnl.Controls)
                 {
-                    foreach (Control control in tableGUI_pnl.Controls)
-                    {
-                        if (control != tableAdd_btn)
-                            control.BackgroundImage = value;
-                    }
-                    Invalidate();
+                    if (control is TableControl)
+                    ((TableControl)control).ImageTable = value;
                 }
+                Invalidate();
             }
         }
         #endregion

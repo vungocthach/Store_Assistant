@@ -11,11 +11,21 @@ namespace StoreAssitant
     {
         public string Name { get; set; }
         public int Id { get; set; }
-        public List<ProductInfo> ProductList { get; set; }
-        public List<int> NumberPoruduct { get; set; }
+
+        public List<Products> ProductList { get; set; }
         public override string ToString()
         {
             return string.Format("StoreAssistant.TableInfo:( ID = {0}; Name = {1}; )", Id, Name);
+        }
+    }
+    public class Products
+    {
+        public ProductInfo Product { get; set; }
+        public int NumberProduct { get; set; }
+        public Products()
+        {
+            Product = new ProductInfo();
+            NumberProduct = 1;
         }
     }
 }
