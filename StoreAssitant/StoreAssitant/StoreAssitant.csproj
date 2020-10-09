@@ -103,6 +103,12 @@
     <Compile Include="MenuView.Designer.cs">
       <DependentUpon>MenuView.cs</DependentUpon>
     </Compile>
+    <Compile Include="TableBill.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TableBill.Designer.cs">
+      <DependentUpon>TableBill.cs</DependentUpon>
+    </Compile>
     <Compile Include="SQLStatementManager.cs" />
     <Compile Include="TitleControl.cs">
       <SubType>UserControl</SubType>
@@ -163,6 +169,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TableBill.resx">
+      <DependentUpon>TableBill.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TitleControl.resx">
       <DependentUpon>TitleControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -197,9 +206,6 @@
     <None Include="Resources\iconfinder_45_Account_Google_Product_Logo_Brand_5764262.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\iconfinder_Cashier-2_379335.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\iconfinder_humans_1216581.png" />
   </ItemGroup>
   <ItemGroup>
@@ -228,6 +234,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\iconfinder_caution_1055096.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\iconfinder_Cashier-2_3793351.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

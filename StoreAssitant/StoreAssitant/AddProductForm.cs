@@ -44,7 +44,6 @@ namespace StoreAssitant
             productInfo.Image = productBox1.PDImage;
             productInfo.Name = productBox1.PDName;
             productInfo.Price = productBox1.PDPrice;
-            productInfo.Tags = productBox1.PDTags;
             productInfo.Description = productBox1.PDDescription;
 
             return productInfo;
@@ -55,7 +54,6 @@ namespace StoreAssitant
             productBox1.PDImage = info.Image;
             productBox1.PDName = info.Name;
             productBox1.PDPrice = info.Price;
-            productBox1.PDTags = info.Tags;
             productBox1.PDDescription = info.Description;
         }
     }
