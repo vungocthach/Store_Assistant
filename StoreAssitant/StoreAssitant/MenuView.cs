@@ -93,10 +93,16 @@ namespace StoreAssitant
                 SetLocationY_bottom_control(controlSearch, ControlTitle);
             });
             itemSize = new Size(100, 100);
+            controlProduct.AddProduct += ControlProduct_AddProduct;
             //  flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             //  flowLayoutPanel1.WrapContents = false;
             //  flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             //  flowLayoutPanel1.AutoScroll = true;
+        }
+
+        private void ControlProduct_AddProduct(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void SetLocationY_bottom_control(Control target, Control base_control)

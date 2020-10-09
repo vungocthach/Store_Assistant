@@ -73,7 +73,7 @@
             this.ControlTitle.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.ControlTitle.MinimumSize = new System.Drawing.Size(0, 32);
             this.ControlTitle.Name = "ControlTitle";
-            this.ControlTitle.NameTitle = "Menu";
+           // this.ControlTitle.NameTitle = "Menu";
             this.ControlTitle.Size = new System.Drawing.Size(427, 32);
             this.ControlTitle.TabIndex = 0;
             // 

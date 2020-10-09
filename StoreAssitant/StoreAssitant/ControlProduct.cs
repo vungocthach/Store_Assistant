@@ -8,11 +8,30 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.CodeDom;
 
 namespace StoreAssitant
 {
     public partial class ControlProduct : UserControl
     {
+        private EventHandler addProduct;
+        public event EventHandler AddProduct
+        {
+            add
+            {
+
+                addProduct += value;
+            }
+            remove
+            {
+                addProduct -= value;
+            }
+        }
+
+        protected virtual void OnAddProduct (EventArgs e)
+        {
+           // if (addProduct != null)
+        }
         public ControlProduct()
         {
             InitializeComponent();
@@ -20,7 +39,9 @@ namespace StoreAssitant
             panelImage.MouseHover += ControlProduct_MouseHover;
             panelImage.MouseLeave += PanelImage_MouseLeave;
             panelImage.Click += PanelImage_Click;
+           
         }
+
 
         private void PanelImage_Click(object sender, EventArgs e)
         {

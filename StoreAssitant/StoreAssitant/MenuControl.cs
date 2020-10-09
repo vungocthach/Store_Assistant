@@ -27,10 +27,10 @@ namespace StoreAssitant
         [Category("My Properties"), Description("Inmage of Menu title ")]
         public Image image
         {
-            get => image;
+            get => panelImage.BackgroundImage;
             set
             {
-                image = value;
+                panelImage.BackgroundImage = value;
                 Invalidate();
             }
         }
