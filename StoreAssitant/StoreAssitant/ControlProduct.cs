@@ -9,29 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using System.CodeDom;
+using System.Reflection;
 
 namespace StoreAssitant
 {
     public partial class ControlProduct : UserControl
     {
-        private EventHandler addProduct;
-        public event EventHandler AddProduct
-        {
-            add
-            {
-
-                addProduct += value;
-            }
-            remove
-            {
-                addProduct -= value;
-            }
-        }
-
-        protected virtual void OnAddProduct (EventArgs e)
-        {
-           // if (addProduct != null)
-        }
+        public MenuView M;
         public ControlProduct()
         {
             InitializeComponent();
@@ -45,6 +29,8 @@ namespace StoreAssitant
 
         private void PanelImage_Click(object sender, EventArgs e)
         {
+            M = new MenuView();
+            M.Onclick();
             panelImage.BorderStyle = BorderStyle.None;
            // panelImage.BorderStyle = BorderStyle.Fixed3D;
         }

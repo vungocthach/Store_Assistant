@@ -13,6 +13,7 @@ namespace StoreAssitant
     public partial class MenuControl : UserControl
     {
         ProductInfo Infor;
+        MenuView M;
         #region Create properties
         [Category("My Properties"), Description("Name of Title")]
         public string NameTitle
@@ -42,10 +43,33 @@ namespace StoreAssitant
             textBoxPrice.Text = Convert.ToString( info.Price);
             panelImage.BackgroundImage = info.Image;
         }
+        
         public MenuControl()
         {
             InitializeComponent();
             this.SizeChanged += MenuControl_SizeChanged;
+            panelImage.Click += PanelImage_Click;
+            textBoxName.Click += TextBoxName_Click;
+            textBoxPrice.Click += TextBoxPrice_Click;
+           
+        }
+
+        private void TextBoxPrice_Click(object sender, EventArgs e)
+        {
+            M = new MenuView();
+            M.on_add_Product();
+        }
+
+        private void TextBoxName_Click(object sender, EventArgs e)
+        {
+            M = new MenuView();
+            M.on_add_Product();
+        }
+
+        private void PanelImage_Click(object sender, EventArgs e)
+        {
+            M = new MenuView();
+            M.on_add_Product();
         }
 
         private void MenuControl_SizeChanged(object sender, EventArgs e)

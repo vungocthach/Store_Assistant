@@ -13,43 +13,9 @@ namespace StoreAssitant
 {
     public partial class MenuView : UserControl
     {
-        #region Create Properties
-        [Category("My Properties"), Description("Name of Title")]
-        public string NameTitle
-        {
-            get => ControlTitle.Name;
-            set
-            {
-                Name = value;
-                Invalidate();
-            }
-        }
-        [Category("My Properties"), Description("Inmage of Menu title ")]
-        public Image image
-        {
-            get => image;
-            set
-            {
-                image = value;
-                Invalidate();
-            }
-        }
-        #endregion
         List<ProductInfo> Menu;
-        public void AddMenuControl(ProductInfo Infor)
-        {
-            MenuControl M = new MenuControl();
-            M.SetData(Infor);
-            M.Show();
-        }
-        public void SetData(List<ProductInfo> Pro)
-        {
-            foreach (ProductInfo P in Pro)
-            {
-                AddMenuControl(P);
-                Menu.Add(P);
-            }
-        }
+        Size itemSize;
+        #region Create Properties
         [Category("My Properties"), Description("Height of title bar in pixel")]
         public int TitleHeight
         {
@@ -81,8 +47,81 @@ namespace StoreAssitant
                 Invalidate();
             }
         }
-        Size itemSize;
-
+        [Category("My Properties"), Description("Name of Title")]
+        public string NameTitle
+        {
+            get => ControlTitle.Name;
+            set
+            {
+                Name = value;
+                Invalidate();
+            }
+        }
+        [Category("My Properties"), Description("Inmage of Menu title ")]
+        public Image image
+        {
+            get => image;
+            set
+            {
+                image = value;
+                Invalidate();
+            }
+        }
+        #endregion
+        #region Create even add_ControlProduct
+        private event EventHandler add_ControlProduct;
+        public event EventHandler Add_ControlProduct
+        {
+            add
+            {
+                add_ControlProduct += value;
+            }
+            remove
+            {
+                add_ControlProduct -= value;
+            }
+        }
+        public void Onclick()
+        {
+            if (add_ControlProduct != null)
+                add_ControlProduct(this, new EventArgs());
+        }
+        #endregion
+        #region Create even add_Product
+        private event EventHandler add_Product;
+        public event EventHandler Add_Product
+        {
+            add
+            {
+                add_ControlProduct += value;
+            }
+            remove
+            {
+                add_ControlProduct -= value;
+            }
+        }
+        public void on_add_Product()
+        {
+            if (add_Product != null)
+                add_Product(this, new EventArgs());
+        }
+        #endregion
+        public void AddMenuControl(ProductInfo Infor)
+        {
+            MenuControl M = new MenuControl();
+            M.SetData(Infor);
+            M.Show();
+        }
+        public void SetData(List<ProductInfo> Pro)
+        {
+            foreach (ProductInfo P in Pro)
+            {
+                AddMenuControl(P);
+                Menu.Add(P);
+            }
+        }
+        
+       
         public MenuView()
         {
 
@@ -93,16 +132,23 @@ namespace StoreAssitant
                 SetLocationY_bottom_control(controlSearch, ControlTitle);
             });
             itemSize = new Size(100, 100);
-            controlProduct.AddProduct += ControlProduct_AddProduct;
+            this.Add_ControlProduct += MenuView_Add_ControlProduct;
+            this.Add_Product += MenuView_Add_Product;
+           
             //  flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             //  flowLayoutPanel1.WrapContents = false;
             //  flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             //  flowLayoutPanel1.AutoScroll = true;
         }
 
-        private void ControlProduct_AddProduct(object sender, EventArgs e)
+        private void MenuView_Add_Product(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            MessageBox.Show("Tính năng đang được xây dựng");
+        }
+        private void MenuView_Add_ControlProduct(object sender, EventArgs e)
+        {
+
+            MessageBox.Show("Tính năng đang được xây dựng"); 
         }
 
         private void SetLocationY_bottom_control(Control target, Control base_control)
