@@ -25,9 +25,10 @@ namespace StoreAssitant
         [Category ("My Properties"), Description ("Image of Title")]
         public Image image
         {
+            get { return labelImage.Image; }
             set
             {
-                image = value;
+                labelImage.Image = value;
                 Invalidate();
             }
         }

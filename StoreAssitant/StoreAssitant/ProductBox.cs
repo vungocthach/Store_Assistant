@@ -75,29 +75,9 @@ namespace StoreAssitant
             }
         }
 
-        public char SeperateCharacter;
-
-        [Category("My Properties"), Description("Array of tags about product")]
-        public string[] PDTags
-        {
-            get { return ThunderStudio.TSString.SeperateString(txtb_Tag.Text.Trim(), this.SeperateCharacter); }
-            set
-            {
-                StringBuilder builder = new StringBuilder();
-                foreach (string str in value)
-                {
-                    builder.Append(str);
-                    builder.Append(SeperateCharacter);
-                }
-                txtb_Tag.Text = builder.ToString();
-            }
-        }
-
         public ProductBox()
         {
             InitializeComponent();
-
-            SeperateCharacter = ';';
 
             label_Image.Click += new EventHandler((object sender, EventArgs e) => {
                 string path = GetPath();
@@ -109,19 +89,15 @@ namespace StoreAssitant
 
             txtb_Name.TextChanged += Name_UpdateChanged;
             txtb_Price.TextChanged += Price_UpdateChanged;
-            txtb_Tag.TextChanged += Tag_UpdateChanged;
 
             toolTip_Name.ToolTipIcon = ToolTipIcon.Error;
             toolTip_Price.ToolTipIcon = ToolTipIcon.Error;
-            toolTip_Tag.ToolTipIcon = ToolTipIcon.Error;
             toolTip_Des.ToolTipIcon = ToolTipIcon.Error;
 
             txtb_Name.Tag = pb_Err_Name;
             pb_Err_Name.Tag = toolTip_Name;
             txtb_Price.Tag = pb_Err_Price;
             pb_Err_Price.Tag = toolTip_Price;
-            txtb_Tag.Tag = pb_Err_Tag;
-            pb_Err_Tag.Tag = toolTip_Tag;
             txtb_Description.Tag = pb_Err_Des;
             pb_Err_Des.Tag = toolTip_Des;
 
@@ -132,10 +108,9 @@ namespace StoreAssitant
         {
             Name_UpdateChanged(txtb_Name, null);
             Price_UpdateChanged(txtb_Price, null);
-            Tag_UpdateChanged(txtb_Tag, null);
 
             if (pb_Err_Des.Visible || pb_Err_Name.Visible 
-                || pb_Err_Price.Visible || pb_Err_Tag.Visible)
+                || pb_Err_Price.Visible )
             {
                 return false;
             }
@@ -181,12 +156,9 @@ namespace StoreAssitant
                                                 txtb_Name.Location.Y + (txtb_Name.Height - pb_Err_Name.Height) / 2);
             pb_Err_Price.Location = new Point(this.Width - pb_Err_Price.Width - 5,
                                                 txtb_Price.Location.Y + (txtb_Price.Height - pb_Err_Price.Height) / 2);
-            pb_Err_Tag.Location = new Point(this.Width - pb_Err_Tag.Width - 5,
-                                                txtb_Tag.Location.Y + (txtb_Tag.Height - pb_Err_Tag.Height) / 2);
             
             txtb_Name.Width = pb_Err_Name.Location.X - txtb_Name.Location.X - 5;
             txtb_Price.Width = pb_Err_Price.Location.X - txtb_Price.Location.X - 5;
-            txtb_Tag.Width = pb_Err_Tag.Location.X - txtb_Tag.Location.X - 5;
 
             txtb_Description.Height = this.Height - txtb_Description.Location.Y - 5;
             txtb_Description.Width = this.Width - txtb_Description.Location.X * 2;

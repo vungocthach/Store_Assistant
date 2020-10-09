@@ -42,8 +42,6 @@
             this.productBox1.PDDescription = "";
             this.productBox1.PDImage = null;
             this.productBox1.PDName = "";
-            this.productBox1.PDTags = new string[] {
-        ""};
             this.productBox1.Size = new System.Drawing.Size(489, 500);
             this.productBox1.TabIndex = 0;
             // 
