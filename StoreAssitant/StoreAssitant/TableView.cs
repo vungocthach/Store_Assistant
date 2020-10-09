@@ -35,6 +35,7 @@ namespace StoreAssitant
             tableAdd_btn.MouseEnter += TableAdd_pnl_MouseEnter;
             tableAdd_btn.MouseLeave += TableAdd_pnl_MouseLeave;
 
+            itemImage = Properties.Resources.Artboard_1;
             SetData(null);
         }
 
@@ -46,7 +47,7 @@ namespace StoreAssitant
             table.ProductList = new List<Products>();
             tableinfo.Add(table);
 
-            TableControl newtable = new TableControl() { Size = ItemSize, nameTable = table.Name, ID = table.Id };
+            TableControl newtable = new TableControl() { Size = ItemSize, nameTable = table.Name, ID = table.Id, ImageTable = itemImage };
             tableGUI_pnl.Controls.Remove(tableAdd_btn);
             tableGUI_pnl.Controls.Add(newtable);
             tableGUI_pnl.Controls.Add(tableAdd_btn);
@@ -186,27 +187,24 @@ namespace StoreAssitant
                 Invalidate();
             }
         }
+
+        Image itemImage;
         [Category("My Properties"), Description("Image of table control")]
         public Image ItemImage
         {
             get
             {
-                if (tableGUI_pnl.Controls == null || tableGUI_pnl.Controls.Count < 2)
-                {
-
-                    return Properties.Resources.Artboard_1;
-                }
-                else
-                {
-                    return (tableGUI_pnl.Controls[0] as TableControl).ImageTable;
-                }
+                return itemImage;
             }
             set
             {
+                this.itemImage = value;
                 foreach (Control control in tableGUI_pnl.Controls)
                 {
-                    if (control is TableControl)
-                    ((TableControl)control).ImageTable = value;
+                    if (control is TableControl tbControl)
+                    {
+                        tbControl.ImageTable = itemImage;
+                    }
                 }
                 Invalidate();
             }
