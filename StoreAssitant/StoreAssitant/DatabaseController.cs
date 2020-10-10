@@ -20,10 +20,10 @@ namespace StoreAssitant
         string databaseName;
 
         string TB_TABLE ;
-        string[] TB_TABLE_COLUMNS;
+        string[] COLUMNS_TB_TABLE;
 
         string TB_PRODUCT;
-        string[] TB_PRODUCT_COLUMNS;
+        string[] COLUMNS_TB_PRODUCT;
 
         public DatabaseController()
         {
@@ -33,9 +33,9 @@ namespace StoreAssitant
             databaseName = "DBStoreAssistant";
 
             TB_TABLE = "TB_TABLE";
-            TB_TABLE_COLUMNS = new string[2] { "ID", "TB_NAME" };
+            COLUMNS_TB_TABLE = new string[2] { "ID", "TB_NAME" };
             TB_PRODUCT = "TB_PRODUCT";
-            TB_PRODUCT_COLUMNS = new string[5] { "ID", "PD_NAME", "PRICE", "DESCRIP", "IMAGE_ID" };
+            COLUMNS_TB_PRODUCT = new string[5] { "ID", "PD_NAME", "PRICE", "DESCRIP", "IMAGE_ID" };
 
             connection = new SqlConnection(SQLStatementManager.GetConnectionString(username, password, serverName, databaseName));
         }
@@ -68,7 +68,7 @@ namespace StoreAssitant
 
             List<TableInfo> rs = null;
 
-            using (SqlCommand cmd = new SqlCommand(string.Format("SELECT {1},{2} FROM {0}", TB_TABLE, TB_TABLE_COLUMNS[0], TB_TABLE_COLUMNS[1]), connection))
+            using (SqlCommand cmd = new SqlCommand(string.Format("SELECT {1},{2} FROM {0}", TB_TABLE, COLUMNS_TB_TABLE[0], COLUMNS_TB_TABLE[1]), connection))
             {
                 SqlDataReader reader = cmd.ExecuteReader();
                 rs = new List<TableInfo>();
@@ -89,7 +89,7 @@ namespace StoreAssitant
             List<ProductInfo> rs = null;
 
             using (SqlCommand cmd = new SqlCommand(string.Format("SELECT {1},{2},{3},{4},{5} FROM {0}", 
-                TB_PRODUCT, TB_PRODUCT_COLUMNS[0], TB_PRODUCT_COLUMNS[1], TB_PRODUCT_COLUMNS[2], TB_PRODUCT_COLUMNS[3], TB_PRODUCT_COLUMNS[4]), connection))
+                TB_PRODUCT, COLUMNS_TB_PRODUCT[0], COLUMNS_TB_PRODUCT[1], COLUMNS_TB_PRODUCT[2], COLUMNS_TB_PRODUCT[3], COLUMNS_TB_PRODUCT[4]), connection))
             {
                 SqlDataReader reader = cmd.ExecuteReader();
                 rs = new List<ProductInfo>();
@@ -102,6 +102,46 @@ namespace StoreAssitant
             }
 
             return rs;
+        }
+
+        public bool InsertTable(TableInfo tableInfo)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            using (SqlCommand cmd = new SqlCommand(string.Format("INSERT INTO {0}({1},{2}) VALUES(@{1}_, @2_);", TB_TABLE, COLUMNS_TB_TABLE[0], COLUMNS_TB_TABLE[1]), connection))
+            {
+                SqlParameter param_id = new SqlParameter();
+                param_id.ParameterName = string.Format("@{0}_", COLUMNS_TB_TABLE[0]);
+                param_id.SqlDbType = SqlDbType.SmallInt;
+                param_id.Value = tableInfo.Id;
+
+                SqlParameter param_name = new SqlParameter();
+                param_name.ParameterName = string.Format("@{0}_", COLUMNS_TB_TABLE[1]);
+                param_name.SqlDbType = SqlDbType.VarChar;
+                param_name.Value = tableInfo.Name;
+
+                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_TABLE[0]), SqlDbType.SmallInt).Value = tableInfo.Id;
+                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_TABLE[1]), SqlDbType.VarChar).Value = tableInfo.Name;
+
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+
+        public bool InsertProduct(ProductInfo productInfo)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            using (SqlCommand cmd = new SqlCommand(string.Format("INSERT INTO {0}({1},{2},{3},{4},{5}) VALUES(@{1}_,@{2}_,@{3}_,@{4}_,@{5}_)",
+                TB_PRODUCT, COLUMNS_TB_PRODUCT[0], COLUMNS_TB_PRODUCT[1], COLUMNS_TB_PRODUCT[2], COLUMNS_TB_PRODUCT[3], COLUMNS_TB_PRODUCT[4]), connection))
+            {
+                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[0]), SqlDbType.SmallInt).Value = productInfo.Id;
+                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[1]), SqlDbType.VarChar).Value = productInfo.Name;
+                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[2]), SqlDbType.SmallInt).Value = productInfo.Price;
+                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[3]), SqlDbType.VarChar).Value = productInfo.Description;
+                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[4]), SqlDbType.Int).Value = null;
+
+                return cmd.ExecuteNonQuery() > 0;
+            }
         }
 
         public void Dispose()
