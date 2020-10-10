@@ -28,113 +28,122 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
+            this.lbName = new System.Windows.Forms.Label();
+            this.lbSinglePrice = new System.Windows.Forms.Label();
+            this.lbNumber = new System.Windows.Forms.Label();
+            this.lbTotalPrice = new System.Windows.Forms.Label();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.pnlNumber = new System.Windows.Forms.Panel();
+            this.pnlNumber.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // lbName
             // 
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 30);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Tên";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbName.Location = new System.Drawing.Point(0, 0);
+            this.lbName.Name = "lbName";
+            this.lbName.Size = new System.Drawing.Size(130, 30);
+            this.lbName.TabIndex = 0;
+            this.lbName.Text = "Tên";
+            this.lbName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label2
+            // lbSinglePrice
             // 
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(130, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 30);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Đơn giá";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbSinglePrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbSinglePrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbSinglePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSinglePrice.Location = new System.Drawing.Point(130, 0);
+            this.lbSinglePrice.Name = "lbSinglePrice";
+            this.lbSinglePrice.Size = new System.Drawing.Size(100, 30);
+            this.lbSinglePrice.TabIndex = 1;
+            this.lbSinglePrice.Text = "Đơn giá";
+            this.lbSinglePrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label3
+            // lbNumber
             // 
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(34, 3);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "SL";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbNumber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNumber.Location = new System.Drawing.Point(34, 3);
+            this.lbNumber.Name = "lbNumber";
+            this.lbNumber.Size = new System.Drawing.Size(41, 20);
+            this.lbNumber.TabIndex = 2;
+            this.lbNumber.Text = "SL";
+            this.lbNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label4
+            // lbTotalPrice
             // 
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(340, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 30);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Tổng tiền";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbTotalPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbTotalPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotalPrice.Location = new System.Drawing.Point(340, 0);
+            this.lbTotalPrice.Name = "lbTotalPrice";
+            this.lbTotalPrice.Size = new System.Drawing.Size(100, 30);
+            this.lbTotalPrice.TabIndex = 3;
+            this.lbTotalPrice.Text = "Tổng tiền";
+            this.lbTotalPrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // button1
+            // btnAdd
             // 
-            this.button1.Location = new System.Drawing.Point(6, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(23, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "+";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAdd.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAdd.Location = new System.Drawing.Point(6, 2);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(23, 23);
+            this.btnAdd.TabIndex = 2;
+            this.btnAdd.Text = "+";
+            this.btnAdd.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // btnRemove
             // 
-            this.button2.Location = new System.Drawing.Point(80, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(22, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "-";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnRemove.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRemove.Location = new System.Drawing.Point(80, 2);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(23, 23);
+            this.btnRemove.TabIndex = 2;
+            this.btnRemove.Text = "-";
+            this.btnRemove.UseVisualStyleBackColor = false;
             // 
-            // panel1
+            // pnlNumber
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(230, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(110, 30);
-            this.panel1.TabIndex = 6;
+            this.pnlNumber.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.pnlNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlNumber.Controls.Add(this.btnRemove);
+            this.pnlNumber.Controls.Add(this.btnAdd);
+            this.pnlNumber.Controls.Add(this.lbNumber);
+            this.pnlNumber.Location = new System.Drawing.Point(230, 0);
+            this.pnlNumber.Name = "pnlNumber";
+            this.pnlNumber.Size = new System.Drawing.Size(110, 30);
+            this.pnlNumber.TabIndex = 2;
             // 
             // TableLine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pnlNumber);
+            this.Controls.Add(this.lbTotalPrice);
+            this.Controls.Add(this.lbSinglePrice);
+            this.Controls.Add(this.lbName);
             this.Name = "TableLine";
             this.Size = new System.Drawing.Size(440, 30);
-            this.panel1.ResumeLayout(false);
+            this.pnlNumber.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lbName;
+        private System.Windows.Forms.Label lbSinglePrice;
+        private System.Windows.Forms.Label lbNumber;
+        private System.Windows.Forms.Label lbTotalPrice;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Panel pnlNumber;
     }
 }

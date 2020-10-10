@@ -30,8 +30,8 @@
         {
             this.tableTitle_pnl = new System.Windows.Forms.Panel();
             this.btn_Cancel = new System.Windows.Forms.Button();
-            this.tableIcon_pnl = new System.Windows.Forms.Panel();
             this.tableTitle_lb = new System.Windows.Forms.Label();
+            this.tableIcon_pnl = new System.Windows.Forms.Panel();
             this.tableTitle_pnl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,17 +63,6 @@
             this.btn_Cancel.UseVisualStyleBackColor = false;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
-            // tableIcon_pnl
-            // 
-            this.tableIcon_pnl.BackgroundImage = global::StoreAssitant.Properties.Resources.thu_ngân;
-            this.tableIcon_pnl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tableIcon_pnl.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tableIcon_pnl.Location = new System.Drawing.Point(0, 0);
-            this.tableIcon_pnl.Margin = new System.Windows.Forms.Padding(2);
-            this.tableIcon_pnl.Name = "tableIcon_pnl";
-            this.tableIcon_pnl.Size = new System.Drawing.Size(50, 48);
-            this.tableIcon_pnl.TabIndex = 3;
-            // 
             // tableTitle_lb
             // 
             this.tableTitle_lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -84,6 +73,17 @@
             this.tableTitle_lb.TabIndex = 2;
             this.tableTitle_lb.Text = "BÀN";
             this.tableTitle_lb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tableIcon_pnl
+            // 
+            this.tableIcon_pnl.BackgroundImage = global::StoreAssitant.Properties.Resources.thu_ngân;
+            this.tableIcon_pnl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tableIcon_pnl.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tableIcon_pnl.Location = new System.Drawing.Point(0, 0);
+            this.tableIcon_pnl.Margin = new System.Windows.Forms.Padding(2);
+            this.tableIcon_pnl.Name = "tableIcon_pnl";
+            this.tableIcon_pnl.Size = new System.Drawing.Size(50, 48);
+            this.tableIcon_pnl.TabIndex = 3;
             // 
             // TableBill
             // 

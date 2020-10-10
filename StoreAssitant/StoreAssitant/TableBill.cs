@@ -19,7 +19,7 @@ namespace StoreAssitant
 
             setData(table);
         }
-
+        private List<TableLine> listTableLine;
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -31,14 +31,10 @@ namespace StoreAssitant
             else
             {
                 this.info = info;
-                int STT = 1;
+                MessageBox.Show("SetData của TableBill");
                 foreach (var product in this.info.ProductList)
                 {
-                    ListViewItem item = new ListViewItem(STT++.ToString());
-                    item.SubItems.Add(product.Product.Name);
-                    item.SubItems.Add(product.Product.Price.ToString());
-                    item.SubItems.Add(product.NumberProduct.ToString());
-                    item.SubItems.Add((product.Product.Price * product.NumberProduct).ToString());
+                    
                 }
             }
         }
