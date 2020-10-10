@@ -39,7 +39,6 @@ namespace StoreAssitant
                     item.SubItems.Add(product.Product.Price.ToString());
                     item.SubItems.Add(product.NumberProduct.ToString());
                     item.SubItems.Add((product.Product.Price * product.NumberProduct).ToString());
-                    tableListView.Items.Add(item);
                 }
             }
         }

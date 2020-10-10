@@ -32,12 +32,6 @@
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.tableIcon_pnl = new System.Windows.Forms.Panel();
             this.tableTitle_lb = new System.Windows.Forms.Label();
-            this.tableListView = new System.Windows.Forms.ListView();
-            this.STT_column = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Name_Column = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.SinglePrice_Column = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Number_Column = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.TotalPrice_Column = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tableTitle_pnl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,54 +85,11 @@
             this.tableTitle_lb.Text = "BÀN";
             this.tableTitle_lb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tableListView
-            // 
-            this.tableListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.STT_column,
-            this.Name_Column,
-            this.SinglePrice_Column,
-            this.Number_Column,
-            this.TotalPrice_Column});
-            this.tableListView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableListView.HideSelection = false;
-            this.tableListView.Location = new System.Drawing.Point(0, 54);
-            this.tableListView.Name = "tableListView";
-            this.tableListView.Size = new System.Drawing.Size(420, 516);
-            this.tableListView.TabIndex = 5;
-            this.tableListView.UseCompatibleStateImageBehavior = false;
-            this.tableListView.View = System.Windows.Forms.View.Details;
-            // 
-            // STT_column
-            // 
-            this.STT_column.Text = "STT";
-            this.STT_column.Width = 35;
-            // 
-            // Name_Column
-            // 
-            this.Name_Column.Text = "Tên món";
-            this.Name_Column.Width = 168;
-            // 
-            // SinglePrice_Column
-            // 
-            this.SinglePrice_Column.Text = "Đơn giá";
-            this.SinglePrice_Column.Width = 69;
-            // 
-            // Number_Column
-            // 
-            this.Number_Column.Text = "Số lượng";
-            this.Number_Column.Width = 54;
-            // 
-            // TotalPrice_Column
-            // 
-            this.TotalPrice_Column.Text = "Thành tiền";
-            this.TotalPrice_Column.Width = 101;
-            // 
             // TableBill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Controls.Add(this.tableListView);
             this.Controls.Add(this.tableTitle_pnl);
             this.Name = "TableBill";
             this.Size = new System.Drawing.Size(420, 570);
@@ -153,12 +104,6 @@
         private System.Windows.Forms.Panel tableTitle_pnl;
         private System.Windows.Forms.Panel tableIcon_pnl;
         private System.Windows.Forms.Label tableTitle_lb;
-        private System.Windows.Forms.ListView tableListView;
-        private System.Windows.Forms.ColumnHeader STT_column;
-        private System.Windows.Forms.ColumnHeader Name_Column;
-        private System.Windows.Forms.ColumnHeader SinglePrice_Column;
-        private System.Windows.Forms.ColumnHeader Number_Column;
-        private System.Windows.Forms.ColumnHeader TotalPrice_Column;
         private System.Windows.Forms.Button btn_Cancel;
     }
 }
