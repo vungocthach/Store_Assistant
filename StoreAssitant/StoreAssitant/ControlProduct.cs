@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using System.CodeDom;
+using System.Reflection;
 
 namespace StoreAssitant
 {
@@ -32,7 +33,8 @@ namespace StoreAssitant
         {
            // if (addProduct != null)
         }
-
+        
+        public MenuView M;
         public ControlProduct()
         {
             InitializeComponent();
@@ -46,6 +48,8 @@ namespace StoreAssitant
 
         private void PanelImage_Click(object sender, EventArgs e)
         {
+            M = new MenuView();
+            M.Onclick();
             panelImage.BorderStyle = BorderStyle.None;
            // panelImage.BorderStyle = BorderStyle.Fixed3D;
         }
