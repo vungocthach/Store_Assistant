@@ -93,11 +93,11 @@ namespace StoreAssitant
         {
             add
             {
-                add_ControlProduct += value;
+                add_Product += value;
             }
             remove
             {
-                add_ControlProduct -= value;
+                add_Product -= value;
             }
         }
         public void on_add_Product()

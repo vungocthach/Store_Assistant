@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.controlProduct = new StoreAssitant.ControlProduct();
-            this.controlSearch = new StoreAssitant.ControlSearch();
-            this.ControlTitle = new StoreAssitant.TitleControl();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuView));
             this.kryptonContextMenu1 = new ComponentFactory.Krypton.Toolkit.KryptonContextMenu();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.controlSearch = new StoreAssitant.ControlSearch();
+            this.controlProduct = new StoreAssitant.ControlProduct();
+            this.menuControl1 = new StoreAssitant.MenuControl();
+            this.ControlTitle = new StoreAssitant.TitleControl();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,12 +42,21 @@
             // 
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.Controls.Add(this.controlProduct);
+            this.flowLayoutPanel1.Controls.Add(this.menuControl1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 62);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(427, 377);
             this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // controlSearch
+            // 
+            this.controlSearch.Location = new System.Drawing.Point(0, 31);
+            this.controlSearch.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.controlSearch.Name = "controlSearch";
+            this.controlSearch.Size = new System.Drawing.Size(419, 29);
+            this.controlSearch.TabIndex = 2;
             // 
             // controlProduct
             // 
@@ -58,22 +69,25 @@
             this.controlProduct.Size = new System.Drawing.Size(165, 145);
             this.controlProduct.TabIndex = 0;
             // 
-            // controlSearch
+            // menuControl1
             // 
-            this.controlSearch.Location = new System.Drawing.Point(0, 31);
-            this.controlSearch.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.controlSearch.Name = "controlSearch";
-            this.controlSearch.Size = new System.Drawing.Size(419, 29);
-            this.controlSearch.TabIndex = 2;
+            this.menuControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.menuControl1.image = ((System.Drawing.Image)(resources.GetObject("menuControl1.image")));
+            this.menuControl1.Location = new System.Drawing.Point(176, 3);
+            this.menuControl1.Name = "menuControl1";
+            this.menuControl1.NameTitle = "textBoxName";
+            this.menuControl1.Size = new System.Drawing.Size(150, 150);
+            this.menuControl1.TabIndex = 3;
             // 
             // ControlTitle
             // 
             this.ControlTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ControlTitle.image = ((System.Drawing.Image)(resources.GetObject("ControlTitle.image")));
             this.ControlTitle.Location = new System.Drawing.Point(0, 0);
             this.ControlTitle.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.ControlTitle.MinimumSize = new System.Drawing.Size(0, 32);
             this.ControlTitle.Name = "ControlTitle";
-           // this.ControlTitle.NameTitle = "Menu";
+            this.ControlTitle.NameTitle = "Menu";
             this.ControlTitle.Size = new System.Drawing.Size(427, 32);
             this.ControlTitle.TabIndex = 0;
             // 
@@ -94,9 +108,10 @@
         #endregion
 
         private TitleControl ControlTitle;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private ControlProduct controlProduct;
         private ControlSearch controlSearch;
         private ComponentFactory.Krypton.Toolkit.KryptonContextMenu kryptonContextMenu1;
+        private ControlProduct controlProduct;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private MenuControl menuControl1;
     }
 }
