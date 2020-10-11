@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using StoreAssitant.Class_Information;
 
 namespace StoreAssitant
 {
@@ -15,7 +16,7 @@ namespace StoreAssitant
         public TableLine()
         {
             InitializeComponent();
-            this.SizeChanged += TableLine_SizeChanged;
+            this.Layout += TableLine_Layout;
             this.MinimumSize = new Size(348, 23);
             btnAdd.Click += BtnAdd_Click;
             btnRemove.Click += BtnRemove_Click;
@@ -25,29 +26,29 @@ namespace StoreAssitant
 
         private void LbSinglePrice_TextChanged(object sender, EventArgs e)
         {
-            lbTotalPrice.Text = TotalPrice();
+            lbTotalPrice.Text = TotalPrice().ToString();
         }
         private void LbNumber_TextChanged(object sender, EventArgs e)
         {
-            lbTotalPrice.Text = TotalPrice();
+            lbTotalPrice.Text = TotalPrice().ToString();
         }
-        private string TotalPrice()
+        private int TotalPrice()
         {
-            return (int.Parse(lbSinglePrice.Text) * int.Parse(lbNumber.Text)).ToString();
+            return SinglePrice * Number;
         }
 
-        private void SetData(ProductInfo product, int number = 1)
+        public void SetData(Products product)
         {
             Name = product.Name;
-            SinglePrice = product.Price.ToString();
-            Number = number.ToString();
-            lbTotalPrice.Text = TotalPrice();
+            SinglePrice = product.Price;
+            Number = product.NumberProduct;
+            lbTotalPrice.Text = TotalPrice().ToString();
         }
 
         private void BtnRemove_Click(object sender, EventArgs e)
         {
-            lbNumber.Text = (int.Parse(lbNumber.Text) - 1).ToString();
-            if (0 == int.Parse(lbNumber.Text))
+            Number--;
+            if (0 == Number)
             {
                 MessageBox.Show("Thực hiện xóa dòng này");
             }
@@ -55,10 +56,10 @@ namespace StoreAssitant
 
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            lbNumber.Text = (int.Parse(lbNumber.Text) + 1).ToString();
+            Number++;
         }
 
-        private void TableLine_SizeChanged(object sender, EventArgs e)
+        private void TableLine_Layout(object sender, EventArgs e)
         {
             lbName.Size = new Size(this.Size.Width * 13 / 44, this.Size.Height);
             lbTotalPrice.Size = lbSinglePrice.Size = new Size(this.Size.Width * 10 / 44, this.Size.Height);
@@ -72,6 +73,7 @@ namespace StoreAssitant
             btnAdd.Location = new Point((lbNumber.Location.X - btnAdd.Size.Width) / 2, (btnAdd.Parent.Size.Height - btnAdd.Size.Height)/2 - 1);
             btnRemove.Location = new Point(lbNumber.Parent.Width - btnAdd.Location.X - btnAdd.Size.Width, (btnRemove.Parent.Size.Height - btnRemove.Size.Height) / 2 - 1);
         }
+        #region PROPERTIES
         [Category("MyProperties"),Description("Name of product")]
         public string Name
         {
@@ -83,29 +85,33 @@ namespace StoreAssitant
             }
         }
         [Category("MyProperties"),Description("Price of product")]
-        public string SinglePrice
+        public int SinglePrice
         {
-            get => lbSinglePrice.Text;
+            get => int.Parse(lbSinglePrice.Text);
             set
             {
-                lbSinglePrice.Text = value;
+                lbSinglePrice.Text = value.ToString();
                 Invalidate();
             }
         }
         [Category("MyProperties"),Description("Number product")]
-        public string Number
+        public int Number
         {
-            get => lbNumber.Text;
+            get => int.Parse(lbNumber.Text);
             set
             {
-                if (int.Parse(value) < 0)
+                if (value == 0)
                 {
-                    MessageBox.Show("Số lượng phải là số dương", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    btnRemove.Enabled = false;
                 }
-                lbNumber.Text = value;
+                else
+                {
+                    btnRemove.Enabled = true;
+                }
+                lbNumber.Text = value.ToString();
                 Invalidate();
             }
         }
+        #endregion
     }
 }

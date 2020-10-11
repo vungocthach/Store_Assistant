@@ -71,7 +71,7 @@
             this.lbNumber.Name = "lbNumber";
             this.lbNumber.Size = new System.Drawing.Size(41, 20);
             this.lbNumber.TabIndex = 2;
-            this.lbNumber.Text = "SL";
+            this.lbNumber.Text = "0";
             this.lbNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbTotalPrice
