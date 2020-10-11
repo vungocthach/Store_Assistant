@@ -15,11 +15,19 @@ namespace StoreAssitant
 {
     public partial class ControlProduct : UserControl
     {
-        public MenuView M;
+
+        public event EventHandler _Click;
+
+        void on_Click(object sender, EventArgs e )
+        { }
+
         public ControlProduct()
         {
             InitializeComponent();
-            this.SizeChanged += ControlProduct_SizeChanged;
+
+            _Click = new EventHandler(on_Click);
+
+           // this.SizeChanged += ControlProduct_SizeChanged;
             panelImage.MouseHover += ControlProduct_MouseHover;
             panelImage.MouseLeave += PanelImage_MouseLeave;
             panelImage.Click += PanelImage_Click;
@@ -29,10 +37,8 @@ namespace StoreAssitant
 
         private void PanelImage_Click(object sender, EventArgs e)
         {
-            M = new MenuView();
-            M.Onclick();
+            _Click(this, new EventArgs());
             panelImage.BorderStyle = BorderStyle.None;
-           // panelImage.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void PanelImage_MouseLeave(object sender, EventArgs e)
