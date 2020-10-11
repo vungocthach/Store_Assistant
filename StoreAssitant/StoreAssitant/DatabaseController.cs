@@ -7,6 +7,10 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Data.SqlTypes;
 using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Drawing.Imaging;
+using System.Windows.Forms;
 
 namespace StoreAssitant
 {
@@ -19,8 +23,11 @@ namespace StoreAssitant
         string serverName ;
         string databaseName;
 
-        string TB_TABLE ;
-        string[] COLUMNS_TB_TABLE;
+        string TB_INTERGER ;
+        string[] COLUMNS_TB_INTERGER;
+
+        string TB_IMAGE;
+        string[] COLUMNS_TB_IMAGE;
 
         string TB_PRODUCT;
         string[] COLUMNS_TB_PRODUCT;
@@ -32,8 +39,10 @@ namespace StoreAssitant
             serverName = "tcp:52.187.161.61,2001";
             databaseName = "DBStoreAssistant";
 
-            TB_TABLE = "TB_TABLE";
-            COLUMNS_TB_TABLE = new string[2] { "ID", "TB_NAME" };
+            TB_INTERGER = "TB_INTERGER";
+            COLUMNS_TB_INTERGER = new string[2] { "M_KEY", "M_VALUE" };
+            TB_IMAGE = "TB_IMAGE";
+            COLUMNS_TB_IMAGE = new string[2] { "ID", "M_VALUE" };
             TB_PRODUCT = "TB_PRODUCT";
             COLUMNS_TB_PRODUCT = new string[5] { "ID", "PD_NAME", "PRICE", "DESCRIP", "IMAGE_ID" };
 
@@ -62,24 +71,21 @@ namespace StoreAssitant
             }
         }
 
-        public List<TableInfo> GetTableInfos()
+        public int GetTableInfos()
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
 
-            List<TableInfo> rs = null;
+            int rs;
 
-            using (SqlCommand cmd = new SqlCommand(string.Format("SELECT {1},{2} FROM {0}", TB_TABLE, COLUMNS_TB_TABLE[0], COLUMNS_TB_TABLE[1]), connection))
+            using (SqlCommand cmd = new SqlCommand(string.Format("SELECT {2} FROM {0} WHERE {1} = 'tbl_count';", TB_INTERGER, COLUMNS_TB_INTERGER[0], COLUMNS_TB_INTERGER[1]), connection))
             {
                 SqlDataReader reader = cmd.ExecuteReader();
-                rs = new List<TableInfo>();
-                while (reader.Read())
-                {
-                    rs.Add(new TableInfo(reader.GetInt16(0), reader.GetString(1)));
-                }
+                reader.Read();
+                rs = reader.GetInt32(0);
                 reader.Close();
+                return rs;
             }
 
-            return rs;
         }
 
         public List<ProductInfo> GetProductInfos()
@@ -95,8 +101,13 @@ namespace StoreAssitant
                 rs = new List<ProductInfo>();
                 while (reader.Read())
                 {
-                    int img_id = reader.GetInt32(4);
-                    rs.Add(new ProductInfo(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3)));
+                    ProductInfo info = new ProductInfo(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3));
+                    int id_img = reader.GetInt32(4);
+                    if (id_img != null)
+                    {
+                        info.Image = GetImage(id_img);
+                    }
+                    rs.Add(info);
                 }
                 reader.Close();
             }
@@ -104,24 +115,64 @@ namespace StoreAssitant
             return rs;
         }
 
-        public bool InsertTable(TableInfo tableInfo)
+        public Bitmap GetImage(int id)
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
 
-            using (SqlCommand cmd = new SqlCommand(string.Format("INSERT INTO {0}({1},{2}) VALUES(@{1}_, @2_);", TB_TABLE, COLUMNS_TB_TABLE[0], COLUMNS_TB_TABLE[1]), connection))
+            Bitmap rs = null;
+
+            using (SqlCommand cmd = new SqlCommand(string.Format("SELECT {2} FROM {0} WHERE {1} = @id_;",
+                TB_IMAGE, COLUMNS_TB_IMAGE[0], COLUMNS_TB_IMAGE[1], id.ToString()), connection))
             {
-                SqlParameter param_id = new SqlParameter();
-                param_id.ParameterName = string.Format("@{0}_", COLUMNS_TB_TABLE[0]);
-                param_id.SqlDbType = SqlDbType.SmallInt;
-                param_id.Value = tableInfo.Id;
+                cmd.Parameters.Add("@id_", SqlDbType.Int).Value = id;
+                SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.SequentialAccess);
+                reader.Read();
+                using (MemoryStream memoryStream = new MemoryStream(reader.GetSqlBinary(0).Value))
+                {
+                    if (memoryStream.Length > 0)
+                    {
+                        rs = new Bitmap(memoryStream);
+                    }
+                }
+                reader.Close();
+            }
 
-                SqlParameter param_name = new SqlParameter();
-                param_name.ParameterName = string.Format("@{0}_", COLUMNS_TB_TABLE[1]);
-                param_name.SqlDbType = SqlDbType.VarChar;
-                param_name.Value = tableInfo.Name;
+            return rs;
+        }
 
-                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_TABLE[0]), SqlDbType.SmallInt).Value = tableInfo.Id;
-                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_TABLE[1]), SqlDbType.VarChar).Value = tableInfo.Name;
+        public Bitmap GetImage2(int id)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            Bitmap rs = null;
+
+            
+
+            using (SqlCommand cmd = new SqlCommand(string.Format("SELECT {2} FROM {0} WHERE {1} = @id_;",
+                TB_IMAGE, COLUMNS_TB_IMAGE[0], COLUMNS_TB_IMAGE[1], id.ToString(), connection)))
+            {
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                cmd.Parameters.Add("@id_", SqlDbType.Int).Value = id;
+                SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.SequentialAccess);
+                MessageBox.Show("Read ok");
+                reader.Read();
+                using (MemoryStream memoryStream = new MemoryStream(reader.GetSqlBinary(0).Value))
+                {
+                    rs = new Bitmap(memoryStream);
+                }
+                //reader.Close();
+            }
+
+            return rs;
+        }
+
+        public bool InsertTable(int table_count)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            using (SqlCommand cmd = new SqlCommand(string.Format("INSERT INTO {0}({1},{2}) VALUES('tbl_count', @{2}_);", TB_INTERGER, COLUMNS_TB_INTERGER[0], COLUMNS_TB_INTERGER[1]), connection))
+            {
+                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_INTERGER[1]), SqlDbType.Int).Value = table_count;
 
                 return cmd.ExecuteNonQuery() > 0;
             }
@@ -138,8 +189,31 @@ namespace StoreAssitant
                 cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[1]), SqlDbType.VarChar).Value = productInfo.Name;
                 cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[2]), SqlDbType.SmallInt).Value = productInfo.Price;
                 cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[3]), SqlDbType.VarChar).Value = productInfo.Description;
-                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[4]), SqlDbType.Int).Value = null;
+                if (productInfo.Image == null)
+                {
+                    cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[4]), SqlDbType.Int).Value = -1;
+                }
+                else
+                {
+                    InsertImage(productInfo.Image, productInfo.Id);
+                    cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[4]), SqlDbType.Int).Value = productInfo.Id;
+                }
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
 
+        public bool InsertImage(Bitmap bitmap, int id)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            using (SqlCommand cmd = new SqlCommand(string.Format("INSERT INTO {0}({1},{2}) VALUES(@{1}_, @{2}_);", TB_IMAGE, COLUMNS_TB_IMAGE[0], COLUMNS_TB_IMAGE[1]), connection))
+            {
+                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_IMAGE[0]), SqlDbType.Int).Value = id;
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    bitmap.Save(memoryStream, ImageFormat.Jpeg);
+                    cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_IMAGE[1]), SqlDbType.VarBinary).Value = memoryStream.ToArray();
+                }
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
@@ -147,6 +221,7 @@ namespace StoreAssitant
         public void Dispose()
         {
             Disconnect();
+            connection.Dispose();
         }
     }
 }

@@ -132,7 +132,7 @@ namespace StoreAssitant
                 SetLocationY_bottom_control(controlSearch, ControlTitle);
             });
             itemSize = new Size(100, 100);
-            this.Add_ControlProduct += MenuView_Add_ControlProduct;
+            this.add_ControlProduct = new EventHandler(MenuView_Add_ControlProduct);
             this.Add_Product += MenuView_Add_Product;
            
             //  flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;

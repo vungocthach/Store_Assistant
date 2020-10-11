@@ -10,20 +10,40 @@ using System.Windows.Forms;
 using System.Drawing.Printing;
 using System.IO;
 using System.Windows.Markup;
+using System.Drawing.Imaging;
 
 namespace StoreAssitant
 {
     public partial class ProductBox : UserControl
     {
-
         [Category("My Properties"), Description("Image of product")]
-        public Image PDImage
+        public Bitmap PDImage
         {
-            get { return label_Image.Image; }
+            get { if (label_Image.Image == null) { return null; } else { return (Bitmap)label_Image.Image; } }
             set
             {
-                label_Image.Image = value;
-                ResizeImage();
+                if (value == null)
+                {
+                    // Draw default image
+                    label_Image.Image = null;
+                    label_Image.Text = "Chọn hình ảnh" + Environment.NewLine + "(+)";
+                    return;
+                }
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    Bitmap bmp = new Bitmap(value, label_Image.Size);
+                    bmp.Save(memoryStream, ImageFormat.Jpeg);
+
+                    if (memoryStream.Length > 25000)
+                    {
+                        MessageBox.Show("Vui lòng chọn ảnh có kích thước < 256kb", "File quá lớn", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        if (label_Image.Image == null) { label_Image.Text = string.Empty; }
+                        label_Image.Image = bmp;
+                    }
+                }
                 Invalidate();
             }
         }
@@ -83,7 +103,7 @@ namespace StoreAssitant
                 string path = GetPath();
                 if (path != null && File.Exists(path))
                 {
-                    this.PDImage = Image.FromFile(path);
+                    this.PDImage = new Bitmap(path);
                 }
             });
 
@@ -251,7 +271,7 @@ namespace StoreAssitant
             }
         }
 
-        private void ResizeImage()
+        private void ResizeImage(ref Image target)
         {
             if (label_Image.Image != null )
             {
@@ -270,7 +290,7 @@ namespace StoreAssitant
             string rs = null;
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Title = "Chọn ảnh";
-            openFileDialog.Filter = "Image File (*.img, *.bmp, *.jpg)|*.img;*.bmp;*.jpg";
+            openFileDialog.Filter = "Image File (*.img, *.bmp, *.jpg, *.png)|*.img;*.bmp;*.jpg;*.png";
             openFileDialog.FileOk += new CancelEventHandler((object sender, CancelEventArgs e) =>
             {
                 if (openFileDialog.CheckFileExists)

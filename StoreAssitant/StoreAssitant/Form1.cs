@@ -23,12 +23,19 @@ namespace StoreAssitant
 
             try
             {
-                DatabaseController databaseController = new DatabaseController();
-                databaseController.ConnectToSQLDatabase();
-                tableView1.SetData(databaseController.GetTableInfos());
-                databaseController.Disconnect();
+                using (DatabaseController databaseController = new DatabaseController())
+                {
+                    databaseController.ConnectToSQLDatabase();
+                    this.Text = databaseController.GetTableInfos().ToString();
+                    databaseController.Disconnect();
+                }
             }
-            catch (Exception e) { MessageBox.Show(e.Message); }
+            catch (Exception e) { MessageBox.Show(e.Message, "SQL Connection error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+
+        private void MenuView1_Add_ControlProduct(object sender, EventArgs e)
+        {
+            MessageBox.Show("OK");
         }
 
         private void Form1_SizeChanged(object sender, EventArgs e)
@@ -42,7 +49,7 @@ namespace StoreAssitant
             {
                 form.ClickSubmitOK += new EventHandler<ProductInfo>((object sender, ProductInfo info) =>
                 {
-                    // Do something with ProductInfo
+                    menuView1.AddMenuControl(info);
                 });
                 form.ShowDialog();
             }

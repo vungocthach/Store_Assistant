@@ -10,7 +10,7 @@ namespace StoreAssitant
     public class ProductInfo
     {
         public int Id { get; set; }
-        public Image Image { get; set; }
+        public Bitmap Image { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
         public string Description { get; set; }
@@ -24,7 +24,7 @@ namespace StoreAssitant
             Description = string.Empty;
         }
 
-        public ProductInfo(int id, string name, int price, string description, Image img = null)
+        public ProductInfo(int id, string name, int price, string description, Bitmap img = null)
         {
             Id = id;
             Name = name;
