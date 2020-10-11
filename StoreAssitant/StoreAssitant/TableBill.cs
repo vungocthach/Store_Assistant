@@ -13,31 +13,32 @@ namespace StoreAssitant
 {
     public partial class TableBill : UserControl
     {
-        public TableBill(TableBillInfo tableinfo)
+        public event EventHandler CloseBill;
+        private void onCloseBill(object sender,EventArgs e)
+        {
+
+        }
+        public TableBill(TableBillInfo tableinfo, int iD)
         {
             InitializeComponent();
+            this.CloseBill = new EventHandler(onCloseBill);
             this.Layout += TableBill_Layout;
             tableTitle_pnl.Layout += TableBill_Layout;
-            Products item = new Products();
-            item.Name = "thạch";
-            item.Id = 1000;
-            item.Price = 1000;
-            item.NumberProduct = 2;
-            tableinfo.ProductInTable.Add(item);
+            tableTitle_lb.Text = "BÀN " + iD;
             setData(tableinfo);
         }
         private void TableBill_Layout(object sender, LayoutEventArgs e)
         {
             flpProductInfo.Height = this.Height - tableTitle_pnl.Location.Y - tableTitle_pnl.Height;
-            tableTitle_lb.Location = new Point(tableIcon_pnl.Location.X + tableIcon_pnl.Width + (this.Width - tableIcon_pnl.Location.X - tableIcon_pnl.Width - tableTitle_lb.Width) / 2, tableTitle_lb.Location.Y);
-            tableIcon_pnl.Size = new Size(tableIcon_pnl.Size.Height, tableIcon_pnl.Size.Height);
-            tableTitle_lb.Location = new Point(tableTitle_lb.Location.X, (tableTitle_pnl.Height - tableTitle_lb.Size.Height) / 2);
+            tableTitle_lb.Location = new Point((this.Size.Width - tableTitle_lb.Size.Width) / 2, 0);
+            tableTitle_lb.Size = new Size(tableTitle_lb.Size.Width, tableTitle_pnl.Height);
         }
 
         public TableBillInfo Billinfo { get; set; }
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.CloseBill(sender, e);
+            this.Dispose();
         }
 
         public void setData(TableBillInfo info)
@@ -55,6 +56,16 @@ namespace StoreAssitant
                     line.SetData(product);
                     flpProductInfo.Controls.Add(line);
                 }
+            }
+        }
+        [Category("My Properties"), Description("Name of the table selected")]
+        public string Name
+        {
+            get => tableTitle_lb.Text;
+            set
+            {
+                tableTitle_lb.Text = value;
+                Invalidate();
             }
         }
     }
