@@ -81,7 +81,7 @@
             this.krPage_Setting,
             this.krPage_Compare,
             this.krPage_Account});
-            this.kryptonNavigator1.SelectedIndex = 2;
+            this.kryptonNavigator1.SelectedIndex = 0;
             this.kryptonNavigator1.Size = new System.Drawing.Size(982, 713);
             this.kryptonNavigator1.TabIndex = 0;
             this.kryptonNavigator1.Text = "kryptonNavigator1";
@@ -92,7 +92,7 @@
             this.krPage_Cashier.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
             this.krPage_Cashier.Controls.Add(this.split_Cashier);
             this.krPage_Cashier.Flags = 65534;
-            this.krPage_Cashier.ImageMedium = global::StoreAssitant.Properties.Resources.iconfinder_shopping_shop_buy_discount_18_4038845;
+            this.krPage_Cashier.ImageMedium = ((System.Drawing.Image)(resources.GetObject("krPage_Cashier.ImageMedium")));
             this.krPage_Cashier.LastVisibleSet = true;
             this.krPage_Cashier.Margin = new System.Windows.Forms.Padding(2);
             this.krPage_Cashier.MinimumSize = new System.Drawing.Size(38, 41);
@@ -136,7 +136,7 @@
             this.krPage_Manager.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
             this.krPage_Manager.Controls.Add(this.split_Manager);
             this.krPage_Manager.Flags = 65534;
-            this.krPage_Manager.ImageMedium = global::StoreAssitant.Properties.Resources.iconfinder_Cashier_2_3793351;
+            this.krPage_Manager.ImageMedium = ((System.Drawing.Image)(resources.GetObject("krPage_Manager.ImageMedium")));
             this.krPage_Manager.LastVisibleSet = true;
             this.krPage_Manager.Margin = new System.Windows.Forms.Padding(2);
             this.krPage_Manager.MinimumSize = new System.Drawing.Size(38, 41);
@@ -160,7 +160,7 @@
             // 
             this.krPage_Statistic.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
             this.krPage_Statistic.Flags = 65534;
-            this.krPage_Statistic.ImageMedium = global::StoreAssitant.Properties.Resources.iconfinder_13_3319631;
+            this.krPage_Statistic.ImageMedium = ((System.Drawing.Image)(resources.GetObject("krPage_Statistic.ImageMedium")));
             this.krPage_Statistic.LastVisibleSet = true;
             this.krPage_Statistic.Margin = new System.Windows.Forms.Padding(2);
             this.krPage_Statistic.MinimumSize = new System.Drawing.Size(38, 41);
@@ -175,7 +175,7 @@
             // 
             this.krPage_Setting.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
             this.krPage_Setting.Flags = 65534;
-            this.krPage_Setting.ImageMedium = global::StoreAssitant.Properties.Resources.iconfinder_21_4698594;
+            this.krPage_Setting.ImageMedium = ((System.Drawing.Image)(resources.GetObject("krPage_Setting.ImageMedium")));
             this.krPage_Setting.LastVisibleSet = true;
             this.krPage_Setting.Margin = new System.Windows.Forms.Padding(2);
             this.krPage_Setting.MinimumSize = new System.Drawing.Size(38, 41);
@@ -190,7 +190,7 @@
             // 
             this.krPage_Compare.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
             this.krPage_Compare.Flags = 65534;
-            this.krPage_Compare.ImageMedium = global::StoreAssitant.Properties.Resources.iconfinder_51_5027845;
+            this.krPage_Compare.ImageMedium = ((System.Drawing.Image)(resources.GetObject("krPage_Compare.ImageMedium")));
             this.krPage_Compare.LastVisibleSet = true;
             this.krPage_Compare.MinimumSize = new System.Drawing.Size(50, 50);
             this.krPage_Compare.Name = "krPage_Compare";
@@ -204,7 +204,7 @@
             // 
             this.krPage_Account.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
             this.krPage_Account.Flags = 65534;
-            this.krPage_Account.ImageMedium = global::StoreAssitant.Properties.Resources.iconfinder_humans_1216581;
+            this.krPage_Account.ImageMedium = ((System.Drawing.Image)(resources.GetObject("krPage_Account.ImageMedium")));
             this.krPage_Account.LastVisibleSet = true;
             this.krPage_Account.Margin = new System.Windows.Forms.Padding(2);
             this.krPage_Account.MinimumSize = new System.Drawing.Size(38, 41);
@@ -217,6 +217,7 @@
             // 
             // tableView1
             // 
+            this.tableView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableView1.ImageCashierTable = ((System.Drawing.Image)(resources.GetObject("tableView1.ImageCashierTable")));
             this.tableView1.ItemImage = ((System.Drawing.Image)(resources.GetObject("tableView1.ItemImage")));

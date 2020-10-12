@@ -20,14 +20,14 @@ namespace StoreAssitant
             InitializeComponent();
             kryptonNavigator1.GotFocus += KryptonNavigator1_GotFocus;
             this.SizeChanged += Form1_SizeChanged;
-
+            
             try
             {
                 using (DatabaseController databaseController = new DatabaseController())
                 {
                     databaseController.ConnectToSQLDatabase();
-                    this.Text = databaseController.GetTableInfos().ToString();
-                    databaseController.Disconnect();
+                    tableView1.SetData(databaseController.GetTableCount());
+                    menuView1.SetData(databaseController.GetProductInfos());
                 }
             }
             catch (Exception e) { MessageBox.Show(e.Message, "SQL Connection error", MessageBoxButtons.OK, MessageBoxIcon.Error); }

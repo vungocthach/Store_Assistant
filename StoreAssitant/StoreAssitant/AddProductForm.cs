@@ -55,7 +55,7 @@ namespace StoreAssitant
             return productInfo;
         }
 
-        public void SetProductInfo(ProductInfo info)
+        public void SetData(ProductInfo info)
         {
             productBox1.PDImage = info.Image;
             productBox1.PDName = info.Name;
