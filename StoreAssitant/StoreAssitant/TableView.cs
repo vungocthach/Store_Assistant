@@ -25,12 +25,18 @@ namespace StoreAssitant
         void OnTableRemoved(object s, EventArgs e) { }
         public event EventHandler TableSelectedChanged;
         void OnTableSelectedChanged(object s, EventArgs e) { }
+        public event EventHandler DeleteTable;
+        void OnDeleteTable(object s, EventArgs e)
+        {
+
+        }
         #endregion
 
         #region SETTING FIELDS
         private int numberTable;
         private int indexSelectedTable;
         private bool isManager;
+        Image itemImage;
         #endregion
 
         public TableView()
@@ -42,6 +48,7 @@ namespace StoreAssitant
             this.TableAdded = new EventHandler(OnTableAdded);
             this.TableRemoved = new EventHandler(OnTableRemoved);
             this.TableSelectedChanged = new EventHandler(OnTableSelectedChanged);
+            this.DeleteTable = new EventHandler(OnDeleteTable);
 
             this.MinimumSize = new Size(tableTitle_lb.Location.X + tableTitle_lb.Size.Width, tableTitle_pnl.Height + tableAdd_btn.MinimumSize.Height);
 
@@ -78,7 +85,7 @@ namespace StoreAssitant
         private void Newtable_ClickTableControl(object sender, EventArgs e)
         {
             this.ClickButtonTable(this, e);
-            indexSelectedTable = tableGUI_pnl.Controls.IndexOf((TableControl)sender) + 1;
+            indexSelectedTable = tableGUI_pnl.Controls.IndexOf((TableControl)sender);
             Show_TableBill();
         }
         private void Show_TableBill()
@@ -110,6 +117,12 @@ namespace StoreAssitant
             TableControl newtable = new TableControl() { Size = ItemSize, nameTable = "BÀN " + tableGUI_pnl.Controls.Count, ImageTable = itemImage };
             tableGUI_pnl.Controls.Add(newtable);
             newtable.ClickTableControl += Newtable_ClickTableControl;
+            newtable.DeleteTable += Newtable_DeleteTable;
+        }
+
+        private void Newtable_DeleteTable(object sender, EventArgs e)
+        {
+            this.DeleteTable(this, e);
         }
 
 
@@ -195,8 +208,6 @@ namespace StoreAssitant
                 Invalidate();
             }
         }
-
-        Image itemImage;
         [Category("My Properties"), Description("Image of table control")]
         public Image ItemImage
         {

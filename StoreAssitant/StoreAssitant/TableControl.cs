@@ -20,12 +20,15 @@ namespace StoreAssitant
         {
 
         }
+        public event EventHandler DeleteTable;
+        void OnDeleteTable(object sender, EventArgs e) { }
         public TableControl()
         {
             InitializeComponent();
             this.Info = new TableBillInfo();
 
             ClickTableControl = new EventHandler(OnClickTableControl);
+            DeleteTable = new EventHandler(OnDeleteTable);
 
             this.SizeChanged += TableControl_SizeChanged;
             tableName_lb.TextChanged += Table_Name_TextChanged;
@@ -53,6 +56,13 @@ namespace StoreAssitant
             this.MinimumSize = new Size(tableName_lb.Size.Width, tableName_lb.Size.Height * 4);
             tableName_lb.Location = new Point((this.Size.Width - tableName_lb.Size.Width) / 2, (this.Size.Height + tableImage_pnl.Height - tableName_lb.Size.Height) / 2);
 
+            tsDelete.Click += TsDelete_Click;
+        }
+
+        private void TsDelete_Click(object sender, EventArgs e)
+        {
+            DeleteTable(this, e);
+            MessageBox.Show("Xóa 1 bàn cuối cùng");
         }
 
         #region EVENT MOUSE

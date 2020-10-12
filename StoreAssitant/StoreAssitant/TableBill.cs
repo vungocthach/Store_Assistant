@@ -24,7 +24,7 @@ namespace StoreAssitant
             this.CloseBill = new EventHandler(onCloseBill);
             this.Layout += TableBill_Layout;
             tableTitle_pnl.Layout += TableBill_Layout;
-            tableTitle_lb.Text = "BÀN " + iD;
+            tableTitle_lb.Text = "BÀN " + (iD+1);
             setData(tableinfo);
         }
         private void TableBill_Layout(object sender, LayoutEventArgs e)

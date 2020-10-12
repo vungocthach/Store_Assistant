@@ -30,12 +30,17 @@ namespace StoreAssitant
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableName_lb = new System.Windows.Forms.Label();
+            this.cmsTableControl = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.tableImage_pnl = new System.Windows.Forms.Panel();
+            this.cmsTableControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableName_lb
             // 
+            this.tableName_lb.ContextMenuStrip = this.cmsTableControl;
             this.tableName_lb.Location = new System.Drawing.Point(18, 98);
             this.tableName_lb.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.tableName_lb.Name = "tableName_lb";
@@ -44,11 +49,25 @@ namespace StoreAssitant
             this.tableName_lb.Text = "Name of Table";
             this.tableName_lb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // cmsTableControl
+            // 
+            this.cmsTableControl.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsDelete});
+            this.cmsTableControl.Name = "contextMenuStrip1";
+            this.cmsTableControl.Size = new System.Drawing.Size(181, 48);
+            // 
+            // tsDelete
+            // 
+            this.tsDelete.Name = "tsDelete";
+            this.tsDelete.Size = new System.Drawing.Size(180, 22);
+            this.tsDelete.Text = "Delete";
+            // 
             // tableImage_pnl
             // 
             this.tableImage_pnl.BackgroundImage = global::StoreAssitant.Properties.Resources.Artboard_1;
             this.tableImage_pnl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tableImage_pnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tableImage_pnl.ContextMenuStrip = this.cmsTableControl;
             this.tableImage_pnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableImage_pnl.Location = new System.Drawing.Point(0, 0);
             this.tableImage_pnl.Margin = new System.Windows.Forms.Padding(2);
@@ -62,11 +81,13 @@ namespace StoreAssitant
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PapayaWhip;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ContextMenuStrip = this.cmsTableControl;
             this.Controls.Add(this.tableName_lb);
             this.Controls.Add(this.tableImage_pnl);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "TableControl";
             this.Size = new System.Drawing.Size(111, 120);
+            this.cmsTableControl.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -75,5 +96,7 @@ namespace StoreAssitant
 
         private System.Windows.Forms.Panel tableImage_pnl;
         private System.Windows.Forms.Label tableName_lb;
+        private System.Windows.Forms.ContextMenuStrip cmsTableControl;
+        private System.Windows.Forms.ToolStripMenuItem tsDelete;
     }
 }
