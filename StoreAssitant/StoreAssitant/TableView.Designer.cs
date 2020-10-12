@@ -43,10 +43,10 @@
             this.tableGUI_pnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableGUI_pnl.Controls.Add(this.tableAdd_btn);
             this.tableGUI_pnl.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableGUI_pnl.Location = new System.Drawing.Point(0, 50);
+            this.tableGUI_pnl.Location = new System.Drawing.Point(0, 48);
             this.tableGUI_pnl.Margin = new System.Windows.Forms.Padding(2);
             this.tableGUI_pnl.Name = "tableGUI_pnl";
-            this.tableGUI_pnl.Size = new System.Drawing.Size(420, 520);
+            this.tableGUI_pnl.Size = new System.Drawing.Size(418, 520);
             this.tableGUI_pnl.TabIndex = 0;
             // 
             // tableAdd_btn
@@ -79,7 +79,7 @@
             this.tableTitle_pnl.Location = new System.Drawing.Point(0, 0);
             this.tableTitle_pnl.Margin = new System.Windows.Forms.Padding(2);
             this.tableTitle_pnl.Name = "tableTitle_pnl";
-            this.tableTitle_pnl.Size = new System.Drawing.Size(420, 50);
+            this.tableTitle_pnl.Size = new System.Drawing.Size(418, 50);
             this.tableTitle_pnl.TabIndex = 3;
             // 
             // tableIcon_pnl
@@ -97,11 +97,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.tableGUI_pnl);
             this.Controls.Add(this.tableTitle_pnl);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "TableView";
-            this.Size = new System.Drawing.Size(420, 570);
+            this.Size = new System.Drawing.Size(418, 568);
             this.tableGUI_pnl.ResumeLayout(false);
             this.tableTitle_pnl.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -9,6 +9,7 @@ namespace StoreAssitant.Class_Information
     public class TableBillInfo
     {
         public List<Products> ProductInTable;
+        public int ID { get; set; }
         public TableBillInfo()
         {
             ProductInTable = new List<Products>();
