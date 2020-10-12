@@ -28,22 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.productBox1 = new StoreAssitant.ProductBox();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.btn_Submit = new System.Windows.Forms.Button();
+            this.productBox1 = new StoreAssitant.ProductBox();
             this.SuspendLayout();
-            // 
-            // productBox1
-            // 
-            this.productBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.productBox1.Location = new System.Drawing.Point(0, 0);
-            this.productBox1.MinimumSize = new System.Drawing.Size(400, 500);
-            this.productBox1.Name = "productBox1";
-            this.productBox1.PDDescription = "";
-            this.productBox1.PDImage = null;
-            this.productBox1.PDName = "";
-            this.productBox1.Size = new System.Drawing.Size(489, 500);
-            this.productBox1.TabIndex = 0;
             // 
             // btn_Cancel
             // 
@@ -65,24 +53,39 @@
             this.btn_Submit.Text = "Xác nhận";
             this.btn_Submit.UseVisualStyleBackColor = true;
             // 
+            // productBox1
+            // 
+            this.productBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.productBox1.Location = new System.Drawing.Point(0, 0);
+            this.productBox1.MinimumSize = new System.Drawing.Size(400, 500);
+            this.productBox1.Name = "productBox1";
+            this.productBox1.PDDescription = "";
+            this.productBox1.PDImage = null;
+            this.productBox1.PDName = "";
+            this.productBox1.PDPrice = 1200;
+            this.productBox1.Size = new System.Drawing.Size(489, 500);
+            this.productBox1.TabIndex = 5;
+            // 
             // AddProductForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(489, 546);
+            this.ControlBox = false;
+            this.Controls.Add(this.productBox1);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_Submit);
-            this.Controls.Add(this.productBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "AddProductForm";
-            this.Text = "AddProductForm";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Thêm mặt hàng";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private ProductBox productBox1;
         private System.Windows.Forms.Button btn_Cancel;
         private System.Windows.Forms.Button btn_Submit;
+        private ProductBox productBox1;
     }
 }

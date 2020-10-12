@@ -32,14 +32,14 @@
             this.kryptonNavigator1 = new ComponentFactory.Krypton.Navigator.KryptonNavigator();
             this.krPage_Cashier = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.split_Cashier = new System.Windows.Forms.SplitContainer();
+            this.tableView1 = new StoreAssitant.TableView();
+            this.menuView1 = new StoreAssitant.MenuView();
             this.krPage_Manager = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.split_Manager = new System.Windows.Forms.SplitContainer();
             this.krPage_Statistic = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Setting = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Compare = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Account = new ComponentFactory.Krypton.Navigator.KryptonPage();
-            this.tableView1 = new StoreAssitant.TableView();
-            this.menuView1 = new StoreAssitant.MenuView();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Cashier)).BeginInit();
@@ -82,7 +82,7 @@
             this.krPage_Compare,
             this.krPage_Account});
             this.kryptonNavigator1.SelectedIndex = 0;
-            this.kryptonNavigator1.Size = new System.Drawing.Size(982, 713);
+            this.kryptonNavigator1.Size = new System.Drawing.Size(1182, 653);
             this.kryptonNavigator1.TabIndex = 0;
             this.kryptonNavigator1.Text = "kryptonNavigator1";
             this.kryptonNavigator1.ToolTips.AllowButtonSpecToolTips = true;
@@ -104,7 +104,7 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.krPage_Cashier.OverrideFocus.CheckButton.Content.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.False;
             this.krPage_Cashier.OverrideFocus.CheckButton.Content.DrawFocus = ComponentFactory.Krypton.Toolkit.InheritBool.False;
-            this.krPage_Cashier.Size = new System.Drawing.Size(978, 652);
+            this.krPage_Cashier.Size = new System.Drawing.Size(1178, 592);
             this.krPage_Cashier.Text = "Thu Ngân";
             this.krPage_Cashier.TextDescription = "Description";
             this.krPage_Cashier.TextTitle = "Thu Ngân";
@@ -126,10 +126,41 @@
             // 
             this.split_Cashier.Panel2.Controls.Add(this.menuView1);
             this.split_Cashier.Panel2.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.split_Cashier.Size = new System.Drawing.Size(978, 652);
-            this.split_Cashier.SplitterDistance = 475;
+            this.split_Cashier.Size = new System.Drawing.Size(1178, 592);
+            this.split_Cashier.SplitterDistance = 572;
             this.split_Cashier.SplitterWidth = 5;
             this.split_Cashier.TabIndex = 0;
+            // 
+            // tableView1
+            // 
+            this.tableView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tableView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableView1.ImageCashierTable = global::StoreAssitant.Properties.Resources.thu_ngân;
+            this.tableView1.IsManager = true;
+            this.tableView1.ItemImage = global::StoreAssitant.Properties.Resources.Artboard_1;
+            this.tableView1.ItemSize = new System.Drawing.Size(100, 100);
+            this.tableView1.Location = new System.Drawing.Point(0, 0);
+            this.tableView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableView1.MinimumSize = new System.Drawing.Size(480, 61);
+            this.tableView1.Name = "tableView1";
+            this.tableView1.NameCashierTable = "THANH TOÁN BÀN";
+            this.tableView1.Size = new System.Drawing.Size(572, 592);
+            this.tableView1.TabIndex = 0;
+            this.tableView1.TitleHeight = 50;
+            // 
+            // menuView1
+            // 
+            this.menuView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.menuView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.menuView1.image = global::StoreAssitant.Properties.Resources._120427285_648274679154155_8374726593261554204_n;
+            this.menuView1.ItemSize = new System.Drawing.Size(100, 100);
+            this.menuView1.Location = new System.Drawing.Point(0, 0);
+            this.menuView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.menuView1.Name = "menuView1";
+            this.menuView1.NameTitle = "Menu";
+            this.menuView1.Size = new System.Drawing.Size(601, 592);
+            this.menuView1.TabIndex = 0;
+            this.menuView1.TitleHeight = 50;
             // 
             // krPage_Manager
             // 
@@ -215,44 +246,14 @@
             this.krPage_Account.ToolTipTitle = "Page ToolTip";
             this.krPage_Account.UniqueName = "29A1A40B666C4707C98FE0D28B7F49DD";
             // 
-            // tableView1
-            // 
-            this.tableView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tableView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableView1.ImageCashierTable = global::StoreAssitant.Properties.Resources.thu_ngân;
-            this.tableView1.IsManager = true;
-            this.tableView1.ItemImage = global::StoreAssitant.Properties.Resources.Artboard_1;
-            this.tableView1.ItemSize = new System.Drawing.Size(100, 100);
-            this.tableView1.Location = new System.Drawing.Point(0, 0);
-            this.tableView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tableView1.MinimumSize = new System.Drawing.Size(480, 61);
-            this.tableView1.Name = "tableView1";
-            this.tableView1.NameCashierTable = "THANH TOÁN BÀN";
-            this.tableView1.Size = new System.Drawing.Size(480, 652);
-            this.tableView1.TabIndex = 0;
-            this.tableView1.TitleHeight = 50;
-            // 
-            // menuView1
-            // 
-            this.menuView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.menuView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.menuView1.image = global::StoreAssitant.Properties.Resources._120427285_648274679154155_8374726593261554204_n;
-            this.menuView1.ItemSize = new System.Drawing.Size(100, 100);
-            this.menuView1.Location = new System.Drawing.Point(0, 0);
-            this.menuView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.menuView1.Name = "menuView1";
-            this.menuView1.NameTitle = "Menu";
-            this.menuView1.Size = new System.Drawing.Size(498, 652);
-            this.menuView1.TabIndex = 0;
-            this.menuView1.TitleHeight = 50;
-            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(982, 713);
+            this.ClientSize = new System.Drawing.Size(1182, 653);
             this.Controls.Add(this.kryptonNavigator1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Store Assistant";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).EndInit();
             this.kryptonNavigator1.ResumeLayout(false);

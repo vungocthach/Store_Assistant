@@ -43,7 +43,7 @@ namespace StoreAssitant
 
         private void TableView1_TableAdded(object sender, EventArgs e)
         {
-            MessageBox.Show("Add table");
+            MessageBox.Show("Table Added");
         }
 
         private void MenuView1_ClickAddButton(object sender, EventArgs e)
