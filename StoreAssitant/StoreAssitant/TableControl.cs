@@ -14,21 +14,20 @@ namespace StoreAssitant
 {
     public partial class TableControl : UserControl
     {
+        [Category("My Event"),Description("When click the table control")]
         public event EventHandler ClickTableControl;
         public TableBillInfo Info;
-        void OnClickTableControl(object sender, EventArgs e)
-        {
-
-        }
-        public event EventHandler DeleteTable;
-        void OnDeleteTable(object sender, EventArgs e) { }
+        void OnClickTableControl(object sender, EventArgs e) { }
+        [Category("My Event"), Description("When the table control is removed")]
+        public event EventHandler TableRemoved;
+        void OnTableRemoved(object sender, EventArgs e) { }
         public TableControl()
         {
             InitializeComponent();
             this.Info = new TableBillInfo();
 
             ClickTableControl = new EventHandler(OnClickTableControl);
-            DeleteTable = new EventHandler(OnDeleteTable);
+            TableRemoved = new EventHandler(OnTableRemoved);
 
             this.SizeChanged += TableControl_SizeChanged;
             tableName_lb.TextChanged += Table_Name_TextChanged;
@@ -61,8 +60,8 @@ namespace StoreAssitant
 
         private void TsDelete_Click(object sender, EventArgs e)
         {
-            DeleteTable(this, e);
-            MessageBox.Show("Xóa 1 bàn cuối cùng");
+            TableRemoved(this, e);
+            GC.SuppressFinalize(this);
         }
 
         #region EVENT MOUSE
@@ -119,6 +118,7 @@ namespace StoreAssitant
             get => tableImage_pnl.BackgroundImage;
             set
             {
+                if (tableImage_pnl.BackgroundImage != null) tableImage_pnl.BackgroundImage.Dispose();
                 tableImage_pnl.BackgroundImage = value;
                 Invalidate();
             }

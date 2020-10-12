@@ -17,19 +17,23 @@ namespace StoreAssitant
         [Category("My Event"), Description("When button add has been click")]
         public event EventHandler ClickButtonAdd;
         void OnClickButtonAdd(object s, EventArgs e) { }
+        [Category("My Event"), Description("When button table has been click")]
         public event EventHandler ClickButtonTable;
         void OnClickButtonTable(object s, EventArgs e) { }
+        [Category("My Event"), Description("When the table is added")]
         public event EventHandler TableAdded;
         void OnTableAdded(object s, EventArgs e) { }
+        [Category("My Event"), Description("When the table is removed out of flowlayer panel")]
         public event EventHandler TableRemoved;
-        void OnTableRemoved(object s, EventArgs e) { }
+        void OnTableRemoved(object s, EventArgs e) 
+        {
+            NumberTable--;
+            TableControl table = (TableControl)tableGUI_pnl.Controls[tableGUI_pnl.Controls.Count - 2];
+            tableGUI_pnl.Controls.Remove(table);
+        }
+        [Category("My Event"), Description("When the table selected is changed")]
         public event EventHandler TableSelectedChanged;
         void OnTableSelectedChanged(object s, EventArgs e) { }
-        public event EventHandler DeleteTable;
-        void OnDeleteTable(object s, EventArgs e)
-        {
-
-        }
         #endregion
 
         #region SETTING FIELDS
@@ -45,10 +49,11 @@ namespace StoreAssitant
 
             this.ClickButtonAdd = new EventHandler(OnClickButtonAdd);
             this.ClickButtonTable = new EventHandler(OnClickButtonTable);
+
             this.TableAdded = new EventHandler(OnTableAdded);
             this.TableRemoved = new EventHandler(OnTableRemoved);
+
             this.TableSelectedChanged = new EventHandler(OnTableSelectedChanged);
-            this.DeleteTable = new EventHandler(OnDeleteTable);
 
             this.MinimumSize = new Size(tableTitle_lb.Location.X + tableTitle_lb.Size.Width, tableTitle_pnl.Height + tableAdd_btn.MinimumSize.Height);
 
@@ -64,6 +69,13 @@ namespace StoreAssitant
 
             itemImage = Properties.Resources.Artboard_1;
         }
+        public void SetData(int numberTable)
+        {
+            this.numberTable = numberTable;
+            for (int i = 0; i < numberTable; i++) Create_Table();
+            tableGUI_pnl.Controls.Remove(tableAdd_btn);
+            tableGUI_pnl.Controls.Add(tableAdd_btn);
+        }
 
         private void TableView_Layout(object sender, LayoutEventArgs e)
         {
@@ -73,21 +85,7 @@ namespace StoreAssitant
             tableTitle_lb.Location = new Point(tableTitle_lb.Location.X, (tableTitle_pnl.Height - tableTitle_lb.Size.Height) / 2);
         }
 
-        private void TableAdd_btn_Click(object sender, EventArgs e)
-        {
-            Create_Table();
-            this.TableAdded(this, e);
-            tableGUI_pnl.Controls.Remove(tableAdd_btn);
-            tableGUI_pnl.Controls.Add(tableAdd_btn);
-            this.ClickButtonAdd(this, null);
-        }
-        
-        private void Newtable_ClickTableControl(object sender, EventArgs e)
-        {
-            this.ClickButtonTable(this, e);
-            indexSelectedTable = tableGUI_pnl.Controls.IndexOf((TableControl)sender);
-            Show_TableBill();
-        }
+        #region TABLE BILL SETTING
         private void Show_TableBill()
         {
             TableBill tbbill = new TableBill(((TableControl)tableGUI_pnl.Controls[indexSelectedTable]).Info, indexSelectedTable);
@@ -103,30 +101,42 @@ namespace StoreAssitant
         {
             tableGUI_pnl.Show();
         }
-
-        public void SetData(int numberTable)
-        {
-            this.numberTable = numberTable;
-            for (int i = 0; i < numberTable; i++) Create_Table();
-            tableGUI_pnl.Controls.Remove(tableAdd_btn);
-            tableGUI_pnl.Controls.Add(tableAdd_btn);
-        }
+        #endregion
 
         private void Create_Table()
         {
             TableControl newtable = new TableControl() { Size = ItemSize, nameTable = "BÀN " + tableGUI_pnl.Controls.Count, ImageTable = itemImage };
             tableGUI_pnl.Controls.Add(newtable);
+
             newtable.ClickTableControl += Newtable_ClickTableControl;
-            newtable.DeleteTable += Newtable_DeleteTable;
+            newtable.TableRemoved += Newtable_TableRemoved;
         }
 
-        private void Newtable_DeleteTable(object sender, EventArgs e)
+        #region BUTTON TABLE EVENT
+        private void Newtable_ClickTableControl(object sender, EventArgs e)
         {
-            this.DeleteTable(this, e);
+            this.ClickButtonTable(this, e);
+            indexSelectedTable = tableGUI_pnl.Controls.IndexOf((TableControl)sender);
+            Show_TableBill();
         }
 
+        private void Newtable_TableRemoved(object sender, EventArgs e)
+        {
+            this.TableRemoved(this, e);
+        }
+        #endregion
 
         #region BUTTON ADD TABLE MOUSE EVENT
+        private void TableAdd_btn_Click(object sender, EventArgs e)
+        {
+            Create_Table();
+            this.TableAdded(this, e);
+            this.NumberTable++;
+            tableGUI_pnl.Controls.Remove(tableAdd_btn);
+            tableGUI_pnl.Controls.Add(tableAdd_btn);
+            this.ClickButtonAdd(this, null);
+        }
+
         private void TableAdd_pnl_MouseLeave(object sender, EventArgs e)
         {
             tableAdd_btn.BackColor = SystemColors.Control;
@@ -167,6 +177,7 @@ namespace StoreAssitant
             get => tableIcon_pnl.BackgroundImage;
             set
             {
+                if (tableIcon_pnl.BackgroundImage != null) tableIcon_pnl.BackgroundImage.Dispose();
                 tableIcon_pnl.BackgroundImage = value;
                 Invalidate();
             }
@@ -217,11 +228,13 @@ namespace StoreAssitant
             }
             set
             {
+                if (this.itemImage != null) this.itemImage.Dispose();
                 this.itemImage = value;
                 foreach (Control control in tableGUI_pnl.Controls)
                 {
                     if (control is TableControl tbControl)
                     {
+                        if (tbControl.ImageTable != null) tbControl.ImageTable.Dispose();
                         tbControl.ImageTable = itemImage;
                     }
                 }
@@ -253,6 +266,16 @@ namespace StoreAssitant
                 {
                     tableAdd_btn.Visible = true;
                 }
+                Invalidate();
+            }
+        }
+        [Category("My Properties"), Description("Number of table")]
+        public int NumberTable
+        {
+            get => numberTable;
+            private set
+            {
+                numberTable = value;
                 Invalidate();
             }
         }
