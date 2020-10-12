@@ -93,7 +93,7 @@ namespace StoreAssitant
             foreach (ProductInfo P in Pro)
             {
                 AddMenuControl(P);
-                Menu.Add(P);
+                //Menu.Add(P);
             }
         }
        

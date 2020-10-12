@@ -39,9 +39,10 @@
             this.textBoxPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxPrice.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.textBoxPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.textBoxPrice.Location = new System.Drawing.Point(0, 129);
+            this.textBoxPrice.Location = new System.Drawing.Point(0, 159);
+            this.textBoxPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.textBoxPrice.Name = "textBoxPrice";
-            this.textBoxPrice.Size = new System.Drawing.Size(148, 19);
+            this.textBoxPrice.Size = new System.Drawing.Size(197, 23);
             this.textBoxPrice.TabIndex = 1;
             this.textBoxPrice.Text = "Giá";
             this.textBoxPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -52,9 +53,10 @@
             this.textBoxName.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.textBoxName.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.textBoxName.Location = new System.Drawing.Point(0, 110);
+            this.textBoxName.Location = new System.Drawing.Point(0, 136);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(148, 19);
+            this.textBoxName.Size = new System.Drawing.Size(197, 23);
             this.textBoxName.TabIndex = 2;
             this.textBoxName.Text = "Tên";
             this.textBoxName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -63,27 +65,29 @@
             // pictureBox
             // 
             this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox.Image = global::StoreAssitant.Properties.Resources._120427285_648274679154155_8374726593261554204_n;
             this.pictureBox.InitialImage = global::StoreAssitant.Properties.Resources._120427285_648274679154155_8374726593261554204_n;
             this.pictureBox.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox.Margin = new System.Windows.Forms.Padding(5);
+            this.pictureBox.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(150, 109);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox.Size = new System.Drawing.Size(246, 155);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox.TabIndex = 3;
             this.pictureBox.TabStop = false;
             // 
             // MenuControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PapayaWhip;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.textBoxPrice);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MenuControl";
-            this.Size = new System.Drawing.Size(148, 148);
+            this.Size = new System.Drawing.Size(197, 182);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
 

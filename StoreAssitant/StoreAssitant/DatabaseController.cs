@@ -37,7 +37,8 @@ namespace StoreAssitant
         {
             username = "laptrinhtrucquan";
             password = "bangnhucthach@ktpm2019";
-            serverName = "tcp:52.187.161.61,2001";
+            //serverName = "tcp:52.187.161.61,2001";
+            serverName = @"THUNDERSTUDIO\THUNDERSQLSERVER";
             databaseName = "DBStoreAssistant";
 
             TB_INTERGER = "TB_INTERGER";
@@ -45,7 +46,7 @@ namespace StoreAssitant
             TB_IMAGE = "TB_IMAGE";
             COLUMNS_TB_IMAGE = new string[2] { "ID", "M_VALUE" };
             TB_PRODUCT = "TB_PRODUCT";
-            COLUMNS_TB_PRODUCT = new string[5] { "ID", "PD_NAME", "PRICE", "DESCRIP", "IMG_ID"};
+            COLUMNS_TB_PRODUCT = new string[5] { "ID", "PD_NAME", "PRICE", "DESCRIP", "IMAGE_ID"};
 
             connection = new SqlConnection(SQLStatementManager.GetConnectionString(username, password, serverName, databaseName));
             cmd = new SqlCommand();
@@ -164,6 +165,8 @@ namespace StoreAssitant
             {
                 if (images_id[i] != -1)
                 {
+                    if (rs[i].Image != null) { rs[i].Image.Dispose(); }
+                    rs[i].Image = null;
                     rs[i].Image = GetImage(images_id[i]);
                 }
             }
@@ -204,13 +207,22 @@ namespace StoreAssitant
                 bool hasError = false;
                 cmd.Transaction = transaction;
                 productInfo.Id = GetNextId();
-                cmd.CommandText = string.Format("INSERT INTO {0}({1},{2},{3},{4}) VALUES(@{1}_,@{2}_,@{3}_,@{4}_)",
-                    TB_PRODUCT, COLUMNS_TB_PRODUCT[0], COLUMNS_TB_PRODUCT[1], COLUMNS_TB_PRODUCT[2], COLUMNS_TB_PRODUCT[3]);
+                cmd.CommandText = string.Format("INSERT INTO {0}({1},{2},{3},{4},{5}) VALUES(@{1}_,@{2}_,@{3}_,@{4}_,@{5}_)",
+                    TB_PRODUCT, COLUMNS_TB_PRODUCT[0], COLUMNS_TB_PRODUCT[1], COLUMNS_TB_PRODUCT[2], COLUMNS_TB_PRODUCT[3], COLUMNS_TB_PRODUCT[4]);
                 cmd.Parameters.Clear();
                 cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[0]), SqlDbType.SmallInt).Value = productInfo.Id;
                 cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[1]), SqlDbType.VarChar).Value = productInfo.Name;
                 cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[2]), SqlDbType.Int).Value = productInfo.Price;
                 cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[3]), SqlDbType.VarChar).Value = productInfo.Description;
+
+                if (productInfo.Image == null)
+                {
+                    cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[4]), SqlDbType.Int).Value = -1;
+                }
+                else
+                {
+                    cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[4]), SqlDbType.Int).Value = productInfo.Id;
+                }
 
                 hasError = cmd.ExecuteNonQuery() != 1;
                 if (productInfo.Image != null)
