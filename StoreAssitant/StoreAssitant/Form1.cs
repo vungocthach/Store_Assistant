@@ -20,8 +20,22 @@ namespace StoreAssitant
             InitializeComponent();
             kryptonNavigator1.GotFocus += KryptonNavigator1_GotFocus;
             this.SizeChanged += Form1_SizeChanged;
-
             
+            try
+            {
+                using (DatabaseController databaseController = new DatabaseController())
+                {
+                    databaseController.ConnectToSQLDatabase();
+                    tableView1.SetData(databaseController.GetTableCount());
+                    menuView1.SetData(databaseController.GetProductInfos());
+                }
+            }
+            catch (Exception e) { MessageBox.Show(e.Message, "SQL Connection error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+
+        private void MenuView1_Add_ControlProduct(object sender, EventArgs e)
+        {
+            MessageBox.Show("OK");
         }
 
         private void Form1_SizeChanged(object sender, EventArgs e)
@@ -35,7 +49,7 @@ namespace StoreAssitant
             {
                 form.ClickSubmitOK += new EventHandler<ProductInfo>((object sender, ProductInfo info) =>
                 {
-                    // Do something with ProductInfo
+                    menuView1.AddMenuControl(info);
                 });
                 form.ShowDialog();
             }

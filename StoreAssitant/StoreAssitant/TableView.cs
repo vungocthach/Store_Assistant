@@ -14,19 +14,26 @@ namespace StoreAssitant
     public partial class TableView : UserControl
     {
         #region SETTING FIELDS
-        public event EventHandler btnAddClick;
-        public event EventHandler btnTableClick;
-        List<TableInfo> tableinfo;
+        [Category("My Event"), Description("When button add has been click")]
+        public event EventHandler ClickButtonAdd;
+        void OnClickButtonAdd(object s, EventArgs e) { }
+        public event EventHandler ClickButtonTable;
+        void OnClickButtonTable(object s, EventArgs e) { }
+        private int numberTable;
         #endregion
 
         public TableView()
         {
             InitializeComponent();
+
+            this.ClickButtonAdd = new EventHandler(OnClickButtonAdd);
+            this.ClickButtonTable = new EventHandler(OnClickButtonTable);
+
             this.MinimumSize = new Size(tableTitle_lb.Location.X + tableTitle_lb.Size.Width, tableTitle_pnl.Height + tableAdd_btn.MinimumSize.Height);
 
-            this.SizeChanged += TableView_SizeChanged;
-            tableTitle_pnl.SizeChanged += TableView_SizeChanged;
-            this.btnTableClick += TableView_btnTableClick;
+            this.Layout += TableView_Layout;
+            tableTitle_pnl.Layout += TableView_Layout;
+
             tableAdd_btn.Click += TableAdd_btn_Click;
 
             //event button add table click
@@ -36,57 +43,55 @@ namespace StoreAssitant
             tableAdd_btn.MouseLeave += TableAdd_pnl_MouseLeave;
 
             itemImage = Properties.Resources.Artboard_1;
-            SetData(null);
+
+        }
+
+        private void TableView_Layout(object sender, LayoutEventArgs e)
+        {
+            tableGUI_pnl.Height = this.Height - tableTitle_pnl.Location.Y - tableTitle_pnl.Height;
+            tableTitle_lb.Location = new Point(tableIcon_pnl.Location.X + tableIcon_pnl.Width + (this.Width - tableIcon_pnl.Location.X - tableIcon_pnl.Width - tableTitle_lb.Width) / 2, tableTitle_lb.Location.Y);
+            tableIcon_pnl.Size = new Size(tableIcon_pnl.Size.Height, tableIcon_pnl.Size.Height);
+            tableTitle_lb.Location = new Point(tableTitle_lb.Location.X, (tableTitle_pnl.Height - tableTitle_lb.Size.Height) / 2);
         }
 
         private void TableAdd_btn_Click(object sender, EventArgs e)
         {
-            TableInfo table = new TableInfo();
-            table.Id = tableGUI_pnl.Controls.Count;
-            table.Name = "BÀN " + table.Id;
-            table.ProductList = new List<Products>();
-            tableinfo.Add(table);
-
-            TableControl newtable = new TableControl() { Size = ItemSize, nameTable = table.Name, ID = table.Id, ImageTable = itemImage };
+            Create_Table();
             tableGUI_pnl.Controls.Remove(tableAdd_btn);
+            tableGUI_pnl.Controls.Add(tableAdd_btn);
+            this.ClickButtonAdd(this, null);
+        }
+
+        private void Newtable_ClickTableControl(object sender, EventArgs e)
+        {
+            this.ClickButtonTable(this, e);
+            
+            TableBill tbbill = new TableBill(((TableControl)sender).Info);
+            MessageBox.Show("ok");
+            tbbill.Size = new Size(tableGUI_pnl.Size.Width, tableGUI_pnl.Size.Height);
+            tbbill.Location = new Point(tableGUI_pnl.Location.X, tableGUI_pnl.Location.Y);
+            this.tableGUI_pnl.Controls.RemoveAt(0);
+            this.tableGUI_pnl.Controls.RemoveAt(0);
+            //tbbill.Dock = DockStyle.Fill;
+            this.tableGUI_pnl.Controls.Add(tbbill);
+            tbbill.BringToFront();
+        }
+
+        public void SetData(int numberTable)
+        {
+            this.numberTable = numberTable;
+            for (int i = 0; i < numberTable; i++) Create_Table();
+            tableGUI_pnl.Controls.Remove(tableAdd_btn);
+            tableGUI_pnl.Controls.Add(tableAdd_btn);
+        }
+
+        private void Create_Table()
+        {
+            TableControl newtable = new TableControl() { Size = ItemSize, nameTable = "BÀN " + (tableGUI_pnl.Controls.Count + 1), ImageTable = itemImage };
             tableGUI_pnl.Controls.Add(newtable);
-            tableGUI_pnl.Controls.Add(tableAdd_btn);
-            on_btnAddClick();
+            newtable.ClickTableControl += Newtable_ClickTableControl;
         }
 
-        public void SetData(List<TableInfo> infor)
-        {
-            if (infor != null) this.tableinfo = infor;
-            else this.tableinfo = new List<TableInfo>();
-            Load_Tables();
-        }
-
-
-        private void Load_Tables()
-        {
-            TableControl newtable = new TableControl() { Size = ItemSize};
-            tableGUI_pnl.Controls.Remove(tableAdd_btn);
-            foreach (TableInfo table in tableinfo)
-            {
-                newtable.nameTable = table.Name;
-                newtable.ID = table.Id;
-                tableGUI_pnl.Controls.Add(newtable);
-            }
-            tableGUI_pnl.Controls.Add(tableAdd_btn);
-        }
-
-
-
-        private void TableView_btnTableClick(object sender, EventArgs e)
-        {
-            MessageBox.Show("Thể hiện TableInfor");
-        }
-
-        private void TableView_SizeChanged(object sender, EventArgs e)
-        {
-            tableGUI_pnl.Height = this.Height - tableTitle_pnl.Location.Y - tableTitle_pnl.Height;
-            tableTitle_lb.Location = new Point(tableIcon_pnl.Location.X + tableIcon_pnl.Width + (this.Width - tableIcon_pnl.Location.X - tableIcon_pnl.Width - tableTitle_lb.Width)/ 2, tableTitle_lb.Location.Y);
-        }
 
         #region BUTTON ADD TABLE EVENT
         private void TableAdd_pnl_MouseLeave(object sender, EventArgs e)
@@ -113,20 +118,7 @@ namespace StoreAssitant
         #endregion
 
         #region CREATE EVENT CLICK
-        public void on_btnTableClick()
-        {
-            if (btnTableClick != null)
-            {
-                btnTableClick(this, new EventArgs());
-            }
-        }
-        public void on_btnAddClick()
-        {
-            if (btnAddClick != null)
-            {
-                btnAddClick(this, new EventArgs());
-            }
-        }
+
         #endregion
 
         #region SETTING PROPERTIES

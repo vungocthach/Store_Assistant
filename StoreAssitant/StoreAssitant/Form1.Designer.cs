@@ -31,11 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.kryptonNavigator1 = new ComponentFactory.Krypton.Navigator.KryptonNavigator();
             this.krPage_Cashier = new ComponentFactory.Krypton.Navigator.KryptonPage();
-            this.krSplit_Cashier = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
+
             this.tableView1 = new StoreAssitant.TableView();
             this.menuView1 = new StoreAssitant.MenuView();
+          
+            this.split_Cashier = new System.Windows.Forms.SplitContainer();
             this.krPage_Manager = new ComponentFactory.Krypton.Navigator.KryptonPage();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.split_Manager = new System.Windows.Forms.SplitContainer();
             this.krPage_Statistic = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Setting = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Compare = new ComponentFactory.Krypton.Navigator.KryptonPage();
@@ -44,16 +46,14 @@
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Cashier)).BeginInit();
             this.krPage_Cashier.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.krSplit_Cashier)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.krSplit_Cashier.Panel1)).BeginInit();
-            this.krSplit_Cashier.Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.krSplit_Cashier.Panel2)).BeginInit();
-            this.krSplit_Cashier.Panel2.SuspendLayout();
-            this.krSplit_Cashier.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.split_Cashier)).BeginInit();
+            this.split_Cashier.Panel1.SuspendLayout();
+            this.split_Cashier.Panel2.SuspendLayout();
+            this.split_Cashier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Manager)).BeginInit();
             this.krPage_Manager.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.split_Manager)).BeginInit();
+            this.split_Manager.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Statistic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Setting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Compare)).BeginInit();
@@ -84,7 +84,7 @@
             this.krPage_Compare,
             this.krPage_Account});
             this.kryptonNavigator1.SelectedIndex = 0;
-            this.kryptonNavigator1.Size = new System.Drawing.Size(1078, 749);
+            this.kryptonNavigator1.Size = new System.Drawing.Size(982, 713);
             this.kryptonNavigator1.TabIndex = 0;
             this.kryptonNavigator1.Text = "kryptonNavigator1";
             this.kryptonNavigator1.ToolTips.AllowButtonSpecToolTips = true;
@@ -92,9 +92,9 @@
             // krPage_Cashier
             // 
             this.krPage_Cashier.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
-            this.krPage_Cashier.Controls.Add(this.krSplit_Cashier);
+            this.krPage_Cashier.Controls.Add(this.split_Cashier);
             this.krPage_Cashier.Flags = 65534;
-            this.krPage_Cashier.ImageMedium = global::StoreAssitant.Properties.Resources.iconfinder_shopping_shop_buy_discount_18_4038845;
+            this.krPage_Cashier.ImageMedium = ((System.Drawing.Image)(resources.GetObject("krPage_Cashier.ImageMedium")));
             this.krPage_Cashier.LastVisibleSet = true;
             this.krPage_Cashier.Margin = new System.Windows.Forms.Padding(2);
             this.krPage_Cashier.MinimumSize = new System.Drawing.Size(38, 41);
@@ -106,94 +106,68 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.krPage_Cashier.OverrideFocus.CheckButton.Content.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.False;
             this.krPage_Cashier.OverrideFocus.CheckButton.Content.DrawFocus = ComponentFactory.Krypton.Toolkit.InheritBool.False;
-            this.krPage_Cashier.Size = new System.Drawing.Size(1074, 688);
+            this.krPage_Cashier.Size = new System.Drawing.Size(978, 652);
             this.krPage_Cashier.Text = "Thu Ngân";
             this.krPage_Cashier.TextDescription = "Description";
             this.krPage_Cashier.TextTitle = "Thu Ngân";
             this.krPage_Cashier.ToolTipTitle = "Page ToolTip";
             this.krPage_Cashier.UniqueName = "50165A26273E487B188BD3856A73B9DA";
             // 
-            // krSplit_Cashier
+            // split_Cashier
             // 
-            this.krSplit_Cashier.Cursor = System.Windows.Forms.Cursors.Default;
-            this.krSplit_Cashier.Location = new System.Drawing.Point(0, 0);
-            this.krSplit_Cashier.Margin = new System.Windows.Forms.Padding(2);
-            this.krSplit_Cashier.Name = "krSplit_Cashier";
+            this.split_Cashier.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.split_Cashier.Location = new System.Drawing.Point(0, 0);
+            this.split_Cashier.Name = "split_Cashier";
             // 
-            // krSplit_Cashier.Panel1
+            // split_Cashier.Panel1
             // 
-            this.krSplit_Cashier.Panel1.Controls.Add(this.tableView1);
+            this.split_Cashier.Panel1.Controls.Add(this.tableView1);
+            this.split_Cashier.Panel1.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             // 
-            // krSplit_Cashier.Panel2
+            // split_Cashier.Panel2
             // 
-            this.krSplit_Cashier.Panel2.Controls.Add(this.menuView1);
-            this.krSplit_Cashier.Size = new System.Drawing.Size(1078, 772);
-            this.krSplit_Cashier.SplitterDistance = 446;
-            this.krSplit_Cashier.TabIndex = 0;
-            // 
-            // tableView1
-            // 
-            this.tableView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableView1.ImageCashierTable = global::StoreAssitant.Properties.Resources.thu_ngân;
-            this.tableView1.ItemImage = global::StoreAssitant.Properties.Resources._120427285_648274679154155_8374726593261554204_n;
-            this.tableView1.ItemSize = new System.Drawing.Size(150, 150);
-            this.tableView1.Location = new System.Drawing.Point(0, 0);
-            this.tableView1.Margin = new System.Windows.Forms.Padding(2);
-            this.tableView1.MinimumSize = new System.Drawing.Size(360, 106);
-            this.tableView1.Name = "tableView1";
-            this.tableView1.NameCashierTable = "THANH TOÁN BÀN";
-            this.tableView1.Size = new System.Drawing.Size(446, 772);
-            this.tableView1.TabIndex = 0;
-            this.tableView1.TitleHeight = 50;
-            // 
-            // menuView1
-            // 
-            this.menuView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.menuView1.image = ((System.Drawing.Image)(resources.GetObject("menuView1.image")));
-            this.menuView1.ItemSize = new System.Drawing.Size(165, 145);
-            this.menuView1.Location = new System.Drawing.Point(0, 0);
-            this.menuView1.Margin = new System.Windows.Forms.Padding(4);
-            this.menuView1.Name = "menuView1";
-            this.menuView1.NameTitle = "Menu";
-            this.menuView1.Size = new System.Drawing.Size(627, 772);
-            this.menuView1.TabIndex = 0;
-            this.menuView1.TitleHeight = 32;
+            this.split_Cashier.Panel2.Controls.Add(this.menuView1);
+            this.split_Cashier.Panel2.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.split_Cashier.Size = new System.Drawing.Size(978, 652);
+            this.split_Cashier.SplitterDistance = 475;
+            this.split_Cashier.SplitterWidth = 5;
+            this.split_Cashier.TabIndex = 0;
             // 
             // krPage_Manager
             // 
             this.krPage_Manager.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
-            this.krPage_Manager.Controls.Add(this.splitContainer1);
+            this.krPage_Manager.Controls.Add(this.split_Manager);
             this.krPage_Manager.Flags = 65534;
-            this.krPage_Manager.ImageMedium = global::StoreAssitant.Properties.Resources.iconfinder_Cashier_2_3793351;
+            this.krPage_Manager.ImageMedium = ((System.Drawing.Image)(resources.GetObject("krPage_Manager.ImageMedium")));
             this.krPage_Manager.LastVisibleSet = true;
             this.krPage_Manager.Margin = new System.Windows.Forms.Padding(2);
             this.krPage_Manager.MinimumSize = new System.Drawing.Size(38, 41);
             this.krPage_Manager.Name = "krPage_Manager";
-            this.krPage_Manager.Size = new System.Drawing.Size(1078, 772);
+            this.krPage_Manager.Size = new System.Drawing.Size(978, 652);
             this.krPage_Manager.Text = "Quản Lý";
             this.krPage_Manager.TextTitle = "Quản Lý";
             this.krPage_Manager.ToolTipTitle = "Page ToolTip";
             this.krPage_Manager.UniqueName = "FA578BA728E9497C71A0C6237C4FD78D";
             // 
-            // splitContainer1
+            // split_Manager
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Size = new System.Drawing.Size(1078, 772);
-            this.splitContainer1.SplitterDistance = 540;
-            this.splitContainer1.TabIndex = 0;
+            this.split_Manager.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.split_Manager.Location = new System.Drawing.Point(0, 0);
+            this.split_Manager.Name = "split_Manager";
+            this.split_Manager.Size = new System.Drawing.Size(978, 652);
+            this.split_Manager.SplitterDistance = 483;
+            this.split_Manager.TabIndex = 0;
             // 
             // krPage_Statistic
             // 
             this.krPage_Statistic.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
             this.krPage_Statistic.Flags = 65534;
-            this.krPage_Statistic.ImageMedium = global::StoreAssitant.Properties.Resources.iconfinder_13_3319631;
+            this.krPage_Statistic.ImageMedium = ((System.Drawing.Image)(resources.GetObject("krPage_Statistic.ImageMedium")));
             this.krPage_Statistic.LastVisibleSet = true;
             this.krPage_Statistic.Margin = new System.Windows.Forms.Padding(2);
             this.krPage_Statistic.MinimumSize = new System.Drawing.Size(38, 41);
             this.krPage_Statistic.Name = "krPage_Statistic";
-            this.krPage_Statistic.Size = new System.Drawing.Size(1078, 756);
+            this.krPage_Statistic.Size = new System.Drawing.Size(978, 652);
             this.krPage_Statistic.Text = "Thống Kê";
             this.krPage_Statistic.TextTitle = "Thống Kê";
             this.krPage_Statistic.ToolTipTitle = "Page ToolTip";
@@ -203,7 +177,7 @@
             // 
             this.krPage_Setting.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
             this.krPage_Setting.Flags = 65534;
-            this.krPage_Setting.ImageMedium = global::StoreAssitant.Properties.Resources.iconfinder_21_4698594;
+            this.krPage_Setting.ImageMedium = ((System.Drawing.Image)(resources.GetObject("krPage_Setting.ImageMedium")));
             this.krPage_Setting.LastVisibleSet = true;
             this.krPage_Setting.Margin = new System.Windows.Forms.Padding(2);
             this.krPage_Setting.MinimumSize = new System.Drawing.Size(38, 41);
@@ -218,7 +192,7 @@
             // 
             this.krPage_Compare.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
             this.krPage_Compare.Flags = 65534;
-            this.krPage_Compare.ImageMedium = global::StoreAssitant.Properties.Resources.iconfinder_51_5027845;
+            this.krPage_Compare.ImageMedium = ((System.Drawing.Image)(resources.GetObject("krPage_Compare.ImageMedium")));
             this.krPage_Compare.LastVisibleSet = true;
             this.krPage_Compare.MinimumSize = new System.Drawing.Size(50, 50);
             this.krPage_Compare.Name = "krPage_Compare";
@@ -232,7 +206,7 @@
             // 
             this.krPage_Account.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
             this.krPage_Account.Flags = 65534;
-            this.krPage_Account.ImageMedium = global::StoreAssitant.Properties.Resources.iconfinder_humans_1216581;
+            this.krPage_Account.ImageMedium = ((System.Drawing.Image)(resources.GetObject("krPage_Account.ImageMedium")));
             this.krPage_Account.LastVisibleSet = true;
             this.krPage_Account.Margin = new System.Windows.Forms.Padding(2);
             this.krPage_Account.MinimumSize = new System.Drawing.Size(38, 41);
@@ -242,11 +216,39 @@
             this.krPage_Account.TextTitle = "Tài Khoản";
             this.krPage_Account.ToolTipTitle = "Page ToolTip";
             this.krPage_Account.UniqueName = "29A1A40B666C4707C98FE0D28B7F49DD";
+            // tableView1
+            // 
+            this.tableView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tableView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableView1.ImageCashierTable = ((System.Drawing.Image)(resources.GetObject("tableView1.ImageCashierTable")));
+            this.tableView1.ItemImage = ((System.Drawing.Image)(resources.GetObject("tableView1.ItemImage")));
+            this.tableView1.ItemSize = new System.Drawing.Size(70, 70);
+            this.tableView1.Location = new System.Drawing.Point(0, 0);
+            this.tableView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableView1.MinimumSize = new System.Drawing.Size(480, 61);
+            this.tableView1.Name = "tableView1";
+            this.tableView1.NameCashierTable = "THANH TOÁN BÀN";
+            this.tableView1.Size = new System.Drawing.Size(480, 652);
+            this.tableView1.TabIndex = 0;
+            this.tableView1.TitleHeight = 50;
+            // 
+            // menuView1
+            // 
+            this.menuView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.menuView1.image = ((System.Drawing.Image)(resources.GetObject("menuView1.image")));
+            this.menuView1.ItemSize = new System.Drawing.Size(100, 100);
+            this.menuView1.Location = new System.Drawing.Point(0, 0);
+            this.menuView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.menuView1.Name = "menuView1";
+            this.menuView1.NameTitle = "Menu";
+            this.menuView1.Size = new System.Drawing.Size(498, 652);
+            this.menuView1.TabIndex = 0;
+            this.menuView1.TitleHeight = 50;
             // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1078, 749);
+            this.ClientSize = new System.Drawing.Size(982, 713);
             this.Controls.Add(this.kryptonNavigator1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
@@ -255,16 +257,14 @@
             this.kryptonNavigator1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Cashier)).EndInit();
             this.krPage_Cashier.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.krSplit_Cashier.Panel1)).EndInit();
-            this.krSplit_Cashier.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.krSplit_Cashier.Panel2)).EndInit();
-            this.krSplit_Cashier.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.krSplit_Cashier)).EndInit();
-            this.krSplit_Cashier.ResumeLayout(false);
+            this.split_Cashier.Panel1.ResumeLayout(false);
+            this.split_Cashier.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.split_Cashier)).EndInit();
+            this.split_Cashier.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Manager)).EndInit();
             this.krPage_Manager.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.split_Manager)).EndInit();
+            this.split_Manager.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Statistic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Setting)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Compare)).EndInit();
@@ -282,10 +282,10 @@
         private ComponentFactory.Krypton.Navigator.KryptonPage krPage_Compare;
         private ComponentFactory.Krypton.Navigator.KryptonPage krPage_Setting;
         private ComponentFactory.Krypton.Navigator.KryptonPage krPage_Account;
-        private ComponentFactory.Krypton.Toolkit.KryptonSplitContainer krSplit_Cashier;
+        private System.Windows.Forms.SplitContainer split_Manager;
+        private System.Windows.Forms.SplitContainer split_Cashier;
         private TableView tableView1;
         private MenuView menuView1;
-        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }
 

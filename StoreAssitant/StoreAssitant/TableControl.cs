@@ -8,15 +8,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography.X509Certificates;
+using StoreAssitant.Class_Information;
 
 namespace StoreAssitant
 {
     public partial class TableControl : UserControl
     {
-        private int iD;
+        public event EventHandler ClickTableControl;
+        public TableBillInfo Info;
+        void OnClickTableControl(object sender, EventArgs e)
+        {
+
+        }
         public TableControl()
         {
             InitializeComponent();
+            this.Info = new TableBillInfo();
+
+            ClickTableControl = new EventHandler(OnClickTableControl);
 
             this.SizeChanged += TableControl_SizeChanged;
             tableName_lb.TextChanged += Table_Name_TextChanged;
@@ -49,16 +58,7 @@ namespace StoreAssitant
         #region EVENT MOUSE
         private void TableControl_MouseClick(object sender, MouseEventArgs e)
         {
-            TableView link;
-            Control parent = this.Parent as UserControl;
-            if (parent==null)
-            {
-                link = this.Parent.Parent as TableView;
-            } else
-            {
-                link = parent.Parent.Parent as TableView;
-            }
-            if (link != null) link.on_btnTableClick();
+            ClickTableControl(this, new EventArgs());
         }
         private void TableControl_MouseEnter(object sender, EventArgs e)
         {
@@ -110,16 +110,6 @@ namespace StoreAssitant
             set
             {
                 tableImage_pnl.BackgroundImage = value;
-                Invalidate();
-            }
-        }
-        [Category("My properties"), Description("Get the id of table")]
-        public int ID
-        {
-            get => iD;
-            set
-            {
-                iD = value;
                 Invalidate();
             }
         }

@@ -15,7 +15,6 @@ namespace StoreAssitant
 {
     public partial class ControlProduct : UserControl
     {
-
         public event EventHandler _Click;
 
         void on_Click(object sender, EventArgs e )

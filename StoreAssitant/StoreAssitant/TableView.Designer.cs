@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TableView));
             this.tableGUI_pnl = new System.Windows.Forms.FlowLayoutPanel();
             this.tableAdd_btn = new System.Windows.Forms.Panel();
             this.tableTitle_lb = new System.Windows.Forms.Label();
@@ -98,8 +97,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tableTitle_pnl);
             this.Controls.Add(this.tableGUI_pnl);
+            this.Controls.Add(this.tableTitle_pnl);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "TableView";
             this.Size = new System.Drawing.Size(420, 570);
