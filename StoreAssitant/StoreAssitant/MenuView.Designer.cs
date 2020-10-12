@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuView));
             this.kryptonContextMenu1 = new ComponentFactory.Krypton.Toolkit.KryptonContextMenu();
             this.flowLayoutPanelMenu = new System.Windows.Forms.FlowLayoutPanel();
-            this.controlSearch = new StoreAssitant.ControlSearch();
             this.controlProduct = new StoreAssitant.ControlProduct();
+            this.controlSearch = new StoreAssitant.ControlSearch();
             this.ControlTitle = new StoreAssitant.TitleControl();
             this.flowLayoutPanelMenu.SuspendLayout();
             this.SuspendLayout();
@@ -48,14 +48,6 @@
             this.flowLayoutPanelMenu.Size = new System.Drawing.Size(427, 377);
             this.flowLayoutPanelMenu.TabIndex = 1;
             // 
-            // controlSearch
-            // 
-            this.controlSearch.Location = new System.Drawing.Point(0, 31);
-            this.controlSearch.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.controlSearch.Name = "controlSearch";
-            this.controlSearch.Size = new System.Drawing.Size(419, 29);
-            this.controlSearch.TabIndex = 2;
-            // 
             // controlProduct
             // 
             this.controlProduct.BackColor = System.Drawing.SystemColors.Control;
@@ -64,8 +56,16 @@
             this.controlProduct.Margin = new System.Windows.Forms.Padding(4);
             this.controlProduct.MinimumSize = new System.Drawing.Size(11, 13);
             this.controlProduct.Name = "controlProduct";
-            this.controlProduct.Size = new System.Drawing.Size(165, 145);
+            this.controlProduct.Size = new System.Drawing.Size(138, 139);
             this.controlProduct.TabIndex = 0;
+            // 
+            // controlSearch
+            // 
+            this.controlSearch.Location = new System.Drawing.Point(0, 31);
+            this.controlSearch.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.controlSearch.Name = "controlSearch";
+            this.controlSearch.Size = new System.Drawing.Size(419, 29);
+            this.controlSearch.TabIndex = 2;
             // 
             // ControlTitle
             // 
