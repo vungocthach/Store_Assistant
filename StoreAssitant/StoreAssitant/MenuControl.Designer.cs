@@ -38,9 +38,10 @@
             // 
             this.textBoxPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxPrice.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textBoxPrice.Location = new System.Drawing.Point(0, 127);
+            this.textBoxPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.textBoxPrice.Location = new System.Drawing.Point(0, 129);
             this.textBoxPrice.Name = "textBoxPrice";
-            this.textBoxPrice.Size = new System.Drawing.Size(148, 21);
+            this.textBoxPrice.Size = new System.Drawing.Size(148, 19);
             this.textBoxPrice.TabIndex = 1;
             this.textBoxPrice.Text = "Giá";
             this.textBoxPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -49,12 +50,15 @@
             // 
             this.textBoxName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxName.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textBoxName.Location = new System.Drawing.Point(0, 107);
+            this.textBoxName.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.textBoxName.Location = new System.Drawing.Point(0, 110);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(148, 20);
+            this.textBoxName.Size = new System.Drawing.Size(148, 19);
             this.textBoxName.TabIndex = 2;
             this.textBoxName.Text = "Tên";
             this.textBoxName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.textBoxName.Click += new System.EventHandler(this.textBoxName_Click_1);
             // 
             // pictureBox
             // 
@@ -87,7 +91,7 @@
 
         #endregion
         private System.Windows.Forms.Label textBoxPrice;
-        private System.Windows.Forms.Label textBoxName;
         private System.Windows.Forms.PictureBox pictureBox;
+        protected System.Windows.Forms.Label textBoxName;
     }
 }
