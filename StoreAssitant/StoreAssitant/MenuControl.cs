@@ -16,7 +16,6 @@ namespace StoreAssitant
 
         public event EventHandler Click_AddControlProduct;
 
-
         private void on_Click_AddControlProduct(object sender, EventArgs e)
         { }
         #region Create properties
@@ -40,6 +39,7 @@ namespace StoreAssitant
                 Invalidate();
             }
         }
+
 #endregion
         public void SetData(ProductInfo info)
         {
@@ -52,6 +52,8 @@ namespace StoreAssitant
         public MenuControl()
         {
             InitializeComponent();
+
+           // this.MinimumSize = new Size(125, 140);
 
             Click_AddControlProduct = new EventHandler(on_Click_AddControlProduct);
 
@@ -108,10 +110,14 @@ namespace StoreAssitant
 
         private void MenuControl_Layout(object sender, EventArgs e)
         {
-            //pictureBox.Size = new Size(this.Width, Convert.ToInt32(this.Height * 0.8));
+            pictureBox.Size = new Size(this.Width, Convert.ToInt32(this.Height * 0.7));
             textBoxPrice.Location = new Point(0, pictureBox.Height);
-            //textBoxPrice.Size = new Size(this.Width, this.Height - pictureBox.Height - textBoxName.Height);
+            textBoxName.Size = textBoxPrice.Size = new Size(this.Width, (this.Height - pictureBox.Height)/2);
         }
 
+        private void textBoxName_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
