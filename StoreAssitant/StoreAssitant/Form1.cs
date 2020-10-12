@@ -21,7 +21,8 @@ namespace StoreAssitant
             kryptonNavigator1.GotFocus += KryptonNavigator1_GotFocus;
             this.SizeChanged += Form1_SizeChanged;
             menuView1.ClickAddButton += MenuView1_ClickAddButton;
-            menuView1.ClickAddTableInfo += MenuView1_ClickAddTableInfo;
+            menuView1.ClickAddTableInfo += MenuView1_ClickAddTableInfo1;
+            //tableView1.TableAdded += TableView1_TableAdded;
             /*
             try
             {
@@ -35,9 +36,14 @@ namespace StoreAssitant
             catch (Exception e) { MessageBox.Show(e.Message, "SQL Connection error", MessageBoxButtons.OK, MessageBoxIcon.Error); }*/
         }
 
-        private void MenuView1_ClickAddTableInfo(object sender, EventArgs e)
+        private void MenuView1_ClickAddTableInfo1(object sender, ProductInfo e)
         {
-            MessageBox.Show("CLICK AddTableInfo");
+            MessageBox.Show("Click On a product" + Environment.NewLine + e.ToString());
+        }
+
+        private void TableView1_TableAdded(object sender, EventArgs e)
+        {
+            MessageBox.Show("Add table");
         }
 
         private void MenuView1_ClickAddButton(object sender, EventArgs e)

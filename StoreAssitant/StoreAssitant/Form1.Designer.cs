@@ -220,6 +220,7 @@
             this.tableView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableView1.ImageCashierTable = global::StoreAssitant.Properties.Resources.thu_ngân;
+            this.tableView1.IsManager = true;
             this.tableView1.ItemImage = global::StoreAssitant.Properties.Resources.Artboard_1;
             this.tableView1.ItemSize = new System.Drawing.Size(100, 100);
             this.tableView1.Location = new System.Drawing.Point(0, 0);
@@ -233,6 +234,7 @@
             // 
             // menuView1
             // 
+            this.menuView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.menuView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menuView1.image = global::StoreAssitant.Properties.Resources._120427285_648274679154155_8374726593261554204_n;
             this.menuView1.ItemSize = new System.Drawing.Size(100, 100);

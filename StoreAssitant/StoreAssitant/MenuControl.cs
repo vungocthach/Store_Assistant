@@ -14,6 +14,8 @@ namespace StoreAssitant
     {
         ProductInfo Infor;
 
+        public ProductInfo ProductInfo { get { return Infor; } }
+
         public event EventHandler Click_AddControlProduct;
 
         private void on_Click_AddControlProduct(object sender, EventArgs e)
