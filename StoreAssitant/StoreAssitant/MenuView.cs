@@ -80,9 +80,13 @@ namespace StoreAssitant
         #endregion
         public void AddMenuControl(ProductInfo Infor)
         {
-            MenuControl M = new MenuControl();
-            M.SetData(Infor);
-            M.Show();
+            MenuControl Product = new MenuControl();
+            Product.SetData(Infor);
+            Product.Size = ItemSize;
+            flowLayoutPanelMenu.Controls.Remove(controlProduct);
+            flowLayoutPanelMenu.Controls.Add(Product);
+            flowLayoutPanelMenu.Controls.Add(controlProduct);
+            Product.Click_AddControlProduct += Product_Click_AddControlProduct;
         }
         public void SetData(List<ProductInfo> Pro)
         {
@@ -114,17 +118,15 @@ namespace StoreAssitant
 
         private void ControlProduct_Click(object sender, EventArgs e)
         {
-            MenuControl Product = new MenuControl() ;
-            flowLayoutPanelMenu.Controls.Remove(controlProduct);
-            flowLayoutPanelMenu.Controls.Add(Product);
-            flowLayoutPanelMenu.Controls.Add(controlProduct);
-            Product.Click_AddControlProduct += Product_Click_AddControlProduct;
+            /**/
+            ClickAddButton(this, new EventArgs());
         }
 
         
 
         private void Product_Click_AddControlProduct(object sender, EventArgs e)
         {
+            ClickAddTableInfo(this, new EventArgs());
             MessageBox.Show("Tính năng đang được xây dựng");
         }
 

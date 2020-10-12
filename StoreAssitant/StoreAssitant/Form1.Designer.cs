@@ -31,11 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.kryptonNavigator1 = new ComponentFactory.Krypton.Navigator.KryptonNavigator();
             this.krPage_Cashier = new ComponentFactory.Krypton.Navigator.KryptonPage();
-
+            this.split_Cashier = new System.Windows.Forms.SplitContainer();
             this.tableView1 = new StoreAssitant.TableView();
             this.menuView1 = new StoreAssitant.MenuView();
-          
-            this.split_Cashier = new System.Windows.Forms.SplitContainer();
             this.krPage_Manager = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.split_Manager = new System.Windows.Forms.SplitContainer();
             this.krPage_Statistic = new ComponentFactory.Krypton.Navigator.KryptonPage();
@@ -133,6 +131,35 @@
             this.split_Cashier.SplitterWidth = 5;
             this.split_Cashier.TabIndex = 0;
             // 
+            // tableView1
+            // 
+            this.tableView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tableView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableView1.ImageCashierTable = ((System.Drawing.Image)(resources.GetObject("tableView1.ImageCashierTable")));
+            this.tableView1.ItemImage = ((System.Drawing.Image)(resources.GetObject("tableView1.ItemImage")));
+            this.tableView1.ItemSize = new System.Drawing.Size(70, 70);
+            this.tableView1.Location = new System.Drawing.Point(0, 0);
+            this.tableView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableView1.MinimumSize = new System.Drawing.Size(480, 61);
+            this.tableView1.Name = "tableView1";
+            this.tableView1.NameCashierTable = "THANH TOÁN BÀN";
+            this.tableView1.Size = new System.Drawing.Size(480, 652);
+            this.tableView1.TabIndex = 0;
+            this.tableView1.TitleHeight = 50;
+            // 
+            // menuView1
+            // 
+            this.menuView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.menuView1.image = ((System.Drawing.Image)(resources.GetObject("menuView1.image")));
+            this.menuView1.ItemSize = new System.Drawing.Size(100, 100);
+            this.menuView1.Location = new System.Drawing.Point(0, 0);
+            this.menuView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.menuView1.Name = "menuView1";
+            this.menuView1.NameTitle = "Menu";
+            this.menuView1.Size = new System.Drawing.Size(498, 652);
+            this.menuView1.TabIndex = 0;
+            this.menuView1.TitleHeight = 50;
+            // 
             // krPage_Manager
             // 
             this.krPage_Manager.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
@@ -216,34 +243,6 @@
             this.krPage_Account.TextTitle = "Tài Khoản";
             this.krPage_Account.ToolTipTitle = "Page ToolTip";
             this.krPage_Account.UniqueName = "29A1A40B666C4707C98FE0D28B7F49DD";
-            // tableView1
-            // 
-            this.tableView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tableView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableView1.ImageCashierTable = ((System.Drawing.Image)(resources.GetObject("tableView1.ImageCashierTable")));
-            this.tableView1.ItemImage = ((System.Drawing.Image)(resources.GetObject("tableView1.ItemImage")));
-            this.tableView1.ItemSize = new System.Drawing.Size(70, 70);
-            this.tableView1.Location = new System.Drawing.Point(0, 0);
-            this.tableView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tableView1.MinimumSize = new System.Drawing.Size(480, 61);
-            this.tableView1.Name = "tableView1";
-            this.tableView1.NameCashierTable = "THANH TOÁN BÀN";
-            this.tableView1.Size = new System.Drawing.Size(480, 652);
-            this.tableView1.TabIndex = 0;
-            this.tableView1.TitleHeight = 50;
-            // 
-            // menuView1
-            // 
-            this.menuView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.menuView1.image = ((System.Drawing.Image)(resources.GetObject("menuView1.image")));
-            this.menuView1.ItemSize = new System.Drawing.Size(100, 100);
-            this.menuView1.Location = new System.Drawing.Point(0, 0);
-            this.menuView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.menuView1.Name = "menuView1";
-            this.menuView1.NameTitle = "Menu";
-            this.menuView1.Size = new System.Drawing.Size(498, 652);
-            this.menuView1.TabIndex = 0;
-            this.menuView1.TitleHeight = 50;
             // 
             // Form1
             // 
