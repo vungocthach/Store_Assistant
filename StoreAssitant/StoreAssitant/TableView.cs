@@ -13,13 +13,30 @@ namespace StoreAssitant
 {
     public partial class TableView : UserControl
     {
-        #region SETTING FIELDS
+        #region CREATE EVENT CLICK
         [Category("My Event"), Description("When button add has been click")]
         public event EventHandler ClickButtonAdd;
         void OnClickButtonAdd(object s, EventArgs e) { }
         public event EventHandler ClickButtonTable;
         void OnClickButtonTable(object s, EventArgs e) { }
+        public event EventHandler TableAdded;
+        void OnTableAdded(object s, EventArgs e) { }
+        public event EventHandler TableRemoved;
+        void OnTableRemoved(object s, EventArgs e) { }
+        public event EventHandler TableSelectedChanged;
+        void OnTableSelectedChanged(object s, EventArgs e) { }
+        public event EventHandler DeleteTable;
+        void OnDeleteTable(object s, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region SETTING FIELDS
         private int numberTable;
+        private int indexSelectedTable;
+        private bool isManager;
+        Image itemImage;
         #endregion
 
         public TableView()
@@ -28,22 +45,24 @@ namespace StoreAssitant
 
             this.ClickButtonAdd = new EventHandler(OnClickButtonAdd);
             this.ClickButtonTable = new EventHandler(OnClickButtonTable);
+            this.TableAdded = new EventHandler(OnTableAdded);
+            this.TableRemoved = new EventHandler(OnTableRemoved);
+            this.TableSelectedChanged = new EventHandler(OnTableSelectedChanged);
+            this.DeleteTable = new EventHandler(OnDeleteTable);
 
             this.MinimumSize = new Size(tableTitle_lb.Location.X + tableTitle_lb.Size.Width, tableTitle_pnl.Height + tableAdd_btn.MinimumSize.Height);
 
             this.Layout += TableView_Layout;
             tableTitle_pnl.Layout += TableView_Layout;
 
-            tableAdd_btn.Click += TableAdd_btn_Click;
-
             //event button add table click
+            tableAdd_btn.Click += TableAdd_btn_Click;
             tableAdd_btn.MouseDown += TableAdd_pnl_MouseDown;
             tableAdd_btn.MouseUp += TableAdd_pnl_MouseUp;
             tableAdd_btn.MouseEnter += TableAdd_pnl_MouseEnter;
             tableAdd_btn.MouseLeave += TableAdd_pnl_MouseLeave;
 
             itemImage = Properties.Resources.Artboard_1;
-
         }
 
         private void TableView_Layout(object sender, LayoutEventArgs e)
@@ -57,24 +76,32 @@ namespace StoreAssitant
         private void TableAdd_btn_Click(object sender, EventArgs e)
         {
             Create_Table();
+            this.TableAdded(this, e);
             tableGUI_pnl.Controls.Remove(tableAdd_btn);
             tableGUI_pnl.Controls.Add(tableAdd_btn);
             this.ClickButtonAdd(this, null);
         }
-
+        
         private void Newtable_ClickTableControl(object sender, EventArgs e)
         {
             this.ClickButtonTable(this, e);
-            
-            TableBill tbbill = new TableBill(((TableControl)sender).Info);
-            MessageBox.Show("ok");
-            tbbill.Size = new Size(tableGUI_pnl.Size.Width, tableGUI_pnl.Size.Height);
+            indexSelectedTable = tableGUI_pnl.Controls.IndexOf((TableControl)sender);
+            Show_TableBill();
+        }
+        private void Show_TableBill()
+        {
+            TableBill tbbill = new TableBill(((TableControl)tableGUI_pnl.Controls[indexSelectedTable]).Info, indexSelectedTable);
+            tbbill.Size = new Size(tableGUI_pnl.Size.Width, tableGUI_pnl.Size.Height - tableGUI_pnl.AutoScrollMargin.Width);
             tbbill.Location = new Point(tableGUI_pnl.Location.X, tableGUI_pnl.Location.Y);
-            this.tableGUI_pnl.Controls.RemoveAt(0);
-            this.tableGUI_pnl.Controls.RemoveAt(0);
-            //tbbill.Dock = DockStyle.Fill;
-            this.tableGUI_pnl.Controls.Add(tbbill);
-            tbbill.BringToFront();
+            tbbill.CloseBill += Tbbill_CloseBill;
+            tableGUI_pnl.Hide();
+            this.Controls.Add(tbbill);
+            tbbill.Show();
+        }
+
+        private void Tbbill_CloseBill(object sender, EventArgs e)
+        {
+            tableGUI_pnl.Show();
         }
 
         public void SetData(int numberTable)
@@ -87,13 +114,19 @@ namespace StoreAssitant
 
         private void Create_Table()
         {
-            TableControl newtable = new TableControl() { Size = ItemSize, nameTable = "BÀN " + (tableGUI_pnl.Controls.Count + 1), ImageTable = itemImage };
+            TableControl newtable = new TableControl() { Size = ItemSize, nameTable = "BÀN " + tableGUI_pnl.Controls.Count, ImageTable = itemImage };
             tableGUI_pnl.Controls.Add(newtable);
             newtable.ClickTableControl += Newtable_ClickTableControl;
+            newtable.DeleteTable += Newtable_DeleteTable;
+        }
+
+        private void Newtable_DeleteTable(object sender, EventArgs e)
+        {
+            this.DeleteTable(this, e);
         }
 
 
-        #region BUTTON ADD TABLE EVENT
+        #region BUTTON ADD TABLE MOUSE EVENT
         private void TableAdd_pnl_MouseLeave(object sender, EventArgs e)
         {
             tableAdd_btn.BackColor = SystemColors.Control;
@@ -115,10 +148,6 @@ namespace StoreAssitant
         {
             tableAdd_btn.BorderStyle = BorderStyle.None;
         }
-        #endregion
-
-        #region CREATE EVENT CLICK
-
         #endregion
 
         #region SETTING PROPERTIES
@@ -179,8 +208,6 @@ namespace StoreAssitant
                 Invalidate();
             }
         }
-
-        Image itemImage;
         [Category("My Properties"), Description("Image of table control")]
         public Image ItemImage
         {
@@ -197,6 +224,34 @@ namespace StoreAssitant
                     {
                         tbControl.ImageTable = itemImage;
                     }
+                }
+                Invalidate();
+            }
+        }
+        public int SelectedTable
+        {
+            get => indexSelectedTable;
+            private set
+            {
+                indexSelectedTable = value;
+                this.TableSelectedChanged(this,new EventArgs());
+                Invalidate();
+            }
+        }
+        [Category("My Properties"), Description("Check is manager?")]
+        public bool IsManager
+        {
+            get => isManager;
+            set
+            {
+                isManager = value;
+                if (isManager == false)
+                {
+                    tableAdd_btn.Visible = false;
+                }
+                else
+                {
+                    tableAdd_btn.Visible = true;
                 }
                 Invalidate();
             }

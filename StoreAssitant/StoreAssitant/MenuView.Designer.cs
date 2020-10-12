@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuView));
             this.kryptonContextMenu1 = new ComponentFactory.Krypton.Toolkit.KryptonContextMenu();
             this.flowLayoutPanelMenu = new System.Windows.Forms.FlowLayoutPanel();
-            this.controlProduct = new StoreAssitant.ControlProduct();
             this.controlSearch = new StoreAssitant.ControlSearch();
+            this.controlProduct = new StoreAssitant.ControlProduct();
             this.ControlTitle = new StoreAssitant.TitleControl();
             this.flowLayoutPanelMenu.SuspendLayout();
             this.SuspendLayout();
@@ -42,11 +42,19 @@
             this.flowLayoutPanelMenu.AutoScroll = true;
             this.flowLayoutPanelMenu.Controls.Add(this.controlProduct);
             this.flowLayoutPanelMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanelMenu.Location = new System.Drawing.Point(0, 62);
+            this.flowLayoutPanelMenu.Location = new System.Drawing.Point(0, 60);
             this.flowLayoutPanelMenu.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.flowLayoutPanelMenu.Name = "flowLayoutPanelMenu";
-            this.flowLayoutPanelMenu.Size = new System.Drawing.Size(427, 377);
+            this.flowLayoutPanelMenu.Size = new System.Drawing.Size(425, 377);
             this.flowLayoutPanelMenu.TabIndex = 1;
+            // 
+            // controlSearch
+            // 
+            this.controlSearch.Location = new System.Drawing.Point(0, 31);
+            this.controlSearch.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.controlSearch.Name = "controlSearch";
+            this.controlSearch.Size = new System.Drawing.Size(419, 29);
+            this.controlSearch.TabIndex = 2;
             // 
             // controlProduct
             // 
@@ -59,14 +67,6 @@
             this.controlProduct.Size = new System.Drawing.Size(138, 139);
             this.controlProduct.TabIndex = 0;
             // 
-            // controlSearch
-            // 
-            this.controlSearch.Location = new System.Drawing.Point(0, 31);
-            this.controlSearch.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.controlSearch.Name = "controlSearch";
-            this.controlSearch.Size = new System.Drawing.Size(419, 29);
-            this.controlSearch.TabIndex = 2;
-            // 
             // ControlTitle
             // 
             this.ControlTitle.Dock = System.Windows.Forms.DockStyle.Top;
@@ -76,18 +76,19 @@
             this.ControlTitle.MinimumSize = new System.Drawing.Size(0, 32);
             this.ControlTitle.Name = "ControlTitle";
             this.ControlTitle.NameTitle = "Menu";
-            this.ControlTitle.Size = new System.Drawing.Size(427, 32);
+            this.ControlTitle.Size = new System.Drawing.Size(425, 32);
             this.ControlTitle.TabIndex = 0;
             // 
             // MenuView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.controlSearch);
             this.Controls.Add(this.flowLayoutPanelMenu);
             this.Controls.Add(this.ControlTitle);
             this.Name = "MenuView";
-            this.Size = new System.Drawing.Size(427, 439);
+            this.Size = new System.Drawing.Size(425, 437);
             this.flowLayoutPanelMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
