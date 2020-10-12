@@ -31,6 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.kryptonNavigator1 = new ComponentFactory.Krypton.Navigator.KryptonNavigator();
             this.krPage_Cashier = new ComponentFactory.Krypton.Navigator.KryptonPage();
+
+            this.tableView1 = new StoreAssitant.TableView();
+            this.menuView1 = new StoreAssitant.MenuView();
+          
             this.split_Cashier = new System.Windows.Forms.SplitContainer();
             this.krPage_Manager = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.split_Manager = new System.Windows.Forms.SplitContainer();
@@ -38,8 +42,6 @@
             this.krPage_Setting = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Compare = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Account = new ComponentFactory.Krypton.Navigator.KryptonPage();
-            this.tableView1 = new StoreAssitant.TableView();
-            this.menuView1 = new StoreAssitant.MenuView();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Cashier)).BeginInit();
@@ -214,7 +216,6 @@
             this.krPage_Account.TextTitle = "Tài Khoản";
             this.krPage_Account.ToolTipTitle = "Page ToolTip";
             this.krPage_Account.UniqueName = "29A1A40B666C4707C98FE0D28B7F49DD";
-            // 
             // tableView1
             // 
             this.tableView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;

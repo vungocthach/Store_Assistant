@@ -37,23 +37,23 @@
             this.panelImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelImage.Image = global::StoreAssitant.Properties.Resources.button_add;
             this.panelImage.Location = new System.Drawing.Point(0, 0);
+            this.panelImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelImage.Name = "panelImage";
-            this.panelImage.Size = new System.Drawing.Size(200, 200);
+            this.panelImage.Size = new System.Drawing.Size(143, 152);
             this.panelImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.panelImage.TabIndex = 0;
             this.panelImage.TabStop = false;
             // 
             // ControlProduct
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.Controls.Add(this.panelImage);
             this.ForeColor = System.Drawing.SystemColors.Control;
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(20, 20);
+            this.MinimumSize = new System.Drawing.Size(15, 16);
             this.Name = "ControlProduct";
-            this.Size = new System.Drawing.Size(200, 200);
+            this.Size = new System.Drawing.Size(143, 152);
             ((System.ComponentModel.ISupportInitialize)(this.panelImage)).EndInit();
             this.ResumeLayout(false);
 

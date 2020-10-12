@@ -28,59 +28,66 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelImage = new System.Windows.Forms.Panel();
-            this.textBoxName = new System.Windows.Forms.TextBox();
-            this.textBoxPrice = new System.Windows.Forms.TextBox();
+            this.textBoxPrice = new System.Windows.Forms.Label();
+            this.textBoxName = new System.Windows.Forms.Label();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panelImage
-            // 
-            this.panelImage.BackgroundImage = global::StoreAssitant.Properties.Resources._120427285_648274679154155_8374726593261554204_n;
-            this.panelImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panelImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelImage.Location = new System.Drawing.Point(1, 3);
-            this.panelImage.Name = "panelImage";
-            this.panelImage.Size = new System.Drawing.Size(148, 104);
-            this.panelImage.TabIndex = 0;
-            // 
-            // textBoxName
-            // 
-            this.textBoxName.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textBoxName.Location = new System.Drawing.Point(0, 130);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(150, 20);
-            this.textBoxName.TabIndex = 2;
-            this.textBoxName.Text = "Tên";
-            this.textBoxName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxName.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBoxPrice
             // 
+            this.textBoxPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxPrice.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.textBoxPrice.Location = new System.Drawing.Point(0, 110);
+            this.textBoxPrice.Location = new System.Drawing.Point(0, 127);
             this.textBoxPrice.Name = "textBoxPrice";
-            this.textBoxPrice.Size = new System.Drawing.Size(150, 20);
-            this.textBoxPrice.TabIndex = 3;
+            this.textBoxPrice.Size = new System.Drawing.Size(148, 21);
+            this.textBoxPrice.TabIndex = 1;
             this.textBoxPrice.Text = "Giá";
-            this.textBoxPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBoxName
+            // 
+            this.textBoxName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxName.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.textBoxName.Location = new System.Drawing.Point(0, 107);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(148, 20);
+            this.textBoxName.TabIndex = 2;
+            this.textBoxName.Text = "Tên";
+            this.textBoxName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox.Image = global::StoreAssitant.Properties.Resources._120427285_648274679154155_8374726593261554204_n;
+            this.pictureBox.InitialImage = global::StoreAssitant.Properties.Resources._120427285_648274679154155_8374726593261554204_n;
+            this.pictureBox.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox.Margin = new System.Windows.Forms.Padding(5);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(150, 109);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox.TabIndex = 3;
+            this.pictureBox.TabStop = false;
             // 
             // MenuControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBoxPrice);
+            this.BackColor = System.Drawing.Color.PapayaWhip;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.textBoxName);
-            this.Controls.Add(this.panelImage);
+            this.Controls.Add(this.textBoxPrice);
             this.Name = "MenuControl";
+            this.Size = new System.Drawing.Size(148, 148);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panelImage;
-        private System.Windows.Forms.TextBox textBoxName;
-        private System.Windows.Forms.TextBox textBoxPrice;
+        private System.Windows.Forms.Label textBoxPrice;
+        private System.Windows.Forms.Label textBoxName;
+        private System.Windows.Forms.PictureBox pictureBox;
     }
 }
