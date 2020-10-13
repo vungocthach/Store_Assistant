@@ -8,25 +8,44 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using StoreAssitant.Class_Information;
+using System.Threading;
 
 namespace StoreAssitant
 {
     public partial class TableBill : UserControl
     {
+        [Category("My Event"),Description("When bill control is closed")]
         public event EventHandler CloseBill;
-        private void onCloseBill(object sender,EventArgs e)
-        {
-
-        }
+        private void onCloseBill(object sender,EventArgs e) { }
+        [Category("My Event"), Description("When button Cashier is clicked")]
+        public event EventHandler ClickBtnCashier;
+        private void onClickBtnCashier(object s, EventArgs e) { }
         public TableBill(TableBillInfo tableinfo, int iD)
         {
             InitializeComponent();
             this.CloseBill = new EventHandler(onCloseBill);
+            this.ClickBtnCashier = new EventHandler(onClickBtnCashier);
             this.Layout += TableBill_Layout;
             tableTitle_pnl.Layout += TableBill_Layout;
+            btnCashier.Click += BtnCashier_Click;
             tableTitle_lb.Text = "BÀN " + (iD+1);
             setData(tableinfo);
         }
+
+        private void BtnCashier_Click(object sender, EventArgs e)
+        {
+            this.ClickBtnCashier(this, e);
+            if (Billinfo!=null)
+            {
+                while(Billinfo.ProductInTable.Count!=0)
+                {
+                    Billinfo.ProductInTable.Remove(Billinfo.ProductInTable[0]);
+                    flpProductInfo.Controls.Remove(flpProductInfo.Controls[0]);
+                }
+                MessageBox.Show("Hiện thanh toán...");
+            }
+        }
+
         private void TableBill_Layout(object sender, LayoutEventArgs e)
         {
             flpProductInfo.Height = this.Height - tableTitle_pnl.Location.Y - tableTitle_pnl.Height;
@@ -38,7 +57,20 @@ namespace StoreAssitant
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             this.CloseBill(sender, e);
-            this.Dispose();
+            RemoveZeroNumberProducts();
+            this.Dispose(true);
+        }
+        private void RemoveZeroNumberProducts()
+        {
+            for (int i=0;i<Billinfo.ProductInTable.Count;i++)
+            {
+                Products product = Billinfo.ProductInTable[i];
+                if (product.NumberProduct == 0)
+                {
+                    Billinfo.ProductInTable.Remove(product);
+                    i--;
+                }
+            }
         }
 
         public void setData(TableBillInfo info)

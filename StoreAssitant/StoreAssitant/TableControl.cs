@@ -56,6 +56,12 @@ namespace StoreAssitant
             tableName_lb.Location = new Point((this.Size.Width - tableName_lb.Size.Width) / 2, (this.Size.Height + tableImage_pnl.Height - tableName_lb.Size.Height) / 2);
 
             tsDelete.Click += TsDelete_Click;
+            tsInformation.Click += TsInformation_Click;
+        }
+
+        private void TsInformation_Click(object sender, EventArgs e)
+        {
+            ClickTableControl(this, new EventArgs());
         }
 
         private void TsDelete_Click(object sender, EventArgs e)
