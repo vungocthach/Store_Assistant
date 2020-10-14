@@ -15,6 +15,7 @@ namespace StoreAssitant
     {
         List<ProductInfo> Menu;
         Size itemSize;
+        #region Create event
         public event EventHandler ClickAddButton;
         private void onClickAddButton(object sender, EventArgs e)
         {
@@ -25,6 +26,7 @@ namespace StoreAssitant
         {
 
         }
+        #endregion
         #region Create Properties
         [Category("My Properties"), Description("Height of title bar in pixel")]
         public int TitleHeight
@@ -77,6 +79,17 @@ namespace StoreAssitant
                 Invalidate();
             }
         }
+        [Category("My Properties"), Description("Define is the maneger ")]
+
+        public bool IsManeger
+        {
+            get => controlProduct.Visible;
+            set
+            {
+                controlProduct.Visible = value;
+                Invalidate();
+            }
+        }
         #endregion
         public void AddMenuControl(ProductInfo Infor)
         {
@@ -106,28 +119,40 @@ namespace StoreAssitant
 
             ClickAddButton = new EventHandler(onClickAddButton);
 
-            this.SizeChanged += MenuView_SizeChanged;
 
             ControlTitle.Layout += new LayoutEventHandler((object sender, LayoutEventArgs e) =>
             {
                 SetLocationY_bottom_control(controlSearch, ControlTitle);
             });
+
+
             itemSize = new Size(100, 100);
+
+            this.SizeChanged += MenuView_SizeChanged;
+
             controlProduct._Click += ControlProduct_Click;
+
         }
+
+     
 
         private void ControlProduct_Click(object sender, EventArgs e)
         {
-            /**/
-            ClickAddButton(this, new EventArgs());
+            
+            ClickAddButton(this, e);
         }
 
         
 
         private void Product_Click_AddControlProduct(object sender, EventArgs e)
         {
-            ClickAddTableInfo(this, new EventArgs());
-            MessageBox.Show("Tính năng đang được xây dựng");
+                MouseEventArgs me = (MouseEventArgs)e;
+                if (me.Button == MouseButtons.Left)
+                {
+                    ClickAddTableInfo(this, e);
+                    MessageBox.Show("Tính năng đang được xây dựng");
+                }
+                    
         }
 
         private void SetLocationY_bottom_control(Control target, Control base_control)
@@ -139,6 +164,7 @@ namespace StoreAssitant
         private void MenuView_SizeChanged(object sender, EventArgs e)
         {
             controlSearch.Width = this.Width - 15;
+            flowLayoutPanelMenu.Location = new Point(0, Convert.ToInt32(controlSearch.Location.Y * 2.5));
             flowLayoutPanelMenu.Height = this.Height - controlSearch.Location.Y - controlSearch.Height - 10;
         }
     }

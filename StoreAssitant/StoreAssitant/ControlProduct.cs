@@ -36,7 +36,7 @@ namespace StoreAssitant
 
         private void PanelImage_Click(object sender, EventArgs e)
         {
-            _Click(this, new EventArgs());
+            _Click(this, e);
             panelImage.BorderStyle = BorderStyle.None;
         }
 
