@@ -14,13 +14,18 @@ namespace StoreAssitant
 {
     public partial class TableControl : UserControl
     {
+        #region CREATE EVENTS
         [Category("My Event"),Description("When click the table control")]
         public event EventHandler ClickTableControl;
-        public TableBillInfo Info;
         void OnClickTableControl(object sender, EventArgs e) { }
         [Category("My Event"), Description("When the table control is removed")]
         public event EventHandler TableRemoved;
         void OnTableRemoved(object sender, EventArgs e) { }
+        #endregion
+
+        #region SETTING FIELDS
+        public TableBillInfo Info;
+        #endregion
         public TableControl()
         {
             InitializeComponent();
