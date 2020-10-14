@@ -35,8 +35,9 @@
             // 
             // btn_Cancel
             // 
+            this.btn_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Cancel.Location = new System.Drawing.Point(274, 506);
+            this.btn_Cancel.Location = new System.Drawing.Point(192, 406);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(118, 31);
             this.btn_Cancel.TabIndex = 4;
@@ -45,8 +46,9 @@
             // 
             // btn_Submit
             // 
+            this.btn_Submit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_Submit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Submit.Location = new System.Drawing.Point(98, 506);
+            this.btn_Submit.Location = new System.Drawing.Point(45, 405);
             this.btn_Submit.Name = "btn_Submit";
             this.btn_Submit.Size = new System.Drawing.Size(118, 31);
             this.btn_Submit.TabIndex = 3;
@@ -57,19 +59,20 @@
             // 
             this.productBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.productBox1.Location = new System.Drawing.Point(0, 0);
-            this.productBox1.MinimumSize = new System.Drawing.Size(400, 500);
+            this.productBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.productBox1.MinimumSize = new System.Drawing.Size(300, 400);
             this.productBox1.Name = "productBox1";
             this.productBox1.PDDescription = "";
             this.productBox1.PDImage = null;
             this.productBox1.PDName = "";
             this.productBox1.PDPrice = 1200;
-            this.productBox1.Size = new System.Drawing.Size(489, 500);
+            this.productBox1.Size = new System.Drawing.Size(346, 400);
             this.productBox1.TabIndex = 5;
             // 
             // AddProductForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(489, 546);
+            this.ClientSize = new System.Drawing.Size(346, 449);
             this.ControlBox = false;
             this.Controls.Add(this.productBox1);
             this.Controls.Add(this.btn_Cancel);

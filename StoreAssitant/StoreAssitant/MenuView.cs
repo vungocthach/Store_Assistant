@@ -117,6 +117,8 @@ namespace StoreAssitant
 
             InitializeComponent();
 
+            controlProduct.BackColor = Color.Transparent;
+
             ClickAddTableInfo = new EventHandler<ProductInfo>(onClickAddTableInfo);
 
             ClickAddButton = new EventHandler(onClickAddButton);

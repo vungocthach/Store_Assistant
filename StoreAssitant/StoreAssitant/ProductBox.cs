@@ -48,14 +48,19 @@ namespace StoreAssitant
             }
         }
 
+        int price = 1200;
         [Category("My Properties"), Description("Image of product")]
         public int PDPrice
         {
-            get { return int.Parse(txtb_Price.Text, System.Globalization.NumberStyles.AllowThousands); }
+            get { return price; }
             set
             {
-                txtb_Price.Text = value.ToString("N0");
-                Invalidate();
+                if (value != price)
+                {
+                    txtb_Price.Text = value.ToString("N0");
+                    txtb_Price.Select(txtb_Price.TextLength, 0);
+                    Invalidate();
+                }
             }
         }
 
@@ -109,6 +114,7 @@ namespace StoreAssitant
 
             txtb_Name.TextChanged += Name_UpdateChanged;
             txtb_Price.TextChanged += Price_UpdateChanged;
+            txtb_Description.TextChanged += Description_UpdateChanged;
 
             toolTip_Name.ToolTipIcon = ToolTipIcon.Error;
             toolTip_Price.ToolTipIcon = ToolTipIcon.Error;
@@ -242,6 +248,21 @@ namespace StoreAssitant
             }
         }
 
+        private void Description_UpdateChanged(object sender, EventArgs e)
+        {
+            TextBox txtb = (TextBox)sender;
+
+            if (txtb.Text.Length > 300)
+            {
+                string message = "Vui lòng nhập phần mô tả có độ dài ngắn hơn 300 kí tự";
+                SetErrorState(txtb, message, "Lỗi nhập");
+            }
+            else
+            {
+                RemoveErrorState(txtb);
+            }
+        }
+
         private void Price_UpdateChanged(object sender, EventArgs e)
         {
             TextBox txtb = (TextBox)sender;
@@ -255,7 +276,7 @@ namespace StoreAssitant
                 }
                 else
                 {
-                    int.Parse(txtb.Text, System.Globalization.NumberStyles.AllowThousands);
+                    PDPrice = int.Parse(txtb.Text, System.Globalization.NumberStyles.AllowThousands);
                     RemoveErrorState(txtb);
                 }
             }
@@ -266,7 +287,7 @@ namespace StoreAssitant
             }
             catch (OverflowException)
             {
-                string message = string.Format("Vui lòng nhập giá trị từ 0 đến {0}", int.MaxValue);
+                string message = string.Format("Vui lòng nhập giá trị từ 0 đến {0}", int.MaxValue.ToString("N0"));
                 SetErrorState(txtb, message, "Lỗi nhập");
             }
         }

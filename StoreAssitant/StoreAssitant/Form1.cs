@@ -72,6 +72,7 @@ namespace StoreAssitant
         {
             using (AddProductForm form = new AddProductForm())
             {
+                //form.ClientSize = new Size(490, 500);
                 form.ClickSubmitOK += new EventHandler<ProductInfo>((object sender, ProductInfo info) =>
                 {
                     using (DatabaseController databaseController = new DatabaseController())

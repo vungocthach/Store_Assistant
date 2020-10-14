@@ -62,5 +62,6 @@ namespace StoreAssitant
             productBox1.PDPrice = info.Price;
             productBox1.PDDescription = info.Description;
         }
+
     }
 }
