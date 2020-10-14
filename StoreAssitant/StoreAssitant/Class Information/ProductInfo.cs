@@ -4,10 +4,11 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace StoreAssitant
 {
-    public class ProductInfo
+    public class ProductInfo 
     {
         public int Id { get; set; }
         public Bitmap Image { get; set; }

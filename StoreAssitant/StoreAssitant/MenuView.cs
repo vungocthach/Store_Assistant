@@ -23,8 +23,8 @@ namespace StoreAssitant
         {
 
         }
-        public event EventHandler ClickAddTableInfo;
-        private void onClickAddTableInfo(object sender, EventArgs e)
+        public event EventHandler<ProductInfo> ClickAddTableInfo;
+        private void onClickAddTableInfo(object sender, ProductInfo e)
         {
 
         }
@@ -108,7 +108,7 @@ namespace StoreAssitant
             foreach (ProductInfo P in Pro)
             {
                 AddMenuControl(P);
-                Menu.Add(P);
+                //Menu.Add(P);
             }
         }
        
@@ -117,7 +117,7 @@ namespace StoreAssitant
 
             InitializeComponent();
 
-            ClickAddTableInfo = new EventHandler(onClickAddTableInfo);
+            ClickAddTableInfo = new EventHandler<ProductInfo>(onClickAddTableInfo);
 
             ClickAddButton = new EventHandler(onClickAddButton);
 
@@ -140,7 +140,6 @@ namespace StoreAssitant
      
         private void ControlProduct_Click(object sender, EventArgs e)
         {
-            
             ClickAddButton(this, e);
         }
 
@@ -148,13 +147,13 @@ namespace StoreAssitant
 
         private void Product_Click_AddControlProduct(object sender, EventArgs e)
         {
-                MouseEventArgs me = (MouseEventArgs)e;
-                if (me.Button == MouseButtons.Left)
-                {
-                    ClickAddTableInfo(this, e);
-                    MessageBox.Show("Tính năng đang được xây dựng");
-                }
-                    
+            MouseEventArgs me = (MouseEventArgs)e;
+            if (me.Button == MouseButtons.Left)
+            {
+                ClickAddTableInfo(this, ((MenuControl)sender).ProductInfo);
+              //MessageBox.Show("Tính năng đang được xây dựng");
+            }
+
         }
 
         private void SetLocationY_bottom_control(Control target, Control base_control)

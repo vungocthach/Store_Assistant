@@ -51,10 +51,10 @@ namespace StoreAssitant
         [Category("My Properties"), Description("Image of product")]
         public int PDPrice
         {
-            get { return int.Parse(txtb_Price.Text.Trim()); }
+            get { return int.Parse(txtb_Price.Text, System.Globalization.NumberStyles.AllowThousands); }
             set
             {
-                txtb_Price.Text = value.ToString();
+                txtb_Price.Text = value.ToString("N0");
                 Invalidate();
             }
         }
@@ -176,9 +176,9 @@ namespace StoreAssitant
                                                 txtb_Name.Location.Y + (txtb_Name.Height - pb_Err_Name.Height) / 2);
             pb_Err_Price.Location = new Point(this.Width - pb_Err_Price.Width - 5,
                                                 txtb_Price.Location.Y + (txtb_Price.Height - pb_Err_Price.Height) / 2);
-            
+
             txtb_Name.Width = pb_Err_Name.Location.X - txtb_Name.Location.X - 5;
-            txtb_Price.Width = pb_Err_Price.Location.X - txtb_Price.Location.X - 5;
+            txtb_Price.Width = this.Height - txtb_Price.Location.X - (this.Height - lb_currency.Location.X) - 5;
 
             txtb_Description.Height = this.Height - txtb_Description.Location.Y - 5;
             txtb_Description.Width = this.Width - txtb_Description.Location.X * 2;
@@ -255,7 +255,7 @@ namespace StoreAssitant
                 }
                 else
                 {
-                    int.Parse(txtb.Text);
+                    int.Parse(txtb.Text, System.Globalization.NumberStyles.AllowThousands);
                     RemoveErrorState(txtb);
                 }
             }

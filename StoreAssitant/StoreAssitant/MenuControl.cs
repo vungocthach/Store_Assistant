@@ -16,11 +16,31 @@ namespace StoreAssitant
         #region create event Click_AddControlProduct, Click_Delete
 
         public event EventHandler CLick_Delete;
-
         private void onCLick_Delete(object sender, EventArgs e)
         {
 
         }
+
+        public ProductInfo ProductInfo { get { return Infor; } }
+
+        public Bitmap PDImage
+        {
+            get { return (Bitmap)pictureBox.Image; }
+            set
+            {
+                if (pictureBox.Image != null) { pictureBox.Image.Dispose(); }
+                /*
+                double percent_Y = pictureBox.Height / (double)value.Height;
+                double percent_X = pictureBox.Width / (double)value.Width;
+                double percent = (percent_X < percent_Y) ? percent_X : percent_Y;
+                Size nSize = new Size((int)(value.Width * percent), (int)(value.Height * percent));
+                pictureBox.Image = new Bitmap(value, nSize);
+                value.Dispose();*/
+                pictureBox.Image = value;
+                Invalidate();
+            }
+        }
+
         public event EventHandler Click_AddControlProduct;
 
         private void on_Click_AddControlProduct(object sender, EventArgs e)
@@ -54,7 +74,7 @@ namespace StoreAssitant
             Infor = info;
             textBoxName.Text = info.Name;
             textBoxPrice.Text = Convert.ToString( info.Price);
-            if (info.Image != null) pictureBox.Image = info.Image;
+            PDImage = info.Image;
         }
         
         public MenuControl()
@@ -149,7 +169,8 @@ namespace StoreAssitant
 
         private void MenuControl_Layout(object sender, EventArgs e)
         {
-            pictureBox.Size = new Size(this.Width, Convert.ToInt32(this.Height * 0.6));
+            pictureBox.Size = new Size(this.Width, Convert.ToInt32(this.Height * 0.7));
+            //PDImage = (Bitmap)pictureBox.Image;
             textBoxPrice.Location = new Point(0, pictureBox.Height);
             textBoxName.Location = new Point(0, pictureBox.Height + textBoxPrice.Height);
             textBoxName.Size = textBoxPrice.Size = new Size(this.Width, (this.Height - pictureBox.Height)/2);

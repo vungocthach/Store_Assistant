@@ -42,6 +42,7 @@
             this.pb_Err_Des = new System.Windows.Forms.PictureBox();
             this.pb_Err_Price = new System.Windows.Forms.PictureBox();
             this.pb_Err_Name = new System.Windows.Forms.PictureBox();
+            this.lb_currency = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Err_Des)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Err_Price)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Err_Name)).BeginInit();
@@ -74,8 +75,10 @@
             this.txtb_Price.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.txtb_Price.MaxLength = 20;
             this.txtb_Price.Name = "txtb_Price";
-            this.txtb_Price.Size = new System.Drawing.Size(288, 30);
+            this.txtb_Price.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtb_Price.Size = new System.Drawing.Size(236, 30);
             this.txtb_Price.TabIndex = 3;
+            this.txtb_Price.Text = "0";
             // 
             // label2
             // 
@@ -130,8 +133,9 @@
             // 
             // pb_Err_Price
             // 
+            this.pb_Err_Price.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pb_Err_Price.Image = global::StoreAssitant.Properties.Resources.iconfinder_caution_1055096;
-            this.pb_Err_Price.Location = new System.Drawing.Point(432, 236);
+            this.pb_Err_Price.Location = new System.Drawing.Point(431, 231);
             this.pb_Err_Price.Name = "pb_Err_Price";
             this.pb_Err_Price.Size = new System.Drawing.Size(36, 36);
             this.pb_Err_Price.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -141,8 +145,9 @@
             // 
             // pb_Err_Name
             // 
+            this.pb_Err_Name.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pb_Err_Name.Image = global::StoreAssitant.Properties.Resources.iconfinder_caution_1055096;
-            this.pb_Err_Name.Location = new System.Drawing.Point(431, 188);
+            this.pb_Err_Name.Location = new System.Drawing.Point(430, 192);
             this.pb_Err_Name.Name = "pb_Err_Name";
             this.pb_Err_Name.Size = new System.Drawing.Size(36, 36);
             this.pb_Err_Name.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -150,12 +155,24 @@
             this.pb_Err_Name.TabStop = false;
             this.pb_Err_Name.Visible = false;
             // 
+            // lb_currency
+            // 
+            this.lb_currency.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_currency.AutoSize = true;
+            this.lb_currency.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_currency.Location = new System.Drawing.Point(380, 241);
+            this.lb_currency.Name = "lb_currency";
+            this.lb_currency.Size = new System.Drawing.Size(45, 20);
+            this.lb_currency.TabIndex = 17;
+            this.lb_currency.Text = "VND";
+            // 
             // ProductBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pb_Err_Des);
             this.Controls.Add(this.pb_Err_Price);
+            this.Controls.Add(this.lb_currency);
+            this.Controls.Add(this.pb_Err_Des);
             this.Controls.Add(this.pb_Err_Name);
             this.Controls.Add(this.label_Image);
             this.Controls.Add(this.txtb_Description);
@@ -190,5 +207,6 @@
         private System.Windows.Forms.PictureBox pb_Err_Name;
         private System.Windows.Forms.PictureBox pb_Err_Price;
         private System.Windows.Forms.PictureBox pb_Err_Des;
+        private System.Windows.Forms.Label lb_currency;
     }
 }

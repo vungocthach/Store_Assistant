@@ -18,31 +18,49 @@ namespace StoreAssitant
 
         {
             InitializeComponent();
+            InitializeEventHandler();
+
             kryptonNavigator1.GotFocus += KryptonNavigator1_GotFocus;
-            this.SizeChanged += Form1_SizeChanged;
-            menuView1.ClickAddButton += MenuView1_ClickAddButton;
-            menuView1.ClickAddTableInfo += MenuView1_ClickAddTableInfo;
-            /*
-            try
-            {
+            
+            
                 using (DatabaseController databaseController = new DatabaseController())
                 {
                     databaseController.ConnectToSQLDatabase();
                     tableView1.SetData(databaseController.GetTableCount());
-                    menuView1.SetData(databaseController.GetProductInfos());
+                    menuView1.SetData(databaseController.GetProductInfos2());
                 }
-            }
-            catch (Exception e) { MessageBox.Show(e.Message, "SQL Connection error", MessageBoxButtons.OK, MessageBoxIcon.Error); }*/
         }
 
-        private void MenuView1_ClickAddTableInfo(object sender, EventArgs e)
+        void InitializeEventHandler()
         {
-            MessageBox.Show("CLICK AddTableInfo");
+            this.SizeChanged += Form1_SizeChanged;
+            menuView1.ClickAddButton += MenuView1_ClickAddButton;
+            menuView1.ClickAddTableInfo += MenuView1_ClickAddTableInfo1;
+            tableView1.TableRemoved += TableView1_UpdateNumber;
+            tableView1.TableAdded += TableView1_UpdateNumber;
+        }
+
+        private void TableView1_UpdateNumber(object sender, EventArgs e)
+        {
+            TableView tableView = (TableView)sender;
+            this.Text = tableView.NumberTable.ToString();
+            using (DatabaseController databaseController = new DatabaseController())
+            {
+                databaseController.ConnectToSQLDatabase();
+                databaseController.UpdateTableCount(tableView.NumberTable);
+                
+            }
+        }
+
+        private void MenuView1_ClickAddTableInfo1(object sender, ProductInfo e)
+        {
+            MessageBox.Show("Click On a product" + Environment.NewLine + e.ToString());
         }
 
         private void MenuView1_ClickAddButton(object sender, EventArgs e)
         {
             OpenAddProductDialog();
+            
         }
 
         private void Form1_SizeChanged(object sender, EventArgs e)
@@ -56,7 +74,12 @@ namespace StoreAssitant
             {
                 form.ClickSubmitOK += new EventHandler<ProductInfo>((object sender, ProductInfo info) =>
                 {
-                    menuView1.AddMenuControl(info);
+                    using (DatabaseController databaseController = new DatabaseController())
+                    {
+                        databaseController.InsertProduct(info);
+                        menuView1.AddMenuControl(info);
+                        MessageBox.Show("Click On a product" + Environment.NewLine + info.ToString());
+                    }
                 });
                 form.ShowDialog();
             }

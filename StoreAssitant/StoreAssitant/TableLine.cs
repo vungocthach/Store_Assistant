@@ -13,45 +13,43 @@ namespace StoreAssitant
 {
     public partial class TableLine : UserControl
     {
+        [Category("My Event"),Description("When information of product is changed")]
+        public event EventHandler InfoChanged;
+        private void onInfoChanged(object sender, EventArgs e) 
+        {
+            lbName.Text = product.Name;
+            lbNumber.Text = product.NumberProduct.ToString();
+            lbSinglePrice.Text = product.Price.ToString();
+            lbTotalPrice.Text = TotalPrice().ToString();
+        }
+
+        private Products product = null;
+
         public TableLine()
         {
             InitializeComponent();
             this.Layout += TableLine_Layout;
+            this.InfoChanged = new EventHandler(onInfoChanged);
+
             this.MinimumSize = new Size(348, 23);
             btnAdd.Click += BtnAdd_Click;
             btnRemove.Click += BtnRemove_Click;
-            lbNumber.TextChanged += LbNumber_TextChanged;
-            lbSinglePrice.TextChanged += LbSinglePrice_TextChanged;
         }
 
-        private void LbSinglePrice_TextChanged(object sender, EventArgs e)
-        {
-            lbTotalPrice.Text = TotalPrice().ToString();
-        }
-        private void LbNumber_TextChanged(object sender, EventArgs e)
-        {
-            lbTotalPrice.Text = TotalPrice().ToString();
-        }
         private int TotalPrice()
         {
-            return SinglePrice * Number;
+            return product.Price*product.NumberProduct;
         }
 
         public void SetData(Products product)
         {
-            Name = product.Name;
-            SinglePrice = product.Price;
-            Number = product.NumberProduct;
-            lbTotalPrice.Text = TotalPrice().ToString();
+            this.product = product;
+            onInfoChanged(this, new EventArgs());
         }
 
         private void BtnRemove_Click(object sender, EventArgs e)
         {
             Number--;
-            if (0 == Number)
-            {
-                MessageBox.Show("Thực hiện xóa dòng này");
-            }
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -77,41 +75,71 @@ namespace StoreAssitant
         [Category("MyProperties"),Description("Name of product")]
         public string Name
         {
-            get => lbName.Text;
+            get => product.Name;
             set
             {
-                lbName.Text = value;
+                if (product == null)
+                {
+                    lbName.Text = value;
+                }
+                else
+                {
+                    product.Name = value;
+                    onInfoChanged(this, new EventArgs());
+                }
                 Invalidate();
             }
         }
         [Category("MyProperties"),Description("Price of product")]
         public int SinglePrice
         {
-            get => int.Parse(lbSinglePrice.Text);
+            get => product.Price;
             set
             {
-                lbSinglePrice.Text = value.ToString();
+                if (product == null)
+                {
+                    lbSinglePrice.Text = value.ToString();
+                }
+                else
+                {
+                    product.Price = value;
+                    onInfoChanged(this, new EventArgs());
+                }
                 Invalidate();
             }
         }
         [Category("MyProperties"),Description("Number product")]
         public int Number
         {
-            get => int.Parse(lbNumber.Text);
+            get => product.NumberProduct;
             set
             {
-                if (value == 0)
+                if (product == null)
                 {
-                    btnRemove.Enabled = false;
+                    lbNumber.Text = value.ToString();
                 }
-                else
                 {
-                    btnRemove.Enabled = true;
+                    if (value == 0)
+                    {
+                        btnRemove.Enabled = false;
+                        btnRemove.BackColor = Color.Gray;
+                    }
+                    else
+                    {
+                        btnRemove.Enabled = true;
+                        btnRemove.BackColor = System.Drawing.Color.DeepSkyBlue;
+                    }
+                    product.NumberProduct = value;
+                    onInfoChanged(this, new EventArgs());
                 }
-                lbNumber.Text = value.ToString();
                 Invalidate();
             }
         }
-        #endregion
-    }
+        [Category("MyProperties"), Description("Id product")]
+        public int IDProduct
+        {
+            get => product.Id;
+        }
+            #endregion
+        }
 }

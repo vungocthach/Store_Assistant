@@ -14,18 +14,25 @@ namespace StoreAssitant
 {
     public partial class TableControl : UserControl
     {
+        #region CREATE EVENTS
+        [Category("My Event"),Description("When click the table control")]
         public event EventHandler ClickTableControl;
-        public TableBillInfo Info;
-        void OnClickTableControl(object sender, EventArgs e)
-        {
+        void OnClickTableControl(object sender, EventArgs e) { }
+        [Category("My Event"), Description("When the table control is removed")]
+        public event EventHandler TableRemoved;
+        void OnTableRemoved(object sender, EventArgs e) { }
+        #endregion
 
-        }
+        #region SETTING FIELDS
+        public TableBillInfo Info;
+        #endregion
         public TableControl()
         {
             InitializeComponent();
             this.Info = new TableBillInfo();
 
             ClickTableControl = new EventHandler(OnClickTableControl);
+            TableRemoved = new EventHandler(OnTableRemoved);
 
             this.SizeChanged += TableControl_SizeChanged;
             tableName_lb.TextChanged += Table_Name_TextChanged;
@@ -53,6 +60,19 @@ namespace StoreAssitant
             this.MinimumSize = new Size(tableName_lb.Size.Width, tableName_lb.Size.Height * 4);
             tableName_lb.Location = new Point((this.Size.Width - tableName_lb.Size.Width) / 2, (this.Size.Height + tableImage_pnl.Height - tableName_lb.Size.Height) / 2);
 
+            tsDelete.Click += TsDelete_Click;
+            tsInformation.Click += TsInformation_Click;
+        }
+
+        private void TsInformation_Click(object sender, EventArgs e)
+        {
+            ClickTableControl(this, new EventArgs());
+        }
+
+        private void TsDelete_Click(object sender, EventArgs e)
+        {
+            TableRemoved(this, e);
+            GC.SuppressFinalize(this);
         }
 
         #region EVENT MOUSE
@@ -109,6 +129,7 @@ namespace StoreAssitant
             get => tableImage_pnl.BackgroundImage;
             set
             {
+                if (tableImage_pnl.BackgroundImage != null) tableImage_pnl.BackgroundImage.Dispose();
                 tableImage_pnl.BackgroundImage = value;
                 Invalidate();
             }

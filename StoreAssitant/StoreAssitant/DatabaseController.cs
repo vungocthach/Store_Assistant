@@ -37,7 +37,8 @@ namespace StoreAssitant
         {
             username = "laptrinhtrucquan";
             password = "bangnhucthach@ktpm2019";
-            serverName = "tcp:52.187.161.61,2001";
+            //serverName = "tcp:52.187.161.61,2001";
+            serverName = @"tcp:52.187.161.61,5897";
             databaseName = "DBStoreAssistant";
 
             TB_INTERGER = "TB_INTERGER";
@@ -45,7 +46,7 @@ namespace StoreAssitant
             TB_IMAGE = "TB_IMAGE";
             COLUMNS_TB_IMAGE = new string[2] { "ID", "M_VALUE" };
             TB_PRODUCT = "TB_PRODUCT";
-            COLUMNS_TB_PRODUCT = new string[4] { "ID", "PD_NAME", "PRICE", "DESCRIP"};
+            COLUMNS_TB_PRODUCT = new string[5] { "ID", "PD_NAME", "PRICE", "DESCRIP", "IMAGE_ID"};
 
             connection = new SqlConnection(SQLStatementManager.GetConnectionString(username, password, serverName, databaseName));
             cmd = new SqlCommand();
@@ -72,6 +73,22 @@ namespace StoreAssitant
             {
                 connection.Close();
             }
+        }
+
+        public void TransactionStart()
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.Transaction = connection.BeginTransaction();
+        }
+
+        public void TransactionRollback()
+        {
+            cmd.Transaction.Rollback();
+        }
+
+        public void TransactionCommit()
+        {
+            cmd.Transaction.Commit();
         }
 
         public int GetTableCount()
@@ -139,6 +156,40 @@ namespace StoreAssitant
             return rs;
         }
 
+        public List<ProductInfo> GetProductInfos2()
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            List<ProductInfo> rs = null;
+            List<int> images_id ;
+
+            cmd.CommandText = string.Format("SELECT {1},{2},{3},{4},{5} FROM {0}",
+                TB_PRODUCT, COLUMNS_TB_PRODUCT[0], COLUMNS_TB_PRODUCT[1], COLUMNS_TB_PRODUCT[2], COLUMNS_TB_PRODUCT[3], COLUMNS_TB_PRODUCT[4]);
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                rs = new List<ProductInfo>();
+                images_id = new List<int>();
+                while (reader.Read())
+                {
+                    images_id.Add(reader.GetInt32(4));
+                    rs.Add(new ProductInfo(reader.GetInt16(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3)));
+                }
+                reader.Close();
+            }
+            for (int i = 0; i < rs.Count; i++)
+            {
+                if (images_id[i] != -1)
+                {
+                    if (rs[i].Image != null) { rs[i].Image.Dispose(); }
+                    rs[i].Image = null;
+                    rs[i].Image = GetImage(images_id[i]);
+                }
+            }
+
+            return rs;
+        }
+
         public Bitmap GetImage(int id)
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
@@ -167,29 +218,45 @@ namespace StoreAssitant
         public bool InsertProduct(ProductInfo productInfo)
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
-            using (SqlTransaction transaction = connection.BeginTransaction())
+
+            TransactionStart();
+
+            productInfo.Id = GetNextId();
+
+            cmd.CommandText = string.Format("INSERT INTO {0}({1},{2},{3},{4},{5}) VALUES(@{1}_,@{2}_,@{3}_,@{4}_,@{5}_)",
+                TB_PRODUCT, COLUMNS_TB_PRODUCT[0], COLUMNS_TB_PRODUCT[1], COLUMNS_TB_PRODUCT[2], COLUMNS_TB_PRODUCT[3], COLUMNS_TB_PRODUCT[4]);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[0]), SqlDbType.SmallInt).Value = productInfo.Id;
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[1]), SqlDbType.NVarChar).Value = productInfo.Name;
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[2]), SqlDbType.Int).Value = productInfo.Price;
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[3]), SqlDbType.NVarChar).Value = productInfo.Description;
+
+            if (productInfo.Image == null)
             {
-                bool hasError = false;
-                cmd.Transaction = transaction;
-                productInfo.Id = GetNextId();
-                cmd.CommandText = string.Format("INSERT INTO {0}({1},{2},{3},{4}) VALUES(@{1}_,@{2}_,@{3}_,@{4}_)",
-                    TB_PRODUCT, COLUMNS_TB_PRODUCT[0], COLUMNS_TB_PRODUCT[1], COLUMNS_TB_PRODUCT[2], COLUMNS_TB_PRODUCT[3]);
-                cmd.Parameters.Clear();
-                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[0]), SqlDbType.SmallInt).Value = productInfo.Id;
-                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[1]), SqlDbType.VarChar).Value = productInfo.Name;
-                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[2]), SqlDbType.Int).Value = productInfo.Price;
-                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[3]), SqlDbType.VarChar).Value = productInfo.Description;
+                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[4]), SqlDbType.Int).Value = -1;
+            }
+            else
+            {
+                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[4]), SqlDbType.Int).Value = productInfo.Id;
+            }
 
-                hasError = cmd.ExecuteNonQuery() != 1;
-                if (productInfo.Image != null)
-                {
-                    hasError = hasError || !InsertImage(productInfo.Image, productInfo.Id);
+            bool hasError = cmd.ExecuteNonQuery() != 1;
+            if (productInfo.Image != null)
+            {
+                hasError = hasError || !InsertImage(productInfo.Image, productInfo.Id) || !UpdateNextId(productInfo.Id + 1);
 
-                }
-                hasError = hasError || !UpdateNextId(productInfo.Id + 1);
+            }
+            
 
-                if (hasError) { transaction.Rollback(); return false; }
-                else { transaction.Commit(); return true; }
+            if (hasError)
+            {
+                TransactionRollback();
+                return false;
+            }
+            else
+            {
+                TransactionCommit();
+                return true;
             }
         }
 
