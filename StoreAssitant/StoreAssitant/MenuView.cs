@@ -14,7 +14,9 @@ namespace StoreAssitant
     public partial class MenuView : UserControl
     {
         List<ProductInfo> Menu;
+
         Size itemSize;
+
         #region Create event
         public event EventHandler ClickAddButton;
         private void onClickAddButton(object sender, EventArgs e)
@@ -132,10 +134,10 @@ namespace StoreAssitant
 
             controlProduct._Click += ControlProduct_Click;
 
+
         }
 
      
-
         private void ControlProduct_Click(object sender, EventArgs e)
         {
             
