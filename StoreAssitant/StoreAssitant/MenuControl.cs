@@ -64,6 +64,7 @@ namespace StoreAssitant
             // this.MinimumSize = new Size(125, 140);
 
             CLick_Delete += new EventHandler(onCLick_Delete);
+
             Click_AddControlProduct = new EventHandler(on_Click_AddControlProduct);
 
             this.Layout += MenuControl_Layout;
