@@ -135,6 +135,11 @@ namespace StoreAssitant
                 Invalidate();
             }
         }
-        #endregion
-    }
+        [Category("MyProperties"), Description("Id product")]
+        public int IDProduct
+        {
+            get => product.Id;
+        }
+            #endregion
+        }
 }

@@ -20,6 +20,8 @@ namespace StoreAssitant
         [Category("My Event"), Description("When button Cashier is clicked")]
         public event EventHandler ClickBtnCashier;
         private void onClickBtnCashier(object s, EventArgs e) { }
+
+
         public TableBill(TableBillInfo tableinfo, int iD)
         {
             InitializeComponent();
@@ -30,6 +32,36 @@ namespace StoreAssitant
             btnCashier.Click += BtnCashier_Click;
             tableTitle_lb.Text = "BÀN " + (iD+1);
             setData(tableinfo);
+        }
+
+        public void UploadProduct(ProductInfo product)
+        {
+            if (!isProductExists(product))
+            {
+                Products pro = new Products(product);
+                Billinfo.ProductInTable.Add(pro);
+                CreateTableLine(pro);
+            }
+        }
+        private bool isProductExists(ProductInfo product)
+        {
+            foreach (Products pro in Billinfo.ProductInTable)
+            {
+                if (pro.Id == product.Id)
+                {
+                    TableLine line = new TableLine();
+                    line.SetData(pro);
+                    foreach(TableLine table in flpProductInfo.Controls)
+                    {
+                        if (table.IDProduct == line.IDProduct)
+                        {
+                            table.Number++;
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
         }
 
         private void BtnCashier_Click(object sender, EventArgs e)
@@ -84,11 +116,15 @@ namespace StoreAssitant
                 this.Billinfo = info;
                 foreach (var product in this.Billinfo.ProductInTable)
                 {
-                    TableLine line = new TableLine();
-                    line.SetData(product);
-                    flpProductInfo.Controls.Add(line);
+                    CreateTableLine(product);
                 }
             }
+        }
+        private void CreateTableLine(Products product)
+        {
+            TableLine line = new TableLine();
+            line.SetData(product);
+            flpProductInfo.Controls.Add(line);
         }
         [Category("My Properties"), Description("Name of the table selected")]
         public string Name

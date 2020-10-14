@@ -18,10 +18,12 @@ namespace StoreAssitant.Class_Information
     }
     public class Products : ProductInfo
     {
-        public int NumberProduct { get; set; }
+        public int NumberProduct { get; set; } = 1;
         public Products()
         {
-            NumberProduct = 1;
+        }
+        public Products(ProductInfo product):base(product.Id,product.Name,product.Price,product.Description,product.Image)
+        {
         }
     }
 }
