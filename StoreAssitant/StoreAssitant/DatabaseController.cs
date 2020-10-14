@@ -38,7 +38,7 @@ namespace StoreAssitant
             username = "laptrinhtrucquan";
             password = "bangnhucthach@ktpm2019";
             //serverName = "tcp:52.187.161.61,2001";
-            serverName = @"THUNDERSTUDIO\THUNDERSQLSERVER";
+            serverName = @"tcp:52.187.161.61,5897";
             databaseName = "DBStoreAssistant";
 
             TB_INTERGER = "TB_INTERGER";
@@ -73,6 +73,22 @@ namespace StoreAssitant
             {
                 connection.Close();
             }
+        }
+
+        public void TransactionStart()
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.Transaction = connection.BeginTransaction();
+        }
+
+        public void TransactionRollback()
+        {
+            cmd.Transaction.Rollback();
+        }
+
+        public void TransactionCommit()
+        {
+            cmd.Transaction.Commit();
         }
 
         public int GetTableCount()
@@ -202,48 +218,45 @@ namespace StoreAssitant
         public bool InsertProduct(ProductInfo productInfo)
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
-            using (SqlTransaction transaction = connection.BeginTransaction())
+
+            TransactionStart();
+
+            productInfo.Id = GetNextId();
+
+            cmd.CommandText = string.Format("INSERT INTO {0}({1},{2},{3},{4},{5}) VALUES(@{1}_,@{2}_,@{3}_,@{4}_,@{5}_)",
+                TB_PRODUCT, COLUMNS_TB_PRODUCT[0], COLUMNS_TB_PRODUCT[1], COLUMNS_TB_PRODUCT[2], COLUMNS_TB_PRODUCT[3], COLUMNS_TB_PRODUCT[4]);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[0]), SqlDbType.SmallInt).Value = productInfo.Id;
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[1]), SqlDbType.NVarChar).Value = productInfo.Name;
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[2]), SqlDbType.Int).Value = productInfo.Price;
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[3]), SqlDbType.NVarChar).Value = productInfo.Description;
+
+            if (productInfo.Image == null)
             {
-                bool hasError = false;
-                cmd.Transaction = transaction;
-                productInfo.Id = GetNextId();
-                cmd.CommandText = string.Format("INSERT INTO {0}({1},{2},{3},{4},{5}) VALUES(@{1}_,@{2}_,@{3}_,@{4}_,@{5}_)",
-                    TB_PRODUCT, COLUMNS_TB_PRODUCT[0], COLUMNS_TB_PRODUCT[1], COLUMNS_TB_PRODUCT[2], COLUMNS_TB_PRODUCT[3], COLUMNS_TB_PRODUCT[4]);
-                cmd.Parameters.Clear();
-                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[0]), SqlDbType.SmallInt).Value = productInfo.Id;
-                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[1]), SqlDbType.VarChar).Value = productInfo.Name;
-                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[2]), SqlDbType.Int).Value = productInfo.Price;
-                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[3]), SqlDbType.VarChar).Value = productInfo.Description;
+                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[4]), SqlDbType.Int).Value = -1;
+            }
+            else
+            {
+                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[4]), SqlDbType.Int).Value = productInfo.Id;
+            }
 
-                if (productInfo.Image == null)
-                {
-                    cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[4]), SqlDbType.Int).Value = -1;
-                }
-                else
-                {
-                    cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[4]), SqlDbType.Int).Value = productInfo.Id;
-                }
+            bool hasError = cmd.ExecuteNonQuery() != 1;
+            if (productInfo.Image != null)
+            {
+                hasError = hasError || !InsertImage(productInfo.Image, productInfo.Id) || !UpdateNextId(productInfo.Id + 1);
 
-                hasError = cmd.ExecuteNonQuery() != 1;
-                if (productInfo.Image != null)
-                {
-                    hasError = hasError || !InsertImage(productInfo.Image, productInfo.Id);
+            }
+            
 
-                }
-                hasError = hasError || !UpdateNextId(productInfo.Id + 1);
-
-                if (hasError)
-                {
-                    transaction.Rollback();
-                    cmd.Transaction = null;
-                    return false;
-                }
-                else
-                {
-                    transaction.Commit();
-                    cmd.Transaction = null;
-                    return true;
-                }
+            if (hasError)
+            {
+                TransactionRollback();
+                return false;
+            }
+            else
+            {
+                TransactionCommit();
+                return true;
             }
         }
 

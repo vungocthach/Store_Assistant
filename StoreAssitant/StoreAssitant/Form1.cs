@@ -18,10 +18,10 @@ namespace StoreAssitant
 
         {
             InitializeComponent();
+            InitializeEventHandler();
+
             kryptonNavigator1.GotFocus += KryptonNavigator1_GotFocus;
-            this.SizeChanged += Form1_SizeChanged;
-            menuView1.ClickAddButton += MenuView1_ClickAddButton;
-            menuView1.ClickAddTableInfo += MenuView1_ClickAddTableInfo1;
+            
             
                 using (DatabaseController databaseController = new DatabaseController())
                 {
@@ -31,14 +31,30 @@ namespace StoreAssitant
                 }
         }
 
+        void InitializeEventHandler()
+        {
+            this.SizeChanged += Form1_SizeChanged;
+            menuView1.ClickAddButton += MenuView1_ClickAddButton;
+            menuView1.ClickAddTableInfo += MenuView1_ClickAddTableInfo1;
+            tableView1.TableRemoved += TableView1_UpdateNumber;
+            tableView1.TableAdded += TableView1_UpdateNumber;
+        }
+
+        private void TableView1_UpdateNumber(object sender, EventArgs e)
+        {
+            TableView tableView = (TableView)sender;
+            this.Text = tableView.NumberTable.ToString();
+            using (DatabaseController databaseController = new DatabaseController())
+            {
+                databaseController.ConnectToSQLDatabase();
+                databaseController.UpdateTableCount(tableView.NumberTable);
+                
+            }
+        }
+
         private void MenuView1_ClickAddTableInfo1(object sender, ProductInfo e)
         {
             MessageBox.Show("Click On a product" + Environment.NewLine + e.ToString());
-        }
-
-        private void TableView1_TableAdded(object sender, EventArgs e)
-        {
-            MessageBox.Show("Table Added");
         }
 
         private void MenuView1_ClickAddButton(object sender, EventArgs e)
@@ -62,6 +78,7 @@ namespace StoreAssitant
                     {
                         databaseController.InsertProduct(info);
                         menuView1.AddMenuControl(info);
+                        MessageBox.Show("Click On a product" + Environment.NewLine + info.ToString());
                     }
                 });
                 form.ShowDialog();
