@@ -78,7 +78,7 @@ namespace StoreAssitant
         #region EVENT MOUSE
         private void TableControl_MouseClick(object sender, MouseEventArgs e)
         {
-            ClickTableControl(this, new EventArgs());
+            ClickTableControl(this, e);
         }
         private void TableControl_MouseEnter(object sender, EventArgs e)
         {

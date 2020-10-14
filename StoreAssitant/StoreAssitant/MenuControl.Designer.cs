@@ -28,24 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.textBoxPrice = new System.Windows.Forms.Label();
-            this.textBoxName = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.textBoxName = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxPrice
             // 
             this.textBoxPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxPrice.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.textBoxPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.textBoxPrice.Location = new System.Drawing.Point(0, 159);
-            this.textBoxPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.textBoxPrice.Location = new System.Drawing.Point(0, 89);
             this.textBoxPrice.Name = "textBoxPrice";
-            this.textBoxPrice.Size = new System.Drawing.Size(197, 23);
+            this.textBoxPrice.Size = new System.Drawing.Size(148, 30);
             this.textBoxPrice.TabIndex = 1;
             this.textBoxPrice.Text = "Giá";
             this.textBoxPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.textBoxPrice.Click += new System.EventHandler(this.textBoxPrice_Click_1);
             // 
             // textBoxName
             // 
@@ -71,10 +75,31 @@
             this.pictureBox.Location = new System.Drawing.Point(0, 0);
             this.pictureBox.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(246, 155);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox.Size = new System.Drawing.Size(148, 89);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox.TabIndex = 3;
             this.pictureBox.TabStop = false;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.editToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Text = "Delele                  ";
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editToolStripMenuItem.Text = "Edit";
             // 
             // MenuControl
             // 
@@ -82,13 +107,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PapayaWhip;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.textBoxName);
+            this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.textBoxPrice);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MenuControl";
-            this.Size = new System.Drawing.Size(197, 182);
+            this.Size = new System.Drawing.Size(148, 148);
+            this.Load += new System.EventHandler(this.MenuControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -96,6 +123,9 @@
         #endregion
         private System.Windows.Forms.Label textBoxPrice;
         private System.Windows.Forms.PictureBox pictureBox;
-        protected System.Windows.Forms.Label textBoxName;
+        private System.Windows.Forms.Label textBoxName;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
     }
 }
