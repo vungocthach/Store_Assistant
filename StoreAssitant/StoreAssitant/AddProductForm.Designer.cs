@@ -59,13 +59,13 @@
             // 
             this.productBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.productBox1.Location = new System.Drawing.Point(0, 0);
-            this.productBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.productBox1.Margin = new System.Windows.Forms.Padding(2);
             this.productBox1.MinimumSize = new System.Drawing.Size(300, 400);
             this.productBox1.Name = "productBox1";
             this.productBox1.PDDescription = "";
             this.productBox1.PDImage = null;
             this.productBox1.PDName = "";
-            this.productBox1.PDPrice = 1200;
+            this.productBox1.PDPrice = 0;
             this.productBox1.Size = new System.Drawing.Size(346, 400);
             this.productBox1.TabIndex = 5;
             // 

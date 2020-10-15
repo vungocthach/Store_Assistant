@@ -132,7 +132,7 @@ namespace StoreAssitant
 
             itemSize = new Size(100, 100);
 
-            this.SizeChanged += MenuView_SizeChanged;
+            this.Layout += MenuView_SizeChanged;
 
             controlProduct._Click += ControlProduct_Click;
 
@@ -168,7 +168,7 @@ namespace StoreAssitant
         {
             controlSearch.Width = this.Width - 15;
             flowLayoutPanelMenu.Location = new Point(0, Convert.ToInt32(controlSearch.Location.Y * 2.5));
-            flowLayoutPanelMenu.Height = this.Height - controlSearch.Location.Y - controlSearch.Height - 10;
+            flowLayoutPanelMenu.Height = this.Height - controlSearch.Location.Y - controlSearch.Height - 5;
         }
     }
        

@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.Remoting.Messaging;
 
 namespace StoreAssitant
 {
     public partial class MenuControl : UserControl
     {
         ProductInfo Infor;
+        Color color_MouseEnter = System.Drawing.Color.PapayaWhip;
+        Color color_Default = System.Drawing.Color.PapayaWhip;
         #region create event Click_AddControlProduct, Click_Delete
 
         public event EventHandler CLick_Delete;
@@ -22,6 +25,25 @@ namespace StoreAssitant
         }
 
         public ProductInfo ProductInfo { get { return Infor; } }
+
+        
+
+        public event EventHandler Click_AddControlProduct;
+
+        private void on_Click_AddControlProduct(object sender, EventArgs e)
+        { }
+        #endregion
+        #region Create properties
+        [Category("My Properties"), Description("Name of Title")]
+        public string NameTitle
+        {
+            get => textBoxName.Text;
+            set
+            {
+                textBoxName.Text = value;
+                Invalidate();
+            }
+        }
 
         public Bitmap PDImage
         {
@@ -41,22 +63,6 @@ namespace StoreAssitant
             }
         }
 
-        public event EventHandler Click_AddControlProduct;
-
-        private void on_Click_AddControlProduct(object sender, EventArgs e)
-        { }
-        #endregion
-        #region Create properties
-        [Category("My Properties"), Description("Name of Title")]
-        public string NameTitle
-        {
-            get => textBoxName.Name;
-            set
-            {
-                Name = value;
-                Invalidate();
-            }
-        }
         [Category("My Properties"), Description("Inmage of Menu title ")]
         public Image image
         {
@@ -68,12 +74,25 @@ namespace StoreAssitant
             }
         }
 
-#endregion
+        int price = 1000;
+        [Category("My Properties"), Description("Price of product")]
+        public int Price
+        {
+            get { return price; }
+            set
+            {
+                price = value;
+                textBoxPrice.Text = string.Format("{0}VND", price.ToString("N0"));
+                Invalidate();
+            }
+        }
+
+        #endregion
         public void SetData(ProductInfo info)
         {
             Infor = info;
-            textBoxName.Text = info.Name;
-            textBoxPrice.Text = Convert.ToString( info.Price);
+            NameTitle = info.Name;
+            Price = info.Price;
             PDImage = info.Image;
         }
         
@@ -104,16 +123,18 @@ namespace StoreAssitant
             textBoxName.Click += TextBoxName_Click;
             textBoxPrice.Click += TextBoxPrice_Click;
             #endregion
-           
+
             #region MouseHover_Control
 
-            pictureBox.MouseHover += MenuControl_MouseHover;
-            textBoxName.MouseHover += MenuControl_MouseHover;
-            textBoxPrice.MouseHover += MenuControl_MouseHover;
+            this.MouseEnter += MenuControl_MouseHover;
+            pictureBox.MouseEnter += MenuControl_MouseHover;
+            textBoxName.MouseEnter += MenuControl_MouseHover;
+            textBoxPrice.MouseEnter += MenuControl_MouseHover;
             #endregion
 
             #region MouseLeave_Control
 
+            this.MouseLeave += MenuControl_MouseLeave;
             pictureBox.MouseLeave += MenuControl_MouseLeave;
             textBoxPrice.MouseLeave += MenuControl_MouseLeave;
             textBoxName.MouseLeave += MenuControl_MouseLeave;
@@ -135,16 +156,16 @@ namespace StoreAssitant
 
         private void MenuControl_MouseHover(object sender, EventArgs e)
         {
-            this.BackColor = System.Drawing.Color.PapayaWhip;
+            this.BackColor = color_MouseEnter;
             textBoxName.Size -= new Size (0, 2);
             this.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void MenuControl_MouseLeave(object sender, EventArgs e)
         {
-            this.BackColor = SystemColors.Control;
+            this.BackColor = color_Default;
             textBoxName.Size += new Size(0, 2);
-            this.BorderStyle = BorderStyle.None;
+            this.BorderStyle = BorderStyle.FixedSingle;
         }
 
         private void MenuControl_Click(object sender, EventArgs e)
@@ -169,11 +190,13 @@ namespace StoreAssitant
 
         private void MenuControl_Layout(object sender, EventArgs e)
         {
-            pictureBox.Size = new Size(this.Width, Convert.ToInt32(this.Height * 0.7));
+            pictureBox.Size = new Size(this.Width, Convert.ToInt32(this.Height * 0.8));
             //PDImage = (Bitmap)pictureBox.Image;
-            textBoxPrice.Location = new Point(0, pictureBox.Height);
-            textBoxName.Location = new Point(0, pictureBox.Height + textBoxPrice.Height);
-            textBoxName.Size = textBoxPrice.Size = new Size(this.Width, (this.Height - pictureBox.Height)/2);
+            //textBoxPrice.Location = new Point(0, pictureBox.Height);
+            //textBoxName.Location = new Point(0, pictureBox.Height + textBoxPrice.Height);
+            //textBoxName.Size = textBoxPrice.Size = new Size(this.Width, (this.Height - pictureBox.Height)/2);
+            textBoxPrice.Location = new Point(this.Width - textBoxPrice.Width, pictureBox.Height - textBoxPrice.Height);
+            textBoxName.Location = new Point((this.Width - textBoxName.Width) / 2, pictureBox.Height + (this.Height - pictureBox.Height - textBoxName.Height) / 2);
         }
 
         private void textBoxName_Click_1(object sender, EventArgs e)

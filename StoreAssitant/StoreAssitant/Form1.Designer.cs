@@ -135,15 +135,15 @@
             // 
             this.tableView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableView1.ImageCashierTable = global::StoreAssitant.Properties.Resources.thu_ngân;
+            this.tableView1.ImageCashierTable = ((System.Drawing.Image)(resources.GetObject("tableView1.ImageCashierTable")));
             this.tableView1.IsManager = false;
             this.tableView1.ItemImage = global::StoreAssitant.Properties.Resources.Artboard_1;
-            this.tableView1.ItemSize = new System.Drawing.Size(80, 80);
+            this.tableView1.ItemSize = new System.Drawing.Size(120, 120);
             this.tableView1.Location = new System.Drawing.Point(0, 0);
             this.tableView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableView1.MinimumSize = new System.Drawing.Size(480, 61);
             this.tableView1.Name = "tableView1";
-            this.tableView1.NameCashierTable = "THANH TOÁN BÀN";
+            this.tableView1.NameCashierTable = "DANH SÁCH BÀN";
             this.tableView1.Size = new System.Drawing.Size(572, 592);
             this.tableView1.TabIndex = 0;
             this.tableView1.TitleHeight = 50;
@@ -154,7 +154,7 @@
             this.menuView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menuView1.image = global::StoreAssitant.Properties.Resources._120427285_648274679154155_8374726593261554204_n;
             this.menuView1.IsManeger = true;
-            this.menuView1.ItemSize = new System.Drawing.Size(150, 200);
+            this.menuView1.ItemSize = new System.Drawing.Size(200, 150);
             this.menuView1.Location = new System.Drawing.Point(0, 0);
             this.menuView1.Margin = new System.Windows.Forms.Padding(4);
             this.menuView1.Name = "menuView1";
@@ -173,7 +173,7 @@
             this.krPage_Manager.Margin = new System.Windows.Forms.Padding(2);
             this.krPage_Manager.MinimumSize = new System.Drawing.Size(38, 41);
             this.krPage_Manager.Name = "krPage_Manager";
-            this.krPage_Manager.Size = new System.Drawing.Size(978, 652);
+            this.krPage_Manager.Size = new System.Drawing.Size(1178, 592);
             this.krPage_Manager.Text = "Quản Lý";
             this.krPage_Manager.TextTitle = "Quản Lý";
             this.krPage_Manager.ToolTipTitle = "Page ToolTip";
@@ -184,8 +184,8 @@
             this.split_Manager.Dock = System.Windows.Forms.DockStyle.Fill;
             this.split_Manager.Location = new System.Drawing.Point(0, 0);
             this.split_Manager.Name = "split_Manager";
-            this.split_Manager.Size = new System.Drawing.Size(978, 652);
-            this.split_Manager.SplitterDistance = 483;
+            this.split_Manager.Size = new System.Drawing.Size(1178, 592);
+            this.split_Manager.SplitterDistance = 581;
             this.split_Manager.TabIndex = 0;
             // 
             // krPage_Statistic
@@ -197,7 +197,7 @@
             this.krPage_Statistic.Margin = new System.Windows.Forms.Padding(2);
             this.krPage_Statistic.MinimumSize = new System.Drawing.Size(38, 41);
             this.krPage_Statistic.Name = "krPage_Statistic";
-            this.krPage_Statistic.Size = new System.Drawing.Size(978, 652);
+            this.krPage_Statistic.Size = new System.Drawing.Size(1178, 592);
             this.krPage_Statistic.Text = "Thống Kê";
             this.krPage_Statistic.TextTitle = "Thống Kê";
             this.krPage_Statistic.ToolTipTitle = "Page ToolTip";

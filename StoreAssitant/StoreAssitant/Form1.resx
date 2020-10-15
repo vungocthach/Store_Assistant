@@ -118,6 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="tableView1.ImageCashierTable" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAAC5SURBVFhH7dY9DoFBEIDhr0Dr70QU3EHlIohEHERDcBUJ
+        8l2DK/BOvbOxv4li3uRpp9ndyTaW9W+NsMMZ1wxHLBFVF098CtoiuBm0ITneCG4ObUiOF4KTI3hAG5Rq
+        hagG2EAu0SnDAQtY0ZXaA5oLZPYQajX2gOaODpxq7AGfKZxq7AGfCZxq7AHNDeoRSKX2gEZmrtGH5W2M
+        PeTNam85VNJ/oIcW2sVJFfUfqPEM7T9g/wHL+lHTfAFdWV3kHlcaTwAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="krPage_Cashier.ImageMedium" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL

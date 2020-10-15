@@ -41,10 +41,10 @@ namespace StoreAssitant
         private void TitleControl_SizeChanged(object sender, EventArgs e)
         {
             labelImage.Location = new Point(0, 0);
-            labelImage.Size = new Size(Convert.ToInt32(labelImage.Parent.Width*0.2), labelImage.Parent.Height);
+            //labelImage.Size = new Size(Convert.ToInt32(labelImage.Parent.Width*0.2), labelImage.Parent.Height);
+            labelImage.Size = new Size(labelImage.Width, labelImage.Parent.Height);
             labelTitle.Location = new Point( labelImage.Width, 0);
             labelTitle.Size = new Size(labelImage.Parent.Width - labelImage.Width, labelImage.Height);
         }
-
     }
 }

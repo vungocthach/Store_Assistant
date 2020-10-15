@@ -173,6 +173,16 @@ namespace StoreAssitant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_icons_menu_1564512 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_icons_menu_1564512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_shopping_shop_buy_discount_18_4038845 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_shopping-shop-buy-discount-18_4038845", resourceCulture);
@@ -183,9 +193,9 @@ namespace StoreAssitant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap thu_ngân {
+        internal static System.Drawing.Bitmap thu_ngan {
             get {
-                object obj = ResourceManager.GetObject("thu ngân", resourceCulture);
+                object obj = ResourceManager.GetObject("thu_ngan", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -22,7 +22,6 @@ namespace StoreAssitant
 
             kryptonNavigator1.GotFocus += KryptonNavigator1_GotFocus;
             
-            
                 using (DatabaseController databaseController = new DatabaseController())
                 {
                     databaseController.ConnectToSQLDatabase();

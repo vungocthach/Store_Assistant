@@ -57,6 +57,8 @@ namespace StoreAssitant
             {
                 if (value != price)
                 {
+                    price = value;
+                    textBoxPrice.Text = string.Format("{0}VND", value.ToString("N0"));
                     txtb_Price.Text = value.ToString("N0");
                     txtb_Price.Select(txtb_Price.TextLength, 0);
                     Invalidate();
@@ -177,6 +179,8 @@ namespace StoreAssitant
         private void ProductBox_SizeChanged(object sender, EventArgs e)
         {
             AutoCenterOnParent_SizeChanged(label_Image);
+
+            textBoxPrice.Location = new Point(label_Image.Location.X + (label_Image.Width - textBoxPrice.Width), label_Image.Location.Y + (label_Image.Height - textBoxPrice.Height));
 
             pb_Err_Name.Location = new Point(this.Width - pb_Err_Name.Width - 5,
                                                 txtb_Name.Location.Y + (txtb_Name.Height - pb_Err_Name.Height) / 2);

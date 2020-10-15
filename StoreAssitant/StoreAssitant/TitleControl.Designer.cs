@@ -28,29 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelImage = new System.Windows.Forms.Label();
             this.labelTitle = new System.Windows.Forms.Label();
+            this.labelImage = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // labelTitle
+            // 
+            this.labelTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelTitle.Font = new System.Drawing.Font("Stencil", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle.Location = new System.Drawing.Point(58, 0);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(329, 40);
+            this.labelTitle.TabIndex = 3;
+            this.labelTitle.Text = "Menu";
+            this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelImage
             // 
             this.labelImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelImage.Image = global::StoreAssitant.Properties.Resources._120427285_648274679154155_8374726593261554204_n;
-            this.labelImage.Location = new System.Drawing.Point(64, 27);
+            this.labelImage.Location = new System.Drawing.Point(3, 0);
             this.labelImage.Name = "labelImage";
-            this.labelImage.Size = new System.Drawing.Size(58, 38);
+            this.labelImage.Size = new System.Drawing.Size(60, 40);
             this.labelImage.TabIndex = 2;
-            // 
-            // labelTitle
-            // 
-            this.labelTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.labelTitle.Location = new System.Drawing.Point(121, 27);
-            this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(212, 38);
-            this.labelTitle.TabIndex = 3;
-            this.labelTitle.Text = "Menu";
-            this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TitleControl
             // 
@@ -59,7 +59,7 @@
             this.Controls.Add(this.labelTitle);
             this.Controls.Add(this.labelImage);
             this.Name = "TitleControl";
-            this.Size = new System.Drawing.Size(390, 72);
+            this.Size = new System.Drawing.Size(390, 42);
             this.ResumeLayout(false);
 
         }

@@ -27,8 +27,10 @@ namespace StoreAssitant
             _Click = new EventHandler(on_Click);
 
             this.SizeChanged += ControlProduct_SizeChanged;
+            this.MouseEnter += ControlProduct_MouseHover;
             panelImage.MouseEnter += ControlProduct_MouseHover;
             panelImage.MouseLeave += PanelImage_MouseLeave;
+            this.MouseLeave += PanelImage_MouseLeave;
             panelImage.Click += PanelImage_Click;
            
         }
