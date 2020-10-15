@@ -64,28 +64,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class Information\TableBillInfo.cs" />
-    <Compile Include="ControlProduct.cs">
+    <Compile Include="StoreAssistant_Information\TableBillInfo.cs" />
+    <Compile Include="StoreAssistant_MenuView\ControlProduct.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ControlProduct.Designer.cs">
+    <Compile Include="StoreAssistant_MenuView\ControlProduct.Designer.cs">
       <DependentUpon>ControlProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="ControlSearch.cs">
+    <Compile Include="StoreAssistant_MenuView\ControlSearch.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ControlSearch.Designer.cs">
+    <Compile Include="StoreAssistant_MenuView\ControlSearch.Designer.cs">
       <DependentUpon>ControlSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddProductForm.cs">
+    <Compile Include="StoreAssistant_MenuView\AddProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddProductForm.Designer.cs">
+    <Compile Include="StoreAssistant_MenuView\AddProductForm.Designer.cs">
       <DependentUpon>AddProductForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Class Information\ProductInfo.cs" />
-    <Compile Include="Class Information\TableInfo.cs" />
-    <Compile Include="DatabaseController.cs" />
+    <Compile Include="StoreAssistant_Information\ProductInfo.cs" />
+    <Compile Include="StoreAssistant_Information\TableInfo.cs" />
+    <Compile Include="StoreAssistant_Database\DatabaseController.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,81 +98,81 @@
     <Compile Include="LogInView.Designer.cs">
       <DependentUpon>LogInView.cs</DependentUpon>
     </Compile>
-    <Compile Include="MenuControl.cs">
+    <Compile Include="StoreAssistant_MenuView\MenuControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MenuControl.Designer.cs">
+    <Compile Include="StoreAssistant_MenuView\MenuControl.Designer.cs">
       <DependentUpon>MenuControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="MenuView.cs">
+    <Compile Include="StoreAssistant_MenuView\MenuView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MenuView.Designer.cs">
+    <Compile Include="StoreAssistant_MenuView\MenuView.Designer.cs">
       <DependentUpon>MenuView.cs</DependentUpon>
     </Compile>
-    <Compile Include="TableBill.cs">
+    <Compile Include="StoreAssistant_TableView\TableBill.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TableBill.Designer.cs">
+    <Compile Include="StoreAssistant_TableView\TableBill.Designer.cs">
       <DependentUpon>TableBill.cs</DependentUpon>
     </Compile>
-    <Compile Include="SQLStatementManager.cs" />
-    <Compile Include="TableLine.cs">
+    <Compile Include="StoreAssistant_Database\SQLStatementManager.cs" />
+    <Compile Include="StoreAssistant_TableView\TableLine.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TableLine.Designer.cs">
+    <Compile Include="StoreAssistant_TableView\TableLine.Designer.cs">
       <DependentUpon>TableLine.cs</DependentUpon>
     </Compile>
-    <Compile Include="TitleControl.cs">
+    <Compile Include="StoreAssistant_MenuView\TitleControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TitleControl.Designer.cs">
+    <Compile Include="StoreAssistant_MenuView\TitleControl.Designer.cs">
       <DependentUpon>TitleControl.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ControlProduct.resx">
+    <EmbeddedResource Include="StoreAssistant_MenuView\ControlProduct.resx">
       <DependentUpon>ControlProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlSearch.resx">
+    <EmbeddedResource Include="StoreAssistant_MenuView\ControlSearch.resx">
       <DependentUpon>ControlSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogInView.resx">
       <DependentUpon>LogInView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MenuControl.resx">
+    <EmbeddedResource Include="StoreAssistant_MenuView\MenuControl.resx">
       <DependentUpon>MenuControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MenuView.resx">
+    <EmbeddedResource Include="StoreAssistant_MenuView\MenuView.resx">
       <DependentUpon>MenuView.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="ProductBox.cs">
+    <Compile Include="StoreAssistant_MenuView\ProductBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ProductBox.Designer.cs">
+    <Compile Include="StoreAssistant_MenuView\ProductBox.Designer.cs">
       <DependentUpon>ProductBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TSString.cs" />
-    <EmbeddedResource Include="AddProductForm.resx">
+    <EmbeddedResource Include="StoreAssistant_MenuView\AddProductForm.resx">
       <DependentUpon>AddProductForm.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Mouse_move.cs" />
-    <Compile Include="TableControl.cs">
+    <Compile Include="StoreAssistant_TableView\TableControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TableControl.Designer.cs">
+    <Compile Include="StoreAssistant_TableView\TableControl.Designer.cs">
       <DependentUpon>TableControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="TableView.cs">
+    <Compile Include="StoreAssistant_TableView\TableView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TableView.Designer.cs">
+    <Compile Include="StoreAssistant_TableView\TableView.Designer.cs">
       <DependentUpon>TableView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductBox.resx">
+    <EmbeddedResource Include="StoreAssistant_MenuView\ProductBox.resx">
       <DependentUpon>ProductBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -185,19 +185,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="TableBill.resx">
+    <EmbeddedResource Include="StoreAssistant_TableView\TableBill.resx">
       <DependentUpon>TableBill.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TableLine.resx">
+    <EmbeddedResource Include="StoreAssistant_TableView\TableLine.resx">
       <DependentUpon>TableLine.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TitleControl.resx">
+    <EmbeddedResource Include="StoreAssistant_MenuView\TitleControl.resx">
       <DependentUpon>TitleControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TableControl.resx">
+    <EmbeddedResource Include="StoreAssistant_TableView\TableControl.resx">
       <DependentUpon>TableControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TableView.resx">
+    <EmbeddedResource Include="StoreAssistant_TableView\TableView.resx">
       <DependentUpon>TableView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -255,9 +255,7 @@
     <None Include="Resources\iconfinder_caution_1055096.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\iconfinder_icons_menu_15645121.png" />
     <None Include="Resources\iconfinder_icons_menu_1564512.png" />
-    <None Include="Resources\iconfinder_2_menu_6372973.png" />
     <Content Include="Resources\iconfinder_Cashier-2_3793351.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
