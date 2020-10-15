@@ -16,5 +16,10 @@ namespace StoreAssitant
         {
             InitializeComponent();
         }
+
+        private void kryptonPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
