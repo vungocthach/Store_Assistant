@@ -25,6 +25,13 @@ namespace StoreAssitant
 
         private void on_Click_AddControlProduct(object sender, EventArgs e)
         { }
+
+        public event EventHandler<ProductInfo> Click_EditProductInfo;
+
+        private void on_Click_EditProductInfo (object sender, ProductInfo Info)
+        {
+
+        }
         #endregion
         #region Create properties
         [Category("My Properties"), Description("Name of Title")]
@@ -67,9 +74,13 @@ namespace StoreAssitant
 
             Click_AddControlProduct = new EventHandler(on_Click_AddControlProduct);
 
+            Click_EditProductInfo += new EventHandler<ProductInfo> (on_Click_EditProductInfo);
+
             this.Layout += MenuControl_Layout;
 
             this.Click += MenuControl_Click;
+
+            editToolStripMenuItem.Click += EditToolStripMenuItem_Click;
 
             toolStripMenuItem1.Click += ToolStripMenuItem1_Click;
             #region MouseClick_Control
@@ -98,6 +109,12 @@ namespace StoreAssitant
             textBoxPrice.MouseLeave += MenuControl_MouseLeave;
             textBoxName.MouseLeave += MenuControl_MouseLeave;
             #endregion
+        }
+
+        private void EditToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Tính năng đang được xây dựng");
+            Click_EditProductInfo(this, Infor);
         }
 
         private void ToolStripMenuItem1_Click(object sender, EventArgs e)

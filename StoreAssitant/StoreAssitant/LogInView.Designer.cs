@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogInView));
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.Btn_Login = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.Lb_ForgotPass = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.Lb_SignUp = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.Pn_Login = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.Lb_ForgotPass = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.tb__User = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.Btn_Login = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.tb_Password = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -55,35 +55,6 @@
             this.kryptonPanel1.StateCommon.Color1 = System.Drawing.SystemColors.Control;
             this.kryptonPanel1.StateCommon.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPanel1.StateCommon.Image")));
             this.kryptonPanel1.TabIndex = 9;
-            this.kryptonPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.kryptonPanel1_Paint);
-            // 
-            // Btn_Login
-            // 
-            this.Btn_Login.Location = new System.Drawing.Point(43, 394);
-            this.Btn_Login.Name = "Btn_Login";
-            this.Btn_Login.OverrideDefault.Back.Color1 = System.Drawing.SystemColors.Control;
-            this.Btn_Login.OverrideDefault.Border.Color1 = System.Drawing.SystemColors.Control;
-            this.Btn_Login.OverrideDefault.Border.Color2 = System.Drawing.SystemColors.Control;
-            this.Btn_Login.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom)));
-            this.Btn_Login.Size = new System.Drawing.Size(312, 25);
-            this.Btn_Login.StateCommon.Content.LongText.Font = new System.Drawing.Font("High Tower Text", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Login.StateCommon.Content.LongText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.Btn_Login.StateDisabled.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.Btn_Login.StateDisabled.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.Btn_Login.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.Btn_Login.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.Btn_Login.StateNormal.Content.LongText.Font = new System.Drawing.Font("High Tower Text", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Login.StateNormal.Content.LongText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.Btn_Login.TabIndex = 3;
-            this.Btn_Login.Values.Text = "Login";
-            // 
-            // Lb_ForgotPass
-            // 
-            this.Lb_ForgotPass.Location = new System.Drawing.Point(43, 426);
-            this.Lb_ForgotPass.Name = "Lb_ForgotPass";
-            this.Lb_ForgotPass.Size = new System.Drawing.Size(107, 20);
-            this.Lb_ForgotPass.TabIndex = 4;
-            this.Lb_ForgotPass.Values.Text = "Forgot password?";
             // 
             // Lb_SignUp
             // 
@@ -104,6 +75,14 @@
             this.Pn_Login.StateDisabled.Color2 = System.Drawing.SystemColors.Control;
             this.Pn_Login.TabIndex = 6;
             // 
+            // Lb_ForgotPass
+            // 
+            this.Lb_ForgotPass.Location = new System.Drawing.Point(43, 426);
+            this.Lb_ForgotPass.Name = "Lb_ForgotPass";
+            this.Lb_ForgotPass.Size = new System.Drawing.Size(107, 20);
+            this.Lb_ForgotPass.TabIndex = 4;
+            this.Lb_ForgotPass.Values.Text = "Forgot password?";
+            // 
             // tb__User
             // 
             this.tb__User.Location = new System.Drawing.Point(44, 319);
@@ -113,6 +92,26 @@
             this.tb__User.StateDisabled.Back.Color1 = System.Drawing.SystemColors.Control;
             this.tb__User.TabIndex = 1;
             this.tb__User.Text = "Username";
+            // 
+            // Btn_Login
+            // 
+            this.Btn_Login.Location = new System.Drawing.Point(45, 394);
+            this.Btn_Login.Name = "Btn_Login";
+            this.Btn_Login.OverrideDefault.Back.Color1 = System.Drawing.SystemColors.Control;
+            this.Btn_Login.OverrideDefault.Border.Color1 = System.Drawing.SystemColors.Control;
+            this.Btn_Login.OverrideDefault.Border.Color2 = System.Drawing.SystemColors.Control;
+            this.Btn_Login.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom)));
+            this.Btn_Login.Size = new System.Drawing.Size(312, 25);
+            this.Btn_Login.StateCommon.Content.LongText.Font = new System.Drawing.Font("High Tower Text", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Login.StateCommon.Content.LongText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
+            this.Btn_Login.StateDisabled.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.Btn_Login.StateDisabled.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.Btn_Login.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.Btn_Login.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.Btn_Login.StateNormal.Content.LongText.Font = new System.Drawing.Font("High Tower Text", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Login.StateNormal.Content.LongText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
+            this.Btn_Login.TabIndex = 3;
+            this.Btn_Login.Values.Text = "Login";
             // 
             // tb_Password
             // 
