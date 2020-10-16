@@ -163,7 +163,7 @@ namespace StoreAssitant
             List<ProductInfo> rs = null;
             List<int> images_id ;
 
-            cmd.CommandText = string.Format("SELECT {1},{2},{3},{4},{5} FROM {0}",
+            cmd.CommandText = string.Format("SELECT {1},{2},{3},{4},{5} FROM {0};",
                 TB_PRODUCT, COLUMNS_TB_PRODUCT[0], COLUMNS_TB_PRODUCT[1], COLUMNS_TB_PRODUCT[2], COLUMNS_TB_PRODUCT[3], COLUMNS_TB_PRODUCT[4]);
 
             using (SqlDataReader reader = cmd.ExecuteReader())
@@ -243,10 +243,9 @@ namespace StoreAssitant
             bool hasError = cmd.ExecuteNonQuery() != 1;
             if (productInfo.Image != null)
             {
-                hasError = hasError || !InsertImage(productInfo.Image, productInfo.Id) || !UpdateNextId(productInfo.Id + 1);
-
+                hasError = hasError || !InsertImage(productInfo.Image, productInfo.Id);
             }
-            
+            hasError = hasError || !UpdateNextId(productInfo.Id + 1);
 
             if (hasError)
             {
@@ -262,18 +261,20 @@ namespace StoreAssitant
 
         public bool InsertImage(Bitmap bitmap, int id)
         {
+            if (bitmap == null) { throw new NullReferenceException("Must not insert null image"); }
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
 
             cmd.CommandText = string.Format("INSERT INTO {0}({1},{2}) VALUES(@{1}_, @{2}_);", TB_IMAGE, COLUMNS_TB_IMAGE[0], COLUMNS_TB_IMAGE[1]); cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_IMAGE[0]), SqlDbType.Int).Value = id;
-            
+
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_IMAGE[0]), SqlDbType.Int).Value = id;
             using (MemoryStream memoryStream = new MemoryStream())
             {
                 bitmap.Save(memoryStream, ImageFormat.Jpeg);
-                cmd.Parameters.Clear();
-                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_IMAGE[0]), SqlDbType.Int).Value = id;
                 cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_IMAGE[1]), SqlDbType.VarBinary).Value = memoryStream.ToArray();
             }
-            return cmd.ExecuteNonQuery() > 0;
+
+            return cmd.ExecuteNonQuery() == 1;
         }
 
         public bool UpdateTableCount(int count)
@@ -284,7 +285,7 @@ namespace StoreAssitant
             cmd.Parameters.Clear();
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_INTERGER[1]), SqlDbType.Int).Value = count;
 
-            return cmd.ExecuteNonQuery() > 0;
+            return cmd.ExecuteNonQuery() == 1;
         }
 
         public bool UpdateNextId(int id)
@@ -295,7 +296,84 @@ namespace StoreAssitant
             cmd.Parameters.Clear();
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_INTERGER[1]), SqlDbType.Int).Value = id;
 
-            return cmd.ExecuteNonQuery() > 0;
+            return cmd.ExecuteNonQuery() == 1;
+        }
+
+        public bool UpdateImage(int id, Bitmap bitmap, bool create_if_not_exist = false)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            cmd.CommandText = string.Format("UPDATE {0} SET {2}=@{2}_ WHERE {1}=@{1}_;", TB_IMAGE, COLUMNS_TB_IMAGE[0], COLUMNS_TB_IMAGE[1]);
+            cmd.Parameters.Clear();
+
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                bitmap.Save(memoryStream, ImageFormat.Jpeg);
+                cmd.Parameters.Clear();
+                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_IMAGE[0]), SqlDbType.Int).Value = id;
+                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_IMAGE[1]), SqlDbType.VarBinary).Value = memoryStream.ToArray();
+            }
+
+            int rs = cmd.ExecuteNonQuery();
+            if (rs == 0 && create_if_not_exist) { return InsertImage(bitmap, id); }
+
+            return rs == 1;
+        }
+
+        public bool UpdateProduct(ProductInfo productInfo)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            TransactionStart();
+
+            cmd.CommandText = string.Format("UPDATE {0} SET {2}=@{2}_,{3}=@{3}_,{4}=@{4}_,{5}=@{5}_ WHERE {1}=@{1}_",
+                TB_PRODUCT, COLUMNS_TB_PRODUCT[0], COLUMNS_TB_PRODUCT[1], COLUMNS_TB_PRODUCT[2], COLUMNS_TB_PRODUCT[3], COLUMNS_TB_PRODUCT[4]);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[0]), SqlDbType.SmallInt).Value = productInfo.Id;
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[1]), SqlDbType.NVarChar).Value = productInfo.Name;
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[2]), SqlDbType.Int).Value = productInfo.Price;
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[3]), SqlDbType.NVarChar).Value = productInfo.Description;
+
+            if (productInfo.Image == null)
+            {
+                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[4]), SqlDbType.Int).Value = -1;
+            }
+            else
+            {
+                cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[4]), SqlDbType.Int).Value = productInfo.Id;
+            }
+
+            bool hasError = cmd.ExecuteNonQuery() != 1;
+            if (productInfo.Image != null)
+            {
+                hasError = hasError || !UpdateImage(productInfo.Id, productInfo.Image, true);
+            }
+            else
+            {
+                DeleteImage(productInfo.Id);
+            }
+
+            if (hasError)
+            {
+                TransactionRollback();
+                return false;
+            }
+            else
+            {
+                TransactionCommit();
+                return true;
+            }
+        }
+
+        public bool DeleteImage(int id)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            cmd.CommandText = string.Format("DELETE FROM {0} WHERE {1}=@{1}_;",TB_IMAGE, COLUMNS_TB_IMAGE[0]);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_IMAGE[0]), SqlDbType.Int).Value = id;
+
+            return cmd.ExecuteNonQuery() == 1;
         }
 
         public void Dispose()
