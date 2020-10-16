@@ -140,6 +140,6 @@ namespace StoreAssitant
         {
             get => product.Id;
         }
-            #endregion
-        }
+        #endregion
+    }
 }

@@ -64,6 +64,7 @@ namespace StoreAssitant
             tsInformation.Click += TsInformation_Click;
         }
 
+        #region EVENTS CLICK
         private void TsInformation_Click(object sender, EventArgs e)
         {
             ClickTableControl(this, new EventArgs());
@@ -74,6 +75,7 @@ namespace StoreAssitant
             TableRemoved(this, e);
             GC.SuppressFinalize(this);
         }
+        #endregion
 
         #region EVENT MOUSE
         private void TableControl_MouseClick(object sender, MouseEventArgs e)
