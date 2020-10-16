@@ -33,6 +33,9 @@ namespace StoreAssitant
         string TB_PRODUCT;
         string[] COLUMNS_TB_PRODUCT;
 
+        string TB_USER;
+        string[] COLUMNS_TB_USER;
+
         public DatabaseController()
         {
             username = "laptrinhtrucquan";
@@ -47,6 +50,8 @@ namespace StoreAssitant
             COLUMNS_TB_IMAGE = new string[2] { "ID", "M_VALUE" };
             TB_PRODUCT = "TB_PRODUCT";
             COLUMNS_TB_PRODUCT = new string[5] { "ID", "PD_NAME", "PRICE", "DESCRIP", "IMAGE_ID"};
+            TB_USER = "TB_USER";
+            COLUMNS_TB_USER = new string[3] { "USERNAME", "PASS", "USER_TYPE" };
 
             connection = new SqlConnection(SQLStatementManager.GetConnectionString(username, password, serverName, databaseName));
             cmd = new SqlCommand();
@@ -374,6 +379,48 @@ namespace StoreAssitant
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_IMAGE[0]), SqlDbType.Int).Value = id;
 
             return cmd.ExecuteNonQuery() == 1;
+        }
+
+        public bool InsertUser(UserInfo userInfo)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            cmd.CommandText = string.Format("INSERT INTO {0}({1},{2},{3}) VALUES(@{1}_,@{2}_,@{3}_);", TB_USER, COLUMNS_TB_USER[0], COLUMNS_TB_USER[1], COLUMNS_TB_USER[2]);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[0]), SqlDbType.VarChar).Value = userInfo.UserName;
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[1]), SqlDbType.Binary, 32).Value = StoreAssistant_Authenticater.Authenticator.GetPass(userInfo);
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[0]), SqlDbType.SmallInt).Value = (int)userInfo.Role;
+
+            return cmd.ExecuteNonQuery() == 1;
+        }
+
+        public bool GetUserRole(ref UserInfo userInfo)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            cmd.CommandText = string.Format("SELECT {3} FROM {0} WHERE {1}=@{1}_ AND {2}=@{2}_;", TB_USER, COLUMNS_TB_USER[0], COLUMNS_TB_USER[1], COLUMNS_TB_USER[2]);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[0]), SqlDbType.VarChar).Value = userInfo.UserName;
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[1]), SqlDbType.Binary, 32).Value = StoreAssistant_Authenticater.Authenticator.GetPass(userInfo);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read() && reader[0] != null)
+            {
+                short rs = reader.GetInt16(0);
+                switch (rs)
+                {
+                    case 0:
+                        userInfo.Role = UserInfo.UserRole.Manager;
+                        break;
+                    case 1:
+                        userInfo.Role = UserInfo.UserRole.Cashier;
+                        break;
+                    default:
+                        return false;
+                }
+                return !reader.Read(); // return false if there's more than 1 return
+            }
+            return false;
         }
 
         public void Dispose()

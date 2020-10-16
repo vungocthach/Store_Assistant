@@ -10,6 +10,10 @@ namespace StoreAssitant
     {
         public string UserName { get; set; }
         public string Pass { get; set; }
-
+        public UserRole Role { get; set; }
+        public enum UserRole
+        {
+            Manager, Cashier
+        }
     }
 }

@@ -22,12 +22,12 @@ namespace StoreAssitant
 
             kryptonNavigator1.GotFocus += KryptonNavigator1_GotFocus;
             
-                using (DatabaseController databaseController = new DatabaseController())
-                {
-                    databaseController.ConnectToSQLDatabase();
-                    tableView1.SetData(databaseController.GetTableCount());
-                    menuView1.SetData(databaseController.GetProductInfos2());
-                }
+            using (DatabaseController databaseController = new DatabaseController())
+            {
+                databaseController.ConnectToSQLDatabase();
+                tableView1.SetData(databaseController.GetTableCount());
+                menuView1.SetData(databaseController.GetProductInfos2());
+            }
         }
 
         void InitializeEventHandler()
@@ -90,7 +90,5 @@ namespace StoreAssitant
             KryptonNavigator navigator = (KryptonNavigator)sender;
             navigator.SelectedPage.Focus();
         }
-
-      
     }
 }

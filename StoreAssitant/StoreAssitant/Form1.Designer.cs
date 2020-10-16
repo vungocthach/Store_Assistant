@@ -141,7 +141,7 @@
             this.tableView1.ItemSize = new System.Drawing.Size(120, 120);
             this.tableView1.Location = new System.Drawing.Point(0, 0);
             this.tableView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tableView1.MinimumSize = new System.Drawing.Size(480, 61);
+            this.tableView1.MinimumSize = new System.Drawing.Size(376, 50);
             this.tableView1.Name = "tableView1";
             this.tableView1.NameCashierTable = "DANH SÁCH BÀN";
             this.tableView1.Size = new System.Drawing.Size(572, 592);
@@ -241,7 +241,7 @@
             this.krPage_Account.Margin = new System.Windows.Forms.Padding(2);
             this.krPage_Account.MinimumSize = new System.Drawing.Size(38, 41);
             this.krPage_Account.Name = "krPage_Account";
-            this.krPage_Account.Size = new System.Drawing.Size(1078, 756);
+            this.krPage_Account.Size = new System.Drawing.Size(1178, 592);
             this.krPage_Account.Text = "Tài Khoản";
             this.krPage_Account.TextTitle = "Tài Khoản";
             this.krPage_Account.ToolTipTitle = "Page ToolTip";
