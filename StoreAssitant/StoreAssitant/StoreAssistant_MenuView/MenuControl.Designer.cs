@@ -78,7 +78,6 @@
             this.textBoxName.TabIndex = 2;
             this.textBoxName.Text = "Tên Sản Phẩm";
             this.textBoxName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.textBoxName.Click += new System.EventHandler(this.textBoxName_Click_1);
             //
             // contextMenuStrip1
             //
