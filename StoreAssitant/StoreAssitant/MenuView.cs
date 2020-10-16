@@ -102,7 +102,14 @@ namespace StoreAssitant
             flowLayoutPanelMenu.Controls.Add(Product);
             flowLayoutPanelMenu.Controls.Add(controlProduct);
             Product.Click_AddControlProduct += Product_Click_AddControlProduct;
+            Product.Click_EditProductInfo += Product_Click_EditProductInfo;
         }
+
+        private void Product_Click_EditProductInfo(object sender, ProductInfo e)
+        {
+            MessageBox.Show(e.ToString());
+        }
+
         public void SetData(List<ProductInfo> Pro)
         {
             foreach (ProductInfo P in Pro)

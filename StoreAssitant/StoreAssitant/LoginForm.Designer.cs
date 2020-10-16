@@ -33,9 +33,10 @@
             // 
             // logInView
             // 
+            this.logInView.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.logInView.Location = new System.Drawing.Point(0, 0);
             this.logInView.Name = "logInView";
-            this.logInView.Size = new System.Drawing.Size(423, 503);
+            this.logInView.Size = new System.Drawing.Size(423, 502);
             this.logInView.TabIndex = 0;
             // 
             // LoginForm

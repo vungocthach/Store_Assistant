@@ -24,6 +24,8 @@ namespace StoreAssitant
         {
             InitializeComponent();
 
+           // u = new Us
+
             Click_Login += on_Click_Login;
 
             logInView._Click += LogInView__Click;
@@ -31,6 +33,7 @@ namespace StoreAssitant
 
         private void LogInView__Click(object sender, EventArgs e)
         {
+            u = logInView.u;
 
             Click_Login(this, u);
         }

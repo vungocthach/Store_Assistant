@@ -58,11 +58,11 @@
             // 
             // Lb_SignUp
             // 
-            this.Lb_SignUp.Location = new System.Drawing.Point(186, 426);
+            this.Lb_SignUp.Location = new System.Drawing.Point(196, 425);
             this.Lb_SignUp.Name = "Lb_SignUp";
-            this.Lb_SignUp.Size = new System.Drawing.Size(170, 20);
+            this.Lb_SignUp.Size = new System.Drawing.Size(163, 20);
             this.Lb_SignUp.TabIndex = 5;
-            this.Lb_SignUp.Values.Text = "Don\'t have account? Sign up!";
+            this.Lb_SignUp.Values.Text = "Chưa có tài khoản? Đăng kí!";
             // 
             // Pn_Login
             // 
@@ -79,9 +79,9 @@
             // 
             this.Lb_ForgotPass.Location = new System.Drawing.Point(43, 426);
             this.Lb_ForgotPass.Name = "Lb_ForgotPass";
-            this.Lb_ForgotPass.Size = new System.Drawing.Size(107, 20);
+            this.Lb_ForgotPass.Size = new System.Drawing.Size(100, 20);
             this.Lb_ForgotPass.TabIndex = 4;
-            this.Lb_ForgotPass.Values.Text = "Forgot password?";
+            this.Lb_ForgotPass.Values.Text = "Quên mật khẩu?";
             // 
             // tb__User
             // 
@@ -91,7 +91,7 @@
             this.tb__User.StateActive.Back.Color1 = System.Drawing.Color.White;
             this.tb__User.StateDisabled.Back.Color1 = System.Drawing.SystemColors.Control;
             this.tb__User.TabIndex = 1;
-            this.tb__User.Text = "Username";
+            this.tb__User.Text = "Tên đăng nhập";
             // 
             // Btn_Login
             // 
@@ -111,7 +111,7 @@
             this.Btn_Login.StateNormal.Content.LongText.Font = new System.Drawing.Font("High Tower Text", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Login.StateNormal.Content.LongText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.Btn_Login.TabIndex = 3;
-            this.Btn_Login.Values.Text = "Login";
+            this.Btn_Login.Values.Text = "ĐĂNG NHẬP";
             // 
             // tb_Password
             // 
@@ -121,7 +121,7 @@
             this.tb_Password.StateActive.Back.Color1 = System.Drawing.Color.White;
             this.tb_Password.StateDisabled.Back.Color1 = System.Drawing.SystemColors.Control;
             this.tb_Password.TabIndex = 2;
-            this.tb_Password.Text = "Password";
+            this.tb_Password.Text = "Mật khẩu";
             // 
             // LogInView
             // 

@@ -113,7 +113,6 @@ namespace StoreAssitant
 
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Tính năng đang được xây dựng");
             Click_EditProductInfo(this, Infor);
         }
 
