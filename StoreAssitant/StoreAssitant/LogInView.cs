@@ -15,29 +15,111 @@ namespace StoreAssitant
     {
         public UserInfo u;
 
+        #region Create event
+
         public event EventHandler _Click;
+
+        public event EventHandler CLick_FogotPass;
+
+        public event EventHandler Click_SignUp;
 
         private void on_CLick(object sender, EventArgs e)
         {
 
         }
+
+        private void on_FogotPass (object sender, EventArgs e)
+        {
+
+        }
+
+        private void on_SignUp (object sender, EventArgs e)
+        {
+
+        }
+        #endregion
         public void SetData()
         {
-            u.UserName = tb__User.Text;
+            u.UserName = tb_User.Text;
             u.Pass = tb_Password.Text ;
         }
-        public LogInView()
+        public void Init_Event()
+        {
+            _Click += on_CLick;
+            Click_SignUp += on_SignUp;
+            CLick_FogotPass += on_FogotPass;
+        }
+        public void Load_Event()
+        {
+            Btn_Login.Click += Btn_Login_Click;
+            Lb_ForgotPass.Click += Lb_ForgotPass_Click;
+            Lb_SignUp.Click += Lb_SignUp_Click;
+            tb_Password.Click += Tb_Password_Click;
+            tb_User.Click += Tb__User_Click;
+        }
+        public void InitializeField()
+        {
+            u = new UserInfo();
+
+            this.Size = new Size(423, 502);
+
+            tb_Password.ForeColor = Color.Gray;
+            tb_User.ForeColor = Color.Gray;
+        }
+            public LogInView()
         {
             InitializeComponent();
 
-            u = new UserInfo();
+            InitializeField();
 
-            _Click += on_CLick;
+            Init_Event();
 
-            Btn_Login.Click += Btn_Login_Click;
+            Load_Event();
 
-            this.Size = new Size(423, 502);
             
+        }
+
+
+        private void Tb__User_Click(object sender, EventArgs e)
+        {
+           if (tb_User.Text == "Tên đăng nhập")
+            {
+                tb_User.ForeColor = Color.Black;
+                tb_User.Text = "";
+            }
+          // else 
+                if(tb_Password.Text =="")
+            {
+                tb_Password.ForeColor = Color.Gray;
+                tb_Password.Text = "Mật khẩu";
+            }           
+        }
+
+        private void Tb_Password_Click(object sender, EventArgs e)
+        {
+            if (tb_Password.Text == "Mật khẩu")
+            {
+                tb_Password.ForeColor = Color.Black;
+                tb_Password.Text = "";
+            }
+         //   else
+                if (tb_User.Text == "")
+            {
+                tb_User.ForeColor = Color.Gray;
+                tb_User.Text = "Tên đăng nhập";
+            }
+        }
+
+        private void Lb_SignUp_Click(object sender, EventArgs e)
+        {
+            Click_SignUp(this, e);
+            MessageBox.Show("Liên hệ với đội ngũ lập trình viên để được hỗ trợ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void Lb_ForgotPass_Click(object sender, EventArgs e)
+        {
+            CLick_FogotPass(this, e);
+            MessageBox.Show("Liên hệ với đội ngũ lập trình viên để được hỗ trợ", "Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Warning);
         }
 
         private void Btn_Login_Click(object sender, EventArgs e)
@@ -45,5 +127,7 @@ namespace StoreAssitant
             SetData();
             _Click(this, e);
         }
+
+        
     }
 }

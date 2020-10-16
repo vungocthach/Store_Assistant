@@ -49,7 +49,6 @@
             this.textBoxPrice.TabIndex = 1;
             this.textBoxPrice.Text = "Giá";
             this.textBoxPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.textBoxPrice.Click += new System.EventHandler(this.textBoxPrice_Click_1);
             // 
             // pictureBox
             // 
@@ -107,7 +106,6 @@
             this.Controls.Add(this.textBoxPrice);
             this.Name = "MenuControl";
             this.Size = new System.Drawing.Size(148, 148);
-            this.Load += new System.EventHandler(this.MenuControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);

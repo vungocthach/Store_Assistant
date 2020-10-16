@@ -96,11 +96,11 @@ namespace StoreAssitant
             textBoxPrice.Click += TextBoxPrice_Click;
             #endregion
            
-            #region MouseHover_Control
+            #region MouseEnter_Control
 
-            pictureBox.MouseHover += MenuControl_MouseHover;
-            textBoxName.MouseHover += MenuControl_MouseHover;
-            textBoxPrice.MouseHover += MenuControl_MouseHover;
+            pictureBox.MouseEnter += MenuControl_MouseEnter;
+            textBoxName.MouseEnter += MenuControl_MouseEnter;
+            textBoxPrice.MouseEnter += MenuControl_MouseEnter;
             #endregion
 
             #region MouseLeave_Control
@@ -129,7 +129,7 @@ namespace StoreAssitant
             }
         }
 
-        private void MenuControl_MouseHover(object sender, EventArgs e)
+        private void MenuControl_MouseEnter(object sender, EventArgs e)
         {
             this.BackColor = System.Drawing.Color.PapayaWhip;
             textBoxName.Size -= new Size (0, 2);
@@ -169,21 +169,6 @@ namespace StoreAssitant
             textBoxPrice.Location = new Point(0, pictureBox.Height);
             textBoxName.Location = new Point(0, pictureBox.Height + textBoxPrice.Height);
             textBoxName.Size = textBoxPrice.Size = new Size(this.Width, (this.Height - pictureBox.Height)/2);
-        }
-
-        private void textBoxName_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxPrice_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MenuControl_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

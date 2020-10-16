@@ -24,8 +24,6 @@ namespace StoreAssitant
         {
             InitializeComponent();
 
-           // u = new Us
-
             Click_Login += on_Click_Login;
 
             logInView._Click += LogInView__Click;
@@ -37,5 +35,6 @@ namespace StoreAssitant
 
             Click_Login(this, u);
         }
+
     }
 }

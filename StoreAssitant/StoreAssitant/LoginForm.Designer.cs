@@ -33,7 +33,6 @@
             // 
             // logInView
             // 
-            this.logInView.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.logInView.Location = new System.Drawing.Point(0, 0);
             this.logInView.Name = "logInView";
             this.logInView.Size = new System.Drawing.Size(423, 502);
@@ -46,6 +45,7 @@
             this.ClientSize = new System.Drawing.Size(407, 464);
             this.Controls.Add(this.logInView);
             this.Name = "LoginForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
             this.ResumeLayout(false);
 

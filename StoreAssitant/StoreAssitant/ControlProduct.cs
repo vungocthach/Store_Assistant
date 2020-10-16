@@ -27,7 +27,7 @@ namespace StoreAssitant
             _Click = new EventHandler(on_Click);
 
            // this.SizeChanged += ControlProduct_SizeChanged;
-            panelImage.MouseHover += ControlProduct_MouseHover;
+            panelImage.MouseEnter += ControlProduct_MouseEnter;
             panelImage.MouseLeave += PanelImage_MouseLeave;
             panelImage.Click += PanelImage_Click;
            
@@ -46,7 +46,7 @@ namespace StoreAssitant
             panelImage.BorderStyle = BorderStyle.None;
         }
 
-        private void ControlProduct_MouseHover(object sender, EventArgs e)
+        private void ControlProduct_MouseEnter(object sender, EventArgs e)
         {
             panelImage.BackColor =  SystemColors.ActiveCaption;
             panelImage.BorderStyle = BorderStyle.Fixed3D;
