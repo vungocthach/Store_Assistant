@@ -16,7 +16,14 @@ namespace StoreAssitant
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            LoginForm form = new LoginForm();
+            form.Click_Login += Form_Click_Login;
+            Application.Run(form);
+        }
+
+        private static void Form_Click_Login(object sender, UserInfo e)
+        {
+            MessageBox.Show(e.UserName + " | " + e.Pass);
         }
     }
 }

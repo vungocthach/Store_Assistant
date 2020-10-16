@@ -92,6 +92,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LogInView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -129,11 +135,15 @@
     <Compile Include="StoreAssistant_MenuView\TitleControl.Designer.cs">
       <DependentUpon>TitleControl.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="StoreAssistant_MenuView\ControlProduct.resx">
+    <Compile Include="Class Information\UserInfo.cs" />
+    <EmbeddedResource Include="ControlProduct.resx">
       <DependentUpon>ControlProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_MenuView\ControlSearch.resx">
       <DependentUpon>ControlSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogInView.resx">
       <DependentUpon>LogInView.cs</DependentUpon>
