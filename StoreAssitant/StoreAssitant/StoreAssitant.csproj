@@ -265,6 +265,7 @@
     <None Include="Resources\iconfinder_caution_1055096.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\121476880_662245951379057_3014594879334389444_n.png" />
     <Content Include="Resources\iconfinder_Cashier-2_3793351.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

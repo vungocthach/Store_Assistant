@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogInView));
             this.kryptonPanel_Login = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.Lb_SignUp = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.Pn_Login = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
@@ -53,7 +52,7 @@
             this.kryptonPanel_Login.Name = "kryptonPanel_Login";
             this.kryptonPanel_Login.Size = new System.Drawing.Size(423, 502);
             this.kryptonPanel_Login.StateCommon.Color1 = System.Drawing.SystemColors.Control;
-            this.kryptonPanel_Login.StateCommon.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPanel1.StateCommon.Image")));
+            this.kryptonPanel_Login.StateCommon.Image = global::StoreAssitant.Properties.Resources._121476880_662245951379057_3014594879334389444_n;
             this.kryptonPanel_Login.TabIndex = 9;
             // 
             // Lb_SignUp
