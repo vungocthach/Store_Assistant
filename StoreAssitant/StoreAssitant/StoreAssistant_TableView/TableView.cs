@@ -41,6 +41,7 @@ namespace StoreAssitant
         private int indexSelectedTable;
         private bool isManager;
         Image itemImage;
+        TableBill tbBill;
         #endregion
 
         public TableView()
@@ -88,13 +89,13 @@ namespace StoreAssitant
         #region TABLE BILL SETTING
         private void Show_TableBill()
         {
-            TableBill tbbill = new TableBill(((TableControl)tableGUI_pnl.Controls[indexSelectedTable]).Info, indexSelectedTable);
-            tbbill.Size = new Size(tableGUI_pnl.Size.Width, tableGUI_pnl.Size.Height - tableGUI_pnl.AutoScrollMargin.Width);
-            tbbill.Location = new Point(tableGUI_pnl.Location.X, tableGUI_pnl.Location.Y);
-            tbbill.CloseBill += Tbbill_CloseBill;
+            tbBill = new TableBill(((TableControl)tableGUI_pnl.Controls[indexSelectedTable]).Info, indexSelectedTable);
+            tbBill.Size = new Size(tableGUI_pnl.Size.Width, tableGUI_pnl.Size.Height - tableGUI_pnl.AutoScrollMargin.Width);
+            tbBill.Location = new Point(tableGUI_pnl.Location.X, tableGUI_pnl.Location.Y);
+            tbBill.CloseBill += Tbbill_CloseBill;
             tableGUI_pnl.Hide();
-            this.Controls.Add(tbbill);
-            tbbill.Show();
+            this.Controls.Add(tbBill);
+            tbBill.Show();
         }
 
         private void Tbbill_CloseBill(object sender, EventArgs e)
@@ -110,6 +111,11 @@ namespace StoreAssitant
 
             newtable.ClickTableControl += Newtable_ClickTableControl;
             newtable.TableRemoved += Newtable_TableRemoved;
+        }
+
+        public void AddProductInfo(ProductInfo product)
+        {
+            tbBill.UploadProduct(product);
         }
 
         #region BUTTON TABLE EVENT
@@ -168,6 +174,7 @@ namespace StoreAssitant
             set
             {
                 tableTitle_lb.Text = value;
+                this.MinimumSize = new Size(tableTitle_lb.Location.X + tableTitle_lb.Size.Width, tableTitle_pnl.Height + tableAdd_btn.MinimumSize.Height);
                 Invalidate();
             }
         }
