@@ -29,32 +29,32 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogInView));
-            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonPanel_Login = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.Lb_SignUp = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.Pn_Login = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.Lb_ForgotPass = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.tb__User = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.Btn_Login = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.tb_Password = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
-            this.kryptonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel_Login)).BeginInit();
+            this.kryptonPanel_Login.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pn_Login)).BeginInit();
             this.SuspendLayout();
             // 
-            // kryptonPanel1
+            // kryptonPanel_Login
             // 
-            this.kryptonPanel1.Controls.Add(this.Lb_SignUp);
-            this.kryptonPanel1.Controls.Add(this.Pn_Login);
-            this.kryptonPanel1.Controls.Add(this.Lb_ForgotPass);
-            this.kryptonPanel1.Controls.Add(this.tb__User);
-            this.kryptonPanel1.Controls.Add(this.Btn_Login);
-            this.kryptonPanel1.Controls.Add(this.tb_Password);
-            this.kryptonPanel1.Location = new System.Drawing.Point(0, 1);
-            this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(425, 502);
-            this.kryptonPanel1.StateCommon.Color1 = System.Drawing.SystemColors.Control;
-            this.kryptonPanel1.StateCommon.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPanel1.StateCommon.Image")));
-            this.kryptonPanel1.TabIndex = 9;
+            this.kryptonPanel_Login.Controls.Add(this.Lb_SignUp);
+            this.kryptonPanel_Login.Controls.Add(this.Pn_Login);
+            this.kryptonPanel_Login.Controls.Add(this.Lb_ForgotPass);
+            this.kryptonPanel_Login.Controls.Add(this.tb__User);
+            this.kryptonPanel_Login.Controls.Add(this.Btn_Login);
+            this.kryptonPanel_Login.Controls.Add(this.tb_Password);
+            this.kryptonPanel_Login.Location = new System.Drawing.Point(0, 1);
+            this.kryptonPanel_Login.Name = "kryptonPanel_Login";
+            this.kryptonPanel_Login.Size = new System.Drawing.Size(423, 502);
+            this.kryptonPanel_Login.StateCommon.Color1 = System.Drawing.SystemColors.Control;
+            this.kryptonPanel_Login.StateCommon.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPanel1.StateCommon.Image")));
+            this.kryptonPanel_Login.TabIndex = 9;
             // 
             // Lb_SignUp
             // 
@@ -127,19 +127,19 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.kryptonPanel1);
+            this.Controls.Add(this.kryptonPanel_Login);
             this.Name = "LogInView";
             this.Size = new System.Drawing.Size(423, 503);
-            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
-            this.kryptonPanel1.ResumeLayout(false);
-            this.kryptonPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel_Login)).EndInit();
+            this.kryptonPanel_Login.ResumeLayout(false);
+            this.kryptonPanel_Login.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pn_Login)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel_Login;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel Lb_SignUp;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel Pn_Login;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel Lb_ForgotPass;

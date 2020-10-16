@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuView));
             this.flowLayoutPanelMenu = new System.Windows.Forms.FlowLayoutPanel();
+            this.controlProduct = new StoreAssitant.ControlProduct();
             this.controlSearch = new StoreAssitant.ControlSearch();
             this.ControlTitle = new StoreAssitant.TitleControl();
-            this.controlProduct = new StoreAssitant.ControlProduct();
             this.flowLayoutPanelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,6 +46,16 @@
             this.flowLayoutPanelMenu.Name = "flowLayoutPanelMenu";
             this.flowLayoutPanelMenu.Size = new System.Drawing.Size(425, 355);
             this.flowLayoutPanelMenu.TabIndex = 1;
+            // 
+            // controlProduct
+            // 
+            this.controlProduct.BackColor = System.Drawing.Color.Azure;
+            this.controlProduct.ForeColor = System.Drawing.SystemColors.Control;
+            this.controlProduct.Location = new System.Drawing.Point(3, 3);
+            this.controlProduct.MinimumSize = new System.Drawing.Size(15, 16);
+            this.controlProduct.Name = "controlProduct";
+            this.controlProduct.Size = new System.Drawing.Size(143, 152);
+            this.controlProduct.TabIndex = 0;
             // 
             // controlSearch
             // 
@@ -66,16 +76,6 @@
             this.ControlTitle.NameTitle = "Menu";
             this.ControlTitle.Size = new System.Drawing.Size(425, 32);
             this.ControlTitle.TabIndex = 0;
-            // 
-            // controlProduct
-            // 
-            this.controlProduct.BackColor = System.Drawing.Color.Azure;
-            this.controlProduct.ForeColor = System.Drawing.SystemColors.Control;
-            this.controlProduct.Location = new System.Drawing.Point(3, 3);
-            this.controlProduct.MinimumSize = new System.Drawing.Size(15, 16);
-            this.controlProduct.Name = "controlProduct";
-            this.controlProduct.Size = new System.Drawing.Size(143, 152);
-            this.controlProduct.TabIndex = 0;
             // 
             // MenuView
             // 
