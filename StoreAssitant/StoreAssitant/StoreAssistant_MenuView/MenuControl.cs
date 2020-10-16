@@ -26,7 +26,7 @@ namespace StoreAssitant
 
         public ProductInfo ProductInfo { get { return Infor; } }
 
-        
+
 
         public event EventHandler Click_AddControlProduct;
 
@@ -102,7 +102,7 @@ namespace StoreAssitant
             Price = info.Price;
             PDImage = info.Image;
         }
-        
+
         public MenuControl()
         {
             InitializeComponent();
@@ -135,12 +135,11 @@ namespace StoreAssitant
             textBoxPrice.Click += TextBoxPrice_Click;
             #endregion
 
-            #region MouseHover_Control
+            #region MouseEnter_Control
 
-            this.MouseEnter += MenuControl_MouseHover;
-            pictureBox.MouseEnter += MenuControl_MouseHover;
-            textBoxName.MouseEnter += MenuControl_MouseHover;
-            textBoxPrice.MouseEnter += MenuControl_MouseHover;
+            pictureBox.MouseEnter += MenuControl_MouseEnter;
+            textBoxName.MouseEnter += MenuControl_MouseEnter;
+            textBoxPrice.MouseEnter += MenuControl_MouseEnter;
             #endregion
 
             #region MouseLeave_Control
@@ -170,7 +169,7 @@ namespace StoreAssitant
             }
         }
 
-        private void MenuControl_MouseHover(object sender, EventArgs e)
+        private void MenuControl_MouseEnter(object sender, EventArgs e)
         {
             this.BackColor = color_MouseEnter;
             textBoxName.Size -= new Size (0, 2);
@@ -213,21 +212,6 @@ namespace StoreAssitant
             //textBoxName.Size = textBoxPrice.Size = new Size(this.Width, (this.Height - pictureBox.Height)/2);
             textBoxPrice.Location = new Point(this.Width - textBoxPrice.Width, pictureBox.Height - textBoxPrice.Height);
             textBoxName.Location = new Point((this.Width - textBoxName.Width) / 2, pictureBox.Height + (this.Height - pictureBox.Height - textBoxName.Height) / 2);
-        }
-
-        private void textBoxName_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxPrice_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MenuControl_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

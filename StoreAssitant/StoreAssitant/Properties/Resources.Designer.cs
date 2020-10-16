@@ -83,6 +83,16 @@ namespace StoreAssitant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _121476880_662245951379057_3014594879334389444_n {
+            get {
+                object obj = ResourceManager.GetObject("121476880_662245951379057_3014594879334389444_n", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Artboard_1 {
             get {
                 object obj = ResourceManager.GetObject("Artboard_1", resourceCulture);

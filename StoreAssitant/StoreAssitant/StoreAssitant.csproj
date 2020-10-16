@@ -264,6 +264,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\iconfinder_icons_menu_1564512.png" />
+</ItemGroup>
+<ItemGroup>
+    <None Include="Resources\121476880_662245951379057_3014594879334389444_n.png" />
+    </ItemGroup>
     <Content Include="Resources\iconfinder_Cashier-2_3793351.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

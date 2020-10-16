@@ -2,12 +2,12 @@
 {
     partial class MenuControl
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -22,8 +22,8 @@
 
         #region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
@@ -38,9 +38,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // textBoxPrice
-            // 
+            //
             this.textBoxPrice.AutoSize = true;
             this.textBoxPrice.BackColor = System.Drawing.Color.LightSalmon;
             this.textBoxPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -53,10 +53,9 @@
             this.textBoxPrice.TabIndex = 1;
             this.textBoxPrice.Text = "12,000VND";
             this.textBoxPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.textBoxPrice.Click += new System.EventHandler(this.textBoxPrice_Click_1);
-            // 
+            //
             // pictureBox
-            // 
+            //
             this.pictureBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox.Image = global::StoreAssitant.Properties.Resources._120427285_648274679154155_8374726593261554204_n;
             this.pictureBox.InitialImage = global::StoreAssitant.Properties.Resources._120427285_648274679154155_8374726593261554204_n;
@@ -67,9 +66,9 @@
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox.TabIndex = 3;
             this.pictureBox.TabStop = false;
-            // 
+            //
             // textBoxName
-            // 
+            //
             this.textBoxName.AutoSize = true;
             this.textBoxName.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.textBoxName.Font = new System.Drawing.Font("UTM Alberta Heavy", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -80,30 +79,30 @@
             this.textBoxName.Text = "Tên Sản Phẩm";
             this.textBoxName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.textBoxName.Click += new System.EventHandler(this.textBoxName_Click_1);
-            // 
+            //
             // contextMenuStrip1
-            // 
+            //
             this.contextMenuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.editToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(161, 48);
-            // 
+            //
             // toolStripMenuItem1
-            // 
+            //
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(160, 22);
             this.toolStripMenuItem1.Text = "Delele                  ";
-            // 
+            //
             // editToolStripMenuItem
-            // 
+            //
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.editToolStripMenuItem.Text = "Edit";
-            // 
+            //
             // MenuControl
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PapayaWhip;
@@ -112,8 +111,7 @@
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.textBoxName);
             this.Name = "MenuControl";
-            this.Size = new System.Drawing.Size(250, 200);
-            this.Load += new System.EventHandler(this.MenuControl_Load);
+            this.Size = new System.Drawing.Size(148, 148);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);

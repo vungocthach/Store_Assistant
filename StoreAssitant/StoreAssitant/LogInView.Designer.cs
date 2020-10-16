@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogInView));
             this.kryptonPanel_Login = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.tb_Password = new System.Windows.Forms.TextBox();
+            this.tb_User = new System.Windows.Forms.TextBox();
             this.Lb_SignUp = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.Pn_Login = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.Lb_ForgotPass = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.tb__User = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.Btn_Login = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.tb_Password = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel_Login)).BeginInit();
             this.kryptonPanel_Login.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Pn_Login)).BeginInit();
@@ -43,18 +42,36 @@
             // 
             // kryptonPanel_Login
             // 
+            this.kryptonPanel_Login.Controls.Add(this.tb_Password);
+            this.kryptonPanel_Login.Controls.Add(this.tb_User);
             this.kryptonPanel_Login.Controls.Add(this.Lb_SignUp);
             this.kryptonPanel_Login.Controls.Add(this.Pn_Login);
             this.kryptonPanel_Login.Controls.Add(this.Lb_ForgotPass);
-            this.kryptonPanel_Login.Controls.Add(this.tb__User);
             this.kryptonPanel_Login.Controls.Add(this.Btn_Login);
-            this.kryptonPanel_Login.Controls.Add(this.tb_Password);
             this.kryptonPanel_Login.Location = new System.Drawing.Point(0, 1);
             this.kryptonPanel_Login.Name = "kryptonPanel_Login";
             this.kryptonPanel_Login.Size = new System.Drawing.Size(423, 502);
             this.kryptonPanel_Login.StateCommon.Color1 = System.Drawing.SystemColors.Control;
-            this.kryptonPanel_Login.StateCommon.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPanel1.StateCommon.Image")));
+            this.kryptonPanel_Login.StateCommon.Image = global::StoreAssitant.Properties.Resources._121476880_662245951379057_3014594879334389444_n;
             this.kryptonPanel_Login.TabIndex = 9;
+            // 
+            // tb_Password
+            // 
+            this.tb_Password.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_Password.Location = new System.Drawing.Point(47, 353);
+            this.tb_Password.Name = "tb_Password";
+            this.tb_Password.Size = new System.Drawing.Size(312, 29);
+            this.tb_Password.TabIndex = 8;
+            this.tb_Password.Text = "Mật khẩu";
+            // 
+            // tb_User
+            // 
+            this.tb_User.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_User.Location = new System.Drawing.Point(47, 312);
+            this.tb_User.Name = "tb_User";
+            this.tb_User.Size = new System.Drawing.Size(312, 29);
+            this.tb_User.TabIndex = 7;
+            this.tb_User.Text = "Tên đăng nhập";
             // 
             // Lb_SignUp
             // 
@@ -77,31 +94,21 @@
             // 
             // Lb_ForgotPass
             // 
-            this.Lb_ForgotPass.Location = new System.Drawing.Point(43, 426);
+            this.Lb_ForgotPass.Location = new System.Drawing.Point(47, 425);
             this.Lb_ForgotPass.Name = "Lb_ForgotPass";
             this.Lb_ForgotPass.Size = new System.Drawing.Size(100, 20);
             this.Lb_ForgotPass.TabIndex = 4;
             this.Lb_ForgotPass.Values.Text = "Quên mật khẩu?";
             // 
-            // tb__User
-            // 
-            this.tb__User.Location = new System.Drawing.Point(44, 319);
-            this.tb__User.Name = "tb__User";
-            this.tb__User.Size = new System.Drawing.Size(312, 23);
-            this.tb__User.StateActive.Back.Color1 = System.Drawing.Color.White;
-            this.tb__User.StateDisabled.Back.Color1 = System.Drawing.SystemColors.Control;
-            this.tb__User.TabIndex = 1;
-            this.tb__User.Text = "Tên đăng nhập";
-            // 
             // Btn_Login
             // 
-            this.Btn_Login.Location = new System.Drawing.Point(45, 394);
+            this.Btn_Login.Location = new System.Drawing.Point(47, 393);
             this.Btn_Login.Name = "Btn_Login";
             this.Btn_Login.OverrideDefault.Back.Color1 = System.Drawing.SystemColors.Control;
             this.Btn_Login.OverrideDefault.Border.Color1 = System.Drawing.SystemColors.Control;
             this.Btn_Login.OverrideDefault.Border.Color2 = System.Drawing.SystemColors.Control;
             this.Btn_Login.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom)));
-            this.Btn_Login.Size = new System.Drawing.Size(312, 25);
+            this.Btn_Login.Size = new System.Drawing.Size(312, 26);
             this.Btn_Login.StateCommon.Content.LongText.Font = new System.Drawing.Font("High Tower Text", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Btn_Login.StateCommon.Content.LongText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.Btn_Login.StateDisabled.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -112,16 +119,6 @@
             this.Btn_Login.StateNormal.Content.LongText.TextH = ComponentFactory.Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.Btn_Login.TabIndex = 3;
             this.Btn_Login.Values.Text = "ĐĂNG NHẬP";
-            // 
-            // tb_Password
-            // 
-            this.tb_Password.Location = new System.Drawing.Point(45, 357);
-            this.tb_Password.Name = "tb_Password";
-            this.tb_Password.Size = new System.Drawing.Size(312, 23);
-            this.tb_Password.StateActive.Back.Color1 = System.Drawing.Color.White;
-            this.tb_Password.StateDisabled.Back.Color1 = System.Drawing.SystemColors.Control;
-            this.tb_Password.TabIndex = 2;
-            this.tb_Password.Text = "Mật khẩu";
             // 
             // LogInView
             // 
@@ -143,8 +140,8 @@
         private ComponentFactory.Krypton.Toolkit.KryptonLabel Lb_SignUp;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel Pn_Login;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel Lb_ForgotPass;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox tb__User;
         public ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Login;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox tb_Password;
+        private System.Windows.Forms.TextBox tb_Password;
+        private System.Windows.Forms.TextBox tb_User;
     }
 }
