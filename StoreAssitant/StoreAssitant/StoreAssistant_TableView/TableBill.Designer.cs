@@ -31,9 +31,10 @@
             this.tableTitle_pnl = new System.Windows.Forms.Panel();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.tableTitle_lb = new System.Windows.Forms.Label();
-            this.flpProductInfo = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlCashier = new System.Windows.Forms.Panel();
             this.btnCashier = new System.Windows.Forms.Button();
+            this.titelLine1 = new StoreAssitant.StoreAssistant_TableView.TitelLine();
+            this.flpProductInfo = new System.Windows.Forms.FlowLayoutPanel();
             this.tableTitle_pnl.SuspendLayout();
             this.pnlCashier.SuspendLayout();
             this.SuspendLayout();
@@ -77,17 +78,6 @@
             this.tableTitle_lb.Text = "BÀN";
             this.tableTitle_lb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // flpProductInfo
-            // 
-            this.flpProductInfo.AutoScroll = true;
-            this.flpProductInfo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flpProductInfo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flpProductInfo.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flpProductInfo.Location = new System.Drawing.Point(0, 34);
-            this.flpProductInfo.Name = "flpProductInfo";
-            this.flpProductInfo.Size = new System.Drawing.Size(420, 487);
-            this.flpProductInfo.TabIndex = 5;
-            // 
             // pnlCashier
             // 
             this.pnlCashier.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -111,13 +101,31 @@
             this.btnCashier.Text = "Thanh toán";
             this.btnCashier.UseVisualStyleBackColor = false;
             // 
+            // titelLine1
+            // 
+            this.titelLine1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.titelLine1.Location = new System.Drawing.Point(0, 34);
+            this.titelLine1.MinimumSize = new System.Drawing.Size(348, 23);
+            this.titelLine1.Name = "titelLine1";
+            this.titelLine1.Size = new System.Drawing.Size(420, 30);
+            this.titelLine1.TabIndex = 3;
+            // 
+            // flpProductInfo
+            // 
+            this.flpProductInfo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flpProductInfo.Location = new System.Drawing.Point(0, 64);
+            this.flpProductInfo.Name = "flpProductInfo";
+            this.flpProductInfo.Size = new System.Drawing.Size(420, 457);
+            this.flpProductInfo.TabIndex = 7;
+            // 
             // TableBill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Controls.Add(this.pnlCashier);
             this.Controls.Add(this.flpProductInfo);
+            this.Controls.Add(this.titelLine1);
+            this.Controls.Add(this.pnlCashier);
             this.Controls.Add(this.tableTitle_pnl);
             this.Name = "TableBill";
             this.Size = new System.Drawing.Size(420, 570);
@@ -133,8 +141,9 @@
         private System.Windows.Forms.Panel tableTitle_pnl;
         private System.Windows.Forms.Label tableTitle_lb;
         private System.Windows.Forms.Button btn_Cancel;
-        private System.Windows.Forms.FlowLayoutPanel flpProductInfo;
         private System.Windows.Forms.Panel pnlCashier;
         private System.Windows.Forms.Button btnCashier;
+        private StoreAssistant_TableView.TitelLine titelLine1;
+        private System.Windows.Forms.FlowLayoutPanel flpProductInfo;
     }
 }

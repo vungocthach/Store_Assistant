@@ -39,12 +39,6 @@ namespace StoreAssitant
             setData(tableinfo);
             this.SizeChanged += TableBill_SizeChanged;
             this.MinimumSize = new Size((new TableLine()).MinimumSize.Width, (new TableLine()).MinimumSize.Height);
-            flpProductInfo.SizeChanged += FlpProductInfo_SizeChanged;
-        }
-
-        private void FlpProductInfo_SizeChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void TableBill_SizeChanged(object sender, EventArgs e)
@@ -161,5 +155,9 @@ namespace StoreAssitant
         }
         #endregion
 
+        private void tableLine1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

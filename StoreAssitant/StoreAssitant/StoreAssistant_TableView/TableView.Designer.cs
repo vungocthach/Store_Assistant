@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.tableGUI_pnl = new System.Windows.Forms.FlowLayoutPanel();
+            this.tableAdd_btn = new System.Windows.Forms.Panel();
             this.tableTitle_lb = new System.Windows.Forms.Label();
             this.tableTitle_pnl = new System.Windows.Forms.Panel();
-            this.tableAdd_btn = new System.Windows.Forms.Panel();
             this.tableIcon_pnl = new System.Windows.Forms.Panel();
             this.tableGUI_pnl.SuspendLayout();
             this.tableTitle_pnl.SuspendLayout();
@@ -47,6 +47,16 @@
             this.tableGUI_pnl.Name = "tableGUI_pnl";
             this.tableGUI_pnl.Size = new System.Drawing.Size(418, 520);
             this.tableGUI_pnl.TabIndex = 0;
+            // 
+            // tableAdd_btn
+            // 
+            this.tableAdd_btn.BackgroundImage = global::StoreAssitant.Properties.Resources.button_add;
+            this.tableAdd_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tableAdd_btn.Location = new System.Drawing.Point(2, 2);
+            this.tableAdd_btn.Margin = new System.Windows.Forms.Padding(2);
+            this.tableAdd_btn.Name = "tableAdd_btn";
+            this.tableAdd_btn.Size = new System.Drawing.Size(113, 122);
+            this.tableAdd_btn.TabIndex = 1;
             // 
             // tableTitle_lb
             // 
@@ -70,16 +80,6 @@
             this.tableTitle_pnl.Name = "tableTitle_pnl";
             this.tableTitle_pnl.Size = new System.Drawing.Size(418, 50);
             this.tableTitle_pnl.TabIndex = 3;
-            // 
-            // tableAdd_btn
-            // 
-            this.tableAdd_btn.BackgroundImage = global::StoreAssitant.Properties.Resources.button_add;
-            this.tableAdd_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tableAdd_btn.Location = new System.Drawing.Point(2, 2);
-            this.tableAdd_btn.Margin = new System.Windows.Forms.Padding(2);
-            this.tableAdd_btn.Name = "tableAdd_btn";
-            this.tableAdd_btn.Size = new System.Drawing.Size(113, 122);
-            this.tableAdd_btn.TabIndex = 1;
             // 
             // tableIcon_pnl
             // 
