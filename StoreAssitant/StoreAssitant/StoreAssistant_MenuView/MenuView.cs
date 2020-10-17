@@ -64,10 +64,10 @@ namespace StoreAssitant
         [Category("My Properties"), Description("Name of Title")]
         public string NameTitle
         {
-            get => ControlTitle.Name;
+            get => ControlTitle.NameTitle;
             set
             {
-                Name = value;
+                ControlTitle.NameTitle = value;
                 Invalidate();
             }
         }

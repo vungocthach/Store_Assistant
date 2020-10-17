@@ -64,7 +64,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StoreAssistant_ManagerView\ManagerModifyView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StoreAssistant_ManagerView\ManagerModifyView.Designer.cs">
+      <DependentUpon>ManagerModifyView.cs</DependentUpon>
+    </Compile>
     <Compile Include="StoreAssistant_Authenticater\Authenticator.cs" />
+    <Compile Include="StoreAssistant_CashierView\CashierView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StoreAssistant_CashierView\CashierView.Designer.cs">
+      <DependentUpon>CashierView.cs</DependentUpon>
+    </Compile>
     <Compile Include="StoreAssistant_Information\TableBillInfo.cs" />
     <Compile Include="StoreAssistant_Information\UserInfo.cs" />
     <Compile Include="StoreAssistant_MenuView\ControlProduct.cs">
@@ -94,16 +106,16 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginForm.cs">
+    <Compile Include="StoreAssistant_Authenticater\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="StoreAssistant_Authenticater\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LogInView.cs">
+    <Compile Include="StoreAssistant_Authenticater\LogInView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="LogInView.Designer.cs">
+    <Compile Include="StoreAssistant_Authenticater\LogInView.Designer.cs">
       <DependentUpon>LogInView.cs</DependentUpon>
     </Compile>
     <Compile Include="StoreAssistant_MenuView\MenuControl.cs">
@@ -137,13 +149,19 @@
     <Compile Include="StoreAssistant_MenuView\TitleControl.Designer.cs">
       <DependentUpon>TitleControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="StoreAssistant_ManagerView\ManagerModifyView.resx">
+      <DependentUpon>ManagerModifyView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoreAssistant_CashierView\CashierView.resx">
+      <DependentUpon>CashierView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_MenuView\ControlSearch.resx">
       <DependentUpon>ControlSearch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="StoreAssistant_Authenticater\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LogInView.resx">
+    <EmbeddedResource Include="StoreAssistant_Authenticater\LogInView.resx">
       <DependentUpon>LogInView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_MenuView\MenuControl.resx">
@@ -267,9 +285,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\121476880_662245951379057_3014594879334389444_n.png" />
-    </ItemGroup>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\iconfinder_Cashier-2_3793351.png" />
-    </ItemGroup>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

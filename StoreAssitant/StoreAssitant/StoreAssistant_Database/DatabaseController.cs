@@ -409,10 +409,10 @@ namespace StoreAssitant
                 short rs = reader.GetInt16(0);
                 switch (rs)
                 {
-                    case 0:
+                    case ((int)UserInfo.UserRole.Manager):
                         userInfo.Role = UserInfo.UserRole.Manager;
                         break;
-                    case 1:
+                    case ((int)UserInfo.UserRole.Cashier):
                         userInfo.Role = UserInfo.UserRole.Cashier;
                         break;
                     default:

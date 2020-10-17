@@ -18,7 +18,7 @@ namespace StoreAssitant
             get => labelTitle.Text;
             set
             {
-                Name = value;
+                labelTitle.Text = value;
                 Invalidate();
             }
         }
