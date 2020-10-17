@@ -37,6 +37,19 @@ namespace StoreAssitant
             btnCashier.Click += BtnCashier_Click;
             tableTitle_lb.Text = "BÀN " + (iD+1);
             setData(tableinfo);
+            this.SizeChanged += TableBill_SizeChanged;
+            this.MinimumSize = new Size((new TableLine()).MinimumSize.Width, (new TableLine()).MinimumSize.Height);
+            flpProductInfo.SizeChanged += FlpProductInfo_SizeChanged;
+        }
+
+        private void FlpProductInfo_SizeChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TableBill_SizeChanged(object sender, EventArgs e)
+        {
+            tableTitle_lb.Location = new Point((tableTitle_pnl.Size.Width - tableTitle_lb.Size.Width)/2, (tableTitle_pnl.Size.Height - tableTitle_lb.Size.Height)/2);
         }
 
         #region INIT TABLEBILL
@@ -58,8 +71,10 @@ namespace StoreAssitant
         private void CreateTableLine(Products product)
         {
             TableLine line = new TableLine();
+            line.Size = new Size(this.Size.Width, line.Size.Height);
             line.SetData(product);
             flpProductInfo.Controls.Add(line);
+            line.Dock = DockStyle.Top;
         }
         public void UploadProduct(ProductInfo product)
         {
@@ -145,5 +160,6 @@ namespace StoreAssitant
             }
         }
         #endregion
+
     }
 }

@@ -67,11 +67,12 @@
             // 
             // tableTitle_lb
             // 
+            this.tableTitle_lb.AutoSize = true;
             this.tableTitle_lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableTitle_lb.Location = new System.Drawing.Point(69, -1);
+            this.tableTitle_lb.Location = new System.Drawing.Point(184, 6);
             this.tableTitle_lb.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.tableTitle_lb.Name = "tableTitle_lb";
-            this.tableTitle_lb.Size = new System.Drawing.Size(287, 33);
+            this.tableTitle_lb.Size = new System.Drawing.Size(47, 22);
             this.tableTitle_lb.TabIndex = 2;
             this.tableTitle_lb.Text = "BÀN";
             this.tableTitle_lb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -121,6 +122,7 @@
             this.Name = "TableBill";
             this.Size = new System.Drawing.Size(420, 570);
             this.tableTitle_pnl.ResumeLayout(false);
+            this.tableTitle_pnl.PerformLayout();
             this.pnlCashier.ResumeLayout(false);
             this.ResumeLayout(false);
 

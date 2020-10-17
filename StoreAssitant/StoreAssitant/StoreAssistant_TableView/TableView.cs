@@ -69,6 +69,7 @@ namespace StoreAssitant
             tableAdd_btn.MouseLeave += TableAdd_pnl_MouseLeave;
 
             itemImage = Properties.Resources.Artboard_1;
+            this.Controls.Add(tbBill);
         }
         public void SetData(int numberTable)
         {
@@ -92,6 +93,7 @@ namespace StoreAssitant
             tbBill = new TableBill(((TableControl)tableGUI_pnl.Controls[indexSelectedTable]).Info, indexSelectedTable);
             tbBill.Size = new Size(tableGUI_pnl.Size.Width, tableGUI_pnl.Size.Height - tableGUI_pnl.AutoScrollMargin.Width);
             tbBill.Location = new Point(tableGUI_pnl.Location.X, tableGUI_pnl.Location.Y);
+            tbBill.Dock = DockStyle.Bottom;
             tbBill.CloseBill += Tbbill_CloseBill;
             tableGUI_pnl.Hide();
             this.Controls.Add(tbBill);
@@ -108,7 +110,6 @@ namespace StoreAssitant
         {
             TableControl newtable = new TableControl() { Size = ItemSize, nameTable = "BÀN " + tableGUI_pnl.Controls.Count, ImageTable = itemImage };
             tableGUI_pnl.Controls.Add(newtable);
-
             newtable.ClickTableControl += Newtable_ClickTableControl;
             newtable.TableRemoved += Newtable_TableRemoved;
         }
