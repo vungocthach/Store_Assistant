@@ -18,12 +18,6 @@ namespace StoreAssitant
         Color color_Default = System.Drawing.Color.PapayaWhip;
         #region create event Click_AddControlProduct, Click_Delete
 
-        public event EventHandler CLick_Delete;
-        private void onCLick_Delete(object sender, EventArgs e)
-        {
-
-        }
-
         public ProductInfo ProductInfo { get { return Infor; } }
 
 
@@ -39,6 +33,10 @@ namespace StoreAssitant
         {
 
         }
+        public event EventHandler<ProductInfo> CLick_DeleteProductInfo;
+
+        private void on_Click_DeleteProductInfo(object sender, ProductInfo Info )
+        { }
         #endregion
         #region Create properties
         [Category("My Properties"), Description("Name of Title")]
@@ -109,11 +107,11 @@ namespace StoreAssitant
 
             // this.MinimumSize = new Size(125, 140);
 
-            CLick_Delete += new EventHandler(onCLick_Delete);
-
             Click_AddControlProduct = new EventHandler(on_Click_AddControlProduct);
 
-            Click_EditProductInfo += new EventHandler<ProductInfo> (on_Click_EditProductInfo);
+            Click_EditProductInfo = new EventHandler<ProductInfo> (on_Click_EditProductInfo);
+
+            CLick_DeleteProductInfo = new EventHandler<ProductInfo>(on_Click_DeleteProductInfo);
 
             this.Layout += MenuControl_Layout;
 
@@ -121,7 +119,7 @@ namespace StoreAssitant
 
             editToolStripMenuItem.Click += EditToolStripMenuItem_Click;
 
-            toolStripMenuItem1.Click += ToolStripMenuItem1_Click;
+            deletetoolStripMenuItem.Click += DeletetoolStripMenuItem_Click;
             #region MouseClick_Control
 
             pictureBox.MouseClick += _MouseClick;
@@ -151,15 +149,17 @@ namespace StoreAssitant
             #endregion
         }
 
+        private void DeletetoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CLick_DeleteProductInfo(this, Infor);
+        }
+
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Click_EditProductInfo(this, Infor);
         }
 
-        private void ToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            CLick_Delete(this, e);
-        }
+
 
         private void _MouseClick(object sender, MouseEventArgs e)
         {
@@ -213,5 +213,7 @@ namespace StoreAssitant
             textBoxPrice.Location = new Point(this.Width - textBoxPrice.Width, pictureBox.Height - textBoxPrice.Height);
             textBoxName.Location = new Point((this.Width - textBoxName.Width) / 2, pictureBox.Height + (this.Height - pictureBox.Height - textBoxName.Height) / 2);
         }
+
+      
     }
 }

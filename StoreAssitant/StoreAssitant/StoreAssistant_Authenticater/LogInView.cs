@@ -90,6 +90,7 @@ namespace StoreAssitant
           // else 
                 if(tb_Password.Text =="")
             {
+                tb_Password.PasswordChar = '\0';
                 tb_Password.ForeColor = Color.Gray;
                 tb_Password.Text = "Mật khẩu";
             }           
@@ -99,6 +100,7 @@ namespace StoreAssitant
         {
             if (tb_Password.Text == "Mật khẩu")
             {
+                tb_Password.PasswordChar = '*';
                 tb_Password.ForeColor = Color.Black;
                 tb_Password.Text = "";
             }

@@ -28,6 +28,14 @@ namespace StoreAssitant
         {
 
         }
+        public event EventHandler <ProductInfo> Click_EditProduct;
+
+        private void on_CLick_EditProduct(object sender, ProductInfo p)
+        { }
+        public event EventHandler<ProductInfo> CLick_DeleteProduct;
+
+        private void on_CLick_DeleteProduct(object sender, ProductInfo p)
+        { }
         #endregion
         #region Create Properties
         [Category("My Properties"), Description("Height of title bar in pixel")]
@@ -101,14 +109,26 @@ namespace StoreAssitant
             flowLayoutPanelMenu.Controls.Remove(controlProduct);
             flowLayoutPanelMenu.Controls.Add(Product);
             flowLayoutPanelMenu.Controls.Add(controlProduct);
+
             Product.Click_AddControlProduct += Product_Click_AddControlProduct;
             Product.Click_EditProductInfo += Product_Click_EditProductInfo;
+            Product.CLick_DeleteProductInfo += Product_CLick_DeleteProductInfo;
+                  
+        }
+
+        private void Product_CLick_DeleteProductInfo(object sender, ProductInfo e)
+        {
+            MessageBox.Show(e.ToString());
+            CLick_DeleteProduct(this, e);
         }
 
         private void Product_Click_EditProductInfo(object sender, ProductInfo e)
         {
             MessageBox.Show(e.ToString());
+            Click_EditProduct(this, e);
         }
+     
+
 
         public void SetData(List<ProductInfo> Pro)
         {
@@ -130,6 +150,9 @@ namespace StoreAssitant
 
             ClickAddButton = new EventHandler(onClickAddButton);
 
+            Click_EditProduct = new EventHandler<ProductInfo>(on_CLick_EditProduct);
+
+            CLick_DeleteProduct = new EventHandler<ProductInfo>(on_CLick_EditProduct);
 
             ControlTitle.Layout += new LayoutEventHandler((object sender, LayoutEventArgs e) =>
             {
