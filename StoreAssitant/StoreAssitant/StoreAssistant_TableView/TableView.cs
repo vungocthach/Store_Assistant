@@ -69,6 +69,7 @@ namespace StoreAssitant
             tableAdd_btn.MouseLeave += TableAdd_pnl_MouseLeave;
 
             itemImage = Properties.Resources.Artboard_1;
+            this.Controls.Add(tbBill);
         }
         public void SetData(int numberTable)
         {
@@ -92,6 +93,7 @@ namespace StoreAssitant
             tbBill = new TableBill(((TableControl)tableGUI_pnl.Controls[indexSelectedTable]).Info, indexSelectedTable);
             tbBill.Size = new Size(tableGUI_pnl.Size.Width, tableGUI_pnl.Size.Height - tableGUI_pnl.AutoScrollMargin.Width);
             tbBill.Location = new Point(tableGUI_pnl.Location.X, tableGUI_pnl.Location.Y);
+            tbBill.Dock = DockStyle.Bottom;
             tbBill.CloseBill += Tbbill_CloseBill;
             tableGUI_pnl.Hide();
             this.Controls.Add(tbBill);
@@ -107,8 +109,8 @@ namespace StoreAssitant
         private void Create_Table()
         {
             TableControl newtable = new TableControl() { Size = ItemSize, nameTable = "BÀN " + tableGUI_pnl.Controls.Count, ImageTable = itemImage };
+            newtable.IsManager = this.isManager;
             tableGUI_pnl.Controls.Add(newtable);
-
             newtable.ClickTableControl += Newtable_ClickTableControl;
             newtable.TableRemoved += Newtable_TableRemoved;
         }
@@ -121,9 +123,9 @@ namespace StoreAssitant
         #region BUTTON TABLE EVENT
         private void Newtable_ClickTableControl(object sender, EventArgs e)
         {
-            this.ClickButtonTable(this, e);
             indexSelectedTable = tableGUI_pnl.Controls.IndexOf((TableControl)sender);
             Show_TableBill();
+            this.ClickButtonTable(this, e);
         }
 
         private void Newtable_TableRemoved(object sender, EventArgs e)
@@ -136,10 +138,10 @@ namespace StoreAssitant
         private void TableAdd_btn_Click(object sender, EventArgs e)
         {
             Create_Table();
-            this.TableAdded(this, e);
             this.NumberTable++;
             tableGUI_pnl.Controls.Remove(tableAdd_btn);
             tableGUI_pnl.Controls.Add(tableAdd_btn);
+            this.TableAdded(this, e);
             this.ClickButtonAdd(this, null);
         }
 
@@ -272,6 +274,13 @@ namespace StoreAssitant
                 else
                 {
                     tableAdd_btn.Visible = true;
+                }
+                foreach(Control table in tableGUI_pnl.Controls)
+                {
+                    if (table is TableControl)
+                    {
+                        ((TableControl)table).IsManager = value;
+                    }
                 }
                 Invalidate();
             }

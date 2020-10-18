@@ -187,6 +187,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StoreAssistant_TableView\TitelLine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StoreAssistant_TableView\TitelLine.Designer.cs">
+      <DependentUpon>TitelLine.cs</DependentUpon>
+    </Compile>
     <Compile Include="TSString.cs" />
     <EmbeddedResource Include="StoreAssistant_MenuView\AddProductForm.resx">
       <DependentUpon>AddProductForm.cs</DependentUpon>
@@ -234,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_TableView\TableView.resx">
       <DependentUpon>TableView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoreAssistant_TableView\TitelLine.resx">
+      <DependentUpon>TitelLine.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

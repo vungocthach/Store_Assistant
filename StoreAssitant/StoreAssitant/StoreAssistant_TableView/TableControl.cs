@@ -136,6 +136,24 @@ namespace StoreAssitant
                 Invalidate();
             }
         }
+        private bool isManager;
+        [Category("My properties"), Description("Check is manager?")]
+        public bool IsManager
+        {
+            get => isManager;
+            set
+            {
+                isManager = value;
+                if(isManager==true)
+                {
+                    tsDelete.Visible = true;
+                }
+                else
+                {
+                    tsDelete.Visible = false;
+                }
+            }
+        }
         #endregion
     }
 }
