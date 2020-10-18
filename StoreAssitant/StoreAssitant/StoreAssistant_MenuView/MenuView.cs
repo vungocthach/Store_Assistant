@@ -90,13 +90,14 @@ namespace StoreAssitant
             }
         }
         [Category("My Properties"), Description("Define is the maneger ")]
-
+        bool ismaneger;
         public bool IsManeger
         {
-            get => controlProduct.Visible;
+            get =>ismaneger;
             set
             {
-                controlProduct.Visible = value;
+                ismaneger = controlProduct.Visible = value;
+
                 foreach (var i in flowLayoutPanelMenu.Controls)
                 {
                     if (i is MenuControl) ((MenuControl)i).IsManeger = value;
@@ -116,8 +117,6 @@ namespace StoreAssitant
             flowLayoutPanelMenu.Controls.Add(controlProduct);
 
            
-
-
             Product.Click_AddControlProduct += Product_Click_AddControlProduct;
             Product.Click_EditProductInfo += Product_Click_EditProductInfo;
             Product.CLick_DeleteProductInfo += Product_CLick_DeleteProductInfo;
@@ -140,18 +139,17 @@ namespace StoreAssitant
      
         public void ClearData()
         {
-            Menu.Clear();
-            ControlProduct ctrProduct = new ControlProduct();
+           
             flowLayoutPanelMenu.Controls.Clear();
-            flowLayoutPanelMenu.Controls.Add(ctrProduct);
+            flowLayoutPanelMenu.Controls.Add(controlProduct);
         }
 
         public void SetData(List<ProductInfo> Pro)
         {
+            ClearData();
             foreach (ProductInfo P in Pro)
             {
                 AddMenuControl(P);
-                //Menu.Add(P);
             }
         }
        

@@ -93,15 +93,16 @@ namespace StoreAssitant
                 Invalidate();
             }
         }
-        [Category("My Propperties"), Description ("Define is Maneger")]
+        [Category("My Propperties"), Description("Define is Maneger")]
 
+        bool ismaneger;
         public bool IsManeger
         {
-            get => contextMenustrip.Visible;
+            get => ismaneger;
 
             set
             {
-                contextMenustrip.Visible = value;
+                ismaneger = deletetoolStripMenuItem.Visible = editToolStripMenuItem.Visible = value;
                 Invalidate();
             }
         }
@@ -167,6 +168,7 @@ namespace StoreAssitant
 
         private void DeletetoolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Dispose();
             CLick_DeleteProductInfo(this, Infor);
         }
 
