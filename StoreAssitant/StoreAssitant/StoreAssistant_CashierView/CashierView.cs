@@ -36,7 +36,10 @@ namespace StoreAssitant.StoreAssistant_CashierView
         
         private void MenuView1_ClickAddTableInfo1(object sender, ProductInfo e)
         {
-            tableView1.AddProductInfo(e);
+            if (tableView1.SelectedTable != -1)
+            {
+                tableView1.AddProductInfo(e);
+            }
         }
 
     }

@@ -15,7 +15,9 @@ namespace StoreAssitant
     {
         UserInfo user;
 
-
+        StoreAssistant_CashierView.CashierView cashierView;
+        ManagerModifyView managerModifyView;
+        StoreAssistant_AccountView.AccountView accountView;
 
         public event EventHandler SignOut;
         void OnSignOut(object sender, EventArgs e) {}
@@ -28,8 +30,14 @@ namespace StoreAssitant
             SignOut = new EventHandler(OnSignOut);
 
             kryptonNavigator1.GotFocus += KryptonNavigator1_GotFocus;
+            this.SizeChanged += Form1_SizeChanged;
 
-            accountView1.ClickSignOut += AccountView1_ClickSignOut;
+            Form1_SizeChanged(this, null);
+        }
+
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            panel1.Height = this.ClientSize.Height - kryptonNavigator1.Height;
         }
 
         private void AccountView1_ClickSignOut(object sender, EventArgs e)
@@ -42,7 +50,7 @@ namespace StoreAssitant
             this.user = user;
             kryptonNavigator1.SelectedPage = krPage_Cashier;
             kryptonNavigator1.SelectedPageChanged += KryptonNavigator1_SelectedPageChanged;
-            cashierView1.LoadDataFromDB();
+            KryptonNavigator1_SelectedPageChanged(kryptonNavigator1, new EventArgs());
             if (user.Role == UserInfo.UserRole.Cashier)
             {
                 kryptonNavigator1.Pages.Remove(krPage_Compare);
@@ -51,19 +59,42 @@ namespace StoreAssitant
             }
         }
 
+        void SelectTab(Control tab)
+        {
+            panel1.Controls.Clear();
+            tab.Dock = DockStyle.Fill;
+            panel1.Controls.Add(tab);
+        }
+
         private void KryptonNavigator1_SelectedPageChanged(object sender, EventArgs e)
         {
             if (kryptonNavigator1.SelectedPage.Name == krPage_Cashier.Name)
             {
-                cashierView1.LoadDataFromDB();
+                if (cashierView == null)
+                {
+                    cashierView = new StoreAssistant_CashierView.CashierView();
+                }
+                cashierView.LoadDataFromDB();
+                SelectTab(cashierView);
             }
             else if (kryptonNavigator1.SelectedPage.Name == krPage_Account.Name)
             {
-                accountView1.SetData(user);
+                if (accountView == null)
+                {
+                    accountView = new StoreAssistant_AccountView.AccountView();
+                    accountView.ClickSignOut += AccountView1_ClickSignOut;
+                }
+                accountView.SetData(user);
+                SelectTab(accountView);
             }
             else if (kryptonNavigator1.SelectedPage.Name == krPage_Manager.Name)
             {
-                managerModifyView1.LoadDataFromDB();
+                if (managerModifyView == null)
+                {
+                    managerModifyView = new ManagerModifyView();
+                }
+                managerModifyView.LoadDataFromDB();
+                SelectTab(managerModifyView);
             }
         }
 

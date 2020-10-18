@@ -40,6 +40,7 @@
             // 
             // split_Cashier
             // 
+            this.split_Cashier.BackColor = System.Drawing.Color.Transparent;
             this.split_Cashier.Dock = System.Windows.Forms.DockStyle.Fill;
             this.split_Cashier.Location = new System.Drawing.Point(0, 0);
             this.split_Cashier.Name = "split_Cashier";
@@ -51,6 +52,7 @@
             // 
             // split_Cashier.Panel2
             // 
+            this.split_Cashier.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.split_Cashier.Panel2.Controls.Add(this.menuView1);
             this.split_Cashier.Panel2.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.split_Cashier.Size = new System.Drawing.Size(1100, 590);
@@ -60,6 +62,8 @@
             // 
             // tableView1
             // 
+            this.tableView1.BackColor = System.Drawing.Color.Transparent;
+            this.tableView1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tableView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableView1.ImageCashierTable = ((System.Drawing.Image)(resources.GetObject("tableView1.ImageCashierTable")));
@@ -77,6 +81,7 @@
             // 
             // menuView1
             // 
+            this.menuView1.BackColor = System.Drawing.Color.Transparent;
             this.menuView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.menuView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menuView1.image = global::StoreAssitant.Properties.Resources._120427285_648274679154155_8374726593261554204_n;
