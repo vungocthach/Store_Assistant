@@ -381,15 +381,19 @@ namespace StoreAssitant
             return cmd.ExecuteNonQuery() == 1;
         }
 
-        public bool DeleteProduct(int id)
+        public bool DeleteProduct(ProductInfo productInfo)
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
             TransactionStart();
             cmd.CommandText = string.Format("DELETE FROM {0} WHERE {1}=@{1}_;", TB_PRODUCT, COLUMNS_TB_PRODUCT[0]);
             cmd.Parameters.Clear();
-            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[0]), SqlDbType.Int).Value = id;
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_PRODUCT[0]), SqlDbType.Int).Value = productInfo.Id;
 
-            return (cmd.ExecuteNonQuery() == 1) && DeleteImage(id);
+            bool rs = (cmd.ExecuteNonQuery() == 1);
+            if (productInfo.Image != null) { rs = rs && DeleteImage(productInfo.Id); }
+            if (rs) { TransactionCommit(); }
+            else { TransactionRollback(); }
+            return rs;
         }
 
         public bool InsertUser(UserInfo userInfo)

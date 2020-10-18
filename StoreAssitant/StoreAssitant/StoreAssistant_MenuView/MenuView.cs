@@ -118,14 +118,14 @@ namespace StoreAssitant
 
         private void Product_CLick_DeleteProductInfo(object sender, ProductInfo e)
         {
-            MessageBox.Show(e.ToString());
-            CLick_DeleteProduct(this, e);
+            //MessageBox.Show(e.ToString());
+            CLick_DeleteProduct(sender, e);
         }
 
         private void Product_Click_EditProductInfo(object sender, ProductInfo e)
         {
-            MessageBox.Show(e.ToString());
-            Click_EditProduct(this, e);
+            //MessageBox.Show(e.ToString());
+            Click_EditProduct(sender, e);
         }
      
 

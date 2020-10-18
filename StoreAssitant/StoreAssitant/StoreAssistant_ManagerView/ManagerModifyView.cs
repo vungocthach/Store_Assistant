@@ -31,25 +31,34 @@ namespace StoreAssitant
         void InitializeEventHandler()
         {
             menuView1.ClickAddButton += MenuView1_ClickAddButton;
+            menuView1.CLick_DeleteProduct += menuView_ProductDeleted;
+            menuView1.Click_EditProduct += menuView_ProductEditing;
             
             tableView1.TableRemoved += TableView1_UpdateNumber;
             tableView1.TableAdded += TableView1_UpdateNumber;
+        }
+
+        private void MenuView1_Click_EditProduct(object sender, ProductInfo e)
+        {
+            MessageBox.Show("Edit " + Environment.NewLine + e.ToString());
+        }
+
+        private void MenuView1_CLick_DeleteProduct(object sender, ProductInfo e)
+        {
+            MessageBox.Show(e.ToString());
         }
 
         void menuView_ProductDeleted(object sender, ProductInfo info)
         {
             using (DatabaseController databaseController = new DatabaseController())
             {
-                databaseController.DeleteProduct(info.Id);
+                databaseController.DeleteProduct(info);
             }
         }
 
         void menuView_ProductEditing(object sender, ProductInfo info)
         {
-            using (DatabaseController databaseController = new DatabaseController())
-            {
-                databaseController.DeleteProduct(info.Id);
-            }
+            OpenEditProductDialog(info, (MenuControl)sender);
         }
 
         private void TableView1_UpdateNumber(object sender, EventArgs e)
