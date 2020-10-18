@@ -36,7 +36,7 @@ namespace StoreAssitant
 
                     if (memoryStream.Length > 25000)
                     {
-                        MessageBox.Show("Vui lòng chọn ảnh có kích thước < 256kb", "File quá lớn", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Vui lòng chọn ảnh có kích thước < 26kb", "File quá lớn", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {

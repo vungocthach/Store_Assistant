@@ -15,51 +15,52 @@ namespace StoreAssitant
     {
         UserInfo user;
 
+        public event EventHandler SignOut;
+        void OnSignOut(object sender, EventArgs e) {}
+
         public Form1()
 
         {
             InitializeComponent();
 
+            SignOut = new EventHandler(OnSignOut);
+
             kryptonNavigator1.GotFocus += KryptonNavigator1_GotFocus;
 
-            cashierView1.LoadDataFromDB();
-            managerModifyView1.LoadDataFromDB();
+            accountView1.ClickSignOut += AccountView1_ClickSignOut;
+        }
+
+        private void AccountView1_ClickSignOut(object sender, EventArgs e)
+        {
+            this.SignOut(this, null);
         }
 
         public void LoadUser(UserInfo user)
         {
             this.user = user;
             kryptonNavigator1.SelectedPageChanged += KryptonNavigator1_SelectedPageChanged;
-            /*
             if (user.Role == UserInfo.UserRole.Cashier)
             {
-                krPage_Account.Enabled = false;
-                krPage_Compare.Enabled = false;
-                krPage_Manager.Enabled = false;
-                krPage_Setting.Enabled = false;
-                krPage_Statistic.Enabled = false;
+                kryptonNavigator1.Pages.Remove(krPage_Compare);
+                kryptonNavigator1.Pages.Remove(krPage_Manager);
+                kryptonNavigator1.Pages.Remove(krPage_Statistic);
             }
-            */
         }
 
         private void KryptonNavigator1_SelectedPageChanged(object sender, EventArgs e)
         {
-            if (kryptonNavigator1.SelectedIndex > 0 && user.Role == UserInfo.UserRole.Cashier)
+
+            if (kryptonNavigator1.SelectedPage.Name == krPage_Cashier.Name)
             {
-                kryptonNavigator1.SelectedPage.Controls.Clear();
-                MessageBox.Show("Bạn cần dùng tài khoản cấp Manager để truy cập", "Lỗi xác thực", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cashierView1.LoadDataFromDB();
             }
-            else
+            else if (kryptonNavigator1.SelectedPage.Name == krPage_Account.Name)
             {
-                switch (kryptonNavigator1.SelectedIndex)
-                {
-                    case 0:
-                        cashierView1.LoadDataFromDB();
-                        break;
-                    case 1:
-                        managerModifyView1.LoadDataFromDB();
-                        break;
-                }
+                accountView1.SetData(user);
+            }
+            else if (kryptonNavigator1.SelectedPage.Name == krPage_Manager.Name)
+            {
+                managerModifyView1.LoadDataFromDB();
             }
         }
 

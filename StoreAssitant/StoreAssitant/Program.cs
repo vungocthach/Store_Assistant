@@ -28,6 +28,11 @@ namespace StoreAssitant
             if (StoreAssistant_Authenticater.Authenticator.CheckLogin(ref e))
             {
                 Form1 main_form = new Form1();
+                main_form.SignOut += new EventHandler((object obj, EventArgs etc) =>
+                {
+                    login_form.Show();
+                    main_form.Close();
+                });
                 main_form.FormClosed += new FormClosedEventHandler((object obj, FormClosedEventArgs target) =>
                 {
                     if (login_form.Visible == false)

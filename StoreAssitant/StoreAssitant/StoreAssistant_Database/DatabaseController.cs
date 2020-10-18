@@ -434,6 +434,36 @@ namespace StoreAssitant
             return false;
         }
 
+        public List<UserInfo> GetAllUser(UserInfo.UserRole role)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            cmd.CommandText = string.Format("SELECT {1},{2} FROM {0} WHERE {2}=@{2}_;", TB_USER, COLUMNS_TB_USER[0], COLUMNS_TB_USER[2]);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[2]), SqlDbType.SmallInt).Value = (int)role;
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<UserInfo> rs = new List<UserInfo>();
+            while (reader.Read())
+            {
+                rs.Add(new UserInfo() { UserName = reader.GetString(0), Role =  UserInfo.GetUserRole(reader.GetInt16(1))});
+            }
+
+            return rs;
+        }
+
+        public bool UpdatePassword(UserInfo userInfo)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            cmd.CommandText = string.Format("UPDATE {0} SET {2}=@{2}_ WHERE {1}=@{1}_;", TB_USER, COLUMNS_TB_USER[0], COLUMNS_TB_USER[1]);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[0]), SqlDbType.VarChar).Value = userInfo.UserName;
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[1]), SqlDbType.Binary, 32).Value = StoreAssistant_Authenticater.Authenticator.GetPass(userInfo);
+
+            return cmd.ExecuteNonQuery() == 1;
+        }
+
         public void Dispose()
         {
             Disconnect();

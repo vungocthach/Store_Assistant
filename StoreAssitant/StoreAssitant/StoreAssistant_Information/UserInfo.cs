@@ -15,5 +15,20 @@ namespace StoreAssitant
         {
             Manager, Cashier
         }
+
+        public static UserRole GetUserRole(int value)
+        {
+            switch (value)
+            {
+                case ((int)UserRole.Manager):
+                    return UserRole.Manager;
+
+                case ((int)UserRole.Cashier):
+                    return UserRole.Cashier;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
     }
 }

@@ -64,6 +64,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StoreAssistant_AccountView\AccountView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StoreAssistant_AccountView\AccountView.Designer.cs">
+      <DependentUpon>AccountView.cs</DependentUpon>
+    </Compile>
     <Compile Include="StoreAssistant_ManagerView\ManagerModifyView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -149,6 +155,9 @@
     <Compile Include="StoreAssistant_MenuView\TitleControl.Designer.cs">
       <DependentUpon>TitleControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="StoreAssistant_AccountView\AccountView.resx">
+      <DependentUpon>AccountView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_ManagerView\ManagerModifyView.resx">
       <DependentUpon>ManagerModifyView.cs</DependentUpon>
     </EmbeddedResource>

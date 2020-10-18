@@ -97,7 +97,8 @@
             // 
             this.txtb_Description.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtb_Description.Location = new System.Drawing.Point(11, 273);
-            this.txtb_Description.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtb_Description.Margin = new System.Windows.Forms.Padding(2);
+            this.txtb_Description.MaxLength = 500;
             this.txtb_Description.Multiline = true;
             this.txtb_Description.Name = "txtb_Description";
             this.txtb_Description.Size = new System.Drawing.Size(318, 156);
@@ -130,7 +131,7 @@
             // 
             this.pb_Err_Des.Image = global::StoreAssitant.Properties.Resources.iconfinder_caution_1055096;
             this.pb_Err_Des.Location = new System.Drawing.Point(93, 239);
-            this.pb_Err_Des.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pb_Err_Des.Margin = new System.Windows.Forms.Padding(2);
             this.pb_Err_Des.Name = "pb_Err_Des";
             this.pb_Err_Des.Size = new System.Drawing.Size(27, 29);
             this.pb_Err_Des.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -143,7 +144,7 @@
             this.pb_Err_Price.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pb_Err_Price.Image = global::StoreAssitant.Properties.Resources.iconfinder_caution_1055096;
             this.pb_Err_Price.Location = new System.Drawing.Point(323, 205);
-            this.pb_Err_Price.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pb_Err_Price.Margin = new System.Windows.Forms.Padding(2);
             this.pb_Err_Price.Name = "pb_Err_Price";
             this.pb_Err_Price.Size = new System.Drawing.Size(27, 29);
             this.pb_Err_Price.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -156,7 +157,7 @@
             this.pb_Err_Name.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pb_Err_Name.Image = global::StoreAssitant.Properties.Resources.iconfinder_caution_1055096;
             this.pb_Err_Name.Location = new System.Drawing.Point(322, 173);
-            this.pb_Err_Name.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pb_Err_Name.Margin = new System.Windows.Forms.Padding(2);
             this.pb_Err_Name.Name = "pb_Err_Name";
             this.pb_Err_Name.Size = new System.Drawing.Size(27, 29);
             this.pb_Err_Name.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -207,7 +208,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtb_Name);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(300, 406);
             this.Name = "ProductBox";
             this.Size = new System.Drawing.Size(350, 433);
