@@ -111,6 +111,7 @@ namespace StoreAssitant
             MenuControl Product = new MenuControl();
             Product.SetData(Infor);
             Product.Size = ItemSize;
+            Product.IsManeger = this.ismaneger;
 
             flowLayoutPanelMenu.Controls.Remove(controlProduct);
             flowLayoutPanelMenu.Controls.Add(Product);
