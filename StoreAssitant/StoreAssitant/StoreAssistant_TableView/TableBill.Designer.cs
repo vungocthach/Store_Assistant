@@ -33,8 +33,8 @@
             this.tableTitle_lb = new System.Windows.Forms.Label();
             this.pnlCashier = new System.Windows.Forms.Panel();
             this.btnCashier = new System.Windows.Forms.Button();
-            this.titelLine1 = new StoreAssitant.StoreAssistant_TableView.TitelLine();
             this.flpProductInfo = new System.Windows.Forms.FlowLayoutPanel();
+            this.titelLine1 = new StoreAssitant.StoreAssistant_TableView.TitelLine();
             this.tableTitle_pnl.SuspendLayout();
             this.pnlCashier.SuspendLayout();
             this.SuspendLayout();
@@ -69,11 +69,11 @@
             // tableTitle_lb
             // 
             this.tableTitle_lb.AutoSize = true;
-            this.tableTitle_lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableTitle_lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableTitle_lb.Location = new System.Drawing.Point(184, 6);
             this.tableTitle_lb.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.tableTitle_lb.Name = "tableTitle_lb";
-            this.tableTitle_lb.Size = new System.Drawing.Size(47, 22);
+            this.tableTitle_lb.Size = new System.Drawing.Size(55, 25);
             this.tableTitle_lb.TabIndex = 2;
             this.tableTitle_lb.Text = "BÀN";
             this.tableTitle_lb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -95,12 +95,21 @@
             this.btnCashier.BackColor = System.Drawing.Color.OrangeRed;
             this.btnCashier.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnCashier.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCashier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCashier.Location = new System.Drawing.Point(302, 0);
             this.btnCashier.Name = "btnCashier";
             this.btnCashier.Size = new System.Drawing.Size(118, 43);
             this.btnCashier.TabIndex = 0;
-            this.btnCashier.Text = "Thanh toán";
+            this.btnCashier.Text = "THANH TOÁN";
             this.btnCashier.UseVisualStyleBackColor = false;
+            // 
+            // flpProductInfo
+            // 
+            this.flpProductInfo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flpProductInfo.Location = new System.Drawing.Point(0, 64);
+            this.flpProductInfo.Name = "flpProductInfo";
+            this.flpProductInfo.Size = new System.Drawing.Size(420, 457);
+            this.flpProductInfo.TabIndex = 7;
             // 
             // titelLine1
             // 
@@ -110,14 +119,6 @@
             this.titelLine1.Name = "titelLine1";
             this.titelLine1.Size = new System.Drawing.Size(420, 30);
             this.titelLine1.TabIndex = 3;
-            // 
-            // flpProductInfo
-            // 
-            this.flpProductInfo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flpProductInfo.Location = new System.Drawing.Point(0, 64);
-            this.flpProductInfo.Name = "flpProductInfo";
-            this.flpProductInfo.Size = new System.Drawing.Size(420, 457);
-            this.flpProductInfo.TabIndex = 7;
             // 
             // TableBill
             // 
