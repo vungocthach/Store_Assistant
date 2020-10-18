@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace StoreAssitant.StoreAssistant_Authenticater
 {
@@ -22,6 +23,32 @@ namespace StoreAssitant.StoreAssistant_Authenticater
             using (DatabaseController databaseController = new DatabaseController())
             {
                 return databaseController.GetUserRole(ref userInfo);
+            }
+        }
+
+        internal static bool RegistUser(UserInfo userInfo)
+        {
+            string filter = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890_";
+            foreach (char c in userInfo.UserName)
+            {
+                if (filter.IndexOf(c) == -1)
+                {
+                    MessageBox.Show("Vui lòng chỉ nhập : a->z, A->Z, 0->9 và dấu '_'", "Tên đăng nhập không hợp lệ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+            }
+
+            using (DatabaseController databaseController = new DatabaseController())
+            {
+                if (databaseController.CheckExistUsername(userInfo.UserName))
+                {
+                    MessageBox.Show("Tên đăng nhập đã tồn tại. Vui lòng chọn tên khác", "Tên đăng nhập không hợp lệ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                else
+                {
+                    return databaseController.InsertUser(userInfo);
+                }
             }
         }
     }

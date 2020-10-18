@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using StoreAssitant.StoreAssistant_Authenticater;
+using System.Collections;
 
 namespace StoreAssitant.StoreAssistant_AccountView
 {
@@ -16,11 +18,14 @@ namespace StoreAssitant.StoreAssistant_AccountView
         void OnClickSignOut(object sender, EventArgs e) { }
 
         UserInfo user;
+        string[] roles ;
 
         public AccountView()
         {
             InitializeComponent();
             InitializeEventHandler();
+
+            roles = new string[2] { "Quản Lý", "Nhân viên" };
 
             ClickSignOut = new EventHandler(OnClickSignOut);
             gr_manager.Visible = false;
@@ -32,7 +37,6 @@ namespace StoreAssitant.StoreAssistant_AccountView
         {
             user = userInfo;
             txt_username.Text = user.UserName;
-            string[] roles = new string[2] { "Quản Lý", "Nhân viên" };
             lb_role.Text = string.Format("Phân quyền : {0}", roles[(int)user.Role]);
             if (user.Role == UserInfo.UserRole.Manager)
             {
@@ -49,11 +53,34 @@ namespace StoreAssitant.StoreAssistant_AccountView
         {
             dataGridView1.Rows.Clear();
             if (list_User == null) { return; }
-            string[] roles = new string[2] { "Quản Lý", "Nhân viên" };
+            
             foreach (UserInfo userInfo in list_User)
             {
-                dataGridView1.Rows.Add(userInfo.UserName, roles[(int)userInfo.Role]);
+                AddUserToGrid(userInfo);
+                btn_AddAccount.Click += Btn_AddAccount_Click;
             }
+
+            dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
+        }
+
+        private void SignUpForm_SignUpOK(object sender, UserInfo e)
+        {
+            AddUserToGrid(e);
+            dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
+        }
+
+        private void Btn_AddAccount_Click(object sender, EventArgs e)
+        {
+            SignUpForm signUpForm = new SignUpForm();
+            signUpForm.SignUpOK += SignUpForm_SignUpOK;
+            signUpForm.StartPosition = FormStartPosition.CenterScreen;
+            signUpForm.ShowDialog();
+            signUpForm.Dispose();
+        }
+
+        void AddUserToGrid(UserInfo userInfo)
+        {
+            dataGridView1.Rows.Add(userInfo.UserName, roles[(int)userInfo.Role]);
         }
 
         void InitializeEventHandler()

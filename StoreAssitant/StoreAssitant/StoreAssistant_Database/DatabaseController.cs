@@ -404,9 +404,27 @@ namespace StoreAssitant
             cmd.Parameters.Clear();
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[0]), SqlDbType.VarChar).Value = userInfo.UserName;
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[1]), SqlDbType.Binary, 32).Value = StoreAssistant_Authenticater.Authenticator.GetPass(userInfo);
-            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[0]), SqlDbType.SmallInt).Value = (int)userInfo.Role;
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[2]), SqlDbType.SmallInt).Value = (int)userInfo.Role;
 
             return cmd.ExecuteNonQuery() == 1;
+        }
+
+        public bool CheckExistUsername(string user_name)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            cmd.CommandText = string.Format("SELECT {1} FROM {0} WHERE {1}=@{1}_ ;", TB_USER, COLUMNS_TB_USER[0]);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[0]), SqlDbType.VarChar).Value = user_name;
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.Read() && reader[0] != null)
+                {
+                    return !reader.Read(); // return false if there's more than 1 return
+                }
+                return false;
+            }
         }
 
         public bool GetUserRole(ref UserInfo userInfo)
@@ -418,24 +436,26 @@ namespace StoreAssitant
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[0]), SqlDbType.VarChar).Value = userInfo.UserName;
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[1]), SqlDbType.Binary, 32).Value = StoreAssistant_Authenticater.Authenticator.GetPass(userInfo);
 
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read() && reader[0] != null)
+            using (SqlDataReader reader = cmd.ExecuteReader())
             {
-                short rs = reader.GetInt16(0);
-                switch (rs)
+                if (reader.Read() && reader[0] != null)
                 {
-                    case ((int)UserInfo.UserRole.Manager):
-                        userInfo.Role = UserInfo.UserRole.Manager;
-                        break;
-                    case ((int)UserInfo.UserRole.Cashier):
-                        userInfo.Role = UserInfo.UserRole.Cashier;
-                        break;
-                    default:
-                        return false;
+                    short rs = reader.GetInt16(0);
+                    switch (rs)
+                    {
+                        case ((int)UserInfo.UserRole.Manager):
+                            userInfo.Role = UserInfo.UserRole.Manager;
+                            break;
+                        case ((int)UserInfo.UserRole.Cashier):
+                            userInfo.Role = UserInfo.UserRole.Cashier;
+                            break;
+                        default:
+                            return false;
+                    }
+                    return !reader.Read(); // return false if there's more than 1 return
                 }
-                return !reader.Read(); // return false if there's more than 1 return
+                return false;
             }
-            return false;
         }
 
         public List<UserInfo> GetAllUser(UserInfo.UserRole role)
@@ -446,14 +466,16 @@ namespace StoreAssitant
             cmd.Parameters.Clear();
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[2]), SqlDbType.SmallInt).Value = (int)role;
 
-            SqlDataReader reader = cmd.ExecuteReader();
-            List<UserInfo> rs = new List<UserInfo>();
-            while (reader.Read())
+            using (SqlDataReader reader = cmd.ExecuteReader())
             {
-                rs.Add(new UserInfo() { UserName = reader.GetString(0), Role =  UserInfo.GetUserRole(reader.GetInt16(1))});
-            }
+                List<UserInfo> rs = new List<UserInfo>();
+                while (reader.Read())
+                {
+                    rs.Add(new UserInfo() { UserName = reader.GetString(0), Role = UserInfo.GetUserRole(reader.GetInt16(1)) });
+                }
 
-            return rs;
+                return rs;
+            }
         }
 
         public bool UpdatePassword(UserInfo userInfo)
@@ -461,6 +483,18 @@ namespace StoreAssitant
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
 
             cmd.CommandText = string.Format("UPDATE {0} SET {2}=@{2}_ WHERE {1}=@{1}_;", TB_USER, COLUMNS_TB_USER[0], COLUMNS_TB_USER[1]);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[0]), SqlDbType.VarChar).Value = userInfo.UserName;
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[1]), SqlDbType.Binary, 32).Value = StoreAssistant_Authenticater.Authenticator.GetPass(userInfo);
+
+            return cmd.ExecuteNonQuery() == 1;
+        }
+
+        public bool DeleteUser(UserInfo userInfo)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            cmd.CommandText = string.Format("DELETE FROM {0} WHERE {1}=@{1}_;", TB_USER, COLUMNS_TB_USER[0], COLUMNS_TB_USER[1]);
             cmd.Parameters.Clear();
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[0]), SqlDbType.VarChar).Value = userInfo.UserName;
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[1]), SqlDbType.Binary, 32).Value = StoreAssistant_Authenticater.Authenticator.GetPass(userInfo);
