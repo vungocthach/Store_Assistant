@@ -27,7 +27,7 @@ namespace StoreAssitant
         public TableBillInfo Billinfo { get; set; }
         #endregion
 
-        public TableBill(/*TableBillInfo tableinfo, int iD*/)
+        public TableBill()
         {
             InitializeComponent();
             this.CloseBill = new EventHandler(onCloseBill);
@@ -38,20 +38,13 @@ namespace StoreAssitant
 
             btnCashier.Click += BtnCashier_Click;
 
-            this.SizeChanged += TableBill_SizeChanged;
             this.MinimumSize = new Size((new TableLine()).MinimumSize.Width, (new TableLine()).MinimumSize.Height);
-        }
-
-        private void TableBill_SizeChanged(object sender, EventArgs e)
-        {
-            tableTitle_lb.Location = new Point((tableTitle_pnl.Size.Width - tableTitle_lb.Size.Width)/2, (tableTitle_pnl.Size.Height - tableTitle_lb.Size.Height)/2);
         }
 
         #region INIT TABLEBILL
         public void setData(TableBillInfo info, int iD)
         {
             tableTitle_lb.Text = "BÀN " + (iD + 1);
-            flpProductInfo.Visible = false;
             if (info == null)
             {
                 MessageBox.Show("Dữ liệu của bàn bị lỗi");
@@ -71,7 +64,6 @@ namespace StoreAssitant
             line.Size = new Size(this.Size.Width, line.Size.Height);
             line.SetData(product);
             flpProductInfo.Controls.Add(line);
-            line.Dock = DockStyle.Top;
         }
         public void UploadProduct(ProductInfo product)
         {
@@ -104,8 +96,8 @@ namespace StoreAssitant
         }
         private void TableBill_Layout(object sender, LayoutEventArgs e)
         {
-            flpProductInfo.Height = this.Height - tableTitle_pnl.Location.Y - tableTitle_pnl.Height;
-            tableTitle_lb.Location = new Point((this.Size.Width - tableTitle_lb.Size.Width) / 2, 0);
+            flpProductInfo.Height = this.Height - tableTitle_pnl.Height - titelLine1.Height - pnlCashier.Height;
+            tableTitle_lb.Location = new Point((tableTitle_pnl.Size.Width - tableTitle_lb.Size.Width) / 2, (tableTitle_pnl.Size.Height - tableTitle_lb.Size.Height) / 2);
             tableTitle_lb.Size = new Size(tableTitle_lb.Size.Width, tableTitle_pnl.Height);
         }
         private void RemoveZeroNumberProducts()
@@ -157,10 +149,5 @@ namespace StoreAssitant
             }
         }
         #endregion
-
-        private void tableLine1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
