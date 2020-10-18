@@ -99,6 +99,10 @@ namespace StoreAssitant
             flpProductInfo.Height = this.Height - tableTitle_pnl.Height - titelLine1.Height - pnlCashier.Height;
             tableTitle_lb.Location = new Point((tableTitle_pnl.Size.Width - tableTitle_lb.Size.Width) / 2, (tableTitle_pnl.Size.Height - tableTitle_lb.Size.Height) / 2);
             tableTitle_lb.Size = new Size(tableTitle_lb.Size.Width, tableTitle_pnl.Height);
+            foreach(TableLine line in flpProductInfo.Controls)
+            {
+                line.Size = new Size(this.Size.Width, line.Size.Height);
+            }
         }
         private void RemoveZeroNumberProducts()
         {
