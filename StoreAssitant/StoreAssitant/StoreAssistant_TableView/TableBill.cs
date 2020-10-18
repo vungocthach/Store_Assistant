@@ -27,16 +27,17 @@ namespace StoreAssitant
         public TableBillInfo Billinfo { get; set; }
         #endregion
 
-        public TableBill(TableBillInfo tableinfo, int iD)
+        public TableBill(/*TableBillInfo tableinfo, int iD*/)
         {
             InitializeComponent();
             this.CloseBill = new EventHandler(onCloseBill);
             this.ClickBtnCashier = new EventHandler(onClickBtnCashier);
+
             this.Layout += TableBill_Layout;
             tableTitle_pnl.Layout += TableBill_Layout;
+
             btnCashier.Click += BtnCashier_Click;
-            tableTitle_lb.Text = "BÀN " + (iD+1);
-            setData(tableinfo);
+
             this.SizeChanged += TableBill_SizeChanged;
             this.MinimumSize = new Size((new TableLine()).MinimumSize.Width, (new TableLine()).MinimumSize.Height);
         }
@@ -47,8 +48,10 @@ namespace StoreAssitant
         }
 
         #region INIT TABLEBILL
-        public void setData(TableBillInfo info)
+        public void setData(TableBillInfo info, int iD)
         {
+            tableTitle_lb.Text = "BÀN " + (iD + 1);
+            flpProductInfo.Visible = false;
             if (info == null)
             {
                 MessageBox.Show("Dữ liệu của bàn bị lỗi");

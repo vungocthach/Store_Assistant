@@ -84,6 +84,7 @@
             this.pnlCashier.Controls.Add(this.btnCashier);
             this.pnlCashier.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlCashier.Location = new System.Drawing.Point(0, 527);
+            this.pnlCashier.MinimumSize = new System.Drawing.Size(420, 40);
             this.pnlCashier.Name = "pnlCashier";
             this.pnlCashier.Size = new System.Drawing.Size(420, 43);
             this.pnlCashier.TabIndex = 6;
