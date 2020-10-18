@@ -14,6 +14,8 @@ namespace StoreAssitant
     public partial class MenuControl : UserControl
     {
         ProductInfo Infor;
+        public ContextMenuStrip contextMenustrip;
+
         Color color_MouseEnter = System.Drawing.Color.PapayaWhip;
         Color color_Default = System.Drawing.Color.PapayaWhip;
         #region create event Click_AddControlProduct, Click_Delete
@@ -113,6 +115,8 @@ namespace StoreAssitant
 
             CLick_DeleteProductInfo = new EventHandler<ProductInfo>(on_Click_DeleteProductInfo);
 
+            this.contextMenustrip = contextMenuStrip1;
+
             this.Layout += MenuControl_Layout;
 
             this.Click += MenuControl_Click;
@@ -158,7 +162,6 @@ namespace StoreAssitant
         {
             Click_EditProductInfo(this, Infor);
         }
-
 
 
         private void _MouseClick(object sender, MouseEventArgs e)

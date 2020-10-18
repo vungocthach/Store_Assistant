@@ -106,9 +106,14 @@ namespace StoreAssitant
             MenuControl Product = new MenuControl();
             Product.SetData(Infor);
             Product.Size = ItemSize;
+
             flowLayoutPanelMenu.Controls.Remove(controlProduct);
             flowLayoutPanelMenu.Controls.Add(Product);
             flowLayoutPanelMenu.Controls.Add(controlProduct);
+
+            if (!IsManeger) Product.contextMenustrip.Visible = false;
+            else Product.contextMenustrip.Visible = true;
+
 
             Product.Click_AddControlProduct += Product_Click_AddControlProduct;
             Product.Click_EditProductInfo += Product_Click_EditProductInfo;
@@ -118,7 +123,9 @@ namespace StoreAssitant
 
         private void Product_CLick_DeleteProductInfo(object sender, ProductInfo e)
         {
+
             MessageBox.Show(e.ToString());
+
             CLick_DeleteProduct(this, e);
         }
 
@@ -128,7 +135,13 @@ namespace StoreAssitant
             Click_EditProduct(this, e);
         }
      
-
+        public void ClearData()
+        {
+            Menu.Clear();
+            ControlProduct ctrProduct = new ControlProduct();
+            flowLayoutPanelMenu.Controls.Clear();
+            flowLayoutPanelMenu.Controls.Add(ctrProduct);
+        }
 
         public void SetData(List<ProductInfo> Pro)
         {
@@ -153,7 +166,6 @@ namespace StoreAssitant
             Click_EditProduct = new EventHandler<ProductInfo>(on_CLick_EditProduct);
 
             CLick_DeleteProduct = new EventHandler<ProductInfo>(on_CLick_EditProduct);
-
             ControlTitle.Layout += new LayoutEventHandler((object sender, LayoutEventArgs e) =>
             {
                 SetLocationY_bottom_control(controlSearch, ControlTitle);
