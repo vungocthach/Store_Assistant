@@ -90,13 +90,18 @@ namespace StoreAssitant
             }
         }
         [Category("My Properties"), Description("Define is the maneger ")]
-
+        bool ismaneger;
         public bool IsManeger
         {
-            get => controlProduct.Visible;
+            get =>ismaneger;
             set
             {
-                controlProduct.Visible = value;
+                ismaneger = controlProduct.Visible = value;
+
+                foreach (var i in flowLayoutPanelMenu.Controls)
+                {
+                    if (i is MenuControl) ((MenuControl)i).IsManeger = value;
+                }    
                 Invalidate();
             }
         }
@@ -106,10 +111,12 @@ namespace StoreAssitant
             MenuControl Product = new MenuControl();
             Product.SetData(Infor);
             Product.Size = ItemSize;
+
             flowLayoutPanelMenu.Controls.Remove(controlProduct);
             flowLayoutPanelMenu.Controls.Add(Product);
             flowLayoutPanelMenu.Controls.Add(controlProduct);
 
+           
             Product.Click_AddControlProduct += Product_Click_AddControlProduct;
             Product.Click_EditProductInfo += Product_Click_EditProductInfo;
             Product.CLick_DeleteProductInfo += Product_CLick_DeleteProductInfo;
@@ -118,7 +125,7 @@ namespace StoreAssitant
 
         private void Product_CLick_DeleteProductInfo(object sender, ProductInfo e)
         {
-            //MessageBox.Show(e.ToString());
+
             CLick_DeleteProduct(sender, e);
         }
 
@@ -128,14 +135,19 @@ namespace StoreAssitant
             Click_EditProduct(sender, e);
         }
      
-
+        public void ClearData()
+        {
+           
+            flowLayoutPanelMenu.Controls.Clear();
+            flowLayoutPanelMenu.Controls.Add(controlProduct);
+        }
 
         public void SetData(List<ProductInfo> Pro)
         {
+            ClearData();
             foreach (ProductInfo P in Pro)
             {
                 AddMenuControl(P);
-                //Menu.Add(P);
             }
         }
        
@@ -153,7 +165,6 @@ namespace StoreAssitant
             Click_EditProduct = new EventHandler<ProductInfo>(on_CLick_EditProduct);
 
             CLick_DeleteProduct = new EventHandler<ProductInfo>(on_CLick_EditProduct);
-
             ControlTitle.Layout += new LayoutEventHandler((object sender, LayoutEventArgs e) =>
             {
                 SetLocationY_bottom_control(controlSearch, ControlTitle);

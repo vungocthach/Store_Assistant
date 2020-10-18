@@ -14,6 +14,8 @@ namespace StoreAssitant
     public partial class MenuControl : UserControl
     {
         ProductInfo Infor;
+        public ContextMenuStrip contextMenustrip;
+
         Color color_MouseEnter = System.Drawing.Color.PapayaWhip;
         Color color_Default = System.Drawing.Color.PapayaWhip;
         #region create event Click_AddControlProduct, Click_Delete
@@ -91,7 +93,19 @@ namespace StoreAssitant
                 Invalidate();
             }
         }
+        [Category("My Propperties"), Description("Define is Maneger")]
 
+        bool ismaneger;
+        public bool IsManeger
+        {
+            get => ismaneger;
+
+            set
+            {
+                ismaneger = deletetoolStripMenuItem.Visible = editToolStripMenuItem.Visible = value;
+                Invalidate();
+            }
+        }
         #endregion
         public void SetData(ProductInfo info)
         {
@@ -113,6 +127,8 @@ namespace StoreAssitant
 
             CLick_DeleteProductInfo = new EventHandler<ProductInfo>(on_Click_DeleteProductInfo);
 
+            this.contextMenustrip = contextMenuStrip1;
+
             this.Layout += MenuControl_Layout;
 
             this.Click += MenuControl_Click;
@@ -120,6 +136,7 @@ namespace StoreAssitant
             editToolStripMenuItem.Click += EditToolStripMenuItem_Click;
 
             deletetoolStripMenuItem.Click += DeletetoolStripMenuItem_Click;
+
             #region MouseClick_Control
 
             pictureBox.MouseClick += _MouseClick;
@@ -151,6 +168,7 @@ namespace StoreAssitant
 
         private void DeletetoolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Dispose();
             CLick_DeleteProductInfo(this, Infor);
         }
 
@@ -158,7 +176,6 @@ namespace StoreAssitant
         {
             Click_EditProductInfo(this, Infor);
         }
-
 
 
         private void _MouseClick(object sender, MouseEventArgs e)

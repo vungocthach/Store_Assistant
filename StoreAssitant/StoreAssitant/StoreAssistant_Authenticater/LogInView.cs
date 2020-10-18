@@ -54,8 +54,8 @@ namespace StoreAssitant
             Btn_Login.Click += Btn_Login_Click;
             Lb_ForgotPass.Click += Lb_ForgotPass_Click;
             Lb_SignUp.Click += Lb_SignUp_Click;
-            tb_Password.Click += Tb_Password_Click;
-            tb_User.Click += Tb__User_Click;
+            tb_Password.GotFocus += Tb_Password_GotFocus;
+            tb_User.GotFocus += Tb__User_GotFocus;
         }
         public void InitializeField()
         {
@@ -80,7 +80,7 @@ namespace StoreAssitant
         }
 
 
-        private void Tb__User_Click(object sender, EventArgs e)
+        private void Tb__User_GotFocus(object sender, EventArgs e)
         {
            if (tb_User.Text == "Tên đăng nhập")
             {
@@ -96,11 +96,11 @@ namespace StoreAssitant
             }           
         }
 
-        private void Tb_Password_Click(object sender, EventArgs e)
+        private void Tb_Password_GotFocus(object sender, EventArgs e)
         {
             if (tb_Password.Text == "Mật khẩu")
             {
-                tb_Password.PasswordChar = '*';
+                tb_Password.PasswordChar = '*'; 
                 tb_Password.ForeColor = Color.Black;
                 tb_Password.Text = "";
             }
