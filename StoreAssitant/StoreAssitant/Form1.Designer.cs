@@ -28,21 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.kryptonNavigator1 = new ComponentFactory.Krypton.Navigator.KryptonNavigator();
-            this.list_Icons = new System.Windows.Forms.ImageList(this.components);
             this.kryptonPage1 = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Manager = new ComponentFactory.Krypton.Navigator.KryptonPage();
+            this.managerModifyView1 = new StoreAssitant.ManagerModifyView();
             this.krPage_Statistic = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Compare = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Setting = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Account = new ComponentFactory.Krypton.Navigator.KryptonPage();
+            this.accountView1 = new StoreAssitant.StoreAssistant_AccountView.AccountView();
             this.krPage_Cashier = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.split_Cashier = new System.Windows.Forms.SplitContainer();
             this.cashierView1 = new StoreAssitant.StoreAssistant_CashierView.CashierView();
-            this.managerModifyView1 = new StoreAssitant.ManagerModifyView();
-            this.accountView1 = new StoreAssitant.StoreAssistant_AccountView.AccountView();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPage1)).BeginInit();
@@ -71,7 +69,7 @@
             this.kryptonNavigator1.Bar.TabBorderStyle = ComponentFactory.Krypton.Toolkit.TabBorderStyle.RoundedEqualMedium;
             this.kryptonNavigator1.Button.ButtonDisplayLogic = ComponentFactory.Krypton.Navigator.ButtonDisplayLogic.None;
             this.kryptonNavigator1.Button.CloseButtonDisplay = ComponentFactory.Krypton.Navigator.ButtonDisplay.Hide;
-            this.kryptonNavigator1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.kryptonNavigator1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonNavigator1.Group.GroupBorderStyle = ComponentFactory.Krypton.Toolkit.PaletteBorderStyle.ControlRibbon;
             this.kryptonNavigator1.Location = new System.Drawing.Point(0, 0);
             this.kryptonNavigator1.Margin = new System.Windows.Forms.Padding(2);
@@ -85,16 +83,10 @@
             this.krPage_Setting,
             this.krPage_Account});
             this.kryptonNavigator1.SelectedIndex = 0;
-            this.kryptonNavigator1.Size = new System.Drawing.Size(1182, 642);
+            this.kryptonNavigator1.Size = new System.Drawing.Size(1182, 653);
             this.kryptonNavigator1.TabIndex = 0;
             this.kryptonNavigator1.Text = "kryptonNavigator1";
             this.kryptonNavigator1.ToolTips.AllowButtonSpecToolTips = true;
-            // 
-            // list_Icons
-            // 
-            this.list_Icons.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.list_Icons.ImageSize = new System.Drawing.Size(48, 48);
-            this.list_Icons.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // kryptonPage1
             // 
@@ -105,7 +97,7 @@
             this.kryptonPage1.LastVisibleSet = true;
             this.kryptonPage1.MinimumSize = new System.Drawing.Size(50, 50);
             this.kryptonPage1.Name = "kryptonPage1";
-            this.kryptonPage1.Size = new System.Drawing.Size(1178, 581);
+            this.kryptonPage1.Size = new System.Drawing.Size(1178, 592);
             this.kryptonPage1.Text = "Thu Ngân";
             this.kryptonPage1.TextTitle = "Thu Ngân";
             this.kryptonPage1.ToolTipTitle = "Page ToolTip";
@@ -126,6 +118,14 @@
             this.krPage_Manager.TextTitle = "Quản Lý";
             this.krPage_Manager.ToolTipTitle = "Page ToolTip";
             this.krPage_Manager.UniqueName = "FA578BA728E9497C71A0C6237C4FD78D";
+            // 
+            // managerModifyView1
+            // 
+            this.managerModifyView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.managerModifyView1.Location = new System.Drawing.Point(0, 0);
+            this.managerModifyView1.Name = "managerModifyView1";
+            this.managerModifyView1.Size = new System.Drawing.Size(1178, 581);
+            this.managerModifyView1.TabIndex = 0;
             // 
             // krPage_Statistic
             // 
@@ -187,6 +187,15 @@
             this.krPage_Account.ToolTipTitle = "Page ToolTip";
             this.krPage_Account.UniqueName = "29A1A40B666C4707C98FE0D28B7F49DD";
             // 
+            // accountView1
+            // 
+            this.accountView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.accountView1.Location = new System.Drawing.Point(0, 0);
+            this.accountView1.Name = "accountView1";
+            this.accountView1.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.accountView1.Size = new System.Drawing.Size(1178, 581);
+            this.accountView1.TabIndex = 0;
+            // 
             // krPage_Cashier
             // 
             this.krPage_Cashier.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
@@ -234,25 +243,8 @@
             this.cashierView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cashierView1.Location = new System.Drawing.Point(0, 0);
             this.cashierView1.Name = "cashierView1";
-            this.cashierView1.Size = new System.Drawing.Size(1178, 581);
+            this.cashierView1.Size = new System.Drawing.Size(1178, 592);
             this.cashierView1.TabIndex = 0;
-            // 
-            // managerModifyView1
-            // 
-            this.managerModifyView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.managerModifyView1.Location = new System.Drawing.Point(0, 0);
-            this.managerModifyView1.Name = "managerModifyView1";
-            this.managerModifyView1.Size = new System.Drawing.Size(1178, 581);
-            this.managerModifyView1.TabIndex = 0;
-            // 
-            // accountView1
-            // 
-            this.accountView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.accountView1.Location = new System.Drawing.Point(0, 0);
-            this.accountView1.Name = "accountView1";
-            this.accountView1.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.accountView1.Size = new System.Drawing.Size(1178, 581);
-            this.accountView1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -290,13 +282,12 @@
         private ComponentFactory.Krypton.Navigator.KryptonPage krPage_Setting;
         private ComponentFactory.Krypton.Navigator.KryptonPage krPage_Compare;
         private ComponentFactory.Krypton.Navigator.KryptonPage krPage_Account;
-        private System.Windows.Forms.ImageList list_Icons;
         private ComponentFactory.Krypton.Navigator.KryptonPage kryptonPage1;
         private ComponentFactory.Krypton.Navigator.KryptonPage krPage_Cashier;
         private System.Windows.Forms.SplitContainer split_Cashier;
-        private StoreAssistant_CashierView.CashierView cashierView1;
         private ManagerModifyView managerModifyView1;
         private StoreAssistant_AccountView.AccountView accountView1;
+        private StoreAssistant_CashierView.CashierView cashierView1;
     }
 }
 

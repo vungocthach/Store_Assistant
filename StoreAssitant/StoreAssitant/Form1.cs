@@ -15,6 +15,8 @@ namespace StoreAssitant
     {
         UserInfo user;
 
+
+
         public event EventHandler SignOut;
         void OnSignOut(object sender, EventArgs e) {}
 
@@ -38,7 +40,9 @@ namespace StoreAssitant
         public void LoadUser(UserInfo user)
         {
             this.user = user;
+            kryptonNavigator1.SelectedPage = krPage_Cashier;
             kryptonNavigator1.SelectedPageChanged += KryptonNavigator1_SelectedPageChanged;
+            cashierView1.LoadDataFromDB();
             if (user.Role == UserInfo.UserRole.Cashier)
             {
                 kryptonNavigator1.Pages.Remove(krPage_Compare);
@@ -49,7 +53,6 @@ namespace StoreAssitant
 
         private void KryptonNavigator1_SelectedPageChanged(object sender, EventArgs e)
         {
-
             if (kryptonNavigator1.SelectedPage.Name == krPage_Cashier.Name)
             {
                 cashierView1.LoadDataFromDB();
