@@ -96,6 +96,25 @@ namespace StoreAssitant
                 managerModifyView.LoadDataFromDB();
                 SelectTab(managerModifyView);
             }
+            else if (kryptonNavigator1.SelectedPage.Name == krPage_Compare.Name)
+            {
+                MessageBox.Show("Tính năng đang phát triển", "Công trình đang thi công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (kryptonNavigator1.SelectedPage.Name == krPage_Setting.Name)
+            {
+                MessageBox.Show("Tính năng đang phát triển", "Công trình đang thi công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                panel1.Controls.Clear();
+            }
+            else if (kryptonNavigator1.SelectedPage.Name == krPage_Statistic.Name)
+            {
+                MessageBox.Show("Tính năng đang phát triển", "Công trình đang thi công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                panel1.Controls.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Invalid tab", "Unknow error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                panel1.Controls.Clear();
+            }
         }
 
         private void KryptonNavigator1_GotFocus(object sender, EventArgs e)

@@ -22,8 +22,13 @@ namespace StoreAssitant
             this.btn_Cancel.Click += Btn_Cancel_Click;
         }
 
-        public AddProductForm(ProductInfo info):base()
+        public AddProductForm(ProductInfo info)
         {
+            InitializeComponent();
+            ClickSubmitOK = new EventHandler<ProductInfo>(OnSubmitOK);
+            this.btn_Submit.Click += Btn_Submit_Click;
+            this.btn_Cancel.Click += Btn_Cancel_Click;
+
             SetData(info);
             this.Text = "Thay đổi thông tin món ăn";
             btn_Submit.Text = "Lưu";

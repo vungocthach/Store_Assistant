@@ -75,7 +75,7 @@
             this.krPage_Setting,
             this.krPage_Account});
             this.kryptonNavigator1.SelectedIndex = 0;
-            this.kryptonNavigator1.Size = new System.Drawing.Size(1182, 60);
+            this.kryptonNavigator1.Size = new System.Drawing.Size(1084, 60);
             this.kryptonNavigator1.TabIndex = 0;
             this.kryptonNavigator1.Text = "kryptonNavigator1";
             this.kryptonNavigator1.ToolTips.AllowButtonSpecToolTips = true;
@@ -192,16 +192,17 @@
             this.panel1.Location = new System.Drawing.Point(0, 62);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1182, 591);
+            this.panel1.Size = new System.Drawing.Size(1084, 499);
             this.panel1.TabIndex = 1;
             // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1182, 653);
+            this.ClientSize = new System.Drawing.Size(1084, 561);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.kryptonNavigator1);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(750, 500);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Store Assistant";

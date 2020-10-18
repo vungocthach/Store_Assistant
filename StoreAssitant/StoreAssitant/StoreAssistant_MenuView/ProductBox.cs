@@ -133,6 +133,15 @@ namespace StoreAssitant
             pb_Err_Des.Tag = toolTip_Des;
 
             this.SizeChanged += ProductBox_SizeChanged;
+
+            textBoxPrice.SizeChanged += TextBoxPrice_SizeChanged;
+            label_Image.LocationChanged += TextBoxPrice_SizeChanged;
+            label_Image.SizeChanged += TextBoxPrice_SizeChanged;
+        }
+
+        private void TextBoxPrice_SizeChanged(object sender, EventArgs e)
+        {
+            textBoxPrice.Location = new Point(label_Image.Location.X + label_Image.Width - textBoxPrice.Width, label_Image.Location.Y + label_Image.Height - textBoxPrice.Height);
         }
 
         public bool FullCheck()

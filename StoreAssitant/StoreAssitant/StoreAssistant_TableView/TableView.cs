@@ -92,6 +92,10 @@ namespace StoreAssitant
             tableTitle_lb.Location = new Point(tableIcon_pnl.Location.X + tableIcon_pnl.Width + (this.Width - tableIcon_pnl.Location.X - tableIcon_pnl.Width - tableTitle_lb.Width) / 2, tableTitle_lb.Location.Y);
             tableIcon_pnl.Size = new Size(tableIcon_pnl.Size.Height, tableIcon_pnl.Size.Height);
             tableTitle_lb.Location = new Point(tableTitle_lb.Location.X, (tableTitle_pnl.Height - tableTitle_lb.Size.Height) / 2);
+            if (tbBill != null)
+            {
+                tbBill.Size = new Size(this.Size.Width - tableGUI_pnl.AutoScrollMargin.Width, tableGUI_pnl.Size.Height);
+            }
         }
 
         #region TABLE BILL SETTING
@@ -101,7 +105,7 @@ namespace StoreAssitant
             tbBill.Size = new Size(tableGUI_pnl.Size.Width, tableGUI_pnl.Size.Height - tableGUI_pnl.AutoScrollMargin.Width);
             tbBill.Location = new Point(tableGUI_pnl.Location.X, tableGUI_pnl.Location.Y);
             tbBill.Dock = DockStyle.Bottom;
-            tbBill.setData(((TableControl)tableGUI_pnl.Controls[indexSelectedTable]).Info, indexSelectedTable);
+            tbBill.setData(((TableControl)tableGUI_pnl.Controls[SelectedTable]).Info, SelectedTable);
 
             tbBill.CloseBill += Tbbill_CloseBill;
             tableGUI_pnl.Hide();
@@ -130,14 +134,15 @@ namespace StoreAssitant
             if (SelectedTable != -1)
             {
                 tbBill.UploadProduct(product);
+                Invalidate();
             }
         }
 
         #region BUTTON TABLE EVENT
         private void Newtable_ClickTableControl(object sender, EventArgs e)
         {
-            indexSelectedTable = tableGUI_pnl.Controls.IndexOf((TableControl)sender);
-            Show_TableBill();
+            SelectedTable = tableGUI_pnl.Controls.IndexOf((TableControl)sender);
+            if(isManager==false) Show_TableBill();
             this.ClickButtonTable(this, e);
         }
 
