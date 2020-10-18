@@ -1,4 +1,5 @@
-﻿using System;
+﻿#define SAVE_TO_DB
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -222,6 +223,7 @@ namespace StoreAssitant
 
         public bool InsertProduct(ProductInfo productInfo)
         {
+#if SAVE_TO_DB
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
 
             TransactionStart();
@@ -262,10 +264,14 @@ namespace StoreAssitant
                 TransactionCommit();
                 return true;
             }
+#else
+            return true;
+#endif
         }
 
         public bool InsertImage(Bitmap bitmap, int id)
         {
+#if SAVE_TO_DB
             if (bitmap == null) { throw new NullReferenceException("Must not insert null image"); }
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
 
@@ -280,10 +286,14 @@ namespace StoreAssitant
             }
 
             return cmd.ExecuteNonQuery() == 1;
+#else
+            return true;
+#endif
         }
 
         public bool UpdateTableCount(int count)
         {
+#if SAVE_TO_DB
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
 
             cmd.CommandText = string.Format("UPDATE {0} SET {2} = @{2}_ WHERE {1} = 'tbl_count';", TB_INTERGER, COLUMNS_TB_INTERGER[0], COLUMNS_TB_INTERGER[1]);
@@ -291,10 +301,14 @@ namespace StoreAssitant
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_INTERGER[1]), SqlDbType.Int).Value = count;
 
             return cmd.ExecuteNonQuery() == 1;
+#else
+            return true;
+#endif
         }
 
         public bool UpdateNextId(int id)
         {
+#if SAVE_TO_DB
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
 
             cmd.CommandText = string.Format("UPDATE {0} SET {2} = @{2}_ WHERE {1} = 'nxt_id';", TB_INTERGER, COLUMNS_TB_INTERGER[0], COLUMNS_TB_INTERGER[1]);
@@ -302,10 +316,14 @@ namespace StoreAssitant
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_INTERGER[1]), SqlDbType.Int).Value = id;
 
             return cmd.ExecuteNonQuery() == 1;
+#else
+            return true;
+#endif
         }
 
         public bool UpdateImage(int id, Bitmap bitmap, bool create_if_not_exist = false)
         {
+#if SAVE_TO_DB
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
 
             cmd.CommandText = string.Format("UPDATE {0} SET {2}=@{2}_ WHERE {1}=@{1}_;", TB_IMAGE, COLUMNS_TB_IMAGE[0], COLUMNS_TB_IMAGE[1]);
@@ -323,10 +341,14 @@ namespace StoreAssitant
             if (rs == 0 && create_if_not_exist) { return InsertImage(bitmap, id); }
 
             return rs == 1;
+#else
+            return true;
+#endif
         }
 
         public bool UpdateProduct(ProductInfo productInfo)
         {
+#if SAVE_TO_DB
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
 
             TransactionStart();
@@ -368,10 +390,14 @@ namespace StoreAssitant
                 TransactionCommit();
                 return true;
             }
+#else
+            return true;
+#endif
         }
 
         public bool DeleteImage(int id)
         {
+#if SAVE_TO_DB
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
 
             cmd.CommandText = string.Format("DELETE FROM {0} WHERE {1}=@{1}_;",TB_IMAGE, COLUMNS_TB_IMAGE[0]);
@@ -379,10 +405,14 @@ namespace StoreAssitant
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_IMAGE[0]), SqlDbType.Int).Value = id;
 
             return cmd.ExecuteNonQuery() == 1;
+#else
+            return true;
+#endif
         }
 
         public bool DeleteProduct(ProductInfo productInfo)
         {
+#if SAVE_TO_DB
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
             TransactionStart();
             cmd.CommandText = string.Format("DELETE FROM {0} WHERE {1}=@{1}_;", TB_PRODUCT, COLUMNS_TB_PRODUCT[0]);
@@ -394,10 +424,14 @@ namespace StoreAssitant
             if (rs) { TransactionCommit(); }
             else { TransactionRollback(); }
             return rs;
+#else
+            return true;
+#endif
         }
 
         public bool InsertUser(UserInfo userInfo)
         {
+#if SAVE_TO_DB
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
 
             cmd.CommandText = string.Format("INSERT INTO {0}({1},{2},{3}) VALUES(@{1}_,@{2}_,@{3}_);", TB_USER, COLUMNS_TB_USER[0], COLUMNS_TB_USER[1], COLUMNS_TB_USER[2]);
@@ -407,6 +441,9 @@ namespace StoreAssitant
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[2]), SqlDbType.SmallInt).Value = (int)userInfo.Role;
 
             return cmd.ExecuteNonQuery() == 1;
+#else
+            return true;
+#endif
         }
 
         public bool CheckExistUsername(string user_name)
@@ -480,6 +517,7 @@ namespace StoreAssitant
 
         public bool UpdatePassword(UserInfo userInfo)
         {
+#if SAVE_TO_DB
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
 
             cmd.CommandText = string.Format("UPDATE {0} SET {2}=@{2}_ WHERE {1}=@{1}_;", TB_USER, COLUMNS_TB_USER[0], COLUMNS_TB_USER[1]);
@@ -488,10 +526,14 @@ namespace StoreAssitant
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[1]), SqlDbType.Binary, 32).Value = StoreAssistant_Authenticater.Authenticator.GetPass(userInfo);
 
             return cmd.ExecuteNonQuery() == 1;
+#else
+            return true;
+#endif
         }
 
         public bool DeleteUser(string userName)
         {
+#if SAVE_TO_DB
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
 
             cmd.CommandText = string.Format("DELETE FROM {0} WHERE {1}=@{1}_;", TB_USER, COLUMNS_TB_USER[0], COLUMNS_TB_USER[1]);
@@ -499,6 +541,9 @@ namespace StoreAssitant
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[0]), SqlDbType.VarChar).Value = userName;
 
             return cmd.ExecuteNonQuery() == 1;
+#else
+            return true;
+#endif
         }
 
         public void Dispose()
