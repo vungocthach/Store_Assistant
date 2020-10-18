@@ -22,6 +22,14 @@ namespace StoreAssitant
             this.btn_Cancel.Click += Btn_Cancel_Click;
         }
 
+        public AddProductForm(ProductInfo info):base()
+        {
+            SetData(info);
+            this.Text = "Thay đổi thông tin món ăn";
+            btn_Submit.Text = "Lưu";
+            productBox1.IsReadOnlyPDName = true;
+        }
+
         private void Btn_Cancel_Click(object sender, EventArgs e)
         {
             this.Close();

@@ -39,6 +39,8 @@ namespace StoreAssitant
                         Application.Restart();
                     }
                 });
+                //e.Role = UserInfo.UserRole.Cashier;
+                main_form.LoadUser(e);
                 main_form.Show();
                 login_form.Hide();
             }

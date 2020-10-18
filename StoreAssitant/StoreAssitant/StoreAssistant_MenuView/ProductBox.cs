@@ -102,6 +102,9 @@ namespace StoreAssitant
             }
         }
 
+        public bool IsReadOnlyPDName { get { return txtb_Name.ReadOnly; }set { txtb_Name.ReadOnly = value; } }
+        public bool IsReadOnlyPDPrice { get { return txtb_Price.ReadOnly; } set { txtb_Price.ReadOnly = value; } }
+
         public ProductBox()
         {
             InitializeComponent();

@@ -36,6 +36,22 @@ namespace StoreAssitant
             tableView1.TableAdded += TableView1_UpdateNumber;
         }
 
+        void menuView_ProductDeleted(object sender, ProductInfo info)
+        {
+            using (DatabaseController databaseController = new DatabaseController())
+            {
+                databaseController.DeleteProduct(info.Id);
+            }
+        }
+
+        void menuView_ProductEditing(object sender, ProductInfo info)
+        {
+            using (DatabaseController databaseController = new DatabaseController())
+            {
+                databaseController.DeleteProduct(info.Id);
+            }
+        }
+
         private void TableView1_UpdateNumber(object sender, EventArgs e)
         {
             TableView tableView = (TableView)sender;
@@ -44,6 +60,7 @@ namespace StoreAssitant
             {
                 databaseController.ConnectToSQLDatabase();
                 databaseController.UpdateTableCount(tableView.NumberTable);
+                //tableView.NameCashierTable = tableView.NumberTable.ToString();
             }
         }
 
@@ -62,6 +79,23 @@ namespace StoreAssitant
                     {
                         databaseController.InsertProduct(info);
                         menuView1.AddMenuControl(info);
+                        //MessageBox.Show("Click On a product" + Environment.NewLine + info.ToString());
+                    }
+                });
+                form.ShowDialog();
+            }
+        }
+
+        private void OpenEditProductDialog(ProductInfo info, MenuControl target)
+        {
+            using (AddProductForm form = new AddProductForm(info))
+            {
+                form.ClickSubmitOK += new EventHandler<ProductInfo>((object sender, ProductInfo info2) =>
+                {
+                    using (DatabaseController databaseController = new DatabaseController())
+                    {
+                        databaseController.UpdateProduct(info2);
+                        target.SetData(info2);
                         //MessageBox.Show("Click On a product" + Environment.NewLine + info.ToString());
                     }
                 });
