@@ -15,6 +15,16 @@ namespace StoreAssitant.StoreAssistant_Authenticater
         public SignUpForm()
         {
             InitializeComponent();
+
+            btn_Submit.Click += Btn_Submit_Click;
+        }
+
+        private void Btn_Submit_Click(object sender, EventArgs e)
+        {
+            using (DatabaseController databaseController = new DatabaseController())
+            {
+                UserInfo userInfo = new UserInfo() { UserName = txt_PassCurrent.Text.Trim(), Pass = txt_PassNew.Text };
+            }
         }
     }
 }

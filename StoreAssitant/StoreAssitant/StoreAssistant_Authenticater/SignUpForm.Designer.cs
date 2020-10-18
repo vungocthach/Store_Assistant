@@ -44,9 +44,9 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 19);
+            this.label1.Size = new System.Drawing.Size(98, 19);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Mật khẩu hiện tại";
+            this.label1.Text = "Tên đăng nhập";
             // 
             // txt_PassCurrent
             // 
@@ -63,6 +63,7 @@
             this.txt_PassNew.Location = new System.Drawing.Point(138, 42);
             this.txt_PassNew.MaxLength = 50;
             this.txt_PassNew.Name = "txt_PassNew";
+            this.txt_PassNew.PasswordChar = '*';
             this.txt_PassNew.Size = new System.Drawing.Size(294, 26);
             this.txt_PassNew.TabIndex = 3;
             // 
@@ -72,9 +73,9 @@
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 45);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 19);
+            this.label2.Size = new System.Drawing.Size(67, 19);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Mật khẩu mới";
+            this.label2.Text = "Mật khẩu";
             // 
             // txt_PassNew2
             // 
@@ -82,6 +83,7 @@
             this.txt_PassNew2.Location = new System.Drawing.Point(138, 74);
             this.txt_PassNew2.MaxLength = 50;
             this.txt_PassNew2.Name = "txt_PassNew2";
+            this.txt_PassNew2.PasswordChar = '*';
             this.txt_PassNew2.Size = new System.Drawing.Size(294, 26);
             this.txt_PassNew2.TabIndex = 5;
             // 
@@ -133,7 +135,7 @@
             this.MinimizeBox = false;
             this.Name = "SignUpForm";
             this.ShowIcon = false;
-            this.Text = "Đổi mật khẩu";
+            this.Text = "Tạo tài khoản";
             this.ResumeLayout(false);
             this.PerformLayout();
 
