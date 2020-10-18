@@ -13,7 +13,7 @@ namespace StoreAssitant
 {
     public partial class TableView : UserControl
     {
-        #region CREATE EVENT CLICK
+        #region CREATE EVENT
         [Category("My Event"), Description("When button add has been click")]
         public event EventHandler ClickButtonAdd;
         void OnClickButtonAdd(object s, EventArgs e) { }
@@ -69,13 +69,20 @@ namespace StoreAssitant
             tableAdd_btn.MouseLeave += TableAdd_pnl_MouseLeave;
 
             itemImage = Properties.Resources.Artboard_1;
+            SelectedTable = -1;
             this.Controls.Add(tbBill);
         }
         public void SetData(int numberTable)
         {
-            this.numberTable = numberTable;
+            ClearData();
+            this.NumberTable = numberTable;
             for (int i = 0; i < numberTable; i++) Create_Table();
             tableGUI_pnl.Controls.Remove(tableAdd_btn);
+            tableGUI_pnl.Controls.Add(tableAdd_btn);
+        }
+        private void ClearData()
+        {
+            tableGUI_pnl.Controls.Clear();
             tableGUI_pnl.Controls.Add(tableAdd_btn);
         }
 
@@ -90,10 +97,12 @@ namespace StoreAssitant
         #region TABLE BILL SETTING
         private void Show_TableBill()
         {
-            tbBill = new TableBill(((TableControl)tableGUI_pnl.Controls[indexSelectedTable]).Info, indexSelectedTable);
+            tbBill = new TableBill();
             tbBill.Size = new Size(tableGUI_pnl.Size.Width, tableGUI_pnl.Size.Height - tableGUI_pnl.AutoScrollMargin.Width);
             tbBill.Location = new Point(tableGUI_pnl.Location.X, tableGUI_pnl.Location.Y);
             tbBill.Dock = DockStyle.Bottom;
+            tbBill.setData(((TableControl)tableGUI_pnl.Controls[indexSelectedTable]).Info, indexSelectedTable);
+
             tbBill.CloseBill += Tbbill_CloseBill;
             tableGUI_pnl.Hide();
             this.Controls.Add(tbBill);
@@ -103,6 +112,7 @@ namespace StoreAssitant
         private void Tbbill_CloseBill(object sender, EventArgs e)
         {
             tableGUI_pnl.Show();
+            SelectedTable = -1;
         }
         #endregion
 
@@ -117,7 +127,10 @@ namespace StoreAssitant
 
         public void AddProductInfo(ProductInfo product)
         {
-            tbBill.UploadProduct(product);
+            if (SelectedTable != -1)
+            {
+                tbBill.UploadProduct(product);
+            }
         }
 
         #region BUTTON TABLE EVENT
