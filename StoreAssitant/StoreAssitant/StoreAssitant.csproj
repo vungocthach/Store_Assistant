@@ -70,6 +70,12 @@
     <Compile Include="StoreAssistant_AccountView\AccountView.Designer.cs">
       <DependentUpon>AccountView.cs</DependentUpon>
     </Compile>
+    <Compile Include="StoreAssistant_Authenticater\SignUpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StoreAssistant_Authenticater\SignUpForm.Designer.cs">
+      <DependentUpon>SignUpForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="StoreAssistant_ManagerView\ManagerModifyView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -157,6 +163,9 @@
     </Compile>
     <EmbeddedResource Include="StoreAssistant_AccountView\AccountView.resx">
       <DependentUpon>AccountView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoreAssistant_Authenticater\SignUpForm.resx">
+      <DependentUpon>SignUpForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_ManagerView\ManagerModifyView.resx">
       <DependentUpon>ManagerModifyView.cs</DependentUpon>
