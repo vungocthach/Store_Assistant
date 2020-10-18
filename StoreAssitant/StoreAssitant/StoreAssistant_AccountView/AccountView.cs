@@ -31,6 +31,13 @@ namespace StoreAssitant.StoreAssistant_AccountView
             gr_manager.Visible = false;
 
             dataGridView1.Font = new Font(dataGridView1.Font.FontFamily, 11f);
+            dataGridView1.SelectionChanged += DataGridView1_SelectionChanged;
+        }
+
+        private void DataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count != 1) { btn_DeleteAccount.Enabled = false; }
+            else if (!btn_DeleteAccount.Enabled) { btn_DeleteAccount.Enabled = true; }
         }
 
         internal void SetData(UserInfo userInfo)
@@ -53,18 +60,41 @@ namespace StoreAssitant.StoreAssistant_AccountView
         {
             dataGridView1.Rows.Clear();
             if (list_User == null) { return; }
-            
             foreach (UserInfo userInfo in list_User)
             {
                 AddUserToGrid(userInfo);
-                btn_AddAccount.Click += Btn_AddAccount_Click;
+                
             }
 
+            btn_AddAccount.Click += Btn_AddAccount_Click;
+            btn_DeleteAccount.Click += Btn_DeleteAccount_Click;
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
+        }
+
+        private void Btn_DeleteAccount_Click(object sender, EventArgs e)
+        {
+            string msg = string.Format("Thao tác sẽ không thể phục hồi{0}Bạn chắc chắn muỗn xóa tài khoản này?", Environment.NewLine);
+            DialogResult rs = MessageBox.Show(msg, "Xóa tài khoản", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (rs == DialogResult.Yes)
+            {
+                using (DatabaseController databaseController = new DatabaseController())
+                {
+                    if (databaseController.DeleteUser(dataGridView1.SelectedRows[0].Cells[0].Value.ToString()))
+                    {
+                        MessageBox.Show("Xóa tài khoản thành công");
+                        dataGridView1.Rows.Remove(dataGridView1.SelectedRows[0]);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa tài khoản thất bại", "Lỗi không xác định", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
         private void SignUpForm_SignUpOK(object sender, UserInfo e)
         {
+            MessageBox.Show("Tạo tài khoản nhân viên thành công!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
             AddUserToGrid(e);
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
         }
@@ -90,6 +120,21 @@ namespace StoreAssitant.StoreAssistant_AccountView
             gr_manager.SizeChanged += Gr_manager_SizeChanged;
 
             btn_SignOut.Click += Btn_SignOut_Click;
+            btn_ResetPass.Click += Btn_ResetPass_Click;
+        }
+
+        private void Btn_ResetPass_Click(object sender, EventArgs e)
+        {
+            ChangePasswordForm changePasswordForm = new ChangePasswordForm(user);
+            changePasswordForm.ChangePasswordOK += ChangePasswordForm_ChangePasswordOK;
+            changePasswordForm.StartPosition = FormStartPosition.CenterScreen;
+            changePasswordForm.ShowDialog();
+            changePasswordForm.Dispose();
+        }
+
+        private void ChangePasswordForm_ChangePasswordOK(object sender, EventArgs e)
+        {
+            MessageBox.Show("Đổi mật khẩu thành công!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void Btn_SignOut_Click(object sender, EventArgs e)

@@ -490,14 +490,13 @@ namespace StoreAssitant
             return cmd.ExecuteNonQuery() == 1;
         }
 
-        public bool DeleteUser(UserInfo userInfo)
+        public bool DeleteUser(string userName)
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
 
             cmd.CommandText = string.Format("DELETE FROM {0} WHERE {1}=@{1}_;", TB_USER, COLUMNS_TB_USER[0], COLUMNS_TB_USER[1]);
             cmd.Parameters.Clear();
-            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[0]), SqlDbType.VarChar).Value = userInfo.UserName;
-            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[1]), SqlDbType.Binary, 32).Value = StoreAssistant_Authenticater.Authenticator.GetPass(userInfo);
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[0]), SqlDbType.VarChar).Value = userName;
 
             return cmd.ExecuteNonQuery() == 1;
         }

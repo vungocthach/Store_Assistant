@@ -51,5 +51,14 @@ namespace StoreAssitant.StoreAssistant_Authenticater
                 }
             }
         }
+
+        internal static bool ChangePassword(ref UserInfo user, string newPass)
+        {
+            using (DatabaseController databaseController = new DatabaseController())
+            {
+                user.Pass = newPass;
+                return databaseController.UpdatePassword(user);
+            }
+        }
     }
 }
