@@ -93,7 +93,18 @@ namespace StoreAssitant
                 Invalidate();
             }
         }
+        [Category("My Propperties"), Description ("Define is Maneger")]
 
+        public bool IsManeger
+        {
+            get => contextMenustrip.Visible;
+
+            set
+            {
+                contextMenustrip.Visible = value;
+                Invalidate();
+            }
+        }
         #endregion
         public void SetData(ProductInfo info)
         {
@@ -124,6 +135,7 @@ namespace StoreAssitant
             editToolStripMenuItem.Click += EditToolStripMenuItem_Click;
 
             deletetoolStripMenuItem.Click += DeletetoolStripMenuItem_Click;
+
             #region MouseClick_Control
 
             pictureBox.MouseClick += _MouseClick;

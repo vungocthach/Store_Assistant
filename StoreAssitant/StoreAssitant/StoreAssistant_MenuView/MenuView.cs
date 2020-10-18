@@ -97,6 +97,10 @@ namespace StoreAssitant
             set
             {
                 controlProduct.Visible = value;
+                foreach (var i in flowLayoutPanelMenu.Controls)
+                {
+                    if (i is MenuControl) ((MenuControl)i).IsManeger = value;
+                }    
                 Invalidate();
             }
         }
@@ -111,8 +115,7 @@ namespace StoreAssitant
             flowLayoutPanelMenu.Controls.Add(Product);
             flowLayoutPanelMenu.Controls.Add(controlProduct);
 
-            if (!IsManeger) Product.contextMenustrip.Visible = false;
-            else Product.contextMenustrip.Visible = true;
+           
 
 
             Product.Click_AddControlProduct += Product_Click_AddControlProduct;
