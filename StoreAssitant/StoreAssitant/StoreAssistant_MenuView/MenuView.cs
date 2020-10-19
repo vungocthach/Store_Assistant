@@ -66,6 +66,7 @@ namespace StoreAssitant
                 {
                     control.Size = value;
                 }
+                this.MinimumSize = new Size(2 * (value.Width + 10), this.MinimumSize.Height);
                 Invalidate();
             }
         }

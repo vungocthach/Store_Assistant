@@ -20,6 +20,9 @@ namespace StoreAssitant
         {
             InitializeComponent();
             InitializeEventHandler();
+
+            split_Cashier.Panel1MinSize = tableView1.MinimumSize.Width;
+            split_Cashier.Panel2MinSize = menuView1.MinimumSize.Width;
         }
 
         internal void LoadDataFromDB()

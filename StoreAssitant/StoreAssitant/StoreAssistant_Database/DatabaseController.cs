@@ -68,7 +68,12 @@ namespace StoreAssitant
             }
             catch (Exception e)
             {
-                Debug.WriteLine("StoreAssistant.DatabaseController.ConnectToSQLDatabase() error : " + e.Message);
+#if DEBUG
+                MessageBox.Show("StoreAssistant.DatabaseController.ConnectToSQLDatabase() error : " + e.Message);
+#else
+                MessageBox.Show("Không thể kết nối đến máy chủ","Lỗi kết nối", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Restart();
+#endif
                 return false;
             }
         }
