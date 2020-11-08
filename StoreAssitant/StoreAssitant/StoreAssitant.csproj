@@ -82,6 +82,13 @@
     <Compile Include="StoreAssistant_Authenticater\SignUpForm.Designer.cs">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="StoreAssistant_Helper\BillHistory.cs" />
+    <Compile Include="StoreAssistant_HistoryView\HistoryView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StoreAssistant_HistoryView\HistoryView.Designer.cs">
+      <DependentUpon>HistoryView.cs</DependentUpon>
+    </Compile>
     <Compile Include="StoreAssistant_ManagerView\ManagerModifyView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -175,6 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_Authenticater\SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoreAssistant_HistoryView\HistoryView.resx">
+      <DependentUpon>HistoryView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_ManagerView\ManagerModifyView.resx">
       <DependentUpon>ManagerModifyView.cs</DependentUpon>

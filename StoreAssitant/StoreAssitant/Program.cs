@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StoreAssitant.StoreAssistant_HistoryView;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,10 +17,22 @@ namespace StoreAssitant
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
+            /*
             LoginForm form = new LoginForm();
             form.Click_Login += Form_Click_Login;
             Application.Run(form);
+            */
+
+            Test();
+        }
+
+        static void Test()
+        {
+
+            Form test_form = new Form();
+            test_form.Size = new System.Drawing.Size(1100, 600);
+            test_form.Controls.Add(new HistoryView() { Dock = DockStyle.Fill });
+            Application.Run(test_form);
         }
 
         private static void Form_Click_Login(object sender, UserInfo e)
