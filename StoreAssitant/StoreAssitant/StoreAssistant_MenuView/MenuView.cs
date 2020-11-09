@@ -167,6 +167,7 @@ namespace StoreAssitant
             Click_EditProduct = new EventHandler<ProductInfo>(on_CLick_EditProduct);
 
             CLick_DeleteProduct = new EventHandler<ProductInfo>(on_CLick_EditProduct);
+
             ControlTitle.Layout += new LayoutEventHandler((object sender, LayoutEventArgs e) =>
             {
                 SetLocationY_bottom_control(controlSearch, ControlTitle);

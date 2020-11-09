@@ -29,50 +29,44 @@
         private void InitializeComponent()
         {
             this.buttonSearch = new System.Windows.Forms.Button();
-            this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.cbx_Search = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // buttonSearch
             // 
             this.buttonSearch.Dock = System.Windows.Forms.DockStyle.Right;
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearch.Location = new System.Drawing.Point(370, 0);
-            this.buttonSearch.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonSearch.MinimumSize = new System.Drawing.Size(69, 36);
+            this.buttonSearch.Location = new System.Drawing.Point(278, 0);
+            this.buttonSearch.MinimumSize = new System.Drawing.Size(52, 29);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(102, 42);
+            this.buttonSearch.Size = new System.Drawing.Size(76, 34);
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = true;
             // 
-            // textBoxSearch
+            // cbx_Search
             // 
-            this.textBoxSearch.Dock = System.Windows.Forms.DockStyle.Left;
-            this.textBoxSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.textBoxSearch.Location = new System.Drawing.Point(0, 0);
-            this.textBoxSearch.Margin = new System.Windows.Forms.Padding(4);
-            this.textBoxSearch.MinimumSize = new System.Drawing.Size(100, 29);
-            this.textBoxSearch.Name = "textBoxSearch";
-            this.textBoxSearch.Size = new System.Drawing.Size(362, 34);
-            this.textBoxSearch.TabIndex = 0;
-            this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
+            this.cbx_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.cbx_Search.FormattingEnabled = true;
+            this.cbx_Search.Location = new System.Drawing.Point(0, 1);
+            this.cbx_Search.Name = "cbx_Search";
+            this.cbx_Search.Size = new System.Drawing.Size(278, 32);
+            this.cbx_Search.TabIndex = 2;
             // 
             // ControlSearch
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cbx_Search);
             this.Controls.Add(this.buttonSearch);
-            this.Controls.Add(this.textBoxSearch);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ControlSearch";
-            this.Size = new System.Drawing.Size(472, 42);
+            this.Size = new System.Drawing.Size(354, 34);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.Button buttonSearch;
-        private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.ComboBox cbx_Search;
     }
 }
