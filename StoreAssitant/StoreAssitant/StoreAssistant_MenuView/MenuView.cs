@@ -13,9 +13,9 @@ namespace StoreAssitant
 {
     public partial class MenuView : UserControl
     {
-       public List<ProductInfo> Menu;
-       public List<ControlProduct> Control;
-
+        public List<ProductInfo> Menu;
+        public List<MenuControl> Control = new List<MenuControl> ();
+        
         Size itemSize;
 
         #region Create event
@@ -36,7 +36,8 @@ namespace StoreAssitant
         public event EventHandler<ProductInfo> CLick_DeleteProduct;
 
         private void on_CLick_DeleteProduct(object sender, ProductInfo p)
-        { }
+        {
+        }
         #endregion
         #region Create Properties
         [Category("My Properties"), Description("Height of title bar in pixel")]
@@ -111,6 +112,7 @@ namespace StoreAssitant
         public void AddMenuControl(ProductInfo Infor)
         {
             MenuControl Product = new MenuControl();
+
             Product.SetData(Infor);
             Product.Size = ItemSize;
             Product.IsManeger = this.ismaneger;
@@ -124,12 +126,14 @@ namespace StoreAssitant
             Product.Click_AddControlProduct += Product_Click_AddControlProduct;
             Product.Click_EditProductInfo += Product_Click_EditProductInfo;
             Product.CLick_DeleteProductInfo += Product_CLick_DeleteProductInfo;
-                  
+
+            Control.Add(Product);
+
         }
 
         private void Product_CLick_DeleteProductInfo(object sender, ProductInfo e)
         {
-
+            Control.Remove(sender as MenuControl);
             CLick_DeleteProduct(sender, e);
         }
 
@@ -154,14 +158,7 @@ namespace StoreAssitant
                 AddMenuControl(P);
             }
         }
-        public void Get_Control_Product()
-        {
-            foreach ( Control t in flowLayoutPanelMenu.Controls)
-            {
-                if ( t is MenuControl)
-                    controlSearch.Control.Add(t as MenuControl);
-            }
-        }
+
         public MenuView()
         {
 
@@ -183,21 +180,23 @@ namespace StoreAssitant
                 SetLocationY_bottom_control(controlSearch, ControlTitle);
             });
 
+            controlSearch.Control = Control;
 
             itemSize = new Size(100, 100);
 
             this.Layout += MenuView_SizeChanged;
 
             controlProduct._Click += ControlProduct_Click;
-            controlSearch.Get_Control_Product += ControlSearch_Get_Control_Product;
 
+            //controlSearch.Click_SearchBar += ControlSearch_Click_SearchBar;
 
         }
 
-        private void ControlSearch_Get_Control_Product(object sender, EventArgs e)
+        /*private void ControlSearch_Click_SearchBar(object sender, EventArgs e)
         {
-            Get_Control_Product();
-        }
+            controlSearch.Control = Control;
+        }*/
+
 
         private void ControlProduct_Click(object sender, EventArgs e)
         {
@@ -212,7 +211,6 @@ namespace StoreAssitant
             if (me.Button == MouseButtons.Left)
             {
                 ClickAddTableInfo(this, ((MenuControl)sender).ProductInfo);
-              //MessageBox.Show("Tính năng đang được xây dựng");
             }
 
         }

@@ -13,7 +13,22 @@ namespace StoreAssitant
 {
     public partial class ControlSearch : UserControl
     {
-       public  List<MenuControl> Control = new List<MenuControl>();
+        public  List<MenuControl> control;
+        public  List<String> name_Pro = new List<string>();
+
+        #region Properties Control
+        [Category ("My properties"), Description ("List product of Menu")]
+
+        public List <MenuControl> Control
+        {
+            get => control; 
+            set
+            {
+                control = value;
+                Invalidate();
+            }
+        }
+        #endregion
 
         #region Event Add_ProductTable
         public event EventHandler Add_ProductTable;
@@ -22,9 +37,9 @@ namespace StoreAssitant
         {
 
         }
-        public event EventHandler Get_Control_Product;
-      
-        public void onGet_Control_Product(object sender, EventArgs e)
+        public event EventHandler Click_SearchBar;
+
+        public void on_CLick_SearchBar (object sender, EventArgs e)
         {
 
         }
@@ -32,12 +47,8 @@ namespace StoreAssitant
         public ControlSearch()
         {
             InitializeComponent();
-
-
             Add_ProductTable = new EventHandler(on_Add_ProductTable);
-            Get_Control_Product = new EventHandler(onGet_Control_Product);
 
-            cbx_Search.SelectedIndexChanged += Cbx_Search_SelectedValueChanged;
 
             this.SizeChanged += ControlSearch_SizeChanged;
             cbx_Search.Click += Cbx_Search_Click;
@@ -45,9 +56,19 @@ namespace StoreAssitant
             cbx_Search.KeyPress += cbx_Search_KeyPress;
         }
 
+        private void Get_name_Pro()
+        {
+            foreach (MenuControl t in control)
+            {
+                name_Pro.Add(t.NameTitle);
+            }
+        }
+
         private void Cbx_Search_Click(object sender, EventArgs e)
         {
-            Get_Control_Product(sender, new EventArgs());
+            cbx_Search.Items.Clear();
+            name_Pro.Clear();
+            Get_name_Pro();          
         }
 
         private void Cbx_Search_SelectedValueChanged(object sender, EventArgs e)
@@ -64,12 +85,12 @@ namespace StoreAssitant
          private void cbx_Search_TextChanged(object sender, EventArgs e)
          {
              cbx_Search.Items.Clear();
-             DatabaseController d = new DatabaseController();
-             List<string> consultproduct = d.Get_Name_Product(cbx_Search.Text);
-             foreach (string t in d.Get_Name_Product(" ")) 
+
+             foreach (string t in name_Pro) 
              {
                  if (t.Contains(cbx_Search.Text)) cbx_Search.Items.Add(t);
              }
+
              cbx_Search.DroppedDown = true;
              cbx_Search.SelectionStart = cbx_Search.Text.Length;
          }
