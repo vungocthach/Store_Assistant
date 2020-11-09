@@ -13,7 +13,8 @@ namespace StoreAssitant
 {
     public partial class MenuView : UserControl
     {
-        List<ProductInfo> Menu;
+       public List<ProductInfo> Menu;
+       public List<ControlProduct> Control;
 
         Size itemSize;
 
@@ -114,6 +115,7 @@ namespace StoreAssitant
             Product.Size = ItemSize;
             Product.IsManeger = this.ismaneger;
 
+
             flowLayoutPanelMenu.Controls.Remove(controlProduct);
             flowLayoutPanelMenu.Controls.Add(Product);
             flowLayoutPanelMenu.Controls.Add(controlProduct);
@@ -152,11 +154,19 @@ namespace StoreAssitant
                 AddMenuControl(P);
             }
         }
-       
+        public void Get_Control_Product()
+        {
+            foreach ( Control t in flowLayoutPanelMenu.Controls)
+            {
+                if ( t is MenuControl)
+                    controlSearch.Control.Add(t as MenuControl);
+            }
+        }
         public MenuView()
         {
 
             InitializeComponent();
+
 
             controlProduct.BackColor = Color.Transparent;
 
@@ -179,11 +189,16 @@ namespace StoreAssitant
             this.Layout += MenuView_SizeChanged;
 
             controlProduct._Click += ControlProduct_Click;
+            controlSearch.Get_Control_Product += ControlSearch_Get_Control_Product;
 
 
         }
 
-     
+        private void ControlSearch_Get_Control_Product(object sender, EventArgs e)
+        {
+            Get_Control_Product();
+        }
+
         private void ControlProduct_Click(object sender, EventArgs e)
         {
             ClickAddButton(this, e);

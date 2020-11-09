@@ -7,15 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.Remoting.Channels;
 
 namespace StoreAssitant
 {
     public partial class ControlSearch : UserControl
     {
+       public  List<MenuControl> Control = new List<MenuControl>();
+
         #region Event Add_ProductTable
         public event EventHandler Add_ProductTable;
 
         public void on_Add_ProductTable (object sender, EventArgs e)
+        {
+
+        }
+        public event EventHandler Get_Control_Product;
+      
+        public void onGet_Control_Product(object sender, EventArgs e)
         {
 
         }
@@ -24,14 +33,21 @@ namespace StoreAssitant
         {
             InitializeComponent();
 
+
             Add_ProductTable = new EventHandler(on_Add_ProductTable);
+            Get_Control_Product = new EventHandler(onGet_Control_Product);
 
             cbx_Search.SelectedIndexChanged += Cbx_Search_SelectedValueChanged;
 
             this.SizeChanged += ControlSearch_SizeChanged;
-
+            cbx_Search.Click += Cbx_Search_Click;
             cbx_Search.TextChanged += cbx_Search_TextChanged;
             cbx_Search.KeyPress += cbx_Search_KeyPress;
+        }
+
+        private void Cbx_Search_Click(object sender, EventArgs e)
+        {
+            Get_Control_Product(sender, new EventArgs());
         }
 
         private void Cbx_Search_SelectedValueChanged(object sender, EventArgs e)
