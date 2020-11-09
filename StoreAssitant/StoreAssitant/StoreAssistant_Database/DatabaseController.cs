@@ -42,7 +42,7 @@ namespace StoreAssitant
             username = "laptrinhtrucquan";
             password = "bangnhucthach@ktpm2019";
             //serverName = "tcp:52.187.161.61,2001";
-            serverName = @"tcp:52.187.161.61,5897";
+            serverName = @"tcp:laptrinhtrucquan.southeastasia.cloudapp.azure.com";
             databaseName = "DBStoreAssistant";
 
             TB_INTERGER = "TB_INTERGER";
