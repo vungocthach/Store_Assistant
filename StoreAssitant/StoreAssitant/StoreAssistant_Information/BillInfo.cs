@@ -8,17 +8,19 @@ namespace StoreAssitant.StoreAssistant_Information
 {
     class BillInfo
     {
-        public List<Products> ProductInTable;
+        public List<Products> ProductInBill;
         public int ID { get; set; }
-
-        public int VAT { get; set; }
-
+        public char VAT { get; set; }
         public double Vourcher { get; set; }
-
-       // public DateTime 
+        public DateTime DAY { get; set; }
+        public int Number_table { get; set; } 
+        public int Take { get; set; }
+        public int Give { get; set; }
+        public int TOTAL { get; set; }
+      
         public BillInfo()
         {
-            ProductInTable = new List<Products>();
+            ProductInBill = new List<Products>();
         }
     }
     public class Products : ProductInfo
