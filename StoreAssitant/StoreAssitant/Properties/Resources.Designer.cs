@@ -233,6 +233,16 @@ namespace StoreAssitant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_sale_lineal_color_cnvrt_18_3827704 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_sale_lineal_color_cnvrt-18_3827704", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_shopping_shop_buy_discount_18_4038845 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_shopping-shop-buy-discount-18_4038845", resourceCulture);

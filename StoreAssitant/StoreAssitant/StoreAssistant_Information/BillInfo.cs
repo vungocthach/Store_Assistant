@@ -16,8 +16,8 @@ namespace StoreAssitant.StoreAssistant_Information
         public int Number_table { get; set; } 
         public int Take { get; set; }
         public int Give { get; set; }
-        public int TOTAL { get; set;
-        }
+        public int TOTAL { get; set; }
+      
         public BillInfo()
         {
             ProductInBill = new List<Products>();

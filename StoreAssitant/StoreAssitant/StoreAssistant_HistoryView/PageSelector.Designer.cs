@@ -37,86 +37,89 @@
             // 
             // txtPage
             // 
-            this.txtPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPage.Location = new System.Drawing.Point(95, 4);
+            this.txtPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPage.Location = new System.Drawing.Point(186, 22);
             this.txtPage.Name = "txtPage";
-            this.txtPage.Size = new System.Drawing.Size(95, 26);
+            this.txtPage.Size = new System.Drawing.Size(333, 44);
             this.txtPage.TabIndex = 0;
+            this.txtPage.TabStop = false;
+            this.txtPage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnLast
             // 
             this.btnLast.BackColor = System.Drawing.Color.Transparent;
-            this.btnLast.BackgroundImage = global::StoreAssitant.Properties.Resources.iconfinder_normal_293272;
             this.btnLast.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnLast.FlatAppearance.BorderSize = 0;
             this.btnLast.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnLast.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.btnLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLast.Location = new System.Drawing.Point(242, 2);
+            this.btnLast.Image = global::StoreAssitant.Properties.Resources.iconfinder_normal_293272;
+            this.btnLast.Location = new System.Drawing.Point(612, 4);
             this.btnLast.Margin = new System.Windows.Forms.Padding(0);
             this.btnLast.Name = "btnLast";
-            this.btnLast.Size = new System.Drawing.Size(40, 30);
+            this.btnLast.Size = new System.Drawing.Size(90, 90);
             this.btnLast.TabIndex = 4;
             this.btnLast.UseVisualStyleBackColor = false;
             // 
             // btnFirst
             // 
             this.btnFirst.BackColor = System.Drawing.Color.Transparent;
-            this.btnFirst.BackgroundImage = global::StoreAssitant.Properties.Resources.iconfinder_normal_293272_reverse;
             this.btnFirst.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnFirst.FlatAppearance.BorderSize = 0;
             this.btnFirst.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnFirst.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.btnFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFirst.Image = global::StoreAssitant.Properties.Resources.iconfinder_normal_293272_reverse;
             this.btnFirst.Location = new System.Drawing.Point(3, 2);
             this.btnFirst.Margin = new System.Windows.Forms.Padding(0);
             this.btnFirst.Name = "btnFirst";
-            this.btnFirst.Size = new System.Drawing.Size(40, 30);
+            this.btnFirst.Size = new System.Drawing.Size(90, 90);
             this.btnFirst.TabIndex = 3;
             this.btnFirst.UseVisualStyleBackColor = false;
             // 
             // btnPre
             // 
             this.btnPre.BackColor = System.Drawing.Color.Transparent;
-            this.btnPre.BackgroundImage = global::StoreAssitant.Properties.Resources.iconfinder_pre_293277;
             this.btnPre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnPre.FlatAppearance.BorderSize = 0;
             this.btnPre.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnPre.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.btnPre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPre.Location = new System.Drawing.Point(49, 2);
+            this.btnPre.Image = global::StoreAssitant.Properties.Resources.iconfinder_pre_293277;
+            this.btnPre.Location = new System.Drawing.Point(93, 4);
             this.btnPre.Margin = new System.Windows.Forms.Padding(0);
             this.btnPre.Name = "btnPre";
-            this.btnPre.Size = new System.Drawing.Size(40, 30);
+            this.btnPre.Size = new System.Drawing.Size(90, 90);
             this.btnPre.TabIndex = 2;
             this.btnPre.UseVisualStyleBackColor = false;
             // 
             // btnNxt
             // 
             this.btnNxt.BackColor = System.Drawing.Color.Transparent;
-            this.btnNxt.BackgroundImage = global::StoreAssitant.Properties.Resources.iconfinder_next_293276;
             this.btnNxt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnNxt.FlatAppearance.BorderSize = 0;
             this.btnNxt.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnNxt.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.btnNxt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNxt.Location = new System.Drawing.Point(196, 2);
+            this.btnNxt.Image = global::StoreAssitant.Properties.Resources.iconfinder_next_293276;
+            this.btnNxt.Location = new System.Drawing.Point(522, 4);
             this.btnNxt.Margin = new System.Windows.Forms.Padding(0);
             this.btnNxt.Name = "btnNxt";
-            this.btnNxt.Size = new System.Drawing.Size(40, 30);
+            this.btnNxt.Size = new System.Drawing.Size(90, 90);
             this.btnNxt.TabIndex = 1;
             this.btnNxt.UseVisualStyleBackColor = false;
             // 
             // PageSelector
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.btnLast);
             this.Controls.Add(this.btnFirst);
             this.Controls.Add(this.btnPre);
             this.Controls.Add(this.btnNxt);
             this.Controls.Add(this.txtPage);
             this.Name = "PageSelector";
-            this.Size = new System.Drawing.Size(293, 35);
+            this.Size = new System.Drawing.Size(702, 99);
             this.ResumeLayout(false);
             this.PerformLayout();
 
