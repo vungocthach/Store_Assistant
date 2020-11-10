@@ -162,6 +162,18 @@
     <Compile Include="StoreAssistant_MenuView\MenuView.Designer.cs">
       <DependentUpon>MenuView.cs</DependentUpon>
     </Compile>
+    <Compile Include="StoreAssistant_StatiticsView\CompareView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StoreAssistant_StatiticsView\CompareView.Designer.cs">
+      <DependentUpon>CompareView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StoreAssistant_StatiticsView\StatiticsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StoreAssistant_StatiticsView\StatiticsView.Designer.cs">
+      <DependentUpon>StatiticsView.cs</DependentUpon>
+    </Compile>
     <Compile Include="StoreAssistant_TableView\TableBill.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -264,6 +276,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="StoreAssistant_StatiticsView\StatiticsView.resx">
+      <DependentUpon>StatiticsView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_TableView\TableBill.resx">
       <DependentUpon>TableBill.cs</DependentUpon>
     </EmbeddedResource>

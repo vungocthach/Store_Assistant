@@ -32,21 +32,21 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dtp_From = new System.Windows.Forms.DateTimePicker();
-            this.dtp_To = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.order = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.billId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableParent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtp_From = new System.Windows.Forms.DateTimePicker();
+            this.dtp_To = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btn_Search = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.pageSelector1 = new StoreAssitant.StoreAssistant_HistoryView.PageSelector();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -89,55 +89,6 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1077, 371);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 24);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Từ Ngày :";
-            // 
-            // dtp_From
-            // 
-            this.dtp_From.CustomFormat = "dd/MM/yyyy";
-            this.dtp_From.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_From.Location = new System.Drawing.Point(124, 28);
-            this.dtp_From.Name = "dtp_From";
-            this.dtp_From.Size = new System.Drawing.Size(133, 29);
-            this.dtp_From.TabIndex = 3;
-            // 
-            // dtp_To
-            // 
-            this.dtp_To.CustomFormat = "dd/MM/yyyy";
-            this.dtp_To.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_To.Location = new System.Drawing.Point(384, 28);
-            this.dtp_To.Name = "dtp_To";
-            this.dtp_To.Size = new System.Drawing.Size(134, 29);
-            this.dtp_To.TabIndex = 5;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(274, 30);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 24);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Đến Ngày :";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.dtp_From);
-            this.groupBox1.Controls.Add(this.dtp_To);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(526, 71);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Thời Gian";
             // 
             // order
             // 
@@ -191,6 +142,55 @@
             this.total.Name = "total";
             this.total.ReadOnly = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(28, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 24);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Từ Ngày :";
+            // 
+            // dtp_From
+            // 
+            this.dtp_From.CustomFormat = "dd/MM/yyyy";
+            this.dtp_From.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_From.Location = new System.Drawing.Point(124, 28);
+            this.dtp_From.Name = "dtp_From";
+            this.dtp_From.Size = new System.Drawing.Size(133, 29);
+            this.dtp_From.TabIndex = 3;
+            // 
+            // dtp_To
+            // 
+            this.dtp_To.CustomFormat = "dd/MM/yyyy";
+            this.dtp_To.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_To.Location = new System.Drawing.Point(384, 28);
+            this.dtp_To.Name = "dtp_To";
+            this.dtp_To.Size = new System.Drawing.Size(134, 29);
+            this.dtp_To.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(274, 30);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(104, 24);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Đến Ngày :";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dtp_From);
+            this.groupBox1.Controls.Add(this.dtp_To);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(526, 71);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Thời Gian";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label3);
@@ -203,6 +203,32 @@
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tìm Kiếm";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(24, 29);
+            this.label3.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 24);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Mã :";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button1.Location = new System.Drawing.Point(429, 27);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(95, 29);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Nâng Cao";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
@@ -229,32 +255,6 @@
             this.btn_Search.TabIndex = 6;
             this.btn_Search.UseVisualStyleBackColor = true;
             this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button1.Location = new System.Drawing.Point(429, 27);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 29);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Nâng Cao";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 29);
-            this.label3.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 24);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Mã :";
             // 
             // pageSelector1
             // 
