@@ -104,6 +104,7 @@
             this.txt_PassCurrent.Location = new System.Drawing.Point(138, 6);
             this.txt_PassCurrent.MaxLength = 50;
             this.txt_PassCurrent.Name = "txt_PassCurrent";
+            this.txt_PassCurrent.PasswordChar = '*';
             this.txt_PassCurrent.Size = new System.Drawing.Size(294, 26);
             this.txt_PassCurrent.TabIndex = 9;
             // 

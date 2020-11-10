@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using StoreAssitant.StoreAssistant_Authenticater;
 using System.Collections;
+using System.Security.Authentication;
 
 namespace StoreAssitant.StoreAssistant_AccountView
 {
@@ -17,7 +18,6 @@ namespace StoreAssitant.StoreAssistant_AccountView
         public event EventHandler ClickSignOut;
         void OnClickSignOut(object sender, EventArgs e) { }
 
-        UserInfo user;
         string[] roles ;
 
         public AccountView()
@@ -40,12 +40,12 @@ namespace StoreAssitant.StoreAssistant_AccountView
             else if (!btn_DeleteAccount.Enabled) { btn_DeleteAccount.Enabled = true; }
         }
 
-        internal void SetData(UserInfo userInfo)
+        internal void SetData()
         {
-            user = userInfo;
-            txt_username.Text = user.UserName;
-            lb_role.Text = string.Format("Phân quyền : {0}", roles[(int)user.Role]);
-            if (user.Role == UserInfo.UserRole.Manager)
+            if (Authenticator.CurrentUser == null) { throw new AuthenticationException("Current user's account must not be null"); }
+            txt_username.Text = Authenticator.CurrentUser.UserName;
+            lb_role.Text = string.Format("Phân quyền : {0}", roles[(int)Authenticator.CurrentUser.Role]);
+            if (Authenticator.CurrentUser.Role == UserInfo.UserRole.Manager)
             {
                 gr_manager.Visible = true;
                 using (DatabaseController databaseController = new DatabaseController())
@@ -125,7 +125,7 @@ namespace StoreAssitant.StoreAssistant_AccountView
 
         private void Btn_ResetPass_Click(object sender, EventArgs e)
         {
-            ChangePasswordForm changePasswordForm = new ChangePasswordForm(user);
+            ChangePasswordForm changePasswordForm = new ChangePasswordForm();
             changePasswordForm.ChangePasswordOK += ChangePasswordForm_ChangePasswordOK;
             changePasswordForm.StartPosition = FormStartPosition.CenterScreen;
             changePasswordForm.ShowDialog();

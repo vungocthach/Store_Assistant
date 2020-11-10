@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Authentication;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,12 +16,11 @@ namespace StoreAssitant.StoreAssistant_Authenticater
         public event EventHandler ChangePasswordOK;
         void OnChangePasswordOK(object sender, EventArgs e) { this.Close(); }
 
-        UserInfo user;
-        public ChangePasswordForm(UserInfo user)
+        public ChangePasswordForm()
         {
             InitializeComponent();
 
-            this.user = user;
+            if (Authenticator.CurrentUser == null) { throw new AuthenticationException("Current user's account must not be null"); }
 
             ChangePasswordOK = new EventHandler(OnChangePasswordOK);
 
@@ -42,7 +42,7 @@ namespace StoreAssitant.StoreAssistant_Authenticater
                 return;
             }
 
-            if (txt_PassCurrent.Text != user.Pass)
+            if (txt_PassCurrent.Text != Authenticator.CurrentUser.Pass)
             {
                 MessageBox.Show("Mật khẩu hiện tại không đúng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_PassCurrent.SelectAll();
@@ -56,7 +56,7 @@ namespace StoreAssitant.StoreAssistant_Authenticater
                 return;
             }
 
-            if (Authenticator.ChangePassword(ref user, txt_PassNew.Text))
+            if (Authenticator.ChangeCurrentPassword(txt_PassNew.Text))
             {
                 ChangePasswordOK(this, new EventArgs());
             }

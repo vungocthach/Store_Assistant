@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,11 @@ namespace StoreAssitant.StoreAssistant_Authenticater
 {
     internal class Authenticator
     {
+        private static UserInfo user = null;
+        internal static UserInfo CurrentUser
+        {
+            get => user;
+        }
         internal static byte[] GetPass(UserInfo info)
         {
             using (SHA256Managed sha256 = new SHA256Managed())
@@ -19,11 +25,16 @@ namespace StoreAssitant.StoreAssistant_Authenticater
                 return encripted_pass;
             }
         }
-        internal static bool CheckLogin(ref UserInfo userInfo)
+        internal static bool Login(ref UserInfo userInfo)
         {
             using (DatabaseController databaseController = new DatabaseController())
             {
-                return databaseController.GetUserRole(ref userInfo);
+                if (databaseController.GetUserRole(ref userInfo))
+                {
+                    user = userInfo;
+                    return true;
+                }
+                else { return false; }
             }
         }
 
@@ -53,12 +64,17 @@ namespace StoreAssitant.StoreAssistant_Authenticater
             }
         }
 
-        internal static bool ChangePassword(ref UserInfo user, string newPass)
+        internal static bool ChangeCurrentPassword(string newPass)
+        {
+            return ChangePassword(ref user, newPass);
+        }
+
+        internal static bool ChangePassword(ref UserInfo userInfo, string newPass)
         {
             using (DatabaseController databaseController = new DatabaseController())
             {
-                user.Pass = newPass;
-                return databaseController.UpdatePassword(user);
+                userInfo.Pass = newPass;
+                return databaseController.UpdatePassword(userInfo);
             }
         }
     }
