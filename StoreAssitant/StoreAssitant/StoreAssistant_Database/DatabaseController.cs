@@ -42,7 +42,7 @@ namespace StoreAssitant
             username = "laptrinhtrucquan";
             password = "bangnhucthach@ktpm2019";
             //serverName = "tcp:52.187.161.61,2001";
-            serverName = @"tcp:52.187.161.61,5897";
+            serverName = @"tcp:laptrinhtrucquan.southeastasia.cloudapp.azure.com";
             databaseName = "DBStoreAssistant";
 
             TB_INTERGER = "TB_INTERGER";
@@ -550,6 +550,32 @@ namespace StoreAssitant
             return true;
 #endif
         }
+        public List<string> Get_Name_Product(string Name)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            cmd.CommandText = string.Format("select PD_Name from TB_product ");
+            cmd.Connection = connection;
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                int i = 0;
+                List<string> Product = new List<string>();
+                List<string> ConsultPro = new List<string>();
+                while (reader.Read())
+                {
+                    object tmp = reader["PD_Name"];
+                    if (tmp != DBNull.Value)
+                    {
+                        Product.Add(reader["PD_Name"].ToString());
+                    }
+                    ++i;
+                }
+                ConsultPro = Product.FindAll(s => { return (s.Contains(Name)); });
+                return ConsultPro;
+            }
+        }
+
 
         public void Dispose()
         {

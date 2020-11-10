@@ -13,8 +13,9 @@ namespace StoreAssitant
 {
     public partial class MenuView : UserControl
     {
-        List<ProductInfo> Menu;
-
+        public List<ProductInfo> Menu;
+        public List<MenuControl> Control = new List<MenuControl> ();
+        
         Size itemSize;
 
         #region Create event
@@ -35,7 +36,8 @@ namespace StoreAssitant
         public event EventHandler<ProductInfo> CLick_DeleteProduct;
 
         private void on_CLick_DeleteProduct(object sender, ProductInfo p)
-        { }
+        {
+        }
         #endregion
         #region Create Properties
         [Category("My Properties"), Description("Height of title bar in pixel")]
@@ -110,9 +112,11 @@ namespace StoreAssitant
         public void AddMenuControl(ProductInfo Infor)
         {
             MenuControl Product = new MenuControl();
+
             Product.SetData(Infor);
             Product.Size = ItemSize;
             Product.IsManeger = this.ismaneger;
+
 
             flowLayoutPanelMenu.Controls.Remove(controlProduct);
             flowLayoutPanelMenu.Controls.Add(Product);
@@ -122,12 +126,14 @@ namespace StoreAssitant
             Product.Click_AddControlProduct += Product_Click_AddControlProduct;
             Product.Click_EditProductInfo += Product_Click_EditProductInfo;
             Product.CLick_DeleteProductInfo += Product_CLick_DeleteProductInfo;
-                  
+
+            Control.Add(Product);
+
         }
 
         private void Product_CLick_DeleteProductInfo(object sender, ProductInfo e)
         {
-
+            Control.Remove(sender as MenuControl);
             CLick_DeleteProduct(sender, e);
         }
 
@@ -152,11 +158,12 @@ namespace StoreAssitant
                 AddMenuControl(P);
             }
         }
-       
+
         public MenuView()
         {
 
             InitializeComponent();
+
 
             controlProduct.BackColor = Color.Transparent;
 
@@ -167,11 +174,13 @@ namespace StoreAssitant
             Click_EditProduct = new EventHandler<ProductInfo>(on_CLick_EditProduct);
 
             CLick_DeleteProduct = new EventHandler<ProductInfo>(on_CLick_EditProduct);
+
             ControlTitle.Layout += new LayoutEventHandler((object sender, LayoutEventArgs e) =>
             {
                 SetLocationY_bottom_control(controlSearch, ControlTitle);
             });
 
+            controlSearch.Control = Control;
 
             itemSize = new Size(100, 100);
 
@@ -179,10 +188,16 @@ namespace StoreAssitant
 
             controlProduct._Click += ControlProduct_Click;
 
+            //controlSearch.Click_SearchBar += ControlSearch_Click_SearchBar;
 
         }
 
-     
+        /*private void ControlSearch_Click_SearchBar(object sender, EventArgs e)
+        {
+            controlSearch.Control = Control;
+        }*/
+
+
         private void ControlProduct_Click(object sender, EventArgs e)
         {
             ClickAddButton(this, e);
@@ -196,7 +211,6 @@ namespace StoreAssitant
             if (me.Button == MouseButtons.Left)
             {
                 ClickAddTableInfo(this, ((MenuControl)sender).ProductInfo);
-              //MessageBox.Show("Tính năng đang được xây dựng");
             }
 
         }

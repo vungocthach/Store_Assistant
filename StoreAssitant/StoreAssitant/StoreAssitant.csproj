@@ -95,6 +95,8 @@
     <Compile Include="StoreAssistant_HistoryView\PageSelector.Designer.cs">
       <DependentUpon>PageSelector.cs</DependentUpon>
     </Compile>
+    <Compile Include="StoreAssistant_Information\BillInfo.cs" />
+
     <Compile Include="StoreAssistant_ManagerView\ManagerModifyView.cs">
       <SubType>UserControl</SubType>
     </Compile>
