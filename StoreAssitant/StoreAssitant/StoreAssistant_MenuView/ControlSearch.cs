@@ -68,7 +68,8 @@ namespace StoreAssitant
         {
             cbx_Search.Items.Clear();
             name_Pro.Clear();
-            Get_name_Pro();          
+            Get_name_Pro();
+            cbx_Search.SelectionStart = cbx_Search.Text.Length;
         }
 
         private void Cbx_Search_SelectedValueChanged(object sender, EventArgs e)

@@ -10,6 +10,12 @@ namespace StoreAssitant.StoreAssistant_Information
     {
         public List<Products> ProductInTable;
         public int ID { get; set; }
+
+        public int VAT { get; set; }
+
+        public double Vourcher { get; set; }
+
+        public DateTime 
         public BillInfo()
         {
             ProductInTable = new List<Products>();
