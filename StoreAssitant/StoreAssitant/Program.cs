@@ -38,7 +38,7 @@ namespace StoreAssitant
         private static void Form_Click_Login(object sender, UserInfo e)
         {
             Form login_form = (Form)sender;
-            if (StoreAssistant_Authenticater.Authenticator.CheckLogin(ref e))
+            if (StoreAssistant_Authenticater.Authenticator.Login(ref e))
             {
                 Form1 main_form = new Form1();
                 main_form.SignOut += new EventHandler((object obj, EventArgs etc) =>
@@ -58,7 +58,7 @@ namespace StoreAssitant
                     }
                 });
                 //e.Role = UserInfo.UserRole.Cashier;
-                main_form.LoadUser(e);
+                main_form.LoadUser();
                 main_form.Show();
                 login_form.Hide();
             }

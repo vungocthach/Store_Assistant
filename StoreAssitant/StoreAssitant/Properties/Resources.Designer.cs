@@ -193,6 +193,46 @@ namespace StoreAssitant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_next_293276 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_next_293276", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_normal_293272 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_normal_293272", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_normal_293272_reverse {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_normal_293272_reverse", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_pre_293277 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_pre_293277", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_shopping_shop_buy_discount_18_4038845 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_shopping-shop-buy-discount-18_4038845", resourceCulture);

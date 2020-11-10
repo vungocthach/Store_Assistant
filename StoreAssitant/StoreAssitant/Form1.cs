@@ -8,12 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using StoreAssitant.StoreAssistant_Authenticater;
+using System.Security.Authentication;
 
 namespace StoreAssitant
 {
     public partial class Form1 : Form
     {
-        UserInfo user;
 
         StoreAssistant_CashierView.CashierView cashierView;
         ManagerModifyView managerModifyView;
@@ -45,13 +46,13 @@ namespace StoreAssitant
             this.SignOut(this, null);
         }
 
-        public void LoadUser(UserInfo user)
+        public void LoadUser()
         {
-            this.user = user;
+            if (Authenticator.CurrentUser == null) { throw new AuthenticationException("Current user's account must not be null"); }
             kryptonNavigator1.SelectedPage = krPage_Cashier;
             kryptonNavigator1.SelectedPageChanged += KryptonNavigator1_SelectedPageChanged;
             KryptonNavigator1_SelectedPageChanged(kryptonNavigator1, new EventArgs());
-            if (user.Role == UserInfo.UserRole.Cashier)
+            if (Authenticator.CurrentUser.Role == UserInfo.UserRole.Cashier)
             {
                 kryptonNavigator1.Pages.Remove(krPage_Compare);
                 kryptonNavigator1.Pages.Remove(krPage_Manager);
@@ -84,7 +85,7 @@ namespace StoreAssitant
                     accountView = new StoreAssistant_AccountView.AccountView();
                     accountView.ClickSignOut += AccountView1_ClickSignOut;
                 }
-                accountView.SetData(user);
+                accountView.SetData();
                 SelectTab(accountView);
             }
             else if (kryptonNavigator1.SelectedPage.Name == krPage_Manager.Name)
@@ -99,6 +100,7 @@ namespace StoreAssitant
             else if (kryptonNavigator1.SelectedPage.Name == krPage_Compare.Name)
             {
                 MessageBox.Show("Tính năng đang phát triển", "Công trình đang thi công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                panel1.Controls.Clear();
             }
             else if (kryptonNavigator1.SelectedPage.Name == krPage_Setting.Name)
             {

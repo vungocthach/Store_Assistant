@@ -89,6 +89,12 @@
     <Compile Include="StoreAssistant_HistoryView\HistoryView.Designer.cs">
       <DependentUpon>HistoryView.cs</DependentUpon>
     </Compile>
+    <Compile Include="StoreAssistant_HistoryView\PageSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StoreAssistant_HistoryView\PageSelector.Designer.cs">
+      <DependentUpon>PageSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="StoreAssistant_ManagerView\ManagerModifyView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -185,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_HistoryView\HistoryView.resx">
       <DependentUpon>HistoryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoreAssistant_HistoryView\PageSelector.resx">
+      <DependentUpon>PageSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_ManagerView\ManagerModifyView.resx">
       <DependentUpon>ManagerModifyView.cs</DependentUpon>
@@ -334,6 +343,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\iconfinder_Cashier-2_3793351.png" />
+    <None Include="Resources\iconfinder_normal_293272.png" />
+    <None Include="Resources\iconfinder_pre_293277.png" />
+    <None Include="Resources\iconfinder_normal_293272_reverse.png" />
+    <None Include="Resources\iconfinder_next_293276.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
