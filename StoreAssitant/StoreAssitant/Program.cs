@@ -17,13 +17,13 @@ namespace StoreAssitant
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
+            /*
             LoginForm form = new LoginForm();
             form.Click_Login += Form_Click_Login;
             Application.Run(form);
-            
+            */
 
-            //Test();
+            Test();
         }
 
         static void Test()

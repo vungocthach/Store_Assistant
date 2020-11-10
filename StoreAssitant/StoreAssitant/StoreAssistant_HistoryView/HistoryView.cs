@@ -25,7 +25,19 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         public HistoryView()
         {
             InitializeComponent();
-            columnWeights = new double[] { 1.0d / 13, 3.0d / 13, 3.0d / 13, 3.0d / 13, 3.0d / 13 };
+
+            dataGridView1.Location = new Point(dataGridView1.Margin.Left, groupBox1.Location.Y + groupBox1.Height + groupBox1.Margin.Bottom + dataGridView1.Margin.Top);
+            columnWeights = new double[] { 0.99d / 13, 3.0d / 13, 3.0d / 13, 3.0d / 13, 3.0d / 13 };
+            AutoSizeColumns();
+
+            this.SizeChanged += HistoryView_SizeChanged;
+        }
+
+        private void HistoryView_SizeChanged(object sender, EventArgs e)
+        {
+            pageSelector1.Location = new Point((this.Width - pageSelector1.Width) / 2, this.Height - pageSelector1.Margin.Top - pageSelector1.Margin.Bottom - pageSelector1.Height);
+            dataGridView1.Height = pageSelector1.Location.Y - dataGridView1.Location.Y - pageSelector1.Margin.Top - dataGridView1.Margin.Bottom;
+            dataGridView1.Width = this.Width - dataGridView1.Margin.Left - dataGridView1.Margin.Right;
             AutoSizeColumns();
         }
 
@@ -42,6 +54,11 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         DateTime GetEndTime()
         {
             return dtp_To.Value;
+        }
+
+        private void btn_Search_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

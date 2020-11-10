@@ -15,7 +15,7 @@ namespace StoreAssitant.StoreAssistant_Information
 
         public double Vourcher { get; set; }
 
-        public DateTime 
+       // public DateTime 
         public BillInfo()
         {
             ProductInTable = new List<Products>();

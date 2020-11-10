@@ -96,7 +96,6 @@
       <DependentUpon>PageSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="StoreAssistant_Information\BillInfo.cs" />
-
     <Compile Include="StoreAssistant_ManagerView\ManagerModifyView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -345,6 +344,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\iconfinder_Cashier-2_3793351.png" />
+    <None Include="Resources\iconfinder_sale_lineal_color_cnvrt-18_3827704.png" />
     <None Include="Resources\iconfinder_normal_293272.png" />
     <None Include="Resources\iconfinder_pre_293277.png" />
     <None Include="Resources\iconfinder_normal_293272_reverse.png" />
