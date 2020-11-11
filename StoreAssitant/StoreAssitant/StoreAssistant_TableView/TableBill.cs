@@ -25,6 +25,8 @@ namespace StoreAssitant
 
         #region FIELDS
         public TableBillInfo Billinfo { get; set; }
+        private const int Space_lbSumPrice_pnCashier = 3;
+        private SumPrice TotalPrice;
         #endregion
 
         public TableBill()
@@ -37,8 +39,15 @@ namespace StoreAssitant
             tableTitle_pnl.Layout += TableBill_Layout;
 
             btnCashier.Click += BtnCashier_Click;
+            TotalPrice = new SumPrice();
 
-            this.MinimumSize = new Size((new TableLine()).MinimumSize.Width, (new TableLine()).MinimumSize.Height);
+            lbPrice.DataBindings.Add("Text", TotalPrice, "Price", true, DataSourceUpdateMode.OnPropertyChanged);
+            this.MinimumSize = new Size((new TableLine()).MinimumSize.Width, (new TableLine()).MinimumSize.Height + tableTitle_pnl.MinimumSize.Height + titelLine1.MinimumSize.Height + lbSumPrice.Size.Height + Space_lbSumPrice_pnCashier*2);
+        }
+
+        private void Billinfo_ChangedInfo(object sender, EventArgs e)
+        {
+            TotalPrice.Price = Billinfo.ProductInTable.Sum(p => p.Price * p.NumberProduct);
         }
 
         #region INIT TABLEBILL
@@ -52,9 +61,13 @@ namespace StoreAssitant
             else
             {
                 this.Billinfo = info;
+                Billinfo_ChangedInfo(this, new EventArgs());
+                Billinfo.ProductInTable.OnAdded += Billinfo_ChangedInfo;
+                Billinfo.ProductInTable.OnRemoved += Billinfo_ChangedInfo;
                 foreach (var product in this.Billinfo.ProductInTable)
                 {
                     CreateTableLine(product);
+                    product.onChanged += Billinfo_ChangedInfo;
                 }
             }
         }
@@ -70,6 +83,7 @@ namespace StoreAssitant
             if (!isProductExists(product))
             {
                 Products pro = new Products(product);
+                pro.onChanged += Billinfo_ChangedInfo;
                 Billinfo.ProductInTable.Add(pro);
                 CreateTableLine(pro);
             }
@@ -80,11 +94,9 @@ namespace StoreAssitant
             {
                 if (pro.Id == product.Id)
                 {
-                    TableLine line = new TableLine();
-                    line.SetData(pro);
                     foreach(TableLine table in flpProductInfo.Controls)
                     {
-                        if (table.IDProduct == line.IDProduct)
+                        if (table.IDProduct == pro.Id)
                         {
                             table.Number++;
                             return true;
@@ -96,9 +108,11 @@ namespace StoreAssitant
         }
         private void TableBill_Layout(object sender, LayoutEventArgs e)
         {
-            flpProductInfo.Height = this.Height - tableTitle_pnl.Height - titelLine1.Height - pnlCashier.Height;
+            flpProductInfo.Height = this.Height - tableTitle_pnl.Height - titelLine1.Height - pnlCashier.Height - lbSumPrice.Size.Height - Space_lbSumPrice_pnCashier*2;
             tableTitle_lb.Location = new Point((tableTitle_pnl.Size.Width - tableTitle_lb.Size.Width) / 2, (tableTitle_pnl.Size.Height - tableTitle_lb.Size.Height) / 2);
             tableTitle_lb.Size = new Size(tableTitle_lb.Size.Width, tableTitle_pnl.Height);
+            lbSumPrice.Location = new Point(0, pnlCashier.Location.Y - lbSumPrice.Size.Height - Space_lbSumPrice_pnCashier);
+            lbPrice.Location = new Point(this.Width * 34 /44, lbSumPrice.Location.Y);
             foreach(TableLine line in flpProductInfo.Controls)
             {
                 line.Size = new Size(this.Size.Width, line.Size.Height);
@@ -152,6 +166,34 @@ namespace StoreAssitant
                 Invalidate();
             }
         }
+/*        public int TotalPrice
+        {
+            get => Billinfo.ProductInTable.Sum(p => p.Price);
+        }*/
+        #endregion
+    }
+    class SumPrice : INotifyPropertyChanged
+    {
+        private int price;
+        public int Price
+        {
+            get => price;
+            set
+            {
+                price = value;
+                InvokePropertyChanged(new PropertyChangedEventArgs("Price"));
+            }
+        }
+
+        #region Implementation of INotifyPropertyChanged
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void InvokePropertyChanged(PropertyChangedEventArgs e)
+        {
+            PropertyChanged?.Invoke(this, e);
+        }
+
         #endregion
     }
 }

@@ -34,6 +34,8 @@
             this.pnlCashier = new System.Windows.Forms.Panel();
             this.btnCashier = new System.Windows.Forms.Button();
             this.flpProductInfo = new System.Windows.Forms.FlowLayoutPanel();
+            this.lbSumPrice = new System.Windows.Forms.Label();
+            this.lbPrice = new System.Windows.Forms.Label();
             this.titelLine1 = new StoreAssitant.StoreAssistant_TableView.TitelLine();
             this.tableTitle_pnl.SuspendLayout();
             this.pnlCashier.SuspendLayout();
@@ -84,7 +86,7 @@
             this.pnlCashier.Controls.Add(this.btnCashier);
             this.pnlCashier.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlCashier.Location = new System.Drawing.Point(0, 527);
-            this.pnlCashier.MinimumSize = new System.Drawing.Size(420, 40);
+            this.pnlCashier.MinimumSize = new System.Drawing.Size(0, 40);
             this.pnlCashier.Name = "pnlCashier";
             this.pnlCashier.Size = new System.Drawing.Size(420, 43);
             this.pnlCashier.TabIndex = 6;
@@ -108,8 +110,28 @@
             this.flpProductInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.flpProductInfo.Location = new System.Drawing.Point(0, 64);
             this.flpProductInfo.Name = "flpProductInfo";
-            this.flpProductInfo.Size = new System.Drawing.Size(420, 457);
+            this.flpProductInfo.Size = new System.Drawing.Size(420, 429);
             this.flpProductInfo.TabIndex = 7;
+            // 
+            // lbSumPrice
+            // 
+            this.lbSumPrice.AutoSize = true;
+            this.lbSumPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSumPrice.Location = new System.Drawing.Point(3, 500);
+            this.lbSumPrice.Name = "lbSumPrice";
+            this.lbSumPrice.Size = new System.Drawing.Size(90, 24);
+            this.lbSumPrice.TabIndex = 8;
+            this.lbSumPrice.Text = "Tổng tiền";
+            // 
+            // lbPrice
+            // 
+            this.lbPrice.AutoSize = true;
+            this.lbPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPrice.Location = new System.Drawing.Point(352, 500);
+            this.lbPrice.Name = "lbPrice";
+            this.lbPrice.Size = new System.Drawing.Size(20, 24);
+            this.lbPrice.TabIndex = 9;
+            this.lbPrice.Text = "0";
             // 
             // titelLine1
             // 
@@ -125,6 +147,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Controls.Add(this.lbPrice);
+            this.Controls.Add(this.lbSumPrice);
             this.Controls.Add(this.flpProductInfo);
             this.Controls.Add(this.titelLine1);
             this.Controls.Add(this.pnlCashier);
@@ -135,6 +159,7 @@
             this.tableTitle_pnl.PerformLayout();
             this.pnlCashier.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -147,5 +172,7 @@
         private System.Windows.Forms.Button btnCashier;
         private StoreAssistant_TableView.TitelLine titelLine1;
         private System.Windows.Forms.FlowLayoutPanel flpProductInfo;
+        private System.Windows.Forms.Label lbSumPrice;
+        private System.Windows.Forms.Label lbPrice;
     }
 }
