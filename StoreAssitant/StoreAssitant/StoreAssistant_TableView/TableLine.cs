@@ -13,6 +13,7 @@ namespace StoreAssitant
 {
     public partial class TableLine : UserControl
     {
+        #region CREATE EVENTS
         [Category("My Event"),Description("When information of product is changed")]
         public event EventHandler InfoChanged;
         private void onInfoChanged(object sender, EventArgs e) 
@@ -22,8 +23,11 @@ namespace StoreAssitant
             lbSinglePrice.Text = product.Price.ToString();
             lbTotalPrice.Text = TotalPrice().ToString();
         }
+        #endregion
 
+        #region FIELDS
         private Products product = null;
+        #endregion
 
         public TableLine()
         {
@@ -43,8 +47,16 @@ namespace StoreAssitant
 
         public void SetData(Products product)
         {
-            this.product = product;
-            onInfoChanged(this, new EventArgs());
+            if (product != null)
+            {
+                this.product = product;
+                lbNumber.DataBindings.Add("Text", product, "NumberProduct", true, DataSourceUpdateMode.OnValidation);
+                onInfoChanged(this, new EventArgs());
+            }
+            else
+            {
+                MessageBox.Show("Không thể truy cập dữ liệu món ăn", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BtnRemove_Click(object sender, EventArgs e)
@@ -118,6 +130,7 @@ namespace StoreAssitant
                 {
                     lbNumber.Text = value.ToString();
                 }
+                else
                 {
                     if (value == 0)
                     {

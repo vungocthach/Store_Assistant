@@ -142,7 +142,7 @@ namespace StoreAssitant
         private void Newtable_ClickTableControl(object sender, EventArgs e)
         {
             SelectedTable = tableGUI_pnl.Controls.IndexOf((TableControl)sender);
-            if(isManager==false) Show_TableBill();
+            if(!isManager) Show_TableBill();
             this.ClickButtonTable(this, e);
         }
 
@@ -186,7 +186,7 @@ namespace StoreAssitant
         }
         #endregion
 
-        #region SETTING PROPERTIES
+        #region PROPERTIES
         [Category("My properties"), Description("Change main name of the view Table")]
         public string NameCashierTable
         {

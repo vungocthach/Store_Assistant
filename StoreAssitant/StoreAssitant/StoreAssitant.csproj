@@ -65,6 +65,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBill.Designer.cs">
+      <DependentUpon>FormBill.cs</DependentUpon>
+    </Compile>
     <Compile Include="StoreAssistant_AccountView\AccountView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -200,6 +206,9 @@
     <Compile Include="StoreAssistant_MenuView\TitleControl.Designer.cs">
       <DependentUpon>TitleControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormBill.resx">
+      <DependentUpon>FormBill.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_AccountView\AccountView.resx">
       <DependentUpon>AccountView.cs</DependentUpon>
     </EmbeddedResource>
