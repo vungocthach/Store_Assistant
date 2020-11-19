@@ -13,15 +13,15 @@ namespace StoreAssitant
 {
     public partial class ControlSearch : UserControl
     {
-        public  List<MenuControl> control;
-        public  List<String> name_Pro = new List<string>();
+        public List<MenuControl> control;
+        public List<String> name_Pro = new List<string>();
 
         #region Properties Control
-        [Category ("My properties"), Description ("List product of Menu")]
+        [Category("My properties"), Description("List product of Menu")]
 
-        public List <MenuControl> Control
+        public List<MenuControl> Control
         {
-            get => control; 
+            get => control;
             set
             {
                 control = value;
@@ -33,13 +33,13 @@ namespace StoreAssitant
         #region Event Add_ProductTable
         public event EventHandler Add_ProductTable;
 
-        public void on_Add_ProductTable (object sender, EventArgs e)
+        public void on_Add_ProductTable(object sender, EventArgs e)
         {
 
         }
         public event EventHandler Click_SearchBar;
 
-        public void on_CLick_SearchBar (object sender, EventArgs e)
+        public void on_CLick_SearchBar(object sender, EventArgs e)
         {
 
         }
@@ -79,23 +79,23 @@ namespace StoreAssitant
         }
 
         private void cbx_Search_KeyPress(object sender, KeyPressEventArgs e)
-         {
-             if (e.KeyChar == (char)Keys.Enter)
-                 cbx_Search_TextChanged(sender, new EventArgs());
-         }
-         private void cbx_Search_TextChanged(object sender, EventArgs e)
-         {
-             cbx_Search.Items.Clear();
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+                cbx_Search_TextChanged(sender, new EventArgs());
+        }
+        private void cbx_Search_TextChanged(object sender, EventArgs e)
+        {
+            cbx_Search.Items.Clear();
 
-             foreach (string t in name_Pro) 
-             {
-                 if (t.Contains(cbx_Search.Text)) cbx_Search.Items.Add(t);
-             }
+            foreach (string t in name_Pro)
+            {
+                if (t.Contains(cbx_Search.Text)) cbx_Search.Items.Add(t);
+            }
 
-             cbx_Search.DroppedDown = true;
-             cbx_Search.SelectionStart = cbx_Search.Text.Length;
-         }
-       private void ControlSearch_SizeChanged(object sender, EventArgs e)
+            cbx_Search.DroppedDown = true;
+            cbx_Search.SelectionStart = cbx_Search.Text.Length;
+        }
+        private void ControlSearch_SizeChanged(object sender, EventArgs e)
         {
             cbx_Search.Width = this.Width - buttonSearch.Width - cbx_Search.Margin.Right - buttonSearch.Margin.Left;
         }
