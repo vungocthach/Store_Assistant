@@ -13,34 +13,36 @@ namespace StoreAssitant
 {
     public partial class FormBill : Form, INotifyPropertyChanged
     {
+        #region FIELDS
+
         private bool isReadonly;
         private int moneyPay;
         private double percentDecrease;
         private int exchanged;
         public BillInfo info = null;
         public bool isConfirm;
+
+        #endregion
+
+
+
         public FormBill()
         {
             InitializeComponent();
 
-            Init_Bill();
             btnCashier.Click += BtnCashier_Click;
             btnCancel.Click += BtnCancel_Click;
         }
 
-        private void BtnCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
-        private void BtnCashier_Click(object sender, EventArgs e)
-        {
-            isConfirm = true;
-            this.Close();
-        }
+
+        #region INIT FORM
 
         public void setData(TableBillInfo table)
         {
+            //
+            //Gán giá trị ban đầu khi mở form lên
+            //
             info = new BillInfo();
             if (info ==null)
             {
@@ -50,8 +52,12 @@ namespace StoreAssitant
             else
             {
                 info.IDTable = table.ID;
+                lbTableName.Text += table.ID.ToString();
                 info.DayBill = DateTime.Now;
-                info.SaleCode = "###";
+                info.SaleCode = "#####";
+
+                //Thêm product vào trong bảng thanh toán
+
                 foreach(var i in table.ProductInTable)
                 {
                     ProductBill p = new ProductBill();
@@ -69,6 +75,7 @@ namespace StoreAssitant
                     tlpProduct.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
                 }
                 info.PropertyChanged += Info_PropertyChanged;
+                Init_Bill();
             }
         }
 
@@ -80,6 +87,9 @@ namespace StoreAssitant
 
         private void Init_Bill()
         {
+            //
+            //Thực hiện binding các textbox với giá trị info
+            //
             textBox1.DataBindings.Add("Text", info, "Price_Bill", true, DataSourceUpdateMode.OnPropertyChanged);
             textBox2.DataBindings.Add("Text", info, "SaleCode", true, DataSourceUpdateMode.OnPropertyChanged);
             textBox3.DataBindings.Add("Text", this, "MoneyPay", true, DataSourceUpdateMode.OnPropertyChanged);
@@ -87,6 +97,27 @@ namespace StoreAssitant
             textBox5.DataBindings.Add("Text", this, "Exchanged", true, DataSourceUpdateMode.OnPropertyChanged);
             lbDate.Text = lbDate.Text + DateTime.Now.Day + '/' + DateTime.Now.Month + '/' + DateTime.Now.Year;
         }
+
+        #endregion
+
+
+        #region EVENT BUTTON CLICK
+
+        private void BtnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void BtnCashier_Click(object sender, EventArgs e)
+        {
+            isConfirm = true;
+            this.Close();
+        }
+
+        #endregion
+
+
+        #region PROPERTIES
 
         [Category("My properties"), Description("Check can write on bill form")]
         public bool IsReadonly
@@ -108,6 +139,7 @@ namespace StoreAssitant
                 }
             }
         }
+
         [Category("My properties"), Description("Get money need to pay")]
         public int MoneyPay { 
             get => moneyPay;
@@ -118,6 +150,7 @@ namespace StoreAssitant
             }
         }
 
+        [Category("My properties"), Description("Get percent decrease of discount")]
         public double PercentDecrease { 
             get => percentDecrease;
             set
@@ -134,6 +167,7 @@ namespace StoreAssitant
             }
         }
 
+        [Category("My properties"), Description("Get money need exchange customer")]
         public int Exchanged { 
             get => exchanged;
             set
@@ -150,6 +184,8 @@ namespace StoreAssitant
                 InvokePropertyChanged(new PropertyChangedEventArgs("Exchanged"));
             }
         }
+
+        #endregion
 
 
         #region Implementation of INotifyPropertyChanged

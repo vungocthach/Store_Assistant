@@ -142,10 +142,13 @@ namespace StoreAssitant
                 f.setData(Billinfo);
                 f.ShowDialog();
                 //BẤM XÁC NHẬN THÌ MỚI XÓA
-                while(Billinfo.ProductInTable.Count!=0)
+                if (f.isConfirm)
                 {
-                    Billinfo.ProductInTable.Remove(Billinfo.ProductInTable[Billinfo.ProductInTable.Count - 1]);
-                    flpProductInfo.Controls.Remove(flpProductInfo.Controls[flpProductInfo.Controls.Count - 1]);
+                    while (Billinfo.ProductInTable.Count != 0)
+                    {
+                        Billinfo.ProductInTable.Remove(Billinfo.ProductInTable[Billinfo.ProductInTable.Count - 1]);
+                        flpProductInfo.Controls.Remove(flpProductInfo.Controls[flpProductInfo.Controls.Count - 1]);
+                    }
                 }
             }
         }

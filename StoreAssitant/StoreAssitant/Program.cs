@@ -19,8 +19,7 @@ namespace StoreAssitant
 
             LoginForm form = new LoginForm();
             form.Click_Login += Form_Click_Login;
-            //Application.Run(form);
-            Application.Run(new FormBill());
+            Application.Run(form);
         }
 
         private static void Form_Click_Login(object sender, UserInfo e)
