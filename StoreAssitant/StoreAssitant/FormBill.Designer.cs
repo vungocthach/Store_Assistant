@@ -127,7 +127,7 @@
             this.tlpProduct.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tlpProduct.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tlpProduct.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.tlpProduct.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tlpProduct.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
             this.tlpProduct.Controls.Add(this.lbSTT, 0, 0);
             this.tlpProduct.Controls.Add(this.lbNumber, 2, 0);
             this.tlpProduct.Controls.Add(this.lbSinglePrice, 3, 0);
@@ -243,6 +243,7 @@
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(114, 15);
             this.textBox5.TabIndex = 13;
+            this.textBox5.Text = "0";
             // 
             // textBox4
             // 
@@ -254,6 +255,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(114, 15);
             this.textBox4.TabIndex = 12;
+            this.textBox4.Text = "0";
             // 
             // textBox3
             // 
@@ -266,6 +268,7 @@
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(114, 15);
             this.textBox3.TabIndex = 11;
+            this.textBox3.Text = "0";
             // 
             // textBox2
             // 
@@ -277,6 +280,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(114, 15);
             this.textBox2.TabIndex = 10;
+            this.textBox2.Text = "#######";
             // 
             // lbPrice_Bill
             // 
@@ -333,6 +337,7 @@
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(114, 15);
             this.textBox1.TabIndex = 9;
+            this.textBox1.Text = "0";
             // 
             // FormBill
             // 

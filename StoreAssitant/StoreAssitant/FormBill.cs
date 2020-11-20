@@ -11,25 +11,17 @@ using StoreAssitant.Class_Information;
 
 namespace StoreAssitant
 {
-    public partial class FormBill : Form
+    public partial class FormBill : Form, INotifyPropertyChanged
     {
         private bool isReadonly;
+        private int moneyPay;
+        private double percentDecrease;
+        private int exchanged;
         public BillInfo info = null;
+        public bool isConfirm;
         public FormBill()
         {
             InitializeComponent();
-
-/*            info = new BillInfo();
-            info.IDTable = 1;
-            info.DayBill = DateTime.Now;
-            info.Price_Bill = 1000;
-            info.SaleCode = "###";
-            ProductBill p = new ProductBill();
-            p.Name = "ok";
-            p.Number = 5;
-            p.SinglePrice = 1000;
-            info.ProductBills.Add(p);
-            IsReadonly = true;*/
 
             Init_Bill();
             btnCashier.Click += BtnCashier_Click;
@@ -43,7 +35,8 @@ namespace StoreAssitant
 
         private void BtnCashier_Click(object sender, EventArgs e)
         {
-            info.Price_Bill += 1000;
+            isConfirm = true;
+            this.Close();
         }
 
         public void setData(TableBillInfo table)
@@ -58,7 +51,6 @@ namespace StoreAssitant
             {
                 info.IDTable = table.ID;
                 info.DayBill = DateTime.Now;
-                info.Price_Bill = table.ProductInTable.Sum(i => i.Price * i.NumberProduct);
                 info.SaleCode = "###";
                 foreach(var i in table.ProductInTable)
                 {
@@ -76,15 +68,23 @@ namespace StoreAssitant
                     tlpProduct.RowCount++;
                     tlpProduct.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
                 }
-                
+                info.PropertyChanged += Info_PropertyChanged;
             }
         }
+
+        private void Info_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            MoneyPay = (int)(info.Price_Bill * (1 + percentDecrease));
+            Exchanged = info.Price_Customer - MoneyPay;
+        }
+
         private void Init_Bill()
         {
             textBox1.DataBindings.Add("Text", info, "Price_Bill", true, DataSourceUpdateMode.OnPropertyChanged);
             textBox2.DataBindings.Add("Text", info, "SaleCode", true, DataSourceUpdateMode.OnPropertyChanged);
-            //textBox3.DataBindings.Add("Text", info, , true, DataSourceUpdateMode.OnPropertyChanged);
+            textBox3.DataBindings.Add("Text", this, "MoneyPay", true, DataSourceUpdateMode.OnPropertyChanged);
             textBox4.DataBindings.Add("Text", info, "Price_Customer", true, DataSourceUpdateMode.OnPropertyChanged);
+            textBox5.DataBindings.Add("Text", this, "Exchanged", true, DataSourceUpdateMode.OnPropertyChanged);
             lbDate.Text = lbDate.Text + DateTime.Now.Day + '/' + DateTime.Now.Month + '/' + DateTime.Now.Year;
         }
 
@@ -108,5 +108,59 @@ namespace StoreAssitant
                 }
             }
         }
+        [Category("My properties"), Description("Get money need to pay")]
+        public int MoneyPay { 
+            get => moneyPay;
+            set
+            {
+                moneyPay = value;
+                InvokePropertyChanged(new PropertyChangedEventArgs("Money Pay"));
+            }
+        }
+
+        public double PercentDecrease { 
+            get => percentDecrease;
+            set
+            {
+                if (value < 1)
+                {
+                    percentDecrease = value;
+                }
+                else
+                {
+                    value = 1;
+                }
+                InvokePropertyChanged(new PropertyChangedEventArgs("Percent Deacreas"));
+            }
+        }
+
+        public int Exchanged { 
+            get => exchanged;
+            set
+            {
+                exchanged = value;
+                if (value<0)
+                {
+                    textBox5.BackColor = Color.Red;
+                }
+                else
+                {
+                    textBox5.BackColor = SystemColors.Control;
+                }
+                InvokePropertyChanged(new PropertyChangedEventArgs("Exchanged"));
+            }
+        }
+
+
+        #region Implementation of INotifyPropertyChanged
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void InvokePropertyChanged(PropertyChangedEventArgs e)
+        {
+            PropertyChanged?.Invoke(this, e);
+        }
+
+        #endregion
     }
 }

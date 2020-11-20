@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using System.Windows.Forms;
+using StoreAssitant.Class_Information;
 
 namespace StoreAssitant
 {
@@ -13,12 +15,15 @@ namespace StoreAssitant
         private DateTime dayBill;
         private int price_Bill;
         private string saleCode;
-        private List<ProductBill> productBills;
+        private MyList<ProductBill> productBills;
         private int price_Customer;
         public int IDTable { get => iDTable; set => iDTable = value; }
         public DateTime DayBill { get => dayBill; set => dayBill = value; }
-        public int Price_Bill { 
-            get => price_Bill; 
+        public int Price_Bill {
+            get
+            {
+                return price_Bill;
+            }
             set
             {
                 price_Bill = value;
@@ -30,28 +35,43 @@ namespace StoreAssitant
             set
             {
                 saleCode = value;
-                InvokePropertyChanged(new PropertyChangedEventArgs("Price_Bill"));
+                InvokePropertyChanged(new PropertyChangedEventArgs("SaleCode"));
+                //PropertiesChanged(this, new EventArgs());
             }
         }
-        internal List<ProductBill> ProductBills { get => productBills; set => productBills = value; }
+        public MyList<ProductBill> ProductBills { 
+            get => productBills; 
+            set
+            {
+                productBills = value;
+                //InvokePropertyChanged(new PropertyChangedEventArgs("Price Customer"));
+            }
+        }
         public int Price_Customer { 
             get => price_Customer;
             set
             {
                 price_Customer = value;
-                InvokePropertyChanged(new PropertyChangedEventArgs("Price_Bill"));
+                InvokePropertyChanged(new PropertyChangedEventArgs("Price Customer"));
             }
         }
 
 
-        public BillInfo() { productBills = new List<ProductBill>(); }
-        public BillInfo(int id, DateTime day, int price, string code, List<ProductBill> productBills)
+        public BillInfo() { 
+            productBills = new MyList<ProductBill>();
+
+            PropertyChanged = new PropertyChangedEventHandler((s, e) => { });
+            productBills.OnAdded += new EventHandler((s, e) => { Price_Bill = ProductBills.Sum(i => i.SinglePrice * i.Number); });
+            productBills.OnRemoved += new EventHandler((s, e) => { Price_Bill = ProductBills.Sum(i => i.SinglePrice * i.Number); });
+        }
+        public BillInfo(int id, DateTime day, int price, string code, MyList<ProductBill> productBills)
         {
             iDTable = id;
             dayBill = day;
             price_Bill = price;
             saleCode = code;
             this.productBills = productBills;
+            PropertyChanged = new PropertyChangedEventHandler((s, e) => { });
         }
 
         #region Implementation of INotifyPropertyChanged
@@ -70,6 +90,7 @@ namespace StoreAssitant
         private string name;
         private int number;
         private int singlePrice;
+
         public string Name { get => name; set => name = value; }
         public int Number { get => number; set => number = value; }
         public int SinglePrice { get => singlePrice; set => singlePrice = value; }
