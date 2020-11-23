@@ -54,7 +54,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             // numTable
             // 
             this.numTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numTable.Location = new System.Drawing.Point(86, 8);
+            this.numTable.Location = new System.Drawing.Point(88, 8);
             this.numTable.Name = "numTable";
             this.numTable.Size = new System.Drawing.Size(78, 24);
             this.numTable.TabIndex = 1;
