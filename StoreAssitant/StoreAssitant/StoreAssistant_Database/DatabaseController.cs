@@ -550,7 +550,7 @@ namespace StoreAssitant
             return true;
 #endif
         }
-        public List<string> Get_Name_Product(string Name)
+       /* public List<string> Get_Name_Product(string Name)
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
 
@@ -567,15 +567,36 @@ namespace StoreAssitant
                     object tmp = reader["PD_Name"];
                     if (tmp != DBNull.Value)
                     {
-                        Product.Add(reader["PD_Name"].ToString());
+                        ProductAddWithValue(reader["PD_Name"].ToString());
                     }
                     ++i;
                 }
                 ConsultPro = Product.FindAll(s => { return (s.Contains(Name)); });
                 return ConsultPro;
             }
+        }*/
+        public void insert_Bill (BillInfo bill)
+        {
+            
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+                cmd.CommandText = string.Format("insert into BILL (Number_TB, ID_User, Vourcher, Total, Take, Give, Time) values (@Number_Tb, @Id_User,@Vourcher, @total, @Take, @Give, @Time)");
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue(string.Format("@Number_Tb"), bill.Number_table);
+                cmd.Parameters.AddWithValue(string.Format("@Id_User"), bill.USER_Name);
+                cmd.Parameters.AddWithValue(string.Format("@Vourcher"), bill.Voucher);
+                cmd.Parameters.AddWithValue(string.Format("@Total"), bill.TOTAL);
+                cmd.Parameters.AddWithValue(string.Format("@Take"), bill.Take);
+                cmd.Parameters.AddWithValue(string.Format("@Give"), bill.Give);
+                cmd.Parameters.AddWithValue(string.Format("@Time"), bill.DAY);
+                cmd.ExecuteNonQuery();
+            
         }
-
+        public void delete_Bill(BillInfo bill)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("delete from BILL where  BILL_ID = " + bill.ID);
+            cmd.ExecuteNonQuery();
+        }
 
         public void Dispose()
         {
