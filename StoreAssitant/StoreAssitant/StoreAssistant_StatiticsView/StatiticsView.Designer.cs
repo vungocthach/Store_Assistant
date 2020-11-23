@@ -34,29 +34,29 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dtp_From = new System.Windows.Forms.DateTimePicker();
-            this.dtp_To = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.pageSelector1 = new StoreAssitant.StoreAssistant_HistoryView.PageSelector();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.namePD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numberPD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.revenue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pageSelector1 = new StoreAssitant.StoreAssistant_HistoryView.PageSelector();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dateMin = new System.Windows.Forms.DateTimePicker();
+            this.dateMax = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupChart = new System.Windows.Forms.GroupBox();
+            this.numTop = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupChart.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -75,62 +75,26 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
+            this.splitContainer1.Panel2.Controls.Add(this.groupChart);
             this.splitContainer1.Size = new System.Drawing.Size(1080, 500);
             this.splitContainer1.SplitterDistance = 513;
             this.splitContainer1.TabIndex = 0;
             // 
-            // groupBox1
+            // pageSelector1
             // 
-            this.groupBox1.Controls.Add(this.dtp_From);
-            this.groupBox1.Controls.Add(this.dtp_To);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(513, 71);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Thời Gian";
-            // 
-            // dtp_From
-            // 
-            this.dtp_From.CustomFormat = "dd/MM/yyyy";
-            this.dtp_From.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_From.Location = new System.Drawing.Point(101, 28);
-            this.dtp_From.Name = "dtp_From";
-            this.dtp_From.Size = new System.Drawing.Size(133, 27);
-            this.dtp_From.TabIndex = 3;
-            // 
-            // dtp_To
-            // 
-            this.dtp_To.CustomFormat = "dd/MM/yyyy";
-            this.dtp_To.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_To.Location = new System.Drawing.Point(337, 28);
-            this.dtp_To.Name = "dtp_To";
-            this.dtp_To.Size = new System.Drawing.Size(134, 27);
-            this.dtp_To.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 22);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Từ Ngày :";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(240, 28);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 22);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Đến Ngày :";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.pageSelector1.BackColor = System.Drawing.Color.Transparent;
+            this.pageSelector1.ButtonFirstMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.pageSelector1.ButtonLastMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.pageSelector1.ButtonNextMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.pageSelector1.ButtonPreviousMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.pageSelector1.Location = new System.Drawing.Point(146, 460);
+            this.pageSelector1.Name = "pageSelector1";
+            this.pageSelector1.PageBoxFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pageSelector1.PageBoxMargin = new System.Windows.Forms.Padding(3);
+            this.pageSelector1.PageBoxSize = new System.Drawing.Size(100, 26);
+            this.pageSelector1.SelectedIndex = 1;
+            this.pageSelector1.Size = new System.Drawing.Size(210, 34);
+            this.pageSelector1.TabIndex = 0;
             // 
             // dataGridView1
             // 
@@ -193,34 +157,85 @@
             this.revenue.ReadOnly = true;
             this.revenue.Width = 150;
             // 
-            // pageSelector1
+            // groupBox1
             // 
-            this.pageSelector1.BackColor = System.Drawing.Color.Transparent;
-            this.pageSelector1.ButtonFirstMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.pageSelector1.ButtonLastMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.pageSelector1.ButtonNextMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.pageSelector1.ButtonPreviousMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.pageSelector1.Location = new System.Drawing.Point(146, 460);
-            this.pageSelector1.Name = "pageSelector1";
-            this.pageSelector1.PageBoxFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pageSelector1.PageBoxMargin = new System.Windows.Forms.Padding(3);
-            this.pageSelector1.PageBoxSize = new System.Drawing.Size(100, 26);
-            this.pageSelector1.SelectedIndex = 1;
-            this.pageSelector1.Size = new System.Drawing.Size(210, 34);
-            this.pageSelector1.TabIndex = 0;
+            this.groupBox1.Controls.Add(this.dateMin);
+            this.groupBox1.Controls.Add(this.dateMax);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(513, 71);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Thời Gian";
             // 
-            // groupBox2
+            // dateMin
             // 
-            this.groupBox2.Controls.Add(this.numericUpDown1);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.chart1);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(563, 500);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Biểu Đồ";
+            this.dateMin.CustomFormat = "dd/MM/yyyy";
+            this.dateMin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateMin.Location = new System.Drawing.Point(101, 28);
+            this.dateMin.Name = "dateMin";
+            this.dateMin.Size = new System.Drawing.Size(133, 27);
+            this.dateMin.TabIndex = 3;
+            // 
+            // dateMax
+            // 
+            this.dateMax.CustomFormat = "dd/MM/yyyy";
+            this.dateMax.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateMax.Location = new System.Drawing.Point(337, 28);
+            this.dateMax.Name = "dateMax";
+            this.dateMax.Size = new System.Drawing.Size(134, 27);
+            this.dateMax.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 22);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Từ Ngày :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(240, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 22);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Đến Ngày :";
+            // 
+            // groupChart
+            // 
+            this.groupChart.Controls.Add(this.numTop);
+            this.groupChart.Controls.Add(this.label3);
+            this.groupChart.Controls.Add(this.chart1);
+            this.groupChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupChart.Location = new System.Drawing.Point(0, 0);
+            this.groupChart.Name = "groupChart";
+            this.groupChart.Size = new System.Drawing.Size(563, 500);
+            this.groupChart.TabIndex = 0;
+            this.groupChart.TabStop = false;
+            this.groupChart.Text = "Biểu Đồ";
+            // 
+            // numTop
+            // 
+            this.numTop.Location = new System.Drawing.Point(506, 18);
+            this.numTop.Name = "numTop";
+            this.numTop.Size = new System.Drawing.Size(51, 27);
+            this.numTop.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(448, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(52, 22);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Top :";
             // 
             // chart1
             // 
@@ -239,22 +254,6 @@
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(448, 18);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 22);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Top :";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(506, 18);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(51, 27);
-            this.numericUpDown1.TabIndex = 2;
-            // 
             // StatiticsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -262,20 +261,20 @@
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "StatiticsView";
             this.Size = new System.Drawing.Size(1080, 500);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.groupChart.ResumeLayout(false);
+            this.groupChart.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numTop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -284,8 +283,8 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DateTimePicker dtp_From;
-        private System.Windows.Forms.DateTimePicker dtp_To;
+        private System.Windows.Forms.DateTimePicker dateMin;
+        private System.Windows.Forms.DateTimePicker dateMax;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private StoreAssistant_HistoryView.PageSelector pageSelector1;
@@ -293,8 +292,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn namePD;
         private System.Windows.Forms.DataGridViewTextBoxColumn numberPD;
         private System.Windows.Forms.DataGridViewTextBoxColumn revenue;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.GroupBox groupChart;
+        private System.Windows.Forms.NumericUpDown numTop;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }

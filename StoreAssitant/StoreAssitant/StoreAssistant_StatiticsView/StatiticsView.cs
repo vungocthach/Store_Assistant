@@ -17,9 +17,5 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
