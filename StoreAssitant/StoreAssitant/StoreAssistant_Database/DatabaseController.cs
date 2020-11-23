@@ -594,7 +594,7 @@ namespace StoreAssitant
         public void delete_Bill(BillInfo bill)
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
-            cmd.CommandText = string.Format("delete from BILL where  BILL_ID = " + bill.ID);
+            cmd.CommandText = string.Format("delete from BILL where  BILL_ID = " + bill.Number_table);
             cmd.ExecuteNonQuery();
         }
 

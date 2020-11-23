@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using StoreAssitant.Class_Information;
 
-namespace StoreAssitant
+namespace StoreAssitant.Backup
 {
     public class BillInfo
     {
-        public List<Products> ProductInBill;
+        public List<Class_Information.Products> ProductInBill;
         public int ID { get; set; }
         public string Voucher { get; set; }
         public DateTime DAY { get; set; }
@@ -21,7 +21,7 @@ namespace StoreAssitant
         public string USER_Name { get; set; }
         public BillInfo()
         {
-            ProductInBill = new List<Products>();
+            ProductInBill = new List<Class_Information.Products>();
             DAY = DateTime.Now;
         }
     }

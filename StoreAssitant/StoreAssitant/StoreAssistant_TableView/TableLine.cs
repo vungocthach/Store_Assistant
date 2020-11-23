@@ -26,7 +26,7 @@ namespace StoreAssitant
         #endregion
 
         #region FIELDS
-        private Products product = null;
+        private Class_Information.Products product = null;
         #endregion
 
         public TableLine()
@@ -45,7 +45,7 @@ namespace StoreAssitant
             return product.Price*product.NumberProduct;
         }
 
-        public void SetData(Products product)
+        public void SetData(Class_Information.Products product)
         {
             if (product != null)
             {

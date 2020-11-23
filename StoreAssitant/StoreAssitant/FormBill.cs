@@ -51,26 +51,26 @@ namespace StoreAssitant
             }
             else
             {
-                info.IDTable = table.ID;
+                info.Number_table = table.ID;
                 lbTableName.Text += table.ID.ToString();
-                info.DayBill = DateTime.Now;
-                info.SaleCode = "#####";
+                info.DAY = DateTime.Now;
+                info.Voucher = "#####";
 
                 //Thêm product vào trong bảng thanh toán
 
                 foreach(var i in table.ProductInTable)
                 {
-                    ProductBill p = new ProductBill();
+                    Products p = new Products();
                     p.Name = i.Name;
-                    p.Number = i.NumberProduct;
-                    p.SinglePrice = i.Price;
+                    p.NumberProduct = i.NumberProduct;
+                    p.Price = i.Price;
                     info.ProductBills.Add(p);
 
                     tlpProduct.Controls.Add(new Label() { Text = tlpProduct.RowCount.ToString() }, 0, tlpProduct.RowCount - 1);
                     tlpProduct.Controls.Add(new Label() { Text = p.Name }, 1, tlpProduct.RowCount - 1);
-                    tlpProduct.Controls.Add(new Label() { Text = p.Number.ToString() }, 2, tlpProduct.RowCount - 1);
-                    tlpProduct.Controls.Add(new Label() { Text = p.SinglePrice.ToString() }, 3, tlpProduct.RowCount - 1);
-                    tlpProduct.Controls.Add(new Label() { Text = (p.Number * p.SinglePrice).ToString() }, 4, tlpProduct.RowCount - 1);
+                    tlpProduct.Controls.Add(new Label() { Text = p.NumberProduct.ToString() }, 2, tlpProduct.RowCount - 1);
+                    tlpProduct.Controls.Add(new Label() { Text = p.Price.ToString() }, 3, tlpProduct.RowCount - 1);
+                    tlpProduct.Controls.Add(new Label() { Text = (p.NumberProduct * p.Price).ToString() }, 4, tlpProduct.RowCount - 1);
                     tlpProduct.RowCount++;
                     tlpProduct.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
                 }
@@ -82,7 +82,7 @@ namespace StoreAssitant
         private void Info_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             MoneyPay = (int)(info.Price_Bill * (1 + percentDecrease));
-            Exchanged = info.Price_Customer - MoneyPay;
+            Exchanged = info.Take - MoneyPay;
         }
 
         private void Init_Bill()
@@ -91,9 +91,9 @@ namespace StoreAssitant
             //Thực hiện binding các textbox với giá trị info
             //
             textBox1.DataBindings.Add("Text", info, "Price_Bill", true, DataSourceUpdateMode.OnPropertyChanged);
-            textBox2.DataBindings.Add("Text", info, "SaleCode", true, DataSourceUpdateMode.OnPropertyChanged);
+            textBox2.DataBindings.Add("Text", info, "Voucher", true, DataSourceUpdateMode.OnPropertyChanged);
             textBox3.DataBindings.Add("Text", this, "MoneyPay", true, DataSourceUpdateMode.OnPropertyChanged);
-            textBox4.DataBindings.Add("Text", info, "Price_Customer", true, DataSourceUpdateMode.OnPropertyChanged);
+            textBox4.DataBindings.Add("Text", info, "Take", true, DataSourceUpdateMode.OnPropertyChanged);
             textBox5.DataBindings.Add("Text", this, "Exchanged", true, DataSourceUpdateMode.OnPropertyChanged);
             lbDate.Text = lbDate.Text + DateTime.Now.Day + '/' + DateTime.Now.Month + '/' + DateTime.Now.Year;
         }

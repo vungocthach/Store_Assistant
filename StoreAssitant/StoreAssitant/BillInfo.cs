@@ -11,14 +11,23 @@ namespace StoreAssitant
 {
     public class BillInfo: INotifyPropertyChanged
     {
-        private int iDTable;
-        private DateTime dayBill;
+        private int number_table;
+        private DateTime day;
         private int price_Bill;
-        private string saleCode;
-        private MyList<ProductBill> productBills;
-        private int price_Customer;
-        public int IDTable { get => iDTable; set => iDTable = value; }
-        public DateTime DayBill { get => dayBill; set => dayBill = value; }
+        private string voucher;
+        private MyList<Products> productBills;
+        private int take;
+        public int TOTAL
+        {
+            get => price_Bill + 0;
+        }
+        public int Give
+        {
+            get => Take - TOTAL;
+        }
+        public int Number_table { get => number_table; set => number_table = value; }
+        public DateTime DAY { get => day; set => day = value; }
+        public string USER_Name { get; set; }
         public int Price_Bill {
             get
             {
@@ -30,16 +39,16 @@ namespace StoreAssitant
                 InvokePropertyChanged(new PropertyChangedEventArgs("Price_Bill"));
             }
         }
-        public string SaleCode { 
-            get => saleCode;
+        public string Voucher { 
+            get => voucher;
             set
             {
-                saleCode = value;
+                voucher = value;
                 InvokePropertyChanged(new PropertyChangedEventArgs("SaleCode"));
                 //PropertiesChanged(this, new EventArgs());
             }
         }
-        public MyList<ProductBill> ProductBills { 
+        public MyList<Products> ProductBills { 
             get => productBills; 
             set
             {
@@ -47,29 +56,29 @@ namespace StoreAssitant
                 //InvokePropertyChanged(new PropertyChangedEventArgs("Price Customer"));
             }
         }
-        public int Price_Customer { 
-            get => price_Customer;
+        public int Take { 
+            get => take;
             set
             {
-                price_Customer = value;
+                take = value;
                 InvokePropertyChanged(new PropertyChangedEventArgs("Price Customer"));
             }
         }
 
 
         public BillInfo() { 
-            productBills = new MyList<ProductBill>();
+            productBills = new MyList<Products>();
 
             PropertyChanged = new PropertyChangedEventHandler((s, e) => { });
-            productBills.OnAdded += new EventHandler((s, e) => { Price_Bill = ProductBills.Sum(i => i.SinglePrice * i.Number); });
-            productBills.OnRemoved += new EventHandler((s, e) => { Price_Bill = ProductBills.Sum(i => i.SinglePrice * i.Number); });
+            productBills.OnAdded += new EventHandler((s, e) => { Price_Bill = ProductBills.Sum(i => i.Price * i.NumberProduct); });
+            productBills.OnRemoved += new EventHandler((s, e) => { Price_Bill = ProductBills.Sum(i => i.Price * i.NumberProduct); });
         }
-        public BillInfo(int id, DateTime day, int price, string code, MyList<ProductBill> productBills)
+        public BillInfo(int id, DateTime day, int price, string code, MyList<Products> productBills)
         {
-            iDTable = id;
-            dayBill = day;
+            number_table = id;
+            this.day = day;
             price_Bill = price;
-            saleCode = code;
+            voucher = code;
             this.productBills = productBills;
             PropertyChanged = new PropertyChangedEventHandler((s, e) => { });
         }
@@ -84,23 +93,5 @@ namespace StoreAssitant
         }
 
         #endregion
-    }
-    public class ProductBill
-    {
-        private string name;
-        private int number;
-        private int singlePrice;
-
-        public string Name { get => name; set => name = value; }
-        public int Number { get => number; set => number = value; }
-        public int SinglePrice { get => singlePrice; set => singlePrice = value; }
-
-        public ProductBill() { }
-        public ProductBill(string name, int number, int price)
-        {
-            this.name = name;
-            this.number = number;
-            this.singlePrice = price;
-        }
     }
 }

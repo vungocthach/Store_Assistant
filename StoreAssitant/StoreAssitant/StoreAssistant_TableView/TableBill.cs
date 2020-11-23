@@ -71,7 +71,7 @@ namespace StoreAssitant
                 }
             }
         }
-        private void CreateTableLine(Products product)
+        private void CreateTableLine(Class_Information.Products product)
         {
             TableLine line = new TableLine();
             line.Size = new Size(this.Size.Width, line.Size.Height);
@@ -82,7 +82,7 @@ namespace StoreAssitant
         {
             if (!isProductExists(product))
             {
-                Products pro = new Products(product);
+                Class_Information.Products pro = new Class_Information.Products(product);
                 pro.onChanged += Billinfo_ChangedInfo;
                 Billinfo.ProductInTable.Add(pro);
                 CreateTableLine(pro);
@@ -90,7 +90,7 @@ namespace StoreAssitant
         }
         private bool isProductExists(ProductInfo product)
         {
-            foreach (Products pro in Billinfo.ProductInTable)
+            foreach (Class_Information.Products pro in Billinfo.ProductInTable)
             {
                 if (pro.Id == product.Id)
                 {
@@ -122,7 +122,7 @@ namespace StoreAssitant
         {
             for (int i = 0; i < Billinfo.ProductInTable.Count; i++)
             {
-                Products product = Billinfo.ProductInTable[i];
+                Class_Information.Products product = Billinfo.ProductInTable[i];
                 if (product.NumberProduct == 0)
                 {
                     Billinfo.ProductInTable.Remove(product);
