@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using StoreAssitant.Class_Information; 
 
 namespace StoreAssitant
 {
@@ -139,7 +140,6 @@ namespace StoreAssitant
 
         private void Product_Click_EditProductInfo(object sender, ProductInfo e)
         {
-            //MessageBox.Show(e.ToString());
             Click_EditProduct(sender, e);
         }
      
@@ -188,6 +188,7 @@ namespace StoreAssitant
 
             controlProduct._Click += ControlProduct_Click;
 
+
             //controlSearch.Click_SearchBar += ControlSearch_Click_SearchBar;
 
         }
@@ -200,11 +201,20 @@ namespace StoreAssitant
 
         private void ControlProduct_Click(object sender, EventArgs e)
         {
-            ClickAddButton(this, e);
+            BillInfo bill = new BillInfo();
+            bill.ProductInBill = new List<Products>();
+            bill.ProductInBill.Add(new Products(new ProductInfo(90, "trà sữa", 20000, "thơm ngon")));
+            bill.Give = 10000;
+            bill.Take = 500;
+            bill.Number_table = 3;
+            bill.USER_Name = "admin";
+            bill.Voucher ="AVXFX";
+            bill.TOTAL = 130000;
+
+            DatabaseController t = new DatabaseController();
+            t.insert_Bill(bill);
+            ClickAddButton(this, e);           
         }
-
-        
-
         private void Product_Click_AddControlProduct(object sender, EventArgs e)
         {
             MouseEventArgs me = (MouseEventArgs)e;
