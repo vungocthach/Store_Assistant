@@ -30,7 +30,7 @@ namespace StoreAssitant
 
             Form test_form = new Form();
             test_form.Size = new System.Drawing.Size(1100, 600);
-            test_form.Controls.Add(new HistoryView() { Dock = DockStyle.Fill });
+            test_form.Controls.Add(new StoreAssistant_StatiticsView.StatiticsView() { Dock = DockStyle.Fill });
             Application.Run(test_form);
         }
 

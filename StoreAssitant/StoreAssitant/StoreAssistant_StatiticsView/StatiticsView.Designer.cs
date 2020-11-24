@@ -34,11 +34,7 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.pageSelector1 = new StoreAssitant.StoreAssistant_HistoryView.PageSelector();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.namePD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numberPD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.revenue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dateMin = new System.Windows.Forms.DateTimePicker();
             this.dateMax = new System.Windows.Forms.DateTimePicker();
@@ -48,6 +44,10 @@
             this.numTop = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.pageSelector1 = new StoreAssitant.StoreAssistant_HistoryView.PageSelector();
+            this.namePD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numberPD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.revenue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -71,30 +71,16 @@
             this.splitContainer1.Panel1.Controls.Add(this.pageSelector1);
             this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
+            this.splitContainer1.Panel1MinSize = 400;
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.Control;
             this.splitContainer1.Panel2.Controls.Add(this.groupChart);
+            this.splitContainer1.Panel2MinSize = 400;
             this.splitContainer1.Size = new System.Drawing.Size(1080, 500);
             this.splitContainer1.SplitterDistance = 513;
             this.splitContainer1.TabIndex = 0;
-            // 
-            // pageSelector1
-            // 
-            this.pageSelector1.BackColor = System.Drawing.Color.Transparent;
-            this.pageSelector1.ButtonFirstMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.pageSelector1.ButtonLastMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.pageSelector1.ButtonNextMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.pageSelector1.ButtonPreviousMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.pageSelector1.Location = new System.Drawing.Point(146, 460);
-            this.pageSelector1.Name = "pageSelector1";
-            this.pageSelector1.PageBoxFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pageSelector1.PageBoxMargin = new System.Windows.Forms.Padding(3);
-            this.pageSelector1.PageBoxSize = new System.Drawing.Size(100, 26);
-            this.pageSelector1.SelectedIndex = 1;
-            this.pageSelector1.Size = new System.Drawing.Size(210, 34);
-            this.pageSelector1.TabIndex = 0;
             // 
             // dataGridView1
             // 
@@ -118,7 +104,7 @@
             this.numberPD,
             this.revenue});
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 78);
+            this.dataGridView1.Location = new System.Drawing.Point(4, 72);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
@@ -131,43 +117,16 @@
             this.dataGridView1.Size = new System.Drawing.Size(505, 381);
             this.dataGridView1.TabIndex = 6;
             // 
-            // namePD
-            // 
-            this.namePD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.namePD.DividerWidth = 2;
-            this.namePD.HeaderText = "Tên Sản Phẩm";
-            this.namePD.Name = "namePD";
-            this.namePD.ReadOnly = true;
-            // 
-            // numberPD
-            // 
-            this.numberPD.DividerWidth = 2;
-            this.numberPD.HeaderText = "Số Lượng";
-            this.numberPD.MinimumWidth = 120;
-            this.numberPD.Name = "numberPD";
-            this.numberPD.ReadOnly = true;
-            this.numberPD.Width = 120;
-            // 
-            // revenue
-            // 
-            this.revenue.DividerWidth = 2;
-            this.revenue.HeaderText = "Doanh Thu";
-            this.revenue.MinimumWidth = 130;
-            this.revenue.Name = "revenue";
-            this.revenue.ReadOnly = true;
-            this.revenue.Width = 150;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dateMin);
             this.groupBox1.Controls.Add(this.dateMax);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.groupBox1.Location = new System.Drawing.Point(5, 0);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(513, 71);
+            this.groupBox1.Size = new System.Drawing.Size(480, 65);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thời Gian";
@@ -223,6 +182,7 @@
             // 
             // numTop
             // 
+            this.numTop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.numTop.Location = new System.Drawing.Point(506, 18);
             this.numTop.Name = "numTop";
             this.numTop.Size = new System.Drawing.Size(51, 27);
@@ -230,6 +190,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(448, 18);
             this.label3.Name = "label3";
@@ -239,20 +200,67 @@
             // 
             // chart1
             // 
+            this.chart1.BackColor = System.Drawing.Color.Gainsboro;
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.Dock = System.Windows.Forms.DockStyle.Bottom;
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(3, 51);
+            this.chart1.Location = new System.Drawing.Point(5, 50);
+            this.chart1.Margin = new System.Windows.Forms.Padding(5, 2, 5, 5);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(557, 446);
+            this.chart1.Size = new System.Drawing.Size(553, 442);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
+            // 
+            // pageSelector1
+            // 
+            this.pageSelector1.BackColor = System.Drawing.Color.Transparent;
+            this.pageSelector1.ButtonFirstMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.pageSelector1.ButtonLastMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.pageSelector1.ButtonNextMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.pageSelector1.ButtonPreviousMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.pageSelector1.Location = new System.Drawing.Point(146, 460);
+            this.pageSelector1.Name = "pageSelector1";
+            this.pageSelector1.PageBoxFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pageSelector1.PageBoxMargin = new System.Windows.Forms.Padding(3);
+            this.pageSelector1.PageBoxSize = new System.Drawing.Size(100, 26);
+            this.pageSelector1.SelectedIndex = 1;
+            this.pageSelector1.Size = new System.Drawing.Size(210, 34);
+            this.pageSelector1.TabIndex = 0;
+            // 
+            // namePD
+            // 
+            this.namePD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.namePD.DividerWidth = 2;
+            this.namePD.HeaderText = "Tên Sản Phẩm";
+            this.namePD.MinimumWidth = 200;
+            this.namePD.Name = "namePD";
+            this.namePD.ReadOnly = true;
+            this.namePD.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // numberPD
+            // 
+            this.numberPD.DividerWidth = 2;
+            this.numberPD.HeaderText = "Số Lượng";
+            this.numberPD.MinimumWidth = 120;
+            this.numberPD.Name = "numberPD";
+            this.numberPD.ReadOnly = true;
+            this.numberPD.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.numberPD.Width = 150;
+            // 
+            // revenue
+            // 
+            this.revenue.DividerWidth = 2;
+            this.revenue.HeaderText = "Doanh Thu";
+            this.revenue.MinimumWidth = 130;
+            this.revenue.Name = "revenue";
+            this.revenue.ReadOnly = true;
+            this.revenue.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.revenue.Width = 150;
             // 
             // StatiticsView
             // 
@@ -289,12 +297,12 @@
         private System.Windows.Forms.Label label2;
         private StoreAssistant_HistoryView.PageSelector pageSelector1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn namePD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numberPD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn revenue;
         private System.Windows.Forms.GroupBox groupChart;
         private System.Windows.Forms.NumericUpDown numTop;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn namePD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numberPD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn revenue;
     }
 }

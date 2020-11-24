@@ -133,7 +133,7 @@ namespace StoreAssitant
             }
             return rs;
         }
-
+        /*
         public List<ProductInfo> GetProductInfos()
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
@@ -166,41 +166,48 @@ namespace StoreAssitant
             }
             return rs;
         }
-
-        public List<ProductInfo> GetProductInfos2()
+        */
+        public Dictionary<int, ProductInfo> GetProductInfos()
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
-
-            List<ProductInfo> rs = null;
-            List<int> images_id ;
+            
+            // Key is Product's id and Value is Product
+            Dictionary<int, ProductInfo> rs = null; 
+            
+            // Key is Product's id and Value is Image's id
+            Dictionary<int, int> images_id; 
 
             cmd.CommandText = string.Format("SELECT {1},{2},{3},{4},{5} FROM {0};",
                 TB_PRODUCT, COLUMNS_TB_PRODUCT[0], COLUMNS_TB_PRODUCT[1], COLUMNS_TB_PRODUCT[2], COLUMNS_TB_PRODUCT[3], COLUMNS_TB_PRODUCT[4]);
 
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
-                rs = new List<ProductInfo>();
-                images_id = new List<int>();
+                rs = new Dictionary<int, ProductInfo>();
+                images_id = new Dictionary<int, int>();
+                ProductInfo product;
                 while (reader.Read())
                 {
-                    images_id.Add(reader.GetInt32(4));
-                    rs.Add(new ProductInfo(reader.GetInt16(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3)));
+                    product = new ProductInfo(reader.GetInt16(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3));
+                    images_id.Add(product.Id, reader.GetInt32(4));
+
+                    rs.Add(product.Id, product);
                 }
                 reader.Close();
             }
-            for (int i = 0; i < rs.Count; i++)
+            foreach(KeyValuePair<int, ProductInfo> p in rs)
             {
-                if (images_id[i] != -1)
+                if (images_id[p.Key] != -1)
                 {
-                    if (rs[i].Image != null) { rs[i].Image.Dispose(); }
-                    rs[i].Image = null;
-                    rs[i].Image = GetImage(images_id[i]);
+                    ProductInfo product = p.Value;
+                    if (product.Image != null) { product.Image.Dispose(); }
+                    product.Image = null;
+                    product.Image = GetImage(images_id[p.Key]);
                 }
             }
 
             return rs;
         }
-
+        
         public Bitmap GetImage(int id)
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }

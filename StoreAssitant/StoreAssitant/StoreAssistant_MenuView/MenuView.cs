@@ -14,7 +14,33 @@ namespace StoreAssitant
 {
     public partial class MenuView : UserControl
     {
-        public List<ProductInfo> Menu;
+        private static Dictionary<int, ProductInfo> productsList = null;
+        public static Dictionary<int, ProductInfo> ProductsList
+        {
+            get
+            {
+                if (productsList == null)
+                {
+                    ReloadProductList();
+                }
+                return productsList;
+            }
+        }
+        private static void ReloadProductList()
+        {
+            using (DatabaseController databaseController = new DatabaseController())
+            {
+                // Get from database
+                /*
+                List<ProductInfo> l = databaseController.GetProductInfos();
+                productsList = new Dictionary<int, ProductInfo>(l.Count);
+                foreach (ProductInfo product in l) { productsList.Add(product.Id, product); }
+                */
+                productsList = databaseController.GetProductInfos();
+            }
+        }
+
+        //public List<ProductInfo> Menu;
         public List<MenuControl> Control = new List<MenuControl> ();
         
         Size itemSize;
@@ -23,7 +49,24 @@ namespace StoreAssitant
         public event EventHandler ClickAddButton;
         private void onClickAddButton(object sender, EventArgs e)
         {
-
+            OpenAddProductDialog();
+        }
+        private void OpenAddProductDialog()
+        {
+            using (AddProductForm form = new AddProductForm())
+            {
+                form.ClickSubmitOK += new EventHandler<ProductInfo>((object sender, ProductInfo info) =>
+                {
+                    using (DatabaseController databaseController = new DatabaseController())
+                    {
+                        databaseController.InsertProduct(info);
+                        //MessageBox.Show("Click On a product" + Environment.NewLine + info.ToString());
+                    }
+                    AddMenuControl(info);
+                    MenuView.ReloadProductList();
+                });
+                form.ShowDialog();
+            }
         }
         public event EventHandler<ProductInfo> ClickAddTableInfo;
         private void onClickAddTableInfo(object sender, ProductInfo e)
@@ -33,11 +76,37 @@ namespace StoreAssitant
         public event EventHandler <ProductInfo> Click_EditProduct;
 
         private void on_CLick_EditProduct(object sender, ProductInfo p)
-        { }
+        {
+            OpenEditProductDialog(p, (MenuControl)sender);
+        }
+        private void OpenEditProductDialog(ProductInfo info, MenuControl target)
+        {
+            using (AddProductForm form = new AddProductForm(info))
+            {
+                form.ClickSubmitOK += new EventHandler<ProductInfo>((object sender, ProductInfo info2) =>
+                {
+                    using (DatabaseController databaseController = new DatabaseController())
+                    {
+                        databaseController.UpdateProduct(info2);
+
+                        //MessageBox.Show("Click On a product" + Environment.NewLine + info.ToString());
+                    }
+                    MenuView.ReloadProductList();
+                    target.SetData(info2);
+                });
+                form.ShowDialog();
+            }
+        }
+
         public event EventHandler<ProductInfo> CLick_DeleteProduct;
 
         private void on_CLick_DeleteProduct(object sender, ProductInfo p)
         {
+            using (DatabaseController databaseController = new DatabaseController())
+            {
+                databaseController.DeleteProduct(p);
+            }
+            ReloadProductList();
         }
         #endregion
         #region Create Properties
@@ -145,17 +214,16 @@ namespace StoreAssitant
      
         public void ClearData()
         {
-           
             flowLayoutPanelMenu.Controls.Clear();
             flowLayoutPanelMenu.Controls.Add(controlProduct);
         }
 
-        public void SetData(List<ProductInfo> Pro)
+        public void SetData()
         {
             ClearData();
-            foreach (ProductInfo P in Pro)
+            foreach (KeyValuePair<int, ProductInfo> P in ProductsList)
             {
-                AddMenuControl(P);
+                AddMenuControl(P.Value);
             }
         }
 

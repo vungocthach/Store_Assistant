@@ -31,7 +31,7 @@ namespace StoreAssitant
             {
                 databaseController.ConnectToSQLDatabase();
                 tableView1.SetData(databaseController.GetTableCount());
-                menuView1.SetData(databaseController.GetProductInfos2());
+                menuView1.SetData();
             }
         }
 
@@ -47,15 +47,17 @@ namespace StoreAssitant
 
         void menuView_ProductDeleted(object sender, ProductInfo info)
         {
+            /*
             using (DatabaseController databaseController = new DatabaseController())
             {
                 databaseController.DeleteProduct(info);
             }
+            */
         }
 
         void menuView_ProductEditing(object sender, ProductInfo info)
         {
-            OpenEditProductDialog(info, (MenuControl)sender);
+            //OpenEditProductDialog(info, (MenuControl)sender);
         }
 
         private void TableView1_UpdateNumber(object sender, EventArgs e)
@@ -70,7 +72,7 @@ namespace StoreAssitant
 
         private void MenuView1_ClickAddButton(object sender, EventArgs e)
         {
-            OpenAddProductDialog();
+            //OpenAddProductDialog();
         }
 
         private void OpenAddProductDialog()

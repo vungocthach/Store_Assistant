@@ -110,6 +110,7 @@
       <DependentUpon>SearchAdvancedForm.cs</DependentUpon>
     </Compile>
     <Compile Include="StoreAssistant_Information\BillInfo.cs" />
+    <Compile Include="StoreAssistant_Information\SaleOut.cs" />
     <Compile Include="StoreAssistant_ManagerView\ManagerModifyView.cs">
       <SubType>UserControl</SubType>
     </Compile>
