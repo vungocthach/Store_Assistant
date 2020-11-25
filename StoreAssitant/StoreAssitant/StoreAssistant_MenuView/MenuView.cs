@@ -197,8 +197,23 @@ namespace StoreAssitant
             Product.Click_EditProductInfo += Product_Click_EditProductInfo;
             Product.CLick_DeleteProductInfo += Product_CLick_DeleteProductInfo;
 
+            controlSearch.Click_SearchBar += ControlSearch_Click_SearchBar;
+
             Control.Add(Product);
 
+        }
+
+        private void ControlSearch_Click_SearchBar(object sender, EventArgs e)
+        {
+            foreach( Control t in flowLayoutPanelMenu.Controls)
+            {
+                if (t is MenuControl)
+                {
+                    MenuControl T = t as MenuControl;
+                    if (!T.NameTitle.Contains(controlSearch.Text)) T.Visible = false;
+                    else T.Visible = true;
+                }
+            }    
         }
 
         private void Product_CLick_DeleteProductInfo(object sender, ProductInfo e)
