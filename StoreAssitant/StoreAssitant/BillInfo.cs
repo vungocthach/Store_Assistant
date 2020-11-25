@@ -11,6 +11,7 @@ namespace StoreAssitant
 {
     public class BillInfo: INotifyPropertyChanged
     {
+        public int ID;
         private int number_table;
         private DateTime day;
         private int price_Bill;

@@ -598,10 +598,22 @@ namespace StoreAssitant
                 cmd.ExecuteNonQuery();
             
         }
+        public void Insert_Detail_Bill()
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("insert into Detail_Bill () values (@)");
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue(string.Format("@"), );
+            cmd.Parameters.AddWithValue(string.Format("@"), );
+            cmd.Parameters.AddWithValue(string.Format("@"), );
+            cmd.ExecuteNonQuery();
+
+        }
         public void delete_Bill(BillInfo bill)
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
-            cmd.CommandText = string.Format("delete from BILL where  BILL_ID = " + bill.Number_table);
+            cmd.CommandText = string.Format("delete from BILL where  BILL_ID = " + bill.ID);
+            cmd.CommandText = string.Format("delete from detailBill where Bill_ID = " + bill.ID);
             cmd.ExecuteNonQuery();
         }
 
