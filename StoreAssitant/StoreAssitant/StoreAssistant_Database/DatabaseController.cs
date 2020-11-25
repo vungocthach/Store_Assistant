@@ -590,7 +590,7 @@ namespace StoreAssitant
                 cmd.CommandText = string.Format("insert into BILL (Number_TB, ID_User, Vourcher, Total, Take, Give, Time) values (@Number_Tb, @Id_User,@Vourcher, @total, @Take, @Give, @Time)");
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue(string.Format("@Number_Tb"), bill.Number_table);
-                cmd.Parameters.AddWithValue(string.Format("@Id_User"), bill.USER_Name);
+                cmd.Parameters.AddWithValue(string.Format("@Id_User"), "admin");
                 cmd.Parameters.AddWithValue(string.Format("@Vourcher"), bill.Voucher);
                 cmd.Parameters.AddWithValue(string.Format("@Total"), bill.TOTAL);
                 cmd.Parameters.AddWithValue(string.Format("@Take"), bill.Take);
@@ -603,20 +603,26 @@ namespace StoreAssitant
         public int Get_Max_ID ()
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
-            cmd.CommandText = string.Format("select Max (Bill_ID) from BILL");
+            cmd.CommandText = string.Format("select Max (Bill_ID) as SL from BILL");
             cmd.Parameters.Clear();
-            return cmd.ExecuteNonQuery();
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                reader.Read();
+                return (int)(reader["SL"]);
+            }
         }
         public void Insert_Detail_Bill( MyList<Products> productBills)
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
-            cmd.CommandText = string.Format("insert into Detail_Bill (Name_PR, Price_Pr,Amount_Pro, Bill_ID) values (@Name_Pr, @Price_Pr, @Amount_Pro, @Bill_ID)");
-            cmd.Parameters.Clear();
+            int t = Get_Max_ID();
             for ( int i = 0; i < productBills.Count; ++i)
             {
-                cmd.Parameters.AddWithValue(string.Format("@Name_PR"),productBills[i].Name );
-                cmd.Parameters.AddWithValue(string.Format("@Price"), productBills[i].Price);
-                cmd.Parameters.AddWithValue(string.Format("@BIll_ID"), Get_Max_ID());
+                cmd.CommandText = string.Format("insert into Detail_Bill (Name_PR, Price_Pr,Amount_Pr, Bill_ID) values (@Name_Pr, @Price_Pr, @Amount_Pr, @Bill_ID)");
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue(string.Format("@Name_Pr"),productBills[i].Name );
+                cmd.Parameters.AddWithValue(string.Format("@Price_Pr"), productBills[i].Price);
+                cmd.Parameters.AddWithValue(string.Format("@Amount_Pr"), productBills[i].NumberProduct);
+                cmd.Parameters.AddWithValue(string.Format("@BIll_ID"), t);
                 cmd.ExecuteNonQuery();
             }    
       }
@@ -626,6 +632,15 @@ namespace StoreAssitant
             cmd.CommandText = string.Format("delete from BILL where  BILL_ID = " + bill.ID);
             cmd.CommandText = string.Format("delete from detailBill where Bill_ID = " + bill.ID);
             cmd.ExecuteNonQuery();
+        }
+
+        static public void Insert_Bill(BillInfo bill)
+        {
+            using (DatabaseController database = new DatabaseController())
+            {
+                database.insert_Bill(bill);
+                database.Insert_Detail_Bill(bill.ProductBills);
+            }
         }
 
         public void Dispose()

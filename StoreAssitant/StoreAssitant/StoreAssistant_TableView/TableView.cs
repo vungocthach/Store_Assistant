@@ -44,14 +44,6 @@ namespace StoreAssitant
         TableBill tbBill;
         #endregion
 
-        public void Insert_Bill(BillInfo bill)
-        {
-            using (DatabaseController database = new DatabaseController())
-            {
-                database.insert_Bill(bill);
-                database.Insert_Detail_Bill(bill.ProductBills);
-            }    
-        }
 
         public TableView()
         {
