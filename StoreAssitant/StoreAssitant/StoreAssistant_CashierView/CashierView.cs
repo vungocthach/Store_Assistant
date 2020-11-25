@@ -27,7 +27,7 @@ namespace StoreAssitant.StoreAssistant_CashierView
             {
                 databaseController.ConnectToSQLDatabase();
                 tableView1.SetData(databaseController.GetTableCount());
-                menuView1.SetData((databaseController.GetProductInfos().Values);
+                menuView1.SetData();
             }
         }
 

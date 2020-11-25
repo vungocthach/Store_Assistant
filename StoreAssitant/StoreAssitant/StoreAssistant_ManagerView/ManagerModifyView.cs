@@ -31,7 +31,7 @@ namespace StoreAssitant
             {
                 databaseController.ConnectToSQLDatabase();
                 tableView1.SetData(databaseController.GetTableCount());
-                //menuView1.SetData();
+                menuView1.SetData();
             }
         }
 
