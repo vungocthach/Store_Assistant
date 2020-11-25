@@ -12,6 +12,7 @@ using System.Drawing;
 using System.IO;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
+using StoreAssitant.Class_Information;
 
 namespace StoreAssitant
 {
@@ -598,17 +599,27 @@ namespace StoreAssitant
                 cmd.ExecuteNonQuery();
             
         }
-        public void Insert_Detail_Bill()
+
+        public int Get_Max_ID ()
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
-            cmd.CommandText = string.Format("insert into Detail_Bill () values (@)");
+            cmd.CommandText = string.Format("select Max (Bill_ID) from BILL");
             cmd.Parameters.Clear();
-            cmd.Parameters.AddWithValue(string.Format("@"), );
-            cmd.Parameters.AddWithValue(string.Format("@"), );
-            cmd.Parameters.AddWithValue(string.Format("@"), );
-            cmd.ExecuteNonQuery();
-
+            return cmd.ExecuteNonQuery();
         }
+        public void Insert_Detail_Bill( MyList<Products> productBills)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("insert into Detail_Bill (Name_PR, Price_Pr,Amount_Pro, Bill_ID) values (@Name_Pr, @Price_Pr, @Amount_Pro, @Bill_ID)");
+            cmd.Parameters.Clear();
+            for ( int i = 0; i < productBills.Count; ++i)
+            {
+                cmd.Parameters.AddWithValue(string.Format("@Name_PR"),productBills[i].Name );
+                cmd.Parameters.AddWithValue(string.Format("@Price"), productBills[i].Price);
+                cmd.Parameters.AddWithValue(string.Format("@BIll_ID"), Get_Max_ID());
+                cmd.ExecuteNonQuery();
+            }    
+      }
         public void delete_Bill(BillInfo bill)
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }

@@ -44,6 +44,15 @@ namespace StoreAssitant
         TableBill tbBill;
         #endregion
 
+        public void Insert_Bill(BillInfo bill)
+        {
+            using (DatabaseController database = new DatabaseController())
+            {
+                database.insert_Bill(bill);
+                database.Insert_Detail_Bill(bill.ProductBills);
+            }    
+        }
+
         public TableView()
         {
             InitializeComponent();
@@ -80,6 +89,7 @@ namespace StoreAssitant
             tableGUI_pnl.Controls.Remove(tableAdd_btn);
             tableGUI_pnl.Controls.Add(tableAdd_btn);
         }
+
         private void ClearData()
         {
             tableGUI_pnl.Controls.Clear();
