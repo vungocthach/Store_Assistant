@@ -133,7 +133,8 @@ namespace StoreAssitant
             }
             return rs;
         }
-        /*
+ //đóng
+ /*
         public List<ProductInfo> GetProductInfos()
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
@@ -166,7 +167,7 @@ namespace StoreAssitant
             }
             return rs;
         }
-        */
+ */     
         public Dictionary<int, ProductInfo> GetProductInfos()
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
