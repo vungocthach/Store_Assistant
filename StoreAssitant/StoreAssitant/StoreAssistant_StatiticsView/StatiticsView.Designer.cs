@@ -30,11 +30,19 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, "10,0");
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.namePD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numberPD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.revenue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dateMin = new System.Windows.Forms.DateTimePicker();
             this.dateMax = new System.Windows.Forms.DateTimePicker();
@@ -45,9 +53,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pageSelector1 = new StoreAssitant.StoreAssistant_HistoryView.PageSelector();
-            this.namePD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numberPD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.revenue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -103,6 +108,14 @@
             this.namePD,
             this.numberPD,
             this.revenue});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(4, 72);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
@@ -116,6 +129,42 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(505, 381);
             this.dataGridView1.TabIndex = 6;
+            // 
+            // namePD
+            // 
+            this.namePD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.namePD.DefaultCellStyle = dataGridViewCellStyle3;
+            this.namePD.DividerWidth = 2;
+            this.namePD.HeaderText = "Tên Sản Phẩm";
+            this.namePD.MinimumWidth = 200;
+            this.namePD.Name = "namePD";
+            this.namePD.ReadOnly = true;
+            this.namePD.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // numberPD
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.numberPD.DefaultCellStyle = dataGridViewCellStyle4;
+            this.numberPD.DividerWidth = 2;
+            this.numberPD.HeaderText = "Số Lượng";
+            this.numberPD.MinimumWidth = 120;
+            this.numberPD.Name = "numberPD";
+            this.numberPD.ReadOnly = true;
+            this.numberPD.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.numberPD.Width = 150;
+            // 
+            // revenue
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.revenue.DefaultCellStyle = dataGridViewCellStyle5;
+            this.revenue.DividerWidth = 2;
+            this.revenue.HeaderText = "Doanh Thu";
+            this.revenue.MinimumWidth = 130;
+            this.revenue.Name = "revenue";
+            this.revenue.ReadOnly = true;
+            this.revenue.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.revenue.Width = 150;
             // 
             // groupBox1
             // 
@@ -203,14 +252,24 @@
             this.chart1.BackColor = System.Drawing.Color.Gainsboro;
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
+            legend1.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Row;
             legend1.Name = "Legend1";
+            legend1.Title = "ádasd";
             this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(5, 50);
             this.chart1.Margin = new System.Windows.Forms.Padding(5, 2, 5, 5);
             this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            series1.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
             series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series1.CustomProperties = "DrawingStyle=Cylinder";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
+            dataPoint1.LegendText = "hi";
+            series1.Points.Add(dataPoint1);
+            series1.XValueMember = "1";
+            series1.YValuesPerPoint = 2;
             this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(553, 442);
             this.chart1.TabIndex = 0;
@@ -231,36 +290,6 @@
             this.pageSelector1.SelectedIndex = 1;
             this.pageSelector1.Size = new System.Drawing.Size(210, 34);
             this.pageSelector1.TabIndex = 0;
-            // 
-            // namePD
-            // 
-            this.namePD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.namePD.DividerWidth = 2;
-            this.namePD.HeaderText = "Tên Sản Phẩm";
-            this.namePD.MinimumWidth = 200;
-            this.namePD.Name = "namePD";
-            this.namePD.ReadOnly = true;
-            this.namePD.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // numberPD
-            // 
-            this.numberPD.DividerWidth = 2;
-            this.numberPD.HeaderText = "Số Lượng";
-            this.numberPD.MinimumWidth = 120;
-            this.numberPD.Name = "numberPD";
-            this.numberPD.ReadOnly = true;
-            this.numberPD.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.numberPD.Width = 150;
-            // 
-            // revenue
-            // 
-            this.revenue.DividerWidth = 2;
-            this.revenue.HeaderText = "Doanh Thu";
-            this.revenue.MinimumWidth = 130;
-            this.revenue.Name = "revenue";
-            this.revenue.ReadOnly = true;
-            this.revenue.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.revenue.Width = 150;
             // 
             // StatiticsView
             // 

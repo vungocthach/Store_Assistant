@@ -19,6 +19,7 @@ namespace StoreAssitant
         StoreAssistant_CashierView.CashierView cashierView;
         ManagerModifyView managerModifyView;
         StoreAssistant_AccountView.AccountView accountView;
+        StoreAssistant_StatiticsView.StatiticsView statiticsView;
 
         public event EventHandler SignOut;
         void OnSignOut(object sender, EventArgs e) {}
@@ -109,8 +110,11 @@ namespace StoreAssitant
             }
             else if (kryptonNavigator1.SelectedPage.Name == krPage_Statistic.Name)
             {
-                MessageBox.Show("Tính năng đang phát triển", "Công trình đang thi công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                panel1.Controls.Clear();
+                if (statiticsView == null)
+                {
+                    statiticsView = new StoreAssistant_StatiticsView.StatiticsView();
+                }
+                SelectTab(statiticsView);
             }
             else
             {

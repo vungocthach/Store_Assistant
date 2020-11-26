@@ -38,7 +38,6 @@
             this.krPage_Account = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.split_Cashier = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.historyView1 = new StoreAssitant.StoreAssistant_HistoryView.HistoryView();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Cashier)).BeginInit();
@@ -49,7 +48,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Account)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.split_Cashier)).BeginInit();
             this.split_Cashier.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonNavigator1
@@ -190,28 +188,12 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.historyView1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 62);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 60);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1084, 499);
+            this.panel1.Size = new System.Drawing.Size(1084, 501);
             this.panel1.TabIndex = 1;
-            // 
-            // historyView1
-            // 
-            this.historyView1.ColumnsWeights = new double[] {
-        0.076923076923076927D,
-        0.23076923076923078D,
-        0.23076923076923078D,
-        0.23076923076923078D,
-        0.23076923076923078D};
-            this.historyView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.historyView1.Location = new System.Drawing.Point(13, 32);
-            this.historyView1.Margin = new System.Windows.Forms.Padding(4);
-            this.historyView1.Name = "historyView1";
-            this.historyView1.Size = new System.Drawing.Size(1080, 500);
-            this.historyView1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -234,7 +216,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Account)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.split_Cashier)).EndInit();
             this.split_Cashier.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -250,7 +231,6 @@
         private ComponentFactory.Krypton.Navigator.KryptonPage krPage_Cashier;
         private System.Windows.Forms.SplitContainer split_Cashier;
         private System.Windows.Forms.Panel panel1;
-        private StoreAssistant_HistoryView.HistoryView historyView1;
     }
 }
 

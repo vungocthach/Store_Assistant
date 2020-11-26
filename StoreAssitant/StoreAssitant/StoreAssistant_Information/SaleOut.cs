@@ -10,9 +10,9 @@ namespace StoreAssitant.StoreAssistant_Information
     {
         TimeSpan timeSpan;
         public TimeSpan Duration { get => timeSpan; }
-        public int Revenue { get; set; }
+        public int GetRevenue() { return NumberOfProduct * MenuView.ProductsList[ProductID].Price; } 
         public int NumberOfProduct { set; get; }
-        public ProductInfo Product;
+        public int ProductID { get; set; }
         public object Tag;
 
         public SaleOutInfo(TimeSpan duration)
