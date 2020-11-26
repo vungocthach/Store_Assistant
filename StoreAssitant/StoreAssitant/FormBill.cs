@@ -74,6 +74,7 @@ namespace StoreAssitant
                     tlpProduct.RowCount++;
                     tlpProduct.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
                 }
+                Info_PropertyChanged(this, new PropertyChangedEventArgs("init bill"));
                 info.PropertyChanged += Info_PropertyChanged;
                 Init_Bill();
             }
@@ -112,6 +113,7 @@ namespace StoreAssitant
         {
             isConfirm = true;
             this.Close();
+            DatabaseController.Insert_Bill(info);
         }
 
         #endregion

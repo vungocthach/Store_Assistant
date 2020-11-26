@@ -15,7 +15,7 @@ namespace StoreAssitant
     {
         public List<MenuControl> control;
         public List<String> name_Pro = new List<string>();
-
+       
         #region Properties Control
         [Category("My properties"), Description("List product of Menu")]
 
@@ -25,6 +25,17 @@ namespace StoreAssitant
             set
             {
                 control = value;
+                Invalidate();
+            }
+        }
+        [Category("My properties"), Description("Text of control search")]
+
+        public string Text
+        {
+            get => cbx_Search.Text;
+            set
+            {
+                cbx_Search.Text = value;
                 Invalidate();
             }
         }
@@ -48,36 +59,12 @@ namespace StoreAssitant
         {
             InitializeComponent();
             Add_ProductTable = new EventHandler(on_Add_ProductTable);
-
+            Click_SearchBar = new EventHandler(on_CLick_SearchBar);
 
             this.SizeChanged += ControlSearch_SizeChanged;
-            cbx_Search.Click += Cbx_Search_Click;
             cbx_Search.TextChanged += cbx_Search_TextChanged;
-            cbx_Search.KeyPress += cbx_Search_KeyPress;
+           // cbx_Search.KeyPress += cbx_Search_KeyPress;
         }
-
-        private void Get_name_Pro()
-        {
-            foreach (MenuControl t in control)
-            {
-                name_Pro.Add(t.NameTitle);
-            }
-        }
-
-        private void Cbx_Search_Click(object sender, EventArgs e)
-        {
-            cbx_Search.Items.Clear();
-            name_Pro.Clear();
-            Get_name_Pro();
-            cbx_Search.SelectionStart = cbx_Search.Text.Length;
-        }
-
-        private void Cbx_Search_SelectedValueChanged(object sender, EventArgs e)
-        {
-            Add_ProductTable(sender, e);
-            MessageBox.Show("Đang phát triển");
-        }
-
         private void cbx_Search_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -85,15 +72,8 @@ namespace StoreAssitant
         }
         private void cbx_Search_TextChanged(object sender, EventArgs e)
         {
-            cbx_Search.Items.Clear();
-
-            foreach (string t in name_Pro)
-            {
-                if (t.Contains(cbx_Search.Text)) cbx_Search.Items.Add(t);
-            }
-
-            cbx_Search.DroppedDown = true;
-            cbx_Search.SelectionStart = cbx_Search.Text.Length;
+            Click_SearchBar(sender, e);
+           
         }
         private void ControlSearch_SizeChanged(object sender, EventArgs e)
         {

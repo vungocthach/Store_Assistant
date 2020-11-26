@@ -44,6 +44,7 @@ namespace StoreAssitant
         TableBill tbBill;
         #endregion
 
+
         public TableView()
         {
             InitializeComponent();
@@ -80,6 +81,7 @@ namespace StoreAssitant
             tableGUI_pnl.Controls.Remove(tableAdd_btn);
             tableGUI_pnl.Controls.Add(tableAdd_btn);
         }
+
         private void ClearData()
         {
             tableGUI_pnl.Controls.Clear();
