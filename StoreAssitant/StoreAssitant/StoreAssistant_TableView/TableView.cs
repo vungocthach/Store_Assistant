@@ -76,8 +76,10 @@ namespace StoreAssitant
         public void SetData(int numberTable)
         {
             ClearData();
-            this.NumberTable = numberTable;
-            for (int i = 0; i < numberTable; i++) Create_Table();
+            for (int i = 0; i < numberTable; i++) {
+                this.NumberTable++;
+                Create_Table();
+            }
             tableGUI_pnl.Controls.Remove(tableAdd_btn);
             tableGUI_pnl.Controls.Add(tableAdd_btn);
         }
@@ -126,6 +128,7 @@ namespace StoreAssitant
         {
             TableControl newtable = new TableControl() { Size = ItemSize, nameTable = "BÀN " + tableGUI_pnl.Controls.Count, ImageTable = itemImage };
             newtable.IsManager = this.isManager;
+            newtable.Info.ID = numberTable;
             tableGUI_pnl.Controls.Add(newtable);
             newtable.ClickTableControl += Newtable_ClickTableControl;
             newtable.TableRemoved += Newtable_TableRemoved;

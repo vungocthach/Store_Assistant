@@ -55,7 +55,6 @@ namespace StoreAssitant
                 lbTableName.Text += table.ID.ToString();
                 info.DAY = DateTime.Now;
                 info.Voucher = "#####";
-
                 //Thêm product vào trong bảng thanh toán
 
                 foreach(var i in table.ProductInTable)
@@ -65,8 +64,7 @@ namespace StoreAssitant
                     p.NumberProduct = i.NumberProduct;
                     p.Price = i.Price;
                     info.ProductBills.Add(p);
-
-                    tlpProduct.Controls.Add(new Label() { Text = tlpProduct.RowCount.ToString() }, 0, tlpProduct.RowCount - 1);
+                    tlpProduct.Controls.Add(new Label() { Text = (tlpProduct.RowCount - 1).ToString() }, 0, tlpProduct.RowCount - 1);
                     tlpProduct.Controls.Add(new Label() { Text = p.Name }, 1, tlpProduct.RowCount - 1);
                     tlpProduct.Controls.Add(new Label() { Text = p.NumberProduct.ToString() }, 2, tlpProduct.RowCount - 1);
                     tlpProduct.Controls.Add(new Label() { Text = p.Price.ToString() }, 3, tlpProduct.RowCount - 1);

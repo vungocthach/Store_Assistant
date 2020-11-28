@@ -58,6 +58,7 @@ namespace StoreAssitant
                 kryptonNavigator1.Pages.Remove(krPage_Compare);
                 kryptonNavigator1.Pages.Remove(krPage_Manager);
                 kryptonNavigator1.Pages.Remove(krPage_Statistic);
+                kryptonNavigator1.Pages.Remove(krPage_Voucher);
             }
         }
 

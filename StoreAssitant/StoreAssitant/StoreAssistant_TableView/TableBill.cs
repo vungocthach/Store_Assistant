@@ -82,7 +82,7 @@ namespace StoreAssitant
         {
             if (!isProductExists(product))
             {
-                Class_Information.Products pro = new Class_Information.Products(product);
+                Products pro = new Products(product);
                 pro.onChanged += Billinfo_ChangedInfo;
                 Billinfo.ProductInTable.Add(pro);
                 CreateTableLine(pro);
