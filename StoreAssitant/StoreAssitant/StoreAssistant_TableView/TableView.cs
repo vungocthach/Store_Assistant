@@ -86,6 +86,7 @@ namespace StoreAssitant
 
         private void ClearData()
         {
+            numberTable = 0;
             tableGUI_pnl.Controls.Clear();
             tableGUI_pnl.Controls.Add(tableAdd_btn);
         }
