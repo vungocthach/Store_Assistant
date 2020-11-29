@@ -101,6 +101,7 @@
             this.TxB_IdentityPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.TxB_IdentityPass.Location = new System.Drawing.Point(404, 250);
             this.TxB_IdentityPass.Name = "TxB_IdentityPass";
+            this.TxB_IdentityPass.PasswordChar = '*';
             this.TxB_IdentityPass.Size = new System.Drawing.Size(281, 27);
             this.TxB_IdentityPass.TabIndex = 5;
             // 
