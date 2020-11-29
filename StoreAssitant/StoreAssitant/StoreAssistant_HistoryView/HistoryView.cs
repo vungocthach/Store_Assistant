@@ -102,7 +102,11 @@ namespace StoreAssitant.StoreAssistant_HistoryView
                 List<BillInfo> bills = new List<BillInfo>(1);
                 using (DatabaseController databaseController = new DatabaseController())
                 {
-                    bills.Add(databaseController.GetOneBillInfo(id));
+                    BillInfo billInfo = databaseController.GetOneBillInfo(id);
+                    if (billInfo != null)
+                    {
+                        bills.Add(billInfo);
+                    }
                 }
 
                 SetData(bills);
