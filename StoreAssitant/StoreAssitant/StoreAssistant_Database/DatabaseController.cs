@@ -458,7 +458,7 @@ namespace StoreAssitant
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[3]), SqlDbType.Char).Value = userInfo.Sex;
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[5]), SqlDbType.DateTime).Value = userInfo.Birth;
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[4]), SqlDbType.Char).Value = userInfo.Phone;
-            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[4]), SqlDbType.Char).Value = userInfo.FullName;
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[6]), SqlDbType.VarChar).Value = userInfo.FullName;
 
             return cmd.ExecuteNonQuery() == 1;
 #else

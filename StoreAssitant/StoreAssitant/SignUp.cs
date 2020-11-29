@@ -64,11 +64,13 @@ namespace StoreAssitant
                 Pass = txb_Pass.Text,
                 Sex = cbx_Sex.SelectedItem.ToString(),
                 Phone = txb_Phone.Text,
+                Birth = dateTimeBirth.Value,
                 Role = UserInfo.UserRole.Cashier
             };
 
             if (!StoreAssistant_Authenticater.Authenticator.RegistUser(userInfo))
             {
+                this.Close();
                 //MessageBox.Show("Đăng ký thất bại. Vui lòng thử lại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
