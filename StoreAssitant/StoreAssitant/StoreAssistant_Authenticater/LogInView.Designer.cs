@@ -31,7 +31,6 @@
             this.kryptonPanel_Login = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.tb_Password = new System.Windows.Forms.TextBox();
             this.tb_User = new System.Windows.Forms.TextBox();
-            this.Lb_SignUp = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.Pn_Login = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.Lb_ForgotPass = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.Btn_Login = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -44,7 +43,6 @@
             // 
             this.kryptonPanel_Login.Controls.Add(this.tb_Password);
             this.kryptonPanel_Login.Controls.Add(this.tb_User);
-            this.kryptonPanel_Login.Controls.Add(this.Lb_SignUp);
             this.kryptonPanel_Login.Controls.Add(this.Pn_Login);
             this.kryptonPanel_Login.Controls.Add(this.Lb_ForgotPass);
             this.kryptonPanel_Login.Controls.Add(this.Btn_Login);
@@ -72,14 +70,6 @@
             this.tb_User.Size = new System.Drawing.Size(312, 29);
             this.tb_User.TabIndex = 7;
             this.tb_User.Text = "Tên đăng nhập";
-            // 
-            // Lb_SignUp
-            // 
-            this.Lb_SignUp.Location = new System.Drawing.Point(196, 425);
-            this.Lb_SignUp.Name = "Lb_SignUp";
-            this.Lb_SignUp.Size = new System.Drawing.Size(163, 20);
-            this.Lb_SignUp.TabIndex = 5;
-            this.Lb_SignUp.Values.Text = "Chưa có tài khoản? Đăng kí!";
             // 
             // Pn_Login
             // 
@@ -137,7 +127,6 @@
 
         #endregion
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel_Login;
-        private ComponentFactory.Krypton.Toolkit.KryptonLabel Lb_SignUp;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel Pn_Login;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel Lb_ForgotPass;
         public ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Login;

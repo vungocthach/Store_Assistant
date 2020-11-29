@@ -56,7 +56,7 @@ namespace StoreAssitant
             TB_PRODUCT = "TB_PRODUCT";
             COLUMNS_TB_PRODUCT = new string[5] { "ID", "PD_NAME", "PRICE", "DESCRIP", "IMAGE_ID" };
             TB_USER = "TB_USER";
-            COLUMNS_TB_USER = new string[3] { "USERNAME", "PASS", "USER_TYPE" };
+            COLUMNS_TB_USER = new string[6] { "USERNAME", "PASS", "USER_TYPE", "sex", "Phone", "Birth" };
 
             connection = new SqlConnection(SQLStatementManager.GetConnectionString(username, password, serverName, databaseName));
             cmd = new SqlCommand();
@@ -450,11 +450,14 @@ namespace StoreAssitant
 #if SAVE_TO_DB
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
 
-            cmd.CommandText = string.Format("INSERT INTO {0}({1},{2},{3}) VALUES(@{1}_,@{2}_,@{3}_);", TB_USER, COLUMNS_TB_USER[0], COLUMNS_TB_USER[1], COLUMNS_TB_USER[2]);
+            cmd.CommandText = string.Format("INSERT INTO {0}({1},{2},{3}, {4}, {5}, {6}) VALUES(@{1}_,@{2}_,@{3}_, @{4}_, @{5}_, @{6}_);", TB_USER, COLUMNS_TB_USER[0], COLUMNS_TB_USER[1], COLUMNS_TB_USER[2], COLUMNS_TB_USER[3], COLUMNS_TB_USER[4], COLUMNS_TB_USER[5]);
             cmd.Parameters.Clear();
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[0]), SqlDbType.VarChar).Value = userInfo.UserName;
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[1]), SqlDbType.Binary, 32).Value = StoreAssistant_Authenticater.Authenticator.GetPass(userInfo);
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[2]), SqlDbType.SmallInt).Value = (int)userInfo.Role;
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[3]), SqlDbType.Char).Value = userInfo.Sex;
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[5]), SqlDbType.DateTime).Value = userInfo.Birth;
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[4]), SqlDbType.Char).Value = userInfo.Phone;
 
             return cmd.ExecuteNonQuery() == 1;
 #else
@@ -818,6 +821,20 @@ namespace StoreAssitant
              cmd.CommandText = string.Fomat("")
 
          }*/
+
+        /*public void Insert_UserInfor  (UserInfo user)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("Insert into TB_USER (USERNAME, Pass, User_Type, sex, birth, phone) values (@Name, @Pass, @Type, @Sex,  @birth, @phone)");
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = user.UserName;
+            cmd.Parameters.Add("@Pass", SqlDbType.Char).Value = user.Pass;
+            cmd.Parameters.Add("@Type", SqlDbType.SmallInt).Value = 1;
+            cmd.Parameters.Add("@Sex", SqlDbType.TinyInt).Value = user.Sex;
+            cmd.Parameters.Add("@Birth", SqlDbType.DateTime).Value = user.Birth;
+            cmd.Parameters.Add("@phone", SqlDbType.Char).Value = user.Phone;
+            cmd.ExecuteNonQuery();
+        }*/
 
         public List<SaleInfo> GetSaleInfos_ByDay(DateTime fromDate, DateTime toDate)
         {
