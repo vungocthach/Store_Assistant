@@ -88,7 +88,6 @@ namespace StoreAssitant
             else
             {
                 info.Number_table = table.ID;
-                lbTableName.Text += table.ID.ToString();
                 info.DAY = DateTime.Now;
                 info.Voucher = "#####";
                 //Thêm product vào trong bảng thanh toán
@@ -119,6 +118,8 @@ namespace StoreAssitant
             //Gán giá trị ban đầu khi mở form lên
             //
             info = table;
+            info.Price_Bill = info.ProductBills.Sum(i => i.NumberProduct * i.Price);
+            info.Give = info.Take - info.TOTAL;
             if (info == null)
             {
                 MessageBox.Show("Lỗi thông tin món ăn");
@@ -126,7 +127,6 @@ namespace StoreAssitant
             }
             else
             {
-                lbTableName.Text += table.ID.ToString();
                 //Thêm product vào trong bảng thanh toán
 
                 foreach (Products i in table.ProductBills)
@@ -139,7 +139,7 @@ namespace StoreAssitant
                     tlpProduct.RowCount++;
                     tlpProduct.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
                 }
-                Info_PropertyChanged(this, new PropertyChangedEventArgs("init bill"));
+                //Info_PropertyChanged(this, new PropertyChangedEventArgs("init bill"));
                 Init_Bill();
             }
         }
@@ -160,6 +160,7 @@ namespace StoreAssitant
             textBox3.DataBindings.Add("Text", info, "TOTAL", true, DataSourceUpdateMode.OnPropertyChanged);
             textBox4.DataBindings.Add("Text", info, "Take", true, DataSourceUpdateMode.OnPropertyChanged);
             textBox5.DataBindings.Add("Text", info, "Give", true, DataSourceUpdateMode.OnPropertyChanged);
+            lbTableName.Text += info.ID.ToString();
             lbDate.Text = lbDate.Text + info.DAY.Day + '/' + info.DAY.Month + '/' + info.DAY.Year + " " +
                           info.DAY.Hour + ":" + info.DAY.Minute + ":" + info.DAY.Second;
         }
