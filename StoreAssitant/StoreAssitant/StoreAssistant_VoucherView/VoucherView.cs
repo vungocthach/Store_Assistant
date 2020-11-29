@@ -33,7 +33,6 @@ namespace StoreAssitant.StoreAssistant_VoucherView
                     data.RemoveVoucher(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
                 }
                 dataGridView1.Rows.Remove(dataGridView1.SelectedRows[0]);
-                MessageBox.Show(info.Count.ToString());
             }
         }
 

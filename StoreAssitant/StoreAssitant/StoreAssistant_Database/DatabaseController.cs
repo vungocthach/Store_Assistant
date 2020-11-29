@@ -806,26 +806,40 @@ namespace StoreAssitant
             }
             return Vouchers;
         }
-        public void UseVoucher(string Code)
+        public int UseVoucher(string Code)
         {
+            int value = 0;
+            bool isExistsCode = false;
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
-            cmd.CommandText = string.Format("select NumberRemain, Expiry from Voucher where Code = " + Code);
+            cmd.CommandText = string.Format("select NumberRemain, Expiry, Decrease from Voucher where Code = @Code", Code);
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@Code", Code);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
-                reader.Read();
-                if ((int)reader[0] == 0)
+                if (reader.Read())
                 {
-                    MessageBox.Show("Đã hết thẻ voucher");
-                    return;
-                }
-                if ((DateTime)reader[1] > DateTime.Now)
-                {
-                    MessageBox.Show("Hết thời hạn");
-                    return;
+                    isExistsCode = true;
+                    if ((int)reader["NumberRemain"] == 0)
+                    {
+                        MessageBox.Show("Đã hết số lần sử dụng thẻ voucher");
+                        return 0;
+                    }
+                    if ((DateTime)reader["Expiry"] > DateTime.Now)
+                    {
+                        MessageBox.Show("Hết thời hạn");
+                        return 0;
+                    }
+                    value = (int)reader["Decrease"];
                 }
             }
-            cmd.CommandText = string.Format("update Voucher set NumberRemain = NumberRemain - 1 where Code = " + Code);
-            cmd.ExecuteNonQuery();
+            if (isExistsCode)
+            {
+                cmd.CommandText = string.Format("update Voucher set NumberRemain = NumberRemain - 1 where Code = @Code ", Code);
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@Code", Code);
+                cmd.ExecuteNonQuery();
+            }
+            return value;
         }
         public void AddVoucher(VoucherInfo voucher)
         {
