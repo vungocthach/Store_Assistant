@@ -672,7 +672,7 @@ namespace StoreAssitant
                                           // select* from(select ROW_NUMBER() over(order by Bill_ID) as [STT], Number_TB, ID_User, Vourcher, Total, Take, Give, Time from BILL) as foo where STT >= 1 and STT <= 5  and Time >= '2001/11/08' and TIME<= '2090/10/19'
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@start", SqlDbType.Int).Value = start;
-            cmd.Parameters.Add("@end", SqlDbType.Int).Value = start + lenght;
+            cmd.Parameters.Add("@end", SqlDbType.Int).Value = start + lenght - 1;
             cmd.Parameters.Add("@from", SqlDbType.DateTime).Value = from;
             cmd.Parameters.Add("@to", SqlDbType.DateTime).Value = to;
             cmd.Parameters.Add("@totalMin", SqlDbType.Int).Value = totalMin;
@@ -743,14 +743,18 @@ namespace StoreAssitant
 
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
-                reader.Read();
-                bills.Number_table = (int)reader["Number_TB"];
-                bills.USER_Name = (string)reader["ID_User"];
-                bills.Voucher = (string)reader["Vourcher"];
-                bills.Take = (int)reader["TaKe"];
-                bills.DAY = (DateTime)reader["Time"];
-                bills.ID = (int)reader["BILL_ID"];
-                bills.Price_Bill = (long)reader["Total"];
+                if (reader.Read())
+                {
+                    bills.Number_table = (int)reader["Number_TB"];
+                    bills.USER_Name = (string)reader["ID_User"];
+                    bills.Voucher = (string)reader["Vourcher"];
+                    bills.Take = (int)reader["TaKe"];
+                    bills.DAY = (DateTime)reader["Time"];
+                    bills.ID = (int)reader["BILL_ID"];
+                    bills.Price_Bill = (long)reader["Total"];
+                }
+                else return null;
+                
             }
             bills.ProductBills = GetDetailBillInfo(bills.ID);
 
