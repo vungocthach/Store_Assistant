@@ -15,16 +15,24 @@ namespace StoreAssitant
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+              Application.EnableVisualStyles();
+              Application.SetCompatibleTextRenderingDefault(false);
 
-            LoginForm form = new LoginForm();
-            form.Click_Login += Form_Click_Login;
-            Application.Run(form);
+              LoginForm form = new LoginForm();
+              form.Click_Login += Form_Click_Login;
+              Application.Run(form);
 
             //Test();
             //test2();
             //tesst3();
+           // Test4();
+        }
+        static void Test4()
+        {
+            using (DatabaseController da = new DatabaseController())
+            {
+                da.delete_Bill(4);
+            }
         }
         static void tesst3()
         {

@@ -21,15 +21,17 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             btnAdd.Click += BtnAdd_Click;
             btnRemove.Click += BtnRemove_Click;
 
-            info = new BindingList<VoucherInfo>();
             dataGridView1.AutoGenerateColumns = true;
-            dataGridView1.DataSource = info;
         }
 
         private void BtnRemove_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count != 0)
             {
+                using (DatabaseController data = new DatabaseController())
+                {
+                    data.RemoveVoucher(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                }
                 dataGridView1.Rows.Remove(dataGridView1.SelectedRows[0]);
             }
         }
@@ -52,6 +54,10 @@ namespace StoreAssitant.StoreAssistant_VoucherView
                 }
             }
             info.Add(e);
+            using (DatabaseController data = new DatabaseController())
+            {
+                data.AddVoucher(e);
+            }
             Invalidate();
         }
 
@@ -69,7 +75,7 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             using (DatabaseController databaseController = new DatabaseController())
             {
                 databaseController.ConnectToSQLDatabase();
-                //do something here
+                dataGridView1.DataSource = info = databaseController.GetVouchers();                
             }
         }
     }
