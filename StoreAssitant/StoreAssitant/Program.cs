@@ -15,14 +15,30 @@ namespace StoreAssitant
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
+           /* Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             
             LoginForm form = new LoginForm();
             form.Click_Login += Form_Click_Login;
-            Application.Run(form);
-            
+            Application.Run(form);*/
+
             //Test();
+           // test2();
+            tesst3();
+        }
+        static void tesst3()
+        {
+            using (DatabaseController da = new DatabaseController())
+            {
+                MessageBox.Show(da.GetOneBillInfo(3).USER_Name);
+            }
+        }
+        static void test2()
+        {
+            using (DatabaseController database = new DatabaseController())
+            {
+                MessageBox.Show(database.CountBill(new DateTime(2000, 1, 1), new DateTime(2020, 12, 31)).ToString());
+            }
         }
 
         static void Test()
