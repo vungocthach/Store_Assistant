@@ -37,7 +37,7 @@ namespace StoreAssitant.StoreAssistant_Information
         public long GetRevenue()
         {
             long rs = 0;
-            foreach (KeyValuePair<string, ProductSaleInfo> p in Products) { rs += p.Value.GetRenvenue(); }
+            foreach (KeyValuePair<string, ProductSaleInfo> p in Products) { rs += p.Value.GetRevenue(); }
             return rs;
         }
 
@@ -46,6 +46,18 @@ namespace StoreAssitant.StoreAssistant_Information
             Products = new Dictionary<string, ProductSaleInfo>();
             DateMax = DateTime.Now;
             DateMin = DateMax.AddDays(-1);
+        }
+
+        public SaleInfo(int year)
+        {
+            Products = new Dictionary<string, ProductSaleInfo>();
+            SetYear(year);
+        }
+
+        public SaleInfo(int year, int month)
+        {
+            Products = new Dictionary<string, ProductSaleInfo>();
+            SetMonth(year, month);
         }
 
         public SaleInfo(int year, int month, int day)

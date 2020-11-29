@@ -229,6 +229,7 @@
             this.button1.TabIndex = 8;
             this.button1.Text = "Nâng Cao";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             // 
             // textBox1
             // 
@@ -254,7 +255,6 @@
             this.btn_Search.Size = new System.Drawing.Size(45, 32);
             this.btn_Search.TabIndex = 6;
             this.btn_Search.UseVisualStyleBackColor = true;
-            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
             // 
             // pageSelector1
             // 
