@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using StoreAssitant.StoreAssistant_Authenticater;
 using System.Security.Authentication;
+using StoreAssitant.StoreAssistant_VoucherView;
 
 namespace StoreAssitant
 {
@@ -21,6 +22,7 @@ namespace StoreAssitant
         StoreAssistant_AccountView.AccountView accountView;
         StoreAssistant_HistoryView.HistoryView historyView;
         StoreAssistant_StatiticsView.StatiticsView2 statiticsView;
+        StoreAssistant_VoucherView.VoucherView voucherView;
 
         public event EventHandler SignOut;
         void OnSignOut(object sender, EventArgs e) {}
@@ -34,7 +36,6 @@ namespace StoreAssitant
 
             kryptonNavigator1.GotFocus += KryptonNavigator1_GotFocus;
             this.SizeChanged += Form1_SizeChanged;
-
             Form1_SizeChanged(this, null);
         }
 
@@ -59,6 +60,7 @@ namespace StoreAssitant
                 kryptonNavigator1.Pages.Remove(krPage_History);
                 kryptonNavigator1.Pages.Remove(krPage_Manager);
                 kryptonNavigator1.Pages.Remove(krPage_Statistic);
+                kryptonNavigator1.Pages.Remove(krPage_Voucher);
             }
         }
 
@@ -121,10 +123,19 @@ namespace StoreAssitant
                 }
                 SelectTab(statiticsView);
             }
+            else if (kryptonNavigator1.SelectedPage.Name == krPage_Voucher.Name)
+            {
+                //something wrong here
+                if (voucherView == null)
+                {
+                    voucherView = new VoucherView();
+                }
+                voucherView.LoadDataFromDB();
+                SelectTab(voucherView);
+            }
             else
             {
-                MessageBox.Show("Invalid tab", "Unknow error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                panel1.Controls.Clear();
+                
             }
         }
 

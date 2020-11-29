@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.ComponentModel;
 namespace StoreAssitant.Class_Information
 {
     public class TableBillInfo
@@ -44,8 +44,8 @@ namespace StoreAssitant.Class_Information
     public class MyList<T> : List<T>
     {
 
-        public event EventHandler OnAdded;// = new EventHandler((s,e)=> { });
-        public event EventHandler OnRemoved;// = new EventHandler((s, e) => { });
+        public event EventHandler OnAdded;
+        public event EventHandler OnRemoved;
 
         public new void Add(T item) // "new" to avoid compiler-warnings, because we're hiding a method from base-class
         {
@@ -57,6 +57,7 @@ namespace StoreAssitant.Class_Information
             base.Remove(item);
             OnRemoved?.Invoke(this, null);
         }
+
     }
 
 }

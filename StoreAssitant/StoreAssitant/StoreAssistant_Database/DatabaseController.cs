@@ -1,4 +1,4 @@
-﻿#define SAVE_TO_DB
+﻿//#define SAVE_TO_DB
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -733,17 +733,12 @@ namespace StoreAssitant
             return (bills);
 
         }
-        public BillInfo GetOneBillInfo(DateTime from, DateTime to, int start, int lenght, int bill_id)
+        public BillInfo GetOneBillInfo(int bill_id)
         {
             BillInfo bills = new BillInfo();
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
-            cmd.CommandText = string.Format("select * from(select ROW_NUMBER() over(order by Bill_ID) as [STT], BILL_ID, Number_TB, ID_User, Vourcher, Total, Take, Give, Time  from BILL) as foo where STT >= @start and STT <= @end and Time >= @from and TIME <= @to and BILL_ID = @ID");
-            // select* from(select ROW_NUMBER() over(order by Bill_ID) as [STT], Number_TB, ID_User, Vourcher, Total, Take, Give, Time from BILL) as foo where STT >= 1 and STT <= 5  and Time >= '2001/11/08' and TIME<= '2090/10/19'
+            cmd.CommandText = string.Format("select * from Bill where Bill_ID = @ID");
             cmd.Parameters.Clear();
-            cmd.Parameters.Add("@start", SqlDbType.Int).Value = start;
-            cmd.Parameters.Add("@end", SqlDbType.Int).Value = start + lenght;
-            cmd.Parameters.Add("@from", SqlDbType.DateTime).Value = from;
-            cmd.Parameters.Add("@to", SqlDbType.DateTime).Value = to;
             cmd.Parameters.Add("@ID", SqlDbType.Int).Value = bill_id;
 
             using (SqlDataReader reader = cmd.ExecuteReader())
@@ -756,7 +751,6 @@ namespace StoreAssitant
                 bills.DAY = (DateTime)reader["Time"];
                 bills.ID = (int)reader["BILL_ID"];
                 bills.Price_Bill = (long)reader["Total"];
-                //bills[i].ProductBills = GetDetailBillInfo((int)reader["BILL_ID"]);
             }
             bills.ProductBills = GetDetailBillInfo(bills.ID);
 
@@ -764,6 +758,21 @@ namespace StoreAssitant
 
         }
 
+        public int CountBill(DateTime from, DateTime to)
+        {
+            int Amount = 0;
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("select count(*) as SL from Bill where Time >= @from and  Time <= @to");
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@from", SqlDbType.DateTime).Value = from;
+            cmd.Parameters.Add("@to", SqlDbType.DateTime).Value = to;
+            using ( SqlDataReader reader = cmd.ExecuteReader())
+            {
+                reader.Read();
+                Amount = (int) reader["SL"];
+            }
+            return Amount;
+        }
         /* public List<SaleInfo> GetSaleInfos (DateTime MinDate, DateTime MaxDate)
          {
              List<SaleInfo> saleInfos = new List<SaleInfo>();
