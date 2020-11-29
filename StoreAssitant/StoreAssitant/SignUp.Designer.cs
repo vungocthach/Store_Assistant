@@ -41,6 +41,8 @@
             this.txb_Phone = new System.Windows.Forms.TextBox();
             this.btn_SignUp = new System.Windows.Forms.Button();
             this.cbx_Sex = new System.Windows.Forms.ComboBox();
+            this.txtUserName = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -49,7 +51,7 @@
             this.label1.BackColor = System.Drawing.Color.Orange;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.label1.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(398, 14);
+            this.label1.Location = new System.Drawing.Point(405, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 22);
             this.label1.TabIndex = 0;
@@ -68,7 +70,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Orange;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.label2.Location = new System.Drawing.Point(398, 82);
+            this.label2.Location = new System.Drawing.Point(405, 156);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 22);
             this.label2.TabIndex = 2;
@@ -77,7 +79,7 @@
             // txb_Pass
             // 
             this.txb_Pass.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.txb_Pass.Location = new System.Drawing.Point(402, 107);
+            this.txb_Pass.Location = new System.Drawing.Point(404, 181);
             this.txb_Pass.Name = "txb_Pass";
             this.txb_Pass.Size = new System.Drawing.Size(281, 27);
             this.txb_Pass.TabIndex = 3;
@@ -87,16 +89,17 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Orange;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.label3.Location = new System.Drawing.Point(398, 150);
+            this.label3.Location = new System.Drawing.Point(405, 225);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(169, 22);
             this.label3.TabIndex = 4;
             this.label3.Text = "Xác nhận mật khẩu:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // TxB_IdentityPass
             // 
             this.TxB_IdentityPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.TxB_IdentityPass.Location = new System.Drawing.Point(402, 176);
+            this.TxB_IdentityPass.Location = new System.Drawing.Point(404, 250);
             this.TxB_IdentityPass.Name = "TxB_IdentityPass";
             this.TxB_IdentityPass.Size = new System.Drawing.Size(281, 27);
             this.TxB_IdentityPass.TabIndex = 5;
@@ -106,19 +109,21 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Orange;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.label4.Location = new System.Drawing.Point(398, 221);
+            this.label4.Location = new System.Drawing.Point(405, 295);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(95, 22);
+            this.label4.Size = new System.Drawing.Size(100, 22);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Ngày sinh:";
+            this.label4.Text = "Ngày sinh :";
             // 
             // dateTimeBirth
             // 
             this.dateTimeBirth.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.dateTimeBirth.CustomFormat = "dd/MM/yyyy";
             this.dateTimeBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.dateTimeBirth.Location = new System.Drawing.Point(403, 247);
+            this.dateTimeBirth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimeBirth.Location = new System.Drawing.Point(404, 320);
             this.dateTimeBirth.Name = "dateTimeBirth";
-            this.dateTimeBirth.Size = new System.Drawing.Size(280, 27);
+            this.dateTimeBirth.Size = new System.Drawing.Size(105, 27);
             this.dateTimeBirth.TabIndex = 10;
             // 
             // label6
@@ -126,7 +131,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Orange;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.label6.Location = new System.Drawing.Point(400, 287);
+            this.label6.Location = new System.Drawing.Point(560, 295);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(81, 22);
             this.label6.TabIndex = 12;
@@ -171,10 +176,30 @@
             "Nam",
             "Nữ",
             "Khác"});
-            this.cbx_Sex.Location = new System.Drawing.Point(404, 318);
+            this.cbx_Sex.Location = new System.Drawing.Point(560, 322);
             this.cbx_Sex.Name = "cbx_Sex";
-            this.cbx_Sex.Size = new System.Drawing.Size(279, 28);
+            this.cbx_Sex.Size = new System.Drawing.Size(126, 28);
             this.cbx_Sex.TabIndex = 13;
+            // 
+            // txtUserName
+            // 
+            this.txtUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.txtUserName.Location = new System.Drawing.Point(405, 101);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(281, 27);
+            this.txtUserName.TabIndex = 16;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Orange;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.label7.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.label7.Location = new System.Drawing.Point(405, 76);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(148, 22);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Tên Đăng Nhập :";
             // 
             // SignUp
             // 
@@ -185,6 +210,8 @@
             this.BackgroundImage = global::StoreAssitant.Properties.Resources.SUPBG;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(756, 473);
+            this.Controls.Add(this.txtUserName);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.btn_SignUp);
             this.Controls.Add(this.cbx_Sex);
             this.Controls.Add(this.label6);
@@ -220,5 +247,7 @@
         private System.Windows.Forms.TextBox txb_Phone;
         private System.Windows.Forms.Button btn_SignUp;
         private System.Windows.Forms.ComboBox cbx_Sex;
+        private System.Windows.Forms.TextBox txtUserName;
+        private System.Windows.Forms.Label label7;
     }
 }

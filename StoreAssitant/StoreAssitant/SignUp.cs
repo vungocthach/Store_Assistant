@@ -13,18 +13,22 @@ namespace StoreAssitant
 {
     public partial class SignUp : Form
     {
-        private UserInfo User;
+        private UserInfo user;
 
-        public UserInfo user { get => User; set => User = value; }
+        public UserInfo User { get => User; set => User = value; }
 
         public bool IsNumber(string pText)
         {
             Regex regex = new Regex(@"^[-+]?[0-9]*\.?[0-9]+$");
             return regex.IsMatch(pText);
         }
+
+        public event EventHandler<UserInfo> SignUpOK;
         public SignUp()
         {
             InitializeComponent();
+            SignUpOK = new EventHandler<UserInfo>((s,e)=> { });
+
             this.btn_SignUp.Click += Btn_SignUp_Click;
         }
 
@@ -49,12 +53,32 @@ namespace StoreAssitant
             {
                 txb_Phone.BackColor = Color.Red;
                 MessageBox.Show("Sai định dạng", "Thông báo", MessageBoxButtons.OK);
+                return;
             }
             txb_Phone.BackColor = Color.White;
-            using (DatabaseController database = new DatabaseController())
+
+            UserInfo userInfo = new UserInfo()
             {
-                database.InsertUser(new UserInfo(txb_Name.Text, txb_Pass.Text, cbx_Sex.Text, dateTimeBirth.Value, txb_Phone.Text));
+                UserName = txtUserName.Text.Trim(),
+                FullName = txb_Name.Text,
+                Pass = txb_Pass.Text,
+                Sex = cbx_Sex.SelectedItem.ToString(),
+                Phone = txb_Phone.Text,
+                Role = UserInfo.UserRole.Cashier
+            };
+
+            if (!StoreAssistant_Authenticater.Authenticator.RegistUser(userInfo))
+            {
+                //MessageBox.Show("Đăng ký thất bại. Vui lòng thử lại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            else
+            {
+                SignUpOK(this, userInfo);
+            }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
 
         }
     }

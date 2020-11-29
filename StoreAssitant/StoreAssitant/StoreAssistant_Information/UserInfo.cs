@@ -10,6 +10,8 @@ namespace StoreAssitant
     {
         public string UserName { get; set; }
         public string Pass { get; set; }
+
+        public string FullName { get; set; }
         public string Sex { get; set;}
 
         public DateTime Birth { get; set; }

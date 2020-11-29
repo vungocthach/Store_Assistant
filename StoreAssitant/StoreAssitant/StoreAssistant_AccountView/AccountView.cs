@@ -101,7 +101,7 @@ namespace StoreAssitant.StoreAssistant_AccountView
 
         private void Btn_AddAccount_Click(object sender, EventArgs e)
         {
-            SignUpForm signUpForm = new SignUpForm();
+            SignUp signUpForm = new SignUp();
             signUpForm.SignUpOK += SignUpForm_SignUpOK;
             signUpForm.StartPosition = FormStartPosition.CenterScreen;
             signUpForm.ShowDialog();

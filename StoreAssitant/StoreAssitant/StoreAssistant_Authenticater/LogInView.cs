@@ -53,7 +53,7 @@ namespace StoreAssitant
         {
             Btn_Login.Click += Btn_Login_Click;
             Lb_ForgotPass.Click += Lb_ForgotPass_Click;
-            Lb_SignUp.Click += Lb_SignUp_Click;
+            //Lb_SignUp.Click += Lb_SignUp_Click;
             tb_Password.GotFocus += Tb_Password_GotFocus;
             tb_User.GotFocus += Tb__User_GotFocus;
         }
