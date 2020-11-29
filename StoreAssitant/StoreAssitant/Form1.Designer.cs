@@ -77,7 +77,7 @@
             this.krPage_Voucher,
             this.krPage_Setting,
             this.krPage_Account});
-            this.kryptonNavigator1.SelectedIndex = 5;
+            this.kryptonNavigator1.SelectedIndex = 6;
             this.kryptonNavigator1.Size = new System.Drawing.Size(1084, 60);
             this.kryptonNavigator1.TabIndex = 0;
             this.kryptonNavigator1.Text = "kryptonNavigator1";
@@ -219,6 +219,7 @@
             this.ClientSize = new System.Drawing.Size(1084, 561);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.kryptonNavigator1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(750, 500);
             this.Name = "Form1";

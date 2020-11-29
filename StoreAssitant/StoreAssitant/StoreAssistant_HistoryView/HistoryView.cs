@@ -231,9 +231,12 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         {
             Console.WriteLine("HistoryView : GetData()");
             List<BillInfo> bills;
+
+            DateTime fromDate = new DateTime(GetStartTime().Year, GetStartTime().Month, GetStartTime().Day, 0, 0, 0);
+            DateTime toDate = new DateTime(GetEndTime().Year, GetEndTime().Month, GetEndTime().Day, 23, 59, 59);
             using (DatabaseController databaseController = new DatabaseController())
             {
-                bills = databaseController.GetBillInfo(GetStartTime(), GetEndTime(), GetStartIndex(), row_per_page);
+                bills = databaseController.GetBillInfo(fromDate, toDate, GetStartIndex(), row_per_page);
             }
 
             SetData(bills);
