@@ -60,8 +60,8 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             int space = 10;
             btnRemove.Location = new Point(this.Width - btnRemove.Width - space, this.Height - btnRemove.Height - space);
             btnAdd.Location = new Point(this.Width - btnAdd.Width - btnRemove.Width - space*2, btnRemove.Location.Y);
-            dataGridView1.Size = new Size(this.Width, dataGridView1.Height);
-            dataGridView1.Location = new Point(0, btnRemove.Location.Y - space*2 - dataGridView1.Height);
+            dataGridView1.Size = new Size(this.Width, this.Height*3/4);
+            dataGridView1.Location = new Point(0, (this.Height-dataGridView1.Height)/2);
         }
 
         internal void LoadDataFromDB()
