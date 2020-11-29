@@ -622,7 +622,6 @@ namespace StoreAssitant
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue(string.Format("@Name_Pr"), productBills[i].Name);
                 cmd.Parameters.AddWithValue(string.Format("@Price_Pr"), productBills[i].Price);
-                cmd.Parameters.AddWithValue(string.Format("@Amount_Pr"), productBills[i].NumberProduct);
                 cmd.Parameters.AddWithValue(string.Format("@BIll_ID"), t);
                 cmd.ExecuteNonQuery();
             }
@@ -630,7 +629,8 @@ namespace StoreAssitant
         public void delete_Bill(int ID)
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
-            cmd.CommandText = string.Format("delete from detailBill where Bill_ID = " + ID);
+            cmd.CommandText = string.Format("delete from detail_Bill where Bill_ID = " + ID);
+            cmd.ExecuteNonQuery();
             cmd.CommandText = string.Format("delete from BILL where  BILL_ID = " + ID);
             cmd.ExecuteNonQuery();
         }

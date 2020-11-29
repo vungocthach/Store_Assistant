@@ -87,7 +87,6 @@
             this.label3.Size = new System.Drawing.Size(169, 22);
             this.label3.TabIndex = 4;
             this.label3.Text = "Xác nhận mật khẩu:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // textBox3
             // 
@@ -125,7 +124,6 @@
             this.label6.Size = new System.Drawing.Size(81, 22);
             this.label6.TabIndex = 12;
             this.label6.Text = "Giới tính:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // comboBox1
             // 
@@ -149,7 +147,6 @@
             this.label5.Size = new System.Drawing.Size(47, 22);
             this.label5.TabIndex = 8;
             this.label5.Text = "SĐT";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // textBox4
             // 
@@ -163,7 +160,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(822, 450);
+            this.ClientSize = new System.Drawing.Size(756, 450);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox4);
