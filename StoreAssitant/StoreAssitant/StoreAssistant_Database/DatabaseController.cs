@@ -627,11 +627,11 @@ namespace StoreAssitant
                 cmd.ExecuteNonQuery();
             }
         }
-        public void delete_Bill(BillInfo bill)
+        public void delete_Bill(int ID)
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
-            cmd.CommandText = string.Format("delete from BILL where  BILL_ID = " + bill.ID);
-            cmd.CommandText = string.Format("delete from detailBill where Bill_ID = " + bill.ID);
+            cmd.CommandText = string.Format("delete from detailBill where Bill_ID = " + ID);
+            cmd.CommandText = string.Format("delete from BILL where  BILL_ID = " + ID);
             cmd.ExecuteNonQuery();
         }
 
