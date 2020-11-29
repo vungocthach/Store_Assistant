@@ -13,7 +13,9 @@ using System.IO;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 using StoreAssitant.Class_Information;
+using StoreAssitant.StoreAssistant_VoucherView;
 using StoreAssitant.StoreAssistant_Information;
+using System.ComponentModel;
 
 namespace StoreAssitant
 {
@@ -824,6 +826,86 @@ namespace StoreAssitant
              cmd.CommandText = string.Fomat("")
 
          }*/
+        public BindingList<VoucherInfo> GetVouchers()
+        {
+            var Vouchers = new BindingList<VoucherInfo>();
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("select * from Voucher");
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    VoucherInfo item = new VoucherInfo();
+                    item.Code = (string)reader["Code"];
+                    item.ExpiryDate = (DateTime)reader["Expiry"];
+                    item.NumberInit = (int)reader["NumberInit"];
+                    item.NumberRemain = (int)reader["NumberRemain"];
+                    item.Value = (int)reader["Decrease"];
+                    Vouchers.Add(item);
+                }
+            }
+            return Vouchers;
+        }
+        public int UseVoucher(string Code)
+        {
+            int value = 0;
+            bool isExistsCode = false;
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("select NumberRemain, Expiry, Decrease from Voucher where Code = @Code", Code);
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@Code", Code);
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    isExistsCode = true;
+                    if ((int)reader["NumberRemain"] == 0)
+                    {
+                        MessageBox.Show("Đã hết số lần sử dụng thẻ voucher");
+                        return 0;
+                    }
+                    if ((DateTime)reader["Expiry"] > DateTime.Now)
+                    {
+                        MessageBox.Show("Hết thời hạn");
+                        return 0;
+                    }
+                    value = (int)reader["Decrease"];
+                }
+            }
+            if (isExistsCode)
+            {
+                cmd.CommandText = string.Format("update Voucher set NumberRemain = NumberRemain - 1 where Code = @Code ", Code);
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@Code", Code);
+                cmd.ExecuteNonQuery();
+            }
+            return value;
+        }
+        public void AddVoucher(VoucherInfo voucher)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("insert Voucher(Code,Expiry,Decrease,NumberInit,NumberRemain) values(@Code,@Expiry,@Value,@NumberInit,@NumberRemain)");
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue(string.Format("@Code"), voucher.Code);
+            cmd.Parameters.AddWithValue(string.Format("@Expiry"), voucher.ExpiryDate);
+            cmd.Parameters.AddWithValue(string.Format("@Value"), voucher.Value);
+            cmd.Parameters.AddWithValue(string.Format("@NumberInit"), voucher.NumberInit);
+            cmd.Parameters.AddWithValue(string.Format("@NumberRemain"), voucher.NumberRemain);
+            cmd.ExecuteNonQuery();
+            /*if ( cmd.ExecuteNonQuery() != 1)
+            {
+                MessageBox.Show("Lỗi khi thêm voucher vào database");
+            }*/
+        }
+        public void RemoveVoucher(string name)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("delete from Voucher where Code = @name", name);
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@name", name);
+            cmd.ExecuteNonQuery();
+        }
+
         public void Dispose()
         {
             Disconnect();
