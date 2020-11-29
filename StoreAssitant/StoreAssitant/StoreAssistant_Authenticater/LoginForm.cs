@@ -27,6 +27,13 @@ namespace StoreAssitant
             Click_Login += on_Click_Login;
 
             logInView._Click += LogInView__Click;
+            logInView.Click_SignUp += LogInView_Click_SignUp;
+        }
+
+        private void LogInView_Click_SignUp(object sender, EventArgs e)
+        {
+            SignUp sign = new SignUp();
+            sign.ShowDialog();
         }
 
         private void LogInView__Click(object sender, EventArgs e)

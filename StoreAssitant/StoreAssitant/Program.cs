@@ -19,13 +19,15 @@ namespace StoreAssitant
               Application.SetCompatibleTextRenderingDefault(false);
 
               LoginForm form = new LoginForm();
+               SignUp sign = new SignUp();
               form.Click_Login += Form_Click_Login;
-              Application.Run(form);
+            /* Application.Run(form);*/
+            Application.Run(sign);
 
             //Test();
             //test2();
             //tesst3();
-           // Test4();
+            // Test4();
         }
         static void Test4()
         {
