@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
-using StoreAssitant.Class_Information; 
+using StoreAssitant.Class_Information;
+using System.Text.RegularExpressions;
 
 namespace StoreAssitant
 {
@@ -203,6 +204,14 @@ namespace StoreAssitant
 
         }
 
+        public static string convertToUnSign3(string s)
+        {
+            string S = s.ToUpper();
+            Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
+            string temp = S.Normalize(NormalizationForm.FormD);
+            return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
+        }
+
         private void ControlSearch_Click_SearchBar(object sender, EventArgs e)
         {
             foreach( Control t in flowLayoutPanelMenu.Controls)
@@ -210,7 +219,7 @@ namespace StoreAssitant
                 if (t is MenuControl)
                 {
                     MenuControl T = t as MenuControl;
-                    if (!T.NameTitle.Contains(controlSearch.Text)) T.Visible = false;
+                    if (!convertToUnSign3(T.NameTitle).Contains(convertToUnSign3(controlSearch.Text))) T.Visible = false;
                     else T.Visible = true;
                 }
             }    
