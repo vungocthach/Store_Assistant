@@ -13,6 +13,7 @@ using System.IO;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 using StoreAssitant.Class_Information;
+using StoreAssitant.StoreAssistant_VoucherView;
 using StoreAssitant.StoreAssistant_Information;
 
 namespace StoreAssitant
@@ -784,6 +785,48 @@ namespace StoreAssitant
              cmd.CommandText = string.Fomat("")
 
          }*/
+        public List<VoucherInfo> GetVouchers()
+        {
+            var Vouchers = new List<VoucherInfo>();
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("select * from Voucher");
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    VoucherInfo item = new VoucherInfo();
+                    item.Code = (string)reader["Code"];
+                    item.ExpiryDate = (DateTime)reader["Expiry"];
+                    item.NumberInit = (int)reader["NumberInit"];
+                    item.NumberRemain = (int)reader["NumberRemain"];
+                    item.Value = (int)reader["Decrease"];
+                    Vouchers.Add(item);
+                }
+            }
+            return Vouchers;
+        }
+        public void UseVoucher(string Code)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("select NumberRemain, Expiry froom Voucher where Code = " + Code);
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                reader.Read();
+                if ((int)reader[0] == 0)
+                {
+                    MessageBox.Show("Đã hết thẻ voucher");
+                    return;
+                }
+                if ((DateTime)reader[1] > DateTime.Now)
+                {
+                    MessageBox.Show("Hết thời hạn");
+                    return;
+                }
+            }
+            cmd.CommandText = string.Format("update Voucher set NumberRemain = NumberRemain - 1 where Code = " + Code);
+            cmd.ExecuteNonQuery();
+        }
+
         public void Dispose()
         {
             Disconnect();
