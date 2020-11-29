@@ -30,6 +30,8 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         {
             InitializeComponent();
 
+            dataGridView1.SortCompare += DataGridView1_SortCompare;
+
             dtp_To.MaxDate = DateTime.Today.AddDays(1);
             dtp_From.Value = dtp_From.MinDate;
             dtp_To.Value = DateTime.Now;
@@ -53,6 +55,18 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             dtp_To.ValueChanged += Dtp_From_ValueChanged;
 
             this.Load += HistoryView_Load;
+        }
+
+        private void DataGridView1_SortCompare(object sender, DataGridViewSortCompareEventArgs e)
+        {
+            DateTime date1 = (dataGridView1.Rows[e.RowIndex1].Tag as BillInfo).DAY;
+            DateTime date2 = (dataGridView1.Rows[e.RowIndex2].Tag as BillInfo).DAY;
+            if (e.Column.Name == "createTime")
+            {
+                //Console.WriteLine("got it");
+                e.SortResult = date1.CompareTo(date2);
+                e.Handled = true;
+            }
         }
 
         private void HistoryView_Load(object sender, EventArgs e)
@@ -159,7 +173,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         }
 
         int row_per_page = 10;
-        int startIndex { get => (pageSelector1.SelectedIndex - 1) * row_per_page +1; }
+        int GetStartIndex() { return (pageSelector1.SelectedIndex - 1) * row_per_page +1; }
 
         public void GetData()
         {
@@ -167,7 +181,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             List<BillInfo> bills;
             using (DatabaseController databaseController = new DatabaseController())
             {
-                bills = databaseController.GetBillInfo(GetStartTime(), GetEndTime(), startIndex, row_per_page);
+                bills = databaseController.GetBillInfo(GetStartTime(), GetEndTime(), GetStartIndex(), row_per_page);
             }
 
             SetData(bills);
@@ -177,10 +191,11 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         {
             dataGridView1.Rows.Clear();
             dataGridView1.SuspendLayout();
+            int startIndex = GetStartIndex();
             for(int i = 0; i < bills.Count; i++)
             {
                 BillInfo b = bills[i];
-                int index = dataGridView1.Rows.Add(i + 1, b.ID, b.DAY.ToString("dd/MM/yyyy"), b.Number_table, b.TOTAL);
+                int index = dataGridView1.Rows.Add(startIndex + i , b.ID, b.DAY.ToString("dd/MM/yyyy"), b.Number_table, b.TOTAL);
                 DataGridViewRow row = dataGridView1.Rows[index];
                 row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 row.Tag = b;
