@@ -21,7 +21,7 @@ namespace StoreAssitant
         ManagerModifyView managerModifyView;
         StoreAssistant_AccountView.AccountView accountView;
         StoreAssistant_HistoryView.HistoryView historyView;
-        StoreAssistant_StatiticsView.StatiticsView statiticsView;
+        StoreAssistant_StatiticsView.StatiticsView2 statiticsView;
         StoreAssistant_VoucherView.VoucherView voucherView;
 
         public event EventHandler SignOut;
@@ -119,7 +119,7 @@ namespace StoreAssitant
             {
                 if (statiticsView == null)
                 {
-                    statiticsView = new StoreAssistant_StatiticsView.StatiticsView();
+                    statiticsView = new StoreAssistant_StatiticsView.StatiticsView2();
                 }
                 SelectTab(statiticsView);
             }

@@ -50,7 +50,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             this.numberPD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.revenue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnFilter = new System.Windows.Forms.Button();
             this.cbbStatiticsMode = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupChart = new System.Windows.Forms.GroupBox();
@@ -186,7 +186,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.btnFilter);
             this.groupBox1.Controls.Add(this.cbbStatiticsMode);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Location = new System.Drawing.Point(5, 5);
@@ -197,20 +197,20 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách";
             // 
-            // button2
+            // btnFilter
             // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button2.Location = new System.Drawing.Point(277, 21);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(48, 29);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Lọc";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnFilter.FlatAppearance.BorderSize = 0;
+            this.btnFilter.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnFilter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilter.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilter.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.btnFilter.Location = new System.Drawing.Point(277, 21);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(48, 29);
+            this.btnFilter.TabIndex = 9;
+            this.btnFilter.Text = "Lọc";
+            this.btnFilter.UseVisualStyleBackColor = true;
             // 
             // cbbStatiticsMode
             // 
@@ -248,6 +248,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             // 
             // cbbChartMode
             // 
+            this.cbbChartMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbbChartMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbChartMode.FormattingEnabled = true;
             this.cbbChartMode.Items.AddRange(new object[] {
@@ -260,6 +261,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(414, 20);
             this.label1.Name = "label1";
@@ -346,7 +348,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         private System.Windows.Forms.DataGridViewTextBoxColumn revenue;
         private System.Windows.Forms.ComboBox cbbStatiticsMode;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.ComboBox cbbChartMode;
         private System.Windows.Forms.Label label1;
     }

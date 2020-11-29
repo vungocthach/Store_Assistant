@@ -23,7 +23,7 @@ namespace StoreAssitant
             Application.Run(form);
 
             //Test();
-            // test2();
+            //test2();
             //tesst3();
         }
         static void tesst3()

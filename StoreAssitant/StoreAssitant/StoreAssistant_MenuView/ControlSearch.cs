@@ -63,7 +63,6 @@ namespace StoreAssitant
 
             this.SizeChanged += ControlSearch_SizeChanged;
             cbx_Search.TextChanged += cbx_Search_TextChanged;
-           // cbx_Search.KeyPress += cbx_Search_KeyPress;
         }
         private void cbx_Search_KeyPress(object sender, KeyPressEventArgs e)
         {

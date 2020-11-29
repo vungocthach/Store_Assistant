@@ -48,11 +48,18 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             timePicker = new TimePickerForm();
             timePicker.ClickedSubmitOK += TimePicker_ClickedSubmitOK;
 
+            btnFilter.Click += BtnFilter_Click;
+
             dataGridView1.SelectionChanged += DataGridView1_SelectionChanged;
             cbbChartMode.SelectedIndexChanged += CbbChartMode_SelectedIndexChanged;
             cbbStatiticsMode.SelectedIndexChanged += CbbStatiticsMode_SelectedIndexChanged;
 
             this.Load += StatiticsView2_Load;
+        }
+
+        private void BtnFilter_Click(object sender, EventArgs e)
+        {
+            timePicker.ShowDialog();
         }
 
         private void Panel2_SizeChanged(object sender, EventArgs e)
@@ -69,7 +76,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
             dataGridView1.Height = (panel.Height - (groupBox1.Location.Y + groupBox1.Height + groupBox1.Margin.Bottom)
                                                 - ((panel.Height - pageSelector1.Location.Y) + pageSelector1.Margin.Top)
-                                                - (dataGridView1.Margin.Top - dataGridView1.Margin.Bottom));
+                                                - (dataGridView1.Margin.Top + dataGridView1.Margin.Bottom));
             dataGridView1.Width = panel.Width - dataGridView1.Margin.Left - dataGridView1.Margin.Right;
         }
 
@@ -84,6 +91,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         private void CbbStatiticsMode_SelectedIndexChanged(object sender, EventArgs e)
         {
             ChangeStatiticsMode(ModeStatistics);
+            DataGridView1_SelectionChanged(dataGridView1, null);
         }
 
         private void CbbChartMode_SelectedIndexChanged(object sender, EventArgs e)
@@ -117,7 +125,33 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
         private void TimePicker_ClickedSubmitOK(object sender, EventArgs e)
         {
-            //ChangeStatiticsMode(cbbStatiticsMode.SelectedIndex);
+            UpdateMaxPage();
+        }
+
+        int line_per_page = 10;
+
+        void UpdateMaxPage()
+        {
+            TimeSpan timeSpan = dateMax - dateMax;
+            int max = 0;
+            DateTime date = dateMin;
+            if (ModeStatistics == 0)
+            {
+                while (date < dateMax)
+                {
+                    max++;
+                    date = date.AddMonths(1);
+                }
+            }
+            else if (ModeStatistics == 1)
+            {
+                while (date < dateMax)
+                {
+                    max++;
+                    date = date.AddYears(1);
+                }
+            }
+            pageSelector1.MaximumRange = max / line_per_page + 1;
         }
 
         private readonly string REVENUE_SERIES_NAME = "Revenue";
@@ -133,35 +167,20 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             seriesRevenue.XValueMember = "Time";
             seriesRevenue.YValueMembers = "Revenue";
             seriesRevenue.ChartType = SeriesChartType.Column;
+            seriesRevenue["DrawingStyle"] = "Cylinder";// DrawingStyle=Cylinder
 
-            chart1.Series.Clear();
-            //ChartArea chartArea = chart1.ChartAreas.Add("areaDetail");
-            //Legend lengendProduct = chart1.Legends.Add("lengendProducts");
-            //lengendProduct.Title = "Tên";
-            //lengendProduct.DockedToChartArea = chart1.ChartAreas[1].Name;
-
-            //LoadSeriesProducts();
-
-            chart1.Series.Add(seriesRevenue);
+            chart1.ChartAreas[0].AxisY.Title = chart1.ChartAreas[1].AxisY.Title = "DOANH THU";
         }
 
         void LoadSeriesProducts()
         {
-            seriesProducts = new Series[MenuView.ProductsList.Count];
-            for (int k = chart1.Series.Count - 1; k > 0; k--) { chart1.Series.RemoveAt(k); }
-            int i = 0;
+            List<ProductInfo> productInfos = new List<ProductInfo>(MenuView.ProductsList.Count);
             foreach (KeyValuePair<int, ProductInfo> p in MenuView.ProductsList)
             {
-                Series series = chart1.Series.Add(p.Key.ToString());
-                series.XValueMember = "Time";
-                series.YValueMembers = "Name";
-                series.ChartType = SeriesChartType.StackedColumn;
-                series.Legend = chart1.Legends[1].Name;
-                series.ChartArea = chart1.ChartAreas[1].Name;
-
-                seriesProducts[i] = series;
-                i++;
+                productInfos.Add(p.Value);
             }
+
+            LoadSeriesProducts(productInfos);
         }
 
         void LoadSeriesProducts(List<ProductInfo> products)
@@ -178,6 +197,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                 series.ChartType = SeriesChartType.StackedColumn;
                 series.Legend = chart1.Legends[1].Name;
                 series.ChartArea = chart1.ChartAreas[1].Name;
+                series["DrawingStyle"] = "Cylinder";
 
                 seriesProducts[i] = series;
             }
@@ -193,7 +213,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                 foreach (Series series in seriesProducts)
                 {
                     series.Points.Clear();
-                    series.Points.Add(s.Products[series.Name].GetRenvenue());
+                    series.Points.Add(s.Products[series.Name].GetRevenue());
                 }
             }
         }
@@ -222,6 +242,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
         void LoadDetailChart_ByDay(SaleInfo[] saleInfos)
         {
+            chart1.ChartAreas[1].AxisX.Title = "NGÀY";
             string x_axis_format = "{0}/{1}";
 
             foreach (Series s in seriesProducts)
@@ -236,7 +257,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                 {
                     if (s.Products.ContainsKey(series.Name))
                     {
-                        series.Points.AddXY(string.Format(x_axis_format, s.DateMin.Day, s.DateMin.Month), s.Products[series.Name].GetRenvenue());
+                        series.Points.AddXY(string.Format(x_axis_format, s.DateMin.Day, s.DateMin.Month), s.Products[series.Name].GetRevenue());
                     }
                     else { series.Points.AddXY(string.Format(x_axis_format, s.DateMin.Day, s.DateMin.Month), 0); }
                 }
@@ -245,6 +266,8 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
         void LoadDetailChart_ByMonth(SaleInfo[] saleInfos)
         {
+            chart1.ChartAreas[1].AxisX.Title = "THÁNG";
+
             string x_axis_format = "{0}/{1}";
 
             foreach (Series s in seriesProducts)
@@ -259,7 +282,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                 {
                     if (s.Products.ContainsKey(series.Name))
                     {
-                        series.Points.AddXY(string.Format(x_axis_format, s.DateMin.Month, s.DateMin.Year), s.Products[series.Name].GetRenvenue());
+                        series.Points.AddXY(string.Format(x_axis_format, s.DateMin.Month, s.DateMin.Year), s.Products[series.Name].GetRevenue());
                     }
                     else { series.Points.AddXY(string.Format(x_axis_format, s.DateMin.Month, s.DateMin.Year), 0); }
                 }
@@ -269,7 +292,10 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         void LoadSummaryChart_ByDay(SaleInfo[] saleInfos)
         {
             string x_axis_format = "{0}/{1}";
-                seriesRevenue.Points.Clear();
+            seriesRevenue.Points.Clear();
+
+            chart1.ChartAreas[0].AxisX.Title = "NGÀY";
+
             for (int i = 0; i < saleInfos.Length; i++)
             {
                 SaleInfo s = saleInfos[i];
@@ -282,6 +308,9 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         {
             string x_axis_format = "{0}/{1}";
             seriesRevenue.Points.Clear();
+
+            chart1.ChartAreas[0].AxisX.Title = "THÁNG";
+
             for (int i = 0; i < saleInfos.Length; i++)
             {
                 SaleInfo s = saleInfos[i];
@@ -304,6 +333,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             }
             else if (mode == 0)
             {
+
                 txtTimeFormat = "Tháng {0}/{1}"; // {0}:month; {1}:year
                 DateTime date = new DateTime(dateMin.Year, dateMin.Month, dateMin.Day, 0, 0, 0);
                 int stt = 0;
@@ -345,7 +375,13 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
                         if (k < listSales.Count && listSales[k].DateMin.Year == date.Year && listSales[k].DateMin.Month == date.Month && listSales[k].DateMin.Day == date.Day)
                         {
-                            saleInDay.Products = listSales[k].Products;
+                            
+                            foreach (KeyValuePair<string, ProductSaleInfo> p in listSales[k].Products)
+                            {
+                                saleInDay.Products.Add(p.Key, p.Value.Clone());
+                            }
+                            
+                            //saleInDay.Products = listSales[k].Products;
                             k++;
                         }
 
@@ -377,16 +413,11 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
                     SaleInfo info = new SaleInfo() { DateMin = date, DateMax = new DateTime(date.Year, 12, 31) };
 
-                    SaleInfo[] saleInYear = new SaleInfo[12];
+                    SaleInfo[] salesInYear = new SaleInfo[12];
 
                     while (date < nextYear)
                     {
-                        SaleInfo saleInMonth = new SaleInfo()
-                        {
-                            // Present for sale info in 1-month
-                            DateMin = new DateTime(date.Year, date.Month, 1),
-                            DateMax = new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year, date.Month))
-                        };
+                        SaleInfo saleInMonth = new SaleInfo(date.Year, date.Month);
 
                         while (k < listSales.Count && listSales[k].DateMin.Month == date.Month && listSales[k].DateMin.Year == date.Year)
                         {
@@ -396,35 +427,34 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                                 {
                                     // Add number if product sale info already exist
                                     saleInMonth.Products[p.Key].Number += p.Value.Number;
-                                    break;
                                 }
                                 else
                                 {
                                     // Not existed -> Add new product sale info
-                                    saleInMonth.Products.Add(p.Key, p.Value);
+                                    saleInMonth.Products.Add(p.Key, p.Value.Clone());
                                 }
                             }
 
                             k++;
                         }
 
-                        saleInYear[date.Month - 1] = saleInMonth;
+                        salesInYear[date.Month - 1] = saleInMonth;
 
                         date = date.AddMonths(1);
                     }
 
                     long totalRevenue = 0;
-                    foreach (SaleInfo s in saleInYear) { totalRevenue += s.GetRevenue(); }
+                    foreach (SaleInfo s in salesInYear) { totalRevenue += s.GetRevenue(); }
                     int index = dataGridView1.Rows.Add(stt, string.Format(txtTimeFormat, nextYear.Year - 1), totalRevenue);
-                    info.Tag = saleInYear;
+                    info.Tag = salesInYear;
                     dataGridView1.Rows[index].Tag = info;
                     dataGridView1.Rows[index].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     stt++;
                 }
 
             }
-            //dataGridView1.Rows[0].Selected = true;
-            //DataGridView1_SelectionChanged(dataGridView1, null);
+
+            UpdateMaxPage();
         }
 
         void GetData()

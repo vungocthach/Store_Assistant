@@ -112,7 +112,16 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             }
         }
 
-        public int MaximumRange;
+        private int maximumRange;
+        public int MaximumRange
+        {
+            get => maximumRange;
+            set
+            {
+                maximumRange = value;
+                SelectedIndex = seletedIndex;
+            }
+        }
         public int MinimumRange;
 
         public event EventHandler SelectedIndexChanged;
@@ -120,9 +129,10 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         {
             InitializeComponent();
 
+            SelectedIndexChanged = new EventHandler((s, e) => { });
+
             seletedIndex = MinimumRange = 1;
             MaximumRange = 10;
-            SelectedIndexChanged = new EventHandler((s,e)=> { });
 
             this.SizeChanged += PageSelector_SizeChanged;
             txtPage.MouseCaptureChanged += TxtPage_MouseCaptureChanged;
