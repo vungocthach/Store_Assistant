@@ -90,7 +90,7 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             AddVoucher = new EventHandler<VoucherInfo>((s,e)=> { });
 
             //ExpiryDateVoucher = DateTime.Now;
-            dtpExpiryDate.Value = DateTime.Now;
+            dtpExpiryDate.Value = DateTime.Now.Date;
         }
         private void KeyPressNumber(object sender, KeyPressEventArgs e)
         {
