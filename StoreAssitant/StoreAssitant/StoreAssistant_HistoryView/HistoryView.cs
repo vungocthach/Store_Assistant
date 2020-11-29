@@ -118,6 +118,8 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
             BillInfo billInfo = selectedRow.Tag as BillInfo;
             // Show bill
+            FormBill formBill = new FormBill(billInfo);
+            formBill.ShowDialog();
             Console.WriteLine("Double clicked to bill : " + billInfo.ID.ToString());
         }
 
@@ -178,7 +180,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             for(int i = 0; i < bills.Count; i++)
             {
                 BillInfo b = bills[i];
-                int index = dataGridView1.Rows.Add(i + 1, b.ID, b.DAY.ToShortDateString(), b.Number_table, b.TOTAL);
+                int index = dataGridView1.Rows.Add(i + 1, b.ID, b.DAY.ToString("dd/MM/yyyy"), b.Number_table, b.TOTAL);
                 DataGridViewRow row = dataGridView1.Rows[index];
                 row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 row.Tag = b;

@@ -94,6 +94,14 @@ namespace StoreAssitant
             PropertyChanged = new PropertyChangedEventHandler((s, e) => { });
         }
 
+        public TableBillInfo ToTableBillInfo()
+        {
+            var t = new TableBillInfo();
+            t.ID = this.ID;
+            t.ProductInTable = this.productBills;
+            return t;
+        }
+
         #region Implementation of INotifyPropertyChanged
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -38,8 +38,8 @@ namespace StoreAssitant
         {
             InitializeComponent();
 
-            info = bill;
-            isReadonly = true;
+            setData(bill.ToTableBillInfo());
+            IsReadonly = true;
             btnCashier.Click += BtnCashier_Click;
             btnCancel.Click += BtnCancel_Click;
             textBox4.KeyPress += TextBox4_KeyPress;
