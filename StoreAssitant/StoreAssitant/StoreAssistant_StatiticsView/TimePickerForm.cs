@@ -25,6 +25,22 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
             this.btnSubmit.Click += Button1_Click;
             this.btnDefault.Click += BtnDefault_Click;
+
+            dtp_From.ValueChanged += Dtp_From_ValueChanged;
+            dtp_To.ValueChanged += Dtp_To_ValueChanged;
+
+            dtp_To.Value = DateTime.Today;
+            dtp_From.Value = DateTime.Today.AddDays(-1);
+        }
+
+        private void Dtp_To_ValueChanged(object sender, EventArgs e)
+        {
+            dtp_From.MaxDate = dtp_To.Value;
+        }
+
+        private void Dtp_From_ValueChanged(object sender, EventArgs e)
+        {
+            dtp_To.MinDate = dtp_From.Value;
         }
 
         private void BtnDefault_Click(object sender, EventArgs e)

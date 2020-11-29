@@ -30,8 +30,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         {
             InitializeComponent();
 
-            dtp_From.Value = dtp_From.MinDate;
-            dtp_To.Value = DateTime.Now;
+            dtp_To.MaxDate = DateTime.Now;
 
             searchForm = new SearchAdvancedForm();
             searchForm.ClickedSubmitOK += SearchForm_ClickedSubmitOK;
@@ -42,8 +41,58 @@ namespace StoreAssitant.StoreAssistant_HistoryView
 
             this.SizeChanged += HistoryView_SizeChanged;
             this.button1.Click += Button1_Click;
+            this.btn_Search.Click += Btn_Search_Click;
+
+            pageSelector1.SelectedIndexChanged += PageSelector1_SelectedIndexChanged;
 
             dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
+
+            dtp_From.ValueChanged += Dtp_From_ValueChanged;
+            dtp_To.ValueChanged += Dtp_From_ValueChanged;
+
+            this.Load += HistoryView_Load;
+        }
+
+        private void HistoryView_Load(object sender, EventArgs e)
+        {
+            dtp_From.Value = dtp_From.MinDate;
+            dtp_To.Value = DateTime.Now;
+        }
+
+        private void Dtp_From_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateTime();
+        }
+
+        void UpdateTime()
+        {
+            using (DatabaseController databaseController = new DatabaseController())
+            {
+                //pageSelector1.MaximumRange = databaseController.
+            }
+            pageSelector1.SelectedIndex = 1;
+            GetData();
+        }
+
+        private void PageSelector1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetData();
+        }
+
+        private void Btn_Search_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Trim() == string.Empty) { GetData(); }
+            else
+            {
+                // This is searching
+                List<BillInfo> bills = new List<BillInfo>(1);
+                using (DatabaseController databaseController = new DatabaseController())
+                {
+                    //bills.Add(databaseController.GetOneBillInfo());
+                }
+
+                SetData(bills);
+            }
         }
 
         private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -112,15 +161,10 @@ namespace StoreAssitant.StoreAssistant_HistoryView
                 BillInfo b = bills[i];
                 int index = dataGridView1.Rows.Add(i, b.ID, b.DAY.ToShortDateString(), b.Number_table, b.TOTAL);
                 DataGridViewRow row = dataGridView1.Rows[index];
-                row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 row.Tag = b;
             }
             dataGridView1.ResumeLayout();
-        }
-
-        private void btn_Search_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
