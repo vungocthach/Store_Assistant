@@ -30,6 +30,10 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         {
             InitializeComponent();
 
+            dataGridView1.ContextMenu = new ContextMenu();
+            dataGridView1.ContextMenu.MenuItems.Add("test").Click += HistoryView_ClickDelete;
+            dataGridView1.MouseClick += DataGridView1_MouseClick;
+
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font, FontStyle.Bold);
 
             dataGridView1.SortCompare += DataGridView1_SortCompare;
@@ -58,6 +62,30 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             dtp_To.ValueChanged += Dtp_From_ValueChanged;
 
             this.Load += HistoryView_Load;
+        }
+
+        private void HistoryView_ClickDelete(object sender, EventArgs e)
+        {
+            if (dataGridView1.ContextMenu.Tag == null) { throw new NullReferenceException(); }
+            DataGridViewRow row = dataGridView1.ContextMenu.Tag as DataGridViewRow;
+            using (DatabaseController databaseController = new DatabaseController())
+            {
+                // Delete from database
+            }
+            GetData();
+            Console.WriteLine("Clicked delete row : " + row.Index);
+        }
+
+        private void DataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Point cursor = new Point(e.X, e.Y);
+                DataGridViewRow row = dataGridView1.Rows[dataGridView1.HitTest(cursor.X, cursor.Y).RowIndex];
+
+                dataGridView1.ContextMenu.Tag = row;
+                dataGridView1.ContextMenu.Show(dataGridView1, cursor);
+            }
         }
 
         private void DataGridView1_Sorted(object sender, EventArgs e)

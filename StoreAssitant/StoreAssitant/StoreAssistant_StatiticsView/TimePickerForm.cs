@@ -29,8 +29,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             dtp_From.ValueChanged += Dtp_From_ValueChanged;
             dtp_To.ValueChanged += Dtp_To_ValueChanged;
 
-            dtp_To.Value = DateTime.Today;
-            dtp_From.Value = DateTime.Today.AddDays(-1);
+            BtnDefault_Click(btnDefault, null);
         }
 
         private void Dtp_To_ValueChanged(object sender, EventArgs e)
@@ -45,13 +44,35 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
         private void BtnDefault_Click(object sender, EventArgs e)
         {
-            dtp_From.Value = DateTime.MinValue;
+            dtp_From.Value = DateTime.Today.AddYears(-1);
             dtp_To.Value = DateTime.Today;
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
             ClickedSubmitOK(this, null);
+        }
+
+        public void SetPickMode(int mode)
+        {
+            if (mode == 0)
+            {
+                label1.Text = "Từ Tháng :";
+                label2.Text = "Đến Tháng :";
+                dtp_From.Value = new DateTime(dtp_From.Value.Year, dtp_From.Value.Month, 1, 0, 0, 0);
+                dtp_To.Value = new DateTime(dtp_To.Value.Year, dtp_To.Value.Month, 1, 0, 0, 0);
+                dtp_From.CustomFormat = dtp_To.CustomFormat = "MM/yyyy";
+                dtp_From.ShowUpDown = dtp_To.ShowUpDown = true;
+            }
+            else if (mode == 1)
+            {
+                label1.Text = "Từ Năm :";
+                label2.Text = "Đến Năm :";
+                dtp_From.Value = new DateTime(dtp_From.Value.Year, 1, 1, 0, 0, 0);
+                dtp_To.Value = new DateTime(dtp_To.Value.Year, 1, 1, 0, 0, 0);
+                dtp_From.CustomFormat = dtp_To.CustomFormat = "yyyy";
+                dtp_From.ShowUpDown = dtp_To.ShowUpDown = true;
+            }
         }
     }
 }

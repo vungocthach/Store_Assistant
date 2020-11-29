@@ -719,7 +719,6 @@ namespace StoreAssitant
             BillInfo bill;
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
-                int i = 0;
                 while (reader.Read())
                 {
                     bill = new BillInfo();
@@ -731,16 +730,8 @@ namespace StoreAssitant
                     bill.ID = (int)reader["BILL_ID"];
                     bill.Price_Bill = (long)reader["Total"];
                     bills.Add(bill);
-                    //bills[i].ProductBills = GetDetailBillInfo((int)reader["BILL_ID"]);
-                    ++i;
                 }
             }
-            /*
-            foreach (BillInfo b in bills)
-            {
-                b.ProductBills = GetDetailBillInfo(b.ID);
-            }
-            */
             return bills;
 
         }
@@ -824,6 +815,95 @@ namespace StoreAssitant
              cmd.CommandText = string.Fomat("")
 
          }*/
+
+        public List<SaleInfo> GetSaleInfos_ByDay(DateTime fromDate, DateTime toDate)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            cmd.CommandText = "SELECT dt.[NAME_PR], dt.[PRICE_PR], sum(ALL dt.[AMOUNT_PR]) number, YEAR(BILL.TIME) y, MONTH(BILL.TIME) m, DAY(BILL.TIME) d "
+                                + "FROM Detail_Bill dt LEFT JOIN BILL on dt.BILL_ID = BILL.BILL_ID "
+                                + "WHERE BILL.TIME >= @fromDate AND BILL.TIME <= @toDate "
+                                  + "GROUP BY YEAR(BILL.TIME), MONTH(BILL.TIME), DAY(BILL.TIME), dt.NAME_PR, dt.[PRICE_PR]  ORDER BY YEAR(BILL.TIME), MONTH(BILL.TIME) , DAY(BILL.TIME);";
+
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@fromDate", SqlDbType.DateTime).Value = fromDate;
+            cmd.Parameters.Add("@toDate", SqlDbType.DateTime).Value = toDate;
+
+            List<SaleInfo> rs = new List<SaleInfo>();
+            SaleInfo last = null;
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    int y = reader.GetInt32(3);
+                    int m = reader.GetInt32(4);
+                    int d = reader.GetInt32(5);
+                    if (last == null || !(last.DateMin.Year == y && last.DateMin.Month == m && last.DateMin.Day == d))
+                    {
+                        last = new SaleInfo(y, m, d);
+                        rs.Add(last);
+                    }
+                    string productName = reader.GetString(0);
+                    int i = 1;
+                    while (last.Products.ContainsKey(productName))
+                    {
+                        productName = string.Format("{0} ({1})", reader.GetString(0), i.ToString());
+                        i++;
+                    }
+                    ProductSaleInfo productSaleInfo = new ProductSaleInfo();
+                    productSaleInfo.ProductName = productName;
+                    productSaleInfo.Number = reader.GetInt32(2);
+                    productSaleInfo.Price = reader.GetInt32(1);
+                    last.Products.Add(productName, productSaleInfo);
+                }
+            }
+
+            return rs;
+        }
+
+        public List<SaleInfo> GetSaleInfos_ByMonth(DateTime fromDate, DateTime toDate)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            cmd.CommandText = "SELECT dt.[NAME_PR], dt.[PRICE_PR],sum(ALL dt.[AMOUNT_PR]) number, YEAR(BILL.TIME) y, MONTH(BILL.TIME) m "
+                                + "FROM Detail_Bill dt LEFT JOIN BILL on dt.BILL_ID = BILL.BILL_ID "
+                                + "WHERE BILL.TIME >= @fromDate AND BILL.TIME <= @toDate "
+                                  + "GROUP BY YEAR(BILL.TIME), MONTH(BILL.TIME), dt.NAME_PR, dt.[PRICE_PR] ORDER BY YEAR(BILL.TIME), MONTH(BILL.TIME);";
+
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@fromDate", SqlDbType.DateTime).Value = fromDate;
+            cmd.Parameters.Add("@toDate", SqlDbType.DateTime).Value = toDate;
+
+            List<SaleInfo> rs = new List<SaleInfo>();
+            SaleInfo last = null;
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    int y = reader.GetInt32(3);
+                    int m = reader.GetInt32(4);
+                    if (last == null || !(last.DateMin.Year == y && last.DateMin.Month == m ))
+                    {
+                        last = new SaleInfo(y, m);
+                        rs.Add(last);
+                    }
+                    string productName = reader.GetString(0);
+                    int i = 1;
+                    while (last.Products.ContainsKey(productName))
+                    {
+                        productName = string.Format("{0} ({1})", reader.GetString(0), i.ToString());
+                        i++;
+                    }
+                    ProductSaleInfo productSaleInfo = new ProductSaleInfo();
+                    productSaleInfo.ProductName = productName;
+                    productSaleInfo.Number = reader.GetInt32(2);
+                    productSaleInfo.Price = reader.GetInt32(1);
+                    last.Products.Add(productName, productSaleInfo);
+                }
+            }
+
+            return rs;
+        }
         public void Dispose()
         {
             Disconnect();

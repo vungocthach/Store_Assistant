@@ -15,8 +15,37 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
     public partial class StatiticsView2 : UserControl
     {
         TimePickerForm timePicker;
-        DateTime dateMin { get => timePicker.DateMin; set => timePicker.DateMin = value; }
-        DateTime dateMax { get => timePicker.DateMax; set => timePicker.DateMax = value; }
+        DateTime GetDateMin()
+        {
+                if (ModeChart == 0)
+                {
+                    return dateMinRange.AddMonths(GetStartIndex() - 1);
+                }
+                else if (ModeChart == 1)
+                {
+                    return dateMinRange.AddYears(GetStartIndex() - 1);
+                }
+                else { throw new ArgumentOutOfRangeException(); }
+        }
+        DateTime GetDateMax()
+        {
+            if (ModeChart == 0)
+            {
+                DateTime dateTime =  GetDateMin().AddMonths(line_per_page);
+                if (dateTime > dateMaxRange) return dateMaxRange;
+                else { return dateTime; }
+            }
+            else if (ModeChart == 1)
+            {
+                DateTime dateTime = GetDateMin().AddYears(line_per_page);
+                if (dateTime > dateMaxRange) return dateMaxRange;
+                else { return dateTime; }
+            }
+            else { throw new ArgumentOutOfRangeException(); }
+        }
+
+        DateTime dateMinRange { get => timePicker.DateMin; set => timePicker.DateMin = value; }
+        DateTime dateMaxRange { get => timePicker.DateMax; set => timePicker.DateMax = value; }
 
         public int ModeStatistics
         {
@@ -40,6 +69,10 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         {
             InitializeComponent();
 
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font, FontStyle.Bold);
+
+            cbbStatiticsMode.SelectedIndex = cbbChartMode.SelectedIndex = 0;
+
             InitiallizeChart();
 
             this.splitContainer1.Panel1.SizeChanged += Panel1_SizeChanged;
@@ -54,11 +87,19 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             cbbChartMode.SelectedIndexChanged += CbbChartMode_SelectedIndexChanged;
             cbbStatiticsMode.SelectedIndexChanged += CbbStatiticsMode_SelectedIndexChanged;
 
+            pageSelector1.SelectedIndexChanged += PageSelector1_SelectedIndexChanged;
+
             this.Load += StatiticsView2_Load;
+        }
+
+        private void PageSelector1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ChangeStatiticsMode(ModeStatistics);
         }
 
         private void BtnFilter_Click(object sender, EventArgs e)
         {
+            timePicker.SetPickMode(ModeStatistics);
             timePicker.ShowDialog();
         }
 
@@ -82,10 +123,10 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
         private void StatiticsView2_Load(object sender, EventArgs e)
         {
-            GetData();
-
-            ModeStatistics = 0;
-            ModeChart = 0;
+            UpdateTime();
+            ChangeStatiticsMode(cbbStatiticsMode.SelectedIndex);
+            ChangeChartMode(cbbChartMode.SelectedIndex);
+            DataGridView1_SelectionChanged(dataGridView1, null);
         }
 
         private void CbbStatiticsMode_SelectedIndexChanged(object sender, EventArgs e)
@@ -125,19 +166,23 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
         private void TimePicker_ClickedSubmitOK(object sender, EventArgs e)
         {
-            UpdateMaxPage();
+            (sender as TimePickerForm).Close();
+            UpdateTime();
         }
 
         int line_per_page = 10;
+        int GetStartIndex() { return (pageSelector1.SelectedIndex - 1) * line_per_page + 1; }
 
-        void UpdateMaxPage()
+        void UpdateTime()
         {
-            TimeSpan timeSpan = dateMax - dateMax;
+            //Console.WriteLine("MinRange = " + dateMinRange.ToString());
+            //Console.WriteLine("MaxRange = " + dateMaxRange.ToString());
+            TimeSpan timeSpan = dateMaxRange - dateMinRange;
             int max = 0;
-            DateTime date = dateMin;
+            DateTime date = dateMinRange;
             if (ModeStatistics == 0)
             {
-                while (date < dateMax)
+                while (date < dateMaxRange)
                 {
                     max++;
                     date = date.AddMonths(1);
@@ -145,13 +190,16 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             }
             else if (ModeStatistics == 1)
             {
-                while (date < dateMax)
+                while (date < dateMaxRange)
                 {
                     max++;
                     date = date.AddYears(1);
                 }
             }
-            pageSelector1.MaximumRange = max / line_per_page + 1;
+            pageSelector1.MaximumRange = max / line_per_page;
+            if (max % line_per_page > 0) { pageSelector1.MaximumRange++; }
+
+            ChangeStatiticsMode(ModeStatistics);
         }
 
         private readonly string REVENUE_SERIES_NAME = "Revenue";
@@ -170,6 +218,8 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             seriesRevenue["DrawingStyle"] = "Cylinder";// DrawingStyle=Cylinder
 
             chart1.ChartAreas[0].AxisY.Title = chart1.ChartAreas[1].AxisY.Title = "DOANH THU";
+
+            LoadSeriesProducts();
         }
 
         void LoadSeriesProducts()
@@ -323,8 +373,12 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
         void ChangeStatiticsMode(int mode)
         {
+            DateTime dateMin = GetDateMin();
+            DateTime dateMax = GetDateMax();
             dataGridView1.Rows.Clear();
-            if (listSales == null || listSales.Count < 1) { return; }
+
+            GetData(dateMin, dateMax);
+            if (listSales == null ) { throw new NullReferenceException(); }
 
             string txtTimeFormat;
             if (mode == -1)
@@ -333,13 +387,13 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             }
             else if (mode == 0)
             {
-
                 txtTimeFormat = "Tháng {0}/{1}"; // {0}:month; {1}:year
-                DateTime date = new DateTime(dateMin.Year, dateMin.Month, dateMin.Day, 0, 0, 0);
-                int stt = 0;
+                DateTime date = new DateTime(dateMin.Year, dateMin.Month, 1, 0, 0, 0);
+                int stt = GetStartIndex();
                 int k = 0;
                 while (date < dateMax)
                 {
+                    
                     SaleInfo info = new SaleInfo();
                     info.SetMonth(date.Year, date.Month);
 
@@ -349,29 +403,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                     while (date < nextMonth)
                     {
                         
-                        SaleInfo saleInDay = new SaleInfo(); // Present for sale info in 1-day
-                        saleInDay.DateMin = new DateTime(date.Year, date.Month, date.Day, 0, 0, 0);
-                        saleInDay.DateMax = new DateTime(date.Year, date.Month, date.Day, 23, 59, 59);
-                        /*
-                        while (listSales[k].DateMin.Year == date.Year && listSales[k].DateMin.Month == date.Month && listSales[k].Key.Day == date.Day)
-                        {
-                            if (k >= listSales.Count) { break; }
-                            
-                            if (saleInDay.Products.ContainsKey(listSales[k].Value.ProductName))
-                            {
-                                // Add number if product sale info already exist
-                                saleInDay.Products[listSales[k].Value.ProductName].Number += listSales[k].Value.Number;
-                                break;
-                            }
-                            else
-                            {
-                                // Not existed -> Add new product sale info
-                                saleInDay.Products.Add(listSales[k].Value.ProductName, listSales[k].Value);
-                            }
-                            
-                            k++;
-                        }
-                        */
+                        SaleInfo saleInDay = new SaleInfo(date.Year, date.Month, date.Day); // Present for sale info in 1-day
 
                         if (k < listSales.Count && listSales[k].DateMin.Year == date.Year && listSales[k].DateMin.Month == date.Month && listSales[k].DateMin.Day == date.Day)
                         {
@@ -390,11 +422,11 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                         date = date.AddDays(1);
                     }
 
-
+                    nextMonth = nextMonth.AddMonths(-1);
                     info.Tag = salesInMonth;
                     long totalRevenue = 0;
                     foreach (SaleInfo s in salesInMonth) { totalRevenue += s.GetRevenue(); }
-                    DataGridViewRow row = dataGridView1.Rows[dataGridView1.Rows.Add(stt, string.Format(txtTimeFormat, date.Month, date.Year), totalRevenue)];
+                    DataGridViewRow row = dataGridView1.Rows[dataGridView1.Rows.Add(stt, string.Format(txtTimeFormat, nextMonth.Month, nextMonth.Year), string.Format("{0}VND", totalRevenue.ToString("N0")))];
                     row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Tag = info;
                     stt++;
@@ -404,8 +436,8 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             else if (mode == 1)
             {
                 txtTimeFormat = "Năm {0}";
-                DateTime date = new DateTime(dateMin.Year, 1, 1); // First day of the year
-                int stt = 0;
+                DateTime date = new DateTime(dateMin.Year, 1, 1, 0, 0, 0); // First day of the year
+                int stt = GetStartIndex();
                 int k = 0;  
                 while (date < dateMax)
                 {
@@ -419,20 +451,11 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                     {
                         SaleInfo saleInMonth = new SaleInfo(date.Year, date.Month);
 
-                        while (k < listSales.Count && listSales[k].DateMin.Month == date.Month && listSales[k].DateMin.Year == date.Year)
+                        if (k < listSales.Count && listSales[k].DateMin.Month == date.Month && listSales[k].DateMin.Year == date.Year)
                         {
                             foreach (KeyValuePair<string, ProductSaleInfo> p in listSales[k].Products)
                             {
-                                if (saleInMonth.Products.ContainsKey(p.Key))
-                                {
-                                    // Add number if product sale info already exist
-                                    saleInMonth.Products[p.Key].Number += p.Value.Number;
-                                }
-                                else
-                                {
-                                    // Not existed -> Add new product sale info
-                                    saleInMonth.Products.Add(p.Key, p.Value.Clone());
-                                }
+                                saleInMonth.Products.Add(p.Key, p.Value);
                             }
 
                             k++;
@@ -443,9 +466,10 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                         date = date.AddMonths(1);
                     }
 
+                    nextYear = nextYear.AddYears(-1);
                     long totalRevenue = 0;
                     foreach (SaleInfo s in salesInYear) { totalRevenue += s.GetRevenue(); }
-                    int index = dataGridView1.Rows.Add(stt, string.Format(txtTimeFormat, nextYear.Year - 1), totalRevenue);
+                    int index = dataGridView1.Rows.Add(stt, string.Format(txtTimeFormat, nextYear.Year), string.Format("{0}VND",totalRevenue.ToString("N0")));
                     info.Tag = salesInYear;
                     dataGridView1.Rows[index].Tag = info;
                     dataGridView1.Rows[index].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -454,16 +478,36 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
             }
 
-            UpdateMaxPage();
         }
 
-        void GetData()
+        void GetData(DateTime from, DateTime to)
         {
             // Query data from database base on user's conditions
             // then set data to dataGridView
 
+            Console.WriteLine(string.Format("GetData from ({0}) to ({1})", from.ToString(), to.ToString()));
+            if (ModeStatistics == 0)
+            {
+                from = new DateTime(from.Year, from.Month, 1, 0, 0, 0);
+                to = new DateTime(to.Year, to.Month, DateTime.DaysInMonth(to.Year, to.Month), 23, 59, 59);
+                using (DatabaseController databaseController = new DatabaseController())
+                {
+                    listSales = databaseController.GetSaleInfos_ByDay(from, to);
+                }
+            }
+            else if (ModeStatistics == 1)
+            {
+                from = new DateTime(from.Year, 1, 1, 0, 0, 0);
+                to = new DateTime(to.Year, 12, 31, 23, 59, 59);
+                using (DatabaseController databaseController = new DatabaseController())
+                {
+                    listSales = databaseController.GetSaleInfos_ByMonth(from, to);
+                }
+            }
+            else { throw new NullReferenceException(); }
+            Console.WriteLine("count = " + listSales.Count);
             // DEBUG zone
-            listSales = CreateTestData();
+            //listSales = CreateTestData();
         }
 
         List<SaleInfo> CreateTestData()
@@ -479,12 +523,13 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
             LoadSeriesProducts(products);
 
-            dateMin = new DateTime(2018, 1, 1);
-            dateMax = new DateTime(2020, 12, 31);
+            dateMinRange = new DateTime(2018, 1, 1);
+            dateMaxRange = new DateTime(2020, 12, 31);
 
             Random random = new Random((int)DateTime.Now.Ticks);
 
-            DateTime date = dateMin;
+            DateTime date = GetDateMin();
+            DateTime dateMax = GetDateMax();
             while (date < dateMax)
             {
                 SaleInfo saleInDay = new SaleInfo(date.Year, date.Month, date.Day);

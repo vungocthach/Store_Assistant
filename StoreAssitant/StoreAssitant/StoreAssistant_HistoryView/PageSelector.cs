@@ -120,7 +120,8 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             set
             {
                 maximumRange = value;
-                SelectedIndex = seletedIndex;
+                txtPage.Text = string.Format("{0}/{1}", seletedIndex.ToString(), MaximumRange.ToString());
+                txtPage.Invalidate();
             }
         }
         public int MinimumRange;
