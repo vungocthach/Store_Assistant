@@ -13,7 +13,9 @@ using System.IO;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 using StoreAssitant.Class_Information;
+using StoreAssitant.StoreAssistant_VoucherView;
 using StoreAssitant.StoreAssistant_Information;
+using System.ComponentModel;
 
 namespace StoreAssitant
 {
@@ -626,6 +628,7 @@ namespace StoreAssitant
                 cmd.Parameters.AddWithValue(string.Format("@Name_Pr"), productBills[i].Name);
                 cmd.Parameters.AddWithValue(string.Format("@Price_Pr"), productBills[i].Price);
                 cmd.Parameters.AddWithValue(string.Format("@BIll_ID"), t);
+                cmd.Parameters.AddWithValue(string.Format("@Amount_Pr"), productBills[i].NumberProduct);
                 cmd.ExecuteNonQuery();
             }
         }
@@ -667,11 +670,11 @@ namespace StoreAssitant
             }
             return products;
         }
-        public List<BillInfo> GetBillInfo(DateTime from, DateTime to, int start, int lenght, int totalMin = -1, int totalMax = 1000000000)
+        public List<BillInfo> GetBillInfo(DateTime from, DateTime to, int start, int lenght, int totalMin , int totalMax)
         {
             List<BillInfo> bills = new List<BillInfo>();
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
-            cmd.CommandText = string.Format("select * from(select ROW_NUMBER() over(order by Bill_ID) as [STT], BILL_ID, Number_TB, ID_User, Vourcher, Total, Take, Give, Time  from BILL) as foo where STT >= @start and STT <= @end and Time >= @from and TIME <= @to and ToTal>=@totalMin and ToTal <= @totalMax");
+            cmd.CommandText = string.Format("select * from(select ROW_NUMBER() over(order by Bill_ID) as [STT], BILL_ID, Number_TB, ID_User, Vourcher, Total, Take, Give, Time  from BILL where Time >= @from and TIME <= @to and ToTal>=@totalMin and ToTal <= @totalMax) as foo where STT >= @start and STT <= @end");
                                           // select* from(select ROW_NUMBER() over(order by Bill_ID) as [STT], Number_TB, ID_User, Vourcher, Total, Take, Give, Time from BILL) as foo where STT >= 1 and STT <= 5  and Time >= '2001/11/08' and TIME<= '2090/10/19'
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@start", SqlDbType.Int).Value = start;
@@ -704,6 +707,37 @@ namespace StoreAssitant
                 b.ProductBills = GetDetailBillInfo(b.ID);
             }
 
+            return bills;
+
+        }
+
+        public List<BillInfo> GetBillInfo(DateTime from, DateTime to, int start, int lenght)
+        {
+            List<BillInfo> bills = new List<BillInfo>();
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("select * from(select ROW_NUMBER() over(order by Bill_ID) as [STT], BILL_ID, Number_TB, ID_User, Vourcher, Total, Take, Give, Time  from BILL where Time >= @from and TIME <= @to) as foo where STT >= @start and STT <= @end");
+            // select* from(select ROW_NUMBER() over(order by Bill_ID) as [STT], Number_TB, ID_User, Vourcher, Total, Take, Give, Time from BILL) as foo where STT >= 1 and STT <= 5  and Time >= '2001/11/08' and TIME<= '2090/10/19'
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@start", SqlDbType.Int).Value = start;
+            cmd.Parameters.Add("@end", SqlDbType.Int).Value = start + lenght - 1;
+            cmd.Parameters.Add("@from", SqlDbType.DateTime).Value = from;
+            cmd.Parameters.Add("@to", SqlDbType.DateTime).Value = to;
+            BillInfo bill;
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    bill = new BillInfo();
+                    bill.Number_table = (int)reader["Number_TB"];
+                    bill.USER_Name = (string)reader["ID_User"];
+                    bill.Voucher = (string)reader["Vourcher"];
+                    bill.Take = (int)reader["TaKe"];
+                    bill.DAY = (DateTime)reader["Time"];
+                    bill.ID = (int)reader["BILL_ID"];
+                    bill.TOTAL = (long)reader["Total"];
+                    bills.Add(bill);
+                }
+            }
             return bills;
 
         }
@@ -757,7 +791,7 @@ namespace StoreAssitant
                     bills.Price_Bill = (long)reader["Total"];
                 }
                 else return null;
-                
+
             }
             bills.ProductBills = GetDetailBillInfo(bills.ID);
 
@@ -787,6 +821,7 @@ namespace StoreAssitant
              cmd.CommandText = string.Fomat("")
 
          }*/
+
         /*public void Insert_UserInfor  (UserInfo user)
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
@@ -800,6 +835,176 @@ namespace StoreAssitant
             cmd.Parameters.Add("@phone", SqlDbType.Char).Value = user.Phone;
             cmd.ExecuteNonQuery();
         }*/
+
+        public List<SaleInfo> GetSaleInfos_ByDay(DateTime fromDate, DateTime toDate)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            cmd.CommandText = "SELECT dt.[NAME_PR], dt.[PRICE_PR], sum(ALL dt.[AMOUNT_PR]) number, YEAR(BILL.TIME) y, MONTH(BILL.TIME) m, DAY(BILL.TIME) d "
+                                + "FROM Detail_Bill dt LEFT JOIN BILL on dt.BILL_ID = BILL.BILL_ID "
+                                + "WHERE BILL.TIME >= @fromDate AND BILL.TIME <= @toDate "
+                                  + "GROUP BY YEAR(BILL.TIME), MONTH(BILL.TIME), DAY(BILL.TIME), dt.NAME_PR, dt.[PRICE_PR]  ORDER BY YEAR(BILL.TIME), MONTH(BILL.TIME) , DAY(BILL.TIME);";
+
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@fromDate", SqlDbType.DateTime).Value = fromDate;
+            cmd.Parameters.Add("@toDate", SqlDbType.DateTime).Value = toDate;
+
+            List<SaleInfo> rs = new List<SaleInfo>();
+            SaleInfo last = null;
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    int y = reader.GetInt32(3);
+                    int m = reader.GetInt32(4);
+                    int d = reader.GetInt32(5);
+                    if (last == null || !(last.DateMin.Year == y && last.DateMin.Month == m && last.DateMin.Day == d))
+                    {
+                        last = new SaleInfo(y, m, d);
+                        rs.Add(last);
+                    }
+                    string productName = reader.GetString(0);
+                    int i = 1;
+                    while (last.Products.ContainsKey(productName))
+                    {
+                        productName = string.Format("{0} ({1})", reader.GetString(0), i.ToString());
+                        i++;
+                    }
+                    ProductSaleInfo productSaleInfo = new ProductSaleInfo();
+                    productSaleInfo.ProductName = productName;
+                    productSaleInfo.Number = reader.GetInt32(2);
+                    productSaleInfo.Price = reader.GetInt32(1);
+                    last.Products.Add(productName, productSaleInfo);
+                }
+            }
+
+            return rs;
+        }
+
+        public List<SaleInfo> GetSaleInfos_ByMonth(DateTime fromDate, DateTime toDate)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            cmd.CommandText = "SELECT dt.[NAME_PR], dt.[PRICE_PR],sum(ALL dt.[AMOUNT_PR]) number, YEAR(BILL.TIME) y, MONTH(BILL.TIME) m "
+                                + "FROM Detail_Bill dt LEFT JOIN BILL on dt.BILL_ID = BILL.BILL_ID "
+                                + "WHERE BILL.TIME >= @fromDate AND BILL.TIME <= @toDate "
+                                  + "GROUP BY YEAR(BILL.TIME), MONTH(BILL.TIME), dt.NAME_PR, dt.[PRICE_PR] ORDER BY YEAR(BILL.TIME), MONTH(BILL.TIME);";
+
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@fromDate", SqlDbType.DateTime).Value = fromDate;
+            cmd.Parameters.Add("@toDate", SqlDbType.DateTime).Value = toDate;
+
+            List<SaleInfo> rs = new List<SaleInfo>();
+            SaleInfo last = null;
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    int y = reader.GetInt32(3);
+                    int m = reader.GetInt32(4);
+                    if (last == null || !(last.DateMin.Year == y && last.DateMin.Month == m ))
+                    {
+                        last = new SaleInfo(y, m);
+                        rs.Add(last);
+                    }
+                    string productName = reader.GetString(0);
+                    int i = 1;
+                    while (last.Products.ContainsKey(productName))
+                    {
+                        productName = string.Format("{0} ({1})", reader.GetString(0), i.ToString());
+                        i++;
+                    }
+                    ProductSaleInfo productSaleInfo = new ProductSaleInfo();
+                    productSaleInfo.ProductName = productName;
+                    productSaleInfo.Number = reader.GetInt32(2);
+                    productSaleInfo.Price = reader.GetInt32(1);
+                    last.Products.Add(productName, productSaleInfo);
+                }
+            }
+
+            return rs;
+        }
+
+        public BindingList<VoucherInfo> GetVouchers()
+        {
+            var Vouchers = new BindingList<VoucherInfo>();
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("select * from Voucher");
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    VoucherInfo item = new VoucherInfo();
+                    item.Code = (string)reader["Code"];
+                    item.ExpiryDate = (DateTime)reader["Expiry"];
+                    item.NumberInit = (int)reader["NumberInit"];
+                    item.NumberRemain = (int)reader["NumberRemain"];
+                    item.Value = (int)reader["Decrease"];
+                    Vouchers.Add(item);
+                }
+            }
+            return Vouchers;
+        }
+        public int UseVoucher(string Code)
+        {
+            int value = 0;
+            bool isExistsCode = false;
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("select NumberRemain, Expiry, Decrease from Voucher where Code = @Code", Code);
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@Code", Code);
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    isExistsCode = true;
+                    if ((int)reader["NumberRemain"] == 0)
+                    {
+                        MessageBox.Show("Đã hết số lần sử dụng thẻ voucher");
+                        return 0;
+                    }
+                    if ((DateTime)reader["Expiry"] > DateTime.Now)
+                    {
+                        MessageBox.Show("Hết thời hạn");
+                        return 0;
+                    }
+                    value = (int)reader["Decrease"];
+                }
+            }
+            if (isExistsCode)
+            {
+                cmd.CommandText = string.Format("update Voucher set NumberRemain = NumberRemain - 1 where Code = @Code ", Code);
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@Code", Code);
+                cmd.ExecuteNonQuery();
+            }
+            return value;
+        }
+        public void AddVoucher(VoucherInfo voucher)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("insert Voucher(Code,Expiry,Decrease,NumberInit,NumberRemain) values(@Code,@Expiry,@Value,@NumberInit,@NumberRemain)");
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue(string.Format("@Code"), voucher.Code);
+            cmd.Parameters.AddWithValue(string.Format("@Expiry"), voucher.ExpiryDate);
+            cmd.Parameters.AddWithValue(string.Format("@Value"), voucher.Value);
+            cmd.Parameters.AddWithValue(string.Format("@NumberInit"), voucher.NumberInit);
+            cmd.Parameters.AddWithValue(string.Format("@NumberRemain"), voucher.NumberRemain);
+            cmd.ExecuteNonQuery();
+            /*if ( cmd.ExecuteNonQuery() != 1)
+            {
+                MessageBox.Show("Lỗi khi thêm voucher vào database");
+            }*/
+        }
+        public void RemoveVoucher(string name)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("delete from Voucher where Code = @name", name);
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@name", name);
+            cmd.ExecuteNonQuery();
+        }
+
         public void Dispose()
         {
             Disconnect();

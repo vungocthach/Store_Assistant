@@ -16,9 +16,7 @@ namespace StoreAssitant
         #region FIELDS
 
         private bool isReadonly;
-        private long moneyPay;
-        private double percentDecrease;
-        private long exchanged;
+        private int percentDecrease;
         public BillInfo info = null;
         public bool isConfirm;
 
@@ -33,7 +31,18 @@ namespace StoreAssitant
             btnCashier.Click += BtnCashier_Click;
             btnCancel.Click += BtnCancel_Click;
             textBox4.KeyPress += TextBox4_KeyPress;
+            textBox2.TextChanged += TextBox2_TextChanged;
         }
+
+        private void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+            using (DatabaseController data = new DatabaseController())
+            {
+                percentDecrease = data.UseVoucher(textBox2.Text);
+                
+            }
+        }
+
         public FormBill(BillInfo bill)
         {
             InitializeComponent();
@@ -79,7 +88,6 @@ namespace StoreAssitant
             else
             {
                 info.Number_table = table.ID;
-                lbTableName.Text += table.ID.ToString();
                 info.DAY = DateTime.Now;
                 info.Voucher = "#####";
                 //Thêm product vào trong bảng thanh toán
@@ -110,6 +118,8 @@ namespace StoreAssitant
             //Gán giá trị ban đầu khi mở form lên
             //
             info = table;
+            info.Price_Bill = info.ProductBills.Sum(i => i.NumberProduct * i.Price);
+            info.Give = info.Take - info.TOTAL;
             if (info == null)
             {
                 MessageBox.Show("Lỗi thông tin món ăn");
@@ -117,7 +127,6 @@ namespace StoreAssitant
             }
             else
             {
-                lbTableName.Text += table.ID.ToString();
                 //Thêm product vào trong bảng thanh toán
 
                 foreach (Products i in table.ProductBills)
@@ -130,15 +139,15 @@ namespace StoreAssitant
                     tlpProduct.RowCount++;
                     tlpProduct.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
                 }
-                Info_PropertyChanged(this, new PropertyChangedEventArgs("init bill"));
+                //Info_PropertyChanged(this, new PropertyChangedEventArgs("init bill"));
                 Init_Bill();
             }
         }
 
         private void Info_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MoneyPay = (int)(info.Price_Bill * (1 + percentDecrease));
-            Exchanged = info.Take - MoneyPay;
+            info.TOTAL = (int)(info.Price_Bill * (100 - percentDecrease)/100);
+            info.Give = info.Take - info.TOTAL;
         }
 
         private void Init_Bill()
@@ -148,9 +157,10 @@ namespace StoreAssitant
             //
             textBox1.DataBindings.Add("Text", info, "Price_Bill", true, DataSourceUpdateMode.OnPropertyChanged);
             textBox2.DataBindings.Add("Text", info, "Voucher", true, DataSourceUpdateMode.OnPropertyChanged);
-            textBox3.DataBindings.Add("Text", this, "MoneyPay", true, DataSourceUpdateMode.OnPropertyChanged);
+            textBox3.DataBindings.Add("Text", info, "TOTAL", true, DataSourceUpdateMode.OnPropertyChanged);
             textBox4.DataBindings.Add("Text", info, "Take", true, DataSourceUpdateMode.OnPropertyChanged);
-            textBox5.DataBindings.Add("Text", this, "Exchanged", true, DataSourceUpdateMode.OnPropertyChanged);
+            textBox5.DataBindings.Add("Text", info, "Give", true, DataSourceUpdateMode.OnPropertyChanged);
+            lbTableName.Text += info.ID.ToString();
             lbDate.Text = lbDate.Text + info.DAY.Day + '/' + info.DAY.Month + '/' + info.DAY.Year + " " +
                           info.DAY.Hour + ":" + info.DAY.Minute + ":" + info.DAY.Second;
         }
@@ -167,7 +177,7 @@ namespace StoreAssitant
 
         private void BtnCashier_Click(object sender, EventArgs e)
         {
-            if (exchanged<0)
+            if (info.Give<0)
             {
                 MessageBox.Show("Khách chưa đưa đủ tiền");
                 return;
@@ -203,48 +213,13 @@ namespace StoreAssitant
             }
         }
 
-        [Category("My properties"), Description("Get money need to pay")]
-        public long MoneyPay { 
-            get => moneyPay;
-            set
-            {
-                moneyPay = value;
-                InvokePropertyChanged(new PropertyChangedEventArgs("Money Pay"));
-            }
-        }
-
         [Category("My properties"), Description("Get percent decrease of discount")]
-        public double PercentDecrease { 
+        public int PercentDecrease { 
             get => percentDecrease;
             set
             {
-                if (value < 1)
-                {
-                    percentDecrease = value;
-                }
-                else
-                {
-                    value = 1;
-                }
+                percentDecrease = value;
                 InvokePropertyChanged(new PropertyChangedEventArgs("Percent Deacreas"));
-            }
-        }
-
-        [Category("My properties"), Description("Get money need exchange customer")]
-        public long Exchanged { 
-            get => exchanged;
-            set
-            {
-                exchanged = value;
-                if (value<0)
-                {
-                    textBox5.BackColor = Color.Red;
-                }
-                else
-                {
-                    textBox5.BackColor = SystemColors.Control;
-                }
-                InvokePropertyChanged(new PropertyChangedEventArgs("Exchanged"));
             }
         }
 

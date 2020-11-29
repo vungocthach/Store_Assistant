@@ -44,7 +44,6 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.pageSelector1 = new StoreAssitant.StoreAssistant_HistoryView.PageSelector();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.namePD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numberPD = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +56,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             this.cbbChartMode = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.pageSelector1 = new StoreAssitant.StoreAssistant_HistoryView.PageSelector();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -90,27 +90,10 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             this.splitContainer1.SplitterDistance = 513;
             this.splitContainer1.TabIndex = 1;
             // 
-            // pageSelector1
-            // 
-            this.pageSelector1.BackColor = System.Drawing.Color.Transparent;
-            this.pageSelector1.ButtonFirstMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.pageSelector1.ButtonLastMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.pageSelector1.ButtonNextMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.pageSelector1.ButtonPreviousMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.pageSelector1.Location = new System.Drawing.Point(146, 460);
-            this.pageSelector1.Name = "pageSelector1";
-            this.pageSelector1.PageBoxFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pageSelector1.PageBoxMargin = new System.Windows.Forms.Padding(3);
-            this.pageSelector1.PageBoxSize = new System.Drawing.Size(100, 26);
-            this.pageSelector1.SelectedIndex = 1;
-            this.pageSelector1.Size = new System.Drawing.Size(210, 34);
-            this.pageSelector1.TabIndex = 0;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -215,7 +198,6 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             // cbbStatiticsMode
             // 
             this.cbbStatiticsMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbStatiticsMode.FormattingEnabled = true;
             this.cbbStatiticsMode.Items.AddRange(new object[] {
             "Tháng",
             "Năm"});
@@ -250,7 +232,6 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             // 
             this.cbbChartMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbbChartMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbChartMode.FormattingEnabled = true;
             this.cbbChartMode.Items.AddRange(new object[] {
             "Chung",
             "Chi Tiết"});
@@ -311,6 +292,23 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             this.chart1.Size = new System.Drawing.Size(553, 443);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
+            // 
+            // pageSelector1
+            // 
+            this.pageSelector1.BackColor = System.Drawing.Color.Transparent;
+            this.pageSelector1.ButtonFirstMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.pageSelector1.ButtonLastMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.pageSelector1.ButtonNextMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.pageSelector1.ButtonPreviousMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.pageSelector1.Location = new System.Drawing.Point(146, 460);
+            this.pageSelector1.MaximumRange = 10;
+            this.pageSelector1.Name = "pageSelector1";
+            this.pageSelector1.PageBoxFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pageSelector1.PageBoxMargin = new System.Windows.Forms.Padding(3);
+            this.pageSelector1.PageBoxSize = new System.Drawing.Size(100, 26);
+            this.pageSelector1.SelectedIndex = 1;
+            this.pageSelector1.Size = new System.Drawing.Size(210, 34);
+            this.pageSelector1.TabIndex = 0;
             // 
             // StatiticsView2
             // 

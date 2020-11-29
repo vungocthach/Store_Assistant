@@ -13,6 +13,8 @@ namespace StoreAssitant
     {
         public int ID;
         private int number_table;
+        private long total;
+        private long give;
         private DateTime day;
         private long price_Bill;
         private string voucher;
@@ -20,11 +22,21 @@ namespace StoreAssitant
         private long take;
         public long TOTAL
         {
-            get => price_Bill + 0;
+            get => total;
+            set 
+            {
+                total = value;
+                //InvokePropertyChanged(new PropertyChangedEventArgs("Total money"));
+            } /*price_Bill * (100 + percent)/100;*/
         }
         public long Give
         {
-            get => Take - TOTAL;
+            get => give;
+            set
+            {
+                give = value;
+                //InvokePropertyChanged(new PropertyChangedEventArgs("Give money"));
+            }
         }
         public int Number_table { get => number_table; set => number_table = value; }
         public DateTime DAY { get => day; set => day = value; }
