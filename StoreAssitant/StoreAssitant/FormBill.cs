@@ -37,8 +37,7 @@ namespace StoreAssitant
         public FormBill(BillInfo bill)
         {
             InitializeComponent();
-
-            setData(bill.ToTableBillInfo());
+            setData(bill);
             IsReadonly = true;
             btnCashier.Click += BtnCashier_Click;
             btnCancel.Click += BtnCancel_Click;
@@ -87,21 +86,51 @@ namespace StoreAssitant
 
                 foreach(var i in table.ProductInTable)
                 {
-                    Products p = new Products();
+/*                    Products p = new Products();
                     p.Name = i.Name;
                     p.NumberProduct = i.NumberProduct;
-                    p.Price = i.Price;
-                    info.ProductBills.Add(p);
+                    p.Price = i.Price;*/
+                    info.ProductBills.Add(i);
                     tlpProduct.Controls.Add(new Label() { Text = (tlpProduct.RowCount - 1).ToString() }, 0, tlpProduct.RowCount - 1);
-                    tlpProduct.Controls.Add(new Label() { Text = p.Name }, 1, tlpProduct.RowCount - 1);
-                    tlpProduct.Controls.Add(new Label() { Text = p.NumberProduct.ToString() }, 2, tlpProduct.RowCount - 1);
-                    tlpProduct.Controls.Add(new Label() { Text = p.Price.ToString() }, 3, tlpProduct.RowCount - 1);
-                    tlpProduct.Controls.Add(new Label() { Text = (p.NumberProduct * p.Price).ToString() }, 4, tlpProduct.RowCount - 1);
+                    tlpProduct.Controls.Add(new Label() { Text = i.Name }, 1, tlpProduct.RowCount - 1);
+                    tlpProduct.Controls.Add(new Label() { Text = i.NumberProduct.ToString() }, 2, tlpProduct.RowCount - 1);
+                    tlpProduct.Controls.Add(new Label() { Text = i.Price.ToString() }, 3, tlpProduct.RowCount - 1);
+                    tlpProduct.Controls.Add(new Label() { Text = (i.NumberProduct * i.Price).ToString() }, 4, tlpProduct.RowCount - 1);
                     tlpProduct.RowCount++;
                     tlpProduct.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
                 }
                 Info_PropertyChanged(this, new PropertyChangedEventArgs("init bill"));
                 info.PropertyChanged += Info_PropertyChanged;
+                Init_Bill();
+            }
+        }
+        public void setData(BillInfo table)
+        {
+            //
+            //Gán giá trị ban đầu khi mở form lên
+            //
+            info = table;
+            if (info == null)
+            {
+                MessageBox.Show("Lỗi thông tin món ăn");
+                return;
+            }
+            else
+            {
+                lbTableName.Text += table.ID.ToString();
+                //Thêm product vào trong bảng thanh toán
+
+                foreach (Products i in table.ProductBills)
+                {
+                    tlpProduct.Controls.Add(new Label() { Text = (tlpProduct.RowCount - 1).ToString() }, 0, tlpProduct.RowCount - 1);
+                    tlpProduct.Controls.Add(new Label() { Text = i.Name }, 1, tlpProduct.RowCount - 1);
+                    tlpProduct.Controls.Add(new Label() { Text = i.NumberProduct.ToString() }, 2, tlpProduct.RowCount - 1);
+                    tlpProduct.Controls.Add(new Label() { Text = i.Price.ToString() }, 3, tlpProduct.RowCount - 1);
+                    tlpProduct.Controls.Add(new Label() { Text = (i.NumberProduct * i.Price).ToString() }, 4, tlpProduct.RowCount - 1);
+                    tlpProduct.RowCount++;
+                    tlpProduct.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+                }
+                Info_PropertyChanged(this, new PropertyChangedEventArgs("init bill"));
                 Init_Bill();
             }
         }
@@ -122,8 +151,8 @@ namespace StoreAssitant
             textBox3.DataBindings.Add("Text", this, "MoneyPay", true, DataSourceUpdateMode.OnPropertyChanged);
             textBox4.DataBindings.Add("Text", info, "Take", true, DataSourceUpdateMode.OnPropertyChanged);
             textBox5.DataBindings.Add("Text", this, "Exchanged", true, DataSourceUpdateMode.OnPropertyChanged);
-            lbDate.Text = lbDate.Text + DateTime.Now.Day + '/' + DateTime.Now.Month + '/' + DateTime.Now.Year + " " + 
-                          DateTime.Now.Second + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Hour;
+            lbDate.Text = lbDate.Text + info.DAY.Day + '/' + info.DAY.Month + '/' + info.DAY.Year + " " +
+                          info.DAY.Hour + ":" + info.DAY.Minute + ":" + info.DAY.Second;
         }
 
         #endregion
