@@ -264,6 +264,7 @@
     <Compile Include="StoreAssistant_TableView\TitelLine.Designer.cs">
       <DependentUpon>TitelLine.cs</DependentUpon>
     </Compile>
+    <Compile Include="StoreAssistant_VoucherView\VoucherInfo.cs" />
     <Compile Include="StoreAssistant_VoucherView\VoucherView.cs">
       <SubType>UserControl</SubType>
     </Compile>

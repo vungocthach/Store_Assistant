@@ -30,8 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.kryptonNavigator1 = new ComponentFactory.Krypton.Navigator.KryptonNavigator();
-            this.split_Cashier = new System.Windows.Forms.SplitContainer();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.krPage_Cashier = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Manager = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Statistic = new ComponentFactory.Krypton.Navigator.KryptonPage();
@@ -39,10 +37,10 @@
             this.krPage_Setting = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Account = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Voucher = new ComponentFactory.Krypton.Navigator.KryptonPage();
+            this.split_Cashier = new System.Windows.Forms.SplitContainer();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
             this.kryptonNavigator1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.split_Cashier)).BeginInit();
-            this.split_Cashier.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Cashier)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Manager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Statistic)).BeginInit();
@@ -50,6 +48,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Setting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Account)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Voucher)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.split_Cashier)).BeginInit();
+            this.split_Cashier.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonNavigator1
@@ -77,38 +77,11 @@
             this.krPage_Setting,
             this.krPage_Account,
             this.krPage_Voucher});
-            this.kryptonNavigator1.SelectedIndex = 0;
+            this.kryptonNavigator1.SelectedIndex = 6;
             this.kryptonNavigator1.Size = new System.Drawing.Size(1084, 60);
             this.kryptonNavigator1.TabIndex = 0;
             this.kryptonNavigator1.Text = "kryptonNavigator1";
             this.kryptonNavigator1.ToolTips.AllowButtonSpecToolTips = true;
-            // 
-            // split_Cashier
-            // 
-            this.split_Cashier.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.split_Cashier.Location = new System.Drawing.Point(0, 0);
-            this.split_Cashier.Name = "split_Cashier";
-            // 
-            // split_Cashier.Panel1
-            // 
-            this.split_Cashier.Panel1.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            // 
-            // split_Cashier.Panel2
-            // 
-            this.split_Cashier.Panel2.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.split_Cashier.Size = new System.Drawing.Size(1178, 581);
-            this.split_Cashier.SplitterDistance = 572;
-            this.split_Cashier.SplitterWidth = 5;
-            this.split_Cashier.TabIndex = 0;
-            // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 60);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1084, 501);
-            this.panel1.TabIndex = 1;
             // 
             // krPage_Cashier
             // 
@@ -212,6 +185,33 @@
             this.krPage_Voucher.ToolTipTitle = "Page ToolTip";
             this.krPage_Voucher.UniqueName = "F24A8ACD75624183B78E5C7F4FF3BF25";
             // 
+            // split_Cashier
+            // 
+            this.split_Cashier.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.split_Cashier.Location = new System.Drawing.Point(0, 0);
+            this.split_Cashier.Name = "split_Cashier";
+            // 
+            // split_Cashier.Panel1
+            // 
+            this.split_Cashier.Panel1.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            // 
+            // split_Cashier.Panel2
+            // 
+            this.split_Cashier.Panel2.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.split_Cashier.Size = new System.Drawing.Size(1178, 581);
+            this.split_Cashier.SplitterDistance = 572;
+            this.split_Cashier.SplitterWidth = 5;
+            this.split_Cashier.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 60);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1084, 501);
+            this.panel1.TabIndex = 1;
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -225,8 +225,6 @@
             this.Text = "Store Assistant";
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).EndInit();
             this.kryptonNavigator1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.split_Cashier)).EndInit();
-            this.split_Cashier.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Cashier)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Manager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Statistic)).EndInit();
@@ -234,6 +232,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Setting)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Account)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Voucher)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.split_Cashier)).EndInit();
+            this.split_Cashier.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
