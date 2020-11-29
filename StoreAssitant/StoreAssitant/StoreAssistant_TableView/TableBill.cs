@@ -138,17 +138,25 @@ namespace StoreAssitant
             this.ClickBtnCashier(this, e);
             if (Billinfo!=null)
             {
-                FormBill f = new FormBill();
-                f.setData(Billinfo);
-                f.ShowDialog();
-                //BẤM XÁC NHẬN THÌ MỚI XÓA
-                if (f.isConfirm)
+                if (TotalPrice.Price > 0)
                 {
-                    while (Billinfo.ProductInTable.Count != 0)
+                    FormBill f = new FormBill();
+                    f.setData(Billinfo);
+                    f.ShowDialog();
+                    //BẤM XÁC NHẬN THÌ MỚI XÓA
+                    if (f.isConfirm)
                     {
-                        Billinfo.ProductInTable.Remove(Billinfo.ProductInTable[Billinfo.ProductInTable.Count - 1]);
-                        flpProductInfo.Controls.Remove(flpProductInfo.Controls[flpProductInfo.Controls.Count - 1]);
+                        while (Billinfo.ProductInTable.Count != 0)
+                        {
+                            Billinfo.ProductInTable.Remove(Billinfo.ProductInTable[Billinfo.ProductInTable.Count - 1]);
+                            flpProductInfo.Controls.Remove(flpProductInfo.Controls[flpProductInfo.Controls.Count - 1]);
+                        }
+                        TotalPrice.Price = 0;
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Bàn này còn trống, chưa có sản phẩm");
                 }
             }
         }

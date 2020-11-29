@@ -7,35 +7,61 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using StoreAssitant.Class_Information;
 
 namespace StoreAssitant.StoreAssistant_VoucherView
 {
     public partial class VoucherView : UserControl
     {
-        List<VoucherInfo> info;
+        BindingList<VoucherInfo> info;
         public VoucherView()
         {
             InitializeComponent();
             this.Layout += VoucherView_Layout;
-            this.SizeChanged += VoucherView_SizeChanged;
+            btnAdd.Click += BtnAdd_Click;
+            btnRemove.Click += BtnRemove_Click;
 
+            info = new BindingList<VoucherInfo>();
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.DataSource = info;
+        }
+
+        private void BtnRemove_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count != 0)
+            {
+                dataGridView1.Rows.Remove(dataGridView1.SelectedRows[0]);
+            }
+        }
+
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            AddVoucherForm f = new AddVoucherForm();
+            f.AddVoucher += eventAddVoucher;
+            f.ShowDialog();
+        }
+
+        private void eventAddVoucher(object sender, VoucherInfo e)
+        {
+            foreach (DataGridViewRow name in dataGridView1.Rows)
+            {
+                if (name.Cells[0].Value.ToString() == e.Code)
+                {
+                    MessageBox.Show("Mã code này đã tồn tại");
+                    return;
+                }
+            }
+            info.Add(e);
+            Invalidate();
         }
 
         private void VoucherView_Layout(object sender, LayoutEventArgs e)
         {
             int space = 10;
-            button2.Location = new Point(this.Width - button2.Width - space, this.Height - button2.Height - space);
-            button1.Location = new Point(this.Width - button1.Width - button2.Width - space*2, button2.Location.Y);
+            btnRemove.Location = new Point(this.Width - btnRemove.Width - space, this.Height - btnRemove.Height - space);
+            btnAdd.Location = new Point(this.Width - btnAdd.Width - btnRemove.Width - space*2, btnRemove.Location.Y);
             dataGridView1.Size = new Size(this.Width, dataGridView1.Height);
-            dataGridView1.Location = new Point(0, button2.Location.Y - space*2 - dataGridView1.Height);
-        }
-
-        private void VoucherView_SizeChanged(object sender, EventArgs e)
-        {
-            /*button2.Location = new Point(this.Width - button2.Width - 5, this.Height - button2.Height - 5);
-            button1.Location = new Point(this.Width - button1.Width - button2.Width - 10, button2.Location.Y);*/
+            dataGridView1.Location = new Point(0, btnRemove.Location.Y - space*2 - dataGridView1.Height);
         }
 
         internal void LoadDataFromDB()

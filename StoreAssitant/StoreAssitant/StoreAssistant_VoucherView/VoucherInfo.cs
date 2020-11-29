@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace StoreAssitant.StoreAssistant_VoucherView
 {
-    class VoucherInfo
+    public class VoucherInfo: INotifyPropertyChanged
     {
         private string code;
         private DateTime expiryDate;
         private int value;
         private int numberInit;
         private int numberRemain;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public VoucherInfo()
         {
@@ -23,13 +25,21 @@ namespace StoreAssitant.StoreAssistant_VoucherView
 
         public string Code 
         { 
-            get => code; 
-            set => code = value; 
+            get => code;
+            set
+            {
+                code = value;
+                //InvokePropertyChanged(new PropertyChangedEventArgs("Code Voucher"));
+            }
         }
         public DateTime ExpiryDate 
         { 
-            get => expiryDate; 
-            set => expiryDate = value; 
+            get => expiryDate;
+            set
+            {
+                expiryDate = value;
+                //InvokePropertyChanged(new PropertyChangedEventArgs("Expiry Date"));
+            }
         }
         public int Value 
         { 
@@ -37,6 +47,7 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             set
             {
                 this.value = value;
+                //InvokePropertyChanged(new PropertyChangedEventArgs("Value(%) of Voucher"));
             }
         }
         public int NumberInit 
@@ -45,6 +56,7 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             set
             {
                 numberInit = value;
+                //InvokePropertyChanged(new PropertyChangedEventArgs("Number start of Voucher"));
             }
         }
         public int NumberRemain 
@@ -53,7 +65,13 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             set
             {
                 numberRemain = value;
+                //InvokePropertyChanged(new PropertyChangedEventArgs("Number remain of Voucher"));
             }
+        }
+
+        public void InvokePropertyChanged(PropertyChangedEventArgs e)
+        {
+            PropertyChanged?.Invoke(this, e);
         }
     }
 }

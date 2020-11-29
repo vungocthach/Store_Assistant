@@ -30,18 +30,19 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.VoucherCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExpiryDate = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewDateTimePickerColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NumberUse = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Remain = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -62,33 +63,13 @@
             this.NumberUse,
             this.Remain});
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 79);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 80);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.dataGridView1.Size = new System.Drawing.Size(752, 364);
+            this.dataGridView1.Size = new System.Drawing.Size(750, 360);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(512, 453);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(93, 33);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Thêm";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(633, 453);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(92, 32);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Xóa";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // VoucherCode
             // 
@@ -135,15 +116,36 @@
             this.Remain.Name = "Remain";
             this.Remain.Width = 79;
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(512, 453);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(93, 33);
+            this.btnAdd.TabIndex = 2;
+            this.btnAdd.Text = "Thêm";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemove.Location = new System.Drawing.Point(633, 453);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(92, 32);
+            this.btnRemove.TabIndex = 3;
+            this.btnRemove.Text = "Xóa";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            // 
             // VoucherView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnRemove);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.dataGridView1);
+            this.MinimumSize = new System.Drawing.Size(500, 300);
             this.Name = "VoucherView";
-            this.Size = new System.Drawing.Size(752, 499);
+            this.Size = new System.Drawing.Size(750, 500);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -152,8 +154,8 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.DataGridViewTextBoxColumn VoucherCode;
         private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewDateTimePickerColumn ExpiryDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;

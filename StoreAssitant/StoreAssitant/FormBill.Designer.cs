@@ -112,7 +112,7 @@
             // 
             this.lbDate.AutoSize = true;
             this.lbDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDate.Location = new System.Drawing.Point(336, 88);
+            this.lbDate.Location = new System.Drawing.Point(299, 88);
             this.lbDate.Name = "lbDate";
             this.lbDate.Size = new System.Drawing.Size(77, 20);
             this.lbDate.TabIndex = 7;
@@ -199,10 +199,10 @@
             // lbNameStore
             // 
             this.lbNameStore.AutoSize = true;
-            this.lbNameStore.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.lbNameStore.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbNameStore.Location = new System.Drawing.Point(191, 9);
             this.lbNameStore.Name = "lbNameStore";
-            this.lbNameStore.Size = new System.Drawing.Size(155, 31);
+            this.lbNameStore.Size = new System.Drawing.Size(163, 31);
             this.lbNameStore.TabIndex = 5;
             this.lbNameStore.Text = "TÊN QUÁN";
             // 
@@ -239,6 +239,7 @@
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox5.Location = new System.Drawing.Point(383, 105);
+            this.textBox5.MaxLength = 10000000;
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(114, 15);
@@ -252,6 +253,7 @@
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.Location = new System.Drawing.Point(383, 80);
+            this.textBox4.MaxLength = 10000000;
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(114, 15);
             this.textBox4.TabIndex = 12;
@@ -264,6 +266,7 @@
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.Location = new System.Drawing.Point(383, 55);
+            this.textBox3.MaxLength = 10000000;
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(114, 15);
@@ -333,6 +336,7 @@
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(383, 5);
+            this.textBox1.MaxLength = 10000000;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(114, 15);
