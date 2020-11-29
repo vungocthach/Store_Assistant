@@ -40,7 +40,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             dataGridView1.Sorted += DataGridView1_Sorted;
 
             dtp_To.MaxDate = DateTime.Today.AddDays(1);
-            dtp_From.Value = dtp_From.MinDate;
+            dtp_From.Value = DateTime.Today.AddYears(-1);
             dtp_To.Value = DateTime.Now;
 
             searchForm = new SearchAdvancedForm();
@@ -130,7 +130,9 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         {
             using (DatabaseController databaseController = new DatabaseController())
             {
-                pageSelector1.MaximumRange = databaseController.CountBill(GetStartTime(), GetEndTime())/row_per_page + 1;
+                int count = databaseController.CountBill(GetStartTime(), GetEndTime());
+                pageSelector1.MaximumRange = count / row_per_page;
+                if (count % row_per_page > 0) { pageSelector1.MaximumRange += 1; }
             }
             pageSelector1.SelectedIndex = 1;
             if (needSetData) { GetData(); }

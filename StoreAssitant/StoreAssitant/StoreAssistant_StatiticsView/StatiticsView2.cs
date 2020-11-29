@@ -170,7 +170,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             UpdateTime();
         }
 
-        int line_per_page = 10;
+        int line_per_page = 20;
         int GetStartIndex() { return (pageSelector1.SelectedIndex - 1) * line_per_page + 1; }
 
         void UpdateTime()
