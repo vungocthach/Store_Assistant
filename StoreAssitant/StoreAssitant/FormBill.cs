@@ -32,6 +32,24 @@ namespace StoreAssitant
 
             btnCashier.Click += BtnCashier_Click;
             btnCancel.Click += BtnCancel_Click;
+            textBox4.KeyPress += TextBox4_KeyPress;
+        }
+
+        private void TextBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar > (char)Keys.D9 || e.KeyChar < (char)Keys.D0) && e.KeyChar != (char)Keys.Back && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            //Edit: Alternative
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            if (e.Handled==true)
+            {
+                MessageBox.Show("Chỉ được phép nhập số");
+            }
         }
 
 
@@ -55,7 +73,6 @@ namespace StoreAssitant
                 lbTableName.Text += table.ID.ToString();
                 info.DAY = DateTime.Now;
                 info.Voucher = "#####";
-
                 //Thêm product vào trong bảng thanh toán
 
                 foreach(var i in table.ProductInTable)
@@ -65,8 +82,7 @@ namespace StoreAssitant
                     p.NumberProduct = i.NumberProduct;
                     p.Price = i.Price;
                     info.ProductBills.Add(p);
-
-                    tlpProduct.Controls.Add(new Label() { Text = tlpProduct.RowCount.ToString() }, 0, tlpProduct.RowCount - 1);
+                    tlpProduct.Controls.Add(new Label() { Text = (tlpProduct.RowCount - 1).ToString() }, 0, tlpProduct.RowCount - 1);
                     tlpProduct.Controls.Add(new Label() { Text = p.Name }, 1, tlpProduct.RowCount - 1);
                     tlpProduct.Controls.Add(new Label() { Text = p.NumberProduct.ToString() }, 2, tlpProduct.RowCount - 1);
                     tlpProduct.Controls.Add(new Label() { Text = p.Price.ToString() }, 3, tlpProduct.RowCount - 1);
@@ -96,7 +112,8 @@ namespace StoreAssitant
             textBox3.DataBindings.Add("Text", this, "MoneyPay", true, DataSourceUpdateMode.OnPropertyChanged);
             textBox4.DataBindings.Add("Text", info, "Take", true, DataSourceUpdateMode.OnPropertyChanged);
             textBox5.DataBindings.Add("Text", this, "Exchanged", true, DataSourceUpdateMode.OnPropertyChanged);
-            lbDate.Text = lbDate.Text + DateTime.Now.Day + '/' + DateTime.Now.Month + '/' + DateTime.Now.Year;
+            lbDate.Text = lbDate.Text + DateTime.Now.Day + '/' + DateTime.Now.Month + '/' + DateTime.Now.Year + " " + 
+                          DateTime.Now.Second + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Hour;
         }
 
         #endregion
@@ -111,6 +128,11 @@ namespace StoreAssitant
 
         private void BtnCashier_Click(object sender, EventArgs e)
         {
+            if (exchanged<0)
+            {
+                MessageBox.Show("Khách chưa đưa đủ tiền");
+                return;
+            }
             isConfirm = true;
             this.Close();
             DatabaseController.Insert_Bill(info);

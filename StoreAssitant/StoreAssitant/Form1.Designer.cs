@@ -36,6 +36,7 @@
             this.krPage_History = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Setting = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Account = new ComponentFactory.Krypton.Navigator.KryptonPage();
+            this.krPage_Voucher = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.split_Cashier = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonNavigator1)).BeginInit();
@@ -46,6 +47,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.krPage_History)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Setting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Account)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.krPage_Voucher)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.split_Cashier)).BeginInit();
             this.split_Cashier.SuspendLayout();
             this.SuspendLayout();
@@ -73,8 +75,10 @@
             this.krPage_Statistic,
             this.krPage_History,
             this.krPage_Setting,
-            this.krPage_Account});
+            this.krPage_Account,
+            this.krPage_Voucher});
             this.kryptonNavigator1.SelectedIndex = 3;
+
             this.kryptonNavigator1.Size = new System.Drawing.Size(1084, 60);
             this.kryptonNavigator1.TabIndex = 0;
             this.kryptonNavigator1.Text = "kryptonNavigator1";
@@ -168,6 +172,20 @@
             this.krPage_Account.ToolTipTitle = "Page ToolTip";
             this.krPage_Account.UniqueName = "29A1A40B666C4707C98FE0D28B7F49DD";
             // 
+            // krPage_Voucher
+            // 
+            this.krPage_Voucher.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.krPage_Voucher.Flags = 65534;
+            this.krPage_Voucher.LastVisibleSet = true;
+            this.krPage_Voucher.Margin = new System.Windows.Forms.Padding(2);
+            this.krPage_Voucher.MinimumSize = new System.Drawing.Size(38, 41);
+            this.krPage_Voucher.Name = "krPage_Voucher";
+            this.krPage_Voucher.Size = new System.Drawing.Size(100, 100);
+            this.krPage_Voucher.Text = "Thẻ giảm giá";
+            this.krPage_Voucher.TextTitle = "Thẻ giảm giá";
+            this.krPage_Voucher.ToolTipTitle = "Page ToolTip";
+            this.krPage_Voucher.UniqueName = "F24A8ACD75624183B78E5C7F4FF3BF25";
+            // 
             // split_Cashier
             // 
             this.split_Cashier.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -214,6 +232,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.krPage_History)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Setting)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Account)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.krPage_Voucher)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.split_Cashier)).EndInit();
             this.split_Cashier.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -231,6 +250,7 @@
         private ComponentFactory.Krypton.Navigator.KryptonPage krPage_Cashier;
         private System.Windows.Forms.SplitContainer split_Cashier;
         private System.Windows.Forms.Panel panel1;
+        private ComponentFactory.Krypton.Navigator.KryptonPage krPage_Voucher;
     }
 }
 
