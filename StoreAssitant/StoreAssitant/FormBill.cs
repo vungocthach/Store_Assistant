@@ -34,6 +34,16 @@ namespace StoreAssitant
             btnCancel.Click += BtnCancel_Click;
             textBox4.KeyPress += TextBox4_KeyPress;
         }
+        public FormBill(BillInfo bill)
+        {
+            InitializeComponent();
+
+            info = bill;
+            isReadonly = true;
+            btnCashier.Click += BtnCashier_Click;
+            btnCancel.Click += BtnCancel_Click;
+            textBox4.KeyPress += TextBox4_KeyPress;
+        }
 
         private void TextBox4_KeyPress(object sender, KeyPressEventArgs e)
         {
