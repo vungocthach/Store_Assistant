@@ -437,7 +437,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         List<SaleInfo> CreateTestData()
         {
             List<SaleInfo> rs = new List<SaleInfo>();
-            int range_prod = 3;
+            int range_prod = 1;
 
             List<ProductInfo> products = new List<ProductInfo>(range_prod);
             for (int i = 0; i < range_prod; i++)

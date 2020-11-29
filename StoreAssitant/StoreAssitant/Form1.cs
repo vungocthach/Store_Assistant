@@ -19,6 +19,7 @@ namespace StoreAssitant
         StoreAssistant_CashierView.CashierView cashierView;
         ManagerModifyView managerModifyView;
         StoreAssistant_AccountView.AccountView accountView;
+        StoreAssistant_HistoryView.HistoryView historyView;
         StoreAssistant_StatiticsView.StatiticsView statiticsView;
 
         public event EventHandler SignOut;
@@ -55,7 +56,7 @@ namespace StoreAssitant
             KryptonNavigator1_SelectedPageChanged(kryptonNavigator1, new EventArgs());
             if (Authenticator.CurrentUser.Role == UserInfo.UserRole.Cashier)
             {
-                kryptonNavigator1.Pages.Remove(krPage_Compare);
+                kryptonNavigator1.Pages.Remove(krPage_History);
                 kryptonNavigator1.Pages.Remove(krPage_Manager);
                 kryptonNavigator1.Pages.Remove(krPage_Statistic);
             }
@@ -98,10 +99,13 @@ namespace StoreAssitant
                 managerModifyView.LoadDataFromDB();
                 SelectTab(managerModifyView);
             }
-            else if (kryptonNavigator1.SelectedPage.Name == krPage_Compare.Name)
+            else if (kryptonNavigator1.SelectedPage.Name == krPage_History.Name)
             {
-                MessageBox.Show("Tính năng đang phát triển", "Công trình đang thi công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                panel1.Controls.Clear();
+                if (historyView == null)
+                {
+                    historyView = new StoreAssistant_HistoryView.HistoryView();
+                }
+                historyView.GetData();
             }
             else if (kryptonNavigator1.SelectedPage.Name == krPage_Setting.Name)
             {

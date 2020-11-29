@@ -29,6 +29,7 @@ namespace StoreAssitant.StoreAssistant_Information
             DateMax = new DateTime(year, 12, 31, 23, 59, 59);
         }
 
+        // key is product's name
         public Dictionary<string, ProductSaleInfo> Products;
 
         public object Tag;

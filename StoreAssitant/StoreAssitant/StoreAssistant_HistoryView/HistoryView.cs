@@ -30,6 +30,9 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         {
             InitializeComponent();
 
+            dtp_From.Value = dtp_From.MinDate;
+            dtp_To.Value = DateTime.Now;
+
             searchForm = new SearchAdvancedForm();
             searchForm.ClickedSubmitOK += SearchForm_ClickedSubmitOK;
 
@@ -46,8 +49,9 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
-
+            BillInfo billInfo = selectedRow.Tag as BillInfo;
             // Show bill
+            Console.WriteLine("Double clicked to bill : " + billInfo.ID.ToString());
         }
 
         private void SearchForm_ClickedSubmitOK(object sender, EventArgs e)
@@ -83,6 +87,35 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         DateTime GetEndTime()
         {
             return dtp_To.Value;
+        }
+
+        int row_per_page = 10;
+        int startIndex { get => pageSelector1.SelectedIndex * row_per_page; }
+
+        public void GetData()
+        {
+            List<BillInfo> bills;
+            using (DatabaseController databaseController = new DatabaseController())
+            {
+                bills = databaseController.GetBillInfo(GetStartTime(), GetEndTime(), startIndex, row_per_page);
+            }
+
+            SetData(bills);
+        }
+
+        void SetData(List<BillInfo> bills)
+        {
+            dataGridView1.Rows.Clear();
+            dataGridView1.SuspendLayout();
+            for(int i = bills.Count -1; i> -1; i--)
+            {
+                BillInfo b = bills[i];
+                int index = dataGridView1.Rows.Add(i, b.ID, b.DAY.ToLongDateString(), b.Number_table, b.TOTAL);
+                DataGridViewRow row = dataGridView1.Rows[index];
+                row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                row.Tag = b;
+            }
+            dataGridView1.ResumeLayout();
         }
 
         private void btn_Search_Click(object sender, EventArgs e)
