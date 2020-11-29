@@ -36,9 +36,9 @@ namespace StoreAssitant
             }
             set
             {
-                if (value>10000000)
+                if (value>100000000)
                 {
-                    MessageBox.Show("Không được lớn hơn quá 10 triệu");
+                    MessageBox.Show("Không được lớn hơn quá 100 triệu");
                     return;
                 }
                 price_Bill = value;
@@ -66,9 +66,9 @@ namespace StoreAssitant
             get => take;
             set
             {
-                if (value > 10000000)
+                if (value > 100000000)
                 {
-                    MessageBox.Show("Không được lớn hơn quá 10 triệu");
+                    MessageBox.Show("Không được lớn hơn quá 100 triệu");
                     return;
                 }
                 take = value;
