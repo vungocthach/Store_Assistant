@@ -51,9 +51,9 @@ namespace StoreAssitant
         }
 
         #region INIT TABLEBILL
-        public void setData(TableBillInfo info, int iD)
+        public void setData(TableBillInfo info)
         {
-            tableTitle_lb.Text = "BÀN " + (iD + 1);
+            tableTitle_lb.Text = "BÀN " + info.ID;
             if (info == null)
             {
                 MessageBox.Show("Dữ liệu của bàn bị lỗi");

@@ -1,4 +1,4 @@
-﻿//#define SAVE_TO_DB
+﻿#define SAVE_TO_DB
 using System;
 using System.Collections.Generic;
 using System.Linq;

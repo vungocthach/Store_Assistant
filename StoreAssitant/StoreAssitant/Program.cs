@@ -15,16 +15,16 @@ namespace StoreAssitant
         [STAThread]
         static void Main()
         {
-           /* Application.EnableVisualStyles();
+            Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
+
             LoginForm form = new LoginForm();
             form.Click_Login += Form_Click_Login;
-            Application.Run(form);*/
+            Application.Run(form);
 
             //Test();
-           // test2();
-            tesst3();
+            // test2();
+            //tesst3();
         }
         static void tesst3()
         {
