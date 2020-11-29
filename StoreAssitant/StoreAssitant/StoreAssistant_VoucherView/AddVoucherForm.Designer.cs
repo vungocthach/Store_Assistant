@@ -82,7 +82,7 @@
             // 
             // dtpExpiryDate
             // 
-            this.dtpExpiryDate.CustomFormat = "HH:mm:ss dd/MM/yyyy";
+            this.dtpExpiryDate.CustomFormat = "dd/MM/yyyy  HH:mm:ss ";
             this.dtpExpiryDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpExpiryDate.Location = new System.Drawing.Point(198, 73);
             this.dtpExpiryDate.Name = "dtpExpiryDate";

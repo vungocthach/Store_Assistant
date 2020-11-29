@@ -105,7 +105,7 @@
             // 
             this.ExpiryDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ExpiryDate.Checked = false;
-            this.ExpiryDate.CustomFormat = "HH:mm:ss  dd/MM/yyyy";
+            this.ExpiryDate.CustomFormat = "dd/MM/yyyy  HH:mm:ss";
             this.ExpiryDate.DataPropertyName = "ExpiryDate";
             dataGridViewCellStyle2.NullValue = null;
             this.ExpiryDate.DefaultCellStyle = dataGridViewCellStyle2;

@@ -21,8 +21,8 @@ namespace StoreAssitant
               LoginForm form = new LoginForm();
                SignUp sign = new SignUp();
               form.Click_Login += Form_Click_Login;
-            /* Application.Run(form);*/
-            Application.Run(sign);
+              Application.Run(form);
+            //Application.Run(sign);
 
             //Test();
             //test2();
