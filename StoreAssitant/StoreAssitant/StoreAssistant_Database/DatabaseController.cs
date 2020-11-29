@@ -13,20 +13,21 @@ using System.IO;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 using StoreAssitant.Class_Information;
+using StoreAssitant.StoreAssistant_Information;
 
 namespace StoreAssitant
 {
-    class DatabaseController :IDisposable
+    class DatabaseController : IDisposable
     {
         SqlConnection connection;
         SqlCommand cmd;
 
         string username;
-        string password ;
-        string serverName ;
+        string password;
+        string serverName;
         string databaseName;
 
-        string TB_INTERGER ;
+        string TB_INTERGER;
         string[] COLUMNS_TB_INTERGER;
 
         string TB_IMAGE;
@@ -51,7 +52,7 @@ namespace StoreAssitant
             TB_IMAGE = "TB_IMAGE";
             COLUMNS_TB_IMAGE = new string[2] { "ID", "M_VALUE" };
             TB_PRODUCT = "TB_PRODUCT";
-            COLUMNS_TB_PRODUCT = new string[5] { "ID", "PD_NAME", "PRICE", "DESCRIP", "IMAGE_ID"};
+            COLUMNS_TB_PRODUCT = new string[5] { "ID", "PD_NAME", "PRICE", "DESCRIP", "IMAGE_ID" };
             TB_USER = "TB_USER";
             COLUMNS_TB_USER = new string[3] { "USERNAME", "PASS", "USER_TYPE" };
 
@@ -171,12 +172,12 @@ namespace StoreAssitant
         public Dictionary<int, ProductInfo> GetProductInfos()
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
-            
+
             // Key is Product's id and Value is Product
-            Dictionary<int, ProductInfo> rs = null; 
-            
+            Dictionary<int, ProductInfo> rs = null;
+
             // Key is Product's id and Value is Image's id
-            Dictionary<int, int> images_id; 
+            Dictionary<int, int> images_id;
 
             cmd.CommandText = string.Format("SELECT {1},{2},{3},{4},{5} FROM {0};",
                 TB_PRODUCT, COLUMNS_TB_PRODUCT[0], COLUMNS_TB_PRODUCT[1], COLUMNS_TB_PRODUCT[2], COLUMNS_TB_PRODUCT[3], COLUMNS_TB_PRODUCT[4]);
@@ -195,7 +196,7 @@ namespace StoreAssitant
                 }
                 reader.Close();
             }
-            foreach(KeyValuePair<int, ProductInfo> p in rs)
+            foreach (KeyValuePair<int, ProductInfo> p in rs)
             {
                 if (images_id[p.Key] != -1)
                 {
@@ -208,7 +209,7 @@ namespace StoreAssitant
 
             return rs;
         }
-        
+
         public Bitmap GetImage(int id)
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
@@ -413,7 +414,7 @@ namespace StoreAssitant
 #if SAVE_TO_DB
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
 
-            cmd.CommandText = string.Format("DELETE FROM {0} WHERE {1}=@{1}_;",TB_IMAGE, COLUMNS_TB_IMAGE[0]);
+            cmd.CommandText = string.Format("DELETE FROM {0} WHERE {1}=@{1}_;", TB_IMAGE, COLUMNS_TB_IMAGE[0]);
             cmd.Parameters.Clear();
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_IMAGE[0]), SqlDbType.Int).Value = id;
 
@@ -558,49 +559,49 @@ namespace StoreAssitant
             return true;
 #endif
         }
-       /* public List<string> Get_Name_Product(string Name)
-        {
-            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+        /* public List<string> Get_Name_Product(string Name)
+         {
+             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
 
-            cmd.CommandText = string.Format("select PD_Name from TB_product ");
-            cmd.Connection = connection;
+             cmd.CommandText = string.Format("select PD_Name from TB_product ");
+             cmd.Connection = connection;
 
-            using (SqlDataReader reader = cmd.ExecuteReader())
-            {
-                int i = 0;
-                List<string> Product = new List<string>();
-                List<string> ConsultPro = new List<string>();
-                while (reader.Read())
-                {
-                    object tmp = reader["PD_Name"];
-                    if (tmp != DBNull.Value)
-                    {
-                        ProductAddWithValue(reader["PD_Name"].ToString());
-                    }
-                    ++i;
-                }
-                ConsultPro = Product.FindAll(s => { return (s.Contains(Name)); });
-                return ConsultPro;
-            }
-        }*/
-        public void insert_Bill (BillInfo bill)
+             using (SqlDataReader reader = cmd.ExecuteReader())
+             {
+                 int i = 0;
+                 List<string> Product = new List<string>();
+                 List<string> ConsultPro = new List<string>();
+                 while (reader.Read())
+                 {
+                     object tmp = reader["PD_Name"];
+                     if (tmp != DBNull.Value)
+                     {
+                         ProductAddWithValue(reader["PD_Name"].ToString());
+                     }
+                     ++i;
+                 }
+                 ConsultPro = Product.FindAll(s => { return (s.Contains(Name)); });
+                 return ConsultPro;
+             }
+         }*/
+        public void insert_Bill(BillInfo bill)
         {
-            
+
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
-                cmd.CommandText = string.Format("insert into BILL (Number_TB, ID_User, Vourcher, Total, Take, Give, Time) values (@Number_Tb, @Id_User,@Vourcher, @total, @Take, @Give, @Time)");
-                cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue(string.Format("@Number_Tb"), bill.Number_table);
-                cmd.Parameters.AddWithValue(string.Format("@Id_User"), "admin");
-                cmd.Parameters.AddWithValue(string.Format("@Vourcher"), bill.Voucher);
-                cmd.Parameters.AddWithValue(string.Format("@Total"), bill.TOTAL);
-                cmd.Parameters.AddWithValue(string.Format("@Take"), bill.Take);
-                cmd.Parameters.AddWithValue(string.Format("@Give"), bill.Give);
-                cmd.Parameters.AddWithValue(string.Format("@Time"), bill.DAY);
-                cmd.ExecuteNonQuery();
-            
+            cmd.CommandText = string.Format("insert into BILL (Number_TB, ID_User, Vourcher, Total, Take, Give, Time) values (@Number_Tb, @Id_User,@Vourcher, @total, @Take, @Give, @Time)");
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue(string.Format("@Number_Tb"), bill.Number_table);
+            cmd.Parameters.AddWithValue(string.Format("@Id_User"), "admin");
+            cmd.Parameters.AddWithValue(string.Format("@Vourcher"), bill.Voucher);
+            cmd.Parameters.AddWithValue(string.Format("@Total"), bill.TOTAL);
+            cmd.Parameters.AddWithValue(string.Format("@Take"), bill.Take);
+            cmd.Parameters.AddWithValue(string.Format("@Give"), bill.Give);
+            cmd.Parameters.AddWithValue(string.Format("@Time"), bill.DAY);
+            cmd.ExecuteNonQuery();
+
         }
 
-        public int Get_Max_ID ()
+        public int Get_Max_ID()
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
             cmd.CommandText = string.Format("select Max (Bill_ID) as SL from BILL");
@@ -611,21 +612,21 @@ namespace StoreAssitant
                 return (int)(reader["SL"]);
             }
         }
-        public void Insert_Detail_Bill( MyList<Products> productBills)
+        public void Insert_Detail_Bill(MyList<Products> productBills)
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
             int t = Get_Max_ID();
-            for ( int i = 0; i < productBills.Count; ++i)
+            for (int i = 0; i < productBills.Count; ++i)
             {
                 cmd.CommandText = string.Format("insert into Detail_Bill (Name_PR, Price_Pr,Amount_Pr, Bill_ID) values (@Name_Pr, @Price_Pr, @Amount_Pr, @Bill_ID)");
                 cmd.Parameters.Clear();
-                cmd.Parameters.AddWithValue(string.Format("@Name_Pr"),productBills[i].Name );
+                cmd.Parameters.AddWithValue(string.Format("@Name_Pr"), productBills[i].Name);
                 cmd.Parameters.AddWithValue(string.Format("@Price_Pr"), productBills[i].Price);
                 cmd.Parameters.AddWithValue(string.Format("@Amount_Pr"), productBills[i].NumberProduct);
                 cmd.Parameters.AddWithValue(string.Format("@BIll_ID"), t);
                 cmd.ExecuteNonQuery();
-            }    
-      }
+            }
+        }
         public void delete_Bill(BillInfo bill)
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
@@ -642,7 +643,134 @@ namespace StoreAssitant
                 database.Insert_Detail_Bill(bill.ProductBills);
             }
         }
+        public MyList<Products> GetDetailBillInfo(int ID)
+        {
+            MyList<Products> products = new MyList<Products>();
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("Select * from Detail_Bill where BILL_ID =" + ID);
+            cmd.Parameters.Clear();
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                int i = 0;
+                while (reader.Read())
+                {
+                    products.Add(new Products());
+                    products[i].Name = (string)reader["Name_PR"];
+                    products[i].Price = (int)reader["Price_PR"];
+                    products[i].NumberProduct = (int)reader["Amount_PR"];
+                    products[i].Id = (int)reader["Bill_ID"];
+                    ++i;
+                }
+            }
+            return products;
+        }
+        public List<BillInfo> GetBillInfo(DateTime from, DateTime to, int start, int lenght, int totalMin = -1, int totalMax = 1000000000)
+        {
+            List<BillInfo> bills = new List<BillInfo>();
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("select * from(select ROW_NUMBER() over(order by Bill_ID) as [STT], BILL_ID, Number_TB, ID_User, Vourcher, Total, Take, Give, Time  from BILL) as foo where STT >= @start and STT <= @end and Time >= @from and TIME <= @to and ToTal>=@totalMin and ToTal <= @totalMax");
+                                          // select* from(select ROW_NUMBER() over(order by Bill_ID) as [STT], Number_TB, ID_User, Vourcher, Total, Take, Give, Time from BILL) as foo where STT >= 1 and STT <= 5  and Time >= '2001/11/08' and TIME<= '2090/10/19'
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@start", SqlDbType.Int).Value = start;
+            cmd.Parameters.Add("@end", SqlDbType.Int).Value = start + lenght;
+            cmd.Parameters.Add("@from", SqlDbType.DateTime).Value = from;
+            cmd.Parameters.Add("@to", SqlDbType.DateTime).Value = to;
+            cmd.Parameters.Add("@totalMin", SqlDbType.Int).Value = totalMin;
+            cmd.Parameters.Add("@totalMax", SqlDbType.Int).Value = totalMax;
 
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                int i = 0;
+                while (reader.Read())
+                {
+                    bills.Add(new BillInfo());
+                    bills[i].Number_table = (int)reader["Number_TB"];
+                    bills[i].USER_Name = (string)reader["ID_User"];
+                    bills[i].Voucher = (string)reader["Vourcher"];
+                    bills[i].Take = (int)reader["TaKe"];
+                    bills[i].DAY = (DateTime)reader["Time"];
+                    bills[i].ID = (int)reader["BILL_ID"];
+                    bills[i].Price_Bill = (long)reader["Total"];
+                    //bills[i].ProductBills = GetDetailBillInfo((int)reader["BILL_ID"]);
+                    ++i;
+                }
+            }
+
+            foreach (BillInfo b in bills)
+            {
+                b.ProductBills = GetDetailBillInfo(b.ID);
+            }
+
+            return bills;
+
+        }
+
+
+        public List<BillInfo> GetListBillInFo(int from, int to = -1)
+        {
+            List<BillInfo> bills = new List<BillInfo>();
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("select * from(select ROW_NUMBER() over(order by Bill_ID) as [STT],Number_TB, ID_User, Vourcher, Total, Take, Give, Time  from BILL) " +
+                "as foo where STT >=" + from + " and STT <=" + to);
+            cmd.Parameters.Clear();
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                int i = 0;
+                while (reader.Read())
+                {
+                    bills.Add(new BillInfo());
+                    bills[i].Number_table = (int)reader["Number_TB"];
+                    bills[i].USER_Name = (string)reader["ID"];
+                    bills[i].Voucher = (string)reader["Voucher"];
+                    bills[i].Take = (int)reader["TaKe"];
+                    bills[i].DAY = (DateTime)reader["Day"];
+                    bills[i].ProductBills = GetDetailBillInfo((int)reader["ID"]);
+                    ++i;
+                }
+            }
+
+
+            return (bills);
+
+        }
+        public BillInfo GetOneBillInfo(DateTime from, DateTime to, int start, int lenght, int bill_id)
+        {
+            BillInfo bills = new BillInfo();
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("select * from(select ROW_NUMBER() over(order by Bill_ID) as [STT], BILL_ID, Number_TB, ID_User, Vourcher, Total, Take, Give, Time  from BILL) as foo where STT >= @start and STT <= @end and Time >= @from and TIME <= @to and BILL_ID = @ID");
+            // select* from(select ROW_NUMBER() over(order by Bill_ID) as [STT], Number_TB, ID_User, Vourcher, Total, Take, Give, Time from BILL) as foo where STT >= 1 and STT <= 5  and Time >= '2001/11/08' and TIME<= '2090/10/19'
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@start", SqlDbType.Int).Value = start;
+            cmd.Parameters.Add("@end", SqlDbType.Int).Value = start + lenght;
+            cmd.Parameters.Add("@from", SqlDbType.DateTime).Value = from;
+            cmd.Parameters.Add("@to", SqlDbType.DateTime).Value = to;
+            cmd.Parameters.Add("@ID", SqlDbType.Int).Value = bill_id;
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                reader.Read();
+                bills.Number_table = (int)reader["Number_TB"];
+                bills.USER_Name = (string)reader["ID_User"];
+                bills.Voucher = (string)reader["Vourcher"];
+                bills.Take = (int)reader["TaKe"];
+                bills.DAY = (DateTime)reader["Time"];
+                bills.ID = (int)reader["BILL_ID"];
+                bills.Price_Bill = (long)reader["Total"];
+                //bills[i].ProductBills = GetDetailBillInfo((int)reader["BILL_ID"]);
+            }
+            bills.ProductBills = GetDetailBillInfo(bills.ID);
+
+            return bills;
+
+        }
+
+        /* public List<SaleInfo> GetSaleInfos (DateTime MinDate, DateTime MaxDate)
+         {
+             List<SaleInfo> saleInfos = new List<SaleInfo>();
+             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+             cmd.CommandText = string.Fomat("")
+
+         }*/
         public void Dispose()
         {
             Disconnect();

@@ -14,22 +14,22 @@ namespace StoreAssitant
         public int ID;
         private int number_table;
         private DateTime day;
-        private int price_Bill;
+        private long price_Bill;
         private string voucher;
         private MyList<Products> productBills;
-        private int take;
-        public int TOTAL
+        private long take;
+        public long TOTAL
         {
             get => price_Bill + 0;
         }
-        public int Give
+        public long Give
         {
             get => Take - TOTAL;
         }
         public int Number_table { get => number_table; set => number_table = value; }
         public DateTime DAY { get => day; set => day = value; }
         public string USER_Name { get; set; }
-        public int Price_Bill {
+        public long Price_Bill {
             get
             {
                 return price_Bill;
@@ -57,7 +57,7 @@ namespace StoreAssitant
                 //InvokePropertyChanged(new PropertyChangedEventArgs("Price Customer"));
             }
         }
-        public int Take { 
+        public long Take { 
             get => take;
             set
             {

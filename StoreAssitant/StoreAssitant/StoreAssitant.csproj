@@ -110,6 +110,8 @@
       <DependentUpon>SearchAdvancedForm.cs</DependentUpon>
     </Compile>
     <Compile Include="StoreAssistant_Information\BillInfo.cs" />
+    <Compile Include="StoreAssistant_Information\ProductSaleInfo.cs" />
+    <Compile Include="StoreAssistant_Information\SaleInfo.cs" />
     <Compile Include="StoreAssistant_Information\SaleOut.cs" />
     <Compile Include="StoreAssistant_ManagerView\ManagerModifyView.cs">
       <SubType>UserControl</SubType>
@@ -188,6 +190,18 @@
     </Compile>
     <Compile Include="StoreAssistant_StatiticsView\StatiticsView.Designer.cs">
       <DependentUpon>StatiticsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StoreAssistant_StatiticsView\StatiticsView2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StoreAssistant_StatiticsView\StatiticsView2.Designer.cs">
+      <DependentUpon>StatiticsView2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StoreAssistant_StatiticsView\TimePickerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StoreAssistant_StatiticsView\TimePickerForm.Designer.cs">
+      <DependentUpon>TimePickerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="StoreAssistant_TableView\TableBill.cs">
       <SubType>UserControl</SubType>
@@ -315,6 +329,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_StatiticsView\StatiticsView.resx">
       <DependentUpon>StatiticsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoreAssistant_StatiticsView\StatiticsView2.resx">
+      <DependentUpon>StatiticsView2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoreAssistant_StatiticsView\TimePickerForm.resx">
+      <DependentUpon>TimePickerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_TableView\TableBill.resx">
       <DependentUpon>TableBill.cs</DependentUpon>

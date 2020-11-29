@@ -33,7 +33,7 @@
             this.krPage_Cashier = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Manager = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Statistic = new ComponentFactory.Krypton.Navigator.KryptonPage();
-            this.krPage_Compare = new ComponentFactory.Krypton.Navigator.KryptonPage();
+            this.krPage_History = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Setting = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Account = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.krPage_Voucher = new ComponentFactory.Krypton.Navigator.KryptonPage();
@@ -44,7 +44,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Cashier)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Manager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Statistic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.krPage_Compare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.krPage_History)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Setting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Account)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Voucher)).BeginInit();
@@ -73,11 +73,12 @@
             this.krPage_Cashier,
             this.krPage_Manager,
             this.krPage_Statistic,
-            this.krPage_Compare,
+            this.krPage_History,
             this.krPage_Setting,
             this.krPage_Account,
             this.krPage_Voucher});
-            this.kryptonNavigator1.SelectedIndex = 6;
+            this.kryptonNavigator1.SelectedIndex = 3;
+
             this.kryptonNavigator1.Size = new System.Drawing.Size(1084, 60);
             this.kryptonNavigator1.TabIndex = 0;
             this.kryptonNavigator1.Text = "kryptonNavigator1";
@@ -127,19 +128,19 @@
             this.krPage_Statistic.ToolTipTitle = "Page ToolTip";
             this.krPage_Statistic.UniqueName = "63A53B984CEF407D80BF22DD37C86130";
             // 
-            // krPage_Compare
+            // krPage_History
             // 
-            this.krPage_Compare.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
-            this.krPage_Compare.Flags = 65534;
-            this.krPage_Compare.ImageMedium = ((System.Drawing.Image)(resources.GetObject("krPage_Compare.ImageMedium")));
-            this.krPage_Compare.LastVisibleSet = true;
-            this.krPage_Compare.MinimumSize = new System.Drawing.Size(50, 50);
-            this.krPage_Compare.Name = "krPage_Compare";
-            this.krPage_Compare.Size = new System.Drawing.Size(1178, 592);
-            this.krPage_Compare.Text = "So Sánh";
-            this.krPage_Compare.TextTitle = "So Sánh";
-            this.krPage_Compare.ToolTipTitle = "Page ToolTip";
-            this.krPage_Compare.UniqueName = "70E04151CD72421574B935D9BFB02EA1";
+            this.krPage_History.AutoHiddenSlideSize = new System.Drawing.Size(200, 200);
+            this.krPage_History.Flags = 65534;
+            this.krPage_History.ImageMedium = ((System.Drawing.Image)(resources.GetObject("krPage_History.ImageMedium")));
+            this.krPage_History.LastVisibleSet = true;
+            this.krPage_History.MinimumSize = new System.Drawing.Size(50, 50);
+            this.krPage_History.Name = "krPage_History";
+            this.krPage_History.Size = new System.Drawing.Size(1178, 592);
+            this.krPage_History.Text = "Lịch Sử";
+            this.krPage_History.TextTitle = "So Sánh";
+            this.krPage_History.ToolTipTitle = "Page ToolTip";
+            this.krPage_History.UniqueName = "70E04151CD72421574B935D9BFB02EA1";
             // 
             // krPage_Setting
             // 
@@ -228,7 +229,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Cashier)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Manager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Statistic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.krPage_Compare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.krPage_History)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Setting)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Account)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.krPage_Voucher)).EndInit();
@@ -244,7 +245,7 @@
         private ComponentFactory.Krypton.Navigator.KryptonPage krPage_Manager;
         private ComponentFactory.Krypton.Navigator.KryptonPage krPage_Statistic;
         private ComponentFactory.Krypton.Navigator.KryptonPage krPage_Setting;
-        private ComponentFactory.Krypton.Navigator.KryptonPage krPage_Compare;
+        private ComponentFactory.Krypton.Navigator.KryptonPage krPage_History;
         private ComponentFactory.Krypton.Navigator.KryptonPage krPage_Account;
         private ComponentFactory.Krypton.Navigator.KryptonPage krPage_Cashier;
         private System.Windows.Forms.SplitContainer split_Cashier;
