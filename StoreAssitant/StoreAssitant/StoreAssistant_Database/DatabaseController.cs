@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using StoreAssitant.Class_Information;
 using StoreAssitant.StoreAssistant_VoucherView;
 using StoreAssitant.StoreAssistant_Information;
+using System.ComponentModel;
 
 namespace StoreAssitant
 {
@@ -785,9 +786,9 @@ namespace StoreAssitant
              cmd.CommandText = string.Fomat("")
 
          }*/
-        public List<VoucherInfo> GetVouchers()
+        public BindingList<VoucherInfo> GetVouchers()
         {
-            var Vouchers = new List<VoucherInfo>();
+            var Vouchers = new BindingList<VoucherInfo>();
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
             cmd.CommandText = string.Format("select * from Voucher");
             using (SqlDataReader reader = cmd.ExecuteReader())
@@ -808,7 +809,7 @@ namespace StoreAssitant
         public void UseVoucher(string Code)
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
-            cmd.CommandText = string.Format("select NumberRemain, Expiry froom Voucher where Code = " + Code);
+            cmd.CommandText = string.Format("select NumberRemain, Expiry from Voucher where Code = " + Code);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 reader.Read();
@@ -824,6 +825,30 @@ namespace StoreAssitant
                 }
             }
             cmd.CommandText = string.Format("update Voucher set NumberRemain = NumberRemain - 1 where Code = " + Code);
+            cmd.ExecuteNonQuery();
+        }
+        public void AddVoucher(VoucherInfo voucher)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("insert Voucher(Code,Expiry,Decrease,NumberInit,NumberRemain) values(@Code,@Expiry,@Value,@NumberInit,@NumberRemain)");
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue(string.Format("@Code"), voucher.Code);
+            cmd.Parameters.AddWithValue(string.Format("@Expiry"), voucher.ExpiryDate);
+            cmd.Parameters.AddWithValue(string.Format("@Value"), voucher.Value);
+            cmd.Parameters.AddWithValue(string.Format("@NumberInit"), voucher.NumberInit);
+            cmd.Parameters.AddWithValue(string.Format("@NumberRemain"), voucher.NumberRemain);
+            cmd.ExecuteNonQuery();
+            /*if ( cmd.ExecuteNonQuery() != 1)
+            {
+                MessageBox.Show("Lỗi khi thêm voucher vào database");
+            }*/
+        }
+        public void RemoveVoucher(string name)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("delete from Voucher where Code = @name", name);
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@name", name);
             cmd.ExecuteNonQuery();
         }
 
