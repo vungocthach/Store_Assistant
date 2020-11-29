@@ -56,7 +56,7 @@ namespace StoreAssitant
             TB_PRODUCT = "TB_PRODUCT";
             COLUMNS_TB_PRODUCT = new string[5] { "ID", "PD_NAME", "PRICE", "DESCRIP", "IMAGE_ID" };
             TB_USER = "TB_USER";
-            COLUMNS_TB_USER = new string[6] { "USERNAME", "PASS", "USER_TYPE", "sex", "Phone", "Birth" };
+            COLUMNS_TB_USER = new string[7] { "USERNAME", "PASS", "USER_TYPE", "sex", "Phone", "Birth" , "FullName"};
 
             connection = new SqlConnection(SQLStatementManager.GetConnectionString(username, password, serverName, databaseName));
             cmd = new SqlCommand();
@@ -450,7 +450,7 @@ namespace StoreAssitant
 #if SAVE_TO_DB
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
 
-            cmd.CommandText = string.Format("INSERT INTO {0}({1},{2},{3}, {4}, {5}, {6}) VALUES(@{1}_,@{2}_,@{3}_, @{4}_, @{5}_, @{6}_);", TB_USER, COLUMNS_TB_USER[0], COLUMNS_TB_USER[1], COLUMNS_TB_USER[2], COLUMNS_TB_USER[3], COLUMNS_TB_USER[4], COLUMNS_TB_USER[5]);
+            cmd.CommandText = string.Format("INSERT INTO {0}({1},{2},{3}, {4}, {5}, {6}, {7}) VALUES(@{1}_,@{2}_,@{3}_, @{4}_, @{5}_, @{6}_,@{7}_);", TB_USER, COLUMNS_TB_USER[0], COLUMNS_TB_USER[1], COLUMNS_TB_USER[2], COLUMNS_TB_USER[3], COLUMNS_TB_USER[4], COLUMNS_TB_USER[5], COLUMNS_TB_USER[6]);
             cmd.Parameters.Clear();
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[0]), SqlDbType.VarChar).Value = userInfo.UserName;
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[1]), SqlDbType.Binary, 32).Value = StoreAssistant_Authenticater.Authenticator.GetPass(userInfo);
@@ -458,6 +458,7 @@ namespace StoreAssitant
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[3]), SqlDbType.Char).Value = userInfo.Sex;
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[5]), SqlDbType.DateTime).Value = userInfo.Birth;
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[4]), SqlDbType.Char).Value = userInfo.Phone;
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[6]), SqlDbType.VarChar).Value = userInfo.FullName;
 
             return cmd.ExecuteNonQuery() == 1;
 #else

@@ -24,13 +24,14 @@ namespace StoreAssitant
             Manager, Cashier
         }
 
-        public UserInfo ( string Name, string pass, string sex,  DateTime birth, string phone)
+        public UserInfo ( string Name, string pass, string sex,  DateTime birth, string phone, string fullName)
         {
             UserName = Name;
             Pass = pass;
             Sex = sex;
             Birth = birth;
             Phone = phone;
+            FullName = fullName;
         }
         public UserInfo()
         {

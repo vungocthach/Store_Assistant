@@ -432,6 +432,7 @@
     <None Include="Resources\121476880_662245951379057_3014594879334389444_n.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\iconfinder_sale_lineal_color_cnvrt-04_3827715.png" />
     <None Include="Resources\logo.png" />
     <None Include="Resources\SUPBG.png" />
     <None Include="Resources\SignUpBG.png" />
