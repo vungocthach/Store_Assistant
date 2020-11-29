@@ -184,6 +184,11 @@ namespace StoreAssitant.StoreAssistant_VoucherView
                 MessageBox.Show("Các giá trị phải lớn hơn 0");
                 return;
             }
+            if (expiryDateVoucher < DateTime.Now)
+            {
+                MessageBox.Show("Thời hạn phải lớn hơn ngày hiện tại");
+                return;
+            }
             info.Code = CodeVoucher;
             info.ExpiryDate = ExpiryDateVoucher;
             info.NumberInit = info.NumberRemain = numberInitVoucher;
