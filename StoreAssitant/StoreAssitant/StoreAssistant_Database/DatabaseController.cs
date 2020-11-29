@@ -664,11 +664,11 @@ namespace StoreAssitant
             }
             return products;
         }
-        public List<BillInfo> GetBillInfo(DateTime from, DateTime to, int start, int lenght, int totalMin = -1, int totalMax = 1000000000)
+        public List<BillInfo> GetBillInfo(DateTime from, DateTime to, int start, int lenght, int totalMin , int totalMax)
         {
             List<BillInfo> bills = new List<BillInfo>();
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
-            cmd.CommandText = string.Format("select * from(select ROW_NUMBER() over(order by Bill_ID) as [STT], BILL_ID, Number_TB, ID_User, Vourcher, Total, Take, Give, Time  from BILL) as foo where STT >= @start and STT <= @end and Time >= @from and TIME <= @to and ToTal>=@totalMin and ToTal <= @totalMax");
+            cmd.CommandText = string.Format("select * from(select ROW_NUMBER() over(order by Bill_ID) as [STT], BILL_ID, Number_TB, ID_User, Vourcher, Total, Take, Give, Time  from BILL where Time >= @from and TIME <= @to and ToTal>=@totalMin and ToTal <= @totalMax) as foo where STT >= @start and STT <= @end");
                                           // select* from(select ROW_NUMBER() over(order by Bill_ID) as [STT], Number_TB, ID_User, Vourcher, Total, Take, Give, Time from BILL) as foo where STT >= 1 and STT <= 5  and Time >= '2001/11/08' and TIME<= '2090/10/19'
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@start", SqlDbType.Int).Value = start;
@@ -701,6 +701,46 @@ namespace StoreAssitant
                 b.ProductBills = GetDetailBillInfo(b.ID);
             }
 
+            return bills;
+
+        }
+
+        public List<BillInfo> GetBillInfo(DateTime from, DateTime to, int start, int lenght)
+        {
+            List<BillInfo> bills = new List<BillInfo>();
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("select * from(select ROW_NUMBER() over(order by Bill_ID) as [STT], BILL_ID, Number_TB, ID_User, Vourcher, Total, Take, Give, Time  from BILL where Time >= @from and TIME <= @to) as foo where STT >= @start and STT <= @end");
+            // select* from(select ROW_NUMBER() over(order by Bill_ID) as [STT], Number_TB, ID_User, Vourcher, Total, Take, Give, Time from BILL) as foo where STT >= 1 and STT <= 5  and Time >= '2001/11/08' and TIME<= '2090/10/19'
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@start", SqlDbType.Int).Value = start;
+            cmd.Parameters.Add("@end", SqlDbType.Int).Value = start + lenght - 1;
+            cmd.Parameters.Add("@from", SqlDbType.DateTime).Value = from;
+            cmd.Parameters.Add("@to", SqlDbType.DateTime).Value = to;
+            BillInfo bill;
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                int i = 0;
+                while (reader.Read())
+                {
+                    bill = new BillInfo();
+                    bill.Number_table = (int)reader["Number_TB"];
+                    bill.USER_Name = (string)reader["ID_User"];
+                    bill.Voucher = (string)reader["Vourcher"];
+                    bill.Take = (int)reader["TaKe"];
+                    bill.DAY = (DateTime)reader["Time"];
+                    bill.ID = (int)reader["BILL_ID"];
+                    bill.Price_Bill = (long)reader["Total"];
+                    bills.Add(bill);
+                    //bills[i].ProductBills = GetDetailBillInfo((int)reader["BILL_ID"]);
+                    ++i;
+                }
+            }
+            /*
+            foreach (BillInfo b in bills)
+            {
+                b.ProductBills = GetDetailBillInfo(b.ID);
+            }
+            */
             return bills;
 
         }

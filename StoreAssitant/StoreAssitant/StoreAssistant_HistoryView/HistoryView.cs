@@ -30,7 +30,10 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         {
             InitializeComponent();
 
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font, FontStyle.Bold);
+
             dataGridView1.SortCompare += DataGridView1_SortCompare;
+            dataGridView1.Sorted += DataGridView1_Sorted;
 
             dtp_To.MaxDate = DateTime.Today.AddDays(1);
             dtp_From.Value = dtp_From.MinDate;
@@ -57,14 +60,29 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             this.Load += HistoryView_Load;
         }
 
+        private void DataGridView1_Sorted(object sender, EventArgs e)
+        {
+            int temp = GetStartIndex();
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                dataGridView1.Rows[i].Cells[0].Value = i + temp; 
+            }
+        }
+
         private void DataGridView1_SortCompare(object sender, DataGridViewSortCompareEventArgs e)
         {
-            DateTime date1 = (dataGridView1.Rows[e.RowIndex1].Tag as BillInfo).DAY;
-            DateTime date2 = (dataGridView1.Rows[e.RowIndex2].Tag as BillInfo).DAY;
-            if (e.Column.Name == "createTime")
+            if (e.Column.Index == 2)
             {
-                //Console.WriteLine("got it");
+                DateTime date1 = (dataGridView1.Rows[e.RowIndex1].Tag as BillInfo).DAY;
+                DateTime date2 = (dataGridView1.Rows[e.RowIndex2].Tag as BillInfo).DAY;
                 e.SortResult = date1.CompareTo(date2);
+                e.Handled = true;
+            }
+            else if (e.Column.Index == 4)
+            {
+                long price1 = (dataGridView1.Rows[e.RowIndex1].Tag as BillInfo).TOTAL;
+                long price2 = (dataGridView1.Rows[e.RowIndex2].Tag as BillInfo).TOTAL;
+                e.SortResult = price1.CompareTo(price2);
                 e.Handled = true;
             }
         }
@@ -131,8 +149,12 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         {
             DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
             BillInfo billInfo = selectedRow.Tag as BillInfo;
-            // Show bill
-            FormBill formBill = new FormBill(billInfo);
+            using (DatabaseController databaseController = new DatabaseController())
+            {
+                billInfo.ProductBills = databaseController.GetDetailBillInfo(billInfo.ID);
+            }
+                // Show bill
+                FormBill formBill = new FormBill(billInfo);
             formBill.ShowDialog();
             Console.WriteLine("Double clicked to bill : " + billInfo.ID.ToString());
         }
@@ -172,7 +194,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             return dtp_To.Value;
         }
 
-        int row_per_page = 10;
+        int row_per_page = 20;
         int GetStartIndex() { return (pageSelector1.SelectedIndex - 1) * row_per_page +1; }
 
         public void GetData()
@@ -195,7 +217,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             for(int i = 0; i < bills.Count; i++)
             {
                 BillInfo b = bills[i];
-                int index = dataGridView1.Rows.Add(startIndex + i , b.ID, b.DAY.ToString("dd/MM/yyyy"), b.Number_table, b.TOTAL);
+                int index = dataGridView1.Rows.Add(startIndex + i , b.ID, b.DAY.ToString("dd/MM/yyyy"), b.Number_table, string.Format("{0}VND", b.TOTAL.ToString("N0")));
                 DataGridViewRow row = dataGridView1.Rows[index];
                 row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 row.Tag = b;
