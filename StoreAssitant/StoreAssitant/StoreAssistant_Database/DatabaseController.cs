@@ -668,7 +668,7 @@ namespace StoreAssitant
         {
             List<BillInfo> bills = new List<BillInfo>();
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
-            cmd.CommandText = string.Format("select * from(select ROW_NUMBER() over(order by Bill_ID) as [STT], Number_TB, ID_User, Vourcher, Total, Take, Give, Time  from BILL) as foo where STT >= @start and STT <= @end and Time >= @from and TIME <= @to and ToTal>=@totalMin and ToTal <= @totalMax");
+            cmd.CommandText = string.Format("select * from(select ROW_NUMBER() over(order by Bill_ID) as [STT], BILL_ID, Number_TB, ID_User, Vourcher, Total, Take, Give, Time  from BILL) as foo where STT >= @start and STT <= @end and Time >= @from and TIME <= @to and ToTal>=@totalMin and ToTal <= @totalMax");
                                           // select* from(select ROW_NUMBER() over(order by Bill_ID) as [STT], Number_TB, ID_User, Vourcher, Total, Take, Give, Time from BILL) as foo where STT >= 1 and STT <= 5  and Time >= '2001/11/08' and TIME<= '2090/10/19'
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@start", SqlDbType.Int).Value = start;
@@ -676,7 +676,7 @@ namespace StoreAssitant
             cmd.Parameters.Add("@from", SqlDbType.DateTime).Value = from;
             cmd.Parameters.Add("@to", SqlDbType.DateTime).Value = to;
             cmd.Parameters.Add("@totalMin", SqlDbType.Int).Value = totalMin;
-            cmd.Parameters.Add("totalMax", SqlDbType.Int).Value = totalMax;
+            cmd.Parameters.Add("@totalMax", SqlDbType.Int).Value = totalMax;
 
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
@@ -685,14 +685,22 @@ namespace StoreAssitant
                 {
                     bills.Add(new BillInfo());
                     bills[i].Number_table = (int)reader["Number_TB"];
-                    bills[i].USER_Name = (string)reader["ID"];
-                    bills[i].Voucher = (string)reader["Voucher"];
+                    bills[i].USER_Name = (string)reader["ID_User"];
+                    bills[i].Voucher = (string)reader["Vourcher"];
                     bills[i].Take = (int)reader["TaKe"];
-                    bills[i].DAY = (DateTime)reader["Day"];
-                    bills[i].ProductBills = GetDetailBillInfo((int)reader["ID"]);
+                    bills[i].DAY = (DateTime)reader["Time"];
+                    bills[i].ID = (int)reader["BILL_ID"];
+                    bills[i].Price_Bill = (long)reader["Total"];
+                    //bills[i].ProductBills = GetDetailBillInfo((int)reader["BILL_ID"]);
                     ++i;
                 }
             }
+
+            foreach (BillInfo b in bills)
+            {
+                b.ProductBills = GetDetailBillInfo(b.ID);
+            }
+
             return bills;
 
         }

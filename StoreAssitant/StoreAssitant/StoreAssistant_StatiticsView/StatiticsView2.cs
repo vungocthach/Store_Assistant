@@ -147,13 +147,15 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
         void LoadSeriesProducts()
         {
+            seriesProducts = new Series[MenuView.ProductsList.Count];
+            for (int k = chart1.Series.Count - 1; k > 0; k--) { chart1.Series.RemoveAt(k); }
             int i = 0;
             foreach (KeyValuePair<int, ProductInfo> p in MenuView.ProductsList)
             {
                 Series series = chart1.Series.Add(p.Key.ToString());
                 series.XValueMember = "Time";
                 series.YValueMembers = "Name";
-                series.ChartType = SeriesChartType.Line;
+                series.ChartType = SeriesChartType.StackedColumn;
                 series.Legend = chart1.Legends[1].Name;
                 series.ChartArea = chart1.ChartAreas[1].Name;
 
@@ -173,7 +175,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                 Series series = chart1.Series.Add(products[i].Name.ToString());
                 series.XValueMember = "Time";
                 series.YValueMembers = "Name";
-                series.ChartType = SeriesChartType.Line;
+                series.ChartType = SeriesChartType.StackedColumn;
                 series.Legend = chart1.Legends[1].Name;
                 series.ChartArea = chart1.ChartAreas[1].Name;
 
@@ -375,7 +377,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
                     SaleInfo info = new SaleInfo() { DateMin = date, DateMax = new DateTime(date.Year, 12, 31) };
 
-                    SaleInfo[] saleInfos = new SaleInfo[12];
+                    SaleInfo[] saleInYear = new SaleInfo[12];
 
                     while (date < nextYear)
                     {
@@ -406,15 +408,15 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                             k++;
                         }
 
-                        saleInfos[date.Month - 1] = saleInMonth;
+                        saleInYear[date.Month - 1] = saleInMonth;
 
                         date = date.AddMonths(1);
                     }
 
                     long totalRevenue = 0;
-                    foreach (SaleInfo s in saleInfos) { totalRevenue += s.GetRevenue(); }
+                    foreach (SaleInfo s in saleInYear) { totalRevenue += s.GetRevenue(); }
                     int index = dataGridView1.Rows.Add(stt, string.Format(txtTimeFormat, nextYear.Year - 1), totalRevenue);
-                    info.Tag = saleInfos;
+                    info.Tag = saleInYear;
                     dataGridView1.Rows[index].Tag = info;
                     dataGridView1.Rows[index].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     stt++;
@@ -437,7 +439,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         List<SaleInfo> CreateTestData()
         {
             List<SaleInfo> rs = new List<SaleInfo>();
-            int range_prod = 1;
+            int range_prod = 10;
 
             List<ProductInfo> products = new List<ProductInfo>(range_prod);
             for (int i = 0; i < range_prod; i++)

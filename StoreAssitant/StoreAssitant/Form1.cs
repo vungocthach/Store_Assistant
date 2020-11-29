@@ -106,6 +106,7 @@ namespace StoreAssitant
                     historyView = new StoreAssistant_HistoryView.HistoryView();
                 }
                 historyView.GetData();
+                SelectTab(historyView);
             }
             else if (kryptonNavigator1.SelectedPage.Name == krPage_Setting.Name)
             {

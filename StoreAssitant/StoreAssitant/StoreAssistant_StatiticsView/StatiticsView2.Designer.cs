@@ -42,6 +42,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, "10,0");
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.pageSelector1 = new StoreAssitant.StoreAssistant_HistoryView.PageSelector();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -295,11 +296,16 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             series1.XValueMember = "1";
             series1.YValuesPerPoint = 2;
             series2.ChartArea = "ChartArea2";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
             series2.Legend = "Legend2";
             series2.Name = "Series2";
+            series3.ChartArea = "ChartArea2";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
+            series3.Legend = "Legend1";
+            series3.Name = "Series3";
             this.chart1.Series.Add(series1);
             this.chart1.Series.Add(series2);
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(553, 443);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";

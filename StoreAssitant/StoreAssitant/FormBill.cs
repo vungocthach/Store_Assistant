@@ -16,9 +16,9 @@ namespace StoreAssitant
         #region FIELDS
 
         private bool isReadonly;
-        private int moneyPay;
+        private long moneyPay;
         private double percentDecrease;
-        private int exchanged;
+        private long exchanged;
         public BillInfo info = null;
         public bool isConfirm;
 
@@ -143,7 +143,7 @@ namespace StoreAssitant
         }
 
         [Category("My properties"), Description("Get money need to pay")]
-        public int MoneyPay { 
+        public long MoneyPay { 
             get => moneyPay;
             set
             {
@@ -170,7 +170,7 @@ namespace StoreAssitant
         }
 
         [Category("My properties"), Description("Get money need exchange customer")]
-        public int Exchanged { 
+        public long Exchanged { 
             get => exchanged;
             set
             {

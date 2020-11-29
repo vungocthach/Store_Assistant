@@ -90,7 +90,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         }
 
         int row_per_page = 10;
-        int startIndex { get => pageSelector1.SelectedIndex * row_per_page; }
+        int startIndex { get => (pageSelector1.SelectedIndex - 1) * row_per_page +1; }
 
         public void GetData()
         {
@@ -110,7 +110,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             for(int i = bills.Count -1; i> -1; i--)
             {
                 BillInfo b = bills[i];
-                int index = dataGridView1.Rows.Add(i, b.ID, b.DAY.ToLongDateString(), b.Number_table, b.TOTAL);
+                int index = dataGridView1.Rows.Add(i, b.ID, b.DAY.ToShortDateString(), b.Number_table, b.TOTAL);
                 DataGridViewRow row = dataGridView1.Rows[index];
                 row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 row.Tag = b;
