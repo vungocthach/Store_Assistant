@@ -36,6 +36,11 @@ namespace StoreAssitant
             }
             set
             {
+                if (value>10000000)
+                {
+                    MessageBox.Show("Không được lớn hơn quá 10 triệu");
+                    return;
+                }
                 price_Bill = value;
                 InvokePropertyChanged(new PropertyChangedEventArgs("Price_Bill"));
             }
@@ -61,6 +66,11 @@ namespace StoreAssitant
             get => take;
             set
             {
+                if (value > 10000000)
+                {
+                    MessageBox.Show("Không được lớn hơn quá 10 triệu");
+                    return;
+                }
                 take = value;
                 InvokePropertyChanged(new PropertyChangedEventArgs("Price Customer"));
             }

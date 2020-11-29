@@ -86,6 +86,7 @@ namespace StoreAssitant
 
         private void ClearData()
         {
+            numberTable = 0;
             tableGUI_pnl.Controls.Clear();
             tableGUI_pnl.Controls.Add(tableAdd_btn);
         }
@@ -109,7 +110,7 @@ namespace StoreAssitant
             tbBill.Size = new Size(tableGUI_pnl.Size.Width, tableGUI_pnl.Size.Height - tableGUI_pnl.AutoScrollMargin.Width);
             tbBill.Location = new Point(tableGUI_pnl.Location.X, tableGUI_pnl.Location.Y);
             tbBill.Dock = DockStyle.Bottom;
-            tbBill.setData(((TableControl)tableGUI_pnl.Controls[SelectedTable]).Info, SelectedTable);
+            tbBill.setData(((TableControl)tableGUI_pnl.Controls[SelectedTable]).Info);
 
             tbBill.CloseBill += Tbbill_CloseBill;
             tableGUI_pnl.Hide();
