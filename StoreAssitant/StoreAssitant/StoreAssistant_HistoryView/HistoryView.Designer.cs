@@ -236,6 +236,7 @@
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(70, 29);
             this.textBox1.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.textBox1.MaxLength = 8;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(320, 26);
             this.textBox1.TabIndex = 7;
@@ -265,6 +266,7 @@
             this.pageSelector1.ButtonPreviousMargin = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.pageSelector1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pageSelector1.Location = new System.Drawing.Point(403, 459);
+            this.pageSelector1.MaximumRange = 10;
             this.pageSelector1.Name = "pageSelector1";
             this.pageSelector1.PageBoxFont = new System.Drawing.Font("Microsoft YaHei Light", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pageSelector1.PageBoxMargin = new System.Windows.Forms.Padding(3);

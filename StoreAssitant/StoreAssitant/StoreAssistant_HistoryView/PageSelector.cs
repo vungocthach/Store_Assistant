@@ -95,6 +95,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             get => seletedIndex;
             set
             {
+                if (value == seletedIndex) { return; }
                 if (value > MaximumRange) { seletedIndex = MaximumRange; }
                 else if (value < MinimumRange) { seletedIndex = MinimumRange; }
                 else { seletedIndex = value; }

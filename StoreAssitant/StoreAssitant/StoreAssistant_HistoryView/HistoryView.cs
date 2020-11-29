@@ -30,7 +30,9 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         {
             InitializeComponent();
 
-            dtp_To.MaxDate = DateTime.Now;
+            dtp_To.MaxDate = DateTime.Today.AddDays(1);
+            dtp_From.Value = dtp_From.MinDate;
+            dtp_To.Value = DateTime.Now;
 
             searchForm = new SearchAdvancedForm();
             searchForm.ClickedSubmitOK += SearchForm_ClickedSubmitOK;
@@ -55,8 +57,8 @@ namespace StoreAssitant.StoreAssistant_HistoryView
 
         private void HistoryView_Load(object sender, EventArgs e)
         {
-            dtp_From.Value = dtp_From.MinDate;
-            dtp_To.Value = DateTime.Now;
+            UpdateTime(false);
+            dataGridView1.Sort(dataGridView1.Columns[1], ListSortDirection.Ascending);
         }
 
         private void Dtp_From_ValueChanged(object sender, EventArgs e)
@@ -64,23 +66,35 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             UpdateTime();
         }
 
-        void UpdateTime()
+        void UpdateTime(bool needSetData = true)
         {
             using (DatabaseController databaseController = new DatabaseController())
             {
-                //pageSelector1.MaximumRange = databaseController.
+                pageSelector1.MaximumRange = databaseController.CountBill(GetStartTime(), GetEndTime())/row_per_page + 1;
             }
             pageSelector1.SelectedIndex = 1;
-            GetData();
+            if (needSetData) { GetData(); }
         }
 
         private void PageSelector1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Console.WriteLine("Page selected changed");
             GetData();
         }
 
         private void Btn_Search_Click(object sender, EventArgs e)
         {
+            int id = -1;
+            try
+            {
+                id = int.Parse(textBox1.Text.Trim());
+            }
+            catch (FormatException)
+            {
+                dataGridView1.Rows.Clear();
+                return;
+            }
+
             if (textBox1.Text.Trim() == string.Empty) { GetData(); }
             else
             {
@@ -88,7 +102,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
                 List<BillInfo> bills = new List<BillInfo>(1);
                 using (DatabaseController databaseController = new DatabaseController())
                 {
-                    //bills.Add(databaseController.GetOneBillInfo());
+                    bills.Add(databaseController.GetOneBillInfo(id));
                 }
 
                 SetData(bills);
@@ -143,6 +157,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
 
         public void GetData()
         {
+            Console.WriteLine("HistoryView : GetData()");
             List<BillInfo> bills;
             using (DatabaseController databaseController = new DatabaseController())
             {
@@ -156,10 +171,10 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         {
             dataGridView1.Rows.Clear();
             dataGridView1.SuspendLayout();
-            for(int i = bills.Count -1; i> -1; i--)
+            for(int i = 0; i < bills.Count; i++)
             {
                 BillInfo b = bills[i];
-                int index = dataGridView1.Rows.Add(i, b.ID, b.DAY.ToShortDateString(), b.Number_table, b.TOTAL);
+                int index = dataGridView1.Rows.Add(i + 1, b.ID, b.DAY.ToShortDateString(), b.Number_table, b.TOTAL);
                 DataGridViewRow row = dataGridView1.Rows[index];
                 row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 row.Tag = b;

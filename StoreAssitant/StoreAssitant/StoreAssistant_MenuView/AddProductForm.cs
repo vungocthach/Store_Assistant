@@ -22,6 +22,7 @@ namespace StoreAssitant
             this.btn_Cancel.Click += Btn_Cancel_Click;
         }
 
+        int id_temp = -1;
         public AddProductForm(ProductInfo info)
         {
             InitializeComponent();
@@ -59,17 +60,20 @@ namespace StoreAssitant
 
         public ProductInfo GetProductInfo()
         {
-            ProductInfo productInfo = new ProductInfo();
-            productInfo.Image = productBox1.PDImage;
-            productInfo.Name = productBox1.PDName;
-            productInfo.Price = productBox1.PDPrice;
-            productInfo.Description = productBox1.PDDescription;
-
+            ProductInfo productInfo = new ProductInfo()
+            {
+                Id = id_temp,
+                Image = productBox1.PDImage,
+                Name = productBox1.PDName,
+                Price = productBox1.PDPrice,
+                Description = productBox1.PDDescription,
+            };
             return productInfo;
         }
 
         public void SetData(ProductInfo info)
         {
+            id_temp = info.Id;
             productBox1.PDImage = info.Image;
             productBox1.PDName = info.Name;
             productBox1.PDPrice = info.Price;
