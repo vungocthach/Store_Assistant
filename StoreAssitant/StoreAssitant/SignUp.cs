@@ -30,7 +30,7 @@ namespace StoreAssitant
 
         private void Btn_SignUp_Click(object sender, EventArgs e)
         {
-            if (txb_Name.Text == ""|| txb_Pass.Text == ""|| TxB_IdentityPass.Text == "" || cbx_Sex.Text == "" || txb_Phone.Text == "")
+            if (txb_Name.Text == ""|| txb_Pass.Text == ""|| TxB_IdentityPass.Text == "" || cbx_Sex.Text == "" || txb_Phone.Text == ""|| txtUserName.Text =="")
             {
                 MessageBox.Show("Bạn chưa nhập đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK);
                 return;
