@@ -625,6 +625,7 @@ namespace StoreAssitant
                 cmd.Parameters.AddWithValue(string.Format("@Name_Pr"), productBills[i].Name);
                 cmd.Parameters.AddWithValue(string.Format("@Price_Pr"), productBills[i].Price);
                 cmd.Parameters.AddWithValue(string.Format("@BIll_ID"), t);
+                cmd.Parameters.AddWithValue(string.Format("@Amount_Pr"), productBills[i].NumberProduct);
                 cmd.ExecuteNonQuery();
             }
         }
@@ -730,7 +731,7 @@ namespace StoreAssitant
                     bill.Take = (int)reader["TaKe"];
                     bill.DAY = (DateTime)reader["Time"];
                     bill.ID = (int)reader["BILL_ID"];
-                    bill.Price_Bill = (long)reader["Total"];
+                    bill.TOTAL = (long)reader["Total"];
                     bills.Add(bill);
                 }
             }
