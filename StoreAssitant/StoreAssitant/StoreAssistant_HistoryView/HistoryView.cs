@@ -31,7 +31,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             InitializeComponent();
 
             dataGridView1.ContextMenu = new ContextMenu();
-            dataGridView1.ContextMenu.MenuItems.Add("test").Click += HistoryView_ClickDelete;
+            dataGridView1.ContextMenu.MenuItems.Add("Delete").Click += HistoryView_ClickDelete;
             dataGridView1.MouseClick += DataGridView1_MouseClick;
 
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font, FontStyle.Bold);
@@ -71,6 +71,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             using (DatabaseController databaseController = new DatabaseController())
             {
                 // Delete from database
+                databaseController.delete_Bill((row.Tag as BillInfo).ID);
             }
             GetData();
             Console.WriteLine("Clicked delete row : " + row.Index);
@@ -130,9 +131,9 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         {
             using (DatabaseController databaseController = new DatabaseController())
             {
-                int count = databaseController.CountBill(GetStartTime(), GetEndTime());
-                pageSelector1.MaximumRange = count / row_per_page;
-                if (count % row_per_page > 0) { pageSelector1.MaximumRange += 1; }
+                int c = databaseController.CountBill(GetStartTime(), GetEndTime());
+                pageSelector1.MaximumRange = c / row_per_page;
+                if (c % row_per_page != 0) { pageSelector1.MaximumRange += 1; }
             }
             pageSelector1.SelectedIndex = 1;
             if (needSetData) { GetData(); }
@@ -146,21 +147,23 @@ namespace StoreAssitant.StoreAssistant_HistoryView
 
         private void Btn_Search_Click(object sender, EventArgs e)
         {
-            int id = -1;
-            try
-            {
-                id = int.Parse(textBox1.Text.Trim());
-            }
-            catch (FormatException)
-            {
-                dataGridView1.Rows.Clear();
-                return;
-            }
 
-            if (textBox1.Text.Trim() == string.Empty) { GetData(); }
+            if (textBox1.Text.Trim() == string.Empty) { UpdateTime();}
             else
             {
                 // This is searching
+
+                int id = -1;
+                try
+                {
+                    id = int.Parse(textBox1.Text.Trim());
+                }
+                catch (FormatException)
+                {
+                    dataGridView1.Rows.Clear();
+                    return;
+                }
+
                 List<BillInfo> bills = new List<BillInfo>(1);
                 using (DatabaseController databaseController = new DatabaseController())
                 {
@@ -170,6 +173,9 @@ namespace StoreAssitant.StoreAssistant_HistoryView
                         bills.Add(billInfo);
                     }
                 }
+
+                pageSelector1.MaximumRange = 1;
+                pageSelector1.SelectedIndex = 1;
 
                 SetData(bills);
             }

@@ -17,6 +17,9 @@ namespace StoreAssitant.StoreAssistant_VoucherView
         public VoucherView()
         {
             InitializeComponent();
+
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font.FontFamily, 13, FontStyle.Bold);
+
             this.Layout += VoucherView_Layout;
             btnAdd.Click += BtnAdd_Click;
             btnRemove.Click += BtnRemove_Click;

@@ -83,36 +83,40 @@
             // dtpExpiryDate
             // 
             this.dtpExpiryDate.CustomFormat = "dd/MM/yyyy  HH:mm:ss ";
+            this.dtpExpiryDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpExpiryDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpExpiryDate.Location = new System.Drawing.Point(198, 73);
+            this.dtpExpiryDate.Location = new System.Drawing.Point(198, 72);
             this.dtpExpiryDate.Name = "dtpExpiryDate";
-            this.dtpExpiryDate.Size = new System.Drawing.Size(200, 20);
+            this.dtpExpiryDate.Size = new System.Drawing.Size(200, 26);
             this.dtpExpiryDate.TabIndex = 5;
             this.dtpExpiryDate.Tag = "";
             this.dtpExpiryDate.Value = new System.DateTime(2020, 11, 29, 14, 26, 44, 0);
             // 
             // tbCode
             // 
-            this.tbCode.Location = new System.Drawing.Point(198, 28);
+            this.tbCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCode.Location = new System.Drawing.Point(198, 27);
             this.tbCode.Name = "tbCode";
-            this.tbCode.Size = new System.Drawing.Size(200, 20);
+            this.tbCode.Size = new System.Drawing.Size(200, 26);
             this.tbCode.TabIndex = 6;
             this.tbCode.Tag = "";
             // 
             // tbNumberInit
             // 
-            this.tbNumberInit.Location = new System.Drawing.Point(198, 118);
+            this.tbNumberInit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbNumberInit.Location = new System.Drawing.Point(198, 117);
             this.tbNumberInit.Name = "tbNumberInit";
-            this.tbNumberInit.Size = new System.Drawing.Size(200, 20);
+            this.tbNumberInit.Size = new System.Drawing.Size(200, 26);
             this.tbNumberInit.TabIndex = 7;
             this.tbNumberInit.Tag = "";
             this.tbNumberInit.Text = "0";
             // 
             // tbValue
             // 
-            this.tbValue.Location = new System.Drawing.Point(198, 164);
+            this.tbValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbValue.Location = new System.Drawing.Point(198, 163);
             this.tbValue.Name = "tbValue";
-            this.tbValue.Size = new System.Drawing.Size(200, 20);
+            this.tbValue.Size = new System.Drawing.Size(200, 26);
             this.tbValue.TabIndex = 8;
             this.tbValue.Tag = "";
             this.tbValue.Text = "0";
@@ -142,6 +146,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(449, 263);
+            this.ControlBox = false;
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.tbValue);
@@ -153,7 +158,9 @@
             this.Controls.Add(this.lbExpiryDate);
             this.Controls.Add(this.lbCode);
             this.Name = "AddVoucherForm";
-            this.Text = "Thêm chương trình giảm giá";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Thêm mã giảm giá";
             this.ResumeLayout(false);
             this.PerformLayout();
 

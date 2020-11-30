@@ -95,16 +95,16 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             get => seletedIndex;
             set
             {
-                if (value == seletedIndex) { return; }
-                if (value > MaximumRange) { seletedIndex = MaximumRange; }
-                else if (value < MinimumRange) { seletedIndex = MinimumRange; }
+                //if (value == seletedIndex) { return; }
+                if (value > MaximumRange) { SelectedIndex = MaximumRange; }
+                else if (value < MinimumRange) { SelectedIndex = MinimumRange; }
                 else { seletedIndex = value; }
                 
                 txtPage.Text = string.Format("{0}/{1}", seletedIndex.ToString(), MaximumRange.ToString());
                 
-                btnFirst.Enabled = (seletedIndex != MinimumRange);
+                btnFirst.Enabled = (seletedIndex > MinimumRange);
                 btnPre.Enabled = btnFirst.Enabled;
-                btnNxt.Enabled = (seletedIndex != MaximumRange);
+                btnNxt.Enabled = (seletedIndex < MaximumRange);
                 btnLast.Enabled = btnNxt.Enabled;
                 
                 SelectedIndexChanged(this, new EventArgs());
@@ -133,8 +133,10 @@ namespace StoreAssitant.StoreAssistant_HistoryView
 
             SelectedIndexChanged = new EventHandler((s, e) => { });
 
-            seletedIndex = MinimumRange = 1;
+
             MaximumRange = 10;
+            MinimumRange = 1;
+            SelectedIndex = 1;
 
             this.SizeChanged += PageSelector_SizeChanged;
             txtPage.MouseCaptureChanged += TxtPage_MouseCaptureChanged;

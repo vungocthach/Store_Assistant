@@ -70,12 +70,13 @@ namespace StoreAssitant
 
             if (!StoreAssistant_Authenticater.Authenticator.RegistUser(userInfo))
             {
-                this.Close();
                 //MessageBox.Show("Đăng ký thất bại. Vui lòng thử lại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
                 SignUpOK(this, userInfo);
+
+                this.Close();
             }
         }
 

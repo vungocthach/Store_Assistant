@@ -789,7 +789,7 @@ namespace StoreAssitant
                     bills.Take = (int)reader["TaKe"];
                     bills.DAY = (DateTime)reader["Time"];
                     bills.ID = (int)reader["BILL_ID"];
-                    bills.Price_Bill = (long)reader["Total"];
+                    bills.TOTAL = (long)reader["Total"];
                 }
                 else return null;
 

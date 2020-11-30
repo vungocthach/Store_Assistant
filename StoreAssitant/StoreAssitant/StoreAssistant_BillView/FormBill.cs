@@ -34,6 +34,45 @@ namespace StoreAssitant
             textBox2.TextChanged += TextBox2_TextChanged;
         }
 
+        #region LOAD RANDOM DATA FOR DATABASE
+        //
+        //create data for database
+        //
+        public void Test(DateTime date)
+        {
+            TableBillInfo test = new TableBillInfo();
+            //lựa chọn bàn
+            test.ID = (new Random((int)DateTime.Now.Ticks.GetHashCode())).Next(1, 13);
+            test.ProductInTable = new MyList<Products>();
+            List<ProductInfo> item = new List<ProductInfo>(MenuView.ProductsList.Count);
+            foreach(KeyValuePair<int,ProductInfo> i in MenuView.ProductsList)
+            {
+                item.Add(i.Value);
+            }
+            //Chọn ra số món có trong bàn
+            int f = (new Random((int)DateTime.Now.Ticks.GetHashCode())).Next(1, item.Count);
+            for (int i = 0; i < f; i++)
+            {
+                //chọn ngẫu nhiên món
+                int r = (new Random((int)DateTime.Now.Ticks.GetHashCode())).Next(0, item.Count);
+                var pro = new Products()
+                {
+                    //chọn ngẫu nhiên số lượng
+                    NumberProduct = (new Random((int)DateTime.Now.Ticks.GetHashCode())).Next(1, 7),
+                    Id = item[r].Id,
+                    Name = item[r].Name,
+                    Price = item[r].Price
+                };
+                if (!test.ProductInTable.Exists(x=>x.Id==pro.Id)) test.ProductInTable.Add(pro);
+            }
+            setData(test);
+            info.DAY = date;
+            //chọn ngẫu nhiên số tiền khách đưa
+            info.Take = info.TOTAL + (new Random((int)DateTime.Now.Ticks.GetHashCode())).Next(0, 500000);
+            BtnCashier_Click(this, new EventArgs());
+        }
+        #endregion
+
         private void TextBox2_TextChanged(object sender, EventArgs e)
         {
             using (DatabaseController data = new DatabaseController())

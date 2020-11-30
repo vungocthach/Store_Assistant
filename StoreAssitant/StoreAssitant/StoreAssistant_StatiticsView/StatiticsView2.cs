@@ -17,11 +17,11 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         TimePickerForm timePicker;
         DateTime GetDateMin()
         {
-                if (ModeChart == 0)
+                if (ModeStatistics == 0)
                 {
                     return dateMinRange.AddMonths(GetStartIndex() - 1);
                 }
-                else if (ModeChart == 1)
+                else if (ModeStatistics == 1)
                 {
                     return dateMinRange.AddYears(GetStartIndex() - 1);
                 }
@@ -29,13 +29,13 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         }
         DateTime GetDateMax()
         {
-            if (ModeChart == 0)
+            if (ModeStatistics == 0)
             {
                 DateTime dateTime =  GetDateMin().AddMonths(line_per_page);
                 if (dateTime > dateMaxRange) return dateMaxRange;
                 else { return dateTime; }
             }
-            else if (ModeChart == 1)
+            else if (ModeStatistics == 1)
             {
                 DateTime dateTime = GetDateMin().AddYears(line_per_page);
                 if (dateTime > dateMaxRange) return dateMaxRange;
@@ -94,7 +94,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
         private void PageSelector1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ChangeStatiticsMode(ModeStatistics);
+            ChangeStatiticsMode(cbbChartMode.SelectedIndex);
         }
 
         private void BtnFilter_Click(object sender, EventArgs e)
@@ -131,13 +131,13 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
         private void CbbStatiticsMode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ChangeStatiticsMode(ModeStatistics);
+            ChangeStatiticsMode(cbbStatiticsMode.SelectedIndex);
             DataGridView1_SelectionChanged(dataGridView1, null);
         }
 
         private void CbbChartMode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ChangeChartMode(ModeChart);
+            ChangeChartMode(cbbChartMode.SelectedIndex);
             DataGridView1_SelectionChanged(dataGridView1, null);
         }
 
@@ -373,10 +373,12 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
         void ChangeStatiticsMode(int mode)
         {
+            ModeStatistics = mode;
             DateTime dateMin = GetDateMin();
             DateTime dateMax = GetDateMax();
             dataGridView1.Rows.Clear();
 
+            timePicker.SetPickMode(0);
             GetData(dateMin, dateMax);
             if (listSales == null ) { throw new NullReferenceException(); }
 

@@ -227,7 +227,7 @@
             this.Controls.Add(this.txb_Name);
             this.Controls.Add(this.label1);
             this.Name = "SignUp";
-            this.Text = "SignUp";
+            this.Text = "Đăng ký";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -65,11 +65,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BillInfo.cs" />
-    <Compile Include="FormBill.cs">
+    <Compile Include="StoreAssistant_BillView\BillInfo.cs" />
+    <Compile Include="StoreAssistant_BillView\FormBill.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormBill.Designer.cs">
+    <Compile Include="StoreAssistant_BillView\FormBill.Designer.cs">
       <DependentUpon>FormBill.cs</DependentUpon>
     </Compile>
     <Compile Include="SignUp.cs">
@@ -228,7 +228,7 @@
     <Compile Include="StoreAssistant_MenuView\TitleControl.Designer.cs">
       <DependentUpon>TitleControl.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormBill.resx">
+    <EmbeddedResource Include="StoreAssistant_BillView\FormBill.resx">
       <DependentUpon>FormBill.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SignUp.resx">

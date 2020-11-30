@@ -141,6 +141,11 @@ namespace StoreAssitant
                 if (TotalPrice.Price > 0)
                 {
                     FormBill f = new FormBill();
+
+                    //
+                    //setting something
+                    //
+
                     f.setData(Billinfo);
                     f.ShowDialog();
                     //BẤM XÁC NHẬN THÌ MỚI XÓA
@@ -153,6 +158,20 @@ namespace StoreAssitant
                         }
                         TotalPrice.Price = 0;
                     }
+                    /*
+                    DateTime start = new DateTime(2018,1,1);
+                    int range = (DateTime.Today - start).Days;
+                    for (int i=0;i<range;i++)
+                    {
+                        int r = (new Random((int)DateTime.Today.Ticks.GetHashCode())).Next(1, 4);
+                        for (int j = 0; j < r; j++)
+                        {
+                            FormBill f = new FormBill();
+                            f.Test(start.AddDays(i));
+                        }
+                    }
+                    MessageBox.Show("Thêm hóa đơn thành công");
+                    */
                 }
                 else
                 {
