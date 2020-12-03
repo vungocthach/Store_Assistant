@@ -94,7 +94,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
         private void PageSelector1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ChangeStatiticsMode(cbbChartMode.SelectedIndex);
+            UpdateDataGrid();
         }
 
         private void BtnFilter_Click(object sender, EventArgs e)
@@ -123,7 +123,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
         private void StatiticsView2_Load(object sender, EventArgs e)
         {
-            UpdateTime();
+            UpdateTime(false);
             ChangeStatiticsMode(cbbStatiticsMode.SelectedIndex);
             ChangeChartMode(cbbChartMode.SelectedIndex);
             DataGridView1_SelectionChanged(dataGridView1, null);
@@ -147,21 +147,75 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             {
                 DataGridViewRow row = dataGridView1.SelectedRows[0];
                 if (row == null || row.Tag == null) { return; }
-                SaleInfo tag = row.Tag as SaleInfo;
-                SaleInfo[] data = tag.Tag as SaleInfo[];
-                if (data == null) { throw new NullReferenceException(); }
+                KeyValuePair<DateTime, long> tag = (KeyValuePair<DateTime, long>)row.Tag;
+
+                
+
                 if (ModeChart == 0)
                 {
-                    if (ModeStatistics == 0) { LoadSummaryChart_ByDay(data); }
-                    if (ModeStatistics == 1) { LoadSummaryChart_ByMonth(data); }
+                    if (ModeStatistics == 0) { SaleInfo[] data = GetSaleInfo_InMonth(tag.Key.Year, tag.Key.Month); LoadSummaryChart_ByDay(data); }
+                    if (ModeStatistics == 1) { SaleInfo[] data = GetSaleInfo_InYear(tag.Key.Year); LoadSummaryChart_ByMonth(data); }
                 }
                 else if (ModeChart == 1)
                 {
-                    if (ModeStatistics == 0) { LoadDetailChart_ByDay(data); }
-                    if (ModeStatistics == 1) { LoadDetailChart_ByMonth(data); }
+                    if (ModeStatistics == 0) { SaleInfo[] data = GetSaleInfo_InMonth(tag.Key.Year, tag.Key.Month); LoadDetailChart_ByDay(data); }
+                    if (ModeStatistics == 1) { SaleInfo[] data = GetSaleInfo_InYear(tag.Key.Year); LoadDetailChart_ByMonth(data); }
                 }
                 chart1.Invalidate();
             }
+        }
+
+        SaleInfo[] GetSaleInfo_InMonth(int year, int month)
+        {
+            int maxDay = DateTime.DaysInMonth(year, month);
+            DateTime from = new DateTime(year, month, 1, 0, 0, 0);
+            DateTime to = new DateTime(year, month, maxDay, 23, 59, 59);
+
+            SaleInfo[] rs = new SaleInfo[maxDay];
+            List<SaleInfo> data = null;
+            using (DatabaseController databaseController = new DatabaseController())
+            {
+                data = databaseController.GetSaleInfos_ByDay(from, to);
+            }
+
+            int k = 0;
+            for(int i = 1; i<=maxDay; i++)
+            {
+                rs[i-1] = new SaleInfo(year, month, i);
+                if (k < data.Count && data[k].DateMin.Year == year && data[k].DateMin.Month == month && data[k].DateMin.Day == i)
+                {
+                    rs[i-1].Products = data[k].Products;
+                    k++;
+                }
+            }
+
+            return rs;
+        }
+
+        SaleInfo[] GetSaleInfo_InYear(int year)
+        {
+            DateTime from = new DateTime(year, 1, 1, 0, 0, 0);
+            DateTime to = new DateTime(year, 12, 31, 23, 59, 59);
+
+            SaleInfo[] rs = new SaleInfo[12];
+            List<SaleInfo> data = null;
+            using (DatabaseController databaseController = new DatabaseController())
+            {
+                data = databaseController.GetSaleInfos_ByMonth(from, to);
+            }
+
+            int k = 0;
+            for (int i = 1; i <= 12; i++)
+            {
+                rs[i-1] = new SaleInfo(year, i);
+                if (k < data.Count && data[k].DateMin.Year == year && data[k].DateMin.Month == i)
+                {
+                    rs[i-1].Products = data[k].Products;
+                    k++;
+                }
+            }
+
+            return rs;
         }
 
         private void TimePicker_ClickedSubmitOK(object sender, EventArgs e)
@@ -173,7 +227,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         int line_per_page = 20;
         int GetStartIndex() { return (pageSelector1.SelectedIndex - 1) * line_per_page + 1; }
 
-        void UpdateTime()
+        void UpdateTime(bool needUpdateDataGrid = true)
         {
             //Console.WriteLine("MinRange = " + dateMinRange.ToString());
             //Console.WriteLine("MaxRange = " + dateMaxRange.ToString());
@@ -196,10 +250,19 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                     date = date.AddYears(1);
                 }
             }
-            pageSelector1.MaximumRange = max / line_per_page;
-            if (max % line_per_page > 0) { pageSelector1.MaximumRange++; }
 
-            ChangeStatiticsMode(ModeStatistics);
+            UpdateMaxPage(max);
+
+            if (needUpdateDataGrid)
+            {
+                UpdateDataGrid();
+            }
+        }
+
+        void UpdateMaxPage(int maxLine)
+        {
+            pageSelector1.MaximumRange = maxLine / line_per_page;
+            if (maxLine % line_per_page > 0) { pageSelector1.MaximumRange++; }
         }
 
         private readonly string REVENUE_SERIES_NAME = "Revenue";
@@ -369,18 +432,32 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             }
         }
 
-        List<SaleInfo> listSales; // listSale must be sorted by DateTime
+        //List<SaleInfo> listSales; // listSale must be sorted by DateTime
 
         void ChangeStatiticsMode(int mode)
         {
             ModeStatistics = mode;
-            DateTime dateMin = GetDateMin();
-            DateTime dateMax = GetDateMax();
-            dataGridView1.Rows.Clear();
 
             timePicker.SetPickMode(0);
-            GetData(dateMin, dateMax);
-            if (listSales == null ) { throw new NullReferenceException(); }
+
+            UpdateTime(false);
+
+            pageSelector1.SelectedIndex = 1;
+        }
+
+        void UpdateDataGrid()
+        {
+            int mode = ModeStatistics;
+            DateTime dateMin = GetDateMin();
+            DateTime dateMax = GetDateMax();
+
+
+            Console.WriteLine("Update Datagrid from {0} to {1}", dateMin, dateMax);
+
+            dataGridView1.Rows.Clear();
+
+            //GetData(dateMin, dateMax);
+            //if (listSales == null ) { throw new NullReferenceException(); }
 
             string txtTimeFormat;
             if (mode == -1)
@@ -390,96 +467,64 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             else if (mode == 0)
             {
                 txtTimeFormat = "Tháng {0}/{1}"; // {0}:month; {1}:year
-                DateTime date = new DateTime(dateMin.Year, dateMin.Month, 1, 0, 0, 0);
+
+                List<KeyValuePair<DateTime, long>> revenue_list = null;
+                using (DatabaseController databaseController = new DatabaseController())
+                {
+                    revenue_list = databaseController.GetRevenue_ByMonth(dateMin, dateMax);
+                }
+
+                DateTime month = new DateTime(dateMin.Year, dateMin.Month, 1, 0, 0, 0);
                 int stt = GetStartIndex();
                 int k = 0;
-                while (date < dateMax)
+                while (month < dateMax)
                 {
-                    
-                    SaleInfo info = new SaleInfo();
-                    info.SetMonth(date.Year, date.Month);
-
-                    SaleInfo[] salesInMonth = new SaleInfo[DateTime.DaysInMonth(date.Year, date.Month)];
-
-                    DateTime nextMonth = date.AddMonths(1);
-                    while (date < nextMonth)
+                    long totalRevenue = 0;
+                    if (k < revenue_list.Count && month.Year == revenue_list[k].Key.Year && month.Month == revenue_list[k].Key.Month)
                     {
-                        
-                        SaleInfo saleInDay = new SaleInfo(date.Year, date.Month, date.Day); // Present for sale info in 1-day
-
-                        if (k < listSales.Count && listSales[k].DateMin.Year == date.Year && listSales[k].DateMin.Month == date.Month && listSales[k].DateMin.Day == date.Day)
-                        {
-                            
-                            foreach (KeyValuePair<string, ProductSaleInfo> p in listSales[k].Products)
-                            {
-                                saleInDay.Products.Add(p.Key, p.Value.Clone());
-                            }
-                            
-                            //saleInDay.Products = listSales[k].Products;
-                            k++;
-                        }
-
-                        salesInMonth[date.Day - 1] = saleInDay;
-
-                        date = date.AddDays(1);
+                        totalRevenue = revenue_list[k].Value;
+                        k++;
                     }
 
-                    nextMonth = nextMonth.AddMonths(-1);
-                    info.Tag = salesInMonth;
-                    long totalRevenue = 0;
-                    foreach (SaleInfo s in salesInMonth) { totalRevenue += s.GetRevenue(); }
-                    DataGridViewRow row = dataGridView1.Rows[dataGridView1.Rows.Add(stt, string.Format(txtTimeFormat, nextMonth.Month, nextMonth.Year), string.Format("{0}VND", totalRevenue.ToString("N0")))];
+                    DataGridViewRow row = dataGridView1.Rows[dataGridView1.Rows.Add(stt, string.Format(txtTimeFormat, month.Month, month.Year), string.Format("{0}VND", totalRevenue.ToString("N0")))];
                     row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                    row.Tag = info;
+                    row.Tag = new KeyValuePair<DateTime, long>(month, totalRevenue);
+
                     stt++;
+                    month = month.AddMonths(1);
                 }
 
             }
             else if (mode == 1)
             {
                 txtTimeFormat = "Năm {0}";
-                DateTime date = new DateTime(dateMin.Year, 1, 1, 0, 0, 0); // First day of the year
-                int stt = GetStartIndex();
-                int k = 0;  
-                while (date < dateMax)
+
+                List<KeyValuePair<DateTime, long>> revenue_list = null;
+                using (DatabaseController databaseController = new DatabaseController())
                 {
-                    DateTime nextYear = date.AddYears(1);
-
-                    SaleInfo info = new SaleInfo() { DateMin = date, DateMax = new DateTime(date.Year, 12, 31) };
-
-                    SaleInfo[] salesInYear = new SaleInfo[12];
-
-                    while (date < nextYear)
-                    {
-                        SaleInfo saleInMonth = new SaleInfo(date.Year, date.Month);
-
-                        if (k < listSales.Count && listSales[k].DateMin.Month == date.Month && listSales[k].DateMin.Year == date.Year)
-                        {
-                            foreach (KeyValuePair<string, ProductSaleInfo> p in listSales[k].Products)
-                            {
-                                saleInMonth.Products.Add(p.Key, p.Value);
-                            }
-
-                            k++;
-                        }
-
-                        salesInYear[date.Month - 1] = saleInMonth;
-
-                        date = date.AddMonths(1);
-                    }
-
-                    nextYear = nextYear.AddYears(-1);
-                    long totalRevenue = 0;
-                    foreach (SaleInfo s in salesInYear) { totalRevenue += s.GetRevenue(); }
-                    int index = dataGridView1.Rows.Add(stt, string.Format(txtTimeFormat, nextYear.Year), string.Format("{0}VND",totalRevenue.ToString("N0")));
-                    info.Tag = salesInYear;
-                    dataGridView1.Rows[index].Tag = info;
-                    dataGridView1.Rows[index].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                    stt++;
+                    revenue_list = databaseController.GetRevenue_ByYear(dateMin, dateMax);
                 }
 
-            }
+                DateTime year = new DateTime(dateMin.Year, 1, 1, 0, 0, 0);
+                int stt = GetStartIndex();
+                int k = 0;
+                while (year < dateMax)
+                {
+                    long totalRevenue = 0;
+                    if (k < revenue_list.Count && year.Year == revenue_list[k].Key.Year)
+                    {
+                        totalRevenue = revenue_list[k].Value;
+                        k++;
+                    }
 
+                    DataGridViewRow row = dataGridView1.Rows[dataGridView1.Rows.Add(stt, string.Format(txtTimeFormat, year.Year), string.Format("{0}VND", totalRevenue.ToString("N0")))];
+                    row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                    row.Tag = new KeyValuePair<DateTime, long>(year, totalRevenue);
+
+                    stt++;
+                    year = year.AddYears(1);
+                }
+            }
         }
 
         void GetData(DateTime from, DateTime to)
@@ -488,6 +533,9 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             // then set data to dataGridView
 
             Console.WriteLine(string.Format("GetData from ({0}) to ({1})", from.ToString(), to.ToString()));
+            ChangeStatiticsMode(cbbStatiticsMode.SelectedIndex);
+
+            /*
             if (ModeStatistics == 0)
             {
                 from = new DateTime(from.Year, from.Month, 1, 0, 0, 0);
@@ -510,6 +558,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             Console.WriteLine("count = " + listSales.Count);
             // DEBUG zone
             //listSales = CreateTestData();
+            */
         }
 
         List<SaleInfo> CreateTestData()
