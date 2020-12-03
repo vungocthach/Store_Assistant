@@ -119,7 +119,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         private void HistoryView_Load(object sender, EventArgs e)
         {
             UpdateTime(false);
-            dataGridView1.Sort(dataGridView1.Columns[1], ListSortDirection.Ascending);
+            dataGridView1.Sort(dataGridView1.Columns[2], ListSortDirection.Descending);
         }
 
         private void Dtp_From_ValueChanged(object sender, EventArgs e)

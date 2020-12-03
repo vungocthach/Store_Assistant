@@ -716,7 +716,7 @@ namespace StoreAssitant
         {
             List<BillInfo> bills = new List<BillInfo>();
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
-            cmd.CommandText = string.Format("select * from(select ROW_NUMBER() over(order by Bill_ID) as [STT], BILL_ID, Number_TB, ID_User, Vourcher, Total, Take, Give, Time  from BILL where Time >= @from and TIME <= @to) as foo where STT >= @start and STT <= @end");
+            cmd.CommandText = string.Format("select * from(select ROW_NUMBER() over(order by Time DESC) as [STT], BILL_ID, Number_TB, ID_User, Vourcher, Total, Take, Give, Time  from BILL where Time >= @from and TIME <= @to) as foo where STT >= @start and STT <= @end");
             // select* from(select ROW_NUMBER() over(order by Bill_ID) as [STT], Number_TB, ID_User, Vourcher, Total, Take, Give, Time from BILL) as foo where STT >= 1 and STT <= 5  and Time >= '2001/11/08' and TIME<= '2090/10/19'
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@start", SqlDbType.Int).Value = start;
@@ -837,6 +837,35 @@ namespace StoreAssitant
             cmd.ExecuteNonQuery();
         }*/
 
+        public List<KeyValuePair<DateTime, long>> GetRevenue_ByYear(DateTime fromDate, DateTime toDate)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            cmd.CommandText = "SELECT sum(ALL CAST((dt.[AMOUNT_PR] * dt.[PRICE_PR]) as BIGINT) ) revenue, YEAR(BILL.TIME) y "
+                                + "FROM Detail_Bill dt LEFT JOIN BILL on dt.BILL_ID = BILL.BILL_ID "
+                                + "WHERE BILL.TIME >= @fromDate AND BILL.TIME <= @toDate "
+                                  + "GROUP BY YEAR(BILL.TIME) ORDER BY YEAR(BILL.TIME) ASC;";
+
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@fromDate", SqlDbType.DateTime).Value = fromDate;
+            cmd.Parameters.Add("@toDate", SqlDbType.DateTime).Value = toDate;
+
+            List<KeyValuePair<DateTime, long>> rs = new List<KeyValuePair<DateTime, long>>();
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    int y = reader.GetInt32(1);
+                    DateTime date = new DateTime(y, 1, 1, 0, 0, 0);
+                    long revenue = reader.GetInt64(0);
+                    rs.Add(new KeyValuePair<DateTime, long>(date, revenue));
+                }
+            }
+
+            return rs;
+
+        }
+
         public List<SaleInfo> GetSaleInfos_ByDay(DateTime fromDate, DateTime toDate)
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
@@ -876,6 +905,35 @@ namespace StoreAssitant
                     productSaleInfo.Number = reader.GetInt32(2);
                     productSaleInfo.Price = reader.GetInt32(1);
                     last.Products.Add(productName, productSaleInfo);
+                }
+            }
+
+            return rs;
+        }
+
+        public List<KeyValuePair<DateTime, long>> GetRevenue_ByMonth(DateTime fromDate, DateTime toDate)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            cmd.CommandText = "SELECT sum(ALL CAST((dt.[AMOUNT_PR] * dt.[PRICE_PR]) as BIGINT) ) revenue, YEAR(BILL.TIME) y, MONTH(BILL.TIME) m "
+                                + "FROM Detail_Bill dt LEFT JOIN BILL on dt.BILL_ID = BILL.BILL_ID "
+                                + "WHERE BILL.TIME >= @fromDate AND BILL.TIME <= @toDate "
+                                  + "GROUP BY YEAR(BILL.TIME), MONTH(BILL.TIME) ORDER BY YEAR(BILL.TIME) ASC, MONTH(BILL.TIME) ASC";
+
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add("@fromDate", SqlDbType.DateTime).Value = fromDate;
+            cmd.Parameters.Add("@toDate", SqlDbType.DateTime).Value = toDate;
+
+            List<KeyValuePair<DateTime, long>> rs = new List<KeyValuePair<DateTime, long>>();
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    int y = reader.GetInt32(1);
+                    int m = reader.GetInt32(2);
+                    DateTime date = new DateTime(y, m, 1, 0, 0, 0);
+                    long revenue = reader.GetInt64(0);
+                    rs.Add(new KeyValuePair<DateTime, long>(date, revenue));
                 }
             }
 
