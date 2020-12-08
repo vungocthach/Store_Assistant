@@ -28,7 +28,7 @@ namespace StoreAssitant
         void OnTableRemoved(object s, EventArgs e) 
         {
             NumberTable--;
-            TableControl table = (TableControl)tableGUI_pnl.Controls[tableGUI_pnl.Controls.Count - 2];
+            TableControl table = (TableControl)tableGUI_pnl.Controls[numberTable];
             tableGUI_pnl.Controls.Remove(table);
         }
         [Category("My Event"), Description("When the table selected is changed")]
@@ -52,6 +52,8 @@ namespace StoreAssitant
             Init_Event_Customize();
 
             Init_Event_BtnAddTable();
+
+            Init_TableTakeHome();
 
             Init_Default_Value();
 
@@ -81,13 +83,16 @@ namespace StoreAssitant
             tableAdd_btn.MouseEnter += TableAdd_pnl_MouseEnter;
             tableAdd_btn.MouseLeave += TableAdd_pnl_MouseLeave;
         }
+        private void Init_TableTakeHome()
+        {
+            tableTakeHome.ClickTableControl += Newtable_ClickTableControl;
+        }
         private void Init_Default_Value()
         {
             this.MinimumSize = new Size(tableTitle_lb.Location.X + tableTitle_lb.Size.Width, tableTitle_pnl.Height + tableAdd_btn.MinimumSize.Height);
             itemImage = Properties.Resources.Artboard_1;
             SelectedTable = -1;
             numberTable = 0;
-            //this.Controls.Add(tbBill);
         }
         #endregion
 
@@ -99,12 +104,8 @@ namespace StoreAssitant
         public void SetData(int numberTable)
         {
             ClearData();
-            for (int i = 0; i < numberTable; i++)
-            {
-                Create_Table();
-            }
-            tableGUI_pnl.Controls.Remove(tableAdd_btn);
-            tableGUI_pnl.Controls.Add(tableAdd_btn);
+            for (int i = 0; i < numberTable; i++) Create_Table();
+            Add_TableTakeHome_ButtonAddTable();
         }
         private void ClearData()
         {
@@ -115,9 +116,9 @@ namespace StoreAssitant
         private void TableView_Layout(object sender, LayoutEventArgs e)
         {
             tableGUI_pnl.Height = this.Height - tableTitle_pnl.Location.Y - tableTitle_pnl.Height - 5;
-            //tableTitle_lb.Location = new Point(tableIcon_pnl.Location.X + tableIcon_pnl.Width + (this.Width - tableIcon_pnl.Location.X - tableIcon_pnl.Width - tableTitle_lb.Width) / 2, tableTitle_lb.Location.Y);
+            tableTitle_lb.Location = new Point(tableIcon_pnl.Location.X + tableIcon_pnl.Width + (this.Width - tableIcon_pnl.Location.X - tableIcon_pnl.Width - tableTitle_lb.Width) / 2, tableTitle_lb.Location.Y);
             tableIcon_pnl.Size = new Size(tableIcon_pnl.Size.Height, tableIcon_pnl.Size.Height);
-            tableTitle_lb.Location = new Point(tableTitle_lb.Location.X, (tableTitle_pnl.Height - tableTitle_lb.Size.Height) / 2);
+            //tableTitle_lb.Location = new Point(tableTitle_lb.Location.X, (tableTitle_pnl.Height - tableTitle_lb.Size.Height) / 2);
             if (tbBill != null)
             {
                 tbBill.Size = new Size(this.Size.Width - tableGUI_pnl.AutoScrollMargin.Width, tableGUI_pnl.Size.Height);
@@ -125,12 +126,20 @@ namespace StoreAssitant
         }
         private void Create_Table()
         {
-            TableControl newtable = new TableControl() { Size = ItemSize, nameTable = "BÀN " + tableGUI_pnl.Controls.Count, ImageTable = itemImage };
+            numberTable++;
+            TableControl newtable = new TableControl() { Size = ItemSize, nameTable = "BÀN " + numberTable, ImageTable = itemImage };
             newtable.IsManager = this.isManager;
-            newtable.Info.ID = ++numberTable;
+            newtable.Info.ID = numberTable;
             tableGUI_pnl.Controls.Add(newtable);
             newtable.ClickTableControl += Newtable_ClickTableControl;
             newtable.TableRemoved += Newtable_TableRemoved;
+        }
+        private void Add_TableTakeHome_ButtonAddTable()
+        {
+            tableGUI_pnl.Controls.Remove(tableAdd_btn);
+            tableGUI_pnl.Controls.Remove(tableTakeHome);
+            tableGUI_pnl.Controls.Add(tableTakeHome);
+            tableGUI_pnl.Controls.Add(tableAdd_btn);
         }
         #endregion
 
@@ -180,8 +189,7 @@ namespace StoreAssitant
         {
             this.ClickButtonAdd(this, null);
             Create_Table();
-            tableGUI_pnl.Controls.Remove(tableAdd_btn);
-            tableGUI_pnl.Controls.Add(tableAdd_btn);
+            Add_TableTakeHome_ButtonAddTable();
             this.TableAdded(this, e);
         }
         private void TableAdd_pnl_MouseLeave(object sender, EventArgs e)

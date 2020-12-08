@@ -53,7 +53,8 @@ namespace StoreAssitant
         #region INIT TABLEBILL
         public void setData(TableBillInfo info)
         {
-            tableTitle_lb.Text = "BÀN " + info.ID;
+            if (info.ID != 0) tableTitle_lb.Text = "BÀN " + info.ID;
+            else tableTitle_lb.Text = "BÀN MANG VỀ";
             if (info == null)
             {
                 MessageBox.Show("Dữ liệu của bàn bị lỗi");

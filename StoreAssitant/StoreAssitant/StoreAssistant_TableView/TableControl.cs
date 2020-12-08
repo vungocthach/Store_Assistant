@@ -12,6 +12,7 @@ using StoreAssitant.Class_Information;
 
 namespace StoreAssitant
 {
+    public enum status { Empty, Using };
     public partial class TableControl : UserControl
     {
         #region CREATE EVENTS
@@ -25,6 +26,7 @@ namespace StoreAssitant
 
         #region SETTING FIELDS
         public TableBillInfo Info;
+        private status sta;
         #endregion
         public TableControl()
         {
@@ -151,6 +153,23 @@ namespace StoreAssitant
                 else
                 {
                     tsDelete.Visible = false;
+                }
+            }
+        }
+        [Category("My properties"), Description("The status of table")]
+        public status Status
+        {
+            get => sta;
+            set
+            {
+                sta = value;
+                switch(sta)
+                {
+                    case status.Empty:
+
+                        break;
+                    case status.Using:
+                        break;
                 }
             }
         }
