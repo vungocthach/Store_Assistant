@@ -84,6 +84,7 @@
             this.menuView1.ItemSize = new System.Drawing.Size(200, 150);
             this.menuView1.Location = new System.Drawing.Point(0, 0);
             this.menuView1.Margin = new System.Windows.Forms.Padding(4);
+            this.menuView1.MinimumSize = new System.Drawing.Size(420, 2);
             this.menuView1.Name = "menuView1";
             this.menuView1.NameTitle = "Menu";
             this.menuView1.Size = new System.Drawing.Size(596, 590);

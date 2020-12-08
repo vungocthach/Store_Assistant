@@ -142,9 +142,6 @@
   <data name="iconfinder_normal_293272" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder_normal_293272.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SignUpBG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SignUpBG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="iconfinder_normal_293272_reverse" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder_normal_293272_reverse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -168,9 +165,6 @@
   </data>
   <data name="_120427285_648274679154155_8374726593261554204_n" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\120427285_648274679154155_8374726593261554204_n.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SUPBG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SUPBG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="button_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Untitled-3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -198,5 +192,11 @@
   </data>
   <data name="iconfinder_sale_lineal_color_cnvrt-04_3827715" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder_sale_lineal_color_cnvrt-04_3827715.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BGSt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BGSt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Table_Menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Table_Menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -29,15 +29,24 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuView));
+            this.controlSearch = new StoreAssitant.ControlSearch();
             this.flowLayoutPanelMenu = new System.Windows.Forms.FlowLayoutPanel();
             this.controlProduct = new StoreAssitant.ControlProduct();
-            this.controlSearch = new StoreAssitant.ControlSearch();
             this.ControlTitle = new StoreAssitant.TitleControl();
             this.flowLayoutPanelMenu.SuspendLayout();
             this.SuspendLayout();
-            //
+            // 
+            // controlSearch
+            // 
+            this.controlSearch.Control = null;
+            this.controlSearch.Location = new System.Drawing.Point(0, 36);
+            this.controlSearch.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.controlSearch.Name = "controlSearch";
+            this.controlSearch.Size = new System.Drawing.Size(426, 29);
+            this.controlSearch.TabIndex = 2;
+            // 
             // flowLayoutPanelMenu
-            //
+            // 
             this.flowLayoutPanelMenu.AutoScroll = true;
             this.flowLayoutPanelMenu.Controls.Add(this.controlProduct);
             this.flowLayoutPanelMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -46,37 +55,19 @@
             this.flowLayoutPanelMenu.Name = "flowLayoutPanelMenu";
             this.flowLayoutPanelMenu.Size = new System.Drawing.Size(425, 355);
             this.flowLayoutPanelMenu.TabIndex = 1;
-            //
+            // 
             // controlProduct
-            //
-            this.controlProduct.BackColor = System.Drawing.Color.Azure;
+            // 
+            this.controlProduct.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.controlProduct.ForeColor = System.Drawing.SystemColors.Control;
             this.controlProduct.Location = new System.Drawing.Point(3, 3);
             this.controlProduct.MinimumSize = new System.Drawing.Size(15, 16);
             this.controlProduct.Name = "controlProduct";
             this.controlProduct.Size = new System.Drawing.Size(143, 152);
             this.controlProduct.TabIndex = 0;
-            //
-            // controlSearch
-            //
-            this.controlSearch.Location = new System.Drawing.Point(0, 36);
-            this.controlSearch.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.controlSearch.Name = "controlSearch";
-            this.controlSearch.Size = new System.Drawing.Size(426, 29);
-            this.controlSearch.TabIndex = 2;
-            //
-            // controlProduct
-            //
-            this.controlProduct.BackColor = System.Drawing.Color.Azure;
-            this.controlProduct.ForeColor = System.Drawing.SystemColors.Control;
-            this.controlProduct.Location = new System.Drawing.Point(3, 3);
-            this.controlProduct.MinimumSize = new System.Drawing.Size(15, 16);
-            this.controlProduct.Name = "controlProduct";
-            this.controlProduct.Size = new System.Drawing.Size(143, 152);
-            this.controlProduct.TabIndex = 0;
-            //
+            // 
             // ControlTitle
-            //
+            // 
             this.ControlTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.ControlTitle.image = ((System.Drawing.Image)(resources.GetObject("ControlTitle.image")));
             this.ControlTitle.Location = new System.Drawing.Point(0, 0);
@@ -86,9 +77,9 @@
             this.ControlTitle.NameTitle = "Menu";
             this.ControlTitle.Size = new System.Drawing.Size(425, 32);
             this.ControlTitle.TabIndex = 0;
-            //
+            // 
             // MenuView
-            //
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
