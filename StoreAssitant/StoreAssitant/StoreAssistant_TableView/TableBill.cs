@@ -145,7 +145,10 @@ namespace StoreAssitant
                     //
                     //setting something
                     //
-
+                    for (int i = Billinfo.ProductInTable.Count - 1;i>=0;i--)
+                    {
+                        if (Billinfo.ProductInTable[i].NumberProduct == 0) Billinfo.ProductInTable.RemoveAt(i);
+                    }
                     f.setData(Billinfo);
                     f.ShowDialog();
                     //BẤM XÁC NHẬN THÌ MỚI XÓA

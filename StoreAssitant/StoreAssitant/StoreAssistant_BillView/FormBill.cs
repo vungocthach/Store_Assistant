@@ -138,11 +138,11 @@ namespace StoreAssitant
                     p.NumberProduct = i.NumberProduct;
                     p.Price = i.Price;*/
                     info.ProductBills.Add(i);
-                    tlpProduct.Controls.Add(new Label() { Text = (tlpProduct.RowCount - 1).ToString() }, 0, tlpProduct.RowCount - 1);
-                    tlpProduct.Controls.Add(new Label() { Text = i.Name }, 1, tlpProduct.RowCount - 1);
-                    tlpProduct.Controls.Add(new Label() { Text = i.NumberProduct.ToString() }, 2, tlpProduct.RowCount - 1);
-                    tlpProduct.Controls.Add(new Label() { Text = i.Price.ToString() }, 3, tlpProduct.RowCount - 1);
-                    tlpProduct.Controls.Add(new Label() { Text = (i.NumberProduct * i.Price).ToString() }, 4, tlpProduct.RowCount - 1);
+                    tlpProduct.Controls.Add(new Label() { Text = (tlpProduct.RowCount - 1).ToString(), TextAlign = ContentAlignment.MiddleCenter }, 0, tlpProduct.RowCount - 1);
+                    tlpProduct.Controls.Add(new Label() { Text = i.Name, TextAlign = ContentAlignment.MiddleLeft }, 1, tlpProduct.RowCount - 1);
+                    tlpProduct.Controls.Add(new Label() { Text = i.NumberProduct.ToString(), TextAlign = ContentAlignment.MiddleCenter }, 2, tlpProduct.RowCount - 1);
+                    tlpProduct.Controls.Add(new Label() { Text = i.Price.ToString("N0") + "VND", TextAlign = ContentAlignment.MiddleLeft }, 3, tlpProduct.RowCount - 1);
+                    tlpProduct.Controls.Add(new Label() { Text = (i.NumberProduct * i.Price).ToString("N0") + "VND", TextAlign = ContentAlignment.MiddleLeft }, 4, tlpProduct.RowCount - 1);
                     tlpProduct.RowCount++;
                     tlpProduct.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
                 }
@@ -199,9 +199,10 @@ namespace StoreAssitant
             textBox3.DataBindings.Add("Text", info, "TOTAL", true, DataSourceUpdateMode.OnPropertyChanged);
             textBox4.DataBindings.Add("Text", info, "Take", true, DataSourceUpdateMode.OnPropertyChanged);
             textBox5.DataBindings.Add("Text", info, "Give", true, DataSourceUpdateMode.OnPropertyChanged);
-            lbTableName.Text += info.ID.ToString();
-            lbDate.Text = lbDate.Text + info.DAY.Day + '/' + info.DAY.Month + '/' + info.DAY.Year + " " +
-                          info.DAY.Hour + ":" + info.DAY.Minute + ":" + info.DAY.Second;
+            lbTableName.Text += info.Number_table.ToString();
+            /*lbDate.Text = lbDate.Text + info.DAY.Day + '/' + info.DAY.Month + '/' + info.DAY.Year + " " +
+                          info.DAY.Hour + ":" + info.DAY.Minute + ":" + info.DAY.Second;*/
+            lbDate.Text = lbDate.Text + info.DAY.ToString(" dd/MM/yyyy HH:mm:ss");
         }
 
         #endregion
