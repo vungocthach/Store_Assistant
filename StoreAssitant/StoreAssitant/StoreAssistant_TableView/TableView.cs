@@ -56,8 +56,7 @@ namespace StoreAssitant
             Init_Default_Value();
 
             this.Layout += TableView_Layout;
-            tableTitle_pnl.Layout += TableView_Layout;
-
+            //tableTitle_pnl.Layout += TableView_Layout;
         }
 
         /// <summary>
@@ -87,33 +86,36 @@ namespace StoreAssitant
             this.MinimumSize = new Size(tableTitle_lb.Location.X + tableTitle_lb.Size.Width, tableTitle_pnl.Height + tableAdd_btn.MinimumSize.Height);
             itemImage = Properties.Resources.Artboard_1;
             SelectedTable = -1;
-            this.Controls.Add(tbBill);
+            numberTable = 0;
+            //this.Controls.Add(tbBill);
         }
         #endregion
 
 
+        /// <summary>
+        /// SETTING SPECIFIC FUNCTION OF FORM
+        /// </summary>
+        #region Public function
         public void SetData(int numberTable)
         {
             ClearData();
-            for (int i = 0; i < numberTable; i++) {
-                this.NumberTable++;
+            for (int i = 0; i < numberTable; i++)
+            {
                 Create_Table();
             }
             tableGUI_pnl.Controls.Remove(tableAdd_btn);
             tableGUI_pnl.Controls.Add(tableAdd_btn);
         }
-
         private void ClearData()
         {
             numberTable = 0;
             tableGUI_pnl.Controls.Clear();
             tableGUI_pnl.Controls.Add(tableAdd_btn);
         }
-
         private void TableView_Layout(object sender, LayoutEventArgs e)
         {
             tableGUI_pnl.Height = this.Height - tableTitle_pnl.Location.Y - tableTitle_pnl.Height - 5;
-            tableTitle_lb.Location = new Point(tableIcon_pnl.Location.X + tableIcon_pnl.Width + (this.Width - tableIcon_pnl.Location.X - tableIcon_pnl.Width - tableTitle_lb.Width) / 2, tableTitle_lb.Location.Y);
+            //tableTitle_lb.Location = new Point(tableIcon_pnl.Location.X + tableIcon_pnl.Width + (this.Width - tableIcon_pnl.Location.X - tableIcon_pnl.Width - tableTitle_lb.Width) / 2, tableTitle_lb.Location.Y);
             tableIcon_pnl.Size = new Size(tableIcon_pnl.Size.Height, tableIcon_pnl.Size.Height);
             tableTitle_lb.Location = new Point(tableTitle_lb.Location.X, (tableTitle_pnl.Height - tableTitle_lb.Size.Height) / 2);
             if (tbBill != null)
@@ -121,12 +123,23 @@ namespace StoreAssitant
                 tbBill.Size = new Size(this.Size.Width - tableGUI_pnl.AutoScrollMargin.Width, tableGUI_pnl.Size.Height);
             }
         }
+        private void Create_Table()
+        {
+            TableControl newtable = new TableControl() { Size = ItemSize, nameTable = "BÀN " + tableGUI_pnl.Controls.Count, ImageTable = itemImage };
+            newtable.IsManager = this.isManager;
+            newtable.Info.ID = ++numberTable;
+            tableGUI_pnl.Controls.Add(newtable);
+            newtable.ClickTableControl += Newtable_ClickTableControl;
+            newtable.TableRemoved += Newtable_TableRemoved;
+        }
+        #endregion
 
-        #region TABLE BILL SETTING
+
+        #region INIT TABLE BILL
         private void Show_TableBill()
         {
             tbBill = new TableBill();
-            tbBill.Size = new Size(tableGUI_pnl.Size.Width, tableGUI_pnl.Size.Height - tableGUI_pnl.AutoScrollMargin.Width);
+            //tbBill.Size = new Size(tableGUI_pnl.Size.Width, tableGUI_pnl.Size.Height - tableGUI_pnl.AutoScrollMargin.Width);
             tbBill.Location = new Point(tableGUI_pnl.Location.X, tableGUI_pnl.Location.Y);
             tbBill.Dock = DockStyle.Bottom;
             tbBill.setData(((TableControl)tableGUI_pnl.Controls[SelectedTable]).Info);
@@ -136,42 +149,25 @@ namespace StoreAssitant
             this.Controls.Add(tbBill);
             tbBill.Show();
         }
-
         private void Tbbill_CloseBill(object sender, EventArgs e)
         {
             tableGUI_pnl.Show();
             SelectedTable = -1;
         }
-        #endregion
-
-        private void Create_Table()
-        {
-            TableControl newtable = new TableControl() { Size = ItemSize, nameTable = "BÀN " + tableGUI_pnl.Controls.Count, ImageTable = itemImage };
-            newtable.IsManager = this.isManager;
-            newtable.Info.ID = numberTable;
-            tableGUI_pnl.Controls.Add(newtable);
-            newtable.ClickTableControl += Newtable_ClickTableControl;
-            newtable.TableRemoved += Newtable_TableRemoved;
-        }
-
         public void AddProductInfo(ProductInfo product)
         {
-            if (SelectedTable != -1)
-            {
-                tbBill.UploadProduct(product);
-                Invalidate();
-            }
+            if (SelectedTable != -1) tbBill.UploadProduct(product);
         }
+        #endregion
 
 
         #region BUTTON TABLE EVENT
         private void Newtable_ClickTableControl(object sender, EventArgs e)
         {
+            this.ClickButtonTable(this, e);
             SelectedTable = tableGUI_pnl.Controls.IndexOf((TableControl)sender);
             if(!isManager) Show_TableBill();
-            this.ClickButtonTable(this, e);
         }
-
         private void Newtable_TableRemoved(object sender, EventArgs e)
         {
             this.TableRemoved(this, e);
@@ -179,34 +175,29 @@ namespace StoreAssitant
         #endregion
 
 
-        #region BUTTON ADD TABLE MOUSE EVENT
+        #region EVENT OF BUTTON ADD TABLE
         private void TableAdd_btn_Click(object sender, EventArgs e)
         {
+            this.ClickButtonAdd(this, null);
             Create_Table();
-            this.NumberTable++;
             tableGUI_pnl.Controls.Remove(tableAdd_btn);
             tableGUI_pnl.Controls.Add(tableAdd_btn);
             this.TableAdded(this, e);
-            this.ClickButtonAdd(this, null);
         }
-
         private void TableAdd_pnl_MouseLeave(object sender, EventArgs e)
         {
             tableAdd_btn.BackColor = SystemColors.Control;
             tableAdd_btn.BorderStyle = BorderStyle.None;
         }
-
         private void TableAdd_pnl_MouseEnter(object sender, EventArgs e)
         {
             tableAdd_btn.BackColor = SystemColors.ActiveCaption;
             tableAdd_btn.BorderStyle = BorderStyle.Fixed3D;
         }
-
         private void TableAdd_pnl_MouseUp(object sender, MouseEventArgs e)
         {
             tableAdd_btn.BorderStyle = BorderStyle.Fixed3D;
         }
-
         private void TableAdd_pnl_MouseDown(object sender, MouseEventArgs e)
         {
             tableAdd_btn.BorderStyle = BorderStyle.None;
