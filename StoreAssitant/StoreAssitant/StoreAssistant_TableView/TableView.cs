@@ -23,7 +23,7 @@ namespace StoreAssitant
         [Category("My Event"), Description("When the table is added")]
         public event EventHandler TableAdded;
         void OnTableAdded(object s, EventArgs e) { }
-        [Category("My Event"), Description("When the table is removed out of flowlayer panel")]
+        [Category("My Event"), Description("When the table is removed")]
         public event EventHandler TableRemoved;
         void OnTableRemoved(object s, EventArgs e) 
         {
@@ -49,6 +49,23 @@ namespace StoreAssitant
         {
             InitializeComponent();
 
+            Init_Event_Customize();
+
+            Init_Event_BtnAddTable();
+
+            Init_Default_Value();
+
+            this.Layout += TableView_Layout;
+            tableTitle_pnl.Layout += TableView_Layout;
+
+        }
+
+        /// <summary>
+        /// Init the form value when creating
+        /// </summary>
+        #region Init 
+        private void Init_Event_Customize()
+        {
             this.ClickButtonAdd = new EventHandler(OnClickButtonAdd);
             this.ClickButtonTable = new EventHandler(OnClickButtonTable);
 
@@ -56,23 +73,25 @@ namespace StoreAssitant
             this.TableRemoved = new EventHandler(OnTableRemoved);
 
             this.TableSelectedChanged = new EventHandler(OnTableSelectedChanged);
-
-            this.MinimumSize = new Size(tableTitle_lb.Location.X + tableTitle_lb.Size.Width, tableTitle_pnl.Height + tableAdd_btn.MinimumSize.Height);
-
-            this.Layout += TableView_Layout;
-            tableTitle_pnl.Layout += TableView_Layout;
-
-            //event button add table click
+        }
+        private void Init_Event_BtnAddTable()
+        {
             tableAdd_btn.Click += TableAdd_btn_Click;
             tableAdd_btn.MouseDown += TableAdd_pnl_MouseDown;
             tableAdd_btn.MouseUp += TableAdd_pnl_MouseUp;
             tableAdd_btn.MouseEnter += TableAdd_pnl_MouseEnter;
             tableAdd_btn.MouseLeave += TableAdd_pnl_MouseLeave;
-
+        }
+        private void Init_Default_Value()
+        {
+            this.MinimumSize = new Size(tableTitle_lb.Location.X + tableTitle_lb.Size.Width, tableTitle_pnl.Height + tableAdd_btn.MinimumSize.Height);
             itemImage = Properties.Resources.Artboard_1;
             SelectedTable = -1;
             this.Controls.Add(tbBill);
         }
+        #endregion
+
+
         public void SetData(int numberTable)
         {
             ClearData();
@@ -144,6 +163,7 @@ namespace StoreAssitant
             }
         }
 
+
         #region BUTTON TABLE EVENT
         private void Newtable_ClickTableControl(object sender, EventArgs e)
         {
@@ -157,6 +177,7 @@ namespace StoreAssitant
             this.TableRemoved(this, e);
         }
         #endregion
+
 
         #region BUTTON ADD TABLE MOUSE EVENT
         private void TableAdd_btn_Click(object sender, EventArgs e)
@@ -192,6 +213,7 @@ namespace StoreAssitant
         }
         #endregion
 
+
         #region PROPERTIES
         [Category("My properties"), Description("Change main name of the view Table")]
         public string NameCashierTable
@@ -218,10 +240,7 @@ namespace StoreAssitant
         [Category("My Properties"), Description("Height of title in pixel")]
         public int TitleHeight
         {
-            get
-            {
-                return tableTitle_pnl.Height;
-            }
+            get => tableTitle_pnl.Height;
             set
             {
                 if (value > 40)
@@ -274,14 +293,18 @@ namespace StoreAssitant
                 Invalidate();
             }
         }
+        [Category("My Properties"), Description("The number of table is choosing")]
         public int SelectedTable
         {
             get => indexSelectedTable;
             private set
             {
-                indexSelectedTable = value;
-                this.TableSelectedChanged(this,new EventArgs());
-                Invalidate();
+                if (value != indexSelectedTable)
+                {
+                    indexSelectedTable = value;
+                    this.TableSelectedChanged(this, new EventArgs());
+                    //Invalidate();
+                }
             }
         }
         [Category("My Properties"), Description("Check is manager?")]
@@ -291,32 +314,25 @@ namespace StoreAssitant
             set
             {
                 isManager = value;
-                if (isManager == false)
-                {
-                    tableAdd_btn.Visible = false;
-                }
-                else
-                {
-                    tableAdd_btn.Visible = true;
-                }
+                tableAdd_btn.Visible = value;
                 foreach(Control table in tableGUI_pnl.Controls)
                 {
-                    if (table is TableControl)
+                    if (table is TableControl table1)
                     {
-                        ((TableControl)table).IsManager = value;
+                        table1.IsManager = value;
                     }
                 }
                 Invalidate();
             }
         }
-        [Category("My Properties"), Description("Number of table")]
+        [Category("My Properties"), Description("Number of table is display in view")]
         public int NumberTable
         {
             get => numberTable;
             private set
             {
                 numberTable = value;
-                Invalidate();
+                //Invalidate();
             }
         }
         #endregion
