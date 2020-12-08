@@ -103,9 +103,17 @@ namespace StoreAssitant
         #region Public function
         public void SetData(int numberTable)
         {
-            ClearData();
-            for (int i = 0; i < numberTable; i++) Create_Table();
-            Add_TableTakeHome_ButtonAddTable();
+            //ClearData();
+            int number = this.numberTable;
+            if (number<=numberTable)
+            {
+                for (int i = number; i < numberTable; i++) Create_Table();
+                Add_TableTakeHome_ButtonAddTable();
+            }
+            else
+            {
+                for (int i = 0; i < number - numberTable; i++) TableRemoved(this, new EventArgs());
+            }
         }
         private void ClearData()
         {
