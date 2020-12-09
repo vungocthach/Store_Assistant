@@ -74,6 +74,7 @@ namespace StoreAssitant
             lbName.Size = new Size(this.Size.Width * 13 / 44, this.Size.Height);
             lbTotalPrice.Size = lbSinglePrice.Size = new Size(this.Size.Width * 10 / 44, this.Size.Height);
             pnlNumber.Size = new Size(this.Size.Width * 11 / 44, this.Size.Height);
+            label1.Size = new Size(this.Size.Width, 8);
 
             lbSinglePrice.Location = new Point(lbName.Size.Width, 0);
             pnlNumber.Location = new Point(lbSinglePrice.Location.X + lbSinglePrice.Size.Width, 0);
@@ -82,6 +83,7 @@ namespace StoreAssitant
             lbNumber.Location = new Point((lbNumber.Parent.Width - lbNumber.Size.Width) / 2, (lbNumber.Parent.Height - lbNumber.Size.Height) / 2 - 1);
             btnAdd.Location = new Point((lbNumber.Location.X - btnAdd.Size.Width) / 2, (btnAdd.Parent.Size.Height - btnAdd.Size.Height)/2 - 1);
             btnRemove.Location = new Point(lbNumber.Parent.Width - btnAdd.Location.X - btnAdd.Size.Width, (btnRemove.Parent.Size.Height - btnRemove.Size.Height) / 2 - 1);
+           
         }
         #region PROPERTIES
         [Category("MyProperties"),Description("Name of product")]

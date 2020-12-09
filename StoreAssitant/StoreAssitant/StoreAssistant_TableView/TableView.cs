@@ -142,7 +142,7 @@ namespace StoreAssitant
                 tbBill.UploadProduct(product);
                 Invalidate();
             }
-        }
+        }//tableAdd_btn
 
         #region BUTTON TABLE EVENT
         private void Newtable_ClickTableControl(object sender, EventArgs e)

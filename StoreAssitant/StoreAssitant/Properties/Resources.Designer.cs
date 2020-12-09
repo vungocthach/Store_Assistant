@@ -183,6 +183,17 @@ namespace StoreAssitant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_food_and_restaurant_print_products_choose_menus_coffee_shop_menu_bar_paper_restaurant_food_4848456 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_food_and_restaurant_print_products_choose_menus_coffee_shop_menu_bar_p" +
+                        "aper_restaurant_food_4848456", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_humans_1216581 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_humans_1216581", resourceCulture);
@@ -206,6 +217,16 @@ namespace StoreAssitant.Properties {
         internal static System.Drawing.Bitmap iconfinder_icons_menu_1564512 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_icons_menu_1564512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_Menu_2001884 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_Menu_2001884", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -293,6 +314,7 @@ namespace StoreAssitant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+<<<<<<< Updated upstream
         internal static System.Drawing.Bitmap SignUpBackGroud {
             get {
                 object obj = ResourceManager.GetObject("SignUpBackGroud", resourceCulture);
@@ -314,6 +336,9 @@ namespace StoreAssitant.Properties {
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap SUPBG {
+=======
+        internal static System.Drawing.Bitmap Table_Menu {
+>>>>>>> Stashed changes
             get {
                 object obj = ResourceManager.GetObject("SUPBG", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));

@@ -50,6 +50,9 @@
     <Reference Include="ComponentFactory.Krypton.Workspace, Version=4.4.1.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
       <HintPath>..\packages\KryptonWinFormControls.4.4.1.0\lib\net40\ComponentFactory.Krypton.Workspace.dll</HintPath>
     </Reference>
+    <Reference Include="StoreAssitant">
+      <HintPath>obj\Debug\StoreAssitant.exe</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -65,6 +68,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="StoreAssistant_BillView\BillInfo.cs" />
     <Compile Include="StoreAssistant_BillView\FormBill.cs">
       <SubType>Form</SubType>
@@ -258,6 +266,9 @@
     <EmbeddedResource Include="StoreAssistant_CashierView\CashierView.resx">
       <DependentUpon>CashierView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="StoreAssistant_MenuView\ControlProduct.resx">
+      <DependentUpon>ControlProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_MenuView\ControlSearch.resx">
       <DependentUpon>ControlSearch.cs</DependentUpon>
     </EmbeddedResource>
@@ -326,14 +337,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="StoreAssistant_StatiticsView\CompareView.resx">
       <DependentUpon>CompareView.cs</DependentUpon>
     </EmbeddedResource>
@@ -432,12 +438,27 @@
     <None Include="Resources\121476880_662245951379057_3014594879334389444_n.png" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< Updated upstream
+=======
+    <None Include="Resources\iconfinder_food_and_restaurant-print_products-choose-menus-coffee_shop-menu-bar-paper-restaurant-food_4848456.png" />
+    <None Include="Resources\iconfinder_Menu_2001884.png" />
+    <None Include="Resources\iconfinder_list_6585312.png" />
+    <None Include="Resources\Menu.png" />
+    <None Include="Resources\iconfinder_list_6585312 %281%29.png" />
+    <None Include="Resources\Table_Menu.png" />
+>>>>>>> Stashed changes
     <None Include="Resources\iconfinder_sale_lineal_color_cnvrt-04_3827715.png" />
     <None Include="Resources\logo.png" />
     <None Include="Resources\SUPBG.png" />
     <None Include="Resources\SignUpBG.png" />
     <None Include="Resources\SignUpBackGroud.png" />
     <None Include="Resources\gift-voucher.png" />
+<<<<<<< Updated upstream
+=======
+    <None Include="Resources\BGSt.png" />
+    <None Include="Resources\iconfinder_Bullet_list_menu_lines_points_items_options_1886507.png" />
+    <None Include="Resources\iconfinder_Bullet_list_menu_lines_points_items_options_1886507 %281%29.png" />
+>>>>>>> Stashed changes
     <Content Include="Resources\iconfinder_Cashier-2_3793351.png" />
     <None Include="Resources\iconfinder_icon-arrow-right-a_211619.png" />
     <None Include="Resources\iconfinder_sale_lineal_color_cnvrt-18_3827704.png" />

@@ -29,29 +29,35 @@
         private void InitializeComponent()
         {
             this.buttonSearch = new System.Windows.Forms.Button();
-            this.cbx_Search = new System.Windows.Forms.ComboBox();
+            this.cbx_Search = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonSearch
             // 
+            this.buttonSearch.BackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.buttonSearch.Dock = System.Windows.Forms.DockStyle.Right;
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearch.Font = new System.Drawing.Font("VNI-Cooper", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.buttonSearch.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.buttonSearch.Location = new System.Drawing.Point(278, 0);
             this.buttonSearch.MinimumSize = new System.Drawing.Size(52, 29);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(76, 34);
+            this.buttonSearch.Size = new System.Drawing.Size(76, 35);
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.Text = "Search";
-            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.UseVisualStyleBackColor = false;
             // 
             // cbx_Search
             // 
-            this.cbx_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.cbx_Search.FormattingEnabled = true;
-            this.cbx_Search.Location = new System.Drawing.Point(0, 1);
+            this.cbx_Search.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cbx_Search.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cbx_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.cbx_Search.Location = new System.Drawing.Point(3, 1);
+            this.cbx_Search.Multiline = true;
             this.cbx_Search.Name = "cbx_Search";
-            this.cbx_Search.Size = new System.Drawing.Size(278, 32);
-            this.cbx_Search.TabIndex = 2;
+            this.cbx_Search.Size = new System.Drawing.Size(276, 33);
+            this.cbx_Search.TabIndex = 3;
             // 
             // ControlSearch
             // 
@@ -60,13 +66,14 @@
             this.Controls.Add(this.cbx_Search);
             this.Controls.Add(this.buttonSearch);
             this.Name = "ControlSearch";
-            this.Size = new System.Drawing.Size(354, 34);
+            this.Size = new System.Drawing.Size(354, 35);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.Button buttonSearch;
-        private System.Windows.Forms.ComboBox cbx_Search;
+        private System.Windows.Forms.TextBox cbx_Search;
     }
 }

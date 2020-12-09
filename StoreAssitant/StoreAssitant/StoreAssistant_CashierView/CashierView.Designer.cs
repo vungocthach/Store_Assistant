@@ -56,7 +56,7 @@
             this.split_Cashier.Panel2.Controls.Add(this.menuView1);
             this.split_Cashier.Panel2.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.split_Cashier.Size = new System.Drawing.Size(1100, 590);
-            this.split_Cashier.SplitterDistance = 496;
+            this.split_Cashier.SplitterDistance = 460;
             this.split_Cashier.SplitterWidth = 5;
             this.split_Cashier.TabIndex = 1;
             // 
@@ -75,7 +75,7 @@
             this.tableView1.MinimumSize = new System.Drawing.Size(376, 50);
             this.tableView1.Name = "tableView1";
             this.tableView1.NameCashierTable = "DANH SÁCH BÀN";
-            this.tableView1.Size = new System.Drawing.Size(496, 590);
+            this.tableView1.Size = new System.Drawing.Size(460, 590);
             this.tableView1.TabIndex = 0;
             this.tableView1.TitleHeight = 50;
             // 
@@ -84,7 +84,8 @@
             this.menuView1.BackColor = System.Drawing.Color.Transparent;
             this.menuView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.menuView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.menuView1.image = global::StoreAssitant.Properties.Resources._120427285_648274679154155_8374726593261554204_n;
+            this.menuView1.image = global::StoreAssitant.Properties.Resources.iconfinder_food_and_restaurant_print_products_choose_menus_coffee_shop_menu_bar_paper_restaurant_food_4848456;
+            this.menuView1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.menuView1.IsManeger = false;
             this.menuView1.ItemSize = new System.Drawing.Size(200, 150);
             this.menuView1.Location = new System.Drawing.Point(0, 0);
@@ -92,14 +93,16 @@
             this.menuView1.MinimumSize = new System.Drawing.Size(420, 2);
             this.menuView1.Name = "menuView1";
             this.menuView1.NameTitle = "Menu";
-            this.menuView1.Size = new System.Drawing.Size(599, 590);
+            this.menuView1.Size = new System.Drawing.Size(635, 590);
             this.menuView1.TabIndex = 0;
             this.menuView1.TitleHeight = 50;
+            this.menuView1.Load += new System.EventHandler(this.menuView1_Load);
             // 
             // CashierView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Controls.Add(this.split_Cashier);
             this.Name = "CashierView";
             this.Size = new System.Drawing.Size(1100, 590);

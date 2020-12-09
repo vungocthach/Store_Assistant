@@ -45,5 +45,9 @@ namespace StoreAssitant.StoreAssistant_CashierView
             }
         }
 
+        private void menuView1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -114,10 +114,10 @@ namespace StoreAssitant
         [Category("My Properties"), Description("Height of title bar in pixel")]
         public int TitleHeight
         {
-            get { return ControlTitle.Height; }
+            get { return titleControl1.Height; }
             set
             {
-                ControlTitle.Height = value;
+                titleControl1.Height = value;
                 Invalidate();
             }
         }
@@ -146,20 +146,20 @@ namespace StoreAssitant
         [Category("My Properties"), Description("Name of Title")]
         public string NameTitle
         {
-            get => ControlTitle.NameTitle;
+            get => titleControl1.NameTitle;
             set
             {
-                ControlTitle.NameTitle = value;
+                titleControl1.NameTitle = value;
                 Invalidate();
             }
         }
         [Category("My Properties"), Description("Inmage of Menu title ")]
         public Image image
         {
-            get => ControlTitle.image;
+            get => titleControl1.image;
             set
             {
-                ControlTitle.image = value;
+                titleControl1.image = value;
                 Invalidate();
             }
         }
@@ -267,9 +267,9 @@ namespace StoreAssitant
 
             CLick_DeleteProduct = new EventHandler<ProductInfo>(on_CLick_EditProduct);
 
-            ControlTitle.Layout += new LayoutEventHandler((object sender, LayoutEventArgs e) =>
+            titleControl1.Layout += new LayoutEventHandler((object sender, LayoutEventArgs e) =>
             {
-                SetLocationY_bottom_control(controlSearch, ControlTitle);
+                SetLocationY_bottom_control(controlSearch, titleControl1);
             });
 
             controlSearch.Control = Control;
@@ -328,6 +328,11 @@ namespace StoreAssitant
             controlSearch.Width = this.Width - 15;
             flowLayoutPanelMenu.Location = new Point(0, Convert.ToInt32(controlSearch.Location.Y * 2.5));
             flowLayoutPanelMenu.Height = this.Height - controlSearch.Location.Y - controlSearch.Height - 5;
+        }
+
+        private void controlSearch_Load(object sender, EventArgs e)
+        {
+
         }
     }
        
