@@ -27,6 +27,7 @@ namespace StoreAssitant
         #region SETTING FIELDS
         public TableBillInfo Info;
         private status sta;
+        private Color defaultColor;
         #endregion
         public TableControl()
         {
@@ -64,6 +65,8 @@ namespace StoreAssitant
 
             tsDelete.Click += TsDelete_Click;
             tsInformation.Click += TsInformation_Click;
+
+            Status = status.Empty;
         }
 
         #region EVENTS CLICK
@@ -91,7 +94,7 @@ namespace StoreAssitant
         }
         private void TableControl_MouseLeave(object sender, EventArgs e)
         {
-            tableImage_pnl.BackColor = this.BackColor = Color.PapayaWhip;
+            tableImage_pnl.BackColor = this.BackColor = defaultColor;
         }
         private void TableControl_MouseDown(object sender, EventArgs e)
         {
@@ -166,9 +169,12 @@ namespace StoreAssitant
                 switch(sta)
                 {
                     case status.Empty:
-
+                        defaultColor = Color.PapayaWhip;
+                        tableImage_pnl.BackColor = this.BackColor = defaultColor;
                         break;
                     case status.Using:
+                        defaultColor = Color.Cyan;
+                        tableImage_pnl.BackColor = this.BackColor = defaultColor;
                         break;
                 }
             }

@@ -64,7 +64,7 @@ namespace StoreAssitant
         /// <summary>
         /// Init the form value when creating
         /// </summary>
-        #region Init 
+        #region Init Form
         private void Init_Event_Customize()
         {
             this.ClickButtonAdd = new EventHandler(OnClickButtonAdd);
@@ -103,7 +103,6 @@ namespace StoreAssitant
         #region Public function
         public void SetData(int numberTable)
         {
-            //ClearData();
             int number = this.numberTable;
             if (number<=numberTable)
             {
@@ -114,12 +113,6 @@ namespace StoreAssitant
             {
                 for (int i = 0; i < number - numberTable; i++) TableRemoved(this, new EventArgs());
             }
-        }
-        private void ClearData()
-        {
-            numberTable = 0;
-            tableGUI_pnl.Controls.Clear();
-            tableGUI_pnl.Controls.Add(tableAdd_btn);
         }
         private void TableView_Layout(object sender, LayoutEventArgs e)
         {
@@ -169,6 +162,9 @@ namespace StoreAssitant
         private void Tbbill_CloseBill(object sender, EventArgs e)
         {
             tableGUI_pnl.Show();
+            TableControl table = (TableControl)tableGUI_pnl.Controls[SelectedTable];
+            if (table.Info.ProductInTable.Count != 0) table.Status = status.Using;
+            else table.Status = status.Empty;
             SelectedTable = -1;
         }
         public void AddProductInfo(ProductInfo product)

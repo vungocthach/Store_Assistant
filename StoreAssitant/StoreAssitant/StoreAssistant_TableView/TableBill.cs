@@ -161,6 +161,7 @@ namespace StoreAssitant
                             flpProductInfo.Controls.Remove(flpProductInfo.Controls[flpProductInfo.Controls.Count - 1]);
                         }
                         TotalPrice.Price = 0;
+                        btn_Cancel_Click(this, new EventArgs());
                     }
                     /*
                     DateTime start = new DateTime(2018,1,1);
@@ -186,8 +187,8 @@ namespace StoreAssitant
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
-            this.CloseBill(sender, e);
             RemoveZeroNumberProducts();
+            this.CloseBill(sender, e);
             this.Dispose(true);
         }
         #endregion
