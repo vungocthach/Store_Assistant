@@ -107,7 +107,7 @@
             this.tableTakeHome.Margin = new System.Windows.Forms.Padding(2);
             this.tableTakeHome.MinimumSize = new System.Drawing.Size(77, 52);
             this.tableTakeHome.Name = "tableTakeHome";
-            this.tableTakeHome.nameTable = "Mang về";
+            this.tableTakeHome.NameTable = "Mang về";
             this.tableTakeHome.Size = new System.Drawing.Size(111, 120);
             this.tableTakeHome.TabIndex = 2;
             // 

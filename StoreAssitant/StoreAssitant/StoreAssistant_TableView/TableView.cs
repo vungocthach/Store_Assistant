@@ -128,7 +128,7 @@ namespace StoreAssitant
         private void Create_Table()
         {
             numberTable++;
-            TableControl newtable = new TableControl() { Size = ItemSize, nameTable = "BÀN " + numberTable, ImageTable = itemImage };
+            TableControl newtable = new TableControl() { Size = ItemSize, NameTable = "BÀN " + numberTable, ImageTable = itemImage };
             newtable.IsManager = this.isManager;
             newtable.Info.ID = numberTable;
             tableGUI_pnl.Controls.Add(newtable);
