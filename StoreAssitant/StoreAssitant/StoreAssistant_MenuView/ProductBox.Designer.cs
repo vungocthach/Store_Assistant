@@ -44,6 +44,8 @@
             this.pb_Err_Name = new System.Windows.Forms.PictureBox();
             this.lb_currency = new System.Windows.Forms.Label();
             this.textBoxPrice = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Err_Des)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Err_Price)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Err_Name)).BeginInit();
@@ -52,44 +54,46 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(2, 177);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 19);
+            this.label1.Size = new System.Drawing.Size(121, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tên sản phẩm :";
             // 
             // txtb_Name
             // 
+            this.txtb_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtb_Name.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtb_Name.Location = new System.Drawing.Point(104, 175);
+            this.txtb_Name.Location = new System.Drawing.Point(127, 175);
             this.txtb_Name.Margin = new System.Windows.Forms.Padding(2, 8, 2, 2);
             this.txtb_Name.MaxLength = 50;
             this.txtb_Name.Name = "txtb_Name";
-            this.txtb_Name.Size = new System.Drawing.Size(217, 26);
+            this.txtb_Name.Size = new System.Drawing.Size(194, 19);
             this.txtb_Name.TabIndex = 1;
             // 
             // txtb_Price
             // 
+            this.txtb_Price.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtb_Price.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtb_Price.Location = new System.Drawing.Point(104, 210);
+            this.txtb_Price.Location = new System.Drawing.Point(127, 210);
             this.txtb_Price.Margin = new System.Windows.Forms.Padding(2, 8, 2, 2);
             this.txtb_Price.MaxLength = 20;
             this.txtb_Price.Name = "txtb_Price";
             this.txtb_Price.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtb_Price.Size = new System.Drawing.Size(178, 26);
+            this.txtb_Price.Size = new System.Drawing.Size(155, 19);
             this.txtb_Price.TabIndex = 3;
             this.txtb_Price.Text = "0";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label2.Location = new System.Drawing.Point(2, 212);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 19);
+            this.label2.Size = new System.Drawing.Size(80, 17);
             this.label2.TabIndex = 2;
             this.label2.Text = "Giá bán : ";
             // 
@@ -107,18 +111,18 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.label4.Location = new System.Drawing.Point(2, 247);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 19);
+            this.label4.Size = new System.Drawing.Size(112, 17);
             this.label4.TabIndex = 6;
             this.label4.Text = "Mô tả chi tiết :";
             // 
             // label_Image
             // 
             this.label_Image.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label_Image.Font = new System.Drawing.Font("UTM Americana EB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Image.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Image.Location = new System.Drawing.Point(52, 11);
             this.label_Image.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_Image.Name = "label_Image";
@@ -130,7 +134,7 @@
             // pb_Err_Des
             // 
             this.pb_Err_Des.Image = global::StoreAssitant.Properties.Resources.iconfinder_caution_1055096;
-            this.pb_Err_Des.Location = new System.Drawing.Point(93, 239);
+            this.pb_Err_Des.Location = new System.Drawing.Point(127, 240);
             this.pb_Err_Des.Margin = new System.Windows.Forms.Padding(2);
             this.pb_Err_Des.Name = "pb_Err_Des";
             this.pb_Err_Des.Size = new System.Drawing.Size(27, 29);
@@ -192,10 +196,29 @@
             this.textBoxPrice.Text = "12,000VND";
             this.textBoxPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label3
+            // 
+            this.label3.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.label3.Location = new System.Drawing.Point(123, 183);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(194, 19);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "_______________________________________________________________";
+            // 
+            // label5
+            // 
+            this.label5.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.label5.Location = new System.Drawing.Point(123, 218);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(194, 19);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "_______________________________________________________________";
+            // 
             // ProductBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Controls.Add(this.textBoxPrice);
             this.Controls.Add(this.pb_Err_Price);
             this.Controls.Add(this.lb_currency);
@@ -208,6 +231,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtb_Name);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label5);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(300, 406);
             this.Name = "ProductBox";
@@ -237,5 +262,7 @@
         private System.Windows.Forms.PictureBox pb_Err_Des;
         private System.Windows.Forms.Label lb_currency;
         private System.Windows.Forms.Label textBoxPrice;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -293,6 +293,16 @@ namespace StoreAssitant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Menu_Title {
+            get {
+                object obj = ResourceManager.GetObject("Menu_Title", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SignUpBackGroud {
             get {
                 object obj = ResourceManager.GetObject("SignUpBackGroud", resourceCulture);

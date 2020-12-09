@@ -46,5 +46,7 @@ namespace StoreAssitant
             labelTitle.Location = new Point( labelImage.Width, 0);
             labelTitle.Size = new Size(labelImage.Parent.Width - labelImage.Width, labelImage.Height);
         }
+
+     
     }
 }

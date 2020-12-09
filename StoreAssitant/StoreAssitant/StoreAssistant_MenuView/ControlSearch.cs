@@ -76,7 +76,7 @@ namespace StoreAssitant
         }
         private void ControlSearch_SizeChanged(object sender, EventArgs e)
         {
-            cbx_Search.Width = this.Width - buttonSearch.Width - cbx_Search.Margin.Right - buttonSearch.Margin.Left;
+            cbx_Search.Width = this.Width - buttonSearch.Width + 2 /*- cbx_Search.Margin.Right - buttonSearch.Margin.Left*/;
         }
 
     }

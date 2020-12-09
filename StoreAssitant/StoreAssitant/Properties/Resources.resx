@@ -199,4 +199,7 @@
   <data name="iconfinder_sale_lineal_color_cnvrt-04_3827715" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder_sale_lineal_color_cnvrt-04_3827715.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Menu_Title" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconfinder_food_and_restaurant-print_products-choose-menus-coffee_shop-menu-bar-paper-restaurant-food_4848456.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

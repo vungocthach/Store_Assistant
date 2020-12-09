@@ -62,7 +62,7 @@
             // 
             // tableView1
             // 
-            this.tableView1.BackColor = System.Drawing.Color.Transparent;
+            this.tableView1.BackColor = System.Drawing.Color.White;
             this.tableView1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tableView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -81,10 +81,10 @@
             // 
             // menuView1
             // 
-            this.menuView1.BackColor = System.Drawing.Color.Transparent;
+            this.menuView1.BackColor = System.Drawing.Color.White;
             this.menuView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.menuView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.menuView1.image = global::StoreAssitant.Properties.Resources._120427285_648274679154155_8374726593261554204_n;
+            this.menuView1.image = global::StoreAssitant.Properties.Resources.Menu_Title;
             this.menuView1.IsManeger = false;
             this.menuView1.ItemSize = new System.Drawing.Size(200, 150);
             this.menuView1.Location = new System.Drawing.Point(0, 0);

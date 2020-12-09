@@ -34,7 +34,7 @@
             // 
             // panelImage
             // 
-            this.panelImage.BackColor = System.Drawing.SystemColors.Control;
+            this.panelImage.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panelImage.Image = global::StoreAssitant.Properties.Resources.button_add;
             this.panelImage.Location = new System.Drawing.Point(17, 2);
             this.panelImage.Margin = new System.Windows.Forms.Padding(2);
@@ -48,7 +48,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Controls.Add(this.panelImage);
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.MinimumSize = new System.Drawing.Size(15, 16);

@@ -34,8 +34,9 @@
             // 
             // labelTitle
             // 
-            this.labelTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelTitle.Font = new System.Drawing.Font("Stencil", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle.BackColor = System.Drawing.Color.Orange;
+            this.labelTitle.Font = new System.Drawing.Font("Snap ITC", 24F, System.Drawing.FontStyle.Bold);
+            this.labelTitle.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelTitle.Location = new System.Drawing.Point(58, 0);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(329, 40);
@@ -45,7 +46,8 @@
             // 
             // labelImage
             // 
-            this.labelImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelImage.BackColor = System.Drawing.Color.Orange;
+            this.labelImage.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelImage.Image = global::StoreAssitant.Properties.Resources._120427285_648274679154155_8374726593261554204_n;
             this.labelImage.Location = new System.Drawing.Point(3, 0);
             this.labelImage.Name = "labelImage";
