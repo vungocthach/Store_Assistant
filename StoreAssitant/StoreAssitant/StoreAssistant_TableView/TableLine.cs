@@ -74,6 +74,7 @@ namespace StoreAssitant
             lbName.Size = new Size(this.Size.Width * 13 / 44, this.Size.Height);
             lbTotalPrice.Size = lbSinglePrice.Size = new Size(this.Size.Width * 10 / 44, this.Size.Height);
             pnlNumber.Size = new Size(this.Size.Width * 11 / 44, this.Size.Height);
+            label1.Size = new Size(this.Size.Width, 17);
 
             lbSinglePrice.Location = new Point(lbName.Size.Width, 0);
             pnlNumber.Location = new Point(lbSinglePrice.Location.X + lbSinglePrice.Size.Width, 0);

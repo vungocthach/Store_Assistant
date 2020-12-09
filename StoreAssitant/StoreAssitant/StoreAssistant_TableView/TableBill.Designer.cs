@@ -43,14 +43,16 @@
             // 
             // tableTitle_pnl
             // 
+            this.tableTitle_pnl.BackColor = System.Drawing.Color.CornflowerBlue;
             this.tableTitle_pnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableTitle_pnl.Controls.Add(this.btn_Cancel);
             this.tableTitle_pnl.Controls.Add(this.tableTitle_lb);
             this.tableTitle_pnl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableTitle_pnl.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tableTitle_pnl.Location = new System.Drawing.Point(0, 0);
             this.tableTitle_pnl.Margin = new System.Windows.Forms.Padding(2);
             this.tableTitle_pnl.Name = "tableTitle_pnl";
-            this.tableTitle_pnl.Size = new System.Drawing.Size(420, 34);
+            this.tableTitle_pnl.Size = new System.Drawing.Size(420, 39);
             this.tableTitle_pnl.TabIndex = 4;
             // 
             // btn_Cancel
@@ -60,9 +62,10 @@
             this.btn_Cancel.BackColor = System.Drawing.Color.Red;
             this.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_Cancel.Location = new System.Drawing.Point(395, 6);
+            this.btn_Cancel.Font = new System.Drawing.Font("Snap ITC", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancel.Location = new System.Drawing.Point(388, 3);
             this.btn_Cancel.Name = "btn_Cancel";
-            this.btn_Cancel.Size = new System.Drawing.Size(20, 20);
+            this.btn_Cancel.Size = new System.Drawing.Size(27, 28);
             this.btn_Cancel.TabIndex = 5;
             this.btn_Cancel.Text = "X";
             this.btn_Cancel.UseVisualStyleBackColor = false;
@@ -71,11 +74,11 @@
             // tableTitle_lb
             // 
             this.tableTitle_lb.AutoSize = true;
-            this.tableTitle_lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableTitle_lb.Font = new System.Drawing.Font("Snap ITC", 16F, System.Drawing.FontStyle.Bold);
             this.tableTitle_lb.Location = new System.Drawing.Point(184, 6);
             this.tableTitle_lb.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.tableTitle_lb.Name = "tableTitle_lb";
-            this.tableTitle_lb.Size = new System.Drawing.Size(55, 25);
+            this.tableTitle_lb.Size = new System.Drawing.Size(73, 29);
             this.tableTitle_lb.TabIndex = 2;
             this.tableTitle_lb.Text = "BÀN";
             this.tableTitle_lb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -94,21 +97,23 @@
             // btnCashier
             // 
             this.btnCashier.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnCashier.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnCashier.BackColor = System.Drawing.Color.Red;
             this.btnCashier.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnCashier.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCashier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCashier.Location = new System.Drawing.Point(302, 0);
+            this.btnCashier.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.btnCashier.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCashier.Location = new System.Drawing.Point(295, 0);
             this.btnCashier.Name = "btnCashier";
-            this.btnCashier.Size = new System.Drawing.Size(118, 43);
+            this.btnCashier.Size = new System.Drawing.Size(125, 43);
             this.btnCashier.TabIndex = 0;
             this.btnCashier.Text = "THANH TOÁN";
             this.btnCashier.UseVisualStyleBackColor = false;
             // 
             // flpProductInfo
             // 
+            this.flpProductInfo.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.flpProductInfo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flpProductInfo.Location = new System.Drawing.Point(0, 64);
+            this.flpProductInfo.Location = new System.Drawing.Point(0, 69);
             this.flpProductInfo.Name = "flpProductInfo";
             this.flpProductInfo.Size = new System.Drawing.Size(420, 429);
             this.flpProductInfo.TabIndex = 7;
@@ -116,10 +121,10 @@
             // lbSumPrice
             // 
             this.lbSumPrice.AutoSize = true;
-            this.lbSumPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSumPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSumPrice.Location = new System.Drawing.Point(3, 500);
             this.lbSumPrice.Name = "lbSumPrice";
-            this.lbSumPrice.Size = new System.Drawing.Size(90, 24);
+            this.lbSumPrice.Size = new System.Drawing.Size(99, 24);
             this.lbSumPrice.TabIndex = 8;
             this.lbSumPrice.Text = "Tổng tiền";
             // 
@@ -135,8 +140,9 @@
             // 
             // titelLine1
             // 
+            this.titelLine1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.titelLine1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.titelLine1.Location = new System.Drawing.Point(0, 34);
+            this.titelLine1.Location = new System.Drawing.Point(0, 39);
             this.titelLine1.MinimumSize = new System.Drawing.Size(348, 23);
             this.titelLine1.Name = "titelLine1";
             this.titelLine1.Size = new System.Drawing.Size(420, 30);
@@ -147,6 +153,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Controls.Add(this.lbPrice);
             this.Controls.Add(this.lbSumPrice);
             this.Controls.Add(this.flpProductInfo);
