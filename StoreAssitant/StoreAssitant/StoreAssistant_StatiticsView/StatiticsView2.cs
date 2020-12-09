@@ -486,10 +486,11 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                         k++;
                     }
 
-                    DataGridViewRow row = dataGridView1.Rows[dataGridView1.Rows.Add(stt, string.Format(txtTimeFormat, month.Month, month.Year), string.Format("{0}VND", totalRevenue.ToString("N0")))];
+                    DataGridViewRow row = dataGridView1.Rows[dataGridView1.Rows.Add (stt, string.Format(txtTimeFormat, month.Month, month.Year), string.Format("{0}VND", totalRevenue.ToString("N0")))];  
                     row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Tag = new KeyValuePair<DateTime, long>(month, totalRevenue);
-
+                    if (row.Index % 2 == 0) row.DefaultCellStyle.BackColor = Color.LightSkyBlue;
+                    else row.DefaultCellStyle.BackColor = Color.White;
                     stt++;
                     month = month.AddMonths(1);
                 }
@@ -520,7 +521,8 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                     DataGridViewRow row = dataGridView1.Rows[dataGridView1.Rows.Add(stt, string.Format(txtTimeFormat, year.Year), string.Format("{0}VND", totalRevenue.ToString("N0")))];
                     row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Tag = new KeyValuePair<DateTime, long>(year, totalRevenue);
-
+                    if (row.Index % 2 == 0) row.DefaultCellStyle.BackColor = Color.LightSkyBlue;
+                    else row.DefaultCellStyle.BackColor = Color.White;
                     stt++;
                     year = year.AddYears(1);
                 }
@@ -601,6 +603,11 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                 date = date.AddDays(1);
             }
             return rs;
+        }
+
+        private void cbbChartMode_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
