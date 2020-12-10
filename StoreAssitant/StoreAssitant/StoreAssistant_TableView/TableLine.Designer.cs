@@ -40,7 +40,7 @@
             // 
             // lbName
             // 
-            this.lbName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbName.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lbName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbName.Location = new System.Drawing.Point(0, 0);
@@ -52,7 +52,7 @@
             // 
             // lbSinglePrice
             // 
-            this.lbSinglePrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbSinglePrice.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lbSinglePrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbSinglePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSinglePrice.Location = new System.Drawing.Point(130, 0);
@@ -76,7 +76,7 @@
             // 
             // lbTotalPrice
             // 
-            this.lbTotalPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbTotalPrice.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lbTotalPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTotalPrice.Location = new System.Drawing.Point(340, 0);
@@ -111,7 +111,7 @@
             // pnlNumber
             // 
             this.pnlNumber.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.pnlNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlNumber.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pnlNumber.Controls.Add(this.btnRemove);
             this.pnlNumber.Controls.Add(this.btnAdd);
             this.pnlNumber.Controls.Add(this.lbNumber);
@@ -124,13 +124,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.pnlNumber);
             this.Controls.Add(this.lbTotalPrice);
             this.Controls.Add(this.lbSinglePrice);
             this.Controls.Add(this.lbName);
             this.Name = "TableLine";
-            this.Size = new System.Drawing.Size(440, 30);
+            this.Size = new System.Drawing.Size(442, 32);
             this.pnlNumber.ResumeLayout(false);
             this.ResumeLayout(false);
 
