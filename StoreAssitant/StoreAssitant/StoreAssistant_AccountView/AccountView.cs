@@ -110,7 +110,10 @@ namespace StoreAssitant.StoreAssistant_AccountView
 
         void AddUserToGrid(UserInfo userInfo)
         {
-            dataGridView1.Rows.Add(userInfo.UserName, roles[(int)userInfo.Role]);
+           
+            int index = dataGridView1.Rows.Add(userInfo.UserName, roles[(int)userInfo.Role]);
+            DataGridViewRow row = dataGridView1.Rows[index];
+            if (row.Index % 2 == 0) row.DefaultCellStyle.BackColor = Color.LightSkyBlue;
         }
 
         void InitializeEventHandler()
@@ -158,13 +161,25 @@ namespace StoreAssitant.StoreAssistant_AccountView
             gr_manager.Height = this.Height - gr_manager.Location.Y - gr_manager.Margin.Bottom;
             gr_user.Width = this.Width;
             gr_manager.Width = this.Width;
+            labelTitile.Width = dataGridView1.Width;
             CenterInParent_Horizontal(gr_user);
             CenterInParent_Horizontal(gr_manager);
+            labelTitile.Location = new Point(gr_manager.Location.X, gr_manager.Location.Y - labelTitile.Height); ;
         }
 
         void CenterInParent_Horizontal(Control target)
         {
             target.Location = new Point((target.Parent.Width - target.Width) / 2, target.Location.Y);
+        }
+
+        private void btn_ResetPass_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

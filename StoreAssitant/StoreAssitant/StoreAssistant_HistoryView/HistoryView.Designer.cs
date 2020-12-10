@@ -32,6 +32,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.order = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.billId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableParent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.dtp_From = new System.Windows.Forms.DateTimePicker();
             this.dtp_To = new System.Windows.Forms.DateTimePicker();
@@ -43,11 +48,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btn_Search = new System.Windows.Forms.Button();
             this.pageSelector1 = new StoreAssitant.StoreAssistant_HistoryView.PageSelector();
-            this.order = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.billId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableParent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -61,6 +61,10 @@
             this.dataGridView1.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -82,6 +86,7 @@
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
@@ -90,9 +95,63 @@
             this.dataGridView1.Size = new System.Drawing.Size(1077, 371);
             this.dataGridView1.TabIndex = 0;
             // 
+            // order
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.order.DefaultCellStyle = dataGridViewCellStyle3;
+            this.order.DividerWidth = 2;
+            this.order.FillWeight = 1F;
+            this.order.HeaderText = "STT";
+            this.order.MinimumWidth = 50;
+            this.order.Name = "order";
+            this.order.ReadOnly = true;
+            this.order.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.order.Width = 80;
+            // 
+            // billId
+            // 
+            this.billId.DividerWidth = 2;
+            this.billId.FillWeight = 3F;
+            this.billId.HeaderText = "Mã Hóa Đơn";
+            this.billId.MinimumWidth = 150;
+            this.billId.Name = "billId";
+            this.billId.ReadOnly = true;
+            this.billId.Width = 150;
+            // 
+            // createTime
+            // 
+            this.createTime.DividerWidth = 2;
+            this.createTime.FillWeight = 3F;
+            this.createTime.HeaderText = "Ngày Thanh Toán";
+            this.createTime.MinimumWidth = 200;
+            this.createTime.Name = "createTime";
+            this.createTime.ReadOnly = true;
+            this.createTime.Width = 250;
+            // 
+            // tableParent
+            // 
+            this.tableParent.DividerWidth = 2;
+            this.tableParent.FillWeight = 3F;
+            this.tableParent.HeaderText = "Bàn Thanh Toán";
+            this.tableParent.MinimumWidth = 200;
+            this.tableParent.Name = "tableParent";
+            this.tableParent.ReadOnly = true;
+            this.tableParent.Width = 250;
+            // 
+            // total
+            // 
+            this.total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.total.DividerWidth = 2;
+            this.total.FillWeight = 3F;
+            this.total.HeaderText = "Tổng Cộng";
+            this.total.MinimumWidth = 180;
+            this.total.Name = "total";
+            this.total.ReadOnly = true;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.label1.Location = new System.Drawing.Point(28, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 24);
@@ -120,6 +179,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.label2.Location = new System.Drawing.Point(274, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(104, 24);
@@ -128,10 +188,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox1.Controls.Add(this.dtp_From);
             this.groupBox1.Controls.Add(this.dtp_To);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(526, 71);
@@ -141,10 +204,13 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.btn_Search);
+            this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.groupBox2.Location = new System.Drawing.Point(547, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(530, 71);
@@ -155,6 +221,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.label3.Location = new System.Drawing.Point(24, 29);
             this.label3.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.label3.Name = "label3";
@@ -223,63 +290,11 @@
             this.pageSelector1.Size = new System.Drawing.Size(251, 38);
             this.pageSelector1.TabIndex = 7;
             // 
-            // order
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.order.DefaultCellStyle = dataGridViewCellStyle3;
-            this.order.DividerWidth = 2;
-            this.order.FillWeight = 1F;
-            this.order.HeaderText = "STT";
-            this.order.MinimumWidth = 50;
-            this.order.Name = "order";
-            this.order.ReadOnly = true;
-            this.order.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.order.Width = 80;
-            // 
-            // billId
-            // 
-            this.billId.DividerWidth = 2;
-            this.billId.FillWeight = 3F;
-            this.billId.HeaderText = "Mã Hóa Đơn";
-            this.billId.MinimumWidth = 150;
-            this.billId.Name = "billId";
-            this.billId.ReadOnly = true;
-            this.billId.Width = 150;
-            // 
-            // createTime
-            // 
-            this.createTime.DividerWidth = 2;
-            this.createTime.FillWeight = 3F;
-            this.createTime.HeaderText = "Ngày Thanh Toán";
-            this.createTime.MinimumWidth = 200;
-            this.createTime.Name = "createTime";
-            this.createTime.ReadOnly = true;
-            this.createTime.Width = 250;
-            // 
-            // tableParent
-            // 
-            this.tableParent.DividerWidth = 2;
-            this.tableParent.FillWeight = 3F;
-            this.tableParent.HeaderText = "Bàn Thanh Toán";
-            this.tableParent.MinimumWidth = 200;
-            this.tableParent.Name = "tableParent";
-            this.tableParent.ReadOnly = true;
-            this.tableParent.Width = 250;
-            // 
-            // total
-            // 
-            this.total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.total.DividerWidth = 2;
-            this.total.FillWeight = 3F;
-            this.total.HeaderText = "Tổng Cộng";
-            this.total.MinimumWidth = 180;
-            this.total.Name = "total";
-            this.total.ReadOnly = true;
-            // 
             // HistoryView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.pageSelector1);
             this.Controls.Add(this.groupBox1);
