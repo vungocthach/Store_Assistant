@@ -29,28 +29,30 @@
         private void InitializeComponent()
         {
             this.buttonSearch = new System.Windows.Forms.Button();
-            this.cbx_Search = new System.Windows.Forms.ComboBox();
+            this.cbx_Search = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonSearch
             // 
+            this.buttonSearch.BackColor = System.Drawing.Color.CornflowerBlue;
             this.buttonSearch.Dock = System.Windows.Forms.DockStyle.Right;
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearch.Location = new System.Drawing.Point(278, 0);
+            this.buttonSearch.Font = new System.Drawing.Font("Snap ITC", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonSearch.ForeColor = System.Drawing.SystemColors.Info;
+            this.buttonSearch.Location = new System.Drawing.Point(274, 0);
             this.buttonSearch.MinimumSize = new System.Drawing.Size(52, 29);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(76, 34);
+            this.buttonSearch.Size = new System.Drawing.Size(80, 34);
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.Text = "Search";
-            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.UseVisualStyleBackColor = false;
             // 
             // cbx_Search
             // 
-            this.cbx_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.cbx_Search.FormattingEnabled = true;
-            this.cbx_Search.Location = new System.Drawing.Point(0, 1);
+            this.cbx_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.cbx_Search.Location = new System.Drawing.Point(0, 2);
             this.cbx_Search.Name = "cbx_Search";
-            this.cbx_Search.Size = new System.Drawing.Size(278, 32);
+            this.cbx_Search.Size = new System.Drawing.Size(275, 30);
             this.cbx_Search.TabIndex = 2;
             // 
             // ControlSearch
@@ -62,11 +64,12 @@
             this.Name = "ControlSearch";
             this.Size = new System.Drawing.Size(354, 34);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.Button buttonSearch;
-        private System.Windows.Forms.ComboBox cbx_Search;
+        private System.Windows.Forms.TextBox cbx_Search;
     }
 }
