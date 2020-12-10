@@ -81,7 +81,7 @@
             // 
             // menuView1
             // 
-            this.menuView1.BackColor = System.Drawing.Color.Transparent;
+            this.menuView1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.menuView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.menuView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menuView1.image = global::StoreAssitant.Properties.Resources._120427285_648274679154155_8374726593261554204_n;

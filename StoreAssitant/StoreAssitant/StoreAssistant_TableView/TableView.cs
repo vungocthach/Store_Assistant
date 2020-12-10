@@ -23,12 +23,12 @@ namespace StoreAssitant
         [Category("My Event"), Description("When the table is added")]
         public event EventHandler TableAdded;
         void OnTableAdded(object s, EventArgs e) { }
-        [Category("My Event"), Description("When the table is removed out of flowlayer panel")]
+        [Category("My Event"), Description("When the table is removed")]
         public event EventHandler TableRemoved;
         void OnTableRemoved(object s, EventArgs e) 
         {
             NumberTable--;
-            TableControl table = (TableControl)tableGUI_pnl.Controls[tableGUI_pnl.Controls.Count - 2];
+            TableControl table = (TableControl)tableGUI_pnl.Controls[numberTable];
             tableGUI_pnl.Controls.Remove(table);
         }
         [Category("My Event"), Description("When the table selected is changed")]
@@ -49,6 +49,24 @@ namespace StoreAssitant
         {
             InitializeComponent();
 
+            Init_Event_Customize();
+
+            Init_Event_BtnAddTable();
+
+            Init_TableTakeHome();
+
+            Init_Default_Value();
+
+            this.Layout += TableView_Layout;
+            //tableTitle_pnl.Layout += TableView_Layout;
+        }
+
+        /// <summary>
+        /// Init the form value when creating
+        /// </summary>
+        #region Init Form
+        private void Init_Event_Customize()
+        {
             this.ClickButtonAdd = new EventHandler(OnClickButtonAdd);
             this.ClickButtonTable = new EventHandler(OnClickButtonTable);
 
@@ -56,58 +74,82 @@ namespace StoreAssitant
             this.TableRemoved = new EventHandler(OnTableRemoved);
 
             this.TableSelectedChanged = new EventHandler(OnTableSelectedChanged);
-
-            this.MinimumSize = new Size(tableTitle_lb.Location.X + tableTitle_lb.Size.Width, tableTitle_pnl.Height + tableAdd_btn.MinimumSize.Height);
-
-            this.Layout += TableView_Layout;
-            tableTitle_pnl.Layout += TableView_Layout;
-
-            //event button add table click
+        }
+        private void Init_Event_BtnAddTable()
+        {
             tableAdd_btn.Click += TableAdd_btn_Click;
             tableAdd_btn.MouseDown += TableAdd_pnl_MouseDown;
             tableAdd_btn.MouseUp += TableAdd_pnl_MouseUp;
             tableAdd_btn.MouseEnter += TableAdd_pnl_MouseEnter;
             tableAdd_btn.MouseLeave += TableAdd_pnl_MouseLeave;
-
+        }
+        private void Init_TableTakeHome()
+        {
+            tableTakeHome.ClickTableControl += Newtable_ClickTableControl;
+        }
+        private void Init_Default_Value()
+        {
+            this.MinimumSize = new Size(tableTitle_lb.Location.X + tableTitle_lb.Size.Width, tableTitle_pnl.Height + tableAdd_btn.MinimumSize.Height);
             itemImage = Properties.Resources.Artboard_1;
             SelectedTable = -1;
-            this.Controls.Add(tbBill);
+            numberTable = 0;
         }
+        #endregion
+
+
+        /// <summary>
+        /// SETTING SPECIFIC FUNCTION OF FORM
+        /// </summary>
+        #region Public function
         public void SetData(int numberTable)
         {
-            ClearData();
-            for (int i = 0; i < numberTable; i++) {
-                this.NumberTable++;
-                Create_Table();
+            int number = this.numberTable;
+            if (number<=numberTable)
+            {
+                for (int i = number; i < numberTable; i++) Create_Table();
+                Add_TableTakeHome_ButtonAddTable();
             }
-            tableGUI_pnl.Controls.Remove(tableAdd_btn);
-            tableGUI_pnl.Controls.Add(tableAdd_btn);
+            else
+            {
+                for (int i = 0; i < number - numberTable; i++) TableRemoved(this, new EventArgs());
+            }
         }
-
-        private void ClearData()
-        {
-            numberTable = 0;
-            tableGUI_pnl.Controls.Clear();
-            tableGUI_pnl.Controls.Add(tableAdd_btn);
-        }
-
         private void TableView_Layout(object sender, LayoutEventArgs e)
         {
             tableGUI_pnl.Height = this.Height - tableTitle_pnl.Location.Y - tableTitle_pnl.Height - 5;
             tableTitle_lb.Location = new Point(tableIcon_pnl.Location.X + tableIcon_pnl.Width + (this.Width - tableIcon_pnl.Location.X - tableIcon_pnl.Width - tableTitle_lb.Width) / 2, tableTitle_lb.Location.Y);
             tableIcon_pnl.Size = new Size(tableIcon_pnl.Size.Height, tableIcon_pnl.Size.Height);
-            tableTitle_lb.Location = new Point(tableTitle_lb.Location.X, (tableTitle_pnl.Height - tableTitle_lb.Size.Height) / 2);
+            //tableTitle_lb.Location = new Point(tableTitle_lb.Location.X, (tableTitle_pnl.Height - tableTitle_lb.Size.Height) / 2);
             if (tbBill != null)
             {
                 tbBill.Size = new Size(this.Size.Width - tableGUI_pnl.AutoScrollMargin.Width, tableGUI_pnl.Size.Height);
             }
         }
+        private void Create_Table()
+        {
+            numberTable++;
+            TableControl newtable = new TableControl() { Size = ItemSize, NameTable = "BÀN " + numberTable, ImageTable = itemImage };
+            newtable.IsManager = this.isManager;
+            newtable.Info.ID = numberTable;
+            tableGUI_pnl.Controls.Add(newtable);
+            newtable.ClickTableControl += Newtable_ClickTableControl;
+            newtable.TableRemoved += Newtable_TableRemoved;
+        }
+        private void Add_TableTakeHome_ButtonAddTable()
+        {
+            tableGUI_pnl.Controls.Remove(tableAdd_btn);
+            tableGUI_pnl.Controls.Remove(tableTakeHome);
+            tableGUI_pnl.Controls.Add(tableTakeHome);
+            tableGUI_pnl.Controls.Add(tableAdd_btn);
+        }
+        #endregion
 
-        #region TABLE BILL SETTING
+
+        #region INIT TABLE BILL
         private void Show_TableBill()
         {
             tbBill = new TableBill();
-            tbBill.Size = new Size(tableGUI_pnl.Size.Width, tableGUI_pnl.Size.Height - tableGUI_pnl.AutoScrollMargin.Width);
+            //tbBill.Size = new Size(tableGUI_pnl.Size.Width, tableGUI_pnl.Size.Height - tableGUI_pnl.AutoScrollMargin.Width);
             tbBill.Location = new Point(tableGUI_pnl.Location.X, tableGUI_pnl.Location.Y);
             tbBill.Dock = DockStyle.Bottom;
             tbBill.setData(((TableControl)tableGUI_pnl.Controls[SelectedTable]).Info);
@@ -117,80 +159,63 @@ namespace StoreAssitant
             this.Controls.Add(tbBill);
             tbBill.Show();
         }
-
         private void Tbbill_CloseBill(object sender, EventArgs e)
         {
             tableGUI_pnl.Show();
+            TableControl table = (TableControl)tableGUI_pnl.Controls[SelectedTable];
+            if (table.Info.ProductInTable.Count != 0) table.Status = status.Using;
+            else table.Status = status.Empty;
             SelectedTable = -1;
+        }
+        public void AddProductInfo(ProductInfo product)
+        {
+            if (SelectedTable != -1) tbBill.UploadProduct(product);
         }
         #endregion
 
-        private void Create_Table()
-        {
-            TableControl newtable = new TableControl() { Size = ItemSize, nameTable = "BÀN " + tableGUI_pnl.Controls.Count, ImageTable = itemImage };
-            newtable.IsManager = this.isManager;
-            newtable.Info.ID = numberTable;
-            tableGUI_pnl.Controls.Add(newtable);
-            newtable.ClickTableControl += Newtable_ClickTableControl;
-            newtable.TableRemoved += Newtable_TableRemoved;
-        }
-
-        public void AddProductInfo(ProductInfo product)
-        {
-            if (SelectedTable != -1)
-            {
-                tbBill.UploadProduct(product);
-                Invalidate();
-            }
-        }
 
         #region BUTTON TABLE EVENT
         private void Newtable_ClickTableControl(object sender, EventArgs e)
         {
+            this.ClickButtonTable(this, e);
             SelectedTable = tableGUI_pnl.Controls.IndexOf((TableControl)sender);
             if(!isManager) Show_TableBill();
-            this.ClickButtonTable(this, e);
         }
-
         private void Newtable_TableRemoved(object sender, EventArgs e)
         {
             this.TableRemoved(this, e);
         }
         #endregion
 
-        #region BUTTON ADD TABLE MOUSE EVENT
+
+        #region EVENT OF BUTTON ADD TABLE
         private void TableAdd_btn_Click(object sender, EventArgs e)
         {
-            Create_Table();
-            this.NumberTable++;
-            tableGUI_pnl.Controls.Remove(tableAdd_btn);
-            tableGUI_pnl.Controls.Add(tableAdd_btn);
-            this.TableAdded(this, e);
             this.ClickButtonAdd(this, null);
+            Create_Table();
+            Add_TableTakeHome_ButtonAddTable();
+            this.TableAdded(this, e);
         }
-
         private void TableAdd_pnl_MouseLeave(object sender, EventArgs e)
         {
             tableAdd_btn.BackColor = SystemColors.Control;
             tableAdd_btn.BorderStyle = BorderStyle.None;
         }
-
         private void TableAdd_pnl_MouseEnter(object sender, EventArgs e)
         {
             tableAdd_btn.BackColor = SystemColors.ActiveCaption;
             tableAdd_btn.BorderStyle = BorderStyle.Fixed3D;
         }
-
         private void TableAdd_pnl_MouseUp(object sender, MouseEventArgs e)
         {
             tableAdd_btn.BorderStyle = BorderStyle.Fixed3D;
         }
-
         private void TableAdd_pnl_MouseDown(object sender, MouseEventArgs e)
         {
             tableAdd_btn.BorderStyle = BorderStyle.None;
         }
         #endregion
+
 
         #region PROPERTIES
         [Category("My properties"), Description("Change main name of the view Table")]
@@ -218,10 +243,7 @@ namespace StoreAssitant
         [Category("My Properties"), Description("Height of title in pixel")]
         public int TitleHeight
         {
-            get
-            {
-                return tableTitle_pnl.Height;
-            }
+            get => tableTitle_pnl.Height;
             set
             {
                 if (value > 40)
@@ -274,14 +296,18 @@ namespace StoreAssitant
                 Invalidate();
             }
         }
+        [Category("My Properties"), Description("The number of table is choosing")]
         public int SelectedTable
         {
             get => indexSelectedTable;
             private set
             {
-                indexSelectedTable = value;
-                this.TableSelectedChanged(this,new EventArgs());
-                Invalidate();
+                if (value != indexSelectedTable)
+                {
+                    indexSelectedTable = value;
+                    this.TableSelectedChanged(this, new EventArgs());
+                    //Invalidate();
+                }
             }
         }
         [Category("My Properties"), Description("Check is manager?")]
@@ -291,32 +317,25 @@ namespace StoreAssitant
             set
             {
                 isManager = value;
-                if (isManager == false)
-                {
-                    tableAdd_btn.Visible = false;
-                }
-                else
-                {
-                    tableAdd_btn.Visible = true;
-                }
+                tableAdd_btn.Visible = value;
                 foreach(Control table in tableGUI_pnl.Controls)
                 {
-                    if (table is TableControl)
+                    if (table is TableControl table1)
                     {
-                        ((TableControl)table).IsManager = value;
+                        table1.IsManager = value;
                     }
                 }
                 Invalidate();
             }
         }
-        [Category("My Properties"), Description("Number of table")]
+        [Category("My Properties"), Description("Number of table is display in view")]
         public int NumberTable
         {
             get => numberTable;
             private set
             {
                 numberTable = value;
-                Invalidate();
+                //Invalidate();
             }
         }
         #endregion

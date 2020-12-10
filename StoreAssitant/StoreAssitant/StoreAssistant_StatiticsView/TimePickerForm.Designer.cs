@@ -58,43 +58,54 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 20);
+            this.label1.Size = new System.Drawing.Size(84, 20);
             this.label1.TabIndex = 6;
             this.label1.Text = "Từ Ngày :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(241, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 20);
+            this.label2.Size = new System.Drawing.Size(97, 20);
             this.label2.TabIndex = 8;
             this.label2.Text = "Đến Ngày :";
             // 
             // btnSubmit
             // 
+            this.btnSubmit.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSubmit.Location = new System.Drawing.Point(145, 48);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(99, 27);
+            this.btnSubmit.Size = new System.Drawing.Size(99, 30);
             this.btnSubmit.TabIndex = 10;
             this.btnSubmit.Text = "Xác Nhận";
-            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.UseVisualStyleBackColor = false;
             // 
             // btnDefault
             // 
+            this.btnDefault.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnDefault.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDefault.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDefault.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnDefault.Location = new System.Drawing.Point(265, 48);
             this.btnDefault.Name = "btnDefault";
-            this.btnDefault.Size = new System.Drawing.Size(99, 27);
+            this.btnDefault.Size = new System.Drawing.Size(99, 30);
             this.btnDefault.TabIndex = 11;
             this.btnDefault.Text = "Mặc Định";
-            this.btnDefault.UseVisualStyleBackColor = true;
+            this.btnDefault.UseVisualStyleBackColor = false;
             // 
             // TimePickerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(513, 87);
             this.Controls.Add(this.btnDefault);
             this.Controls.Add(this.btnSubmit);
