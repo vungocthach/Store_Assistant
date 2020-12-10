@@ -40,6 +40,7 @@
             // tableGUI_pnl
             // 
             this.tableGUI_pnl.AutoScroll = true;
+            this.tableGUI_pnl.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tableGUI_pnl.Controls.Add(this.tableAdd_btn);
             this.tableGUI_pnl.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableGUI_pnl.Location = new System.Drawing.Point(0, 48);
@@ -60,7 +61,8 @@
             // 
             // tableTitle_lb
             // 
-            this.tableTitle_lb.Font = new System.Drawing.Font("Stencil", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableTitle_lb.Font = new System.Drawing.Font("Snap ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableTitle_lb.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tableTitle_lb.Location = new System.Drawing.Point(73, 7);
             this.tableTitle_lb.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.tableTitle_lb.Name = "tableTitle_lb";
@@ -71,6 +73,7 @@
             // 
             // tableTitle_pnl
             // 
+            this.tableTitle_pnl.BackColor = System.Drawing.Color.Orange;
             this.tableTitle_pnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableTitle_pnl.Controls.Add(this.tableIcon_pnl);
             this.tableTitle_pnl.Controls.Add(this.tableTitle_lb);
