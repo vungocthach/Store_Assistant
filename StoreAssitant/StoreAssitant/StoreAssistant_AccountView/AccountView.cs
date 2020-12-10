@@ -110,7 +110,9 @@ namespace StoreAssitant.StoreAssistant_AccountView
 
         void AddUserToGrid(UserInfo userInfo)
         {
-            dataGridView1.Rows.Add(userInfo.UserName, roles[(int)userInfo.Role]);
+            DataGridViewRow row = dataGridView1.Rows[dataGridView1.Rows.Add(userInfo.UserName, roles[(int)userInfo.Role])];
+            //dataGridView1.Rows.Add(userInfo.UserName, roles[(int)userInfo.Role]);
+            if (row.Index % 2 == 0) row.DefaultCellStyle.BackColor = Color.LightSkyBlue;
         }
 
         void InitializeEventHandler()
