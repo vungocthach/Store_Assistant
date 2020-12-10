@@ -1022,7 +1022,7 @@ namespace StoreAssitant
                         MessageBox.Show("Đã hết số lần sử dụng thẻ voucher");
                         return 0;
                     }
-                    if ((DateTime)reader["Expiry"] > DateTime.Now)
+                    if ((DateTime)reader["Expiry"] < DateTime.Now)
                     {
                         MessageBox.Show("Hết thời hạn");
                         return 0;

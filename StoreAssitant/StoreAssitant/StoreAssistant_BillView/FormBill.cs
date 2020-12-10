@@ -78,7 +78,6 @@ namespace StoreAssitant
             using (DatabaseController data = new DatabaseController())
             {
                 percentDecrease = data.UseVoucher(textBox2.Text);
-                
             }
         }
 
@@ -103,9 +102,9 @@ namespace StoreAssitant
             {
                 e.Handled = true;
             }
-            if (e.Handled==true)
+            if (e.Handled == true)
             {
-                MessageBox.Show("Chỉ được phép nhập số");
+                MessageBox.Show("Chỉ được phép nhập số", "Lỗi");
             }
         }
 
@@ -121,7 +120,7 @@ namespace StoreAssitant
             info = new BillInfo();
             if (info ==null)
             {
-                MessageBox.Show("Lỗi thông tin món ăn");
+                MessageBox.Show("Lỗi thông tin món ăn", "Lỗi");
                 return;
             }
             else
@@ -133,10 +132,6 @@ namespace StoreAssitant
 
                 foreach(var i in table.ProductInTable)
                 {
-/*                    Products p = new Products();
-                    p.Name = i.Name;
-                    p.NumberProduct = i.NumberProduct;
-                    p.Price = i.Price;*/
                     info.ProductBills.Add(i);
                     tlpProduct.Controls.Add(new Label() { Text = (tlpProduct.RowCount - 1).ToString(), TextAlign = ContentAlignment.MiddleCenter }, 0, tlpProduct.RowCount - 1);
                     tlpProduct.Controls.Add(new Label() { Text = i.Name, TextAlign = ContentAlignment.MiddleLeft }, 1, tlpProduct.RowCount - 1);
@@ -146,7 +141,7 @@ namespace StoreAssitant
                     tlpProduct.RowCount++;
                     tlpProduct.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
                 }
-                Info_PropertyChanged(this, new PropertyChangedEventArgs("init bill"));
+                Info_PropertyChanged(this, new PropertyChangedEventArgs("Init bill"));
                 info.PropertyChanged += Info_PropertyChanged;
                 Init_Bill();
             }
@@ -186,7 +181,13 @@ namespace StoreAssitant
         private void Info_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             info.TOTAL = (int)(info.Price_Bill * (100 - percentDecrease)/100);
-            info.Give = info.Take - info.TOTAL;
+            info.Give = info.Take - info.TOTAL;            
+            if (info.Give < 0)
+            {
+                Console.WriteLine(info.Give);
+                textBox5.BackColor = Color.OrangeRed;
+            }
+            else textBox5.BackColor = System.Drawing.SystemColors.Control;
         }
 
         private void Init_Bill()
@@ -200,8 +201,6 @@ namespace StoreAssitant
             textBox4.DataBindings.Add("Text", info, "Take", true, DataSourceUpdateMode.OnPropertyChanged);
             textBox5.DataBindings.Add("Text", info, "Give", true, DataSourceUpdateMode.OnPropertyChanged);
             lbTableName.Text += info.Number_table.ToString();
-            /*lbDate.Text = lbDate.Text + info.DAY.Day + '/' + info.DAY.Month + '/' + info.DAY.Year + " " +
-                          info.DAY.Hour + ":" + info.DAY.Minute + ":" + info.DAY.Second;*/
             lbDate.Text = lbDate.Text + info.DAY.ToString(" dd/MM/yyyy HH:mm:ss");
         }
 

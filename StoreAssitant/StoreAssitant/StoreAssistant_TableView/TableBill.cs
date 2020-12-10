@@ -53,7 +53,8 @@ namespace StoreAssitant
         #region INIT TABLEBILL
         public void setData(TableBillInfo info)
         {
-            tableTitle_lb.Text = "BÀN " + info.ID;
+            if (info.ID != 0) tableTitle_lb.Text = "BÀN " + info.ID;
+            else tableTitle_lb.Text = "BÀN MANG VỀ";
             if (info == null)
             {
                 MessageBox.Show("Dữ liệu của bàn bị lỗi");
@@ -160,6 +161,7 @@ namespace StoreAssitant
                             flpProductInfo.Controls.Remove(flpProductInfo.Controls[flpProductInfo.Controls.Count - 1]);
                         }
                         TotalPrice.Price = 0;
+                        btn_Cancel_Click(this, new EventArgs());
                     }
                     /*
                     DateTime start = new DateTime(2018,1,1);
@@ -185,8 +187,8 @@ namespace StoreAssitant
 
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
-            this.CloseBill(sender, e);
             RemoveZeroNumberProducts();
+            this.CloseBill(sender, e);
             this.Dispose(true);
         }
         #endregion

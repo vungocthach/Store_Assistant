@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TableView));
             this.tableGUI_pnl = new System.Windows.Forms.FlowLayoutPanel();
             this.tableAdd_btn = new System.Windows.Forms.Panel();
             this.tableTitle_lb = new System.Windows.Forms.Label();
             this.tableTitle_pnl = new System.Windows.Forms.Panel();
             this.tableIcon_pnl = new System.Windows.Forms.Panel();
+            this.tableTakeHome = new StoreAssitant.TableControl();
             this.tableGUI_pnl.SuspendLayout();
             this.tableTitle_pnl.SuspendLayout();
             this.SuspendLayout();
@@ -40,6 +43,7 @@
             // tableGUI_pnl
             // 
             this.tableGUI_pnl.AutoScroll = true;
+            this.tableGUI_pnl.Controls.Add(this.tableTakeHome);
             this.tableGUI_pnl.Controls.Add(this.tableAdd_btn);
             this.tableGUI_pnl.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableGUI_pnl.Location = new System.Drawing.Point(0, 48);
@@ -52,7 +56,7 @@
             // 
             this.tableAdd_btn.BackgroundImage = global::StoreAssitant.Properties.Resources.button_add;
             this.tableAdd_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tableAdd_btn.Location = new System.Drawing.Point(2, 2);
+            this.tableAdd_btn.Location = new System.Drawing.Point(117, 2);
             this.tableAdd_btn.Margin = new System.Windows.Forms.Padding(2);
             this.tableAdd_btn.Name = "tableAdd_btn";
             this.tableAdd_btn.Size = new System.Drawing.Size(113, 122);
@@ -93,6 +97,20 @@
             this.tableIcon_pnl.Size = new System.Drawing.Size(50, 48);
             this.tableIcon_pnl.TabIndex = 3;
             // 
+            // tableTakeHome
+            // 
+            this.tableTakeHome.BackColor = System.Drawing.Color.PapayaWhip;
+            this.tableTakeHome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tableTakeHome.ImageTable = ((System.Drawing.Image)(resources.GetObject("tableTakeHome.ImageTable")));
+            this.tableTakeHome.IsManager = false;
+            this.tableTakeHome.Location = new System.Drawing.Point(2, 2);
+            this.tableTakeHome.Margin = new System.Windows.Forms.Padding(2);
+            this.tableTakeHome.MinimumSize = new System.Drawing.Size(77, 52);
+            this.tableTakeHome.Name = "tableTakeHome";
+            this.tableTakeHome.NameTable = "Mang về";
+            this.tableTakeHome.Size = new System.Drawing.Size(111, 120);
+            this.tableTakeHome.TabIndex = 2;
+            // 
             // TableView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -116,5 +134,6 @@
         private System.Windows.Forms.Panel tableTitle_pnl;
         private System.Windows.Forms.Panel tableIcon_pnl;
         private System.Windows.Forms.Panel tableAdd_btn;
+        private TableControl tableTakeHome;
     }
 }
