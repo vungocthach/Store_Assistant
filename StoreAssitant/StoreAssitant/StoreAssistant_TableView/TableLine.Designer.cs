@@ -40,7 +40,7 @@
             // 
             // lbName
             // 
-            this.lbName.BackColor = System.Drawing.Color.White;
+            this.lbName.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lbName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbName.Location = new System.Drawing.Point(0, 0);
@@ -52,7 +52,7 @@
             // 
             // lbSinglePrice
             // 
-            this.lbSinglePrice.BackColor = System.Drawing.Color.White;
+            this.lbSinglePrice.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lbSinglePrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbSinglePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSinglePrice.Location = new System.Drawing.Point(130, 0);
@@ -76,7 +76,7 @@
             // 
             // lbTotalPrice
             // 
-            this.lbTotalPrice.BackColor = System.Drawing.Color.White;
+            this.lbTotalPrice.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lbTotalPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTotalPrice.Location = new System.Drawing.Point(340, 0);
@@ -111,7 +111,7 @@
             // pnlNumber
             // 
             this.pnlNumber.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.pnlNumber.BackColor = System.Drawing.Color.White;
+            this.pnlNumber.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pnlNumber.Controls.Add(this.btnRemove);
             this.pnlNumber.Controls.Add(this.btnAdd);
             this.pnlNumber.Controls.Add(this.lbNumber);
