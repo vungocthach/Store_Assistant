@@ -260,6 +260,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
                 DataGridViewRow row = dataGridView1.Rows[index];
                 row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 row.Tag = b;
+                if ( row.Index % 2 == 0) row.DefaultCellStyle.BackColor = Color.LightSkyBlue;
             }
             dataGridView1.ResumeLayout();
         }

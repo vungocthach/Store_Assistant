@@ -81,5 +81,10 @@ namespace StoreAssitant.StoreAssistant_VoucherView
                 dataGridView1.DataSource = info = databaseController.GetVouchers();                
             }
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

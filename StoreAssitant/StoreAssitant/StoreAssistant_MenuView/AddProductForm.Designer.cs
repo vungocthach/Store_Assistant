@@ -36,28 +36,38 @@
             // btn_Cancel
             // 
             this.btn_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Cancel.Location = new System.Drawing.Point(192, 406);
+            this.btn_Cancel.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btn_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btn_Cancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_Cancel.Location = new System.Drawing.Point(187, 412);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(118, 31);
             this.btn_Cancel.TabIndex = 4;
             this.btn_Cancel.Text = "Hủy";
-            this.btn_Cancel.UseVisualStyleBackColor = true;
+            this.btn_Cancel.UseVisualStyleBackColor = false;
             // 
             // btn_Submit
             // 
             this.btn_Submit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_Submit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Submit.Location = new System.Drawing.Point(45, 405);
+            this.btn_Submit.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btn_Submit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Submit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btn_Submit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_Submit.Location = new System.Drawing.Point(40, 411);
             this.btn_Submit.Name = "btn_Submit";
             this.btn_Submit.Size = new System.Drawing.Size(118, 31);
             this.btn_Submit.TabIndex = 3;
             this.btn_Submit.Text = "Xác nhận";
-            this.btn_Submit.UseVisualStyleBackColor = true;
+            this.btn_Submit.UseVisualStyleBackColor = false;
             // 
             // productBox1
             // 
+            this.productBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.productBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.productBox1.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.productBox1.IsReadOnlyPDName = false;
+            this.productBox1.IsReadOnlyPDPrice = false;
             this.productBox1.Location = new System.Drawing.Point(0, 0);
             this.productBox1.Margin = new System.Windows.Forms.Padding(2);
             this.productBox1.MinimumSize = new System.Drawing.Size(300, 400);
@@ -66,13 +76,14 @@
             this.productBox1.PDImage = null;
             this.productBox1.PDName = "";
             this.productBox1.PDPrice = 0;
-            this.productBox1.Size = new System.Drawing.Size(346, 400);
+            this.productBox1.Size = new System.Drawing.Size(338, 400);
             this.productBox1.TabIndex = 5;
             // 
             // AddProductForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(346, 449);
+            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.ClientSize = new System.Drawing.Size(338, 449);
             this.ControlBox = false;
             this.Controls.Add(this.productBox1);
             this.Controls.Add(this.btn_Cancel);

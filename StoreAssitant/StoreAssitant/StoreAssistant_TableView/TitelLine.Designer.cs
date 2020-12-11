@@ -37,7 +37,7 @@
             // lbName
             // 
             this.lbName.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbName.Location = new System.Drawing.Point(0, 0);
             this.lbName.Name = "lbName";
             this.lbName.Size = new System.Drawing.Size(67, 21);
@@ -48,7 +48,7 @@
             // lbSinglePrice
             // 
             this.lbSinglePrice.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbSinglePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSinglePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSinglePrice.Location = new System.Drawing.Point(67, 0);
             this.lbSinglePrice.Name = "lbSinglePrice";
             this.lbSinglePrice.Size = new System.Drawing.Size(59, 21);
@@ -59,7 +59,7 @@
             // lbNumber
             // 
             this.lbNumber.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbNumber.Location = new System.Drawing.Point(126, 0);
             this.lbNumber.Name = "lbNumber";
             this.lbNumber.Size = new System.Drawing.Size(70, 21);
@@ -70,7 +70,7 @@
             // lbTotalPrice
             // 
             this.lbTotalPrice.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTotalPrice.Location = new System.Drawing.Point(196, 0);
             this.lbTotalPrice.Name = "lbTotalPrice";
             this.lbTotalPrice.Size = new System.Drawing.Size(82, 21);
