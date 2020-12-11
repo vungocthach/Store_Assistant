@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InternetServiceHandler.cs" />
     <Compile Include="StoreAssistant_BillView\BillInfo.cs" />
     <Compile Include="StoreAssistant_BillView\FormBill.cs">
       <SubType>Form</SubType>

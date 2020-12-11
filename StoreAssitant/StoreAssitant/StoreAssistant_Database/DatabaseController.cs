@@ -16,6 +16,8 @@ using StoreAssitant.Class_Information;
 using StoreAssitant.StoreAssistant_VoucherView;
 using StoreAssitant.StoreAssistant_Information;
 using System.ComponentModel;
+using System.Net;
+using System.Net.NetworkInformation;
 
 namespace StoreAssitant
 {
@@ -61,6 +63,21 @@ namespace StoreAssitant
             connection = new SqlConnection(SQLStatementManager.GetConnectionString(username, password, serverName, databaseName));
             cmd = new SqlCommand();
             cmd.Connection = connection;
+        }
+
+        public static bool IsOnline()
+        {
+            try
+            {
+                using (var client = new MyWebClient())
+                {
+                    using (client.OpenRead("http://google.com/generate_204")) return true;
+                }
+            }
+            catch (WebException)
+            {
+                return false;
+            }
         }
 
         public bool ConnectToSQLDatabase()
