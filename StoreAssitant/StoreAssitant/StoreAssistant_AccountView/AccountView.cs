@@ -31,7 +31,6 @@ namespace StoreAssitant.StoreAssistant_AccountView
             gr_manager.Visible = false;
 
             dataGridView1.Font = new Font(dataGridView1.Font.FontFamily, 11f);
-            dataGridView1.SelectionChanged += DataGridView1_SelectionChanged;
         }
 
         private void DataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -66,8 +65,6 @@ namespace StoreAssitant.StoreAssistant_AccountView
                 
             }
 
-            btn_AddAccount.Click += Btn_AddAccount_Click;
-            btn_DeleteAccount.Click += Btn_DeleteAccount_Click;
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
         }
 
@@ -124,6 +121,11 @@ namespace StoreAssitant.StoreAssistant_AccountView
 
             btn_SignOut.Click += Btn_SignOut_Click;
             btn_ResetPass.Click += Btn_ResetPass_Click;
+
+            dataGridView1.SelectionChanged += DataGridView1_SelectionChanged;
+
+            btn_AddAccount.Click += Btn_AddAccount_Click;
+            btn_DeleteAccount.Click += Btn_DeleteAccount_Click;
         }
 
         private void Btn_ResetPass_Click(object sender, EventArgs e)

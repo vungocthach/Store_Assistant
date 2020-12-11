@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.gr_user = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.txt_username = new System.Windows.Forms.TextBox();
             this.btn_SignOut = new System.Windows.Forms.Button();
             this.btn_ResetPass = new System.Windows.Forms.Button();
             this.lb_role = new System.Windows.Forms.Label();
             this.lb_username = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.col_username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_role = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -114,22 +116,24 @@
             // lb_role
             // 
             this.lb_role.AutoSize = true;
-            this.lb_role.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_role.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_role.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lb_role.Location = new System.Drawing.Point(41, 59);
             this.lb_role.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.lb_role.Name = "lb_role";
-            this.lb_role.Size = new System.Drawing.Size(76, 19);
+            this.lb_role.Size = new System.Drawing.Size(82, 19);
             this.lb_role.TabIndex = 1;
             this.lb_role.Text = "Phân cấp : ";
             // 
             // lb_username
             // 
             this.lb_username.AutoSize = true;
-            this.lb_username.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_username.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_username.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lb_username.Location = new System.Drawing.Point(41, 30);
             this.lb_username.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.lb_username.Name = "lb_username";
-            this.lb_username.Size = new System.Drawing.Size(105, 19);
+            this.lb_username.Size = new System.Drawing.Size(116, 19);
             this.lb_username.TabIndex = 0;
             this.lb_username.Text = "Tên đăng nhập :";
             // 
@@ -193,7 +197,7 @@
             this.btn_DeleteAccount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_DeleteAccount.Location = new System.Drawing.Point(537, 356);
             this.btn_DeleteAccount.Name = "btn_DeleteAccount";
-            this.btn_DeleteAccount.Size = new System.Drawing.Size(100, 25);
+            this.btn_DeleteAccount.Size = new System.Drawing.Size(107, 27);
             this.btn_DeleteAccount.TabIndex = 5;
             this.btn_DeleteAccount.Text = "Xóa";
             this.btn_DeleteAccount.UseVisualStyleBackColor = false;
@@ -207,7 +211,7 @@
             this.btn_AddAccount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_AddAccount.Location = new System.Drawing.Point(421, 356);
             this.btn_AddAccount.Name = "btn_AddAccount";
-            this.btn_AddAccount.Size = new System.Drawing.Size(100, 25);
+            this.btn_AddAccount.Size = new System.Drawing.Size(107, 27);
             this.btn_AddAccount.TabIndex = 4;
             this.btn_AddAccount.Text = "Thêm";
             this.btn_AddAccount.UseVisualStyleBackColor = false;
@@ -280,5 +284,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelTitile;
+
     }
 }
