@@ -71,6 +71,7 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             btnAdd.Location = new Point(this.Width - btnAdd.Width - btnRemove.Width - space*2, btnRemove.Location.Y);
             dataGridView1.Size = new Size(this.Width, this.Height*3/4);
             dataGridView1.Location = new Point(0, (this.Height-dataGridView1.Height)/2);
+            label1.Size = new Size(this.Width,dataGridView1.Location.Y);
         }
 
         internal void LoadDataFromDB()
@@ -83,6 +84,11 @@ namespace StoreAssitant.StoreAssistant_VoucherView
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRemove_Click_1(object sender, EventArgs e)
         {
 
         }

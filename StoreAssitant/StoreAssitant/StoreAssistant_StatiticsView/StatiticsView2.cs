@@ -489,8 +489,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                     DataGridViewRow row = dataGridView1.Rows[dataGridView1.Rows.Add (stt, string.Format(txtTimeFormat, month.Month, month.Year), string.Format("{0}VND", totalRevenue.ToString("N0")))];  
                     row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Tag = new KeyValuePair<DateTime, long>(month, totalRevenue);
-                    if (row.Index % 2 == 0) row.DefaultCellStyle.BackColor = Color.LightSkyBlue;
-                    else row.DefaultCellStyle.BackColor = Color.White;
+                    if (row.Index % 2 != 0) row.DefaultCellStyle.BackColor = Color.LightSkyBlue;
                     stt++;
                     month = month.AddMonths(1);
                 }

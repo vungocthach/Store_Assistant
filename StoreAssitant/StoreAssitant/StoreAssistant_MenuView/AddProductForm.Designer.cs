@@ -63,7 +63,7 @@
             // 
             // productBox1
             // 
-            this.productBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.productBox1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.productBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.productBox1.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.productBox1.IsReadOnlyPDName = false;
@@ -76,18 +76,18 @@
             this.productBox1.PDImage = null;
             this.productBox1.PDName = "";
             this.productBox1.PDPrice = 0;
-            this.productBox1.Size = new System.Drawing.Size(338, 400);
+            this.productBox1.Size = new System.Drawing.Size(338, 407);
             this.productBox1.TabIndex = 5;
             // 
             // AddProductForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(338, 449);
             this.ControlBox = false;
-            this.Controls.Add(this.productBox1);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_Submit);
+            this.Controls.Add(this.productBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "AddProductForm";
             this.ShowIcon = false;

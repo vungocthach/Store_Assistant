@@ -29,21 +29,19 @@
         private void InitializeComponent()
         {
             this.gr_user = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.txt_username = new System.Windows.Forms.TextBox();
             this.btn_SignOut = new System.Windows.Forms.Button();
             this.btn_ResetPass = new System.Windows.Forms.Button();
             this.lb_role = new System.Windows.Forms.Label();
             this.lb_username = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.col_username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_role = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gr_manager = new System.Windows.Forms.GroupBox();
             this.btn_DeleteAccount = new System.Windows.Forms.Button();
             this.btn_AddAccount = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.labelTitile = new System.Windows.Forms.Label();
             this.gr_user.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -75,12 +73,13 @@
             // 
             this.txt_username.BackColor = System.Drawing.Color.White;
             this.txt_username.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_username.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_username.Location = new System.Drawing.Point(152, 31);
+            this.txt_username.Font = new System.Drawing.Font("Times New Roman", 14F);
+            this.txt_username.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.txt_username.Location = new System.Drawing.Point(158, 26);
             this.txt_username.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
             this.txt_username.Name = "txt_username";
             this.txt_username.ReadOnly = true;
-            this.txt_username.Size = new System.Drawing.Size(378, 17);
+            this.txt_username.Size = new System.Drawing.Size(378, 22);
             this.txt_username.TabIndex = 4;
             this.txt_username.TabStop = false;
             // 
@@ -136,6 +135,24 @@
             this.lb_username.Size = new System.Drawing.Size(116, 19);
             this.lb_username.TabIndex = 0;
             this.lb_username.Text = "Tên đăng nhập :";
+            // 
+            // label1
+            // 
+            this.label1.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.label1.Location = new System.Drawing.Point(148, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(350, 27);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "________________________________________________________________________________";
+            // 
+            // label2
+            // 
+            this.label2.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.label2.Location = new System.Drawing.Point(114, 57);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(383, 27);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "________________________________________________________________________________";
             // 
             // dataGridView1
             // 
@@ -215,24 +232,6 @@
             this.btn_AddAccount.TabIndex = 4;
             this.btn_AddAccount.Text = "Thêm";
             this.btn_AddAccount.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
-            this.label1.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.label1.Location = new System.Drawing.Point(148, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(350, 27);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "________________________________________________________________________________";
-            // 
-            // label2
-            // 
-            this.label2.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.label2.Location = new System.Drawing.Point(148, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(350, 27);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "________________________________________________________________________________";
             // 
             // labelTitile
             // 
