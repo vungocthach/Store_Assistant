@@ -64,6 +64,8 @@ Các lộ trình này được áp dụng trước các ngày báo cáo đồ á
 	>* Khung chuyển tab giữa các giao diện
 	>* Hình ảnh thông tin món ăn có trong bàn
 	>* Hình ảnh khi thêm món ăn vào
+	>* Giao diện tài khoản
+	>* Giao diện đăng nhập
 	>  **Lưu ý:** hình ảnh về giao diện ban đầu đã có trên link ninjamock, truy cập vào link để có thể xem rõ hơn
 	>
 	> **Tính năng:**  thực hiện được các tính năng cơ bản sau
@@ -72,5 +74,28 @@ Các lộ trình này được áp dụng trước các ngày báo cáo đồ á
 	>* Thêm món ăn mới vào menu
 	>* Chọn món ăn cho bàn
 	>* Liên kết với hệ quản trị cơ sở dữ liệu SQL Server để lưu trữ thông tin các món ăn trong thực đơn
-+ Báo cáo lần 2: Chưa cập nhật
++ Báo cáo lần 2:
+	> **Giao diện**
+	>* Giao diện Voucher
+	>* Giao diện Lịch sử
+	>* Giao diện Thống kê
+	> 
+	> **Tính năng** 
+	>* Tìm kiếm tên món ăn
+	>* Check mã giảm giá
+	>* Thanh toán bàn
 + Báo cáo lần 3: Hoàn thành và sửa lỗi toàn bộ project
+	> **Giao diện**
+	>* Chỉnh sửa lại UI của toàn bộ giao diện
+	>* Light-Dark theme
+	>* Muti-language
+	>* Cho phép điều chỉnh size
+	>
+	> **Tính năng**
+	>* Optimize lại toàn bộ code, xóa code thừa
+	>* Kiểm tra internet
+	>* Đánh dấu bàn đang sử dụng
+	>* Xuất file PDF
+	>* Tạo mã QR (có thể làm tùy vào thời gian)
+### Hoàn thành project:
++ Ngày kết thúc môn học: 27/12/2020
