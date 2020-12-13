@@ -439,6 +439,7 @@
     <None Include="Resources\SignUpBackGroud.png" />
     <None Include="Resources\gift-voucher.png" />
     <None Include="Resources\BGSt.png" />
+    <None Include="Resources\Background.png" />
     <Content Include="Resources\iconfinder_Cashier-2_3793351.png" />
     <None Include="Resources\iconfinder_icon-arrow-right-a_211619.png" />
     <None Include="Resources\iconfinder_sale_lineal_color_cnvrt-18_3827704.png" />
