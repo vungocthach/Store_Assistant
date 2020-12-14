@@ -20,8 +20,8 @@ namespace StoreAssitant
 
             LoginForm form = new LoginForm();
             form.Click_Login += Form_Click_Login;
-            Application.Run(form);
 
+            Application.Run(form);
             //Test();
             //test2();
             //tesst3();
@@ -60,10 +60,20 @@ namespace StoreAssitant
 
         private static void Form_Click_Login(object sender, UserInfo e)
         {
+            if (!DatabaseController.IsOnline())
+            {
+                MessageBox.Show("Không có kết nối mạng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             Form login_form = (Form)sender;
+            InternetServiceHandler.Instance.Run();
             if (StoreAssistant_Authenticater.Authenticator.Login(ref e))
             {
                 Form1 main_form = new Form1();
+                InternetServiceHandler.Instance.OfflineModeDetected = new EventHandler((s, evt) =>
+                {
+                    Application.Restart();
+                });
                 main_form.SignOut += new EventHandler((object obj, EventArgs etc) =>
                 {
                     login_form.Show();
