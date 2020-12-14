@@ -64,6 +64,7 @@
             // 
             // txtb_Name
             // 
+            this.txtb_Name.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.txtb_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtb_Name.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtb_Name.Location = new System.Drawing.Point(104, 175);
@@ -75,6 +76,7 @@
             // 
             // txtb_Price
             // 
+            this.txtb_Price.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.txtb_Price.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtb_Price.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtb_Price.Location = new System.Drawing.Point(104, 210);
@@ -99,8 +101,9 @@
             // 
             // txtb_Description
             // 
+            this.txtb_Description.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtb_Description.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtb_Description.Location = new System.Drawing.Point(11, 273);
+            this.txtb_Description.Location = new System.Drawing.Point(16, 274);
             this.txtb_Description.Margin = new System.Windows.Forms.Padding(2);
             this.txtb_Description.MaxLength = 500;
             this.txtb_Description.Multiline = true;
@@ -122,7 +125,6 @@
             // label_Image
             // 
             this.label_Image.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label_Image.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label_Image.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Image.Location = new System.Drawing.Point(52, 11);
             this.label_Image.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -219,7 +221,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.Controls.Add(this.textBoxPrice);
             this.Controls.Add(this.pb_Err_Price);
             this.Controls.Add(this.lb_currency);
