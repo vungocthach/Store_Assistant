@@ -97,6 +97,7 @@
     <Compile Include="StoreAssistant_Authenticater\SignUpForm.Designer.cs">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="StoreAssistant_Helper\AppManager.cs" />
     <Compile Include="StoreAssistant_Helper\BillHistory.cs" />
     <Compile Include="StoreAssistant_HistoryView\HistoryView.cs">
       <SubType>UserControl</SubType>
@@ -185,6 +186,12 @@
     </Compile>
     <Compile Include="StoreAssistant_MenuView\MenuView.Designer.cs">
       <DependentUpon>MenuView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StoreAssistant_SettingView\SettingView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StoreAssistant_SettingView\SettingView.Designer.cs">
+      <DependentUpon>SettingView.cs</DependentUpon>
     </Compile>
     <Compile Include="StoreAssistant_StatiticsView\CompareView.cs">
       <SubType>UserControl</SubType>
@@ -301,6 +308,7 @@
     <Compile Include="StoreAssistant_VoucherView\VoucherView.Designer.cs">
       <DependentUpon>VoucherView.cs</DependentUpon>
     </Compile>
+    <Compile Include="StoreManager.cs" />
     <Compile Include="TSString.cs" />
     <EmbeddedResource Include="StoreAssistant_MenuView\AddProductForm.resx">
       <DependentUpon>AddProductForm.cs</DependentUpon>
@@ -335,6 +343,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="StoreAssistant_SettingView\SettingView.resx">
+      <DependentUpon>SettingView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_StatiticsView\CompareView.resx">
       <DependentUpon>CompareView.cs</DependentUpon>
     </EmbeddedResource>
@@ -433,6 +444,8 @@
     <None Include="Resources\121476880_662245951379057_3014594879334389444_n.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="StoreAssistant_Helper\Store_Info.txt" />
+    <Content Include="StoreAssistant_Helper\Store_Info.xml" />
     <None Include="Resources\iconfinder_sale_lineal_color_cnvrt-04_3827715.png" />
     <None Include="Resources\logo.png" />
     <None Include="Resources\SUPBG.png" />
