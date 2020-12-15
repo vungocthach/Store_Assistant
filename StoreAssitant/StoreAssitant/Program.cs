@@ -17,11 +17,12 @@ namespace StoreAssitant
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
+            
             LoginForm form = new LoginForm();
             form.Click_Login += Form_Click_Login;
-
             Application.Run(form);
+            
+
             //Test();
             //test2();
             //tesst3();
@@ -51,10 +52,14 @@ namespace StoreAssitant
 
         static void Test()
         {
-
             Form test_form = new Form();
-            test_form.Size = new System.Drawing.Size(1100, 600);
-            test_form.Controls.Add(new StoreAssistant_StatiticsView.StatiticsView2() { Dock = DockStyle.Fill });
+            test_form.Size = new System.Drawing.Size(1080, 500);
+
+            var view = new StoreAssistant_SettingView.SettingView();
+            view.Dock = DockStyle.Fill;
+            view.ReloadData();
+
+            test_form.Controls.Add(view);
             Application.Run(test_form);
         }
 

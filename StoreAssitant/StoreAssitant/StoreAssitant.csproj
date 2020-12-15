@@ -187,12 +187,15 @@
     <Compile Include="StoreAssistant_MenuView\MenuView.Designer.cs">
       <DependentUpon>MenuView.cs</DependentUpon>
     </Compile>
+    <Compile Include="StoreAssistant_SettingView\LanguageMode.cs" />
     <Compile Include="StoreAssistant_SettingView\SettingView.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="StoreAssistant_SettingView\SettingView.Designer.cs">
       <DependentUpon>SettingView.cs</DependentUpon>
     </Compile>
+    <Compile Include="StoreAssistant_SettingView\SizeMode.cs" />
+    <Compile Include="StoreAssistant_SettingView\ThemeMode.cs" />
     <Compile Include="StoreAssistant_StatiticsView\CompareView.cs">
       <SubType>UserControl</SubType>
     </Compile>

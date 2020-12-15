@@ -23,6 +23,7 @@ namespace StoreAssitant
         StoreAssistant_HistoryView.HistoryView historyView;
         StoreAssistant_StatiticsView.StatiticsView2 statiticsView;
         StoreAssistant_VoucherView.VoucherView voucherView;
+        StoreAssistant_SettingView.SettingView settingView;
 
         public event EventHandler SignOut;
         void OnSignOut(object sender, EventArgs e) {}
@@ -112,8 +113,12 @@ namespace StoreAssitant
             }
             else if (kryptonNavigator1.SelectedPage.Name == krPage_Setting.Name)
             {
-                MessageBox.Show("Tính năng đang phát triển", "Công trình đang thi công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                panel1.Controls.Clear();
+                if (settingView == null)
+                {
+                    settingView = new StoreAssistant_SettingView.SettingView();
+                }
+                settingView.ReloadData();
+                SelectTab(settingView);
             }
             else if (kryptonNavigator1.SelectedPage.Name == krPage_Statistic.Name)
             {
