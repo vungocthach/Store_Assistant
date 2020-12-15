@@ -131,7 +131,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txt_PassCurrent);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ChangePasswordForm";
+            this.ShowIcon = false;
             this.Text = "Đổi mật khẩu";
             this.ResumeLayout(false);
             this.PerformLayout();

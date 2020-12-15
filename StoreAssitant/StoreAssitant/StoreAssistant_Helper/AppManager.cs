@@ -118,6 +118,11 @@ namespace StoreAssitant.StoreAssistant_Helper
             System.Windows.Forms.Application.Restart();
         }
 
+        public static void Exit()
+        {
+            System.Windows.Forms.Application.Exit();
+        }
+
         public static void ChangeTheme(ThemeMode value, bool needSave = true)
         {
             if (CurrentTheme != value)

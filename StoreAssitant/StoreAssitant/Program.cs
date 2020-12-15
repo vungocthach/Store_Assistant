@@ -17,11 +17,10 @@ namespace StoreAssitant
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
+
             LoginForm form = new LoginForm();
             form.Click_Login += Form_Click_Login;
             Application.Run(form);
-            
 
             //Test();
             //test2();
@@ -55,12 +54,22 @@ namespace StoreAssitant
             Form test_form = new Form();
             test_form.Size = new System.Drawing.Size(1080, 500);
 
-            var view = new StoreAssistant_SettingView.SettingView();
-            view.Dock = DockStyle.Fill;
-            view.ReloadData();
+            var view = new StoreAssistant_Helper.TabSelector();
+            view.Dock = DockStyle.Top;
+            view.ColorButtonSelected = System.Drawing.Color.Yellow;
+            //view.ColorButtonSelected_MouseOn = System.Drawing.Color.FromArgb(150, 247, 144, 47);
+            view.SelectedTabChanged += (s, e) =>
+            {
+                Console.WriteLine("Selected tab: {0}", view.SelectedTabKey);
+            };
 
             test_form.Controls.Add(view);
             Application.Run(test_form);
+        }
+
+        static System.Drawing.Color GetAverage(System.Drawing.Color color1, System.Drawing.Color color2)
+        {
+            return System.Drawing.Color.FromArgb((color1.A + color2.A) / 2, (color1.R + color2.R) / 2, (color1.G + color2.G) / 2, (color1.B + color2.B) / 2);
         }
 
         private static void Form_Click_Login(object sender, UserInfo e)

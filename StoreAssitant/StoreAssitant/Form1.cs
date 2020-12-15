@@ -33,48 +33,26 @@ namespace StoreAssitant
         {
             InitializeComponent();
 
+            toolView1.SizeChanged += ToolView1_SizeChanged;
+            toolView1.ReloadData();
+
+            pnlMenu.BackColor = Color.FromArgb(200, 240, 128, 24);
+
             SignOut = new EventHandler(OnSignOut);
 
-            kryptonNavigator1.GotFocus += KryptonNavigator1_GotFocus;
+            tabSelector1.SelectedTabChanged += TabSelector1_SelectedTabChanged;
             this.SizeChanged += Form1_SizeChanged;
             Form1_SizeChanged(this, null);
         }
 
-        private void Form1_SizeChanged(object sender, EventArgs e)
+        private void ToolView1_SizeChanged(object sender, EventArgs e)
         {
-            panel1.Height = this.ClientSize.Height - kryptonNavigator1.Height;
+            toolView1.Location = new Point(this.Width - toolView1.Width - toolView1.Margin.Right, toolView1.Location.Y);
         }
 
-        private void AccountView1_ClickSignOut(object sender, EventArgs e)
+        private void TabSelector1_SelectedTabChanged(object sender, EventArgs e)
         {
-            this.SignOut(this, null);
-        }
-
-        public void LoadUser()
-        {
-            if (Authenticator.CurrentUser == null) { throw new AuthenticationException("Current user's account must not be null"); }
-            kryptonNavigator1.SelectedPage = krPage_Cashier;
-            kryptonNavigator1.SelectedPageChanged += KryptonNavigator1_SelectedPageChanged;
-            KryptonNavigator1_SelectedPageChanged(kryptonNavigator1, new EventArgs());
-            if (Authenticator.CurrentUser.Role == UserInfo.UserRole.Cashier)
-            {
-                kryptonNavigator1.Pages.Remove(krPage_History);
-                kryptonNavigator1.Pages.Remove(krPage_Manager);
-                kryptonNavigator1.Pages.Remove(krPage_Statistic);
-                kryptonNavigator1.Pages.Remove(krPage_Voucher);
-            }
-        }
-
-        void SelectTab(Control tab)
-        {
-            panel1.Controls.Clear();
-            tab.Dock = DockStyle.Fill;
-            panel1.Controls.Add(tab);
-        }
-
-        private void KryptonNavigator1_SelectedPageChanged(object sender, EventArgs e)
-        {
-            if (kryptonNavigator1.SelectedPage.Name == krPage_Cashier.Name)
+            if (tabSelector1.SelectedTabKey == "btnCashier")
             {
                 if (cashierView == null)
                 {
@@ -83,7 +61,7 @@ namespace StoreAssitant
                 cashierView.LoadDataFromDB();
                 SelectTab(cashierView);
             }
-            else if (kryptonNavigator1.SelectedPage.Name == krPage_Account.Name)
+            else if (tabSelector1.SelectedTabKey == "btnAccount")
             {
                 if (accountView == null)
                 {
@@ -93,7 +71,7 @@ namespace StoreAssitant
                 accountView.SetData();
                 SelectTab(accountView);
             }
-            else if (kryptonNavigator1.SelectedPage.Name == krPage_Manager.Name)
+            else if (tabSelector1.SelectedTabKey == "btnManager")
             {
                 if (managerModifyView == null)
                 {
@@ -102,7 +80,7 @@ namespace StoreAssitant
                 managerModifyView.LoadDataFromDB();
                 SelectTab(managerModifyView);
             }
-            else if (kryptonNavigator1.SelectedPage.Name == krPage_History.Name)
+            else if (tabSelector1.SelectedTabKey == "btnHistory")
             {
                 if (historyView == null)
                 {
@@ -111,7 +89,7 @@ namespace StoreAssitant
                 historyView.GetData();
                 SelectTab(historyView);
             }
-            else if (kryptonNavigator1.SelectedPage.Name == krPage_Setting.Name)
+            else if (tabSelector1.SelectedTabKey == "btnSetting")
             {
                 if (settingView == null)
                 {
@@ -120,7 +98,7 @@ namespace StoreAssitant
                 settingView.ReloadData();
                 SelectTab(settingView);
             }
-            else if (kryptonNavigator1.SelectedPage.Name == krPage_Statistic.Name)
+            else if (tabSelector1.SelectedTabKey == "btnStatistic")
             {
                 if (statiticsView == null)
                 {
@@ -128,7 +106,7 @@ namespace StoreAssitant
                 }
                 SelectTab(statiticsView);
             }
-            else if (kryptonNavigator1.SelectedPage.Name == krPage_Voucher.Name)
+            else if (tabSelector1.SelectedTabKey == "btnVoucher")
             {
                 //something wrong here
                 if (voucherView == null)
@@ -140,8 +118,47 @@ namespace StoreAssitant
             }
             else
             {
-                
+
             }
+        }
+
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            panel1.Height = this.ClientSize.Height - pnlMenu.Height;
+        }
+
+        private void AccountView1_ClickSignOut(object sender, EventArgs e)
+        {
+            this.SignOut(this, null);
+        }
+
+        public void LoadUser()
+        {
+            if (Authenticator.CurrentUser == null) { throw new AuthenticationException("Current user's account must not be null"); }
+            /*
+            kryptonNavigator1.SelectedPage = krPage_Cashier;
+            kryptonNavigator1.SelectedPageChanged += KryptonNavigator1_SelectedPageChanged;
+            KryptonNavigator1_SelectedPageChanged(kryptonNavigator1, new EventArgs());
+            if (Authenticator.CurrentUser.Role == UserInfo.UserRole.Cashier)
+            {
+                kryptonNavigator1.Pages.Remove(krPage_History);
+                kryptonNavigator1.Pages.Remove(krPage_Manager);
+                kryptonNavigator1.Pages.Remove(krPage_Statistic);
+                kryptonNavigator1.Pages.Remove(krPage_Voucher);
+            }
+            */
+        }
+
+        void SelectTab(Control tab)
+        {
+            panel1.Controls.Clear();
+            tab.Dock = DockStyle.Fill;
+            panel1.Controls.Add(tab);
+        }
+
+        private void KryptonNavigator1_SelectedPageChanged(object sender, EventArgs e)
+        {
+            
         }
 
         private void KryptonNavigator1_GotFocus(object sender, EventArgs e)
@@ -150,5 +167,9 @@ namespace StoreAssitant
             navigator.SelectedPage.Focus();
         }
 
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

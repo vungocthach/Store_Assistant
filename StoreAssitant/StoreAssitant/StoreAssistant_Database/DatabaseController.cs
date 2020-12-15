@@ -509,7 +509,7 @@ namespace StoreAssitant
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
 
-            cmd.CommandText = string.Format("SELECT {1},{2} FROM {0} WHERE {2}=@{2}_;", TB_USER, COLUMNS_TB_USER[0], COLUMNS_TB_USER[2]);
+            cmd.CommandText = string.Format("SELECT {1},{2},{3} FROM {0} WHERE {2}=@{2}_;", TB_USER, COLUMNS_TB_USER[0], COLUMNS_TB_USER[2], COLUMNS_TB_USER[6]);
             cmd.Parameters.Clear();
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[2]), SqlDbType.SmallInt).Value = (int)role;
 
@@ -518,7 +518,7 @@ namespace StoreAssitant
                 List<UserInfo> rs = new List<UserInfo>();
                 while (reader.Read())
                 {
-                    rs.Add(new UserInfo() { UserName = reader.GetString(0), Role = UserInfo.GetUserRole(reader.GetInt16(1)) });
+                    rs.Add(new UserInfo() { UserName = reader.GetString(0), Role = UserInfo.GetUserRole(reader.GetInt16(1)), FullName = reader.GetString(2) });
                 }
 
                 return rs;
