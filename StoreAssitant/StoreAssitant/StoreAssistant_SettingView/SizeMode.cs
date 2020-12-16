@@ -10,7 +10,7 @@ namespace StoreAssitant.StoreAssistant_SettingView
     {
         _1024x768,
         _1366x768,
-        _1920x1080,
+        _1680x1050,
         FullScreen
     }
 }

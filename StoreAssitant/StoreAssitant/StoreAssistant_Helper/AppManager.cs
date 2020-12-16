@@ -88,7 +88,7 @@ namespace StoreAssitant.StoreAssistant_Helper
         {
             ChangeLanguage(LanguageMode.VN, false);
             ChangeTheme(ThemeMode.Light, false);
-            ChangeWindowSize(SizeMode._1024x768, false);
+            ChangeWindowSize(SizeMode._1366x768, false);
 
             DirectoryInfo directory = Directory.CreateDirectory("./Preferences");
             //string path = Path.Combine(directory.FullName, "setting.txt");
@@ -153,11 +153,44 @@ namespace StoreAssitant.StoreAssistant_Helper
             {
                 windowSize = value;
                 if (needSave) { SaveCurrentPreferences(); }
-                //
-                // Write code change UI here
-                //
+                var mainForm = GetMainForm();
+                // Check whether app has been ready
+                if (mainForm != null)
+                {
+                    if (CurrentWindowSize == SizeMode.FullScreen)
+                    {
+                        mainForm.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+                    }
+                    else
+                    {
+                        System.Drawing.Size size;
+                        switch (CurrentWindowSize)
+                        {
+                            case StoreAssistant_SettingView.SizeMode._1024x768:
+                                size = new System.Drawing.Size(1024, 768);
+                                break;
+                            case StoreAssistant_SettingView.SizeMode._1366x768:
+                                size = new System.Drawing.Size(1366, 768);
+                                break;
+                            case StoreAssistant_SettingView.SizeMode._1680x1050:
+                                size = new System.Drawing.Size(1680, 1050);
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+                        mainForm.WindowState = System.Windows.Forms.FormWindowState.Normal;
+                        mainForm.DesktopLocation = new System.Drawing.Point(mainForm.Location.X + (mainForm.Width - size.Width) / 2,
+                                                        mainForm.Location.Y + (mainForm.Height - size.Height) / 2);
+                        mainForm.Size = size;
+                    }
+                }
             }
 
+        }
+
+        public static System.Windows.Forms.Form GetMainForm()
+        {
+            return System.Windows.Forms.Application.OpenForms["mainForm"];
         }
     }
 }

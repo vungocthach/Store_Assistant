@@ -92,7 +92,7 @@
             this.tabSelector1.BackColor = System.Drawing.Color.Transparent;
             this.tabSelector1.ColorButtonMouseOn = System.Drawing.Color.Empty;
             this.tabSelector1.ColorButtonPressed = System.Drawing.Color.Empty;
-            this.tabSelector1.ColorButtonSelected = System.Drawing.Color.Empty;
+            this.tabSelector1.ColorButtonSelected = System.Drawing.Color.Yellow;
             this.tabSelector1.Location = new System.Drawing.Point(12, 0);
             this.tabSelector1.Name = "tabSelector1";
             this.tabSelector1.Size = new System.Drawing.Size(712, 59);

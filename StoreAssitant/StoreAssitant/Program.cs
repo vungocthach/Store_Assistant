@@ -88,11 +88,13 @@ namespace StoreAssitant
                 {
                     Application.Restart();
                 });
+                /*
                 main_form.SignOut += new EventHandler((object obj, EventArgs etc) =>
                 {
                     login_form.Show();
                     main_form.Close();
                 });
+                */
                 main_form.FormClosed += new FormClosedEventHandler((object obj, FormClosedEventArgs target) =>
                 {
                     if (login_form.Visible == false)
@@ -106,6 +108,8 @@ namespace StoreAssitant
                 });
                 //e.Role = UserInfo.UserRole.Cashier;
                 main_form.LoadUser();
+                StoreAssistant_Helper.AppManager.LoadPreferences();
+                main_form.LoadWindowSize();
                 main_form.Show();
                 login_form.Hide();
             }

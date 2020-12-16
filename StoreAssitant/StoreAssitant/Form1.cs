@@ -11,12 +11,12 @@ using System.Windows.Forms;
 using StoreAssitant.StoreAssistant_Authenticater;
 using System.Security.Authentication;
 using StoreAssitant.StoreAssistant_VoucherView;
+using StoreAssitant.StoreAssistant_Helper;
 
 namespace StoreAssitant
 {
     public partial class Form1 : Form
     {
-
         StoreAssistant_CashierView.CashierView cashierView;
         ManagerModifyView managerModifyView;
         StoreAssistant_AccountView.AccountView accountView;
@@ -29,9 +29,10 @@ namespace StoreAssitant
         void OnSignOut(object sender, EventArgs e) {}
 
         public Form1()
-
         {
             InitializeComponent();
+
+            this.Name = "mainForm";
 
             toolView1.SizeChanged += ToolView1_SizeChanged;
             toolView1.ReloadData();
@@ -41,8 +42,34 @@ namespace StoreAssitant
             SignOut = new EventHandler(OnSignOut);
 
             tabSelector1.SelectedTabChanged += TabSelector1_SelectedTabChanged;
+            TabSelector1_SelectedTabChanged(tabSelector1, EventArgs.Empty);
             this.SizeChanged += Form1_SizeChanged;
             Form1_SizeChanged(this, null);
+        }
+
+        public void LoadWindowSize()
+        {
+            switch (AppManager.CurrentWindowSize)
+            {
+                case StoreAssistant_SettingView.SizeMode._1024x768:
+                    this.WindowState = FormWindowState.Normal;
+                    this.Width = 1024;
+                    this.Height = 768;
+                    break;
+                case StoreAssistant_SettingView.SizeMode._1366x768:
+                    this.WindowState = FormWindowState.Normal;
+                    this.Width = 1366;
+                    this.Height = 768;
+                    break;
+                case StoreAssistant_SettingView.SizeMode._1680x1050:
+                    this.WindowState = FormWindowState.Normal;
+                    this.Width = 1680;
+                    this.Height = 1050;
+                    break;
+                case StoreAssistant_SettingView.SizeMode.FullScreen:
+                    this.WindowState = FormWindowState.Maximized;
+                    break;
+            }
         }
 
         private void ToolView1_SizeChanged(object sender, EventArgs e)
