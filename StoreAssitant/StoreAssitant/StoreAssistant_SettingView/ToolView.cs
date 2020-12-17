@@ -63,6 +63,17 @@ namespace StoreAssitant.StoreAssistant_SettingView
             itemStoreInfo.Click += ItemStoreInfo_Click;
 
             toolStrip1.SizeChanged += ToolStrip1_SizeChanged;
+
+            this.Load += ToolView_Load;
+        }
+
+        private void ToolView_Load(object sender, EventArgs e)
+        {
+            if (Authenticator.CurrentUser.Role != UserInfo.UserRole.Manager)
+            {
+                itemEmployee.Enabled = false;
+                itemStoreInfo.Enabled = false;
+            }
         }
 
         private void ToolStrip1_SizeChanged(object sender, EventArgs e)

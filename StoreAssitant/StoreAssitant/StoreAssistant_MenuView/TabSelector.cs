@@ -69,6 +69,7 @@ namespace StoreAssitant.StoreAssistant_Helper
             SelectedTabChanged = new EventHandler((s, e) => { });
 
             this.SizeChanged += TabSelector_SizeChanged;
+            this.Load += TabSelector_Load;
 
             foreach (Button button in flowLayoutPanel1.Controls)
             {
@@ -80,6 +81,15 @@ namespace StoreAssitant.StoreAssistant_Helper
 
             SelectedButton = btnCashier;
             Button_Click(btnCashier, null);
+        }
+
+        private void TabSelector_Load(object sender, EventArgs e)
+        {
+            if (StoreAssistant_Authenticater.Authenticator.CurrentUser.Role != UserInfo.UserRole.Manager)
+            {
+                flowLayoutPanel1.Controls.Clear();
+                flowLayoutPanel1.Controls.Add(btnCashier);
+            }
         }
 
         private void TabSelector_SizeChanged(object sender, EventArgs e)

@@ -114,10 +114,10 @@
     </Compile>
     <Compile Include="StoreAssistant_Helper\AppManager.cs" />
     <Compile Include="StoreAssistant_Helper\BillHistory.cs" />
-    <Compile Include="StoreAssistant_Helper\TabSelector.cs">
+    <Compile Include="StoreAssistant_MenuView\TabSelector.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="StoreAssistant_Helper\TabSelector.Designer.cs">
+    <Compile Include="StoreAssistant_MenuView\TabSelector.Designer.cs">
       <DependentUpon>TabSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="StoreAssistant_HistoryView\HistoryView.cs">
@@ -284,7 +284,7 @@
     <EmbeddedResource Include="StoreAssistant_Authenticater\SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="StoreAssistant_Helper\TabSelector.resx">
+    <EmbeddedResource Include="StoreAssistant_MenuView\TabSelector.resx">
       <DependentUpon>TabSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_HistoryView\HistoryView.resx">
