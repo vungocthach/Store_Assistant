@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -11,25 +13,42 @@ using System.Windows.Forms;
 
 namespace StoreAssitant
 {
-    public partial class SignUp : Form
+    public partial class SignUp_form : Form
     {
         private UserInfo user;
-
         public UserInfo User { get => User; set => User = value; }
 
-        public bool IsNumber(string pText)
+        string Lang = "vn";
+
+        public void SetLanguage()
+        {
+            Language.InitLanguage(this);
+            lb_Name.Text = Language.Rm.GetString("Name:", Language.Culture);
+            lb_Pass.Text = Language.Rm.GetString("Password:", Language.Culture);
+            lb_Phone.Text = Language.Rm.GetString("Phone:", Language.Culture);
+            lb_UserName.Text = Language.Rm.GetString("User name:", Language.Culture);
+            lb_ConfirmPassq.Text = Language.Rm.GetString("Confirm password:", Language.Culture);
+            lb_Gender.Text = Language.Rm.GetString("Gender:",Language.Culture);
+            lb_Birth.Text = Language.Rm.GetString("Date of birth:", Language.Culture);
+            this.Text = btn_SignUp.Text =Language.Rm.GetString("Sign Up", Language.Culture);
+        }
+                 public bool IsNumber(string pText)
         {
             Regex regex = new Regex(@"^[-+]?[0-9]*\.?[0-9]+$");
             return regex.IsMatch(pText);
         }
 
         public event EventHandler<UserInfo> SignUpOK;
-        public SignUp()
+        public SignUp_form()
         {
             InitializeComponent();
             SignUpOK = new EventHandler<UserInfo>((s,e)=> { });
-
             this.btn_SignUp.Click += Btn_SignUp_Click;
+            if (Lang != Language.CultureName)
+            {
+                this.Lang = Language.CultureName;
+                SetLanguage();
+            }    
         }
 
         private void Btn_SignUp_Click(object sender, EventArgs e)

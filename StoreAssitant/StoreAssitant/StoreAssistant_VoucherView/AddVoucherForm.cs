@@ -17,6 +17,12 @@ namespace StoreAssitant.StoreAssistant_VoucherView
         private int numberInitVoucher;
         private DateTime expiryDateVoucher;
         private string codeVoucher;
+        private string Lang = "vn";
+        string PlusChar = "Vui lòng chỉ nhập số dương";
+        string From0to10000 = "Vui lòng nhập giá trị trong khoảng 0 đến 10000";
+        string From0to100 = "Vui lòng nhập giá trị trong khoảng 0 đến 100";
+        string NoEmpty = "Không để trống";
+        string BiggerNow = "Thời hạn phải lớn hơn ngày hiện tại";
 
         public int ValueVoucher 
         { 
@@ -55,7 +61,7 @@ namespace StoreAssitant.StoreAssistant_VoucherView
                 {
                     if (value < DateTime.Now.Date)
                     {
-                        MessageBox.Show("Ngày hết hạn phải lớn hơn ngày hôm nay");
+                        MessageBox.Show(BiggerNow);
                         return;
                     }
                     expiryDateVoucher = value;
@@ -91,6 +97,30 @@ namespace StoreAssitant.StoreAssistant_VoucherView
 
             //ExpiryDateVoucher = DateTime.Now;
             dtpExpiryDate.Value = DateTime.Now.Date;
+
+            if ( Lang != Language.CultureName)
+            {
+                Lang = Language.CultureName;
+                SetLanguage();
+            }    
+        }
+
+        private void SetLanguage()
+        {
+            Language.InitLanguage(this);
+            lbCode.Text = Language.Rm.GetString("Voucher code", Language.Culture);
+            lbExpiryDate.Text = Language.Rm.GetString("Expiry date", Language.Culture);
+            lbNumberInit.Text = Language.Rm.GetString("Amount be used", Language.Culture);
+            lbValue.Text = Language.Rm.GetString("Value(%)", Language.Culture);
+            btnConfirm.Text = Language.Rm.GetString("Confirm", Language.Culture);
+            btnCancel.Text = Language.Rm.GetString("Cancel", Language.Culture);
+            this.Text = Language.Rm.GetString("AddVoucher", Language.Culture);
+            PlusChar = Language.Rm.GetString("PlusChar", Language.Culture);
+            From0to10000 = Language.Rm.GetString("From0to10000", Language.Culture);
+            From0to100 = Language.Rm.GetString("From0to100 ", Language.Culture);
+            NoEmpty = Language.Rm.GetString(" NoEmpty", Language.Culture);
+            BiggerNow = Language.Rm.GetString("BiggerNow", Language.Culture);
+
         }
         private void KeyPressNumber(object sender, KeyPressEventArgs e)
         {
@@ -105,7 +135,7 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             }
             if (e.Handled == true)
             {
-                MessageBox.Show("Chỉ được phép nhập số nguyên");
+                MessageBox.Show(PlusChar);
             }
         }
 
@@ -133,12 +163,12 @@ namespace StoreAssitant.StoreAssistant_VoucherView
                     if (NumberInitVoucher > 10000)
                     {
                         NumberInitVoucher = 10000;
-                        MessageBox.Show("Vui lòng nhập giá trị trong khoảng 0 đến 10000");
+                        MessageBox.Show(From0to10000);
                     }
                     else if (NumberInitVoucher < 0)
                     {
                         NumberInitVoucher = 0;
-                        MessageBox.Show("Vui lòng nhập giá trị trong khoảng 0 đến 10000");
+                        MessageBox.Show(From0to10000);
                     }
                 }
         }
@@ -156,12 +186,12 @@ namespace StoreAssitant.StoreAssistant_VoucherView
                     if (ValueVoucher>100)
                     {
                         ValueVoucher = 100;
-                        MessageBox.Show("Vui lòng nhập giá trị từ 0 đến 100");
+                        MessageBox.Show(From0to100);
                     }
                     else if (ValueVoucher<0)
                     {
                         ValueVoucher = 0;
-                        MessageBox.Show("Vui lòng nhập giá trị từ 0 đến 100");
+                        MessageBox.Show(From0to100);
                     }
                 }
         }
@@ -176,17 +206,17 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             VoucherInfo info = new VoucherInfo();
             if (string.IsNullOrEmpty(tbCode.Text) || string.IsNullOrEmpty(tbNumberInit.Text) || string.IsNullOrEmpty(tbValue.Text))
             {
-                MessageBox.Show("Không được để trống");
+                MessageBox.Show(NoEmpty);
                 return;
             }
             if (valueVoucher == 0 || numberInitVoucher == 0)
             {
-                MessageBox.Show("Các giá trị phải lớn hơn 0");
+                MessageBox.Show(PlusChar);
                 return;
             }
             if (expiryDateVoucher < DateTime.Now)
             {
-                MessageBox.Show("Thời hạn phải lớn hơn ngày hiện tại");
+                MessageBox.Show(BiggerNow);
                 return;
             }
             info.Code = CodeVoucher;

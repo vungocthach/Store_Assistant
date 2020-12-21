@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StoreAssitant.StoreAssistant_VoucherView;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 {
     public partial class TimePickerForm : Form
     {
+        string Lang ="vn";
+        string ChosseTime = "Chọn thời gian";
         public DateTime DateMin { get => dtp_From.Value; set => dtp_From.Value = value; }
         public DateTime DateMax { get => dtp_To.Value; set => dtp_To.Value = value; }
 
@@ -20,6 +23,13 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         public TimePickerForm()
         {
             InitializeComponent();
+
+            VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
+            if (Lang != Language.CultureName)
+            {
+                Lang = Language.CultureName;
+                SetLanguage();
+            }
 
             ClickedSubmitOK = new EventHandler((s, e) => { });
 
@@ -30,8 +40,23 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             dtp_To.ValueChanged += Dtp_To_ValueChanged;
 
             BtnDefault_Click(btnDefault, null);
+          
         }
 
+        private void VoucherView_ChangeLanguage(object sender, string e)
+        {
+            SetLanguage();
+        }
+
+        private void SetLanguage()
+        {
+            Language.InitLanguage(this);
+            label1.Text = Language.Rm.GetString("From:", Language.Culture);
+            label2.Text = Language.Rm.GetString("To:", Language.Culture);
+            btnSubmit.Text = Language.Rm.GetString("Confirm", Language.Culture);
+            btnDefault.Text = Language.Rm.GetString("Default", Language.Culture);
+            this.Text = Language.Rm.GetString("ChosseTime", Language.Culture);
+        }
         private void Dtp_To_ValueChanged(object sender, EventArgs e)
         {
             dtp_From.MaxDate = dtp_To.Value;
@@ -58,8 +83,8 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         {
             if (mode == 0)
             {
-                label1.Text = "Từ Tháng :";
-                label2.Text = "Đến Tháng :";
+                /*label1.Text = "Từ Tháng:";
+                label2.Text = "Đến Tháng:";*/
                 dtp_From.Value = new DateTime(dtp_From.Value.Year, dtp_From.Value.Month, 1, 0, 0, 0);
                 dtp_To.Value = new DateTime(dtp_To.Value.Year, dtp_To.Value.Month, 28, 23, 59, 59);
                 dtp_From.CustomFormat = dtp_To.CustomFormat = "MM/yyyy";
@@ -67,8 +92,8 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             }
             else if (mode == 1)
             {
-                label1.Text = "Từ Năm :";
-                label2.Text = "Đến Năm :";
+                /*label1.Text = "Từ Năm:";
+                label2.Text = "Đến Năm:";*/
                 dtp_From.Value = new DateTime(dtp_From.Value.Year, 1, 1, 0, 0, 0);
                 dtp_To.Value = new DateTime(dtp_To.Value.Year, 12, 1, 23, 59, 59);
                 dtp_From.CustomFormat = dtp_To.CustomFormat = "yyyy";

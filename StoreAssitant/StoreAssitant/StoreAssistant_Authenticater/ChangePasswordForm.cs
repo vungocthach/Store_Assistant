@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StoreAssitant.StoreAssistant_VoucherView;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,7 @@ namespace StoreAssitant.StoreAssistant_Authenticater
     public partial class ChangePasswordForm : Form
     {
         public event EventHandler ChangePasswordOK;
+        private string Lang = "vn";
         void OnChangePasswordOK(object sender, EventArgs e) { this.Close(); }
 
         public ChangePasswordForm()
@@ -26,6 +28,27 @@ namespace StoreAssitant.StoreAssistant_Authenticater
 
             btn_Submit.Click += Btn_Submit_Click;
             btn_Close.Click += Btn_Close_Click;
+            VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
+            if (Lang != Language.CultureName)
+            {
+                Lang = Language.CultureName;
+                SetLanguage();
+            }    
+        }
+
+        private void VoucherView_ChangeLanguage(object sender, string e)
+        {
+            SetLanguage();
+        }
+
+        private void SetLanguage()
+        {
+            Language.InitLanguage(this);
+            label1.Text = Language.Rm.GetString("Old password", Language.Culture);
+            label2.Text = Language.Rm.GetString("New password", Language.Culture);
+            label3.Text = Language.Rm.GetString("Re-enter new password", Language.Culture);
+            this.Text = btn_Submit.Text = Language.Rm.GetString("Change password", Language.Culture);
+            btn_Close.Text = Language.Rm.GetString("Cancel", Language.Culture);
         }
 
         private void Btn_Close_Click(object sender, EventArgs e)

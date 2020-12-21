@@ -11,11 +11,27 @@ using System.Drawing.Printing;
 using System.IO;
 using System.Windows.Markup;
 using System.Drawing.Imaging;
+using StoreAssitant.StoreAssistant_VoucherView;
 
 namespace StoreAssitant
 {
     public partial class ProductBox : UserControl
     {
+        private string Lang = "vn";
+        private string Chosse = "Chọn hình ảnh";
+        private string Wanrning = "Vui lòng chọn ảnh có kích thước < 26kb";
+        private string bigfile = "File quá lớn";
+        private string Onlychar = "Chỉ nhập chữ cái thường, số và khoảng trắng{0}Phân cách giữa các tag bằng dấu chấm phẩy ';'";
+        private string EnterError = "Lỗi nhập";
+        private string RequireInfo = "Đây là thông tin bắt buộc";
+        private string NoEmpty = "Không để trống";
+        private string NoSpecialChar = "Vui lòng không nhập các kí tự đặc biệt";
+        private String Require_50_Char = "Vui lòng nhập tên có độ dài ngắn hơn 50 kí tự";
+        private string Require_300_Char = "Vui lòng nhập phần mô tả có độ dài ngắn hơn 300 kí tự";
+        private string PlusChar= "Vui lòng chỉ nhập số nguyên dương";
+        private string Enter_From = "Vui lòng nhập giá trị từ 0 đến";
+
+
         [Category("My Properties"), Description("Image of product")]
         public Bitmap PDImage
         {
@@ -26,7 +42,7 @@ namespace StoreAssitant
                 {
                     // Draw default image
                     label_Image.Image = null;
-                    label_Image.Text = "Chọn hình ảnh" + Environment.NewLine + "(+)";
+                    label_Image.Text = Chosse + Environment.NewLine + "(+)";
                     return;
                 }
                 using (MemoryStream memoryStream = new MemoryStream())
@@ -36,7 +52,7 @@ namespace StoreAssitant
 
                     if (memoryStream.Length > 25000)
                     {
-                        MessageBox.Show("Vui lòng chọn ảnh có kích thước < 26kb", "File quá lớn", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show(Wanrning,bigfile, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
@@ -137,8 +153,39 @@ namespace StoreAssitant
             textBoxPrice.SizeChanged += TextBoxPrice_SizeChanged;
             label_Image.LocationChanged += TextBoxPrice_SizeChanged;
             label_Image.SizeChanged += TextBoxPrice_SizeChanged;
+
+            if ( Lang != Language.CultureName)
+            {
+                Lang = Language.CultureName;
+                SetLanguage();
+            }    
         }
 
+        private void VoucherView_ChangeLanguage(object sender, string e)
+        {
+            SetLanguage();
+        }
+
+        private void SetLanguage()
+        {
+            Language.InitLanguage(this);
+            label_Image.Text = Language.Rm.GetString("Add picture", Language.Culture);
+            label1.Text = Language.Rm.GetString("Name:", Language.Culture);
+            label2.Text = Language.Rm.GetString("Price:", Language.Culture);
+            label4.Text = Language.Rm.GetString("Detailed description:", Language.Culture);
+            Wanrning = Language.Rm.GetString("Wanrning", Language.Culture);
+            bigfile = Language.Rm.GetString("bigfile", Language.Culture);
+            Onlychar = Language.Rm.GetString("Onlychar", Language.Culture);
+            EnterError = Language.Rm.GetString("EnterError", Language.Culture);
+            RequireInfo = Language.Rm.GetString("RequireInfo", Language.Culture);
+            NoEmpty = Language.Rm.GetString("NoEmpty", Language.Culture);
+            NoSpecialChar = Language.Rm.GetString("NoSpecialChar", Language.Culture);
+            Require_50_Char = Language.Rm.GetString("Require_50_Char", Language.Culture);
+            Require_300_Char = Language.Rm.GetString("Require_300_Char", Language.Culture);
+            PlusChar = Language.Rm.GetString("PlusChar", Language.Culture);
+            Enter_From = Language.Rm.GetString("Enter_From", Language.Culture);
+            Chosse = Language.Rm.GetString("Chosse", Language.Culture);
+        }
         private void TextBoxPrice_SizeChanged(object sender, EventArgs e)
         {
             textBoxPrice.Location = new Point(label_Image.Location.X + label_Image.Width - textBoxPrice.Width, label_Image.Location.Y + label_Image.Height - textBoxPrice.Height);
@@ -216,8 +263,8 @@ namespace StoreAssitant
             TextBox txtb = (TextBox)sender;
             if (!ThunderStudio.TSString.IsMadeFrom(txtb.Text, "0123456789qwertyuiopasdfghjklzxcvbnm; "))
             {
-                string message = string.Format("Chỉ nhập chữ cái thường, số và khoảng trắng{0}Phân cách giữa các tag bằng dấu chấm phẩy ';'", Environment.NewLine);
-                SetErrorState(txtb, message, "Lỗi nhập");
+                string message = string.Format(Onlychar, Environment.NewLine);
+                SetErrorState(txtb, message, EnterError);
             }
             else
             {
@@ -231,8 +278,8 @@ namespace StoreAssitant
             TextBox txtb = (TextBox)sender;
             if (txtb.Text == string.Empty)
             {
-                string message = "Đây là thông tin bắt buộc.";
-                SetErrorState(txtb, message, "Không thể để trống");
+                string message = RequireInfo;
+                SetErrorState(txtb, message, NoEmpty);
             }
             else
             {
@@ -245,18 +292,18 @@ namespace StoreAssitant
             TextBox txtb = (TextBox)sender;
             if (ThunderStudio.TSString.ContainAnyCharacterOf(txtb.Text, ("{}[]();.,><?/*&^%$#@!`~|\\")))
             {
-                string message = "Vui lòng không nhập các kí tự đặc biệt";
-                SetErrorState(txtb, message, "Lỗi nhập");
+                string message = NoSpecialChar;
+                SetErrorState(txtb, message, EnterError);
             }
             else if (txtb.Text.Length > 50)
             {
-                string message = "Vui lòng nhập tên có độ dài ngắn hơn 50 kí tự";
-                SetErrorState(txtb, message, "Lỗi nhập");
+                string message = Require_50_Char;
+                SetErrorState(txtb, message, EnterError);
             }
             else if (txtb.Text == string.Empty)
             {
-                string message = "Đây là thông tin bắt buộc";
-                SetErrorState(txtb, message, "Không thể để trống");
+                string message = RequireInfo;
+                SetErrorState(txtb, message, NoEmpty);
             }
             else
             {
@@ -270,8 +317,8 @@ namespace StoreAssitant
 
             if (txtb.Text.Length > 300)
             {
-                string message = "Vui lòng nhập phần mô tả có độ dài ngắn hơn 300 kí tự";
-                SetErrorState(txtb, message, "Lỗi nhập");
+                string message = Require_300_Char;
+                SetErrorState(txtb, message, EnterError);
             }
             else
             {
@@ -287,8 +334,8 @@ namespace StoreAssitant
                 
                 if (txtb.Text.Trim() == string.Empty)
                 {
-                    string message = "Đây là thông tin bắt buộc";
-                    SetErrorState(txtb, message, "Không thể để trống");
+                    string message = RequireInfo;
+                    SetErrorState(txtb, message, NoEmpty);
                 }
                 else
                 {
@@ -298,13 +345,13 @@ namespace StoreAssitant
             }
             catch (FormatException)
             {
-                string message = "Vui lòng chỉ nhập số nguyên dương";
-                SetErrorState(txtb, message, "Lỗi nhập");
+                string message = PlusChar;
+                SetErrorState(txtb, message, EnterError);
             }
             catch (OverflowException)
             {
-                string message = string.Format("Vui lòng nhập giá trị từ 0 đến {0}", int.MaxValue.ToString("N0"));
-                SetErrorState(txtb, message, "Lỗi nhập");
+                string message = string.Format(Enter_From + "{0}", int.MaxValue.ToString("N0"));
+                SetErrorState(txtb, message, EnterError);
             }
         }
 
@@ -319,14 +366,14 @@ namespace StoreAssitant
             else
             {
                 // Draw default image
-                label_Image.Text = "Chọn hình ảnh" + Environment.NewLine + "(+)";
+                label_Image.Text =Chosse  + Environment.NewLine + "(+)";
             }
         }
         private string GetPath()
         {
             string rs = null;
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Title = "Chọn ảnh";
+            openFileDialog.Title = Chosse;
             openFileDialog.Filter = "Image File (*.img, *.bmp, *.jpg, *.png)|*.img;*.bmp;*.jpg;*.png";
             openFileDialog.FileOk += new CancelEventHandler((object sender, CancelEventArgs e) =>
             {

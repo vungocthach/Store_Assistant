@@ -16,21 +16,67 @@ namespace StoreAssitant.StoreAssistant_AccountView
     public partial class AccountView : UserControl
     {
         public event EventHandler ClickSignOut;
+        string Lang = "vn";
+        string Cannotrehibilitate = "Thao tác sẽ không thể phục hồi";
+        string Areusure = " Bạn chắc chắn muốn xóa tài khoản này?";
+        string DelAcc = "Xóa tài khoản";
+        string SuccessDel = "Xóa tài khoản thành công";
+        string failDel = "Xóa tài khoản thất bại";
+        string Nondefine = "Lỗi không xác định";
+        string SuccessChangePass = "Đổi mật khẩu thành công!";
+        string SuccessCreateAcc ="Tạo tài khoản nhân viên thành công!";
         void OnClickSignOut(object sender, EventArgs e) { }
 
-        string[] roles ;
+        string[] roles = new string[2] { "Quản Lý", "Nhân viên" };
 
+        public void SetLanguage()
+        {
+            Language.InitLanguage(this);
+            gr_user.Text = Language.Rm.GetString("Account infomation", Language.Culture);
+            dataGridView1.Columns[0].HeaderText = Language.Rm.GetString("Username", Language.Culture);
+            dataGridView1.Columns[1].HeaderText = Language.Rm.GetString("Position", Language.Culture);
+            btn_AddAccount.Text = Language.Rm.GetString("Add", Language.Culture);
+            btn_DeleteAccount.Text = Language.Rm.GetString("Delete", Language.Culture);
+            btn_ResetPass.Text = Language.Rm.GetString("Change password", Language.Culture);
+            btn_SignOut.Text = Language.Rm.GetString("Sign out", Language.Culture);
+            labelTitile.Text = Language.Rm.GetString("Staff infomation", Language.Culture);
+            lb_username.Text = Language.Rm.GetString("User name:", Language.Culture);
+            roles[0] = Language.Rm.GetString("Staff", Language.Culture);
+            roles[1] = Language.Rm.GetString("Manage", Language.Culture);
+            lb_role.Text = Language.Rm.GetString("Position:", Language.Culture);
+            Cannotrehibilitate = Language.Rm.GetString("Cannotrehibilitate", Language.Culture);
+            Areusure = Language.Rm.GetString("Areusure", Language.Culture);
+            DelAcc = Language.Rm.GetString("DelAcc", Language.Culture);
+            SuccessDel = Language.Rm.GetString("SuccessDel", Language.Culture);
+            failDel = Language.Rm.GetString("failDel", Language.Culture);
+            Nondefine = Language.Rm.GetString("Nonedefine", Language.Culture);
+            SuccessChangePass = Language.Rm.GetString("SuccessChangePass", Language.Culture);
+            SuccessCreateAcc = Language.Rm.GetString("SuccessCreateAcc", Language.Culture);
+        }
         public AccountView()
         {
             InitializeComponent();
             InitializeEventHandler();
 
-            roles = new string[2] { "Quản Lý", "Nhân viên" };
 
             ClickSignOut = new EventHandler(OnClickSignOut);
             gr_manager.Visible = false;
 
             dataGridView1.Font = new Font(dataGridView1.Font.FontFamily, 11f);
+
+            StoreAssistant_VoucherView.VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
+
+            if ( Lang != Language.CultureName)
+            {
+                Lang = Language.CultureName;
+                SetLanguage();
+            }    
+        }
+
+        private void VoucherView_ChangeLanguage(object sender, string e)
+        {
+            //MessageBox.Show("changelanguage", e);
+            SetLanguage();
         }
 
         private void DataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -43,7 +89,7 @@ namespace StoreAssitant.StoreAssistant_AccountView
         {
             if (Authenticator.CurrentUser == null) { throw new AuthenticationException("Current user's account must not be null"); }
             txt_username.Text = Authenticator.CurrentUser.UserName;
-            lb_role.Text = string.Format("Phân quyền : {0}", roles[(int)Authenticator.CurrentUser.Role]);
+            txb_roles.Text = string.Format("{0}", roles[(int)Authenticator.CurrentUser.Role]);
             if (Authenticator.CurrentUser.Role == UserInfo.UserRole.Manager)
             {
                 gr_manager.Visible = true;
@@ -61,8 +107,7 @@ namespace StoreAssitant.StoreAssistant_AccountView
             if (list_User == null) { return; }
             foreach (UserInfo userInfo in list_User)
             {
-                AddUserToGrid(userInfo);
-                
+                AddUserToGrid(userInfo);              
             }
 
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
@@ -70,20 +115,20 @@ namespace StoreAssitant.StoreAssistant_AccountView
 
         private void Btn_DeleteAccount_Click(object sender, EventArgs e)
         {
-            string msg = string.Format("Thao tác sẽ không thể phục hồi{0}Bạn chắc chắn muỗn xóa tài khoản này?", Environment.NewLine);
-            DialogResult rs = MessageBox.Show(msg, "Xóa tài khoản", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            string msg = string.Format(Cannotrehibilitate + "{0}" + Areusure, Environment.NewLine);
+            DialogResult rs = MessageBox.Show(msg, DelAcc, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (rs == DialogResult.Yes)
             {
                 using (DatabaseController databaseController = new DatabaseController())
                 {
                     if (databaseController.DeleteUser(dataGridView1.SelectedRows[0].Cells[0].Value.ToString()))
                     {
-                        MessageBox.Show("Xóa tài khoản thành công");
+                        MessageBox.Show(SuccessDel);
                         dataGridView1.Rows.Remove(dataGridView1.SelectedRows[0]);
                     }
                     else
                     {
-                        MessageBox.Show("Xóa tài khoản thất bại", "Lỗi không xác định", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(failDel, Nondefine, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -91,14 +136,14 @@ namespace StoreAssitant.StoreAssistant_AccountView
 
         private void SignUpForm_SignUpOK(object sender, UserInfo e)
         {
-            MessageBox.Show("Tạo tài khoản nhân viên thành công!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(SuccessCreateAcc , string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
             AddUserToGrid(e);
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
         }
 
         private void Btn_AddAccount_Click(object sender, EventArgs e)
         {
-            SignUp signUpForm = new SignUp();
+            SignUp_form signUpForm = new SignUp_form();
             signUpForm.SignUpOK += SignUpForm_SignUpOK;
             signUpForm.StartPosition = FormStartPosition.CenterScreen;
             signUpForm.ShowDialog();
@@ -138,7 +183,7 @@ namespace StoreAssitant.StoreAssistant_AccountView
 
         private void ChangePasswordForm_ChangePasswordOK(object sender, EventArgs e)
         {
-            MessageBox.Show("Đổi mật khẩu thành công!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(SuccessChangePass, string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void Btn_SignOut_Click(object sender, EventArgs e)
