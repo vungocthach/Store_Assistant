@@ -11,6 +11,9 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -53,6 +56,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -66,6 +70,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PrintPDF.cs" />
+    <Compile Include="InternetServiceHandler.cs" />
+    <Compile Include="Language1.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resource_ThemeLight.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource_ThemeLight.resx</DependentUpon>
+    </Compile>
+    <Compile Include="StoreAssistant_AccountView\AccountManamentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StoreAssistant_AccountView\AccountManamentForm.Designer.cs">
+      <DependentUpon>AccountManamentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="StoreAssistant_BillView\BillInfo.cs" />
     <Compile Include="StoreAssistant_BillView\FormBill.cs">
       <SubType>Form</SubType>
@@ -97,7 +119,20 @@
     <Compile Include="StoreAssistant_Authenticater\SignUpForm.Designer.cs">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="StoreAssistant_Helper\AppManager.cs" />
     <Compile Include="StoreAssistant_Helper\BillHistory.cs" />
+    <Compile Include="StoreAssistant_SettingView\StoreInformationSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StoreAssistant_SettingView\StoreInformationSettingForm.Designer.cs">
+      <DependentUpon>StoreInformationSettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StoreAssistant_SettingView\TabSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StoreAssistant_SettingView\TabSelector.Designer.cs">
+      <DependentUpon>TabSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="StoreAssistant_HistoryView\HistoryView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -186,6 +221,21 @@
     <Compile Include="StoreAssistant_MenuView\MenuView.Designer.cs">
       <DependentUpon>MenuView.cs</DependentUpon>
     </Compile>
+    <Compile Include="StoreAssistant_SettingView\LanguageMode.cs" />
+    <Compile Include="StoreAssistant_SettingView\SettingView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StoreAssistant_SettingView\SettingView.Designer.cs">
+      <DependentUpon>SettingView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StoreAssistant_SettingView\SizeMode.cs" />
+    <Compile Include="StoreAssistant_SettingView\ThemeMode.cs" />
+    <Compile Include="StoreAssistant_SettingView\ToolView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="StoreAssistant_SettingView\ToolView.Designer.cs">
+      <DependentUpon>ToolView.cs</DependentUpon>
+    </Compile>
     <Compile Include="StoreAssistant_StatiticsView\CompareView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -229,6 +279,13 @@
     <Compile Include="StoreAssistant_MenuView\TitleControl.Designer.cs">
       <DependentUpon>TitleControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Resource_ThemeLight.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource_ThemeLight.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoreAssistant_AccountView\AccountManamentForm.resx">
+      <DependentUpon>AccountManamentForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_BillView\FormBill.resx">
       <DependentUpon>FormBill.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,6 +300,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_Authenticater\SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoreAssistant_SettingView\StoreInformationSettingForm.resx">
+      <DependentUpon>StoreInformationSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoreAssistant_SettingView\TabSelector.resx">
+      <DependentUpon>TabSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_HistoryView\HistoryView.resx">
       <DependentUpon>HistoryView.cs</DependentUpon>
@@ -301,6 +364,13 @@
     <Compile Include="StoreAssistant_VoucherView\VoucherView.Designer.cs">
       <DependentUpon>VoucherView.cs</DependentUpon>
     </Compile>
+    <Compile Include="StoreManager.cs" />
+    <Compile Include="string.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>string.resx</DependentUpon>
+    </Compile>
+    <Compile Include="string.en.cs" />
     <Compile Include="TSString.cs" />
     <EmbeddedResource Include="StoreAssistant_MenuView\AddProductForm.resx">
       <DependentUpon>AddProductForm.cs</DependentUpon>
@@ -327,14 +397,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <EmbeddedResource Include="StoreAssistant_SettingView\SettingView.resx">
+      <DependentUpon>SettingView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoreAssistant_SettingView\ToolView.resx">
+      <DependentUpon>ToolView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_StatiticsView\CompareView.resx">
       <DependentUpon>CompareView.cs</DependentUpon>
     </EmbeddedResource>
@@ -371,6 +442,12 @@
     <EmbeddedResource Include="StoreAssistant_VoucherView\VoucherView.resx">
       <DependentUpon>VoucherView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="string.en.resx" />
+    <EmbeddedResource Include="string.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>string.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="string.vn.resx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -433,12 +510,22 @@
     <None Include="Resources\121476880_662245951379057_3014594879334389444_n.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\iconfinder_Artboard_1_1790655.png" />
+    <None Include="Resources\iconfinder_french-fries-soft-drink-takeaway-fastfood-food_4306498.png" />
+    <None Include="Resources\iconfinder_exit_38999.png" />
+    <None Include="Resources\iconfinder_exit_38999_32x32.png" />
+    <None Include="Resources\iconfinder_f-check_256_282474_20x20.png" />
+    <Content Include="StoreAssistant_Helper\Store_Info.txt" />
+    <Content Include="StoreAssistant_Helper\Store_Info.xml" />
     <None Include="Resources\iconfinder_sale_lineal_color_cnvrt-04_3827715.png" />
     <None Include="Resources\logo.png" />
     <None Include="Resources\SUPBG.png" />
     <None Include="Resources\SignUpBG.png" />
     <None Include="Resources\SignUpBackGroud.png" />
     <None Include="Resources\gift-voucher.png" />
+    <None Include="Resources\BGSt.png" />
+    <None Include="Resources\Background.png" />
+    <None Include="Resources\Background2.png" />
     <Content Include="Resources\iconfinder_Cashier-2_3793351.png" />
     <None Include="Resources\iconfinder_icon-arrow-right-a_211619.png" />
     <None Include="Resources\iconfinder_sale_lineal_color_cnvrt-18_3827704.png" />

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using StoreAssitant.Class_Information;
 using System.Threading;
+using StoreAssitant.StoreAssistant_VoucherView;
 
 namespace StoreAssitant
 {
@@ -27,6 +28,10 @@ namespace StoreAssitant
         public TableBillInfo Billinfo { get; set; }
         private const int Space_lbSumPrice_pnCashier = 3;
         private SumPrice TotalPrice;
+        private string Lang = "vn";
+        private string Table = "BÀN";
+        private String TakeHome = "BÀN MANG VỀ";
+        private string Errordata = "Dữ liệu của bàn bị lỗi";
         #endregion
 
         public TableBill()
@@ -43,6 +48,27 @@ namespace StoreAssitant
 
             lbPrice.DataBindings.Add("Text", TotalPrice, "Price", true, DataSourceUpdateMode.OnPropertyChanged);
             this.MinimumSize = new Size((new TableLine()).MinimumSize.Width, (new TableLine()).MinimumSize.Height + tableTitle_pnl.MinimumSize.Height + titelLine1.MinimumSize.Height + lbSumPrice.Size.Height + Space_lbSumPrice_pnCashier*2);
+            if (Lang != Language.CultureName)
+            {
+                Lang = Language.CultureName;
+                SetLanguage();
+            }
+            else  VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
+            
+        }
+
+        private void VoucherView_ChangeLanguage(object sender, string e)
+        {
+            SetLanguage();
+        }
+
+        private void SetLanguage()
+        {
+            Language.InitLanguage(this);
+            TakeHome = Language.Rm.GetString("Take home", Language.Culture);
+            Table = Language.Rm.GetString("Table", Language.Culture);
+            lbSumPrice.Text = Language.Rm.GetString("Total", Language.Culture);
+            btnCashier.Text = Language.Rm.GetString("Pay", Language.Culture);
         }
 
         private void Billinfo_ChangedInfo(object sender, EventArgs e)
@@ -53,11 +79,11 @@ namespace StoreAssitant
         #region INIT TABLEBILL
         public void setData(TableBillInfo info)
         {
-            if (info.ID != 0) tableTitle_lb.Text = "BÀN " + info.ID;
-            else tableTitle_lb.Text = "BÀN MANG VỀ";
+            if (info.ID != 0) tableTitle_lb.Text = Table + " " + info.ID;
+            else tableTitle_lb.Text = TakeHome;
             if (info == null)
             {
-                MessageBox.Show("Dữ liệu của bàn bị lỗi");
+                MessageBox.Show(Errordata);
             }
             else
             {

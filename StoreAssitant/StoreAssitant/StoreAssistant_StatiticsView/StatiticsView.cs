@@ -164,6 +164,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                 int index = dataGridView1.Rows.Add(MenuView.ProductsList[s.ProductID].Name + i.ToString(), s.NumberOfProduct, s.GetRevenue());
                 dataGridView1.Rows[index].Tag = s;
                 dataGridView1.Rows[index].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+               
             }
 
             numTop.Maximum = dataGridView1.Rows.Count;

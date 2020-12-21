@@ -12,6 +12,7 @@ namespace StoreAssitant.StoreAssistant_TableView
 {
     public partial class TitelLine : UserControl
     {
+        string Lang = "vn";
         public TitelLine()
         {
             InitializeComponent();
@@ -21,8 +22,22 @@ namespace StoreAssitant.StoreAssistant_TableView
             lbSinglePrice.Size = new Size(this.Size.Width * 10 / 44, this.Size.Height);
             lbNumber.Size = new Size(this.Size.Width * 11 / 44, this.Size.Height);
             lbTotalPrice.Size = new Size(this.Size.Width * 10 / 44, this.Size.Height);
+
+            if (Lang != Language.CultureName)
+            {
+                Lang = Language.CultureName;
+                SetLanguage();
+            }    
         }
 
+        private void SetLanguage()
+        {
+            Language.InitLanguage(this);
+            lbName.Text = Language.Rm.GetString("Name", Language.Culture);
+            lbNumber.Text = Language.Rm.GetString("Quantum", Language.Culture);
+            lbSinglePrice.Text = Language.Rm.GetString("Unit price", Language.Culture);
+            lbTotalPrice.Text = Language.Rm.GetString("Amount", Language.Culture);
+        }
         private void TitelLine_SizeChanged(object sender, EventArgs e)
         {
             lbName.Size = new Size(this.Size.Width * 13 / 44, this.Size.Height);

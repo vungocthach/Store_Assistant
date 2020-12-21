@@ -28,23 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gr_user = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.txt_username = new System.Windows.Forms.TextBox();
             this.btn_SignOut = new System.Windows.Forms.Button();
             this.btn_ResetPass = new System.Windows.Forms.Button();
             this.lb_role = new System.Windows.Forms.Label();
             this.lb_username = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.col_username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_role = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gr_manager = new System.Windows.Forms.GroupBox();
             this.btn_DeleteAccount = new System.Windows.Forms.Button();
             this.btn_AddAccount = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.labelTitile = new System.Windows.Forms.Label();
+            this.txb_role = new System.Windows.Forms.TextBox();
             this.gr_user.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.gr_manager.SuspendLayout();
@@ -53,6 +54,7 @@
             // gr_user
             // 
             this.gr_user.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.gr_user.Controls.Add(this.txb_role);
             this.gr_user.Controls.Add(this.txt_username);
             this.gr_user.Controls.Add(this.btn_SignOut);
             this.gr_user.Controls.Add(this.btn_ResetPass);
@@ -75,12 +77,13 @@
             // 
             this.txt_username.BackColor = System.Drawing.Color.White;
             this.txt_username.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt_username.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_username.Location = new System.Drawing.Point(152, 31);
+            this.txt_username.Font = new System.Drawing.Font("Times New Roman", 14F);
+            this.txt_username.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.txt_username.Location = new System.Drawing.Point(158, 26);
             this.txt_username.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
             this.txt_username.Name = "txt_username";
             this.txt_username.ReadOnly = true;
-            this.txt_username.Size = new System.Drawing.Size(378, 17);
+            this.txt_username.Size = new System.Drawing.Size(349, 22);
             this.txt_username.TabIndex = 4;
             this.txt_username.TabStop = false;
             // 
@@ -137,17 +140,43 @@
             this.lb_username.TabIndex = 0;
             this.lb_username.Text = "Tên đăng nhập :";
             // 
+            // label1
+            // 
+            this.label1.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.label1.Location = new System.Drawing.Point(148, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(360, 27);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "________________________________________________________________________________";
+            // 
+            // label2
+            // 
+            this.label2.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.label2.Location = new System.Drawing.Point(152, 57);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(360, 23);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "________________________________________________________________________________";
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_username,
+            this.colFullname,
             this.col_role});
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
@@ -156,18 +185,37 @@
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.ShowEditingIcon = false;
             this.dataGridView1.Size = new System.Drawing.Size(650, 375);
             this.dataGridView1.TabIndex = 1;
             // 
             // col_username
             // 
+            this.col_username.DividerWidth = 2;
+            this.col_username.FillWeight = 274.1117F;
             this.col_username.HeaderText = "Tên đăng nhập";
+            this.col_username.MinimumWidth = 180;
             this.col_username.Name = "col_username";
             this.col_username.ReadOnly = true;
+            this.col_username.Width = 180;
+            // 
+            // colFullname
+            // 
+            this.colFullname.DividerWidth = 2;
+            this.colFullname.FillWeight = 12.94417F;
+            this.colFullname.HeaderText = "Họ Và Tên";
+            this.colFullname.MinimumWidth = 200;
+            this.colFullname.Name = "colFullname";
+            this.colFullname.ReadOnly = true;
+            this.colFullname.Width = 350;
             // 
             // col_role
             // 
+            this.col_role.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_role.DividerWidth = 2;
+            this.col_role.FillWeight = 12.94417F;
             this.col_role.HeaderText = "Phân cấp";
             this.col_role.Name = "col_role";
             this.col_role.ReadOnly = true;
@@ -216,24 +264,6 @@
             this.btn_AddAccount.Text = "Thêm";
             this.btn_AddAccount.UseVisualStyleBackColor = false;
             // 
-            // label1
-            // 
-            this.label1.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.label1.Location = new System.Drawing.Point(148, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(350, 27);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "________________________________________________________________________________";
-            // 
-            // label2
-            // 
-            this.label2.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.label2.Location = new System.Drawing.Point(148, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(350, 27);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "________________________________________________________________________________";
-            // 
             // labelTitile
             // 
             this.labelTitile.BackColor = System.Drawing.Color.CornflowerBlue;
@@ -247,6 +277,20 @@
             this.labelTitile.Text = "Thông tin nhân viên";
             this.labelTitile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.labelTitile.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // txb_role
+            // 
+            this.txb_role.BackColor = System.Drawing.Color.White;
+            this.txb_role.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txb_role.Font = new System.Drawing.Font("Times New Roman", 14F);
+            this.txb_role.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.txb_role.Location = new System.Drawing.Point(156, 54);
+            this.txb_role.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
+            this.txb_role.Name = "txb_role";
+            this.txb_role.ReadOnly = true;
+            this.txb_role.Size = new System.Drawing.Size(267, 22);
+            this.txb_role.TabIndex = 7;
+            this.txb_role.TabStop = false;
             // 
             // AccountView
             // 
@@ -275,8 +319,6 @@
         private System.Windows.Forms.Label lb_role;
         private System.Windows.Forms.Label lb_username;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_username;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_role;
         private System.Windows.Forms.GroupBox gr_manager;
         private System.Windows.Forms.Button btn_DeleteAccount;
         private System.Windows.Forms.Button btn_AddAccount;
@@ -284,6 +326,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelTitile;
-
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_username;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFullname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_role;
+        private System.Windows.Forms.TextBox txb_role;
     }
 }

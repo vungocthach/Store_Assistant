@@ -103,6 +103,36 @@ namespace StoreAssitant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Background {
+            get {
+                object obj = ResourceManager.GetObject("Background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Background2 {
+            get {
+                object obj = ResourceManager.GetObject("Background2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BGSt {
+            get {
+                object obj = ResourceManager.GetObject("BGSt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap button_add {
             get {
                 object obj = ResourceManager.GetObject("button_add", resourceCulture);
@@ -163,6 +193,16 @@ namespace StoreAssitant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_Artboard_1_1790655 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_Artboard_1_1790655", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_Cashier_2_3793351 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_Cashier-2_3793351", resourceCulture);
@@ -176,6 +216,46 @@ namespace StoreAssitant.Properties {
         internal static System.Drawing.Bitmap iconfinder_caution_1055096 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_caution_1055096", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_exit_38999 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_exit_38999", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_exit_38999_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_exit_38999_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_f_check_256_282474_20x20 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_f-check_256_282474_20x20", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_french_fries_soft_drink_takeaway_fastfood_food_4306498 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_french-fries-soft-drink-takeaway-fastfood-food_4306498", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

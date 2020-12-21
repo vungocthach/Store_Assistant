@@ -14,6 +14,7 @@ namespace StoreAssitant
     public partial class LogInView : UserControl
     {
         public UserInfo u;
+        private string Lang = "vn";
 
         #region Create event
 
@@ -59,6 +60,10 @@ namespace StoreAssitant
         }
         public void InitializeField()
         {
+            if (Lang != Language.CultureName)
+            {
+                SetLanguage();
+            }    
             u = new UserInfo();
 
             this.Size = new Size(423, 502);
@@ -87,7 +92,7 @@ namespace StoreAssitant
                 tb_User.ForeColor = Color.Black;
                 tb_User.Text = "";
             }
-          // else 
+       
                 if(tb_Password.Text =="")
             {
                 tb_Password.PasswordChar = '\0';
@@ -104,7 +109,7 @@ namespace StoreAssitant
                 tb_Password.ForeColor = Color.Black;
                 tb_Password.Text = "";
             }
-         //   else
+       
                 if (tb_User.Text == "")
             {
                 tb_User.ForeColor = Color.Gray;
@@ -129,7 +134,13 @@ namespace StoreAssitant
             SetData();
             _Click(this, e);
         }
-
-        
+        public void SetLanguage()
+        {
+            Language.InitLanguage(this);
+            tb_User.Text = Language.Rm.GetString("User name", Language.Culture);
+            tb_Password.Text = Language.Rm.GetString("Password", Language.Culture);
+            Btn_Login.Text = Language.Rm.GetString("Login", Language.Culture);
+            Lb_ForgotPass.Text = Language.Rm.GetString("Forgot password?", Language.Culture);
+        }
     }
 }

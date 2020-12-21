@@ -89,6 +89,47 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             }
         }
 
+        private Bitmap imageLast;
+        public Bitmap ImageLast
+        {
+            get => imageLast;
+            set
+            {
+                imageLast = value;
+                AutoScale_ButtonImage(btnLast, value);
+            }
+        }
+        private Bitmap imageNxt;
+        public Bitmap ImageNxt
+        {
+            get => (Bitmap)btnNxt.Image;
+            set
+            {
+                imageLast = value;
+                AutoScale_ButtonImage(btnNxt, value);
+            }
+        }
+        private Bitmap imagePre;
+        public Bitmap ImagePre
+        {
+            get => (Bitmap)btnPre.Image;
+            set
+            {
+                imagePre = value;
+                AutoScale_ButtonImage(btnPre, value);
+            }
+        }
+        private Bitmap imageFirst;
+        public Bitmap ImageFirst
+        {
+            get => (Bitmap)btnFirst.Image;
+            set
+            {
+                imageFirst = value;
+                AutoScale_ButtonImage(btnFirst, value);
+            }
+        }
+
         int seletedIndex;
         public int SelectedIndex
         {
@@ -143,32 +184,29 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             txtPage.KeyDown += TxtPage_KeyDown1;
             txtPage.KeyPress += TxtPage_KeyPress;
             txtPage.KeyUp += TxtPage_KeyUp;
-
+            
+            imageFirst = new Bitmap(btnFirst.Image);
+            imageLast = new Bitmap(btnLast.Image);
+            imageNxt = new Bitmap(btnLast.Image);
+            imagePre = new Bitmap(btnPre.Image);
+            
             btnFirst.Click += new EventHandler((s, e) => { SelectedIndex = MinimumRange; });
-            AutoScale_ButtonImage(btnFirst);
+            btnFirst.SizeChanged += (s, e) => { AutoScale_ButtonImage(s as Button, imageFirst); };
 
             btnPre.Click += new EventHandler((s, e) => { SelectedIndex--; });
-            AutoScale_ButtonImage(btnPre);
+            btnPre.SizeChanged += (s, e) => { AutoScale_ButtonImage(s as Button, imagePre); };
 
             btnNxt.Click += new EventHandler((s, e) => { SelectedIndex++; });
-            AutoScale_ButtonImage(btnNxt);
+            btnNxt.SizeChanged += (s, e) => { AutoScale_ButtonImage(s as Button, imageNxt); };
 
             btnLast.Click += new EventHandler((s, e) => { SelectedIndex = MaximumRange; });
-            AutoScale_ButtonImage(btnLast);
+            btnLast.SizeChanged += (s, e) => { AutoScale_ButtonImage(s as Button, imageLast); };
         }
 
-        void AutoScale_ButtonImage(Button btn)
+        void AutoScale_ButtonImage(Button btn, Bitmap image)
         {
-            btn.SizeChanged += Btn_SizeChanged;
-        }
-
-        private void Btn_SizeChanged(object sender, EventArgs e)
-        {
-            Button btn = (Button)sender;
-            Image temp = btn.Image;
             int bestSize = (btn.Height < btn.Width) ? btn.Height : btn.Width;
-            btn.Image = new Bitmap(btn.Image, bestSize, bestSize );
-            temp.Dispose();
+            btn.Image = new Bitmap(image, bestSize, bestSize);
         }
 
         private void TxtPage_MouseCaptureChanged(object sender, EventArgs e)

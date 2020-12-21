@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using StoreAssitant.Class_Information;
+using StoreAssitant.StoreAssistant_VoucherView;
 
 namespace StoreAssitant
 {
@@ -19,7 +20,8 @@ namespace StoreAssitant
         private int percentDecrease;
         public BillInfo info = null;
         public bool isConfirm;
-
+        private string Lang = "vn";
+       
         #endregion
 
 
@@ -32,6 +34,17 @@ namespace StoreAssitant
             btnCancel.Click += BtnCancel_Click;
             textBox4.KeyPress += TextBox4_KeyPress;
             textBox2.TextChanged += TextBox2_TextChanged;
+            if ( Lang != Language.CultureName)
+            {
+                Lang = Language.CultureName;
+                SetLanguage();
+            }    
+            VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
+        }
+
+        private void VoucherView_ChangeLanguage(object sender, string e)
+        {
+            SetLanguage();
         }
 
         #region LOAD RANDOM DATA FOR DATABASE
@@ -89,6 +102,13 @@ namespace StoreAssitant
             btnCashier.Click += BtnCashier_Click;
             btnCancel.Click += BtnCancel_Click;
             textBox4.KeyPress += TextBox4_KeyPress;
+
+            if (Lang != Language.CultureName)
+            {
+                Lang = Language.CultureName;
+                SetLanguage();
+            }
+            VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
         }
 
         private void TextBox4_KeyPress(object sender, KeyPressEventArgs e)
@@ -145,6 +165,27 @@ namespace StoreAssitant
                 info.PropertyChanged += Info_PropertyChanged;
                 Init_Bill();
             }
+        }
+
+        void SetLanguage()
+        {
+            Language.InitLanguage(this);
+            lbCashier_Form.Text = Language.Rm.GetString("PAY BILL", Language.Culture);
+            lbTableName.Text = Language.Rm.GetString("Table:", Language.Culture);
+            lbDate.Text = Language.Rm.GetString("Time:", Language.Culture);
+            lbSTT.Text = Language.Rm.GetString("Number", Language.Culture);
+            lbNameProduct.Text = Language.Rm.GetString("Product name", Language.Culture);
+            lbNumber.Text = Language.Rm.GetString("Qty", Language.Culture);
+            lbSinglePrice.Text = Language.Rm.GetString("Unit price", Language.Culture);
+            lbSumPrice.Text = Language.Rm.GetString("Amount", Language.Culture);
+            lbPrice_Bill.Text = Language.Rm.GetString("Total", Language.Culture);
+            lbSale.Text = Language.Rm.GetString("Voucher", Language.Culture);
+            lbMoney_Customer.Text = Language.Rm.GetString("Take", Language.Culture);
+            lbExchange.Text = Language.Rm.GetString("Give", Language.Culture);
+            lbPay.Text = Language.Rm.GetString("Pay", Language.Culture);
+            btnCancel.Text = Language.Rm.GetString("Cancel", Language.Culture);
+            btnCashier.Text = Language.Rm.GetString("Pay", Language.Culture);
+            this.Text = Language.Rm.GetString("Pay", Language.Culture);
         }
         public void setData(BillInfo table)
         {

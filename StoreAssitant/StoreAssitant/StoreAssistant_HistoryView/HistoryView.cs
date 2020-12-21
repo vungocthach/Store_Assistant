@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using StoreAssitant.Class_Information;
+using StoreAssitant.StoreAssistant_VoucherView;
 
 namespace StoreAssitant.StoreAssistant_HistoryView
 {
     public partial class HistoryView : UserControl
     {
         double[] columnWeights;
+        string Lang = "vn";
         public double[] ColumnsWeights { get => columnWeights;
             set
             {
@@ -62,8 +64,36 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             dtp_To.ValueChanged += Dtp_From_ValueChanged;
 
             this.Load += HistoryView_Load;
+
+            VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
+
+            if ( Lang != Language.CultureName)
+            {
+                Lang = Language.CultureName;
+                SetLanguge();
+            }    
         }
 
+        private void VoucherView_ChangeLanguage(object sender, string e)
+        {
+            SetLanguge();
+        }
+
+        private void SetLanguge()
+        {
+            Language.InitLanguage(this);
+            groupBox1.Text = Language.Rm.GetString("Time", Language.Culture);
+            groupBox2.Text = Language.Rm.GetString("Search", Language.Culture);
+            label1.Text = Language.Rm.GetString("From:", Language.Culture);
+            label2.Text = Language.Rm.GetString("To:", Language.Culture);
+            label3.Text = Language.Rm.GetString("Code:", Language.Culture);
+            button1.Text = Language.Rm.GetString("Advanced", Language.Culture);
+            dataGridView1.Columns[0].HeaderText = Language.Rm.GetString("Number", Language.Culture);
+            dataGridView1.Columns[1].HeaderText = Language.Rm.GetString("Bill code", Language.Culture);
+            dataGridView1.Columns[2].HeaderText = Language.Rm.GetString("Date", Language.Culture);
+            dataGridView1.Columns[3].HeaderText = Language.Rm.GetString("Table", Language.Culture);
+            dataGridView1.Columns[4].HeaderText = Language.Rm.GetString("Total", Language.Culture);
+        }
         private void HistoryView_ClickDelete(object sender, EventArgs e)
         {
             if (dataGridView1.ContextMenu.Tag == null) { throw new NullReferenceException(); }
@@ -191,7 +221,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             }
                 // Show bill
                 FormBill formBill = new FormBill(billInfo);
-            formBill.ShowDialog();
+                formBill.ShowDialog();
             Console.WriteLine("Double clicked to bill : " + billInfo.ID.ToString());
         }
 
@@ -260,7 +290,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
                 DataGridViewRow row = dataGridView1.Rows[index];
                 row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 row.Tag = b;
-                if ( row.Index % 2 == 0) row.DefaultCellStyle.BackColor = Color.LightSkyBlue;
+                if ( row.Index % 2 != 0) row.DefaultCellStyle.BackColor = Color.LightSkyBlue;
             }
             dataGridView1.ResumeLayout();
         }

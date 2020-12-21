@@ -16,6 +16,8 @@ using StoreAssitant.Class_Information;
 using StoreAssitant.StoreAssistant_VoucherView;
 using StoreAssitant.StoreAssistant_Information;
 using System.ComponentModel;
+using System.Net;
+using System.Net.NetworkInformation;
 
 namespace StoreAssitant
 {
@@ -41,6 +43,9 @@ namespace StoreAssitant
         string TB_USER;
         string[] COLUMNS_TB_USER;
 
+        string TB_STRING100;
+        string[] COLUMNS_TB_STRING100; 
+
         public DatabaseController()
         {
             username = "laptrinhtrucquan";
@@ -57,10 +62,27 @@ namespace StoreAssitant
             COLUMNS_TB_PRODUCT = new string[5] { "ID", "PD_NAME", "PRICE", "DESCRIP", "IMAGE_ID" };
             TB_USER = "TB_USER";
             COLUMNS_TB_USER = new string[7] { "USERNAME", "PASS", "USER_TYPE", "sex", "Phone", "Birth" , "FullName"};
+            TB_STRING100 = "TB_STRING100";
+            COLUMNS_TB_STRING100 = new string[2] { "S_KEY", "S_VALUE" };
 
             connection = new SqlConnection(SQLStatementManager.GetConnectionString(username, password, serverName, databaseName));
             cmd = new SqlCommand();
             cmd.Connection = connection;
+        }
+
+        public static bool IsOnline()
+        {
+            try
+            {
+                using (var client = new MyWebClient())
+                {
+                    using (client.OpenRead("http://google.com/generate_204")) return true;
+                }
+            }
+            catch (WebException)
+            {
+                return false;
+            }
         }
 
         public bool ConnectToSQLDatabase()
@@ -96,9 +118,10 @@ namespace StoreAssitant
             cmd.Transaction = connection.BeginTransaction();
         }
 
-        public void TransactionRollback()
+        public void TransactionRollback(bool needDispose = true)
         {
             cmd.Transaction.Rollback();
+            if (needDispose) { cmd.Transaction.Dispose(); }
         }
 
         public void TransactionCommit()
@@ -137,40 +160,6 @@ namespace StoreAssitant
             }
             return rs;
         }
-        /*
-        public List<ProductInfo> GetProductInfos()
-        {
-            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
-
-            List<ProductInfo> rs = null;
-
-            cmd.CommandText = string.Format("SELECT {0}.{1},{0}.{2},{0}.{3},{0}.{4},{5}.{7} FROM {0} LEFT JOIN {5} ON {0}.{1} = {5}.{6}",
-                TB_PRODUCT, COLUMNS_TB_PRODUCT[0], COLUMNS_TB_PRODUCT[1], COLUMNS_TB_PRODUCT[2], COLUMNS_TB_PRODUCT[3],
-                TB_IMAGE, COLUMNS_TB_IMAGE[0], COLUMNS_TB_IMAGE[1]);
-
-            using (SqlDataReader reader = cmd.ExecuteReader())
-            {
-                rs = new List<ProductInfo>();
-                while (reader.Read())
-                {
-                    ProductInfo info = new ProductInfo(reader.GetInt16(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3));
-                    if (!reader.IsDBNull(4))
-                    {
-                        using (MemoryStream memoryStream = new MemoryStream(reader.GetSqlBinary(4).Value))
-                        {
-                            if (memoryStream.Length > 0)
-                            {
-                                info.Image = new Bitmap(memoryStream);
-                            }
-                        }
-                    }
-                    rs.Add(info);
-                }
-                reader.Close();
-            }
-            return rs;
-        }
-        */
         public Dictionary<int, ProductInfo> GetProductInfos()
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
@@ -439,6 +428,7 @@ namespace StoreAssitant
             if (productInfo.Image != null) { rs = rs && DeleteImage(productInfo.Id); }
             if (rs) { TransactionCommit(); }
             else { TransactionRollback(); }
+            
             return rs;
 #else
             return true;
@@ -519,7 +509,7 @@ namespace StoreAssitant
         {
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
 
-            cmd.CommandText = string.Format("SELECT {1},{2} FROM {0} WHERE {2}=@{2}_;", TB_USER, COLUMNS_TB_USER[0], COLUMNS_TB_USER[2]);
+            cmd.CommandText = string.Format("SELECT {1},{2},{3} FROM {0} WHERE {2}=@{2}_;", TB_USER, COLUMNS_TB_USER[0], COLUMNS_TB_USER[2], COLUMNS_TB_USER[6]);
             cmd.Parameters.Clear();
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[2]), SqlDbType.SmallInt).Value = (int)role;
 
@@ -528,7 +518,7 @@ namespace StoreAssitant
                 List<UserInfo> rs = new List<UserInfo>();
                 while (reader.Read())
                 {
-                    rs.Add(new UserInfo() { UserName = reader.GetString(0), Role = UserInfo.GetUserRole(reader.GetInt16(1)) });
+                    rs.Add(new UserInfo() { UserName = reader.GetString(0), Role = UserInfo.GetUserRole(reader.GetInt16(1)), FullName = reader.GetString(2) });
                 }
 
                 return rs;
@@ -1062,6 +1052,87 @@ namespace StoreAssitant
             cmd.Parameters.Clear();
             cmd.Parameters.AddWithValue("@name", name);
             cmd.ExecuteNonQuery();
+        }
+
+        const string KEY_STRING100_STORE_NAME = "_name";
+        const string KEY_STRING100_STORE_PHONE = "_phone";
+        const string KEY_STRING100_STORE_WEBSITE = "_web";
+        public string GetString100 (string key)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("SELECT {2} FROM {0} WHERE {1}=@{1}_;", TB_STRING100, COLUMNS_TB_STRING100[0], COLUMNS_TB_STRING100[1]);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_STRING100[0]), SqlDbType.VarChar).Value = key;
+            string rs;
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    rs = reader.GetString(0);
+                }
+                else { throw new Exception("Database has wrong format"); }
+            }
+
+            return rs;
+        }
+        public bool UpdateString100(string key, string value)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            cmd.CommandText = string.Format("UPDATE {0} SET {2} = @{2}_ WHERE {1} = @{1}_", TB_STRING100, COLUMNS_TB_STRING100[0], COLUMNS_TB_STRING100[1]);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_STRING100[0]), SqlDbType.VarChar).Value = key;
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_STRING100[1]), SqlDbType.NVarChar).Value = value;
+
+            if (cmd.ExecuteNonQuery() == 1) { return true; }
+
+            return false;
+        }
+
+        public string GetStore_Name()
+        {
+            return GetString100(KEY_STRING100_STORE_NAME);
+        }
+
+        public string GetStore_Phone()
+        {
+            return GetString100(KEY_STRING100_STORE_PHONE);
+        }
+
+        public string GetStore_Website()
+        {
+            return GetString100(KEY_STRING100_STORE_WEBSITE);
+        }
+
+        public StoreInformation GetStoreInformation()
+        {
+            StoreInformation rs = new StoreInformation()
+            {
+                Name = GetStore_Name(),
+                PhoneNumber = GetStore_Phone(),
+                WebAddress = GetStore_Website()
+            };
+            return rs;
+        }
+
+        public bool UpdateStoreInfo(StoreInformation info)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+            bool rs = false;
+            TransactionStart();
+            if (UpdateString100(KEY_STRING100_STORE_NAME, info.Name) 
+                && UpdateString100(KEY_STRING100_STORE_PHONE, info.PhoneNumber)
+                && UpdateString100(KEY_STRING100_STORE_WEBSITE, info.WebAddress))
+            {
+                TransactionCommit();
+                rs = true;
+            }
+            else
+            {
+                TransactionRollback();
+                rs = false;
+            }
+            
+            return rs;
         }
 
         public void Dispose()

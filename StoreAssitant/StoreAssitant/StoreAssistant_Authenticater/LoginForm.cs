@@ -32,7 +32,7 @@ namespace StoreAssitant
 
         private void LogInView_Click_SignUp(object sender, EventArgs e)
         {
-            SignUp sign = new SignUp();
+            SignUp_form sign = new SignUp_form();
             sign.ShowDialog();
         }
 
@@ -42,6 +42,6 @@ namespace StoreAssitant
 
             Click_Login(this, u);
         }
-
+        
     }
 }

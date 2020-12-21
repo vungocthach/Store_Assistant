@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StoreAssitant.StoreAssistant_VoucherView;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,9 @@ namespace StoreAssitant
     public partial class AddProductForm : Form
     {
         public event EventHandler<ProductInfo> ClickSubmitOK;
+        String Lang = "vn";
+        String Error = "Lỗi";
+        String illegal = "Tồn tại thông tin chưa hợp lệ";
 
         public AddProductForm()
         {
@@ -20,6 +24,14 @@ namespace StoreAssitant
             ClickSubmitOK = new EventHandler<ProductInfo>(OnSubmitOK);
             this.btn_Submit.Click += Btn_Submit_Click;
             this.btn_Cancel.Click += Btn_Cancel_Click;
+
+            if (Lang != Language.CultureName)
+            {
+                Lang = Language.CultureName;
+                SetLanguage();
+            }
+            VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
+
         }
 
         int id_temp = -1;
@@ -30,10 +42,22 @@ namespace StoreAssitant
             this.btn_Submit.Click += Btn_Submit_Click;
             this.btn_Cancel.Click += Btn_Cancel_Click;
 
+            if (Lang != Language.CultureName)
+            {
+                Lang = Language.CultureName;
+                SetLanguage();
+            }
+            VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
+
             SetData(info);
             this.Text = "Thay đổi thông tin món ăn";
-            btn_Submit.Text = "Lưu";
             productBox1.IsReadOnlyPDName = true;
+          
+        }
+
+        private void VoucherView_ChangeLanguage(object sender, string e)
+        {
+            SetLanguage();
         }
 
         private void Btn_Cancel_Click(object sender, EventArgs e)
@@ -45,7 +69,7 @@ namespace StoreAssitant
         {
             if (!productBox1.FullCheck())
             {
-                MessageBox.Show("Tồn tại thông tin chưa hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(illegal, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -79,6 +103,14 @@ namespace StoreAssitant
             productBox1.PDPrice = info.Price;
             productBox1.PDDescription = info.Description;
         }
-
+        public void SetLanguage()
+        {
+            Language.InitLanguage(this);
+            btn_Cancel.Text = Language.Rm.GetString("Cancel", Language.Culture);
+            btn_Submit.Text = Language.Rm.GetString("Confirm", Language.Culture);
+            Error = Language.Rm.GetString("Error", Language.Culture);
+            illegal = Language.Rm.GetString("illegal", Language.Culture);
+            this.Text = Language.Rm.GetString("AddPro", Language.Culture);
+        }
     }
 }
