@@ -133,7 +133,7 @@ namespace StoreAssitant.StoreAssistant_Helper
         /// <param name="value"></param>
         /// <param name="needSave"></param>
         public static void ChangeTheme(ThemeMode value, bool needSave = true, bool allowDuplicated = false)
-        {/*
+        {
             if (CurrentTheme != value || allowDuplicated)
             {
                 theme = value;
@@ -148,7 +148,7 @@ namespace StoreAssitant.StoreAssistant_Helper
                 {
                     colors = GetColors_Dark();
                 }
-            }*/
+            }
         }
 
         public static void ChangeLanguage(LanguageMode value, bool needSave = true)
