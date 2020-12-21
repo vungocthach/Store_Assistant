@@ -35,16 +35,33 @@ namespace StoreAssitant
             this.Name = "mainForm";
 
             toolView1.SizeChanged += ToolView1_SizeChanged;
+            toolView1.CheckUser();
             toolView1.ReloadData();
 
             pnlMenu.BackColor = Color.FromArgb(200, 240, 128, 24);
 
             SignOut = new EventHandler(OnSignOut);
 
+            tabSelector1.CheckUser();
             tabSelector1.SelectedTabChanged += TabSelector1_SelectedTabChanged;
             TabSelector1_SelectedTabChanged(tabSelector1, EventArgs.Empty);
             this.SizeChanged += Form1_SizeChanged;
             Form1_SizeChanged(this, null);
+
+            this.Load += Form1_Load;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            LoadTheme();
+        }
+
+        public void LoadTheme()
+        {
+            pnlMenu.BackColor = AppManager.GetColors("Toolbar_Background");
+            panel1.BackColor = AppManager.GetColors("Main_Background");
+            tabSelector1.LoadTheme();
+            toolView1.LoadTheme();
         }
 
         public void LoadWindowSize()
@@ -88,16 +105,6 @@ namespace StoreAssitant
                 cashierView.LoadDataFromDB();
                 SelectTab(cashierView);
             }
-            else if (tabSelector1.SelectedTabKey == "btnAccount")
-            {
-                if (accountView == null)
-                {
-                    accountView = new StoreAssistant_AccountView.AccountView();
-                    accountView.ClickSignOut += AccountView1_ClickSignOut;
-                }
-                accountView.SetData();
-                SelectTab(accountView);
-            }
             else if (tabSelector1.SelectedTabKey == "btnManager")
             {
                 if (managerModifyView == null)
@@ -116,15 +123,6 @@ namespace StoreAssitant
                 historyView.GetData();
                 SelectTab(historyView);
             }
-            else if (tabSelector1.SelectedTabKey == "btnSetting")
-            {
-                if (settingView == null)
-                {
-                    settingView = new StoreAssistant_SettingView.SettingView();
-                }
-                settingView.ReloadData();
-                SelectTab(settingView);
-            }
             else if (tabSelector1.SelectedTabKey == "btnStatistic")
             {
                 if (statiticsView == null)
@@ -135,7 +133,6 @@ namespace StoreAssitant
             }
             else if (tabSelector1.SelectedTabKey == "btnVoucher")
             {
-                //something wrong here
                 if (voucherView == null)
                 {
                     voucherView = new VoucherView();
@@ -145,7 +142,7 @@ namespace StoreAssitant
             }
             else
             {
-
+                //something wrong here
             }
         }
 
@@ -180,6 +177,7 @@ namespace StoreAssitant
         {
             panel1.Controls.Clear();
             tab.Dock = DockStyle.Fill;
+            tab.BackColor = Color.Transparent;
             panel1.Controls.Add(tab);
         }
 

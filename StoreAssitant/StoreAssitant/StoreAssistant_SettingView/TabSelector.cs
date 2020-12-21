@@ -58,6 +58,7 @@ namespace StoreAssitant.StoreAssistant_Helper
                 {
                     btn.FlatAppearance.MouseOverBackColor = colorButtonMouseOn;
                 }
+                SelectedButton.FlatAppearance.MouseOverBackColor = ColorButtonSelected_MouseOn;
             }
         }
         public Color ColorButtonNormal = Color.Transparent;
@@ -69,7 +70,6 @@ namespace StoreAssitant.StoreAssistant_Helper
             SelectedTabChanged = new EventHandler((s, e) => { });
 
             this.SizeChanged += TabSelector_SizeChanged;
-            this.Load += TabSelector_Load;
 
             foreach (Button button in flowLayoutPanel1.Controls)
             {
@@ -83,7 +83,7 @@ namespace StoreAssitant.StoreAssistant_Helper
             Button_Click(btnCashier, null);
         }
 
-        private void TabSelector_Load(object sender, EventArgs e)
+        public void CheckUser()
         {
             if (StoreAssistant_Authenticater.Authenticator.CurrentUser.Role != UserInfo.UserRole.Manager)
             {
@@ -123,6 +123,17 @@ namespace StoreAssitant.StoreAssistant_Helper
         {
             button.BackColor = ColorButtonNormal;
             button.FlatAppearance.MouseOverBackColor = ColorButtonMouseOn;
+        }
+
+        public void LoadTheme()
+        {
+            foreach (Control control in flowLayoutPanel1.Controls)
+            {
+                control.ForeColor = AppManager.GetColors("Main_Plaintext");
+            }
+            this.ColorButtonSelected = AppManager.GetColors("Tab_Selected");
+            this.ColorButtonMouseOn = AppManager.GetColors("Tab_MouseOn");
+            this.ColorButtonPressed = AppManager.GetColors("Tab_Clicked");
         }
     }
 }

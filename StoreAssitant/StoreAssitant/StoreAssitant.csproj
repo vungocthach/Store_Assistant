@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>StoreAssitant</RootNamespace>
     <AssemblyName>StoreAssitant</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -75,6 +75,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resource_ThemeLight.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource_ThemeLight.resx</DependentUpon>
+    </Compile>
     <Compile Include="StoreAssistant_AccountView\AccountManamentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,10 +119,16 @@
     </Compile>
     <Compile Include="StoreAssistant_Helper\AppManager.cs" />
     <Compile Include="StoreAssistant_Helper\BillHistory.cs" />
-    <Compile Include="StoreAssistant_MenuView\TabSelector.cs">
+    <Compile Include="StoreAssistant_SettingView\StoreInformationSettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StoreAssistant_SettingView\StoreInformationSettingForm.Designer.cs">
+      <DependentUpon>StoreInformationSettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StoreAssistant_SettingView\TabSelector.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="StoreAssistant_MenuView\TabSelector.Designer.cs">
+    <Compile Include="StoreAssistant_SettingView\TabSelector.Designer.cs">
       <DependentUpon>TabSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="StoreAssistant_HistoryView\HistoryView.cs">
@@ -266,6 +277,10 @@
     <Compile Include="StoreAssistant_MenuView\TitleControl.Designer.cs">
       <DependentUpon>TitleControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Resource_ThemeLight.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource_ThemeLight.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_AccountView\AccountManamentForm.resx">
       <DependentUpon>AccountManamentForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -284,7 +299,10 @@
     <EmbeddedResource Include="StoreAssistant_Authenticater\SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="StoreAssistant_MenuView\TabSelector.resx">
+    <EmbeddedResource Include="StoreAssistant_SettingView\StoreInformationSettingForm.resx">
+      <DependentUpon>StoreInformationSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StoreAssistant_SettingView\TabSelector.resx">
       <DependentUpon>TabSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_HistoryView\HistoryView.resx">

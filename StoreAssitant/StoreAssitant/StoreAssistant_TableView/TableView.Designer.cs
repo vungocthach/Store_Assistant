@@ -31,11 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TableView));
             this.tableGUI_pnl = new System.Windows.Forms.FlowLayoutPanel();
+            this.tableTakeHome = new StoreAssitant.TableControl();
             this.tableAdd_btn = new System.Windows.Forms.Panel();
             this.tableTitle_lb = new System.Windows.Forms.Label();
             this.tableTitle_pnl = new System.Windows.Forms.Panel();
             this.tableIcon_pnl = new System.Windows.Forms.Panel();
-            this.tableTakeHome = new StoreAssitant.TableControl();
             this.tableGUI_pnl.SuspendLayout();
             this.tableTitle_pnl.SuspendLayout();
             this.SuspendLayout();
@@ -43,7 +43,7 @@
             // tableGUI_pnl
             // 
             this.tableGUI_pnl.AutoScroll = true;
-            this.tableGUI_pnl.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.tableGUI_pnl.BackColor = System.Drawing.Color.Transparent;
             this.tableGUI_pnl.Controls.Add(this.tableTakeHome);
             this.tableGUI_pnl.Controls.Add(this.tableAdd_btn);
             this.tableGUI_pnl.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -52,6 +52,21 @@
             this.tableGUI_pnl.Name = "tableGUI_pnl";
             this.tableGUI_pnl.Size = new System.Drawing.Size(418, 520);
             this.tableGUI_pnl.TabIndex = 0;
+            // 
+            // tableTakeHome
+            // 
+            this.tableTakeHome.BackColor = System.Drawing.Color.PapayaWhip;
+            this.tableTakeHome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tableTakeHome.ImageTable = ((System.Drawing.Image)(resources.GetObject("tableTakeHome.ImageTable")));
+            this.tableTakeHome.IsManager = false;
+            this.tableTakeHome.Location = new System.Drawing.Point(2, 2);
+            this.tableTakeHome.Margin = new System.Windows.Forms.Padding(2);
+            this.tableTakeHome.MinimumSize = new System.Drawing.Size(77, 52);
+            this.tableTakeHome.Name = "tableTakeHome";
+            this.tableTakeHome.NameTable = "Mang về";
+            this.tableTakeHome.Size = new System.Drawing.Size(111, 120);
+            this.tableTakeHome.Status = StoreAssitant.status.Empty;
+            this.tableTakeHome.TabIndex = 2;
             // 
             // tableAdd_btn
             // 
@@ -99,20 +114,6 @@
             this.tableIcon_pnl.Name = "tableIcon_pnl";
             this.tableIcon_pnl.Size = new System.Drawing.Size(50, 48);
             this.tableIcon_pnl.TabIndex = 3;
-            // 
-            // tableTakeHome
-            // 
-            this.tableTakeHome.BackColor = System.Drawing.Color.PapayaWhip;
-            this.tableTakeHome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tableTakeHome.ImageTable = ((System.Drawing.Image)(resources.GetObject("tableTakeHome.ImageTable")));
-            this.tableTakeHome.IsManager = false;
-            this.tableTakeHome.Location = new System.Drawing.Point(2, 2);
-            this.tableTakeHome.Margin = new System.Windows.Forms.Padding(2);
-            this.tableTakeHome.MinimumSize = new System.Drawing.Size(77, 52);
-            this.tableTakeHome.Name = "tableTakeHome";
-            this.tableTakeHome.NameTable = "Mang về";
-            this.tableTakeHome.Size = new System.Drawing.Size(111, 120);
-            this.tableTakeHome.TabIndex = 2;
             // 
             // TableView
             // 

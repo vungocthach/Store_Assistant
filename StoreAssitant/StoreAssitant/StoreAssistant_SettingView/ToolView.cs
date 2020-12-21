@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using StoreAssitant.StoreAssistant_Helper;
 using StoreAssitant.StoreAssistant_Authenticater;
@@ -64,10 +58,9 @@ namespace StoreAssitant.StoreAssistant_SettingView
 
             toolStrip1.SizeChanged += ToolStrip1_SizeChanged;
 
-            this.Load += ToolView_Load;
         }
 
-        private void ToolView_Load(object sender, EventArgs e)
+        public void CheckUser()
         {
             if (Authenticator.CurrentUser.Role != UserInfo.UserRole.Manager)
             {
@@ -151,8 +144,56 @@ namespace StoreAssitant.StoreAssistant_SettingView
 
             itemWindowSize.DropDownItems[AppManager.CurrentWindowSize.ToString()].Image = Properties.Resources.iconfinder_f_check_256_282474_20x20;
 
-            btnAccount.Text = string.Format("Xin chào, {0}", StoreAssistant_Authenticater.Authenticator.CurrentUser.UserName);
-            //ToolStrip1_SizeChanged(toolStrip1, null);
+            btnAccount.Text = string.Format("Xin chào, {0}", Authenticator.CurrentUser.UserName);
         }
+
+        public void LoadTheme()
+        {
+            toolStrip1.Renderer = new ToolStripProfessionalRenderer(new CustomProfessionalColors());
+            toolStrip1.ForeColor = AppManager.GetColors("Main_Plaintext");
+            foreach (ToolStripItem item in toolStrip1.Items)
+            {
+                if (item is ToolStripDropDownItem drop)
+                {
+                    ChangeForeColor(drop, toolStrip1.ForeColor);
+                }
+                else
+                {
+                    item.ForeColor = toolStrip1.ForeColor;
+                }
+            }
+        }
+
+        void ChangeForeColor(ToolStripDropDownItem control, Color color)
+        {
+            control.ForeColor = color;
+            foreach (ToolStripDropDownItem child in control.DropDownItems)
+            {
+                if (child.DropDownItems.Count > 0) { ChangeForeColor(child, color); }
+                else { child.ForeColor = color; }
+            }
+        }
+    }
+
+    class CustomProfessionalColors : ProfessionalColorTable
+    {
+        public override Color ToolStripDropDownBackground => AppManager.GetColors("Menuitem_Background");
+
+        public override Color ImageMarginGradientBegin => ToolStripDropDownBackground;
+        public override Color ImageMarginGradientMiddle => ToolStripDropDownBackground;
+        public override Color ImageMarginGradientEnd => ToolStripDropDownBackground;
+
+        public override Color MenuItemSelected => AppManager.GetColors("Menuitem_Selected");
+        public override Color MenuItemBorder => MenuItemSelected;
+        public override Color ButtonSelectedBorder => MenuItemSelected;
+
+        public override Color MenuItemPressedGradientBegin => MenuItemSelected;
+        public override Color MenuItemPressedGradientMiddle => MenuItemSelected;
+        public override Color MenuItemPressedGradientEnd => AppManager.GetColors("Toolbar_Background");
+
+        public override Color ButtonSelectedHighlight => MenuItemSelected;
+        public override Color ButtonSelectedGradientBegin => MenuItemSelected;
+        public override Color ButtonSelectedGradientMiddle => MenuItemSelected;
+        public override Color ButtonSelectedGradientEnd => MenuItemSelected;
     }
 }
