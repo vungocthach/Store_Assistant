@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PrintPDF.cs" />
     <Compile Include="InternetServiceHandler.cs" />
     <Compile Include="Language1.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
