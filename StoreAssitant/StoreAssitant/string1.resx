@@ -129,9 +129,6 @@
   <data name="Add picture" xml:space="preserve">
     <value>Thêm hình ảnh</value>
   </data>
-  <data name="AddPro" xml:space="preserve">
-    <value>Thêm mặt hàng</value>
-  </data>
   <data name="AddVoucher" xml:space="preserve">
     <value>Thêm mã giảm giá</value>
   </data>

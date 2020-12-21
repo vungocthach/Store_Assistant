@@ -21,6 +21,7 @@ namespace StoreAssitant
         public BillInfo info = null;
         public bool isConfirm;
         private string Lang = "vn";
+       
         #endregion
 
 
@@ -33,7 +34,6 @@ namespace StoreAssitant
             btnCancel.Click += BtnCancel_Click;
             textBox4.KeyPress += TextBox4_KeyPress;
             textBox2.TextChanged += TextBox2_TextChanged;
-
             if ( Lang != Language.CultureName)
             {
                 Lang = Language.CultureName;
@@ -185,6 +185,7 @@ namespace StoreAssitant
             lbPay.Text = Language.Rm.GetString("Pay", Language.Culture);
             btnCancel.Text = Language.Rm.GetString("Cancel", Language.Culture);
             btnCashier.Text = Language.Rm.GetString("Pay", Language.Culture);
+            this.Text = Language.Rm.GetString("Pay", Language.Culture);
         }
         public void setData(BillInfo table)
         {

@@ -118,339 +118,333 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Account" xml:space="preserve">
-    <value>Tài Khoản</value>
+    <value>Account</value>
   </data>
   <data name="Account infomation" xml:space="preserve">
-    <value>Thông tin tài khoản</value>
+    <value>Account infomation</value>
   </data>
   <data name="Add" xml:space="preserve">
-    <value>Thêm</value>
+    <value>Add</value>
   </data>
   <data name="Add picture" xml:space="preserve">
-    <value>Thêm hình ảnh</value>
-  </data>
-  <data name="AddPro" xml:space="preserve">
-    <value>Thêm mặt hàng</value>
+    <value>Add picture</value>
   </data>
   <data name="AddVoucher" xml:space="preserve">
-    <value>Thêm mã giảm giá</value>
+    <value>Add voucher code</value>
   </data>
   <data name="Advanced" xml:space="preserve">
-    <value>Nâng cao</value>
+    <value>Advanced</value>
   </data>
   <data name="Amount" xml:space="preserve">
-    <value>Thành tiền</value>
+    <value>Amount</value>
   </data>
   <data name="Amount be used" xml:space="preserve">
-    <value>Số lượng được sử dụng</value>
+    <value>Amount be used</value>
   </data>
   <data name="Areusure" xml:space="preserve">
-    <value>Bạn chắc chắn muốn xóa tài khoản này?</value>
-  </data>
-  <data name="beleo" xml:space="preserve">
-    <value />
+    <value>Are you sure delete this account?</value>
   </data>
   <data name="bigfile" xml:space="preserve">
-    <value>File quá lớn</value>
+    <value>File too big</value>
   </data>
   <data name="BiggerNow" xml:space="preserve">
-    <value>Thời hạn phải lớn hơn ngày hiện tại</value>
+    <value>Day must be greater than now</value>
   </data>
   <data name="Bill code" xml:space="preserve">
-    <value>Mã hóa đơn</value>
+    <value>Bill code</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Hủy</value>
+    <value>Cancel</value>
   </data>
   <data name="Cannotrehibilitate" xml:space="preserve">
-    <value>Thao tác sẽ không thể phục hồi</value>
+    <value>Operation cannot be undo</value>
   </data>
   <data name="Cashier" xml:space="preserve">
-    <value>Thu Ngân</value>
+    <value>Cashier</value>
   </data>
   <data name="Change password" xml:space="preserve">
-    <value>Đổi mật khẩu</value>
+    <value>Change password</value>
   </data>
   <data name="Chart" xml:space="preserve">
-    <value>Biểu đồ</value>
+    <value>Chart</value>
   </data>
   <data name="Chosse" xml:space="preserve">
-    <value>Chọn hình ảnh</value>
+    <value>Chosse picture</value>
   </data>
   <data name="ChosseTime" xml:space="preserve">
-    <value>Chọn thời gian</value>
+    <value>ChosseTime</value>
   </data>
   <data name="Code:" xml:space="preserve">
-    <value>Mã:</value>
+    <value>Code:</value>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Xác nhận</value>
+    <value>Confirm</value>
   </data>
   <data name="Confirm password:" xml:space="preserve">
-    <value>Nhập lại mật khẩu:</value>
+    <value>Confirm password:</value>
   </data>
   <data name="Date" xml:space="preserve">
-    <value>Ngày thanh toán</value>
+    <value>Date</value>
   </data>
   <data name="Date of birth:" xml:space="preserve">
-    <value>Ngày sinh:</value>
+    <value>Date of birth:</value>
   </data>
   <data name="Day" xml:space="preserve">
-    <value>Ngày</value>
+    <value>Day</value>
   </data>
   <data name="Default" xml:space="preserve">
-    <value>Mặc định</value>
+    <value>Default</value>
   </data>
   <data name="DelAcc" xml:space="preserve">
-    <value>Xóa tài khoản</value>
+    <value>Delete account</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>Xóa</value>
+    <value>Delete</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Tên món</value>
+    <value>Description</value>
   </data>
   <data name="Detail" xml:space="preserve">
-    <value>Chi tiết</value>
+    <value>Detail</value>
   </data>
   <data name="Detailed description:" xml:space="preserve">
-    <value>Mô tả chi tiết:</value>
+    <value>Detailed description:</value>
   </data>
   <data name="EnterError" xml:space="preserve">
-    <value>Lỗi nhập</value>
+    <value>Error enter</value>
   </data>
   <data name="Enter_From" xml:space="preserve">
-    <value>Vui lòng nhập giá trị từ 0 đến</value>
+    <value>Please enter the value from</value>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>Lỗi</value>
+    <value>Error</value>
   </data>
   <data name="Error data" xml:space="preserve">
-    <value>Dữ liệu bị lỗi</value>
+    <value>Error data</value>
   </data>
   <data name="Expiry date" xml:space="preserve">
-    <value>Hạn sử dụng</value>
+    <value>Expiry date</value>
   </data>
   <data name="failDel" xml:space="preserve">
-    <value>Xóa tài khoản thất bại</value>
+    <value>Account was deleted failed</value>
   </data>
   <data name="Filter" xml:space="preserve">
-    <value>Lọc</value>
+    <value>Filter</value>
   </data>
   <data name="Forgot password?" xml:space="preserve">
-    <value>Quên mật khẩu?</value>
+    <value>Fogot password?</value>
   </data>
   <data name="From day:" xml:space="preserve">
     <value>Từ ngày:</value>
   </data>
   <data name="From month:" xml:space="preserve">
-    <value>Từ tháng:</value>
+    <value>From month:</value>
   </data>
   <data name="From0to100" xml:space="preserve">
-    <value>Vui lòng nhập giá trị trong khoảng 0 đến 100</value>
+    <value>Please enter a value between 0 and 100</value>
   </data>
   <data name="From0to10000" xml:space="preserve">
-    <value>Vui lòng nhập giá trị trong khoảng 0 đến 10000</value>
+    <value>Please enter a value between 0 and 10000</value>
   </data>
   <data name="From:" xml:space="preserve">
-    <value>Từ ngày:</value>
+    <value>From:</value>
   </data>
   <data name="Gender:" xml:space="preserve">
-    <value>Giới tính:</value>
+    <value>Gender:</value>
   </data>
   <data name="General" xml:space="preserve">
-    <value>Chung</value>
+    <value>General</value>
   </data>
   <data name="Give" xml:space="preserve">
-    <value>Tiền trả lại</value>
+    <value>Give</value>
   </data>
   <data name="History" xml:space="preserve">
-    <value>Lịch sử</value>
+    <value>History</value>
   </data>
   <data name="illegal" xml:space="preserve">
-    <value>Tồn tại thông tin chưa hợp lệ</value>
+    <value>An invalid error exists</value>
   </data>
   <data name="List" xml:space="preserve">
-    <value>Danh sách</value>
+    <value>List</value>
   </data>
   <data name="List table" xml:space="preserve">
-    <value>Danh sách bàn</value>
+    <value>List table</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>Đăng nhập</value>
+    <value>Login</value>
   </data>
   <data name="Manage" xml:space="preserve">
-    <value>Quản Lý</value>
+    <value>Manage</value>
   </data>
   <data name="Month" xml:space="preserve">
-    <value>Tháng</value>
+    <value>Month</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Tên món</value>
+    <value>Name of Pro</value>
   </data>
   <data name="Name:" xml:space="preserve">
-    <value>Họ và tên:</value>
+    <value>Name:</value>
   </data>
   <data name="New password" xml:space="preserve">
-    <value>Mật khẩu mới</value>
+    <value>New password</value>
   </data>
   <data name="NoEmpty" xml:space="preserve">
-    <value>Không để trống</value>
+    <value>Can't be empty</value>
   </data>
   <data name="Nondefine" xml:space="preserve">
-    <value>Lỗi không xác định</value>
+    <value>An unknown error</value>
   </data>
   <data name="NoSpecialChar" xml:space="preserve">
-    <value>Vui lòng không nhập các kí tự đặc biệt</value>
+    <value>Please don't enter special char</value>
   </data>
   <data name="Number" xml:space="preserve">
-    <value>STT</value>
+    <value>Number</value>
   </data>
   <data name="Old password" xml:space="preserve">
-    <value>Mật khẩu hiện tại</value>
+    <value>Old password</value>
   </data>
   <data name="Onlychar" xml:space="preserve">
-    <value>Chỉ nhập chữ cái thường, số và khoảng trắng{0}Phân cách giữa các tag bằng dấu chấm phẩy ';'</value>
+    <value>Enter only lowercase letters, numbers and spaces {0} Separate tags with a semicolon ';'</value>
   </data>
   <data name="Password:" xml:space="preserve">
-    <value>Mật khẩu:</value>
+    <value>Password:</value>
   </data>
   <data name="Pay" xml:space="preserve">
-    <value>Thanh toán</value>
+    <value>Pay</value>
   </data>
   <data name="PAY BILL" xml:space="preserve">
-    <value>HÓA ĐƠN THANH TOÁN</value>
+    <value>PAY BILL</value>
   </data>
   <data name="Phone:" xml:space="preserve">
-    <value>SĐT:</value>
+    <value>Phone:</value>
   </data>
   <data name="PlusChar" xml:space="preserve">
-    <value>Vui lòng chỉ nhập số nguyên dương</value>
+    <value>Please only enter the positive numbers</value>
   </data>
   <data name="Position:" xml:space="preserve">
-    <value>Phân quyền:</value>
+    <value>Position:</value>
   </data>
   <data name="Price:" xml:space="preserve">
-    <value>Giá bán:</value>
+    <value>Price:</value>
   </data>
   <data name="Qty" xml:space="preserve">
-    <value>SL</value>
+    <value>Qty</value>
   </data>
   <data name="Quantum" xml:space="preserve">
-    <value>Số lượng</value>
+    <value>Quantum</value>
   </data>
   <data name="Re-enter new password" xml:space="preserve">
-    <value>Nhập lại lần 2</value>
+    <value>Re-enter new pass</value>
   </data>
   <data name="Remain" xml:space="preserve">
-    <value>Còn lại</value>
+    <value>Remain</value>
   </data>
   <data name="RequireInfo" xml:space="preserve">
-    <value>Đây là thông tin bắt buộc</value>
+    <value>This is the require information</value>
   </data>
   <data name="Require_300_Char" xml:space="preserve">
-    <value>Vui lòng nhập phần mô tả có độ dài ngắn hơn 300 kí tự</value>
+    <value>Please don't enter the name long &gt; 300</value>
   </data>
   <data name="Require_50_Char" xml:space="preserve">
-    <value>Vui lòng nhập tên có độ dài ngắn hơn 50 kí tự</value>
+    <value>Please don't enter the name long &gt; 50</value>
   </data>
   <data name="Revenue" xml:space="preserve">
-    <value>Tổng doanh thu </value>
+    <value>Revenue</value>
   </data>
   <data name="revenue_" xml:space="preserve">
-    <value>DOANH THU</value>
+    <value>REVENUE</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>Tìm kiếm</value>
+    <value>Search</value>
   </data>
   <data name="Setting" xml:space="preserve">
-    <value>Cài Đặt</value>
+    <value>Setting</value>
   </data>
   <data name="Sign out" xml:space="preserve">
-    <value>Đăng xuất</value>
+    <value>Sign out</value>
   </data>
   <data name="Sign Up" xml:space="preserve">
-    <value>Đăng kí</value>
+    <value>Sign Up</value>
   </data>
   <data name="Staff" xml:space="preserve">
-    <value>Nhân viên</value>
+    <value>Staff</value>
   </data>
   <data name="Staff infomation" xml:space="preserve">
-    <value>Thông tin nhân viên</value>
+    <value>Staff infomation</value>
   </data>
   <data name="Statistical" xml:space="preserve">
-    <value>Thống Kê</value>
+    <value>Statistical</value>
   </data>
   <data name="Stype:" xml:space="preserve">
-    <value>Kiểu:</value>
+    <value>Stype:</value>
   </data>
   <data name="SuccessChangePass" xml:space="preserve">
-    <value>Đổi mật khẩu thành công!</value>
+    <value>Password successfully changed!</value>
   </data>
   <data name="SuccessCreateAcc" xml:space="preserve">
     <value>Tạo tài khoản nhân viên thành công!</value>
   </data>
   <data name="SuccessDel" xml:space="preserve">
-    <value>Xóa tài khoản thành công</value>
+    <value>Account was deleted success</value>
   </data>
   <data name="Table" xml:space="preserve">
-    <value>Bàn</value>
+    <value>Table</value>
   </data>
   <data name="Table:" xml:space="preserve">
-    <value>Bàn:</value>
+    <value>Table:</value>
   </data>
   <data name="Take" xml:space="preserve">
-    <value>Tiền khách đưa</value>
+    <value>Take</value>
   </data>
   <data name="Take home" xml:space="preserve">
-    <value>Mang về</value>
+    <value>Take home</value>
   </data>
   <data name="Time" xml:space="preserve">
-    <value>Thời gian</value>
+    <value>Time</value>
   </data>
   <data name="Time:" xml:space="preserve">
-    <value>Thời gian:</value>
+    <value>Time:</value>
   </data>
   <data name="To day:" xml:space="preserve">
-    <value>Đến ngày:</value>
+    <value>To day:</value>
   </data>
   <data name="To month:" xml:space="preserve">
-    <value />
+    <value>To month:</value>
   </data>
   <data name="To:" xml:space="preserve">
-    <value>Đến ngày:</value>
+    <value>To:</value>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>Tổng cộng</value>
+    <value>Total</value>
   </data>
   <data name="Unit price" xml:space="preserve">
-    <value>Đơn giá</value>
+    <value>Unit price</value>
   </data>
   <data name="Unit:" xml:space="preserve">
-    <value>Đơn vị xem:</value>
+    <value>Unit:</value>
   </data>
   <data name="User name:" xml:space="preserve">
-    <value>Tên đăng nhập:</value>
+    <value>User name:</value>
   </data>
   <data name="Value(%)" xml:space="preserve">
-    <value>Giá trị(%)</value>
+    <value>Value(%)</value>
   </data>
   <data name="Voucher" xml:space="preserve">
-    <value>Mã giảm giá</value>
+    <value>Voucher</value>
   </data>
   <data name="Voucher code" xml:space="preserve">
-    <value>Mã giảm giá</value>
+    <value>Voucher code</value>
   </data>
   <data name="Vourcher" xml:space="preserve">
     <value>Voucher</value>
   </data>
   <data name="Wanrning" xml:space="preserve">
-    <value>Vui lòng chọn ảnh có kích thước &lt; 26kb</value>
+    <value>Please chosse the file &lt; 26kb</value>
   </data>
   <data name="Year" xml:space="preserve">
-    <value>Năm</value>
+    <value>Year</value>
   </data>
   <data name="YOUR VOUCHER" xml:space="preserve">
-    <value>MÃ GIẢM GIÁ CỦA BẠN</value>
+    <value>YOUR VOUCHER</value>
   </data>
 </root>

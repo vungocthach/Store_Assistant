@@ -129,6 +129,9 @@
   <data name="Add picture" xml:space="preserve">
     <value>Add picture</value>
   </data>
+  <data name="AddPro" xml:space="preserve">
+    <value>Add product</value>
+  </data>
   <data name="AddVoucher" xml:space="preserve">
     <value>Add voucher code</value>
   </data>

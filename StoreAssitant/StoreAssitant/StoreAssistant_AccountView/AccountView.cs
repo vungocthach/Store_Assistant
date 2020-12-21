@@ -52,6 +52,7 @@ namespace StoreAssitant.StoreAssistant_AccountView
             Nondefine = Language.Rm.GetString("Nonedefine", Language.Culture);
             SuccessChangePass = Language.Rm.GetString("SuccessChangePass", Language.Culture);
             SuccessCreateAcc = Language.Rm.GetString("SuccessCreateAcc", Language.Culture);
+           
         }
         public AccountView()
         {
@@ -89,7 +90,7 @@ namespace StoreAssitant.StoreAssistant_AccountView
         {
             if (Authenticator.CurrentUser == null) { throw new AuthenticationException("Current user's account must not be null"); }
             txt_username.Text = Authenticator.CurrentUser.UserName;
-            txb_roles.Text = string.Format("{0}", roles[(int)Authenticator.CurrentUser.Role]);
+            txb_role .Text = string.Format("{0}", roles[(int)Authenticator.CurrentUser.Role]);
             if (Authenticator.CurrentUser.Role == UserInfo.UserRole.Manager)
             {
                 gr_manager.Visible = true;

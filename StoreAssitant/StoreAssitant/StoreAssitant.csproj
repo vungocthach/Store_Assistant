@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InternetServiceHandler.cs" />
+    <Compile Include="Language1.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -345,6 +346,12 @@
       <DependentUpon>VoucherView.cs</DependentUpon>
     </Compile>
     <Compile Include="StoreManager.cs" />
+    <Compile Include="string.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>string.resx</DependentUpon>
+    </Compile>
+    <Compile Include="string.en.cs" />
     <Compile Include="TSString.cs" />
     <EmbeddedResource Include="StoreAssistant_MenuView\AddProductForm.resx">
       <DependentUpon>AddProductForm.cs</DependentUpon>
@@ -416,6 +423,12 @@
     <EmbeddedResource Include="StoreAssistant_VoucherView\VoucherView.resx">
       <DependentUpon>VoucherView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="string.en.resx" />
+    <EmbeddedResource Include="string.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>string.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="string.vn.resx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
