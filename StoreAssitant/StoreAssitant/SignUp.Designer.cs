@@ -1,6 +1,6 @@
 ﻿namespace StoreAssitant
 {
-    partial class SignUp
+    partial class SignUp_form
     {
         /// <summary>
         /// Required designer variable.
@@ -28,34 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lb_Name = new System.Windows.Forms.Label();
             this.txb_Name = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lb_Pass = new System.Windows.Forms.Label();
             this.txb_Pass = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lb_ConfirmPassq = new System.Windows.Forms.Label();
             this.TxB_IdentityPass = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lb_Birth = new System.Windows.Forms.Label();
             this.dateTimeBirth = new System.Windows.Forms.DateTimePicker();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lb_Gender = new System.Windows.Forms.Label();
+            this.lb_Phone = new System.Windows.Forms.Label();
             this.txb_Phone = new System.Windows.Forms.TextBox();
             this.btn_SignUp = new System.Windows.Forms.Button();
             this.cbx_Sex = new System.Windows.Forms.ComboBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lb_UserName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // lb_Name
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Orange;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.label1.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(405, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 22);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Họ và tên:";
+            this.lb_Name.AutoSize = true;
+            this.lb_Name.BackColor = System.Drawing.Color.Orange;
+            this.lb_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.lb_Name.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.lb_Name.Location = new System.Drawing.Point(405, 14);
+            this.lb_Name.Name = "lb_Name";
+            this.lb_Name.Size = new System.Drawing.Size(92, 22);
+            this.lb_Name.TabIndex = 0;
+            this.lb_Name.Text = "Họ và tên:";
             // 
             // txb_Name
             // 
@@ -65,16 +65,16 @@
             this.txb_Name.Size = new System.Drawing.Size(281, 27);
             this.txb_Name.TabIndex = 1;
             // 
-            // label2
+            // lb_Pass
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Orange;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.label2.Location = new System.Drawing.Point(405, 156);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 22);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Mật khẩu:";
+            this.lb_Pass.AutoSize = true;
+            this.lb_Pass.BackColor = System.Drawing.Color.Orange;
+            this.lb_Pass.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.lb_Pass.Location = new System.Drawing.Point(405, 156);
+            this.lb_Pass.Name = "lb_Pass";
+            this.lb_Pass.Size = new System.Drawing.Size(88, 22);
+            this.lb_Pass.TabIndex = 2;
+            this.lb_Pass.Text = "Mật khẩu:";
             // 
             // txb_Pass
             // 
@@ -84,17 +84,17 @@
             this.txb_Pass.Size = new System.Drawing.Size(281, 27);
             this.txb_Pass.TabIndex = 3;
             // 
-            // label3
+            // lb_ConfirmPassq
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Orange;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.label3.Location = new System.Drawing.Point(405, 225);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(169, 22);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Xác nhận mật khẩu:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.lb_ConfirmPassq.AutoSize = true;
+            this.lb_ConfirmPassq.BackColor = System.Drawing.Color.Orange;
+            this.lb_ConfirmPassq.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.lb_ConfirmPassq.Location = new System.Drawing.Point(405, 225);
+            this.lb_ConfirmPassq.Name = "lb_ConfirmPassq";
+            this.lb_ConfirmPassq.Size = new System.Drawing.Size(169, 22);
+            this.lb_ConfirmPassq.TabIndex = 4;
+            this.lb_ConfirmPassq.Text = "Xác nhận mật khẩu:";
+            this.lb_ConfirmPassq.Click += new System.EventHandler(this.label3_Click);
             // 
             // TxB_IdentityPass
             // 
@@ -105,16 +105,16 @@
             this.TxB_IdentityPass.Size = new System.Drawing.Size(281, 27);
             this.TxB_IdentityPass.TabIndex = 5;
             // 
-            // label4
+            // lb_Birth
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Orange;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.label4.Location = new System.Drawing.Point(405, 295);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 22);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Ngày sinh :";
+            this.lb_Birth.AutoSize = true;
+            this.lb_Birth.BackColor = System.Drawing.Color.Orange;
+            this.lb_Birth.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.lb_Birth.Location = new System.Drawing.Point(405, 295);
+            this.lb_Birth.Name = "lb_Birth";
+            this.lb_Birth.Size = new System.Drawing.Size(100, 22);
+            this.lb_Birth.TabIndex = 6;
+            this.lb_Birth.Text = "Ngày sinh :";
             // 
             // dateTimeBirth
             // 
@@ -127,27 +127,27 @@
             this.dateTimeBirth.Size = new System.Drawing.Size(105, 27);
             this.dateTimeBirth.TabIndex = 10;
             // 
-            // label6
+            // lb_Gender
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Orange;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.label6.Location = new System.Drawing.Point(560, 295);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(81, 22);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Giới tính:";
+            this.lb_Gender.AutoSize = true;
+            this.lb_Gender.BackColor = System.Drawing.Color.Orange;
+            this.lb_Gender.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.lb_Gender.Location = new System.Drawing.Point(560, 295);
+            this.lb_Gender.Name = "lb_Gender";
+            this.lb_Gender.Size = new System.Drawing.Size(81, 22);
+            this.lb_Gender.TabIndex = 12;
+            this.lb_Gender.Text = "Giới tính:";
             // 
-            // label5
+            // lb_Phone
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Orange;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.label5.Location = new System.Drawing.Point(400, 359);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 22);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "SĐT";
+            this.lb_Phone.AutoSize = true;
+            this.lb_Phone.BackColor = System.Drawing.Color.Orange;
+            this.lb_Phone.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.lb_Phone.Location = new System.Drawing.Point(400, 359);
+            this.lb_Phone.Name = "lb_Phone";
+            this.lb_Phone.Size = new System.Drawing.Size(47, 22);
+            this.lb_Phone.TabIndex = 8;
+            this.lb_Phone.Text = "SĐT";
             // 
             // txb_Phone
             // 
@@ -190,19 +190,19 @@
             this.txtUserName.Size = new System.Drawing.Size(281, 27);
             this.txtUserName.TabIndex = 16;
             // 
-            // label7
+            // lb_UserName
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Orange;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.label7.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.label7.Location = new System.Drawing.Point(405, 76);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(148, 22);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Tên Đăng Nhập :";
+            this.lb_UserName.AutoSize = true;
+            this.lb_UserName.BackColor = System.Drawing.Color.Orange;
+            this.lb_UserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.lb_UserName.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.lb_UserName.Location = new System.Drawing.Point(405, 76);
+            this.lb_UserName.Name = "lb_UserName";
+            this.lb_UserName.Size = new System.Drawing.Size(148, 22);
+            this.lb_UserName.TabIndex = 15;
+            this.lb_UserName.Text = "Tên Đăng Nhập :";
             // 
-            // SignUp
+            // SignUp_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -212,21 +212,21 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(756, 473);
             this.Controls.Add(this.txtUserName);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lb_UserName);
             this.Controls.Add(this.btn_SignUp);
             this.Controls.Add(this.cbx_Sex);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lb_Gender);
             this.Controls.Add(this.txb_Phone);
             this.Controls.Add(this.dateTimeBirth);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lb_Phone);
+            this.Controls.Add(this.lb_Birth);
             this.Controls.Add(this.TxB_IdentityPass);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lb_ConfirmPassq);
             this.Controls.Add(this.txb_Pass);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lb_Pass);
             this.Controls.Add(this.txb_Name);
-            this.Controls.Add(this.label1);
-            this.Name = "SignUp";
+            this.Controls.Add(this.lb_Name);
+            this.Name = "SignUp_form";
             this.Text = "Đăng ký";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -235,20 +235,20 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lb_Name;
         private System.Windows.Forms.TextBox txb_Name;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lb_Pass;
         private System.Windows.Forms.TextBox txb_Pass;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lb_ConfirmPassq;
         private System.Windows.Forms.TextBox TxB_IdentityPass;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lb_Birth;
         private System.Windows.Forms.DateTimePicker dateTimeBirth;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lb_Gender;
+        private System.Windows.Forms.Label lb_Phone;
         private System.Windows.Forms.TextBox txb_Phone;
         private System.Windows.Forms.Button btn_SignUp;
         private System.Windows.Forms.ComboBox cbx_Sex;
         private System.Windows.Forms.TextBox txtUserName;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lb_UserName;
     }
 }

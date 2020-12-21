@@ -63,7 +63,7 @@
             // 
             // productBox1
             // 
-            this.productBox1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.productBox1.BackColor = System.Drawing.Color.White;
             this.productBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.productBox1.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.productBox1.IsReadOnlyPDName = false;
@@ -82,7 +82,7 @@
             // AddProductForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(338, 449);
             this.ControlBox = false;
             this.Controls.Add(this.btn_Cancel);

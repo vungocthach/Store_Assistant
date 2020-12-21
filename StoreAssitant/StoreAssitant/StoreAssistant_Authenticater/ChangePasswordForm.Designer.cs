@@ -41,7 +41,7 @@
             // btn_Close
             // 
             this.btn_Close.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Close.Location = new System.Drawing.Point(248, 111);
+            this.btn_Close.Location = new System.Drawing.Point(288, 111);
             this.btn_Close.Name = "btn_Close";
             this.btn_Close.Size = new System.Drawing.Size(105, 26);
             this.btn_Close.TabIndex = 15;
@@ -51,11 +51,11 @@
             // btn_Submit
             // 
             this.btn_Submit.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Submit.Location = new System.Drawing.Point(113, 111);
+            this.btn_Submit.Location = new System.Drawing.Point(153, 111);
             this.btn_Submit.Name = "btn_Submit";
             this.btn_Submit.Size = new System.Drawing.Size(105, 26);
             this.btn_Submit.TabIndex = 14;
-            this.btn_Submit.Text = "Xác Nhận";
+            this.btn_Submit.Text = "Đổi mật khẩu";
             this.btn_Submit.UseVisualStyleBackColor = true;
             // 
             // txt_PassNew2
