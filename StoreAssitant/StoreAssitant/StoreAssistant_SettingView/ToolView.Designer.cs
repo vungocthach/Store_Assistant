@@ -60,7 +60,7 @@ namespace StoreAssitant.StoreAssistant_SettingView
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(351, 39);
+            this.toolStrip1.Size = new System.Drawing.Size(320, 39);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -78,18 +78,21 @@ namespace StoreAssitant.StoreAssistant_SettingView
             // 
             // itemEmployee
             // 
+            this.itemEmployee.BackColor = System.Drawing.SystemColors.Control;
             this.itemEmployee.Name = "itemEmployee";
             this.itemEmployee.Size = new System.Drawing.Size(206, 26);
             this.itemEmployee.Text = "Quản lý nhân sự";
             // 
             // itemChangePass
             // 
+            this.itemChangePass.BackColor = System.Drawing.SystemColors.Control;
             this.itemChangePass.Name = "itemChangePass";
             this.itemChangePass.Size = new System.Drawing.Size(206, 26);
             this.itemChangePass.Text = "Đổi mật khẩu";
             // 
             // itemLogOut
             // 
+            this.itemLogOut.BackColor = System.Drawing.SystemColors.Control;
             this.itemLogOut.Name = "itemLogOut";
             this.itemLogOut.Size = new System.Drawing.Size(206, 26);
             this.itemLogOut.Text = "Đăng xuất";
@@ -125,7 +128,7 @@ namespace StoreAssitant.StoreAssistant_SettingView
             this.tiếngViệtToolStripMenuItem.Image = global::StoreAssitant.Properties.Resources.iconfinder_f_check_256_282474_20x20;
             this.tiếngViệtToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.tiếngViệtToolStripMenuItem.Name = "tiếngViệtToolStripMenuItem";
-            this.tiếngViệtToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.tiếngViệtToolStripMenuItem.Size = new System.Drawing.Size(189, 32);
             this.tiếngViệtToolStripMenuItem.Text = "Tiếng Việt";
             // 
             // englishToolStripMenuItem
@@ -134,7 +137,7 @@ namespace StoreAssitant.StoreAssistant_SettingView
             this.englishToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.englishToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-            this.englishToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.englishToolStripMenuItem.Size = new System.Drawing.Size(189, 32);
             this.englishToolStripMenuItem.Text = "English";
             // 
             // itemTheme
@@ -189,6 +192,7 @@ namespace StoreAssitant.StoreAssistant_SettingView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.toolStrip1);
             this.Name = "ToolView";
             this.Size = new System.Drawing.Size(428, 72);

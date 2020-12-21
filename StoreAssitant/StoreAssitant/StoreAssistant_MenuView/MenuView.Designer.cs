@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuView));
             this.flowLayoutPanelMenu = new System.Windows.Forms.FlowLayoutPanel();
-            this.controlSearch = new StoreAssitant.ControlSearch();
             this.controlProduct = new StoreAssitant.ControlProduct();
+            this.controlSearch = new StoreAssitant.ControlSearch();
             this.ControlTitle = new StoreAssitant.TitleControl();
             this.flowLayoutPanelMenu.SuspendLayout();
             this.SuspendLayout();
@@ -39,6 +39,7 @@
             // flowLayoutPanelMenu
             // 
             this.flowLayoutPanelMenu.AutoScroll = true;
+            this.flowLayoutPanelMenu.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanelMenu.Controls.Add(this.controlProduct);
             this.flowLayoutPanelMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanelMenu.Location = new System.Drawing.Point(0, 84);
@@ -46,15 +47,6 @@
             this.flowLayoutPanelMenu.Name = "flowLayoutPanelMenu";
             this.flowLayoutPanelMenu.Size = new System.Drawing.Size(425, 353);
             this.flowLayoutPanelMenu.TabIndex = 1;
-            // 
-            // controlSearch
-            // 
-            this.controlSearch.Control = null;
-            this.controlSearch.Location = new System.Drawing.Point(0, 48);
-            this.controlSearch.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.controlSearch.Name = "controlSearch";
-            this.controlSearch.Size = new System.Drawing.Size(426, 32);
-            this.controlSearch.TabIndex = 2;
             // 
             // controlProduct
             // 
@@ -65,6 +57,15 @@
             this.controlProduct.Name = "controlProduct";
             this.controlProduct.Size = new System.Drawing.Size(143, 152);
             this.controlProduct.TabIndex = 0;
+            // 
+            // controlSearch
+            // 
+            this.controlSearch.Control = null;
+            this.controlSearch.Location = new System.Drawing.Point(0, 48);
+            this.controlSearch.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.controlSearch.Name = "controlSearch";
+            this.controlSearch.Size = new System.Drawing.Size(426, 32);
+            this.controlSearch.TabIndex = 2;
             // 
             // ControlTitle
             // 

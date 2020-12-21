@@ -60,6 +60,7 @@
             // 
             // tableView1
             // 
+            this.tableView1.BackColor = System.Drawing.Color.Transparent;
             this.tableView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableView1.ImageCashierTable = ((System.Drawing.Image)(resources.GetObject("tableView1.ImageCashierTable")));
@@ -68,7 +69,7 @@
             this.tableView1.ItemSize = new System.Drawing.Size(120, 120);
             this.tableView1.Location = new System.Drawing.Point(0, 0);
             this.tableView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tableView1.MinimumSize = new System.Drawing.Size(376, 50);
+            this.tableView1.MinimumSize = new System.Drawing.Size(377, 50);
             this.tableView1.Name = "tableView1";
             this.tableView1.NameCashierTable = "DANH SÁCH BÀN";
             this.tableView1.Size = new System.Drawing.Size(499, 590);
@@ -77,6 +78,7 @@
             // 
             // menuView1
             // 
+            this.menuView1.BackColor = System.Drawing.Color.Transparent;
             this.menuView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.menuView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menuView1.image = global::StoreAssitant.Properties.Resources._120427285_648274679154155_8374726593261554204_n;
@@ -84,6 +86,7 @@
             this.menuView1.ItemSize = new System.Drawing.Size(200, 150);
             this.menuView1.Location = new System.Drawing.Point(0, 0);
             this.menuView1.Margin = new System.Windows.Forms.Padding(4);
+            this.menuView1.MinimumSize = new System.Drawing.Size(420, 2);
             this.menuView1.Name = "menuView1";
             this.menuView1.NameTitle = "Menu";
             this.menuView1.Size = new System.Drawing.Size(596, 590);
