@@ -9,12 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using StoreAssitant.StoreAssistant_Information;
+using StoreAssitant.StoreAssistant_VoucherView;
 
 namespace StoreAssitant.StoreAssistant_StatiticsView
 {
     public partial class StatiticsView2 : UserControl
     {
         TimePickerForm timePicker;
+        String Lang = "vn";
+        string revenue_ = "DOANH THU";
+        string day = "Ngày";
+        string month = "Tháng";
         DateTime GetDateMin()
         {
                 if (ModeStatistics == 0)
@@ -90,6 +95,41 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             pageSelector1.SelectedIndexChanged += PageSelector1_SelectedIndexChanged;
 
             this.Load += StatiticsView2_Load;
+
+            if (Lang != Language.CultureName)
+            {
+                SetLanguage();
+            }
+            VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
+        }
+
+        private void VoucherView_ChangeLanguage(object sender, string e)
+        {
+         
+            SetLanguage();
+        }
+
+        private void SetLanguage()
+        {
+            Lang = Language.CultureName;
+            Language.InitLanguage(this);
+            groupBox1.Text = Language.Rm.GetString("List", Language.Culture);
+            groupChart.Text = Language.Rm.GetString("Chart", Language.Culture);
+            label4.Text = Language.Rm.GetString("Unit:", Language.Culture);
+            btnFilter.Text = Language.Rm.GetString("Filter", Language.Culture);
+            dataGridView1.Columns[0].HeaderText = Language.Rm.GetString("Number", Language.Culture);
+            dataGridView1.Columns[1].HeaderText = Language.Rm.GetString("Time", Language.Culture);
+            dataGridView1.Columns[2].HeaderText = Language.Rm.GetString("Revenue", Language.Culture);
+            label1.Text = Language.Rm.GetString("Stype:", Language.Culture);
+            cbbChartMode.Items[1] = Language.Rm.GetString("Detail", Language.Culture);
+            cbbChartMode.Items[0] = Language.Rm.GetString("General", Language.Culture);
+            cbbStatiticsMode.Items[0] = Language.Rm.GetString("Year", Language.Culture);
+            cbbStatiticsMode.Items[1] = Language.Rm.GetString("Month", Language.Culture);
+            chart1.Legends[1].Title = Language.Rm.GetString("Name", Language.Culture);
+            day = chart1.ChartAreas[0].AxisX.Title = Language.Rm.GetString("Day", Language.Culture).ToUpper();
+            month = chart1.ChartAreas[1].AxisX.Title = Language.Rm.GetString("Month", Language.Culture).ToUpper();
+            chart1.ChartAreas[0].AxisY.Title = chart1.ChartAreas[1].AxisY.Title = Language.Rm.GetString("revenue_", Language.Culture).ToUpper();
+
         }
 
         private void PageSelector1_SelectedIndexChanged(object sender, EventArgs e)
@@ -265,7 +305,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             if (maxLine % line_per_page > 0) { pageSelector1.MaximumRange++; }
         }
 
-        private readonly string REVENUE_SERIES_NAME = "Revenue";
+        private readonly string REVENUE_SERIES_NAME = "DOANH THU";
         Series seriesRevenue;
         Series[] seriesProducts;
         void InitiallizeChart()
@@ -355,7 +395,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
         void LoadDetailChart_ByDay(SaleInfo[] saleInfos)
         {
-            chart1.ChartAreas[1].AxisX.Title = "NGÀY";
+            chart1.ChartAreas[1].AxisX.Title = day.ToUpper();
             string x_axis_format = "{0}/{1}";
 
             foreach (Series s in seriesProducts)
@@ -379,7 +419,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
         void LoadDetailChart_ByMonth(SaleInfo[] saleInfos)
         {
-            chart1.ChartAreas[1].AxisX.Title = "THÁNG";
+            chart1.ChartAreas[1].AxisX.Title = month.ToUpper();
 
             string x_axis_format = "{0}/{1}";
 
@@ -407,7 +447,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             string x_axis_format = "{0}/{1}";
             seriesRevenue.Points.Clear();
 
-            chart1.ChartAreas[0].AxisX.Title = "NGÀY";
+            chart1.ChartAreas[0].AxisX.Title = day.ToUpper();
 
             for (int i = 0; i < saleInfos.Length; i++)
             {
@@ -422,7 +462,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             string x_axis_format = "{0}/{1}";
             seriesRevenue.Points.Clear();
 
-            chart1.ChartAreas[0].AxisX.Title = "THÁNG";
+            chart1.ChartAreas[0].AxisX.Title = month.ToUpper();
 
             for (int i = 0; i < saleInfos.Length; i++)
             {

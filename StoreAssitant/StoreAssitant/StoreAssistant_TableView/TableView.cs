@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using StoreAssitant.StoreAssistant_VoucherView;
 
 namespace StoreAssitant
 {
@@ -42,12 +43,21 @@ namespace StoreAssitant
         private bool isManager;
         Image itemImage;
         TableBill tbBill;
+        string Lang = "vn";
+        string table = "BÀN";
         #endregion
 
 
         public TableView()
         {
             InitializeComponent();
+
+            if ( Lang != Language.CultureName)
+            {
+                Lang = Language.CultureName;
+                SetLanguge();
+            }
+            else VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
 
             Init_Event_Customize();
 
@@ -58,9 +68,22 @@ namespace StoreAssitant
             Init_Default_Value();
 
             this.Layout += TableView_Layout;
-            //tableTitle_pnl.Layout += TableView_Layout;
+
         }
 
+        private void VoucherView_ChangeLanguage(object sender, string e)
+        {
+            Lang = Language.CultureName;
+            SetLanguge();
+        }
+
+        private void SetLanguge()
+        {
+                Language.InitLanguage(this);
+                tableTitle_lb.Text = Language.Rm.GetString("List table", Language.Culture);
+                table = Language.Rm.GetString("Table", Language.Culture).ToUpper();
+                tableTakeHome.NameTable = Language.Rm.GetString("Take home", Language.Culture);
+        }
         /// <summary>
         /// Init the form value when creating
         /// </summary>
@@ -128,7 +151,7 @@ namespace StoreAssitant
         private void Create_Table()
         {
             numberTable++;
-            TableControl newtable = new TableControl() { Size = ItemSize, NameTable = "BÀN " + numberTable, ImageTable = itemImage };
+            TableControl newtable = new TableControl() { Size = ItemSize, NameTable = table + " " + numberTable, ImageTable = itemImage };
             newtable.IsManager = this.isManager;
             newtable.Info.ID = numberTable;
             tableGUI_pnl.Controls.Add(newtable);
