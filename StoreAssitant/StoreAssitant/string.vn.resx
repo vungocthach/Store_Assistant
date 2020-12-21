@@ -129,6 +129,9 @@
   <data name="Add picture" xml:space="preserve">
     <value>Thêm hình ảnh</value>
   </data>
+  <data name="AddPro" xml:space="preserve">
+    <value>Thêm mặt hàng</value>
+  </data>
   <data name="AddVoucher" xml:space="preserve">
     <value>Thêm mã giảm giá</value>
   </data>
@@ -144,8 +147,8 @@
   <data name="Areusure" xml:space="preserve">
     <value>Bạn chắc chắn muốn xóa tài khoản này?</value>
   </data>
-  <data name="Avande" xml:space="preserve">
-    <value>Nâng cao</value>
+  <data name="beleo" xml:space="preserve">
+    <value />
   </data>
   <data name="bigfile" xml:space="preserve">
     <value>File quá lớn</value>
@@ -176,9 +179,6 @@
   </data>
   <data name="ChosseTime" xml:space="preserve">
     <value>Chọn thời gian</value>
-  </data>
-  <data name="Code" xml:space="preserve">
-    <value>Mã</value>
   </data>
   <data name="Code:" xml:space="preserve">
     <value>Mã:</value>
@@ -239,9 +239,6 @@
   </data>
   <data name="Forgot password?" xml:space="preserve">
     <value>Quên mật khẩu?</value>
-  </data>
-  <data name="From" xml:space="preserve">
-    <value>Từ ngày</value>
   </data>
   <data name="From day:" xml:space="preserve">
     <value>Từ ngày:</value>
@@ -384,6 +381,9 @@
   <data name="Statistical" xml:space="preserve">
     <value>Thống Kê</value>
   </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
   <data name="Stype:" xml:space="preserve">
     <value>Kiểu:</value>
   </data>
@@ -414,14 +414,11 @@
   <data name="Time:" xml:space="preserve">
     <value>Thời gian:</value>
   </data>
-  <data name="To" xml:space="preserve">
-    <value>Đến ngày</value>
-  </data>
   <data name="To day:" xml:space="preserve">
     <value>Đến ngày:</value>
   </data>
   <data name="To month:" xml:space="preserve">
-    <value>Đến tháng:</value>
+    <value />
   </data>
   <data name="To:" xml:space="preserve">
     <value>Đến ngày:</value>

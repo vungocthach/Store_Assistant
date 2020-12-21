@@ -110,6 +110,7 @@ namespace StoreAssitant
             btn_Submit.Text = Language.Rm.GetString("Confirm", Language.Culture);
             Error = Language.Rm.GetString("Error", Language.Culture);
             illegal = Language.Rm.GetString("illegal", Language.Culture);
+            this.Text = Language.Rm.GetString("AddPro", Language.Culture);
         }
     }
 }

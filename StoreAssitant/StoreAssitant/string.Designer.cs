@@ -97,6 +97,15 @@ namespace StoreAssitant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thêm mặt hàng.
+        /// </summary>
+        internal static string AddPro {
+            get {
+                return ResourceManager.GetString("AddPro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thêm mã giảm giá.
         /// </summary>
         internal static string AddVoucher {
