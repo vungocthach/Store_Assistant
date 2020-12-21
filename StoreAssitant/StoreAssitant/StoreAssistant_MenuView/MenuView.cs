@@ -265,7 +265,7 @@ namespace StoreAssitant
 
             Click_EditProduct = new EventHandler<ProductInfo>(on_CLick_EditProduct);
 
-            CLick_DeleteProduct = new EventHandler<ProductInfo>(on_CLick_EditProduct);
+            CLick_DeleteProduct = new EventHandler<ProductInfo>(on_CLick_DeleteProduct);
 
             ControlTitle.Layout += new LayoutEventHandler((object sender, LayoutEventArgs e) =>
             {
