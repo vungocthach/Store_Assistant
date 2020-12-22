@@ -7,7 +7,7 @@ using StoreAssitant.StoreAssistant_AccountView;
 
 namespace StoreAssitant.StoreAssistant_SettingView
 {
-    public partial class ToolView : UserControl
+    public partial class ToolView : UserControl, ILoadTheme
     {
         public ToolView()
         {
@@ -78,7 +78,9 @@ namespace StoreAssitant.StoreAssistant_SettingView
 
         private void ItemStoreInfo_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Công trình đang thi công!", "404 Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            StoreInformationSettingForm form = new StoreInformationSettingForm();
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.ShowDialog();
         }
 
         private void BtnQuit_Click(object sender, EventArgs e)

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using StoreAssitant.Class_Information;
 using StoreAssitant.StoreAssistant_VoucherView;
+using StoreAssitant.StoreAssistant_Helper;
 
 namespace StoreAssitant.StoreAssistant_HistoryView
 {
@@ -239,7 +240,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
 
         private void HistoryView_SizeChanged(object sender, EventArgs e)
         {
-            pageSelector1.Location = new Point((this.Width - pageSelector1.Width) / 2, this.Height - pageSelector1.Margin.Top - pageSelector1.Margin.Bottom - pageSelector1.Height);
+            pageSelector1.Location = new Point((this.Width - pageSelector1.Width) / 2, this.Height - pageSelector1.Margin.Top - pageSelector1.Margin.Bottom - pageSelector1.Height -dataGridView1.Margin.Bottom);
             dataGridView1.Height = pageSelector1.Location.Y - dataGridView1.Location.Y - pageSelector1.Margin.Top - dataGridView1.Margin.Bottom;
             dataGridView1.Width = this.Width - dataGridView1.Margin.Left - dataGridView1.Margin.Right;
             AutoSizeColumns();
@@ -293,6 +294,12 @@ namespace StoreAssitant.StoreAssistant_HistoryView
                 if ( row.Index % 2 != 0) row.DefaultCellStyle.BackColor = Color.LightSkyBlue;
             }
             dataGridView1.ResumeLayout();
+        }
+
+        public void LoadTheme()
+        {
+            groupBox1.ForeColor = AppManager.GetColors("Main_Plaintext");
+
         }
     }
 }

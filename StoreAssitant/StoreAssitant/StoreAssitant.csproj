@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="StoreAssistant_Helper\AppManager.cs" />
     <Compile Include="StoreAssistant_Helper\BillHistory.cs" />
+    <Compile Include="StoreAssistant_Helper\ILoadTheme.cs" />
     <Compile Include="StoreAssistant_SettingView\StoreInformationSettingForm.cs">
       <SubType>Form</SubType>
     </Compile>

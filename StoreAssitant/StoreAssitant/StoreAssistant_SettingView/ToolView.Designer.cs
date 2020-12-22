@@ -60,7 +60,7 @@ namespace StoreAssitant.StoreAssistant_SettingView
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(320, 39);
+            this.toolStrip1.Size = new System.Drawing.Size(355, 39);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -73,8 +73,8 @@ namespace StoreAssitant.StoreAssistant_SettingView
             this.btnAccount.Image = global::StoreAssitant.Properties.Resources.iconfinder_humans_1216581;
             this.btnAccount.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAccount.Name = "btnAccount";
-            this.btnAccount.Size = new System.Drawing.Size(170, 36);
-            this.btnAccount.Text = "Xin chào, admin";
+            this.btnAccount.Size = new System.Drawing.Size(174, 36);
+            this.btnAccount.Text = "Xin chào, testing";
             // 
             // itemEmployee
             // 
@@ -128,7 +128,7 @@ namespace StoreAssitant.StoreAssistant_SettingView
             this.tiếngViệtToolStripMenuItem.Image = global::StoreAssitant.Properties.Resources.iconfinder_f_check_256_282474_20x20;
             this.tiếngViệtToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.tiếngViệtToolStripMenuItem.Name = "tiếngViệtToolStripMenuItem";
-            this.tiếngViệtToolStripMenuItem.Size = new System.Drawing.Size(189, 32);
+            this.tiếngViệtToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.tiếngViệtToolStripMenuItem.Text = "Tiếng Việt";
             // 
             // englishToolStripMenuItem
@@ -137,7 +137,7 @@ namespace StoreAssitant.StoreAssistant_SettingView
             this.englishToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.englishToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-            this.englishToolStripMenuItem.Size = new System.Drawing.Size(189, 32);
+            this.englishToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.englishToolStripMenuItem.Text = "English";
             // 
             // itemTheme
