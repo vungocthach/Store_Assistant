@@ -10,10 +10,11 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using StoreAssitant.StoreAssistant_Information;
 using StoreAssitant.StoreAssistant_VoucherView;
+using StoreAssitant.StoreAssistant_Helper;
 
 namespace StoreAssitant.StoreAssistant_StatiticsView
 {
-    public partial class StatiticsView2 : UserControl
+    public partial class StatiticsView2 : UserControl, ILoadTheme
     {
         TimePickerForm timePicker;
         String Lang = "vn";
@@ -529,7 +530,8 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                     DataGridViewRow row = dataGridView1.Rows[dataGridView1.Rows.Add (stt, string.Format(txtTimeFormat, month.Month, month.Year), string.Format("{0}VND", totalRevenue.ToString("N0")))];  
                     row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Tag = new KeyValuePair<DateTime, long>(month, totalRevenue);
-                    if (row.Index % 2 != 0) row.DefaultCellStyle.BackColor = Color.LightSkyBlue;
+                    if (row.Index % 2 != 0) row.DefaultCellStyle.BackColor = color_Line1;
+                    else row.DefaultCellStyle.BackColor = color_Line2;
                     stt++;
                     month = month.AddMonths(1);
                 }
@@ -647,6 +649,17 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         private void cbbChartMode_SelectedIndexChanged_1(object sender, EventArgs e)
         {
 
+        }
+        Color color_Line1;
+        Color color_Line2;
+        public void LoadTheme()
+        {
+            dataGridView1.ForeColor = groupBox1.ForeColor;
+            dataGridView1.BackgroundColor = AppManager.GetColors("Grid_Background");
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = dataGridView1.ForeColor;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = AppManager.GetColors("Grid_Header");
+            color_Line1 = AppManager.GetColors("Grid_Line1");
+            color_Line2 = AppManager.GetColors("Grid_Line2");
         }
     }
 }

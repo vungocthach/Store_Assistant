@@ -82,18 +82,20 @@
             // 
             this.toolView1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.toolView1.BackColor = System.Drawing.Color.Transparent;
-            this.toolView1.Location = new System.Drawing.Point(861, 12);
+            this.toolView1.Location = new System.Drawing.Point(821, 12);
             this.toolView1.Name = "toolView1";
-            this.toolView1.Size = new System.Drawing.Size(323, 35);
+            this.toolView1.Size = new System.Drawing.Size(341, 35);
             this.toolView1.TabIndex = 1;
             // 
             // tabSelector1
             // 
             this.tabSelector1.BackColor = System.Drawing.Color.Transparent;
+            this.tabSelector1.ColorButtonMouseOn = System.Drawing.Color.Empty;
+            this.tabSelector1.ColorButtonPressed = System.Drawing.Color.Empty;
             this.tabSelector1.ColorButtonSelected = System.Drawing.Color.Yellow;
             this.tabSelector1.Location = new System.Drawing.Point(12, 0);
             this.tabSelector1.Name = "tabSelector1";
-            this.tabSelector1.Size = new System.Drawing.Size(712, 59);
+            this.tabSelector1.Size = new System.Drawing.Size(715, 59);
             this.tabSelector1.TabIndex = 2;
             // 
             // Form1

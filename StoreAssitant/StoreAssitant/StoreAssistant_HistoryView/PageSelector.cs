@@ -206,7 +206,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         void AutoScale_ButtonImage(Button btn, Bitmap image)
         {
             int bestSize = (btn.Height < btn.Width) ? btn.Height : btn.Width;
-            btn.Image = new Bitmap(image, bestSize, bestSize);
+            btn.Image = new Bitmap(image, bestSize - 3, bestSize - 3);
         }
 
         private void TxtPage_MouseCaptureChanged(object sender, EventArgs e)

@@ -13,7 +13,7 @@ using StoreAssitant.StoreAssistant_Helper;
 
 namespace StoreAssitant.StoreAssistant_HistoryView
 {
-    public partial class HistoryView : UserControl
+    public partial class HistoryView : UserControl, ILoadTheme
     {
         double[] columnWeights;
         string Lang = "vn";
@@ -54,7 +54,6 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             AutoSizeColumns();
 
             this.SizeChanged += HistoryView_SizeChanged;
-            this.button1.Click += Button1_Click;
             this.btn_Search.Click += Btn_Search_Click;
 
             pageSelector1.SelectedIndexChanged += PageSelector1_SelectedIndexChanged;
@@ -66,6 +65,8 @@ namespace StoreAssitant.StoreAssistant_HistoryView
 
             this.Load += HistoryView_Load;
 
+            textBox1.KeyDown += TextBox1_KeyDown;
+
             VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
 
             if ( Lang != Language.CultureName)
@@ -73,6 +74,11 @@ namespace StoreAssitant.StoreAssistant_HistoryView
                 Lang = Language.CultureName;
                 SetLanguge();
             }    
+        }
+
+        private void TextBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) { Btn_Search_Click(btn_Search, EventArgs.Empty); }
         }
 
         private void VoucherView_ChangeLanguage(object sender, string e)
@@ -88,7 +94,6 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             label1.Text = Language.Rm.GetString("From:", Language.Culture);
             label2.Text = Language.Rm.GetString("To:", Language.Culture);
             label3.Text = Language.Rm.GetString("Code:", Language.Culture);
-            button1.Text = Language.Rm.GetString("Advanced", Language.Culture);
             dataGridView1.Columns[0].HeaderText = Language.Rm.GetString("Number", Language.Culture);
             dataGridView1.Columns[1].HeaderText = Language.Rm.GetString("Bill code", Language.Culture);
             dataGridView1.Columns[2].HeaderText = Language.Rm.GetString("Date", Language.Culture);
@@ -240,7 +245,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
 
         private void HistoryView_SizeChanged(object sender, EventArgs e)
         {
-            pageSelector1.Location = new Point((this.Width - pageSelector1.Width) / 2, this.Height - pageSelector1.Margin.Top - pageSelector1.Margin.Bottom - pageSelector1.Height -dataGridView1.Margin.Bottom);
+            pageSelector1.Location = new Point((this.Width - pageSelector1.Width) / 2, this.Height - pageSelector1.Margin.Top - pageSelector1.Margin.Bottom - pageSelector1.Height - dataGridView1.Margin.Bottom);
             dataGridView1.Height = pageSelector1.Location.Y - dataGridView1.Location.Y - pageSelector1.Margin.Top - dataGridView1.Margin.Bottom;
             dataGridView1.Width = this.Width - dataGridView1.Margin.Left - dataGridView1.Margin.Right;
             AutoSizeColumns();
@@ -278,7 +283,8 @@ namespace StoreAssitant.StoreAssistant_HistoryView
 
             SetData(bills);
         }
-
+        Color color_Line1;
+        Color color_Line2;
         void SetData(List<BillInfo> bills)
         {
             dataGridView1.Rows.Clear();
@@ -291,7 +297,9 @@ namespace StoreAssitant.StoreAssistant_HistoryView
                 DataGridViewRow row = dataGridView1.Rows[index];
                 row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 row.Tag = b;
-                if ( row.Index % 2 != 0) row.DefaultCellStyle.BackColor = Color.LightSkyBlue;
+                if ( row.Index % 2 != 0) row.DefaultCellStyle.BackColor = color_Line2;
+                else row.DefaultCellStyle.BackColor = color_Line1;
+                row.DefaultCellStyle.ForeColor = dataGridView1.ForeColor;
             }
             dataGridView1.ResumeLayout();
         }
@@ -299,7 +307,22 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         public void LoadTheme()
         {
             groupBox1.ForeColor = AppManager.GetColors("Main_Plaintext");
+            foreach (Control control in groupBox1.Controls) { control.ForeColor = groupBox1.ForeColor; }
+            groupBox2.ForeColor = groupBox1.ForeColor;
+            foreach (Control control in groupBox2.Controls) { control.ForeColor = groupBox1.ForeColor; }
+            textBox1.BackColor = AppManager.GetColors("Main_Background");
 
+            dataGridView1.ForeColor = groupBox1.ForeColor;
+            dataGridView1.BackgroundColor = AppManager.GetColors("Grid_Background");
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = dataGridView1.ForeColor;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = AppManager.GetColors("Grid_Header");
+            color_Line1 = AppManager.GetColors("Grid_Line1");
+            color_Line2 = AppManager.GetColors("Grid_Line2");
+
+            dtp_From.CalendarForeColor = groupBox1.ForeColor;
+            dtp_From.CalendarTitleForeColor = groupBox1.ForeColor;
+            dtp_From.CalendarTrailingForeColor = groupBox1.ForeColor;
+            dtp_From.CalendarTitleBackColor = AppManager.GetColors("Main_Background");
         }
     }
 }

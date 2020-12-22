@@ -39,14 +39,14 @@ namespace StoreAssitant.StoreAssistant_AccountView
             this.accountView1.Location = new System.Drawing.Point(0, 0);
             this.accountView1.Name = "accountView1";
             this.accountView1.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.accountView1.Size = new System.Drawing.Size(608, 597);
+            this.accountView1.Size = new System.Drawing.Size(665, 539);
             this.accountView1.TabIndex = 0;
             // 
             // AccountManamentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(608, 597);
+            this.ClientSize = new System.Drawing.Size(665, 539);
             this.Controls.Add(this.accountView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;

@@ -59,7 +59,7 @@ namespace StoreAssitant.StoreAssistant_Helper
             this.btnCashier.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnCashier.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.btnCashier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCashier.Font = new System.Drawing.Font("Gentium Book Basic", 13F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCashier.Font = new System.Drawing.Font("Gentium Book Basic", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCashier.Image = global::StoreAssitant.Properties.Resources.iconfinder_shopping_shop_buy_discount_18_4038845;
             this.btnCashier.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCashier.Location = new System.Drawing.Point(1, 1);
@@ -77,7 +77,7 @@ namespace StoreAssitant.StoreAssistant_Helper
             this.btnManager.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnManager.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.btnManager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManager.Font = new System.Drawing.Font("Gentium Book Basic", 13F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManager.Font = new System.Drawing.Font("Gentium Book Basic", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnManager.Image = ((System.Drawing.Image)(resources.GetObject("btnManager.Image")));
             this.btnManager.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnManager.Location = new System.Drawing.Point(143, 1);
@@ -95,13 +95,13 @@ namespace StoreAssitant.StoreAssistant_Helper
             this.btnStatistic.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnStatistic.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.btnStatistic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStatistic.Font = new System.Drawing.Font("Gentium Book Basic", 13F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStatistic.Font = new System.Drawing.Font("Gentium Book Basic", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStatistic.Image = global::StoreAssitant.Properties.Resources.iconfinder_51_5027845;
             this.btnStatistic.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnStatistic.Location = new System.Drawing.Point(285, 1);
             this.btnStatistic.Margin = new System.Windows.Forms.Padding(1);
             this.btnStatistic.Name = "btnStatistic";
-            this.btnStatistic.Size = new System.Drawing.Size(140, 52);
+            this.btnStatistic.Size = new System.Drawing.Size(145, 52);
             this.btnStatistic.TabIndex = 3;
             this.btnStatistic.Text = "Thống Kê";
             this.btnStatistic.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -113,10 +113,10 @@ namespace StoreAssitant.StoreAssistant_Helper
             this.btnHistory.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnHistory.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.btnHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHistory.Font = new System.Drawing.Font("Gentium Book Basic", 13F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHistory.Font = new System.Drawing.Font("Gentium Book Basic", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHistory.Image = ((System.Drawing.Image)(resources.GetObject("btnHistory.Image")));
             this.btnHistory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHistory.Location = new System.Drawing.Point(427, 1);
+            this.btnHistory.Location = new System.Drawing.Point(432, 1);
             this.btnHistory.Margin = new System.Windows.Forms.Padding(1);
             this.btnHistory.Name = "btnHistory";
             this.btnHistory.Size = new System.Drawing.Size(140, 52);
@@ -131,15 +131,15 @@ namespace StoreAssitant.StoreAssistant_Helper
             this.btnVoucher.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnVoucher.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.btnVoucher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVoucher.Font = new System.Drawing.Font("Gentium Book Basic", 13F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVoucher.Font = new System.Drawing.Font("Gentium Book Basic", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVoucher.Image = global::StoreAssitant.Properties.Resources.iconfinder_sale_lineal_color_cnvrt_04_3827715;
             this.btnVoucher.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVoucher.Location = new System.Drawing.Point(569, 1);
+            this.btnVoucher.Location = new System.Drawing.Point(574, 1);
             this.btnVoucher.Margin = new System.Windows.Forms.Padding(1);
             this.btnVoucher.Name = "btnVoucher";
             this.btnVoucher.Size = new System.Drawing.Size(140, 52);
             this.btnVoucher.TabIndex = 5;
-            this.btnVoucher.Text = "Voucher ";
+            this.btnVoucher.Text = "Voucher";
             this.btnVoucher.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnVoucher.UseVisualStyleBackColor = true;
             // 

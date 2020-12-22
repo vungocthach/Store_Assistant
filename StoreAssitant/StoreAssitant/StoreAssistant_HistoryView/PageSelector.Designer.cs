@@ -48,7 +48,7 @@
             // btnLast
             // 
             this.btnLast.BackColor = System.Drawing.Color.Transparent;
-            this.btnLast.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnLast.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnLast.FlatAppearance.BorderSize = 0;
             this.btnLast.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnLast.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
@@ -64,7 +64,7 @@
             // btnFirst
             // 
             this.btnFirst.BackColor = System.Drawing.Color.Transparent;
-            this.btnFirst.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnFirst.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnFirst.FlatAppearance.BorderSize = 0;
             this.btnFirst.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnFirst.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
@@ -80,7 +80,7 @@
             // btnPre
             // 
             this.btnPre.BackColor = System.Drawing.Color.Transparent;
-            this.btnPre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnPre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnPre.FlatAppearance.BorderSize = 0;
             this.btnPre.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnPre.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
@@ -96,7 +96,7 @@
             // btnNxt
             // 
             this.btnNxt.BackColor = System.Drawing.Color.Transparent;
-            this.btnNxt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnNxt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnNxt.FlatAppearance.BorderSize = 0;
             this.btnNxt.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnNxt.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
