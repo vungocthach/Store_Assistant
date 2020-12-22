@@ -48,12 +48,6 @@ namespace StoreAssitant
             this.SizeChanged += Form1_SizeChanged;
             Form1_SizeChanged(this, null);
 
-            this.Load += Form1_Load;
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            LoadTheme();
         }
 
         public void LoadTheme()
@@ -120,6 +114,7 @@ namespace StoreAssitant
                 {
                     historyView = new StoreAssistant_HistoryView.HistoryView();
                 }
+                historyView.LoadTheme();
                 historyView.GetData();
                 SelectTab(historyView);
             }
@@ -129,6 +124,7 @@ namespace StoreAssitant
                 {
                     statiticsView = new StoreAssistant_StatiticsView.StatiticsView2();
                 }
+                statiticsView.LoadTheme();
                 SelectTab(statiticsView);
             }
             else if (tabSelector1.SelectedTabKey == "btnVoucher")
@@ -144,6 +140,12 @@ namespace StoreAssitant
             {
                 //something wrong here
             }
+        }
+
+        internal void LoadFont()
+        {
+            toolView1.LoadFont();
+            tabSelector1.LoadFont();
         }
 
         private void Form1_SizeChanged(object sender, EventArgs e)

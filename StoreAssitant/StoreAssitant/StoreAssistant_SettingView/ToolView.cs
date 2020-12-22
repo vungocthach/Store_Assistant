@@ -73,7 +73,7 @@ namespace StoreAssitant.StoreAssistant_SettingView
 
         private void ToolStrip1_SizeChanged(object sender, EventArgs e)
         {
-            this.Size = new Size(toolStrip1.Width, toolStrip1.Height - 3);
+            this.Size = new Size(toolStrip1.Width - 8, toolStrip1.Height - 3);
         }
 
         private void ItemStoreInfo_Click(object sender, EventArgs e)
@@ -151,6 +151,15 @@ namespace StoreAssitant.StoreAssistant_SettingView
             btnAccount.Text = string.Format("Xin chào, {0}", Authenticator.CurrentUser.UserName);
         }
 
+        internal void LoadFont()
+        {
+            btnAccount.Font = new Font(AppManager.GetPrivate_FontFamily("Gentium Book Basic"),
+                                            btnAccount.Font.Size, btnAccount.Font.Style);
+            btnSetting.Font = new Font(AppManager.GetPrivate_FontFamily("Gentium Book Basic"),
+                                            btnSetting.Font.Size, btnSetting.Font.Style);
+            toolStrip1.Invalidate();
+        }
+
         public void LoadTheme()
         {
             toolStrip1.Renderer = new ToolStripProfessionalRenderer(new CustomProfessionalColors());
@@ -188,6 +197,10 @@ namespace StoreAssitant.StoreAssistant_SettingView
         public override Color ImageMarginGradientEnd => ToolStripDropDownBackground;
 
         public override Color MenuItemSelected => AppManager.GetColors("Menuitem_Selected");
+        /*
+        public override Color MenuItemSelectedGradientBegin => AppManager.GetColors("Menuitem_Selected");
+        public override Color MenuItemSelectedGradientEnd => AppManager.GetColors("Toolbar_Background");
+        */
         public override Color MenuItemBorder => MenuItemSelected;
         public override Color ButtonSelectedBorder => MenuItemSelected;
 
