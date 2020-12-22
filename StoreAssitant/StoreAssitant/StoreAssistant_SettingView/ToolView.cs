@@ -13,7 +13,7 @@ namespace StoreAssitant.StoreAssistant_SettingView
         {
             InitializeComponent();
             InitializeEventHandler();
-
+            englishToolStripMenuItem.Click += EnglishToolStripMenuItem_Click;
             itemLanguage.DropDownItems.Clear();
             foreach (LanguageMode e in Enum.GetValues(typeof(LanguageMode)))
             {
@@ -46,6 +46,11 @@ namespace StoreAssitant.StoreAssistant_SettingView
                     AppManager.ChangeWindowSize(e);
                 };
             }
+        }
+
+        private void EnglishToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("ok");
         }
 
         private void InitializeEventHandler()
