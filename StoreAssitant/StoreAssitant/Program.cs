@@ -27,7 +27,23 @@ namespace StoreAssitant
             //test2();
             //tesst3();
             // Test4();
+            //Test5();
         }
+
+        private static void Test5()
+        {
+            var font = StoreAssistant_Helper.AppManager.PrivateFont;
+            var family = font.Families[0];
+            Form form = new Form();
+            TextBox textBox = new TextBox();
+            textBox.Width = form.Width;
+            textBox.Font = new System.Drawing.Font(family, 20, System.Drawing.FontStyle.Bold);
+            textBox.Text = "This is sample text fff";
+            textBox.Location = new System.Drawing.Point(0, 0);
+            form.Controls.Add(textBox);
+            Application.Run(form);
+        }
+
         static void Test4()
         {
             using (DatabaseController da = new DatabaseController())

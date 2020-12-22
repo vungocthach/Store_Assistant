@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Resources;
@@ -260,6 +261,32 @@ namespace StoreAssitant.StoreAssistant_Helper
             }
 
             return colors[key];
+        }
+
+        public static void AddFontFromFile(string path)
+        {
+            AddFontFromFile(new FileInfo(path));
+        }
+        public static void AddFontFromFile(FileInfo file)
+        {
+            if (!file.Exists) { throw new FileNotFoundException(); }
+            if (file.Extension != ".ttf") { throw new FormatException("File extension must be '*.ttf'"); }
+
+            privateFont.AddFontFile(file.FullName);
+        }
+        static PrivateFontCollection privateFont = null;
+        public static PrivateFontCollection PrivateFont
+        {
+            get
+            {
+                if (privateFont == null || privateFont.Families.Length == 0)
+                {
+                    privateFont = new PrivateFontCollection();
+                    AddFontFromFile($"./Fonts/GenBkBasR.ttf");
+
+                }
+                return privateFont;
+            }
         }
     }
 }

@@ -535,6 +535,12 @@
     <None Include="Resources\iconfinder_normal_293272_reverse.png" />
     <None Include="Resources\iconfinder_next_293276.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Fonts\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>if not exist $(TargetDir)\Fonts mkdir $(TargetDir)\Fonts
+xcopy "$(ProjectDir)\Fonts\*" "$(TargetDir)\Fonts" /S/I/Y</PreBuildEvent>
+  </PropertyGroup>
 </Project>
