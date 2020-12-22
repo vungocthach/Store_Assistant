@@ -263,7 +263,7 @@ namespace StoreAssitant
                 return;
             }
             isConfirm = true;
-            PrintPDF.createBill(info);
+            PrintPDF.Instance.createBill(info);
             this.Close();
             DatabaseController.Insert_Bill(info);
         }
