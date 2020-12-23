@@ -1,4 +1,5 @@
-﻿using StoreAssitant.StoreAssistant_VoucherView;
+﻿using StoreAssitant.StoreAssistant_Helper;
+using StoreAssitant.StoreAssistant_VoucherView;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,10 +25,10 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         {
             InitializeComponent();
 
-            VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
-            if (Lang != Language.CultureName)
+            Language.ChangeLanguage += VoucherView_ChangeLanguage;
+            if (Lang != AppManager.CurrentLanguage)
             {
-                Lang = Language.CultureName;
+                Lang = AppManager.CurrentLanguage;
                 SetLanguage();
             }
 

@@ -1,4 +1,5 @@
-﻿using StoreAssitant.StoreAssistant_VoucherView;
+﻿using StoreAssitant.StoreAssistant_Helper;
+using StoreAssitant.StoreAssistant_VoucherView;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,16 +22,17 @@ namespace StoreAssitant
         public AddProductForm()
         {
             InitializeComponent();
+
+            if (Lang != AppManager.CurrentLanguage)
+            {
+                Lang = AppManager.CurrentLanguage;
+                SetLanguage();
+            }
+            Language.ChangeLanguage += VoucherView_ChangeLanguage;
+
             ClickSubmitOK = new EventHandler<ProductInfo>(OnSubmitOK);
             this.btn_Submit.Click += Btn_Submit_Click;
             this.btn_Cancel.Click += Btn_Cancel_Click;
-
-            if (Lang != Language.CultureName)
-            {
-                Lang = Language.CultureName;
-                SetLanguage();
-            }
-            VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
 
         }
 
@@ -42,12 +44,12 @@ namespace StoreAssitant
             this.btn_Submit.Click += Btn_Submit_Click;
             this.btn_Cancel.Click += Btn_Cancel_Click;
 
-            if (Lang != Language.CultureName)
+            if (Lang != AppManager.CurrentLanguage)
             {
-                Lang = Language.CultureName;
+                Lang = AppManager.CurrentLanguage;
                 SetLanguage();
             }
-            VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
+            Language.ChangeLanguage += VoucherView_ChangeLanguage;
 
             SetData(info);
             this.Text = "Thay đổi thông tin món ăn";

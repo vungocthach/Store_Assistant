@@ -36,6 +36,7 @@ namespace StoreAssitant
         public TableControl()
         {
             InitializeComponent();
+
             this.Info = new TableBillInfo();
 
             Init_Event_Available();

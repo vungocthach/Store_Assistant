@@ -1,4 +1,5 @@
-﻿using StoreAssitant.StoreAssistant_VoucherView;
+﻿using StoreAssitant.StoreAssistant_Helper;
+using StoreAssitant.StoreAssistant_VoucherView;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,18 +23,19 @@ namespace StoreAssitant.StoreAssistant_Authenticater
         {
             InitializeComponent();
 
+            if (Lang != AppManager.CurrentLanguage)
+            {
+                Lang = AppManager.CurrentLanguage;
+                SetLanguage();
+            }
+            Language.ChangeLanguage += VoucherView_ChangeLanguage;
+
             if (Authenticator.CurrentUser == null) { throw new AuthenticationException("Current user's account must not be null"); }
 
             ChangePasswordOK = new EventHandler(OnChangePasswordOK);
 
             btn_Submit.Click += Btn_Submit_Click;
             btn_Close.Click += Btn_Close_Click;
-            VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
-            if (Lang != Language.CultureName)
-            {
-                Lang = Language.CultureName;
-                SetLanguage();
-            }    
         }
 
         private void VoucherView_ChangeLanguage(object sender, string e)

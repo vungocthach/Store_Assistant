@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using StoreAssitant.StoreAssistant_Authenticater;
 using System.Collections;
 using System.Security.Authentication;
+using StoreAssitant.StoreAssistant_Helper;
 
 namespace StoreAssitant.StoreAssistant_AccountView
 {
@@ -33,8 +34,9 @@ namespace StoreAssitant.StoreAssistant_AccountView
         {
             Language.InitLanguage(this);
             gr_user.Text = Language.Rm.GetString("Account infomation", Language.Culture);
-            dataGridView1.Columns[0].HeaderText = Language.Rm.GetString("Username", Language.Culture);
-            dataGridView1.Columns[1].HeaderText = Language.Rm.GetString("Position", Language.Culture);
+            dataGridView1.Columns[0].HeaderText = Language.Rm.GetString("User name", Language.Culture);
+            dataGridView1.Columns[1].HeaderText = Language.Rm.GetString("Full name", Language.Culture);
+            dataGridView1.Columns[2].HeaderText = Language.Rm.GetString("Position", Language.Culture);
             btn_AddAccount.Text = Language.Rm.GetString("Add", Language.Culture);
             btn_DeleteAccount.Text = Language.Rm.GetString("Delete", Language.Culture);
             btn_ResetPass.Text = Language.Rm.GetString("Change password", Language.Culture);
@@ -57,6 +59,11 @@ namespace StoreAssitant.StoreAssistant_AccountView
         public AccountView()
         {
             InitializeComponent();
+            if (Lang != AppManager.CurrentLanguage)
+            {
+                Lang = AppManager.CurrentLanguage;
+                SetLanguage();
+            }
             InitializeEventHandler();
 
 
@@ -65,13 +72,7 @@ namespace StoreAssitant.StoreAssistant_AccountView
 
             dataGridView1.Font = new Font(dataGridView1.Font.FontFamily, 11f);
 
-            StoreAssistant_VoucherView.VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
-
-            if ( Lang != Language.CultureName)
-            {
-                Lang = Language.CultureName;
-                SetLanguage();
-            }    
+            Language.ChangeLanguage += VoucherView_ChangeLanguage;
         }
 
         private void VoucherView_ChangeLanguage(object sender, string e)

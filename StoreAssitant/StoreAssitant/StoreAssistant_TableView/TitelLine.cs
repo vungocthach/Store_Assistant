@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using StoreAssitant.StoreAssistant_Helper;
 
 namespace StoreAssitant.StoreAssistant_TableView
 {
@@ -16,18 +17,20 @@ namespace StoreAssitant.StoreAssistant_TableView
         public TitelLine()
         {
             InitializeComponent();
+
+            if (Lang != AppManager.CurrentLanguage)
+            {
+                Lang = AppManager.CurrentLanguage;
+                SetLanguage();
+            }
+            Language.ChangeLanguage += TitleLine_ChangeLanguage;
+
             this.MinimumSize = new Size((new TableLine()).MinimumSize.Width, (new TableLine()).MinimumSize.Height);
             this.SizeChanged += TitelLine_SizeChanged;
             lbName.Size = new Size(this.Size.Width * 13 / 44, this.Size.Height);
             lbSinglePrice.Size = new Size(this.Size.Width * 10 / 44, this.Size.Height);
             lbNumber.Size = new Size(this.Size.Width * 11 / 44, this.Size.Height);
             lbTotalPrice.Size = new Size(this.Size.Width * 10 / 44, this.Size.Height);
-
-            if (Lang != Language.CultureName)
-            {
-                Lang = Language.CultureName;
-                SetLanguage();
-            }    
         }
 
         private void SetLanguage()
@@ -37,6 +40,10 @@ namespace StoreAssitant.StoreAssistant_TableView
             lbNumber.Text = Language.Rm.GetString("Quantum", Language.Culture);
             lbSinglePrice.Text = Language.Rm.GetString("Unit price", Language.Culture);
             lbTotalPrice.Text = Language.Rm.GetString("Amount", Language.Culture);
+        }
+        private void TitleLine_ChangeLanguage(object sender, string e)
+        {
+            SetLanguage();
         }
         private void TitelLine_SizeChanged(object sender, EventArgs e)
         {

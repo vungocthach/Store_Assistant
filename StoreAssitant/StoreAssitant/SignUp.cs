@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StoreAssitant.StoreAssistant_Helper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,7 +33,12 @@ namespace StoreAssitant
             lb_Birth.Text = Language.Rm.GetString("Date of birth:", Language.Culture);
             this.Text = btn_SignUp.Text =Language.Rm.GetString("Sign Up", Language.Culture);
         }
-                 public bool IsNumber(string pText)
+        private void SignUp_ChangeLanguage(object sender, string e)
+        {
+            SetLanguage();
+        }
+
+        public bool IsNumber(string pText)
         {
             Regex regex = new Regex(@"^[-+]?[0-9]*\.?[0-9]+$");
             return regex.IsMatch(pText);
@@ -42,13 +48,16 @@ namespace StoreAssitant
         public SignUp_form()
         {
             InitializeComponent();
+
+            if (Lang != AppManager.CurrentLanguage)
+            {
+                this.Lang = AppManager.CurrentLanguage;
+                SetLanguage();
+            }
+            Language.ChangeLanguage += SignUp_ChangeLanguage;
+
             SignUpOK = new EventHandler<UserInfo>((s,e)=> { });
             this.btn_SignUp.Click += Btn_SignUp_Click;
-            if (Lang != Language.CultureName)
-            {
-                this.Lang = Language.CultureName;
-                SetLanguage();
-            }    
         }
 
         private void Btn_SignUp_Click(object sender, EventArgs e)

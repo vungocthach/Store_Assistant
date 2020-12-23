@@ -255,6 +255,9 @@
   <data name="From:" xml:space="preserve">
     <value>Từ ngày:</value>
   </data>
+  <data name="Full name" xml:space="preserve">
+    <value>Họ và tên</value>
+  </data>
   <data name="Gender:" xml:space="preserve">
     <value>Giới tính:</value>
   </data>
@@ -326,6 +329,9 @@
   </data>
   <data name="PlusChar" xml:space="preserve">
     <value>Vui lòng chỉ nhập số nguyên dương</value>
+  </data>
+  <data name="Position" xml:space="preserve">
+    <value>Phân quyền</value>
   </data>
   <data name="Position:" xml:space="preserve">
     <value>Phân quyền:</value>
@@ -428,6 +434,9 @@
   </data>
   <data name="Unit:" xml:space="preserve">
     <value>Đơn vị xem:</value>
+  </data>
+  <data name="User name" xml:space="preserve">
+    <value>Tên đăng nhập</value>
   </data>
   <data name="User name:" xml:space="preserve">
     <value>Tên đăng nhập:</value>
