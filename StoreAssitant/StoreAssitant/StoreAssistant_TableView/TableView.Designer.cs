@@ -70,6 +70,7 @@
             // 
             // tableAdd_btn
             // 
+            this.tableAdd_btn.BackColor = System.Drawing.SystemColors.Control;
             this.tableAdd_btn.BackgroundImage = global::StoreAssitant.Properties.Resources.button_add;
             this.tableAdd_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tableAdd_btn.Location = new System.Drawing.Point(117, 2);

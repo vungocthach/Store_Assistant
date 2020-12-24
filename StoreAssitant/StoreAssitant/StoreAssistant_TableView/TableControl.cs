@@ -82,7 +82,6 @@ namespace StoreAssitant
         private void Init_Event_ToolStrip()
         {
             tsDelete.Click += TsDelete_Click;
-            tsInformation.Click += TsInformation_Click;
         }
         private void Init_DefautValue()
         {
@@ -98,10 +97,6 @@ namespace StoreAssitant
         /// Create event for tool strip menu
         /// </summary>
         #region EVENTS TOOL STRIP
-        private void TsInformation_Click(object sender, EventArgs e)
-        {
-            ClickTableControl(this, new EventArgs());
-        }
         private void TsDelete_Click(object sender, EventArgs e)
         {
             TableRemoved(this, e);
@@ -116,7 +111,7 @@ namespace StoreAssitant
         #region EVENT MOUSE
         private void TableControl_MouseClick(object sender, MouseEventArgs e)
         {
-            ClickTableControl(this, e);
+            if (e.Button == MouseButtons.Left) ClickTableControl(this, e);
         }
         private void TableControl_MouseEnter(object sender, EventArgs e)
         {
@@ -128,7 +123,7 @@ namespace StoreAssitant
         }
         private void TableControl_MouseDown(object sender, EventArgs e)
         {
-            tableImage_pnl.BackColor = this.BackColor = Color.LightSalmon;
+            if (((MouseEventArgs)e).Button == MouseButtons.Left) tableImage_pnl.BackColor = this.BackColor = Color.LightSalmon;
         }
         private void TableControl_MouseUp(object sender, EventArgs e)
         {
@@ -179,15 +174,7 @@ namespace StoreAssitant
             get => isManager;
             set
             {
-                isManager = value;
-                if(isManager==true)
-                {
-                    tsDelete.Visible = true;
-                }
-                else
-                {
-                    tsDelete.Visible = false;
-                }
+                tsDelete.Visible =  isManager = value;
             }
         }
         [Category("My properties"), Description("The status of table")]

@@ -42,31 +42,6 @@ namespace StoreAssitant
             btnCashier.Click += BtnCashier_Click;
             btnCancel.Click += BtnCancel_Click;
             textBox4.KeyPress += TextBox4_KeyPress;
-            textBox1.TextChanged += TextBox1_TextChanged;
-            textBox3.TextChanged += TextBox3_TextChanged;
-            textBox4.TextChanged += TextBox4_TextChanged;
-            textBox5.TextChanged += TextBox5_TextChanged;
-            textBox2.TextChanged += TextBox2_TextChanged;
-        }
-
-        private void TextBox4_TextChanged(object sender, EventArgs e)
-        {
-            textBox4.Text = string.Format("{0:N0}", textBox4.Text);
-        }
-
-        private void TextBox5_TextChanged(object sender, EventArgs e)
-        {
-            textBox5.Text = string.Format("{0:N0}", textBox5.Text);
-        }
-
-        private void TextBox3_TextChanged(object sender, EventArgs e)
-        {
-            textBox3.Text = string.Format("{0:N0}", textBox3.Text);
-        }
-
-        private void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-            textBox1.Text = string.Format("{0:N0}", textBox1.Text);
         }
 
         private void VoucherView_ChangeLanguage(object sender, string e)
