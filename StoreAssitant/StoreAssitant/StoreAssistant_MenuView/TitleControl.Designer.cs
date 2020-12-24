@@ -34,7 +34,7 @@
             // 
             // labelTitle
             // 
-            this.labelTitle.BackColor = System.Drawing.Color.Orange;
+            this.labelTitle.BackColor = System.Drawing.Color.Transparent;
             this.labelTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelTitle.Font = new System.Drawing.Font("Snap ITC", 24F, System.Drawing.FontStyle.Bold);
             this.labelTitle.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -47,7 +47,7 @@
             // 
             // labelImage
             // 
-            this.labelImage.BackColor = System.Drawing.Color.Orange;
+            this.labelImage.BackColor = System.Drawing.Color.Transparent;
             this.labelImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelImage.Image = global::StoreAssitant.Properties.Resources._120427285_648274679154155_8374726593261554204_n;
             this.labelImage.Location = new System.Drawing.Point(3, 0);
@@ -59,6 +59,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Orange;
             this.Controls.Add(this.labelTitle);
             this.Controls.Add(this.labelImage);
             this.Name = "TitleControl";

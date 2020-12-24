@@ -32,10 +32,18 @@ namespace StoreAssitant
                 Invalidate();
             }
         }
+
+
         public TitleControl()
         {
             InitializeComponent();
             this.SizeChanged += TitleControl_SizeChanged;
+            this.ForeColorChanged += TitleControl_ForeColorChanged;
+        }
+
+        private void TitleControl_ForeColorChanged(object sender, EventArgs e)
+        {
+            labelTitle.ForeColor = this.ForeColor;
         }
 
         private void TitleControl_SizeChanged(object sender, EventArgs e)

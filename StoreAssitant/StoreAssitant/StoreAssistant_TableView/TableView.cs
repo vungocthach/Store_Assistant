@@ -12,7 +12,7 @@ using StoreAssitant.StoreAssistant_VoucherView;
 
 namespace StoreAssitant
 {
-    public partial class TableView : UserControl
+    public partial class TableView : UserControl, StoreAssistant_Helper.ILoadTheme
     {
         #region CREATE EVENT
         [Category("My Event"), Description("When button add has been click")]
@@ -236,6 +236,12 @@ namespace StoreAssitant
         private void TableAdd_pnl_MouseDown(object sender, MouseEventArgs e)
         {
             tableAdd_btn.BorderStyle = BorderStyle.None;
+        }
+
+        public void LoadTheme()
+        {
+            tableTitle_pnl.BackColor = StoreAssistant_Helper.AppManager.GetColors("Title_Background");
+            tableTitle_lb.ForeColor = StoreAssistant_Helper.AppManager.GetColors("Title_Force");
         }
         #endregion
 

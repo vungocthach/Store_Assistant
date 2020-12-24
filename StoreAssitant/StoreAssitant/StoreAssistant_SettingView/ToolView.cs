@@ -167,7 +167,7 @@ namespace StoreAssitant.StoreAssistant_SettingView
 
         public void LoadTheme()
         {
-            toolStrip1.Renderer = new ToolStripProfessionalRenderer(new CustomProfessionalColors());
+            toolStrip1.Renderer = new CustomRenderer(new CustomProfessionalColors());
             toolStrip1.ForeColor = AppManager.GetColors("Main_Plaintext");
             foreach (ToolStripItem item in toolStrip1.Items)
             {
@@ -190,6 +190,16 @@ namespace StoreAssitant.StoreAssistant_SettingView
                 if (child.DropDownItems.Count > 0) { ChangeForeColor(child, color); }
                 else { child.ForeColor = color; }
             }
+        }
+    }
+
+    class CustomRenderer : ToolStripProfessionalRenderer
+    {
+        public CustomRenderer(ProfessionalColorTable colorTable) : base(colorTable) {}
+        protected override void OnRenderArrow(ToolStripArrowRenderEventArgs e)
+        {
+            e.ArrowColor = AppManager.GetColors("Main_Plaintext");
+            base.OnRenderArrow(e);
         }
     }
 
@@ -217,5 +227,6 @@ namespace StoreAssitant.StoreAssistant_SettingView
         public override Color ButtonSelectedGradientBegin => MenuItemSelected;
         public override Color ButtonSelectedGradientMiddle => MenuItemSelected;
         public override Color ButtonSelectedGradientEnd => MenuItemSelected;
+
     }
 }
