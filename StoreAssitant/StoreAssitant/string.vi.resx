@@ -177,6 +177,9 @@
   <data name="Chart" xml:space="preserve">
     <value>Biểu đồ</value>
   </data>
+  <data name="CheckLogOut" xml:space="preserve">
+    <value>Bạn có muốn đăng xuất?</value>
+  </data>
   <data name="Chosse" xml:space="preserve">
     <value>Chọn hình ảnh</value>
   </data>
@@ -217,7 +220,7 @@
     <value>Xác nhận</value>
   </data>
   <data name="DelAcc" xml:space="preserve">
-    <value>Xóa tài khoản</value>
+    <value>Tài khoản bị xóa sẽ không thể khôi phục@Bạn muốn xóa tài khoản này?</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Xóa</value>
@@ -404,6 +407,9 @@
   </data>
   <data name="PAY BILL" xml:space="preserve">
     <value>HÓA ĐƠN THANH TOÁN</value>
+  </data>
+  <data name="PDName" xml:space="preserve">
+    <value>Tên:</value>
   </data>
   <data name="Phone:" xml:space="preserve">
     <value>SĐT:</value>

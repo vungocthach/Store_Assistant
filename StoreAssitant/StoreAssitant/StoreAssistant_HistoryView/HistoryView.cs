@@ -315,7 +315,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             return dtp_To.Value;
         }
 
-        int row_per_page = 20;
+        int row_per_page = 40;
         int GetStartIndex() { return (pageSelector1.SelectedIndex - 1) * row_per_page +1; }
 
         int modeSort = 0;

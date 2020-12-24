@@ -173,7 +173,7 @@ namespace StoreAssitant
         {
             Language.InitLanguage(this);
             label_Image.Text = Language.Rm.GetString("Add picture", Language.Culture);
-            label1.Text = Language.Rm.GetString("Name:", Language.Culture);
+            label1.Text = Language.Rm.GetString("PDName", Language.Culture);
             label2.Text = Language.Rm.GetString("Price:", Language.Culture);
             label4.Text = Language.Rm.GetString("Detailed description:", Language.Culture);
             Wanrning = Language.Rm.GetString("Wanrning", Language.Culture);

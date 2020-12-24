@@ -13,7 +13,7 @@ namespace StoreAssitant.StoreAssistant_SettingView
         string hi = "Xin chào";
         string CloseApp = "Bạn muốn đóng ứng dụng?";
         string Define = "Xác nhận";
-        string DelAcc = "Bạn muốn đăng xuất tài khoản?";
+        string CheckLogOut = "Bạn muốn đăng xuất tài khoản?";
         string Project_ing = "Công trình đang thi công!";
         string Error404 = "404 Not Found";
         string SuccessChangePass = "Đổi mật khẩu thành công";
@@ -76,7 +76,7 @@ namespace StoreAssitant.StoreAssistant_SettingView
             btnSetting.DropDownItems[3].Text = Language.Rm.GetString("StoreInfo", Language.Culture);
             CloseApp = Language.Rm.GetString("CloseApp", Language.Culture);
             Define = Language.Rm.GetString("Define", Language.Culture);
-            DelAcc = Language.Rm.GetString("DelAcc", Language.Culture);
+            CheckLogOut = Language.Rm.GetString("CheckLogOut", Language.Culture);
             Project_ing = Language.Rm.GetString("Project_ing", Language.Culture);
             SuccessChangePass = Language.Rm.GetString("SuccessChangePass", Language.Culture);
         }
@@ -129,7 +129,7 @@ namespace StoreAssitant.StoreAssistant_SettingView
 
         private void ItemLogOut_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show(DelAcc, Define, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult dialogResult = MessageBox.Show(CheckLogOut, Define, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.Yes)
             {
                 AppManager.Restart();

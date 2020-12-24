@@ -11,7 +11,6 @@ using System.Windows.Forms.DataVisualization.Charting;
 using StoreAssitant.StoreAssistant_Helper;
 using StoreAssitant.StoreAssistant_Information;
 using StoreAssitant.StoreAssistant_VoucherView;
-using StoreAssitant.StoreAssistant_Helper;
 
 namespace StoreAssitant.StoreAssistant_StatiticsView
 {
@@ -105,7 +104,6 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
             this.Load += StatiticsView2_Load;
 
-
             if (Lang != AppManager.CurrentLanguage)
             {
                 SetLanguage();
@@ -114,7 +112,6 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
         private void VoucherView_ChangeLanguage(object sender, string e)
         {
-         
             SetLanguage();
         }
 
@@ -284,7 +281,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             UpdateTime();
         }
 
-        int line_per_page = 20;
+        int line_per_page = 40;
         int GetStartIndex() { return (pageSelector1.SelectedIndex - 1) * line_per_page + 1; }
 
         void UpdateTime(bool needUpdateDataGrid = true)
