@@ -295,10 +295,10 @@
     <value>Tiền trả lại</value>
   </data>
   <data name="Hi" xml:space="preserve">
-    <value>Xin chào</value>
+    <value>Xin chào, </value>
   </data>
   <data name="History" xml:space="preserve">
-    <value>Lịch sử</value>
+    <value> Lịch sử</value>
   </data>
   <data name="Human Resource Management" xml:space="preserve">
     <value>Quản lí nhân sự</value>
@@ -460,7 +460,7 @@
     <value>Thông tin nhân viên</value>
   </data>
   <data name="Statistical" xml:space="preserve">
-    <value>Thống Kê</value>
+    <value> Thống Kê</value>
   </data>
   <data name="StoreInfo" xml:space="preserve">
     <value>Thông tin của hàng</value>

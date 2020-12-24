@@ -592,7 +592,7 @@ namespace StoreAssitant {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Xin chào.
+        ///   Looks up a localized string similar to Xin chào, .
         /// </summary>
         internal static string Hi {
             get {

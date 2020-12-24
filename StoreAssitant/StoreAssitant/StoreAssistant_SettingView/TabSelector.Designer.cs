@@ -55,6 +55,7 @@ namespace StoreAssitant.StoreAssistant_Helper
             // 
             // btnCashier
             // 
+            this.btnCashier.AutoSize = true;
             this.btnCashier.FlatAppearance.BorderSize = 0;
             this.btnCashier.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnCashier.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
@@ -65,7 +66,7 @@ namespace StoreAssitant.StoreAssistant_Helper
             this.btnCashier.Location = new System.Drawing.Point(1, 1);
             this.btnCashier.Margin = new System.Windows.Forms.Padding(1);
             this.btnCashier.Name = "btnCashier";
-            this.btnCashier.Size = new System.Drawing.Size(140, 52);
+            this.btnCashier.Size = new System.Drawing.Size(155, 54);
             this.btnCashier.TabIndex = 1;
             this.btnCashier.Text = "Thu Ngân";
             this.btnCashier.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -80,7 +81,7 @@ namespace StoreAssitant.StoreAssistant_Helper
             this.btnManager.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnManager.Image = ((System.Drawing.Image)(resources.GetObject("btnManager.Image")));
             this.btnManager.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnManager.Location = new System.Drawing.Point(143, 1);
+            this.btnManager.Location = new System.Drawing.Point(158, 1);
             this.btnManager.Margin = new System.Windows.Forms.Padding(1);
             this.btnManager.Name = "btnManager";
             this.btnManager.Size = new System.Drawing.Size(155, 52);
@@ -98,7 +99,7 @@ namespace StoreAssitant.StoreAssistant_Helper
             this.btnStatistic.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStatistic.Image = global::StoreAssitant.Properties.Resources.iconfinder_51_5027845;
             this.btnStatistic.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStatistic.Location = new System.Drawing.Point(300, 1);
+            this.btnStatistic.Location = new System.Drawing.Point(315, 1);
             this.btnStatistic.Margin = new System.Windows.Forms.Padding(1);
             this.btnStatistic.Name = "btnStatistic";
             this.btnStatistic.Size = new System.Drawing.Size(160, 52);
@@ -116,7 +117,7 @@ namespace StoreAssitant.StoreAssistant_Helper
             this.btnHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHistory.Image = ((System.Drawing.Image)(resources.GetObject("btnHistory.Image")));
             this.btnHistory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHistory.Location = new System.Drawing.Point(462, 1);
+            this.btnHistory.Location = new System.Drawing.Point(477, 1);
             this.btnHistory.Margin = new System.Windows.Forms.Padding(1);
             this.btnHistory.Name = "btnHistory";
             this.btnHistory.Size = new System.Drawing.Size(153, 52);
@@ -134,7 +135,7 @@ namespace StoreAssitant.StoreAssistant_Helper
             this.btnVoucher.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVoucher.Image = global::StoreAssitant.Properties.Resources.iconfinder_sale_lineal_color_cnvrt_04_3827715;
             this.btnVoucher.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVoucher.Location = new System.Drawing.Point(617, 1);
+            this.btnVoucher.Location = new System.Drawing.Point(632, 1);
             this.btnVoucher.Margin = new System.Windows.Forms.Padding(1);
             this.btnVoucher.Name = "btnVoucher";
             this.btnVoucher.Size = new System.Drawing.Size(184, 52);
@@ -151,6 +152,7 @@ namespace StoreAssitant.StoreAssistant_Helper
             this.Name = "TabSelector";
             this.Size = new System.Drawing.Size(994, 59);
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

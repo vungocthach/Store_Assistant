@@ -74,8 +74,8 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             this.Load += HistoryView_Load;
 
             textBox1.KeyDown += TextBox1_KeyDown;
-        }
 
+        }
         private void DataGridView1_ColumnSortModeChanged(object sender, DataGridViewColumnEventArgs e)
         {
             Console.WriteLine("got it");
@@ -104,6 +104,13 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             dataGridView1.Columns[2].HeaderText = Language.Rm.GetString("Date", Language.Culture);
             dataGridView1.Columns[3].HeaderText = Language.Rm.GetString("Table", Language.Culture);
             dataGridView1.Columns[4].HeaderText = Language.Rm.GetString("Total", Language.Culture);
+
+
+            dtp_From.Location = new Point(label1.Location.X + label1.Width + label1.Margin.Right + dtp_From.Margin.Left
+                                                , dtp_From.Location.Y);
+
+            dtp_To.Location = new Point(label2.Location.X + label2.Width + label2.Margin.Right + dtp_To.Margin.Left
+                                                , dtp_To.Location.Y);
         }
         private void HistoryView_ClickDelete(object sender, EventArgs e)
         {

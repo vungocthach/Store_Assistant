@@ -69,12 +69,6 @@ namespace StoreAssitant.StoreAssistant_Helper
         {
             InitializeComponent();
 
-            if (Lang != AppManager.CurrentLanguage)
-            {
-                Lang = AppManager.CurrentLanguage;
-                SetLanguage();
-            }
-
             Language.ChangeLanguage += Language_ChangeLanguage;
             SelectedTabChanged = new EventHandler((s, e) => { });
 
@@ -97,14 +91,25 @@ namespace StoreAssitant.StoreAssistant_Helper
             SetLanguage();
         }
 
-        private void SetLanguage()
+        public void SetLanguage()
         {
+            LoadFont();
             Language.InitLanguage(this);
             btnCashier.Text = Language.Rm.GetString("Cashier", Language.Culture);
-            btnHistory.Text = Language.Rm.GetString("History", Language.Culture);
+            btnHistory.Text = " " + Language.Rm.GetString("History", Language.Culture);
             btnManager.Text = Language.Rm.GetString("Manage", Language.Culture);
-            btnStatistic.Text = Language.Rm.GetString("Statistical", Language.Culture);
-            btnVoucher.Text = Language.Rm.GetString("Voucher", Language.Culture);
+            btnStatistic.Text = " " + Language.Rm.GetString("Statistical", Language.Culture);
+            btnVoucher.Text = " " + Language.Rm.GetString("Voucher", Language.Culture);
+          
+            foreach (Button btn in flowLayoutPanel1.Controls)
+            {
+                btn.Width = btn.Image.Width + 5 + GetTextWidth(btn);
+            }
+        }
+
+        int GetTextWidth(Button btn)
+        {
+            return TextRenderer.MeasureText(btn.Text, btn.Font).Width;
         }
 
         public void CheckUser()
