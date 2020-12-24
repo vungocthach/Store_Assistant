@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gr_user = new System.Windows.Forms.GroupBox();
             this.txb_role = new System.Windows.Forms.TextBox();
             this.txt_username = new System.Windows.Forms.TextBox();
@@ -42,10 +42,10 @@
             this.btn_DeleteAccount = new System.Windows.Forms.Button();
             this.btn_AddAccount = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.labelTitile = new System.Windows.Forms.Label();
             this.col_username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_role = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelTitile = new System.Windows.Forms.Label();
             this.gr_user.SuspendLayout();
             this.gr_manager.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -223,20 +223,21 @@
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_username,
             this.colFullname,
             this.col_role});
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.Location = new System.Drawing.Point(3, 13);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(10, 3, 2, 3);
@@ -248,20 +249,6 @@
             this.dataGridView1.ShowEditingIcon = false;
             this.dataGridView1.Size = new System.Drawing.Size(650, 399);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // labelTitile
-            // 
-            this.labelTitile.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.labelTitile.Font = new System.Drawing.Font("Snap ITC", 15F, System.Drawing.FontStyle.Bold);
-            this.labelTitile.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.labelTitile.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.labelTitile.Location = new System.Drawing.Point(11, 103);
-            this.labelTitile.Name = "labelTitile";
-            this.labelTitile.Size = new System.Drawing.Size(647, 55);
-            this.labelTitile.TabIndex = 3;
-            this.labelTitile.Text = "Thông tin nhân viên";
-            this.labelTitile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.labelTitile.Click += new System.EventHandler(this.label3_Click);
             // 
             // col_username
             // 
@@ -292,6 +279,20 @@
             this.col_role.MinimumWidth = 100;
             this.col_role.Name = "col_role";
             this.col_role.ReadOnly = true;
+            // 
+            // labelTitile
+            // 
+            this.labelTitile.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.labelTitile.Font = new System.Drawing.Font("Snap ITC", 15F, System.Drawing.FontStyle.Bold);
+            this.labelTitile.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelTitile.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.labelTitile.Location = new System.Drawing.Point(11, 103);
+            this.labelTitile.Name = "labelTitile";
+            this.labelTitile.Size = new System.Drawing.Size(647, 55);
+            this.labelTitile.TabIndex = 3;
+            this.labelTitile.Text = "Thông tin nhân viên";
+            this.labelTitile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelTitile.Click += new System.EventHandler(this.label3_Click);
             // 
             // AccountView
             // 

@@ -974,9 +974,9 @@ namespace StoreAssitant
             return rs;
         }
 
-        public BindingList<VoucherInfo> GetVouchers()
+        public List<VoucherInfo> GetVouchers()
         {
-            var Vouchers = new BindingList<VoucherInfo>();
+            var Vouchers = new List<VoucherInfo>();
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
             cmd.CommandText = string.Format("select * from Voucher");
             using (SqlDataReader reader = cmd.ExecuteReader())
