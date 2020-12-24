@@ -15,6 +15,7 @@ namespace StoreAssitant
 {
     public partial class ManagerModifyView : UserControl, ILoadTheme
     {
+        string Lang = "vn";
         public ManagerModifyView()
         {
             InitializeComponent();
@@ -22,6 +23,26 @@ namespace StoreAssitant
 
             split_Cashier.Panel1MinSize = tableView1.MinimumSize.Width;
             split_Cashier.Panel2MinSize = menuView1.MinimumSize.Width;
+
+            if (Lang != AppManager.CurrentLanguage)
+            {
+                Lang = AppManager.CurrentLanguage;
+                SetLanguge();
+            }
+            Language.ChangeLanguage += Language_ChangeLanguage;
+
+
+        }
+
+        private void Language_ChangeLanguage(object sender, string e)
+        {
+            SetLanguge();
+        }
+
+        public void SetLanguge()
+        {
+            Language.InitLanguage(this);
+            tableView1.NameCashierTable = Language.Rm.GetString("List table", Language.Culture);
         }
 
         internal void LoadDataFromDB()

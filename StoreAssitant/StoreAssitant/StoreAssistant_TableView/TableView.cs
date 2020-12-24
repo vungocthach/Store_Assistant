@@ -53,12 +53,7 @@ namespace StoreAssitant
         {
             InitializeComponent();
 
-            if ( Lang != AppManager.CurrentLanguage)
-            {
-                Lang = AppManager.CurrentLanguage;
-                SetLanguge();
-            }
-            Language.ChangeLanguage += VoucherView_ChangeLanguage;
+           
 
             Init_Event_Customize();
 
@@ -69,11 +64,18 @@ namespace StoreAssitant
             Init_Default_Value();
 
             this.Layout += TableView_Layout;
+
+            if (Lang != AppManager.CurrentLanguage)
+            {
+                Lang = AppManager.CurrentLanguage;
+                SetLanguge();
+            }
+            Language.ChangeLanguage += VoucherView_ChangeLanguage;
         }
 
         private void VoucherView_ChangeLanguage(object sender, string e)
         {
-            //Lang = AppManager.CurrentLanguage;
+            Lang = AppManager.CurrentLanguage;
             SetLanguge();
         }
 

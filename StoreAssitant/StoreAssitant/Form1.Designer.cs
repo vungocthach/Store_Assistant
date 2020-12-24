@@ -95,7 +95,7 @@
             this.tabSelector1.ColorButtonSelected = System.Drawing.Color.Yellow;
             this.tabSelector1.Location = new System.Drawing.Point(0, 0);
             this.tabSelector1.Name = "tabSelector1";
-            this.tabSelector1.Size = new System.Drawing.Size(803, 59);
+            this.tabSelector1.Size = new System.Drawing.Size(828, 59);
             this.tabSelector1.TabIndex = 2;
             // 
             // Form1
