@@ -99,6 +99,8 @@ namespace StoreAssitant
             if (StoreAssistant_Authenticater.Authenticator.Login(ref e))
             {
                 Form1 main_form = new Form1();
+                main_form.LoadTheme();
+                main_form.LoadFont();
                 InternetServiceHandler.Instance.OfflineModeDetected = new EventHandler((s, evt) =>
                 {
                     Application.Restart();

@@ -228,7 +228,7 @@ namespace StoreAssitant.StoreAssistant_Helper
             Dictionary<string, Color> rs = new Dictionary<string, Color>();
 
             // Common part
-            rs.Add("Main_Background", Color.FromArgb(255, 38, 38, 38));
+            rs.Add("Main_Background", Color.FromArgb(255, 50, 50, 50));
             rs.Add("Main_Plaintext", Color.White);
 
             // Tab
@@ -240,6 +240,12 @@ namespace StoreAssitant.StoreAssistant_Helper
             // Menu Item
             rs.Add("Menuitem_Background", Color.FromArgb(250, 20, 26, 15));
             rs.Add("Menuitem_Selected", Color.FromArgb(255, 83, 158, 26));
+
+            // Datagridview
+            rs.Add("Grid_Header", Color.Gray);
+            rs.Add("Grid_Background", Color.DarkGray);
+            rs.Add("Grid_Line1", Color.DimGray);
+            rs.Add("Grid_Line2", Color.SlateGray);
             return rs;
         }
         static Dictionary<string, Color> GetColors_Light()
@@ -258,6 +264,12 @@ namespace StoreAssitant.StoreAssistant_Helper
             // Menu Item
             rs.Add("Menuitem_Background", Color.FromKnownColor(KnownColor.Control));
             rs.Add("Menuitem_Selected", Color.FromArgb(255, 247, 200, 59));
+
+            // Datagridview
+            rs.Add("Grid_Header", Color.White);
+            rs.Add("Grid_Background", Color.White);
+            rs.Add("Grid_Line1", Color.White);
+            rs.Add("Grid_Line2", Color.SkyBlue);
             return rs;
         }
 
@@ -291,10 +303,20 @@ namespace StoreAssitant.StoreAssistant_Helper
                 {
                     privateFont = new PrivateFontCollection();
                     AddFontFromFile($"./Fonts/GenBkBasR.ttf");
-
+                    AddFontFromFile($"./Fonts/GenBkBasB.ttf");
+                    AddFontFromFile($"./Fonts/GenBkBasBI.ttf");
+                    AddFontFromFile($"./Fonts/GenBkBasI.ttf");
                 }
                 return privateFont;
             }
+        }
+        public static FontFamily GetPrivate_FontFamily(string familyName)
+        {
+            foreach (var family in PrivateFont.Families)
+            {
+                if (family.Name == familyName){ return family; }
+            }
+            throw new ArgumentOutOfRangeException("Font Family's name not exist");
         }
     }
 }

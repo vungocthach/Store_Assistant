@@ -68,9 +68,10 @@ namespace StoreAssitant.StoreAssistant_AccountView
 
 
             ClickSignOut = new EventHandler(OnClickSignOut);
-            gr_manager.Visible = false;
+            //gr_manager.Visible = true;
 
-            dataGridView1.Font = new Font(dataGridView1.Font.FontFamily, 11f);
+            //dataGridView1.Font = new Font(dataGridView1.Font.FontFamily, 11f);
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.Font.FontFamily, dataGridView1.Font.Size + 1, FontStyle.Bold);
 
             Language.ChangeLanguage += VoucherView_ChangeLanguage;
         }
@@ -196,8 +197,8 @@ namespace StoreAssitant.StoreAssistant_AccountView
         private void Gr_manager_SizeChanged(object sender, EventArgs e)
         {
             dataGridView1.Height = gr_manager.Height - dataGridView1.Location.Y - (gr_manager.Height - btn_AddAccount.Location.Y) - dataGridView1.Margin.Bottom - btn_AddAccount.Margin.Top;
+            dataGridView1.Width = gr_manager.Width - dataGridView1.Location.X - dataGridView1.Margin.Right;
         }
-
         private void Gr_user_SizeChanged(object sender, EventArgs e)
         {
             txt_username.Width = gr_user.Width - txt_username.Location.X - (gr_user.Width - btn_ResetPass.Location.X) - txt_username.Margin.Right - btn_ResetPass.Margin.Left;
@@ -205,13 +206,13 @@ namespace StoreAssitant.StoreAssistant_AccountView
 
         private void AccountView_SizeChanged(object sender, EventArgs e)
         {
-            
+            dataGridView1.Width = this.Width;
             gr_manager.Height = this.Height - gr_manager.Location.Y - gr_manager.Margin.Bottom;
-            gr_user.Width = this.Width;
-            gr_manager.Width = this.Width;
-            labelTitile.Width = dataGridView1.Width;
+            //gr_user.Width = this.Width;
+            gr_manager.Width = this.Width - gr_manager.Location.X - gr_manager.Margin.Right - 5;
+            labelTitile.Width = gr_manager.Width;
             CenterInParent_Horizontal(gr_user);
-            CenterInParent_Horizontal(gr_manager);
+            //CenterInParent_Horizontal(gr_manager);
             labelTitile.Location = new Point(gr_manager.Location.X, gr_manager.Location.Y - labelTitile.Height); ;
         }
 

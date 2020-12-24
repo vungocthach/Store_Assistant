@@ -46,7 +46,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.btn_Search = new System.Windows.Forms.Button();
             this.pageSelector1 = new StoreAssitant.StoreAssistant_HistoryView.PageSelector();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -208,19 +207,19 @@
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.btn_Search);
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox2.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.groupBox2.Location = new System.Drawing.Point(547, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(530, 71);
+            this.groupBox2.Size = new System.Drawing.Size(444, 71);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tìm Kiếm";
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(73, 29);
             this.textBox1.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
@@ -240,23 +239,6 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Mã:";
             // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12.5F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button1.Location = new System.Drawing.Point(429, 27);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 29);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Nâng Cao";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
-            // 
             // btn_Search
             // 
             this.btn_Search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -267,7 +249,7 @@
             this.btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Search.Image = global::StoreAssitant.Properties.Resources.iconfinder_sale_lineal_color_cnvrt_18_3827704;
-            this.btn_Search.Location = new System.Drawing.Point(387, 27);
+            this.btn_Search.Location = new System.Drawing.Point(393, 26);
             this.btn_Search.Name = "btn_Search";
             this.btn_Search.Size = new System.Drawing.Size(45, 32);
             this.btn_Search.TabIndex = 6;
@@ -285,14 +267,15 @@
             this.pageSelector1.ImageLast = ((System.Drawing.Bitmap)(resources.GetObject("pageSelector1.ImageLast")));
             this.pageSelector1.ImageNxt = ((System.Drawing.Bitmap)(resources.GetObject("pageSelector1.ImageNxt")));
             this.pageSelector1.ImagePre = ((System.Drawing.Bitmap)(resources.GetObject("pageSelector1.ImagePre")));
-            this.pageSelector1.Location = new System.Drawing.Point(403, 459);
+            this.pageSelector1.Location = new System.Drawing.Point(403, 457);
+            this.pageSelector1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.pageSelector1.MaximumRange = 10;
             this.pageSelector1.Name = "pageSelector1";
             this.pageSelector1.PageBoxFont = new System.Drawing.Font("Microsoft YaHei Light", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pageSelector1.PageBoxMargin = new System.Windows.Forms.Padding(3);
             this.pageSelector1.PageBoxSize = new System.Drawing.Size(100, 29);
             this.pageSelector1.SelectedIndex = 1;
-            this.pageSelector1.Size = new System.Drawing.Size(251, 38);
+            this.pageSelector1.Size = new System.Drawing.Size(277, 42);
             this.pageSelector1.TabIndex = 7;
             // 
             // HistoryView
@@ -329,7 +312,6 @@
         private PageSelector pageSelector1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn order;
         private System.Windows.Forms.DataGridViewTextBoxColumn billId;

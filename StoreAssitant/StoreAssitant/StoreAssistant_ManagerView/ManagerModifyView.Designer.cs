@@ -54,7 +54,7 @@
             this.split_Cashier.Panel2.Controls.Add(this.menuView1);
             this.split_Cashier.Panel2.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.split_Cashier.Size = new System.Drawing.Size(1100, 590);
-            this.split_Cashier.SplitterDistance = 499;
+            this.split_Cashier.SplitterDistance = 421;
             this.split_Cashier.SplitterWidth = 5;
             this.split_Cashier.TabIndex = 2;
             // 
@@ -72,7 +72,7 @@
             this.tableView1.MinimumSize = new System.Drawing.Size(377, 50);
             this.tableView1.Name = "tableView1";
             this.tableView1.NameCashierTable = "DANH SÁCH BÀN";
-            this.tableView1.Size = new System.Drawing.Size(499, 590);
+            this.tableView1.Size = new System.Drawing.Size(421, 590);
             this.tableView1.TabIndex = 0;
             this.tableView1.TitleHeight = 50;
             // 
@@ -89,7 +89,7 @@
             this.menuView1.MinimumSize = new System.Drawing.Size(420, 2);
             this.menuView1.Name = "menuView1";
             this.menuView1.NameTitle = "Menu";
-            this.menuView1.Size = new System.Drawing.Size(596, 590);
+            this.menuView1.Size = new System.Drawing.Size(674, 590);
             this.menuView1.TabIndex = 0;
             this.menuView1.TitleHeight = 50;
             // 

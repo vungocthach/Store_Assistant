@@ -135,5 +135,14 @@ namespace StoreAssitant.StoreAssistant_Helper
             this.ColorButtonMouseOn = AppManager.GetColors("Tab_MouseOn");
             this.ColorButtonPressed = AppManager.GetColors("Tab_Clicked");
         }
+
+        internal void LoadFont()
+        {
+            foreach (Control control in flowLayoutPanel1.Controls)
+            {
+                control.Font = new Font(AppManager.GetPrivate_FontFamily("Gentium Book Basic"),
+                                            control.Font.Size, control.Font.Style);
+            }
+        }
     }
 }
