@@ -66,6 +66,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             pageSelector1.SelectedIndexChanged += PageSelector1_SelectedIndexChanged;
 
             dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
+            //dataGridView1.ColumnSortModeChanged += DataGridView1_ColumnSortModeChanged;
 
             dtp_From.ValueChanged += Dtp_From_ValueChanged;
             dtp_To.ValueChanged += Dtp_From_ValueChanged;
@@ -73,6 +74,11 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             this.Load += HistoryView_Load;
 
             textBox1.KeyDown += TextBox1_KeyDown;
+        }
+
+        private void DataGridView1_ColumnSortModeChanged(object sender, DataGridViewColumnEventArgs e)
+        {
+            Console.WriteLine("got it");
         }
 
         private void TextBox1_KeyDown(object sender, KeyEventArgs e)
@@ -117,8 +123,10 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             if (e.Button == MouseButtons.Right)
             {
                 Point cursor = new Point(e.X, e.Y);
-                DataGridViewRow row = dataGridView1.Rows[dataGridView1.HitTest(cursor.X, cursor.Y).RowIndex];
+                int index = dataGridView1.HitTest(cursor.X, cursor.Y).RowIndex;
 
+                if (index == -1) return;
+                DataGridViewRow row = dataGridView1.Rows[index];
                 dataGridView1.ContextMenu.Tag = row;
                 dataGridView1.ContextMenu.Show(dataGridView1, cursor);
             }
@@ -126,11 +134,17 @@ namespace StoreAssitant.StoreAssistant_HistoryView
 
         private void DataGridView1_Sorted(object sender, EventArgs e)
         {
+            dataGridView1.SuspendLayout();
             int temp = GetStartIndex();
+            DataGridViewRow row;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                dataGridView1.Rows[i].Cells[0].Value = i + temp; 
+                row = dataGridView1.Rows[i];
+                row.Cells[0].Value = i + temp;
+                if (i % 2 != 0) row.DefaultCellStyle.BackColor = color_Line1;
+                else row.DefaultCellStyle.BackColor = color_Line2;
             }
+            dataGridView1.ResumeLayout();
         }
 
         private void DataGridView1_SortCompare(object sender, DataGridViewSortCompareEventArgs e)
@@ -141,6 +155,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
                 DateTime date2 = (dataGridView1.Rows[e.RowIndex2].Tag as BillInfo).DAY;
                 e.SortResult = date1.CompareTo(date2);
                 e.Handled = true;
+                
             }
             else if (e.Column.Index == 4)
             {
@@ -218,6 +233,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
 
         private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex == -1) { return; } // Click on header-cell
             DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
             BillInfo billInfo = selectedRow.Tag as BillInfo;
             using (DatabaseController databaseController = new DatabaseController())
@@ -269,7 +285,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         int row_per_page = 20;
         int GetStartIndex() { return (pageSelector1.SelectedIndex - 1) * row_per_page +1; }
 
-        public void GetData()
+        public void GetData(int modeSort = 0, string direction = "DESC")
         {
             Console.WriteLine("HistoryView : GetData()");
             List<BillInfo> bills;
@@ -278,7 +294,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             DateTime toDate = new DateTime(GetEndTime().Year, GetEndTime().Month, GetEndTime().Day, 23, 59, 59);
             using (DatabaseController databaseController = new DatabaseController())
             {
-                bills = databaseController.GetBillInfo(fromDate, toDate, GetStartIndex(), row_per_page);
+                bills = databaseController.GetBillInfo(fromDate, toDate, GetStartIndex(), row_per_page, modeSort, direction);
             }
 
             SetData(bills);
@@ -299,8 +315,8 @@ namespace StoreAssitant.StoreAssistant_HistoryView
                 row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 row.Tag = b;
                 row.DefaultCellStyle.SelectionBackColor = color_Line_Selection;
-                if ( row.Index % 2 != 0) row.DefaultCellStyle.BackColor = color_Line2;
-                else row.DefaultCellStyle.BackColor = color_Line1;
+                if ( row.Index % 2 != 0) row.DefaultCellStyle.BackColor = color_Line1;
+                else row.DefaultCellStyle.BackColor = color_Line2;
                 row.DefaultCellStyle.ForeColor = dataGridView1.ForeColor;
             }
             dataGridView1.ResumeLayout();
