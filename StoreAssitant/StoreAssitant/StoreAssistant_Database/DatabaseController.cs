@@ -707,25 +707,25 @@ namespace StoreAssitant
             string sort;
             switch (sortMode)
             {
-                case 3:
+                case 4:
                     sort = string.Format("Total {0}, TIME {0}", direction);
                     break;
-                case 4:
+                case 3:
                     sort = string.Format("Number_TB {0}, TIME {0}", direction);
                     break;
                 default: 
-                    sort = string.Format("TIME {0}", direction);
+                    sort = string.Format("Time {0}", direction);
                     break;
             }
-;            List<BillInfo> bills = new List<BillInfo>();
+
+;           List<BillInfo> bills = new List<BillInfo>();
             if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
-            cmd.CommandText = string.Format("select * from(select ROW_NUMBER() over(order by @sort) as [STT], BILL_ID, Number_TB, ID_User, Vourcher, Total, Take, Give, Time  from BILL where Time >= @from and TIME <= @to) as foo where STT >= @start and STT <= @end");
+            cmd.CommandText = string.Format("select * from(select ROW_NUMBER() over(order by {0}) as [STT], BILL_ID, Number_TB, ID_User, Vourcher, Total, Take, Give, Time  from BILL where Time >= @from and TIME <= @to) as foo where STT >= @start and STT <= @end order by foo.stt;", sort);
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@start", SqlDbType.Int).Value = start;
             cmd.Parameters.Add("@end", SqlDbType.Int).Value = start + lenght - 1;
             cmd.Parameters.Add("@from", SqlDbType.DateTime).Value = from;
             cmd.Parameters.Add("@to", SqlDbType.DateTime).Value = to;
-            cmd.Parameters.Add("@sort", SqlDbType.VarChar).Value = sort;
             BillInfo bill;
             using (SqlDataReader reader = cmd.ExecuteReader())
             {

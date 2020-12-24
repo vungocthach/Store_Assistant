@@ -121,9 +121,10 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             this.Text = Language.Rm.GetString("AddVoucher", Language.Culture);
             PlusChar = Language.Rm.GetString("PlusChar", Language.Culture);
             From0to10000 = Language.Rm.GetString("From0to10000", Language.Culture);
-            From0to100 = Language.Rm.GetString("From0to100 ", Language.Culture);
+            From0to100 = Language.Rm.GetString("From0to100", Language.Culture);
             NoEmpty = Language.Rm.GetString("NoEmpty", Language.Culture);
             BiggerNow = Language.Rm.GetString("BiggerNow", Language.Culture);
+            BiggerZero = Language.Rm.GetString("BiggerZero", Language.Culture);
             Error = Language.Rm.GetString("Error", Language.Culture);
         }
         private void AddVoucherForm_ChangeLanguage(object sender, string e)
@@ -157,24 +158,24 @@ namespace StoreAssitant.StoreAssistant_VoucherView
         private void TbNumberInit_TextChanged(object sender, EventArgs e)
         {
             TextBox txtb = (TextBox)sender;
-                if (txtb.Text.Trim() == "")
+                if (string.IsNullOrEmpty(txtb.Text) || txtb.Text.Trim() == "")
                 {
                     NumberInitVoucher = 0;
                 }
                 else
                 {
-                    NumberInitVoucher = Convert.ToInt32(txtb.Text);
-                    if (NumberInitVoucher > 10000)
-                    {
-                        NumberInitVoucher = 10000;
-                        MessageBox.Show(From0to10000);
-                    }
-                    else if (NumberInitVoucher < 0)
-                    {
-                        NumberInitVoucher = 0;
-                        MessageBox.Show(From0to10000);
-                    }
+                NumberInitVoucher = Convert.ToInt32(txtb.Text.Replace(",",""));
+                if (NumberInitVoucher > 10000)
+                {
+                    NumberInitVoucher = 10000;
+                    MessageBox.Show(From0to10000, Error, MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
+                else if (NumberInitVoucher < 0)
+                {
+                    NumberInitVoucher = 0;
+                    MessageBox.Show(From0to10000, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void TbValue_TextChanged(object sender, EventArgs e)
@@ -186,16 +187,16 @@ namespace StoreAssitant.StoreAssistant_VoucherView
                 }
                 else
                 {
-                    ValueVoucher = int.Parse(txtb.Text);
+                    ValueVoucher = Convert.ToInt32(txtb.Text.Replace(",", ""));
                     if (ValueVoucher>100)
                     {
                         ValueVoucher = 100;
-                        MessageBox.Show(From0to100);
+                        MessageBox.Show(From0to100, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else if (ValueVoucher<0)
                     {
                         ValueVoucher = 0;
-                        MessageBox.Show(From0to100);
+                        MessageBox.Show(From0to100, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
         }

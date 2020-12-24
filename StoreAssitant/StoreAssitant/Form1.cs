@@ -88,7 +88,9 @@ namespace StoreAssitant
                     this.Height = 1050;
                     break;
                 case StoreAssistant_SettingView.SizeMode.FullScreen:
-                    this.WindowState = FormWindowState.Maximized;
+                    System.Drawing.Rectangle screen = System.Windows.Forms.Screen.FromControl(this).WorkingArea;
+                    this.Size = screen.Size;
+                    this.DesktopLocation = new Point(0, 0);
                     break;
             }
         }

@@ -115,6 +115,7 @@ namespace StoreAssitant.StoreAssistant_VoucherView
 
         internal void LoadDataFromDB()
         {
+            dataGridView1.Rows.Clear();
             using (DatabaseController databaseController = new DatabaseController())
             {
                 databaseController.ConnectToSQLDatabase();
@@ -124,8 +125,8 @@ namespace StoreAssitant.StoreAssistant_VoucherView
                     int index = dataGridView1.Rows.Add(info[i].Code,info[i].ExpiryDate,info[i].Value,info[i].NumberInit,info[i].NumberRemain);
                     DataGridViewRow row = dataGridView1.Rows[index];
                     row.DefaultCellStyle.SelectionBackColor = color_Line_Selection;
-                    if (row.Index % 2 != 0) row.DefaultCellStyle.BackColor = color_Line2;
-                    else row.DefaultCellStyle.BackColor = color_Line1;
+                    if (row.Index % 2 != 0) row.DefaultCellStyle.BackColor = color_Line1;
+                    else row.DefaultCellStyle.BackColor = color_Line2;
                     row.DefaultCellStyle.ForeColor = dataGridView1.ForeColor;
                 }
             }
