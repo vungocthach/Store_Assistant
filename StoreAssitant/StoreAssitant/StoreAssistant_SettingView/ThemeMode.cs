@@ -8,6 +8,6 @@ namespace StoreAssitant.StoreAssistant_SettingView
 {
     public enum ThemeMode
     {
-        Light, Dark
+        Light, Dark, Modern
     }
 }

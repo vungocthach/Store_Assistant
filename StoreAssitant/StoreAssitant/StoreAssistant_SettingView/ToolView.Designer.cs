@@ -44,6 +44,7 @@ namespace StoreAssitant.StoreAssistant_SettingView
             this.itemWindowSize = new System.Windows.Forms.ToolStripMenuItem();
             this.itemStoreInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.btnQuit = new System.Windows.Forms.ToolStripButton();
+            this.modernToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +52,7 @@ namespace StoreAssitant.StoreAssistant_SettingView
             // 
             this.toolStrip1.BackColor = System.Drawing.Color.Transparent;
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip1.Font = new System.Drawing.Font("Gentium Book Basic", 13F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.toolStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(25, 25);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAccount,
@@ -60,7 +61,7 @@ namespace StoreAssitant.StoreAssistant_SettingView
             this.toolStrip1.Location = new System.Drawing.Point(-6, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(374, 39);
+            this.toolStrip1.Size = new System.Drawing.Size(392, 39);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -73,28 +74,28 @@ namespace StoreAssitant.StoreAssistant_SettingView
             this.btnAccount.Image = global::StoreAssitant.Properties.Resources.iconfinder_humans_1216581;
             this.btnAccount.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAccount.Name = "btnAccount";
-            this.btnAccount.Size = new System.Drawing.Size(193, 36);
+            this.btnAccount.Size = new System.Drawing.Size(198, 36);
             this.btnAccount.Text = "Xin chào, testing";
             // 
             // itemEmployee
             // 
             this.itemEmployee.BackColor = System.Drawing.SystemColors.Control;
             this.itemEmployee.Name = "itemEmployee";
-            this.itemEmployee.Size = new System.Drawing.Size(206, 26);
+            this.itemEmployee.Size = new System.Drawing.Size(226, 26);
             this.itemEmployee.Text = "Quản lý nhân sự";
             // 
             // itemChangePass
             // 
             this.itemChangePass.BackColor = System.Drawing.SystemColors.Control;
             this.itemChangePass.Name = "itemChangePass";
-            this.itemChangePass.Size = new System.Drawing.Size(206, 26);
+            this.itemChangePass.Size = new System.Drawing.Size(226, 26);
             this.itemChangePass.Text = "Đổi mật khẩu";
             // 
             // itemLogOut
             // 
             this.itemLogOut.BackColor = System.Drawing.SystemColors.Control;
             this.itemLogOut.Name = "itemLogOut";
-            this.itemLogOut.Size = new System.Drawing.Size(206, 26);
+            this.itemLogOut.Size = new System.Drawing.Size(226, 26);
             this.itemLogOut.Text = "Đăng xuất";
             // 
             // btnSetting
@@ -104,11 +105,11 @@ namespace StoreAssitant.StoreAssistant_SettingView
             this.itemTheme,
             this.itemWindowSize,
             this.itemStoreInfo});
-            this.btnSetting.Font = new System.Drawing.Font("Gentium Book Basic", 13F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.btnSetting.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.btnSetting.Image = global::StoreAssitant.Properties.Resources.iconfinder_21_4698594;
             this.btnSetting.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSetting.Name = "btnSetting";
-            this.btnSetting.Size = new System.Drawing.Size(102, 36);
+            this.btnSetting.Size = new System.Drawing.Size(115, 36);
             this.btnSetting.Text = "Cài Đặt";
             // 
             // itemLanguage
@@ -145,7 +146,8 @@ namespace StoreAssitant.StoreAssistant_SettingView
             // 
             this.itemTheme.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lightToolStripMenuItem,
-            this.darkToolStripMenuItem});
+            this.darkToolStripMenuItem,
+            this.modernToolStripMenuItem});
             this.itemTheme.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemTheme.Name = "itemTheme";
             this.itemTheme.Size = new System.Drawing.Size(211, 22);
@@ -153,14 +155,14 @@ namespace StoreAssitant.StoreAssistant_SettingView
             // 
             // lightToolStripMenuItem
             // 
-            this.lightToolStripMenuItem.Font = new System.Drawing.Font("Gentium Book Basic", 11F, System.Drawing.FontStyle.Bold);
+            this.lightToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.lightToolStripMenuItem.Name = "lightToolStripMenuItem";
             this.lightToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.lightToolStripMenuItem.Text = "Light";
             // 
             // darkToolStripMenuItem
             // 
-            this.darkToolStripMenuItem.Font = new System.Drawing.Font("Gentium Book Basic", 11F, System.Drawing.FontStyle.Bold);
+            this.darkToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.darkToolStripMenuItem.Name = "darkToolStripMenuItem";
             this.darkToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.darkToolStripMenuItem.Text = "Dark";
@@ -189,6 +191,12 @@ namespace StoreAssitant.StoreAssistant_SettingView
             this.btnQuit.Size = new System.Drawing.Size(36, 36);
             this.btnQuit.Text = "toolStripButton1";
             this.btnQuit.ToolTipText = "Thoát";
+            // 
+            // modernToolStripMenuItem
+            // 
+            this.modernToolStripMenuItem.Name = "modernToolStripMenuItem";
+            this.modernToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            this.modernToolStripMenuItem.Text = "Modern";
             // 
             // ToolView
             // 
@@ -222,5 +230,6 @@ namespace StoreAssitant.StoreAssistant_SettingView
         private System.Windows.Forms.ToolStripMenuItem itemStoreInfo;
         private System.Windows.Forms.ToolStripButton btnQuit;
         private System.Windows.Forms.ToolStripMenuItem itemWindowSize;
+        private System.Windows.Forms.ToolStripMenuItem modernToolStripMenuItem;
     }
 }
