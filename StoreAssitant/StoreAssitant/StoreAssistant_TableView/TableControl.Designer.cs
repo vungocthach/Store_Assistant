@@ -40,11 +40,13 @@ namespace StoreAssitant
             // 
             // tableName_lb
             // 
+            this.tableName_lb.BackColor = System.Drawing.Color.Transparent;
             this.tableName_lb.ContextMenuStrip = this.cmsTableControl;
-            this.tableName_lb.Location = new System.Drawing.Point(18, 98);
+            this.tableName_lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableName_lb.Location = new System.Drawing.Point(2, 92);
             this.tableName_lb.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.tableName_lb.Name = "tableName_lb";
-            this.tableName_lb.Size = new System.Drawing.Size(77, 13);
+            this.tableName_lb.Size = new System.Drawing.Size(107, 21);
             this.tableName_lb.TabIndex = 1;
             this.tableName_lb.Text = "Name of Table";
             this.tableName_lb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -55,12 +57,12 @@ namespace StoreAssitant
             this.cmsTableControl.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsDelete});
             this.cmsTableControl.Name = "contextMenuStrip1";
-            this.cmsTableControl.Size = new System.Drawing.Size(181, 48);
+            this.cmsTableControl.Size = new System.Drawing.Size(108, 26);
             // 
             // tsDelete
             // 
             this.tsDelete.Name = "tsDelete";
-            this.tsDelete.Size = new System.Drawing.Size(180, 22);
+            this.tsDelete.Size = new System.Drawing.Size(107, 22);
             this.tsDelete.Text = "Delete";
             // 
             // tableImage_pnl

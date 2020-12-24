@@ -55,7 +55,7 @@
             // 
             // tableTakeHome
             // 
-            this.tableTakeHome.BackColor = System.Drawing.Color.PapayaWhip;
+            this.tableTakeHome.BackColor = System.Drawing.Color.Transparent;
             this.tableTakeHome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableTakeHome.ImageTable = ((System.Drawing.Image)(resources.GetObject("tableTakeHome.ImageTable")));
             this.tableTakeHome.IsManager = false;

@@ -53,6 +53,13 @@ namespace StoreAssitant
         {
             InitializeComponent();
 
+            if (Lang != AppManager.CurrentLanguage)
+            {
+                Lang = AppManager.CurrentLanguage;
+                SetLanguge();
+            }
+            Language.ChangeLanguage += VoucherView_ChangeLanguage;
+
             Init_Event_Customize();
 
             Init_Event_BtnAddTable();
@@ -61,14 +68,8 @@ namespace StoreAssitant
 
             Init_Default_Value();
 
+            tableTakeHome.Status = TableControl.status.Empty;
             this.Layout += TableView_Layout;
-
-            if (Lang != AppManager.CurrentLanguage)
-            {
-                Lang = AppManager.CurrentLanguage;
-                SetLanguge();
-            }
-            Language.ChangeLanguage += VoucherView_ChangeLanguage;
         }
 
         private void VoucherView_ChangeLanguage(object sender, string e)
