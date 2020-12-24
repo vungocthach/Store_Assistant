@@ -228,7 +228,8 @@ namespace StoreAssitant.StoreAssistant_Helper
             Dictionary<string, Color> rs = new Dictionary<string, Color>();
 
             // Common part
-            rs.Add("Main_Background", Color.FromArgb(255, 50, 50, 50));
+            //rs.Add("Main_Background", Color.FromArgb(255, 50, 50, 50));
+            rs.Add("Main_Background", Color.FromArgb(255, 3, 104, 187));
             rs.Add("Main_Plaintext", Color.White);
             rs.Add("Title_Background", Color.DimGray);
             rs.Add("Title_Force", Color.White);

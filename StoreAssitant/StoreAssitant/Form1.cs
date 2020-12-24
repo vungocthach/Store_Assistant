@@ -135,6 +135,7 @@ namespace StoreAssitant
                 {
                     voucherView = new VoucherView();
                 }
+                voucherView.LoadTheme();
                 voucherView.LoadDataFromDB();
                 SelectTab(voucherView);
             }
