@@ -178,6 +178,15 @@ namespace StoreAssitant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Phải nhập số lớn hơn 0.
+        /// </summary>
+        internal static string BiggerZero {
+            get {
+                return ResourceManager.GetString("BiggerZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mã hóa đơn.
         /// </summary>
         internal static string Bill_code {

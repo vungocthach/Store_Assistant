@@ -32,7 +32,17 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             btnAdd.Click += BtnAdd_Click;
             btnRemove.Click += BtnRemove_Click;
 
+            dataGridView1.CellContentClick += DataGridView1_CellClick;
             dataGridView1.AutoGenerateColumns = true;
+        }
+
+        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Rows.Count!=0)
+            {
+                dataGridView1.Rows[0].Selected = true;
+            }
+            reloadTheme(0);
         }
 
         private void VoucherView_ChangeLanguage(object sender, string e)
@@ -57,11 +67,13 @@ namespace StoreAssitant.StoreAssistant_VoucherView
         {
             if (dataGridView1.SelectedRows.Count != 0)
             {
+                int index = dataGridView1.SelectedRows[0].Index;
                 using (DatabaseController data = new DatabaseController())
                 {
                     data.RemoveVoucher(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
                 }
                 dataGridView1.Rows.Remove(dataGridView1.SelectedRows[0]);
+                reloadTheme(index);
             }
         }
 
@@ -82,7 +94,8 @@ namespace StoreAssitant.StoreAssistant_VoucherView
                     return;
                 }
             }
-            //dataGridView1.Rows.Add(e.Code, e.Value, e.ExpiryDate);
+            int index = dataGridView1.Rows.Add(e.Code, e.ExpiryDate, e.Value, e.NumberInit, e.NumberRemain);
+            reloadTheme(index);
             using (DatabaseController data = new DatabaseController())
             {
                 data.AddVoucher(e);
@@ -131,6 +144,17 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             color_Line_Selection = AppManager.GetColors("Grid_Line_Selection");
             color_Line1 = AppManager.GetColors("Grid_Line1");
             color_Line2 = AppManager.GetColors("Grid_Line2");
+        }
+        private void reloadTheme(int indexStart)
+        {
+            for (int i = indexStart; i < dataGridView1.Rows.Count; i++)
+            {
+                DataGridViewRow row = dataGridView1.Rows[i];
+                row.DefaultCellStyle.SelectionBackColor = color_Line_Selection;
+                if (row.Index % 2 != 0) row.DefaultCellStyle.BackColor = color_Line2;
+                else row.DefaultCellStyle.BackColor = color_Line1;
+                row.DefaultCellStyle.ForeColor = dataGridView1.ForeColor;
+            }
         }
     }
 }
