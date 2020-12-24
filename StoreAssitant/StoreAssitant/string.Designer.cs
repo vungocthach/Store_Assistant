@@ -331,6 +331,15 @@ namespace StoreAssitant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ngày phải nhỏ hơn hôm nay.
+        /// </summary>
+        internal static string DayNotNow {
+            get {
+                return ResourceManager.GetString("DayNotNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mặc định.
         /// </summary>
         internal static string Default {
@@ -777,6 +786,15 @@ namespace StoreAssitant {
         internal static string NotEnougnMOney {
             get {
                 return ResourceManager.GetString("NotEnougnMOney", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thông báo.
+        /// </summary>
+        internal static string Notify {
+            get {
+                return ResourceManager.GetString("Notify", resourceCulture);
             }
         }
         

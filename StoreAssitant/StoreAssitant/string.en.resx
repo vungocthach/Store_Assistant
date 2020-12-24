@@ -204,6 +204,9 @@
   <data name="Day" xml:space="preserve">
     <value>Day</value>
   </data>
+  <data name="DayNotNow" xml:space="preserve">
+    <value>Day have to smaller Today</value>
+  </data>
   <data name="Default" xml:space="preserve">
     <value>Default</value>
   </data>
@@ -353,6 +356,9 @@
   </data>
   <data name="NotEnougnMOney" xml:space="preserve">
     <value>Customer not give enougn money</value>
+  </data>
+  <data name="Notify" xml:space="preserve">
+    <value>Notification</value>
   </data>
   <data name="Number" xml:space="preserve">
     <value>Number</value>

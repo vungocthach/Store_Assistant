@@ -207,6 +207,9 @@
   <data name="Day" xml:space="preserve">
     <value>Ngày</value>
   </data>
+  <data name="DayNotNow" xml:space="preserve">
+    <value>Ngày phải nhỏ hơn hôm nay</value>
+  </data>
   <data name="Default" xml:space="preserve">
     <value>Mặc định</value>
   </data>
@@ -356,6 +359,9 @@
   </data>
   <data name="NotEnougnMOney" xml:space="preserve">
     <value>Khách chưa đưa đủ tiền</value>
+  </data>
+  <data name="Notify" xml:space="preserve">
+    <value>Thông báo</value>
   </data>
   <data name="Number" xml:space="preserve">
     <value>STT</value>

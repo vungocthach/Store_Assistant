@@ -147,9 +147,6 @@
   <data name="Areusure" xml:space="preserve">
     <value>Bạn chắc chắn muốn xóa tài khoản này?</value>
   </data>
-  <data name="beleo" xml:space="preserve">
-    <value />
-  </data>
   <data name="bigfile" xml:space="preserve">
     <value>File quá lớn</value>
   </data>
@@ -206,6 +203,9 @@
   </data>
   <data name="Day" xml:space="preserve">
     <value>Ngày</value>
+  </data>
+  <data name="DayNotNow" xml:space="preserve">
+    <value>Ngày phải nhỏ hơn hôm nay</value>
   </data>
   <data name="Default" xml:space="preserve">
     <value>Mặc định</value>
@@ -295,7 +295,7 @@
     <value>Tiền trả lại</value>
   </data>
   <data name="Hi" xml:space="preserve">
-    <value>Xin chào,</value>
+    <value>Xin chào</value>
   </data>
   <data name="History" xml:space="preserve">
     <value> Lịch sử</value>
@@ -346,7 +346,7 @@
     <value>Mật khẩu mới trùng với mật khẩu hiện tại</value>
   </data>
   <data name="NoEmpty" xml:space="preserve">
-    <value>Không để trống</value>
+    <value>Không được để trống ô nhập</value>
   </data>
   <data name="Nondefine" xml:space="preserve">
     <value>Lỗi không xác định</value>
@@ -356,6 +356,9 @@
   </data>
   <data name="NotEnougnMOney" xml:space="preserve">
     <value>Khách chưa đưa đủ tiền</value>
+  </data>
+  <data name="Notify" xml:space="preserve">
+    <value>Thông báo</value>
   </data>
   <data name="Number" xml:space="preserve">
     <value>STT</value>

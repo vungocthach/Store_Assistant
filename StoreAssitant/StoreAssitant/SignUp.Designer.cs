@@ -74,7 +74,7 @@
             this.lb_Pass.Location = new System.Drawing.Point(451, 156);
             this.lb_Pass.Name = "lb_Pass";
             this.lb_Pass.Size = new System.Drawing.Size(93, 22);
-            this.lb_Pass.TabIndex = 2;
+            this.lb_Pass.TabIndex = 0;
             this.lb_Pass.Text = "Mật khẩu :";
             // 
             // txb_Pass
@@ -82,6 +82,7 @@
             this.txb_Pass.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.txb_Pass.Location = new System.Drawing.Point(450, 181);
             this.txb_Pass.Name = "txb_Pass";
+            this.txb_Pass.PasswordChar = '*';
             this.txb_Pass.Size = new System.Drawing.Size(281, 27);
             this.txb_Pass.TabIndex = 3;
             // 
@@ -93,7 +94,7 @@
             this.lb_ConfirmPassq.Location = new System.Drawing.Point(451, 225);
             this.lb_ConfirmPassq.Name = "lb_ConfirmPassq";
             this.lb_ConfirmPassq.Size = new System.Drawing.Size(174, 22);
-            this.lb_ConfirmPassq.TabIndex = 4;
+            this.lb_ConfirmPassq.TabIndex = 0;
             this.lb_ConfirmPassq.Text = "Xác nhận mật khẩu :";
             this.lb_ConfirmPassq.Click += new System.EventHandler(this.label3_Click);
             // 
@@ -104,7 +105,7 @@
             this.TxB_IdentityPass.Name = "TxB_IdentityPass";
             this.TxB_IdentityPass.PasswordChar = '*';
             this.TxB_IdentityPass.Size = new System.Drawing.Size(281, 27);
-            this.TxB_IdentityPass.TabIndex = 5;
+            this.TxB_IdentityPass.TabIndex = 4;
             // 
             // lb_Birth
             // 
@@ -114,7 +115,7 @@
             this.lb_Birth.Location = new System.Drawing.Point(451, 295);
             this.lb_Birth.Name = "lb_Birth";
             this.lb_Birth.Size = new System.Drawing.Size(100, 22);
-            this.lb_Birth.TabIndex = 6;
+            this.lb_Birth.TabIndex = 0;
             this.lb_Birth.Text = "Ngày sinh :";
             // 
             // dateTimeBirth
@@ -126,7 +127,7 @@
             this.dateTimeBirth.Location = new System.Drawing.Point(450, 320);
             this.dateTimeBirth.Name = "dateTimeBirth";
             this.dateTimeBirth.Size = new System.Drawing.Size(105, 27);
-            this.dateTimeBirth.TabIndex = 10;
+            this.dateTimeBirth.TabIndex = 5;
             // 
             // lb_Gender
             // 
@@ -136,7 +137,7 @@
             this.lb_Gender.Location = new System.Drawing.Point(606, 295);
             this.lb_Gender.Name = "lb_Gender";
             this.lb_Gender.Size = new System.Drawing.Size(86, 22);
-            this.lb_Gender.TabIndex = 12;
+            this.lb_Gender.TabIndex = 0;
             this.lb_Gender.Text = "Giới tính :";
             // 
             // lb_Phone
@@ -147,7 +148,7 @@
             this.lb_Phone.Location = new System.Drawing.Point(446, 359);
             this.lb_Phone.Name = "lb_Phone";
             this.lb_Phone.Size = new System.Drawing.Size(57, 22);
-            this.lb_Phone.TabIndex = 8;
+            this.lb_Phone.TabIndex = 0;
             this.lb_Phone.Text = "SĐT :";
             // 
             // txb_Phone
@@ -156,7 +157,7 @@
             this.txb_Phone.Location = new System.Drawing.Point(449, 384);
             this.txb_Phone.Name = "txb_Phone";
             this.txb_Phone.Size = new System.Drawing.Size(281, 27);
-            this.txb_Phone.TabIndex = 11;
+            this.txb_Phone.TabIndex = 7;
             // 
             // btn_SignUp
             // 
@@ -167,7 +168,7 @@
             this.btn_SignUp.Location = new System.Drawing.Point(448, 428);
             this.btn_SignUp.Name = "btn_SignUp";
             this.btn_SignUp.Size = new System.Drawing.Size(281, 33);
-            this.btn_SignUp.TabIndex = 14;
+            this.btn_SignUp.TabIndex = 8;
             this.btn_SignUp.Text = "Đăng kí";
             this.btn_SignUp.UseVisualStyleBackColor = false;
             // 
@@ -182,7 +183,7 @@
             this.cbx_Sex.Location = new System.Drawing.Point(606, 322);
             this.cbx_Sex.Name = "cbx_Sex";
             this.cbx_Sex.Size = new System.Drawing.Size(126, 28);
-            this.cbx_Sex.TabIndex = 13;
+            this.cbx_Sex.TabIndex = 6;
             // 
             // txtUserName
             // 
@@ -190,7 +191,7 @@
             this.txtUserName.Location = new System.Drawing.Point(451, 110);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(281, 27);
-            this.txtUserName.TabIndex = 16;
+            this.txtUserName.TabIndex = 2;
             // 
             // lb_UserName
             // 
@@ -201,7 +202,7 @@
             this.lb_UserName.Location = new System.Drawing.Point(451, 85);
             this.lb_UserName.Name = "lb_UserName";
             this.lb_UserName.Size = new System.Drawing.Size(148, 22);
-            this.lb_UserName.TabIndex = 15;
+            this.lb_UserName.TabIndex = 0;
             this.lb_UserName.Text = "Tên Đăng Nhập :";
             // 
             // lb_Signup
