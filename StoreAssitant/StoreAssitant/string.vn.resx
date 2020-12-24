@@ -247,7 +247,7 @@
     <value>Dữ liệu bị lỗi</value>
   </data>
   <data name="Error404" xml:space="preserve">
-    <value>404 Not Found</value>
+    <value>Không tìm thấy máy chủ</value>
   </data>
   <data name="ErrorAgainPass" xml:space="preserve">
     <value>Nhập lại mật khẩu không đúng</value>
