@@ -81,10 +81,6 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         {
             InitializeComponent();
 
-            if (Lang != AppManager.CurrentLanguage)
-            {
-                SetLanguage();
-            }
             Language.ChangeLanguage += VoucherView_ChangeLanguage;
 
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font, FontStyle.Bold);
@@ -108,6 +104,12 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             pageSelector1.SelectedIndexChanged += PageSelector1_SelectedIndexChanged;
 
             this.Load += StatiticsView2_Load;
+
+
+            if (Lang != AppManager.CurrentLanguage)
+            {
+                SetLanguage();
+            }
         }
 
         private void VoucherView_ChangeLanguage(object sender, string e)
@@ -118,6 +120,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
         private void SetLanguage()
         {
+            Console.WriteLine("dfgdfg");
             Lang = AppManager.CurrentLanguage;
             Language.InitLanguage(this);
             lbConfig.Text = Language.Rm.GetString("Time", Language.Culture);
@@ -137,6 +140,9 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             chart1.ChartAreas[1].AxisX.Title = Language.Rm.GetString("Month", Language.Culture).ToUpper();
             revenue_= chart1.ChartAreas[0].AxisY.Title = chart1.ChartAreas[1].AxisY.Title = Language.Rm.GetString("revenue_", Language.Culture);
             week = Language.Rm.GetString("week", Language.Culture);
+            if (dataGridView1 != null)
+                UpdateDataGrid();
+
         }
 
         private void PageSelector1_SelectedIndexChanged(object sender, EventArgs e)
@@ -500,7 +506,6 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             DateTime dateMin = GetDateMin();
             DateTime dateMax = GetDateMax();
 
-
             Console.WriteLine("Update Datagrid from {0} to {1}", dateMin, dateMax);
 
             dataGridView1.Rows.Clear();
@@ -509,9 +514,10 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             //if (listSales == null ) { throw new NullReferenceException(); }
 
             string txtTimeFormat;
+
             if (mode == -1)
             {
-                txtTimeFormat = week + " {0} " +month+" {1}/{2}"; // {0} : week; {1}:month; {2}:year
+                txtTimeFormat = week + " {0} " + month + " {1}/{2}"; // {0} : week; {1}:month; {2}:year
             }
             else if (mode == 0)
             {

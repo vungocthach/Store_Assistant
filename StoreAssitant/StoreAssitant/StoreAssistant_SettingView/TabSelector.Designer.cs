@@ -138,10 +138,9 @@ namespace StoreAssitant.StoreAssistant_Helper
             this.btnVoucher.Location = new System.Drawing.Point(632, 1);
             this.btnVoucher.Margin = new System.Windows.Forms.Padding(1);
             this.btnVoucher.Name = "btnVoucher";
-            this.btnVoucher.Size = new System.Drawing.Size(184, 52);
+            this.btnVoucher.Size = new System.Drawing.Size(191, 52);
             this.btnVoucher.TabIndex = 5;
             this.btnVoucher.Text = "Voucher";
-            this.btnVoucher.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnVoucher.UseVisualStyleBackColor = true;
             // 
             // TabSelector
