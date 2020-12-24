@@ -120,7 +120,6 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
         private void SetLanguage()
         {
-            Console.WriteLine("dfgdfg");
             Lang = AppManager.CurrentLanguage;
             Language.InitLanguage(this);
             lbConfig.Text = Language.Rm.GetString("Time", Language.Culture);
@@ -133,16 +132,22 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             label1.Text = Language.Rm.GetString("Stype:", Language.Culture);
             cbbChartMode.Items[1] = Language.Rm.GetString("Detail", Language.Culture);
             cbbChartMode.Items[0] = Language.Rm.GetString("General", Language.Culture);
-            cbbStatiticsMode.Items[0] = year_ = Language.Rm.GetString("Year", Language.Culture);
-            cbbStatiticsMode.Items[1] = month_ = month = Language.Rm.GetString("Month", Language.Culture);
+            cbbStatiticsMode.Items[0] = month_ = Language.Rm.GetString("Month", Language.Culture);
+            cbbStatiticsMode.Items[1] = year_ = month = Language.Rm.GetString("Year", Language.Culture);
             chart1.Legends[1].Title = Language.Rm.GetString("Name", Language.Culture);
-            day_ = day = chart1.ChartAreas[0].AxisX.Title = Language.Rm.GetString("Day", Language.Culture).ToUpper();
-            chart1.ChartAreas[1].AxisX.Title = Language.Rm.GetString("Month", Language.Culture).ToUpper();
+            day_ = day = Language.Rm.GetString("Day", Language.Culture).ToUpper();
             revenue_= chart1.ChartAreas[0].AxisY.Title = chart1.ChartAreas[1].AxisY.Title = Language.Rm.GetString("revenue_", Language.Culture);
             week = Language.Rm.GetString("week", Language.Culture);
-            if (dataGridView1 != null)
-                UpdateDataGrid();
 
+            if (ModeStatistics == 0)
+            {
+                chart1.ChartAreas[0].AxisX.Title = chart1.ChartAreas[1].AxisX.Title = day_;
+            }
+            else if (ModeStatistics == 1)
+            {
+                chart1.ChartAreas[0].AxisX.Title = chart1.ChartAreas[1].AxisX.Title = month_;
+            }
+            LoadRowTime();
         }
 
         private void PageSelector1_SelectedIndexChanged(object sender, EventArgs e)
@@ -318,6 +323,8 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         {
             pageSelector1.MaximumRange = maxLine / line_per_page;
             if (maxLine % line_per_page > 0) { pageSelector1.MaximumRange++; }
+
+            pageSelector1.SelectedIndex = 1;
         }
 
         private readonly string REVENUE_SERIES_NAME = "DOANH THU";
@@ -410,7 +417,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
         void LoadDetailChart_ByDay(SaleInfo[] saleInfos)
         {
-            chart1.ChartAreas[1].AxisX.Title = day.ToUpper();
+            chart1.ChartAreas[1].AxisX.Title = day_.ToUpper();
             string x_axis_format = "{0}/{1}";
 
             foreach (Series s in seriesProducts)
@@ -434,7 +441,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
         void LoadDetailChart_ByMonth(SaleInfo[] saleInfos)
         {
-            chart1.ChartAreas[1].AxisX.Title = month.ToUpper();
+            chart1.ChartAreas[1].AxisX.Title = month_.ToUpper();
 
             string x_axis_format = "{0}/{1}";
 
@@ -462,7 +469,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             string x_axis_format = "{0}/{1}";
             seriesRevenue.Points.Clear();
 
-            chart1.ChartAreas[0].AxisX.Title = day.ToUpper();
+            chart1.ChartAreas[0].AxisX.Title = day_.ToUpper();
 
             for (int i = 0; i < saleInfos.Length; i++)
             {
@@ -477,7 +484,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             string x_axis_format = "{0}/{1}";
             seriesRevenue.Points.Clear();
 
-            chart1.ChartAreas[0].AxisX.Title = month.ToUpper();
+            chart1.ChartAreas[0].AxisX.Title = month_.ToUpper();
 
             for (int i = 0; i < saleInfos.Length; i++)
             {
@@ -514,15 +521,13 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             //if (listSales == null ) { throw new NullReferenceException(); }
 
             string txtTimeFormat;
-
             if (mode == -1)
             {
                 txtTimeFormat = week + " {0} " + month + " {1}/{2}"; // {0} : week; {1}:month; {2}:year
             }
             else if (mode == 0)
             {
-                txtTimeFormat = month_+" {0}/{1}"; // {0}:month; {1}:year
-
+                txtTimeFormat = month_ + " {0}/{1}";
                 List<KeyValuePair<DateTime, long>> revenue_list = null;
                 using (DatabaseController databaseController = new DatabaseController())
                 {
@@ -544,10 +549,6 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                     DataGridViewRow row = dataGridView1.Rows[dataGridView1.Rows.Add (stt, string.Format(txtTimeFormat, month.Month, month.Year), string.Format("{0}VND", totalRevenue.ToString("N0")))];  
                     row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Tag = new KeyValuePair<DateTime, long>(month, totalRevenue);
-                    row.DefaultCellStyle.SelectionBackColor = color_Line_Selection;
-                    if (row.Index % 2 != 0) row.DefaultCellStyle.BackColor = color_Line1;
-                    else row.DefaultCellStyle.BackColor = color_Line2;
-                    row.DefaultCellStyle.ForeColor = dataGridView1.ForeColor;
                     stt++;
                     month = month.AddMonths(1);
                 }
@@ -555,8 +556,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             }
             else if (mode == 1)
             {
-                txtTimeFormat = year_+ " {0}";
-
+                txtTimeFormat = year_ + " {0}";
                 List<KeyValuePair<DateTime, long>> revenue_list = null;
                 using (DatabaseController databaseController = new DatabaseController())
                 {
@@ -578,14 +578,12 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                     DataGridViewRow row = dataGridView1.Rows[dataGridView1.Rows.Add(stt, string.Format(txtTimeFormat, year.Year), string.Format("{0}VND", totalRevenue.ToString("N0")))];
                     row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Tag = new KeyValuePair<DateTime, long>(year, totalRevenue);
-                    row.DefaultCellStyle.SelectionBackColor = color_Line_Selection;
-                    if (row.Index % 2 != 0) row.DefaultCellStyle.BackColor = color_Line1;
-                    else row.DefaultCellStyle.BackColor = color_Line2;
-                    row.DefaultCellStyle.ForeColor = dataGridView1.ForeColor;
+                    
                     stt++;
                     year = year.AddYears(1);
                 }
             }
+            LoadRowTheme();
         }
 
         void GetData(DateTime from, DateTime to)
@@ -689,6 +687,42 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
             chart1.BackColor = panel2.BackColor = AppManager.GetColors("Chart_Background");
             foreach (ChartArea area in chart1.ChartAreas) { area.BackColor = chart1.BackColor; }
+
+            LoadRowTheme();
+        }
+
+        void LoadRowTheme()
+        {
+            foreach(DataGridViewRow row in dataGridView1.Rows)
+            {
+                row.DefaultCellStyle.SelectionBackColor = color_Line_Selection;
+                if (row.Index % 2 != 0) row.DefaultCellStyle.BackColor = color_Line1;
+                else row.DefaultCellStyle.BackColor = color_Line2;
+                row.DefaultCellStyle.ForeColor = dataGridView1.ForeColor;
+            }
+        }
+
+        void LoadRowTime()
+        {
+            string txtFormat;
+            if (ModeStatistics == 0)
+            {
+                txtFormat = month_ + " {0}/{1}";
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    DateTime month = ((KeyValuePair<DateTime, long>)row.Tag).Key;
+                    row.Cells[1].Value = string.Format(txtFormat, month.Month, month.Year);
+                }
+            }
+            else if (ModeStatistics == 1)
+            {
+                txtFormat = year_ + " {0}";
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    DateTime month = ((KeyValuePair<DateTime, long>)row.Tag).Key;
+                    row.Cells[1].Value = string.Format(txtFormat, month.Year);
+                }
+            }
         }
     }
 }

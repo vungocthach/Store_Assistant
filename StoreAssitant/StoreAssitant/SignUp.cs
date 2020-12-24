@@ -35,6 +35,22 @@ namespace StoreAssitant
             lb_Signup.Text = Language.Rm.GetString("SignUpName", Language.Culture);
             lb_Signup.Text = lb_Signup.Text.ToUpper().Replace("@", Environment.NewLine);
         }
+
+        public void ShowUserInfo(UserInfo userInfo)
+        {
+            user = userInfo;
+            txtUserName.Text = userInfo.UserName;
+            txb_Pass.Text = userInfo.Pass;
+            TxB_IdentityPass.Text = txb_Pass.Text;
+
+            txb_Phone.Text = userInfo.Phone;
+            dateTimeBirth.Value = userInfo.Birth;
+            cbx_Sex.SelectedIndex = cbx_Sex.Items.IndexOf(userInfo.Sex);
+
+            btn_SignUp.Visible = false;
+            this.lb_Signup.Text = Language.Rm.GetString("UserInfo", Language.Culture).ToUpper().Replace("@", Environment.NewLine);
+        }
+
         private void SignUp_ChangeLanguage(object sender, string e)
         {
             SetLanguage();
