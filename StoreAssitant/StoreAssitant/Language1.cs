@@ -25,7 +25,15 @@ namespace StoreAssitant
         static public void InitLanguage(object type)
         {
             Type T = type.GetType();
-            Culture = CultureInfo.CreateSpecificCulture(AppManager.CurrentLanguage);
+            if (AppManager._CurrentLanguage == StoreAssistant_SettingView.LanguageMode.VN)
+            {
+                culture = CultureInfo.CreateSpecificCulture("VI");
+            }
+            else if (AppManager._CurrentLanguage == StoreAssistant_SettingView.LanguageMode.EN)
+            {
+                culture = CultureInfo.CreateSpecificCulture("EN");
+            }
+            else { Culture = CultureInfo.CreateSpecificCulture(AppManager.CurrentLanguage); }
             Rm = new
                 ResourceManager("StoreAssitant.string", T.Assembly);
         }

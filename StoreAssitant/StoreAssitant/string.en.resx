@@ -448,7 +448,7 @@
     <value>Sign Up</value>
   </data>
   <data name="SignUpName" xml:space="preserve">
-    <value>Registration new member </value>
+    <value>New Staff@Registration</value>
   </data>
   <data name="Staff" xml:space="preserve">
     <value>Staff</value>
@@ -518,6 +518,9 @@
   </data>
   <data name="User name:" xml:space="preserve">
     <value>User name:</value>
+  </data>
+  <data name="UserInfo" xml:space="preserve">
+    <value>User's Information</value>
   </data>
   <data name="Value(%)" xml:space="preserve">
     <value>Value(%)</value>

@@ -383,10 +383,10 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="string.vn.Designer.cs">
+    <Compile Include="string.vi.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>string.vn.resx</DependentUpon>
+      <DependentUpon>string.vi.resx</DependentUpon>
     </Compile>
     <Compile Include="TSString.cs" />
     <EmbeddedResource Include="StoreAssistant_MenuView\AddProductForm.resx">
@@ -467,9 +467,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>string.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="string.vn.resx">
+    <EmbeddedResource Include="string.vi.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>string.vn.Designer.cs</LastGenOutput>
+      <LastGenOutput>string.vi.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

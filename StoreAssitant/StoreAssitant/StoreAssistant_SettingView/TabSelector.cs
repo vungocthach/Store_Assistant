@@ -105,6 +105,7 @@ namespace StoreAssitant.StoreAssistant_Helper
             {
                 btn.Width = btn.Image.Width + 5 + GetTextWidth(btn);
             }
+            this.Invalidate();
         }
 
         int GetTextWidth(Button btn)

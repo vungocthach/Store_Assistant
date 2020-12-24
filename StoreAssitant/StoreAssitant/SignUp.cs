@@ -33,6 +33,7 @@ namespace StoreAssitant
             lb_Birth.Text = Language.Rm.GetString("Date of birth:", Language.Culture);
             this.Text = btn_SignUp.Text =Language.Rm.GetString("Sign Up", Language.Culture);
             lb_Signup.Text = Language.Rm.GetString("SignUpName", Language.Culture);
+            lb_Signup.Text = lb_Signup.Text.ToUpper().Replace("@", Environment.NewLine);
         }
         private void SignUp_ChangeLanguage(object sender, string e)
         {

@@ -451,7 +451,7 @@
     <value>Đăng kí</value>
   </data>
   <data name="SignUpName" xml:space="preserve">
-    <value>Đăng kí thành viên mới</value>
+    <value>Đăng Ký@Nhân Viên Mới</value>
   </data>
   <data name="Staff" xml:space="preserve">
     <value>Nhân viên</value>
@@ -518,6 +518,9 @@
   </data>
   <data name="User name:" xml:space="preserve">
     <value>Tên đăng nhập:</value>
+  </data>
+  <data name="UserInfo@" xml:space="preserve">
+    <value>Thông Tin@Nhân Viên</value>
   </data>
   <data name="Value(%)" xml:space="preserve">
     <value>Giá trị(%)</value>
