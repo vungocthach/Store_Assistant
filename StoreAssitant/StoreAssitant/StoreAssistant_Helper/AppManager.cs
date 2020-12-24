@@ -228,24 +228,35 @@ namespace StoreAssitant.StoreAssistant_Helper
             Dictionary<string, Color> rs = new Dictionary<string, Color>();
 
             // Common part
-            rs.Add("Main_Background", Color.FromArgb(255, 50, 50, 50));
+            //rs.Add("Main_Background", Color.FromArgb(255, 50, 50, 50));
+            rs.Add("Main_Background", Color.FromArgb(255, 3, 104, 187));
             rs.Add("Main_Plaintext", Color.White);
 
             // Tab
-            rs.Add("Tab_Selected", Color.FromArgb(255, 82, 189, 0));
-            rs.Add("Tab_Clicked", Color.FromArgb(180, 82, 189, 0));
-            rs.Add("Tab_MouseOn", Color.FromArgb(180, 55, 128, 0));
-            rs.Add("Toolbar_Background", Color.FromArgb(230, 55, 128, 0));
+            //rs.Add("Tab_Selected", Color.FromArgb(255, 82, 189, 0));
+            rs.Add("Tab_Selected", Color.FromArgb(255, 157, 114, 255));
+            //rs.Add("Tab_Clicked", Color.FromArgb(180, 82, 189, 0));
+            rs.Add("Tab_Clicked", Color.FromArgb(255, 37, 195, 250));
+            //rs.Add("Tab_MouseOn", Color.FromArgb(180, 55, 128, 0));
+            rs.Add("Tab_MouseOn", Color.FromArgb(255, 206, 150, 251));
+            //rs.Add("Toolbar_Background", Color.FromArgb(230, 55, 128, 0));
+            rs.Add("Toolbar_Background", Color.FromArgb(200, 1, 3, 38));
 
             // Menu Item
-            rs.Add("Menuitem_Background", Color.FromArgb(250, 20, 26, 15));
-            rs.Add("Menuitem_Selected", Color.FromArgb(255, 83, 158, 26));
+            //rs.Add("Menuitem_Background", Color.FromArgb(250, 20, 26, 15));
+            rs.Add("Menuitem_Background", Color.DarkRed); 
+            //rs.Add("Menuitem_Selected", Color.FromArgb(255, 83, 158, 26));
+            rs.Add("Menuitem_Selected", Color.FromArgb(255, 255, 139, 139));   
 
             // Datagridview
-            rs.Add("Grid_Header", Color.Gray);
-            rs.Add("Grid_Background", Color.DarkGray);
-            rs.Add("Grid_Line1", Color.DimGray);
-            rs.Add("Grid_Line2", Color.SlateGray);
+            //rs.Add("Grid_Header", Color.Gray);
+            rs.Add("Grid_Header", Color.DarkBlue);   //?????????????????????????????????????
+            //rs.Add("Grid_Background", Color.DarkGray);
+            rs.Add("Grid_Background", Color.FromArgb(255, 3, 104, 187));
+            //rs.Add("Grid_Line1", Color.DimGray);
+            rs.Add("Grid_Line1", Color.FromArgb(255, 194, 76, 246));
+            //rs.Add("Grid_Line2", Color.SlateGray);
+            rs.Add("Grid_Line2", Color.FromArgb(255, 220, 103, 255));
             return rs;
         }
         static Dictionary<string, Color> GetColors_Light()
