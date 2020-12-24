@@ -253,7 +253,7 @@
     <value>The current password is incorrect</value>
   </data>
   <data name="Expiry date" xml:space="preserve">
-    <value>Expiry date</value>
+    <value>Expired date</value>
   </data>
   <data name="failDel" xml:space="preserve">
     <value>Account was deleted failed</value>
@@ -280,7 +280,7 @@
     <value>From:</value>
   </data>
   <data name="Full name" xml:space="preserve">
-    <value>Full name</value>
+    <value>Full name:</value>
   </data>
   <data name="Gender:" xml:space="preserve">
     <value>Gender:</value>
@@ -307,7 +307,7 @@
     <value>Invalid phone number</value>
   </data>
   <data name="InfoSrore" xml:space="preserve">
-    <value>Store infomation </value>
+    <value>Store Infomation </value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>
@@ -460,7 +460,7 @@
     <value>Statistical</value>
   </data>
   <data name="StoreInfo" xml:space="preserve">
-    <value>Store information</value>
+    <value>Store Information</value>
   </data>
   <data name="String" xml:space="preserve">
     <value>String1</value>
