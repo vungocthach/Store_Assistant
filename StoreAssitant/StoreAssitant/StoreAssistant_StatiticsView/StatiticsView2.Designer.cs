@@ -29,10 +29,14 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StatiticsView2));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
@@ -41,26 +45,22 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, "10,0");
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StatiticsView2));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnFilter = new System.Windows.Forms.Button();
             this.lbConfig = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cbbStatiticsMode = new System.Windows.Forms.ComboBox();
+            this.pageSelector1 = new StoreAssitant.StoreAssistant_HistoryView.PageSelector();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.namePD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numberPD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.revenue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.cbbChartMode = new System.Windows.Forms.ComboBox();
             this.lbChart = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.pageSelector1 = new StoreAssitant.StoreAssistant_HistoryView.PageSelector();
-            this.namePD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numberPD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.revenue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -157,6 +157,28 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             this.cbbStatiticsMode.Size = new System.Drawing.Size(186, 33);
             this.cbbStatiticsMode.TabIndex = 7;
             // 
+            // pageSelector1
+            // 
+            this.pageSelector1.BackColor = System.Drawing.Color.Transparent;
+            this.pageSelector1.ButtonFirstMargin = new System.Windows.Forms.Padding(0, 1, 0, 1);
+            this.pageSelector1.ButtonLastMargin = new System.Windows.Forms.Padding(0, 1, 0, 1);
+            this.pageSelector1.ButtonNextMargin = new System.Windows.Forms.Padding(0, 1, 0, 1);
+            this.pageSelector1.ButtonPreviousMargin = new System.Windows.Forms.Padding(0, 1, 0, 1);
+            this.pageSelector1.ImageFirst = ((System.Drawing.Bitmap)(resources.GetObject("pageSelector1.ImageFirst")));
+            this.pageSelector1.ImageLast = ((System.Drawing.Bitmap)(resources.GetObject("pageSelector1.ImageLast")));
+            this.pageSelector1.ImageNxt = ((System.Drawing.Bitmap)(resources.GetObject("pageSelector1.ImageNxt")));
+            this.pageSelector1.ImagePre = ((System.Drawing.Bitmap)(resources.GetObject("pageSelector1.ImagePre")));
+            this.pageSelector1.Location = new System.Drawing.Point(105, 463);
+            this.pageSelector1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.pageSelector1.MaximumRange = 10;
+            this.pageSelector1.Name = "pageSelector1";
+            this.pageSelector1.PageBoxFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pageSelector1.PageBoxMargin = new System.Windows.Forms.Padding(3);
+            this.pageSelector1.PageBoxSize = new System.Drawing.Size(100, 26);
+            this.pageSelector1.SelectedIndex = 1;
+            this.pageSelector1.Size = new System.Drawing.Size(210, 34);
+            this.pageSelector1.TabIndex = 0;
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -190,6 +212,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.Location = new System.Drawing.Point(4, 85);
             this.dataGridView1.MultiSelect = false;
@@ -204,6 +227,46 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(414, 375);
             this.dataGridView1.TabIndex = 6;
+            // 
+            // namePD
+            // 
+            this.namePD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.namePD.DefaultCellStyle = dataGridViewCellStyle3;
+            this.namePD.DividerWidth = 2;
+            this.namePD.HeaderText = "STT";
+            this.namePD.MaxInputLength = 20;
+            this.namePD.MinimumWidth = 80;
+            this.namePD.Name = "namePD";
+            this.namePD.ReadOnly = true;
+            this.namePD.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.namePD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.namePD.Width = 80;
+            // 
+            // numberPD
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.numberPD.DefaultCellStyle = dataGridViewCellStyle4;
+            this.numberPD.DividerWidth = 2;
+            this.numberPD.HeaderText = "Thời Gian";
+            this.numberPD.MinimumWidth = 150;
+            this.numberPD.Name = "numberPD";
+            this.numberPD.ReadOnly = true;
+            this.numberPD.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.numberPD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // revenue
+            // 
+            this.revenue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.revenue.DefaultCellStyle = dataGridViewCellStyle5;
+            this.revenue.DividerWidth = 2;
+            this.revenue.HeaderText = "Tổng Doanh Thu";
+            this.revenue.MinimumWidth = 130;
+            this.revenue.Name = "revenue";
+            this.revenue.ReadOnly = true;
+            this.revenue.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.revenue.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // panel2
             // 
@@ -297,68 +360,6 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             this.chart1.Size = new System.Drawing.Size(635, 413);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
-            // 
-            // pageSelector1
-            // 
-            this.pageSelector1.BackColor = System.Drawing.Color.Transparent;
-            this.pageSelector1.ButtonFirstMargin = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            this.pageSelector1.ButtonLastMargin = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            this.pageSelector1.ButtonNextMargin = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            this.pageSelector1.ButtonPreviousMargin = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            this.pageSelector1.ImageFirst = ((System.Drawing.Bitmap)(resources.GetObject("pageSelector1.ImageFirst")));
-            this.pageSelector1.ImageLast = ((System.Drawing.Bitmap)(resources.GetObject("pageSelector1.ImageLast")));
-            this.pageSelector1.ImageNxt = ((System.Drawing.Bitmap)(resources.GetObject("pageSelector1.ImageNxt")));
-            this.pageSelector1.ImagePre = ((System.Drawing.Bitmap)(resources.GetObject("pageSelector1.ImagePre")));
-            this.pageSelector1.Location = new System.Drawing.Point(105, 463);
-            this.pageSelector1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.pageSelector1.MaximumRange = 10;
-            this.pageSelector1.Name = "pageSelector1";
-            this.pageSelector1.PageBoxFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pageSelector1.PageBoxMargin = new System.Windows.Forms.Padding(3);
-            this.pageSelector1.PageBoxSize = new System.Drawing.Size(100, 26);
-            this.pageSelector1.SelectedIndex = 1;
-            this.pageSelector1.Size = new System.Drawing.Size(210, 34);
-            this.pageSelector1.TabIndex = 0;
-            // 
-            // namePD
-            // 
-            this.namePD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.namePD.DefaultCellStyle = dataGridViewCellStyle3;
-            this.namePD.DividerWidth = 2;
-            this.namePD.HeaderText = "STT";
-            this.namePD.MaxInputLength = 20;
-            this.namePD.MinimumWidth = 80;
-            this.namePD.Name = "namePD";
-            this.namePD.ReadOnly = true;
-            this.namePD.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.namePD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.namePD.Width = 80;
-            // 
-            // numberPD
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.numberPD.DefaultCellStyle = dataGridViewCellStyle4;
-            this.numberPD.DividerWidth = 2;
-            this.numberPD.HeaderText = "Thời Gian";
-            this.numberPD.MinimumWidth = 150;
-            this.numberPD.Name = "numberPD";
-            this.numberPD.ReadOnly = true;
-            this.numberPD.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.numberPD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // revenue
-            // 
-            this.revenue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.revenue.DefaultCellStyle = dataGridViewCellStyle5;
-            this.revenue.DividerWidth = 2;
-            this.revenue.HeaderText = "Tổng Doanh Thu";
-            this.revenue.MinimumWidth = 130;
-            this.revenue.Name = "revenue";
-            this.revenue.ReadOnly = true;
-            this.revenue.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.revenue.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // StatiticsView2
             // 

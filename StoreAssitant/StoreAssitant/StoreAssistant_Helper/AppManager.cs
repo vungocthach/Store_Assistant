@@ -148,13 +148,20 @@ namespace StoreAssitant.StoreAssistant_Helper
                 if (needSave) { SaveCurrentPreferences(); }
 
                 // Change colors's set
-                if (theme == ThemeMode.Light)
+                switch(theme)
                 {
-                    colors = GetColors_Light();
-                }
-                else
-                {
-                    colors = GetColors_Dark();
+                    case ThemeMode.Light:
+                        colors = GetColors_Light();
+                        break;
+                    case ThemeMode.Dark:
+                        colors = GetColors_Dark();
+                        break;
+                    case ThemeMode.Modern:
+                        colors = GetColors_Purple();
+                        break;
+                    default:
+                        //something wrong
+                        break;
                 }
             }
         }
@@ -297,6 +304,8 @@ namespace StoreAssitant.StoreAssistant_Helper
             // Common part
             rs.Add("Main_Background", Color.FromArgb(255, 3, 104, 187));
             rs.Add("Main_Plaintext", Color.White);
+            rs.Add("Title_Background", Color.LightSkyBlue);
+            rs.Add("Title_Force", Color.Black);
 
             // Tab
             rs.Add("Tab_Selected", Color.FromArgb(255, 157, 114, 255));
@@ -315,6 +324,8 @@ namespace StoreAssitant.StoreAssistant_Helper
             rs.Add("Grid_Line1", Color.FromArgb(255, 194, 76, 246));
             rs.Add("Grid_Line2", Color.FromArgb(255, 220, 103, 255));
 
+            // Chart
+            rs.Add("Chart_Background", Color.LightSkyBlue);
             return rs;
         }
         public static Color GetColors(string key)

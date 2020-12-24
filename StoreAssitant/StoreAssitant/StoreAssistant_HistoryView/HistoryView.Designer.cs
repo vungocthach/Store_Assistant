@@ -30,9 +30,14 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HistoryView));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HistoryView));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.order = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.billId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableParent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.dtp_From = new System.Windows.Forms.DateTimePicker();
             this.dtp_To = new System.Windows.Forms.DateTimePicker();
@@ -45,11 +50,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbTime = new System.Windows.Forms.Label();
-            this.order = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.billId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableParent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -82,6 +82,7 @@
             this.tableParent,
             this.total});
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(3, 84);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.MultiSelect = false;
@@ -95,6 +96,60 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1077, 371);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // order
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.order.DefaultCellStyle = dataGridViewCellStyle3;
+            this.order.DividerWidth = 2;
+            this.order.FillWeight = 1F;
+            this.order.HeaderText = "STT";
+            this.order.MinimumWidth = 50;
+            this.order.Name = "order";
+            this.order.ReadOnly = true;
+            this.order.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.order.Width = 80;
+            // 
+            // billId
+            // 
+            this.billId.DividerWidth = 2;
+            this.billId.FillWeight = 3F;
+            this.billId.HeaderText = "Mã Hóa Đơn";
+            this.billId.MinimumWidth = 150;
+            this.billId.Name = "billId";
+            this.billId.ReadOnly = true;
+            this.billId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.billId.Width = 150;
+            // 
+            // createTime
+            // 
+            this.createTime.DividerWidth = 2;
+            this.createTime.FillWeight = 3F;
+            this.createTime.HeaderText = "Ngày Thanh Toán";
+            this.createTime.MinimumWidth = 200;
+            this.createTime.Name = "createTime";
+            this.createTime.ReadOnly = true;
+            this.createTime.Width = 250;
+            // 
+            // tableParent
+            // 
+            this.tableParent.DividerWidth = 2;
+            this.tableParent.FillWeight = 3F;
+            this.tableParent.HeaderText = "Bàn Thanh Toán";
+            this.tableParent.MinimumWidth = 200;
+            this.tableParent.Name = "tableParent";
+            this.tableParent.ReadOnly = true;
+            this.tableParent.Width = 250;
+            // 
+            // total
+            // 
+            this.total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.total.DividerWidth = 2;
+            this.total.FillWeight = 3F;
+            this.total.HeaderText = "Tổng Cộng";
+            this.total.MinimumWidth = 180;
+            this.total.Name = "total";
+            this.total.ReadOnly = true;
             // 
             // label1
             // 
@@ -248,60 +303,6 @@
             this.lbTime.TabIndex = 9;
             this.lbTime.Text = " Thời Gian";
             this.lbTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // order
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.order.DefaultCellStyle = dataGridViewCellStyle3;
-            this.order.DividerWidth = 2;
-            this.order.FillWeight = 1F;
-            this.order.HeaderText = "STT";
-            this.order.MinimumWidth = 50;
-            this.order.Name = "order";
-            this.order.ReadOnly = true;
-            this.order.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.order.Width = 80;
-            // 
-            // billId
-            // 
-            this.billId.DividerWidth = 2;
-            this.billId.FillWeight = 3F;
-            this.billId.HeaderText = "Mã Hóa Đơn";
-            this.billId.MinimumWidth = 150;
-            this.billId.Name = "billId";
-            this.billId.ReadOnly = true;
-            this.billId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.billId.Width = 150;
-            // 
-            // createTime
-            // 
-            this.createTime.DividerWidth = 2;
-            this.createTime.FillWeight = 3F;
-            this.createTime.HeaderText = "Ngày Thanh Toán";
-            this.createTime.MinimumWidth = 200;
-            this.createTime.Name = "createTime";
-            this.createTime.ReadOnly = true;
-            this.createTime.Width = 250;
-            // 
-            // tableParent
-            // 
-            this.tableParent.DividerWidth = 2;
-            this.tableParent.FillWeight = 3F;
-            this.tableParent.HeaderText = "Bàn Thanh Toán";
-            this.tableParent.MinimumWidth = 200;
-            this.tableParent.Name = "tableParent";
-            this.tableParent.ReadOnly = true;
-            this.tableParent.Width = 250;
-            // 
-            // total
-            // 
-            this.total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.total.DividerWidth = 2;
-            this.total.FillWeight = 3F;
-            this.total.HeaderText = "Tổng Cộng";
-            this.total.MinimumWidth = 180;
-            this.total.Name = "total";
-            this.total.ReadOnly = true;
             // 
             // HistoryView
             // 
