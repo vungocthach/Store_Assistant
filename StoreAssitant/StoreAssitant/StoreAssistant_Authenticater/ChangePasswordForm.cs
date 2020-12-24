@@ -16,6 +16,10 @@ namespace StoreAssitant.StoreAssistant_Authenticater
     {
         public event EventHandler ChangePasswordOK;
         private string Lang = "vn";
+        string Error = "Lỗi";
+        string ErrorAgainPass = "Nhập lại mật khẩu không đúng";
+        string ErrorNowPass = "Nhập mật khẩu hiện tại không đúng";
+        string NewLikeOld = "Mật khẩu mới trùng với mật khẩu hiện tại";
         void OnChangePasswordOK(object sender, EventArgs e) { this.Close(); }
 
         public ChangePasswordForm()
@@ -49,6 +53,10 @@ namespace StoreAssitant.StoreAssistant_Authenticater
             label3.Text = Language.Rm.GetString("Re-enter new password", Language.Culture);
             this.Text = btn_Submit.Text = Language.Rm.GetString("Change password", Language.Culture);
             btn_Close.Text = Language.Rm.GetString("Cancel", Language.Culture);
+            Error = Language.Rm.GetString("Error", Language.Culture);
+            NewLikeOld = Language.Rm.GetString("NewLikeOld", Language.Culture);
+            ErrorAgainPass = Language.Rm.GetString("ErrorAgainPass", Language.Culture);
+            ErrorNowPass = Language.Rm.GetString("ErrorNowPass", Language.Culture);
         }
 
         private void Btn_Close_Click(object sender, EventArgs e)
@@ -60,21 +68,21 @@ namespace StoreAssitant.StoreAssistant_Authenticater
         {
             if (txt_PassNew.Text != txt_PassNew2.Text)
             {
-                MessageBox.Show("Nhập lại mật khẩu không đúng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ErrorAgainPass, Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_PassNew2.SelectAll();
                 return;
             }
 
             if (txt_PassCurrent.Text != Authenticator.CurrentUser.Pass)
             {
-                MessageBox.Show("Mật khẩu hiện tại không đúng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ErrorNowPass, Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_PassCurrent.SelectAll();
                 return;
             }
 
             if (txt_PassCurrent.Text == txt_PassNew.Text)
             {
-                MessageBox.Show("Mật khẩu mới trùng với mật khẩu hiện tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(NewLikeOld, Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_PassNew.SelectAll();
                 return;
             }

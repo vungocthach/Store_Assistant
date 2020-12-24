@@ -47,6 +47,10 @@ namespace StoreAssitant
             Form1_SizeChanged(this, null);
         }
 
+        void SetLanguage()
+        {
+            Language.InitLanguage(this);    
+        }
         public void LoadWindowSize()
         {
             switch (AppManager.CurrentWindowSize)

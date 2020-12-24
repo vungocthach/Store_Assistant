@@ -57,7 +57,7 @@ namespace StoreAssitant
                 Lang = Language.CultureName;
                 SetLanguge();
             }
-            else VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
+            VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
 
             Init_Event_Customize();
 
@@ -83,6 +83,16 @@ namespace StoreAssitant
                 tableTitle_lb.Text = Language.Rm.GetString("List table", Language.Culture);
                 table = Language.Rm.GetString("Table", Language.Culture).ToUpper();
                 tableTakeHome.NameTable = Language.Rm.GetString("Take home", Language.Culture);
+                int i = 0;
+            foreach (var t in tableGUI_pnl.Controls)
+            {
+                ++i;
+                if (t is TableControl table)
+                {
+                    Console.WriteLine(table.NameTable);
+                    if (table != tableTakeHome) table.NameTable = Language.Rm.GetString("Table", Language.Culture).ToUpper() + " " + i;
+                }
+            }
         }
         /// <summary>
         /// Init the form value when creating

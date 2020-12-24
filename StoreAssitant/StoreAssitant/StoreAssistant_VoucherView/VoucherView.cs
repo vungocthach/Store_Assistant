@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using StoreAssitant.Class_Information;
 using System.Reflection;
+using StoreAssitant.StoreAssistant_SettingView;
 
 namespace StoreAssitant.StoreAssistant_VoucherView
 {
@@ -40,7 +41,7 @@ namespace StoreAssitant.StoreAssistant_VoucherView
 
             cbx_Language.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
 
-            VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
+            ToolView.ChangeLanguage += VoucherView_ChangeLanguage;
         }
 
         private void VoucherView_ChangeLanguage(object sender, string e)

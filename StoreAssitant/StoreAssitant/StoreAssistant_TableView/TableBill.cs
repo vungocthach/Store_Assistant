@@ -32,6 +32,7 @@ namespace StoreAssitant
         private string Table = "BÀN";
         private String TakeHome = "BÀN MANG VỀ";
         private string Errordata = "Dữ liệu của bàn bị lỗi";
+        private string EmptyTable = "Bàn này còn trống, chưa có sản phẩm";
         #endregion
 
         public TableBill()
@@ -69,6 +70,7 @@ namespace StoreAssitant
             Table = Language.Rm.GetString("Table", Language.Culture);
             lbSumPrice.Text = Language.Rm.GetString("Total", Language.Culture);
             btnCashier.Text = Language.Rm.GetString("Pay", Language.Culture);
+            EmptyTable = Language.Rm.GetString("EmptyTable", Language.Culture);
         }
 
         private void Billinfo_ChangedInfo(object sender, EventArgs e)
@@ -206,7 +208,7 @@ namespace StoreAssitant
                 }
                 else
                 {
-                    MessageBox.Show("Bàn này còn trống, chưa có sản phẩm");
+                    MessageBox.Show(EmptyTable);
                 }
             }
         }

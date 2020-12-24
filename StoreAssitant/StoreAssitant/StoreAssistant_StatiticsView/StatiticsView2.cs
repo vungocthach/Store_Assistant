@@ -18,8 +18,10 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         TimePickerForm timePicker;
         String Lang = "vn";
         string revenue_ = "DOANH THU";
-        string day = "Ngày";
-        string month = "Tháng";
+        string day_ = "Ngày";
+        string month_ = "Tháng";
+        string year_ = "Năm";
+        string week = "Tuần";
         DateTime GetDateMin()
         {
                 if (ModeStatistics == 0)
@@ -126,8 +128,10 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             cbbStatiticsMode.Items[0] = Language.Rm.GetString("Year", Language.Culture);
             cbbStatiticsMode.Items[1] = Language.Rm.GetString("Month", Language.Culture);
             chart1.Legends[1].Title = Language.Rm.GetString("Name", Language.Culture);
-            day = chart1.ChartAreas[0].AxisX.Title = Language.Rm.GetString("Day", Language.Culture).ToUpper();
-            month = chart1.ChartAreas[1].AxisX.Title = Language.Rm.GetString("Month", Language.Culture).ToUpper();
+            day_ = chart1.ChartAreas[0].AxisX.Title = Language.Rm.GetString("Day", Language.Culture);
+            year_ = Language.Rm.GetString("Year", Language.Culture);
+            week = Language.Rm.GetString("Week", Language.Culture);
+            month_ = chart1.ChartAreas[1].AxisX.Title = Language.Rm.GetString("Month", Language.Culture).ToUpper();
             chart1.ChartAreas[0].AxisY.Title = chart1.ChartAreas[1].AxisY.Title = Language.Rm.GetString("revenue_", Language.Culture).ToUpper();
 
         }
@@ -395,7 +399,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
         void LoadDetailChart_ByDay(SaleInfo[] saleInfos)
         {
-            chart1.ChartAreas[1].AxisX.Title = day.ToUpper();
+            chart1.ChartAreas[1].AxisX.Title = day_.ToUpper();
             string x_axis_format = "{0}/{1}";
 
             foreach (Series s in seriesProducts)
@@ -419,7 +423,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
         void LoadDetailChart_ByMonth(SaleInfo[] saleInfos)
         {
-            chart1.ChartAreas[1].AxisX.Title = month.ToUpper();
+            chart1.ChartAreas[1].AxisX.Title = month_.ToUpper();
 
             string x_axis_format = "{0}/{1}";
 
@@ -447,7 +451,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             string x_axis_format = "{0}/{1}";
             seriesRevenue.Points.Clear();
 
-            chart1.ChartAreas[0].AxisX.Title = day.ToUpper();
+            chart1.ChartAreas[0].AxisX.Title = day_.ToUpper();
 
             for (int i = 0; i < saleInfos.Length; i++)
             {
@@ -462,7 +466,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             string x_axis_format = "{0}/{1}";
             seriesRevenue.Points.Clear();
 
-            chart1.ChartAreas[0].AxisX.Title = month.ToUpper();
+            chart1.ChartAreas[0].AxisX.Title = month_.ToUpper();
 
             for (int i = 0; i < saleInfos.Length; i++)
             {
@@ -502,11 +506,11 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             string txtTimeFormat;
             if (mode == -1)
             {
-                txtTimeFormat = "Tuần {0} tháng {1}/{2}"; // {0} : week; {1}:month; {2}:year
+                txtTimeFormat = week + " {0} " + month_+" {1}/{2}"; // {0} : week; {1}:month; {2}:year
             }
             else if (mode == 0)
             {
-                txtTimeFormat = "Tháng {0}/{1}"; // {0}:month; {1}:year
+                txtTimeFormat = month_ + " {0}/{1}"; // {0}:month; {1}:year
 
                 List<KeyValuePair<DateTime, long>> revenue_list = null;
                 using (DatabaseController databaseController = new DatabaseController())
@@ -537,7 +541,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             }
             else if (mode == 1)
             {
-                txtTimeFormat = "Năm {0}";
+                txtTimeFormat = year_ + " {0}";
 
                 List<KeyValuePair<DateTime, long>> revenue_list = null;
                 using (DatabaseController databaseController = new DatabaseController())
