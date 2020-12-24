@@ -39,7 +39,6 @@
             this.Remain = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
-            this.cbx_Language = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,7 +113,7 @@
             this.ExpiryDate.MinDate = new System.DateTime(1800, 1, 1, 0, 0, 0, 0);
             this.ExpiryDate.Name = "ExpiryDate";
             this.ExpiryDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ExpiryDate.Width = 268;
+            this.ExpiryDate.Width = 269;
             // 
             // Value
             // 
@@ -173,23 +172,11 @@
             this.btnRemove.UseVisualStyleBackColor = false;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click_1);
             // 
-            // cbx_Language
-            // 
-            this.cbx_Language.FormattingEnabled = true;
-            this.cbx_Language.Items.AddRange(new object[] {
-            "vn",
-            "en"});
-            this.cbx_Language.Location = new System.Drawing.Point(175, 34);
-            this.cbx_Language.Name = "cbx_Language";
-            this.cbx_Language.Size = new System.Drawing.Size(121, 28);
-            this.cbx_Language.TabIndex = 5;
-            // 
             // VoucherView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;
-            this.Controls.Add(this.cbx_Language);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.dataGridView1);
@@ -214,6 +201,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Remain;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnRemove;
-        private System.Windows.Forms.ComboBox cbx_Language;
     }
 }

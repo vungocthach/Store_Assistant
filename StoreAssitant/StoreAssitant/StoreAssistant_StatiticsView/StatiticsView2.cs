@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using StoreAssitant.StoreAssistant_Helper;
 using StoreAssitant.StoreAssistant_Information;
 using StoreAssitant.StoreAssistant_VoucherView;
 using StoreAssitant.StoreAssistant_Helper;
@@ -75,6 +76,12 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         {
             InitializeComponent();
 
+            if (Lang != AppManager.CurrentLanguage)
+            {
+                SetLanguage();
+            }
+            Language.ChangeLanguage += VoucherView_ChangeLanguage;
+
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font, FontStyle.Bold);
 
             cbbStatiticsMode.SelectedIndex = cbbChartMode.SelectedIndex = 0;
@@ -96,12 +103,6 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             pageSelector1.SelectedIndexChanged += PageSelector1_SelectedIndexChanged;
 
             this.Load += StatiticsView2_Load;
-
-            if (Lang != Language.CultureName)
-            {
-                SetLanguage();
-            }
-            VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
         }
 
         private void VoucherView_ChangeLanguage(object sender, string e)
@@ -112,7 +113,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
 
         private void SetLanguage()
         {
-            Lang = Language.CultureName;
+            Lang = AppManager.CurrentLanguage;
             Language.InitLanguage(this);
             groupBox1.Text = Language.Rm.GetString("List", Language.Culture);
             groupChart.Text = Language.Rm.GetString("Chart", Language.Culture);

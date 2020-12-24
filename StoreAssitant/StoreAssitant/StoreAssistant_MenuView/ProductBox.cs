@@ -12,6 +12,7 @@ using System.IO;
 using System.Windows.Markup;
 using System.Drawing.Imaging;
 using StoreAssitant.StoreAssistant_VoucherView;
+using StoreAssitant.StoreAssistant_Helper;
 
 namespace StoreAssitant
 {
@@ -125,6 +126,13 @@ namespace StoreAssitant
         {
             InitializeComponent();
 
+            if (Lang != AppManager.CurrentLanguage)
+            {
+                Lang = AppManager.CurrentLanguage;
+                SetLanguage();
+            }
+            Language.ChangeLanguage += VoucherView_ChangeLanguage;
+
             label_Image.Click += new EventHandler((object sender, EventArgs e) => {
                 string path = GetPath();
                 if (path != null && File.Exists(path))
@@ -153,12 +161,7 @@ namespace StoreAssitant
             textBoxPrice.SizeChanged += TextBoxPrice_SizeChanged;
             label_Image.LocationChanged += TextBoxPrice_SizeChanged;
             label_Image.SizeChanged += TextBoxPrice_SizeChanged;
-
-            if ( Lang != Language.CultureName)
-            {
-                Lang = Language.CultureName;
-                SetLanguage();
-            }    
+ 
         }
 
         private void VoucherView_ChangeLanguage(object sender, string e)

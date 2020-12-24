@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StoreAssitant.StoreAssistant_Helper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -82,6 +83,13 @@ namespace StoreAssitant.StoreAssistant_VoucherView
         {
             InitializeComponent();
 
+            if (Lang != AppManager.CurrentLanguage)
+            {
+                Lang = AppManager.CurrentLanguage;
+                SetLanguage();
+            }
+            Language.ChangeLanguage += AddVoucherForm_ChangeLanguage;
+
             btnConfirm.Click += BtnConfirm_Click;
             btnCancel.Click += BtnCancel_Click;
 
@@ -97,12 +105,6 @@ namespace StoreAssitant.StoreAssistant_VoucherView
 
             //ExpiryDateVoucher = DateTime.Now;
             dtpExpiryDate.Value = DateTime.Now.Date;
-
-            if ( Lang != Language.CultureName)
-            {
-                Lang = Language.CultureName;
-                SetLanguage();
-            }    
         }
 
         private void SetLanguage()
@@ -121,6 +123,10 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             NoEmpty = Language.Rm.GetString(" NoEmpty", Language.Culture);
             BiggerNow = Language.Rm.GetString("BiggerNow", Language.Culture);
 
+        }
+        private void AddVoucherForm_ChangeLanguage(object sender, string e)
+        {
+            SetLanguage();
         }
         private void KeyPressNumber(object sender, KeyPressEventArgs e)
         {

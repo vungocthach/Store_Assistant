@@ -9,38 +9,31 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using StoreAssitant.Class_Information;
 using System.Reflection;
+using StoreAssitant.StoreAssistant_Helper;
 
 namespace StoreAssitant.StoreAssistant_VoucherView
 {
     public partial class VoucherView : UserControl
     {
         BindingList<VoucherInfo> info;
-        private static void onChangeLanguage(object sender, string typelang)
-        {
-
-        }
-
-        public static event EventHandler<string> ChangeLanguage = new EventHandler<string>(onChangeLanguage);
-
-        
-
+        private string lang = "vn";
         public VoucherView()
         {
             InitializeComponent();
+            if (lang != AppManager.CurrentLanguage)
+            {
+                lang = AppManager.CurrentLanguage;
+                SetLanguage();
+            }
+            Language.ChangeLanguage += VoucherView_ChangeLanguage;
 
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font.FontFamily, 13, FontStyle.Bold);
-            
-           // ChangeLanguage = new EventHandler <string>(onChangeLanguage);
 
             this.Layout += VoucherView_Layout;
             btnAdd.Click += BtnAdd_Click;
             btnRemove.Click += BtnRemove_Click;
 
             dataGridView1.AutoGenerateColumns = true;
-
-            cbx_Language.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
-
-            VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
         }
 
         private void VoucherView_ChangeLanguage(object sender, string e)
@@ -60,11 +53,6 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             btnAdd.Text = Language.Rm.GetString("Add", Language.Culture);
             btnRemove.Text = Language.Rm.GetString("Delete", Language.Culture);
             
-        }
-        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Language.CultureName = cbx_Language.SelectedItem.ToString();
-            ChangeLanguage(sender, cbx_Language.SelectedItem.ToString());           
         }
 
         private void BtnRemove_Click(object sender, EventArgs e)

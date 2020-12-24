@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using StoreAssitant.StoreAssistant_VoucherView;
+using StoreAssitant.StoreAssistant_Helper;
 
 namespace StoreAssitant
 {
@@ -52,12 +53,12 @@ namespace StoreAssitant
         {
             InitializeComponent();
 
-            if ( Lang != Language.CultureName)
+            if ( Lang != AppManager.CurrentLanguage)
             {
-                Lang = Language.CultureName;
+                Lang = AppManager.CurrentLanguage;
                 SetLanguge();
             }
-            else VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
+            Language.ChangeLanguage += VoucherView_ChangeLanguage;
 
             Init_Event_Customize();
 
@@ -68,21 +69,28 @@ namespace StoreAssitant
             Init_Default_Value();
 
             this.Layout += TableView_Layout;
-
         }
 
         private void VoucherView_ChangeLanguage(object sender, string e)
         {
-            Lang = Language.CultureName;
+            //Lang = AppManager.CurrentLanguage;
             SetLanguge();
         }
 
         private void SetLanguge()
         {
-                Language.InitLanguage(this);
-                tableTitle_lb.Text = Language.Rm.GetString("List table", Language.Culture);
-                table = Language.Rm.GetString("Table", Language.Culture).ToUpper();
-                tableTakeHome.NameTable = Language.Rm.GetString("Take home", Language.Culture);
+            Language.InitLanguage(this);
+            tableTitle_lb.Text = Language.Rm.GetString("List table", Language.Culture);
+            foreach (Control item in tableGUI_pnl.Controls) 
+            {
+                if (item is TableControl table)
+                {
+                    if (table != tableTakeHome)
+                    table.NameTable = Language.Rm.GetString("Table", Language.Culture).ToUpper() + " " + table.NameTable[table.NameTable.Length-1].ToString();
+                }
+            }
+            table = Language.Rm.GetString("Table", Language.Culture).ToUpper();
+            tableTakeHome.NameTable = Language.Rm.GetString("Take home", Language.Culture);
         }
         /// <summary>
         /// Init the form value when creating

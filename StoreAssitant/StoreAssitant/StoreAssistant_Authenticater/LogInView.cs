@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.CompilerServices;
+using StoreAssitant.StoreAssistant_Helper;
 
 namespace StoreAssitant
 {
@@ -60,7 +61,7 @@ namespace StoreAssitant
         }
         public void InitializeField()
         {
-            if (Lang != Language.CultureName)
+            if (Lang != AppManager.CurrentLanguage)
             {
                 SetLanguage();
             }    

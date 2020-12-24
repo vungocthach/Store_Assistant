@@ -33,6 +33,13 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         {
             InitializeComponent();
 
+            if (Lang != AppManager.CurrentLanguage)
+            {
+                Lang = AppManager.CurrentLanguage;
+                SetLanguge();
+            }
+            Language.ChangeLanguage += VoucherView_ChangeLanguage;
+
             dataGridView1.ContextMenu = new ContextMenu();
             dataGridView1.ContextMenu.MenuItems.Add("Delete").Click += HistoryView_ClickDelete;
             dataGridView1.MouseClick += DataGridView1_MouseClick;
@@ -62,18 +69,10 @@ namespace StoreAssitant.StoreAssistant_HistoryView
 
             dtp_From.ValueChanged += Dtp_From_ValueChanged;
             dtp_To.ValueChanged += Dtp_From_ValueChanged;
-
+            
             this.Load += HistoryView_Load;
 
             textBox1.KeyDown += TextBox1_KeyDown;
-
-            VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
-
-            if ( Lang != Language.CultureName)
-            {
-                Lang = Language.CultureName;
-                SetLanguge();
-            }    
         }
 
         private void TextBox1_KeyDown(object sender, KeyEventArgs e)
