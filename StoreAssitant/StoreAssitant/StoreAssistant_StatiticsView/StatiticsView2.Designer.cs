@@ -45,10 +45,6 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, "10,0");
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-/*            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();*/
-          
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnFilter = new System.Windows.Forms.Button();
@@ -150,7 +146,6 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             // cbbStatiticsMode
             // 
             this.cbbStatiticsMode.BackColor = System.Drawing.Color.White;
-            this.cbbStatiticsMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbbStatiticsMode.Font = new System.Drawing.Font("Segoe UI Semibold", 13.25F);
             this.cbbStatiticsMode.ForeColor = System.Drawing.Color.Black;
             this.cbbStatiticsMode.Items.AddRange(new object[] {
@@ -364,7 +359,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             this.chart1.Size = new System.Drawing.Size(635, 413);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
-            //
+            // 
             // StatiticsView2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);

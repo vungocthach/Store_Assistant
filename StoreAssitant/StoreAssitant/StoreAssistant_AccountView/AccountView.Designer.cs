@@ -71,7 +71,7 @@
             this.gr_user.Size = new System.Drawing.Size(650, 100);
             this.gr_user.TabIndex = 0;
             this.gr_user.TabStop = false;
-            this.gr_user.Text = "Thông tin tài khoản";
+            this.gr_user.Text = "Tài Khoản Hiện Tại";
             // 
             // txb_role
             // 

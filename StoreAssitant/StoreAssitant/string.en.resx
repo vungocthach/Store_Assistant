@@ -121,7 +121,7 @@
     <value>Account</value>
   </data>
   <data name="Account infomation" xml:space="preserve">
-    <value>Account infomation</value>
+    <value>Current Account</value>
   </data>
   <data name="Add" xml:space="preserve">
     <value>Add</value>
@@ -322,7 +322,7 @@
     <value>Login</value>
   </data>
   <data name="Manage" xml:space="preserve">
-    <value>Manage</value>
+    <value>Menu</value>
   </data>
   <data name="Month" xml:space="preserve">
     <value>Month</value>
@@ -466,7 +466,7 @@
     <value>String1</value>
   </data>
   <data name="Stype:" xml:space="preserve">
-    <value>Stype:</value>
+    <value>Mode:</value>
   </data>
   <data name="SuccessChangePass" xml:space="preserve">
     <value>Password successfully changed!</value>
@@ -490,7 +490,7 @@
     <value>Take home</value>
   </data>
   <data name="Time" xml:space="preserve">
-    <value>Time</value>
+    <value>Stage</value>
   </data>
   <data name="Time:" xml:space="preserve">
     <value>Time:</value>
