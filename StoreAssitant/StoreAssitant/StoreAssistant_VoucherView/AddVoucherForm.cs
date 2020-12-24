@@ -24,6 +24,8 @@ namespace StoreAssitant.StoreAssistant_VoucherView
         string From0to100 = "Vui lòng nhập giá trị trong khoảng 0 đến 100";
         string NoEmpty = "Không để trống";
         string BiggerNow = "Thời hạn phải lớn hơn ngày hiện tại";
+        string Error = "Lỗi";
+        string BiggerZero = "Phải nhập số lớn hơn 0";
 
         public int ValueVoucher 
         { 
@@ -120,9 +122,9 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             PlusChar = Language.Rm.GetString("PlusChar", Language.Culture);
             From0to10000 = Language.Rm.GetString("From0to10000", Language.Culture);
             From0to100 = Language.Rm.GetString("From0to100 ", Language.Culture);
-            NoEmpty = Language.Rm.GetString(" NoEmpty", Language.Culture);
+            NoEmpty = Language.Rm.GetString("NoEmpty", Language.Culture);
             BiggerNow = Language.Rm.GetString("BiggerNow", Language.Culture);
-
+            Error = Language.Rm.GetString("Error", Language.Culture);
         }
         private void AddVoucherForm_ChangeLanguage(object sender, string e)
         {
@@ -130,18 +132,14 @@ namespace StoreAssitant.StoreAssistant_VoucherView
         }
         private void KeyPressNumber(object sender, KeyPressEventArgs e)
         {
-            if ((e.KeyChar > (char)Keys.D9 || e.KeyChar < (char)Keys.D0) && e.KeyChar != (char)Keys.Back && e.KeyChar != '.')
-            {
-                e.Handled = true;
-            }
             //Edit: Alternative
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != '.')
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
             }
             if (e.Handled == true)
             {
-                MessageBox.Show(PlusChar);
+                MessageBox.Show(PlusChar, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -212,17 +210,17 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             VoucherInfo info = new VoucherInfo();
             if (string.IsNullOrEmpty(tbCode.Text) || string.IsNullOrEmpty(tbNumberInit.Text) || string.IsNullOrEmpty(tbValue.Text))
             {
-                MessageBox.Show(NoEmpty);
+                MessageBox.Show(NoEmpty, Error, MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return;
             }
             if (valueVoucher == 0 || numberInitVoucher == 0)
             {
-                MessageBox.Show(PlusChar);
+                MessageBox.Show(BiggerZero, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (expiryDateVoucher < DateTime.Now)
             {
-                MessageBox.Show(BiggerNow);
+                MessageBox.Show(BiggerNow, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             info.Code = CodeVoucher;
