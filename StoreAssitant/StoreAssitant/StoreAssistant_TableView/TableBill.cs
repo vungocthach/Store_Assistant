@@ -31,8 +31,10 @@ namespace StoreAssitant
         private SumPrice TotalPrice;
         private string Lang = "vn";
         private string Table = "BÀN";
-        private String TakeHome = "BÀN MANG VỀ";
+        private string TakeHome = "BÀN MANG VỀ";
         private string Errordata = "Dữ liệu của bàn bị lỗi";
+        private string Notify = "Thông báo";
+        private string NoProductInTable = "Không có món ăn trong bàn";
         #endregion
 
         public TableBill()
@@ -72,6 +74,12 @@ namespace StoreAssitant
             Table = Language.Rm.GetString("Table", Language.Culture);
             lbSumPrice.Text = Language.Rm.GetString("Total", Language.Culture);
             btnCashier.Text = Language.Rm.GetString("Pay", Language.Culture);
+            NoProductInTable = Language.Rm.GetString("NoProductInTable", Language.Culture);
+            Notify = Language.Rm.GetString("Notify", Language.Culture); 
+            if (Billinfo != null)
+            {
+                tableTitle_lb.Text = Table + " " + Billinfo.ID;
+            }
         }
 
         private void Billinfo_ChangedInfo(object sender, EventArgs e)
@@ -201,7 +209,7 @@ namespace StoreAssitant
                         for (int j = 0; j < r; j++)
                         {
                             FormBill f = new FormBill();
-                            f.Test(start.AddDays(i));
+                            f.Test(start.AddDays(i));5
                         }
                     }
                     MessageBox.Show("Thêm hóa đơn thành công");
@@ -209,7 +217,7 @@ namespace StoreAssitant
                 }
                 else
                 {
-                    MessageBox.Show("Bàn này còn trống, chưa có sản phẩm");
+                    MessageBox.Show(NoProductInTable, Notify, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }

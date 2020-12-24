@@ -493,6 +493,15 @@ namespace StoreAssitant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Không được vượt quá 100 triệu.
+        /// </summary>
+        internal static string ErrorBigger100M {
+            get {
+                return ResourceManager.GetString("ErrorBigger100M", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nhập mật khẩu hiện tại không đúng.
         /// </summary>
         internal static string ErrorNowPass {
@@ -804,6 +813,15 @@ namespace StoreAssitant {
         internal static string Nondefine {
             get {
                 return ResourceManager.GetString("Nondefine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bàn trống, chưa có đồ ăn.
+        /// </summary>
+        internal static string NoProductInTable {
+            get {
+                return ResourceManager.GetString("NoProductInTable", resourceCulture);
             }
         }
         

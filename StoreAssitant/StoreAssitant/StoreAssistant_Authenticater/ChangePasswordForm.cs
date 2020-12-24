@@ -72,19 +72,19 @@ namespace StoreAssitant.StoreAssistant_Authenticater
 
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
-            if (txt_PassNew.Text != txt_PassNew2.Text)
+            if (string.IsNullOrEmpty(txt_PassCurrent.Text.Trim()) || string.IsNullOrEmpty(txt_PassNew.Text.Trim()) || string.IsNullOrEmpty(txt_PassNew2.Text.Trim()))
             {
-                MessageBox.Show(ErrorAgainPass, Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txt_PassNew2.SelectAll();
-                return;
-            }
-
-            if (txt_PassNew.Text.Trim() != Authenticator.CurrentUser.Pass)
-            {
-                MessageBox.Show(NoEmpty, Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(NoEmpty, Error, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txt_PassNew.SelectAll();
                 return;
             }
+
+/*            if (txt_PassNew.Text.Trim() != Authenticator.CurrentUser.Pass)
+            {
+                MessageBox.Show(ErrorNowPass, Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt_PassNew.SelectAll();
+                return;
+            }*/
 
             if (txt_PassCurrent.Text != Authenticator.CurrentUser.Pass)
             {
@@ -97,6 +97,13 @@ namespace StoreAssitant.StoreAssistant_Authenticater
             {
                 MessageBox.Show(NewLikeOld, Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_PassNew.SelectAll();
+                return;
+            }
+
+            if (txt_PassNew.Text != txt_PassNew2.Text)
+            {
+                MessageBox.Show(ErrorAgainPass, Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt_PassNew2.SelectAll();
                 return;
             }
 

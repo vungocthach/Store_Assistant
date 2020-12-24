@@ -261,6 +261,9 @@
   <data name="ErrorAgainPass" xml:space="preserve">
     <value>Nhập lại mật khẩu không đúng</value>
   </data>
+  <data name="ErrorBigger100M" xml:space="preserve">
+    <value>Không được vượt quá 100 triệu</value>
+  </data>
   <data name="ErrorNowPass" xml:space="preserve">
     <value>Nhập mật khẩu hiện tại không đúng</value>
   </data>
@@ -365,6 +368,9 @@
   </data>
   <data name="Nondefine" xml:space="preserve">
     <value>Lỗi không xác định</value>
+  </data>
+  <data name="NoProductInTable" xml:space="preserve">
+    <value>Bàn trống, chưa có đồ ăn</value>
   </data>
   <data name="NoSpecialChar" xml:space="preserve">
     <value>Vui lòng không nhập các kí tự đặc biệt</value>
