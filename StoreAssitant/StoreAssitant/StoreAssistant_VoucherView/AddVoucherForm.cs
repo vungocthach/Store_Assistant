@@ -120,7 +120,7 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             PlusChar = Language.Rm.GetString("PlusChar", Language.Culture);
             From0to10000 = Language.Rm.GetString("From0to10000", Language.Culture);
             From0to100 = Language.Rm.GetString("From0to100 ", Language.Culture);
-            NoEmpty = Language.Rm.GetString(" NoEmpty", Language.Culture);
+            NoEmpty = Language.Rm.GetString("NoEmpty", Language.Culture);
             BiggerNow = Language.Rm.GetString("BiggerNow", Language.Culture);
 
         }

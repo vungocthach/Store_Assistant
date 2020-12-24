@@ -171,6 +171,9 @@
   <data name="Change password" xml:space="preserve">
     <value>Đổi mật khẩu</value>
   </data>
+  <data name="ChangeProInf" xml:space="preserve">
+    <value>Thay đổi thông tin món ăn</value>
+  </data>
   <data name="Chart" xml:space="preserve">
     <value>Biểu đồ</value>
   </data>
@@ -179,6 +182,9 @@
   </data>
   <data name="ChosseTime" xml:space="preserve">
     <value>Chọn thời gian</value>
+  </data>
+  <data name="CloseApp" xml:space="preserve">
+    <value>Bạn muốn đóng ứng dụng?</value>
   </data>
   <data name="Code:" xml:space="preserve">
     <value>Mã:</value>
@@ -201,6 +207,9 @@
   <data name="Default" xml:space="preserve">
     <value>Mặc định</value>
   </data>
+  <data name="Define" xml:space="preserve">
+    <value>Xác nhận</value>
+  </data>
   <data name="DelAcc" xml:space="preserve">
     <value>Xóa tài khoản</value>
   </data>
@@ -216,17 +225,32 @@
   <data name="Detailed description:" xml:space="preserve">
     <value>Mô tả chi tiết:</value>
   </data>
+  <data name="Doorsize" xml:space="preserve">
+    <value>Kích thước cửa sổ</value>
+  </data>
   <data name="EnterError" xml:space="preserve">
     <value>Lỗi nhập</value>
   </data>
   <data name="Enter_From" xml:space="preserve">
     <value>Vui lòng nhập giá trị từ 0 đến</value>
   </data>
+  <data name="ErorFormat" xml:space="preserve">
+    <value>Lỗi định dạng</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Lỗi</value>
   </data>
   <data name="Error data" xml:space="preserve">
     <value>Dữ liệu bị lỗi</value>
+  </data>
+  <data name="Error404" xml:space="preserve">
+    <value>404 Not Found</value>
+  </data>
+  <data name="ErrorAgainPass" xml:space="preserve">
+    <value>Nhập lại mật khẩu không đúng</value>
+  </data>
+  <data name="ErrorNowPass" xml:space="preserve">
+    <value>Nhập mật khẩu hiện tại không đúng</value>
   </data>
   <data name="Expiry date" xml:space="preserve">
     <value>Hạn sử dụng</value>
@@ -267,11 +291,26 @@
   <data name="Give" xml:space="preserve">
     <value>Tiền trả lại</value>
   </data>
+  <data name="Hi" xml:space="preserve">
+    <value>Xin chào</value>
+  </data>
   <data name="History" xml:space="preserve">
     <value>Lịch sử</value>
   </data>
+  <data name="Human Resource Management" xml:space="preserve">
+    <value>Quản lí nhân sự</value>
+  </data>
   <data name="illegal" xml:space="preserve">
     <value>Tồn tại thông tin chưa hợp lệ</value>
+  </data>
+  <data name="illegalPhonenumber" xml:space="preserve">
+    <value>Số điện thoại không hợp lệ</value>
+  </data>
+  <data name="InfoSrore" xml:space="preserve">
+    <value>Thông tin cửa hàng</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Ngôn ngữ</value>
   </data>
   <data name="List" xml:space="preserve">
     <value>Danh sách</value>
@@ -294,8 +333,14 @@
   <data name="Name:" xml:space="preserve">
     <value>Họ và tên:</value>
   </data>
+  <data name="Namestore:" xml:space="preserve">
+    <value>Tên cửa hàng:</value>
+  </data>
   <data name="New password" xml:space="preserve">
     <value>Mật khẩu mới</value>
+  </data>
+  <data name="NewLikeOld" xml:space="preserve">
+    <value>Mật khẩu mới trùng với mật khẩu hiện tại</value>
   </data>
   <data name="NoEmpty" xml:space="preserve">
     <value>Không để trống</value>
@@ -306,6 +351,9 @@
   <data name="NoSpecialChar" xml:space="preserve">
     <value>Vui lòng không nhập các kí tự đặc biệt</value>
   </data>
+  <data name="NotEnougnMOney" xml:space="preserve">
+    <value>Khách chưa đưa đủ tiền</value>
+  </data>
   <data name="Number" xml:space="preserve">
     <value>STT</value>
   </data>
@@ -314,6 +362,12 @@
   </data>
   <data name="Onlychar" xml:space="preserve">
     <value>Chỉ nhập chữ cái thường, số và khoảng trắng{0}Phân cách giữa các tag bằng dấu chấm phẩy ';'</value>
+  </data>
+  <data name="OnlyNumber" xml:space="preserve">
+    <value>Chỉ được phép nhập số</value>
+  </data>
+  <data name="Out" xml:space="preserve">
+    <value>Thoát</value>
   </data>
   <data name="Password:" xml:space="preserve">
     <value>Mật khẩu:</value>
@@ -338,6 +392,12 @@
   </data>
   <data name="Price:" xml:space="preserve">
     <value>Giá bán:</value>
+  </data>
+  <data name="ProError" xml:space="preserve">
+    <value>Lỗi thông tin món ăn</value>
+  </data>
+  <data name="Project_ing" xml:space="preserve">
+    <value>Công trình đang thi công!</value>
   </data>
   <data name="Qty" xml:space="preserve">
     <value>SL</value>
@@ -366,6 +426,12 @@
   <data name="revenue_" xml:space="preserve">
     <value>DOANH THU</value>
   </data>
+  <data name="Save" xml:space="preserve">
+    <value>Lưu</value>
+  </data>
+  <data name="SaveChange" xml:space="preserve">
+    <value>Bạn có muốn lưu thay đổi?</value>
+  </data>
   <data name="Search" xml:space="preserve">
     <value>Tìm kiếm</value>
   </data>
@@ -386,6 +452,9 @@
   </data>
   <data name="Statistical" xml:space="preserve">
     <value>Thống Kê</value>
+  </data>
+  <data name="StoreInfo" xml:space="preserve">
+    <value>Thông tin của hàng</value>
   </data>
   <data name="Stype:" xml:space="preserve">
     <value>Kiểu:</value>
@@ -455,6 +524,12 @@
   </data>
   <data name="Wanrning" xml:space="preserve">
     <value>Vui lòng chọn ảnh có kích thước &lt; 26kb</value>
+  </data>
+  <data name="Website:" xml:space="preserve">
+    <value>Website:</value>
+  </data>
+  <data name="week" xml:space="preserve">
+    <value>Tuần</value>
   </data>
   <data name="Year" xml:space="preserve">
     <value>Năm</value>

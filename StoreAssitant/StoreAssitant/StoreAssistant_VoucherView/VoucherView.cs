@@ -25,6 +25,7 @@ namespace StoreAssitant.StoreAssistant_VoucherView
                 lang = AppManager.CurrentLanguage;
                 SetLanguage();
             }
+
             Language.ChangeLanguage += VoucherView_ChangeLanguage;
 
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font.FontFamily, 13, FontStyle.Bold);

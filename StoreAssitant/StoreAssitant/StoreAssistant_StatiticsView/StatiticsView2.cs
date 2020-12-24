@@ -22,6 +22,11 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         string revenue_ = "DOANH THU";
         string day = "Ngày";
         string month = "Tháng";
+        string day_ = "Ngày";
+        string month_ = "Tháng";
+        string year_ = "Năm";
+        string week = "Tuần";
+
         DateTime GetDateMin()
         {
                 if (ModeStatistics == 0)
@@ -125,13 +130,13 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             label1.Text = Language.Rm.GetString("Stype:", Language.Culture);
             cbbChartMode.Items[1] = Language.Rm.GetString("Detail", Language.Culture);
             cbbChartMode.Items[0] = Language.Rm.GetString("General", Language.Culture);
-            cbbStatiticsMode.Items[0] = Language.Rm.GetString("Year", Language.Culture);
-            cbbStatiticsMode.Items[1] = Language.Rm.GetString("Month", Language.Culture);
+            cbbStatiticsMode.Items[0] = year_ = Language.Rm.GetString("Year", Language.Culture);
+            cbbStatiticsMode.Items[1] = month_ = month = Language.Rm.GetString("Month", Language.Culture);
             chart1.Legends[1].Title = Language.Rm.GetString("Name", Language.Culture);
-            day = chart1.ChartAreas[0].AxisX.Title = Language.Rm.GetString("Day", Language.Culture).ToUpper();
-            month = chart1.ChartAreas[1].AxisX.Title = Language.Rm.GetString("Month", Language.Culture).ToUpper();
-            chart1.ChartAreas[0].AxisY.Title = chart1.ChartAreas[1].AxisY.Title = Language.Rm.GetString("revenue_", Language.Culture).ToUpper();
-
+            day_ = day = chart1.ChartAreas[0].AxisX.Title = Language.Rm.GetString("Day", Language.Culture).ToUpper();
+            chart1.ChartAreas[1].AxisX.Title = Language.Rm.GetString("Month", Language.Culture).ToUpper();
+            revenue_= chart1.ChartAreas[0].AxisY.Title = chart1.ChartAreas[1].AxisY.Title = Language.Rm.GetString("revenue_", Language.Culture);
+            week = Language.Rm.GetString("week", Language.Culture);
         }
 
         private void PageSelector1_SelectedIndexChanged(object sender, EventArgs e)
@@ -322,7 +327,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             seriesRevenue.ChartType = SeriesChartType.Column;
             seriesRevenue["DrawingStyle"] = "Cylinder";// DrawingStyle=Cylinder
 
-            chart1.ChartAreas[0].AxisY.Title = chart1.ChartAreas[1].AxisY.Title = "DOANH THU";
+            chart1.ChartAreas[0].AxisY.Title = chart1.ChartAreas[1].AxisY.Title = revenue_;
 
             LoadSeriesProducts();
         }
@@ -504,11 +509,11 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             string txtTimeFormat;
             if (mode == -1)
             {
-                txtTimeFormat = "Tuần {0} tháng {1}/{2}"; // {0} : week; {1}:month; {2}:year
+                txtTimeFormat = week + " {0} " +month+" {1}/{2}"; // {0} : week; {1}:month; {2}:year
             }
             else if (mode == 0)
             {
-                txtTimeFormat = "Tháng {0}/{1}"; // {0}:month; {1}:year
+                txtTimeFormat = month_+" {0}/{1}"; // {0}:month; {1}:year
 
                 List<KeyValuePair<DateTime, long>> revenue_list = null;
                 using (DatabaseController databaseController = new DatabaseController())
@@ -540,7 +545,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             }
             else if (mode == 1)
             {
-                txtTimeFormat = "Năm {0}";
+                txtTimeFormat = year_+ " {0}";
 
                 List<KeyValuePair<DateTime, long>> revenue_list = null;
                 using (DatabaseController databaseController = new DatabaseController())

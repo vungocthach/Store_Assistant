@@ -23,7 +23,13 @@ namespace StoreAssitant
         public BillInfo info = null;
         public bool isConfirm;
         private string Lang = "vn";
-       
+        private string OnlyNumber="Chỉ được phép nhập số";
+        private string Error = "Lỗi";
+        private string NotEnougnMOney = "Khách chưa đưa đủ tiền";
+        private string Out = "Thoát";
+        private string Cancel = "Hủy";
+        private string ProError= "Lỗi thông tin món ăn";
+
         #endregion
 
 
@@ -146,7 +152,7 @@ namespace StoreAssitant
             }
             if (e.Handled == true)
             {
-                MessageBox.Show("Chỉ được phép nhập số", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(OnlyNumber, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -162,7 +168,7 @@ namespace StoreAssitant
             info = new BillInfo();
             if (info ==null)
             {
-                MessageBox.Show("Lỗi thông tin món ăn", "Lỗi");
+                MessageBox.Show(ProError, Error);
                 return;
             }
             else
@@ -208,7 +214,13 @@ namespace StoreAssitant
             btnCancel.Text = Language.Rm.GetString("Cancel", Language.Culture);
             btnCashier.Text = Language.Rm.GetString("Pay", Language.Culture);
             this.Text = Language.Rm.GetString("Pay", Language.Culture);
-        }
+            OnlyNumber = Language.Rm.GetString("OnlyNumber", Language.Culture); 
+            Error = Language.Rm.GetString("Error", Language.Culture);
+            NotEnougnMOney = Language.Rm.GetString("NotEnougnMOney", Language.Culture);
+            Out = Language.Rm.GetString("Out", Language.Culture);
+            Cancel = Language.Rm.GetString("Cancel", Language.Culture);
+            ProError = Language.Rm.GetString("ProError", Language.Culture);
+    }
         public void setData(BillInfo table)
         {
             //
@@ -219,7 +231,7 @@ namespace StoreAssitant
             info.Give = info.Take - info.TOTAL;
             if (info == null)
             {
-                MessageBox.Show("Lỗi thông tin món ăn");
+                MessageBox.Show(ProError);
                 return;
             }
             else
@@ -280,7 +292,7 @@ namespace StoreAssitant
         {
             if (info.Give<0)
             {
-                MessageBox.Show("Khách chưa đưa đủ tiền");
+                MessageBox.Show(NotEnougnMOney);
                 return;
             }
             isConfirm = true;
@@ -305,12 +317,12 @@ namespace StoreAssitant
                 if (isReadonly)
                 {
                     btnCashier.Visible = false;
-                    btnCancel.Text = "Thoát";
+                    btnCancel.Text = Out;
                 }
                 else
                 {
                     btnCashier.Visible = true;
-                    btnCancel.Text = "Hủy";
+                    btnCancel.Text = Cancel;
                 }
             }
         }
