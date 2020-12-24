@@ -36,6 +36,7 @@ namespace StoreAssitant
             Language.ChangeLanguage += Language_ChangeLanguage;
 
             this.Name = "mainForm";
+            this.Icon = new Icon($"./Icons/main.ico");
 
             toolView1.SizeChanged += ToolView1_SizeChanged;
             toolView1.CheckUser();
@@ -48,11 +49,12 @@ namespace StoreAssitant
 
             tabSelector1.CheckUser();
             tabSelector1.SelectedTabChanged += TabSelector1_SelectedTabChanged;
-            TabSelector1_SelectedTabChanged(tabSelector1, EventArgs.Empty);
             this.SizeChanged += Form1_SizeChanged;
             Form1_SizeChanged(this, null);
 
             CreateView();
+
+            TabSelector1_SelectedTabChanged(tabSelector1, EventArgs.Empty);
         }
 
         void CreateView()

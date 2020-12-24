@@ -26,6 +26,7 @@ namespace StoreAssitant.StoreAssistant_CashierView
         {
             menuView1.LoadTheme();
             tableView1.LoadTheme();
+            this.Invalidate();
         }
 
         internal void LoadDataFromDB()

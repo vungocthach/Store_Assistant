@@ -563,6 +563,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>if not exist "$(TargetDir)Fonts" ( xcopy "$(ProjectDir)Fonts\*" "$(TargetDir)Fonts\" /S/I/Y)
-if not exist "$(TargetDir)Preferences" (xcopy "$(ProjectDir)Preferences\*" "$(TargetDir)Preferences\" /S/I/Y)</PreBuildEvent>
+if not exist "$(TargetDir)Preferences" (xcopy "$(ProjectDir)Preferences\*" "$(TargetDir)Preferences\" /S/I/Y)
+if not exist "$(TargetDir)Icons" (xcopy "$(ProjectDir)Icons\*" "$(TargetDir)Icons\" /S/I/Y)</PreBuildEvent>
   </PropertyGroup>
 </Project>

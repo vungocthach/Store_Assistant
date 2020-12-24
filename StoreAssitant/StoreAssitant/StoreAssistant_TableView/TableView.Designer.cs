@@ -65,6 +65,7 @@
             this.tableTakeHome.Name = "tableTakeHome";
             this.tableTakeHome.NameTable = "Mang về";
             this.tableTakeHome.Size = new System.Drawing.Size(111, 120);
+            this.tableTakeHome.Status = StoreAssitant.TableControl.status.Empty;
             this.tableTakeHome.TabIndex = 2;
             // 
             // tableAdd_btn
@@ -106,6 +107,7 @@
             // 
             // tableIcon_pnl
             // 
+            this.tableIcon_pnl.BackColor = System.Drawing.Color.Transparent;
             this.tableIcon_pnl.BackgroundImage = global::StoreAssitant.Properties.Resources.thu_ngan;
             this.tableIcon_pnl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.tableIcon_pnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;

@@ -24,6 +24,8 @@ namespace StoreAssitant
         {
             InitializeComponent();
 
+            this.Icon = new Icon($"./Icons/main.ico");
+
             Click_Login += on_Click_Login;
 
             logInView._Click += LogInView__Click;
