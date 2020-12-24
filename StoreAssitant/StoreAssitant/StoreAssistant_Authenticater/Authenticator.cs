@@ -54,6 +54,12 @@ namespace StoreAssitant.StoreAssistant_Authenticater
                         }
                     }
 
+                    if (userInfo.Pass.Trim() == string.Empty)
+                    {
+                        MessageBox.Show("Mật khẩu không thể trống", "Mật khẩu không hợp lệ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
+                    }
+
                     using (DatabaseController databaseController = new DatabaseController())
                     {
                         if (databaseController.CheckExistUsername(userInfo.UserName))

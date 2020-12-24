@@ -67,6 +67,13 @@ namespace StoreAssitant.StoreAssistant_Authenticater
                 return;
             }
 
+            if (txt_PassNew.Text.Trim() != Authenticator.CurrentUser.Pass)
+            {
+                MessageBox.Show("Mật khẩu không thể trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt_PassNew.SelectAll();
+                return;
+            }
+
             if (txt_PassCurrent.Text != Authenticator.CurrentUser.Pass)
             {
                 MessageBox.Show("Mật khẩu hiện tại không đúng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);

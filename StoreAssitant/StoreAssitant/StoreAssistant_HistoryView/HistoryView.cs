@@ -130,11 +130,24 @@ namespace StoreAssitant.StoreAssistant_HistoryView
                 dataGridView1.ContextMenu.Tag = row;
                 dataGridView1.ContextMenu.Show(dataGridView1, cursor);
             }
+            /*
+            if (e.Button == MouseButtons.Left)
+            {
+                Point cursor = new Point(e.X, e.Y);
+                int index = dataGridView1.HitTest(cursor.X, cursor.Y).RowIndex;
+
+                if (index == -1)
+                {
+                    DataGridViewColumn col = dataGridView1.Columns[dataGridView1.HitTest(cursor.X, cursor.Y).ColumnIndex];
+                    Console.WriteLine("Hit sort with mode: {0}", dataGridView1.sort);
+                }
+            }*/
         }
 
         private void DataGridView1_Sorted(object sender, EventArgs e)
         {
             dataGridView1.SuspendLayout();
+            /*
             int temp = GetStartIndex();
             DataGridViewRow row;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
@@ -144,24 +157,28 @@ namespace StoreAssitant.StoreAssistant_HistoryView
                 if (i % 2 != 0) row.DefaultCellStyle.BackColor = color_Line1;
                 else row.DefaultCellStyle.BackColor = color_Line2;
             }
+            */
+            if (dataGridView1.SortedColumn.Index == 2 || dataGridView1.SortedColumn.Index == 1)
+            {
+                this.modeSort = 2;
+            }
+            else if (dataGridView1.SortedColumn.Index == 3)
+            {
+                this.modeSort = 3;
+            }
+            else if(dataGridView1.SortedColumn.Index == 4)
+            {
+                this.modeSort = 4;
+            }
+
+            this.direction = (dataGridView1.SortOrder == SortOrder.Ascending) ? "ASC" : "DESC";
+            GetData();
             dataGridView1.ResumeLayout();
         }
-
         private void DataGridView1_SortCompare(object sender, DataGridViewSortCompareEventArgs e)
         {
-            if (e.Column.Index == 2)
+            if (e.Column.Index == 2 || e.Column.Index == 3 || e.Column.Index == 4)
             {
-                DateTime date1 = (dataGridView1.Rows[e.RowIndex1].Tag as BillInfo).DAY;
-                DateTime date2 = (dataGridView1.Rows[e.RowIndex2].Tag as BillInfo).DAY;
-                e.SortResult = date1.CompareTo(date2);
-                e.Handled = true;
-                
-            }
-            else if (e.Column.Index == 4)
-            {
-                long price1 = (dataGridView1.Rows[e.RowIndex1].Tag as BillInfo).TOTAL;
-                long price2 = (dataGridView1.Rows[e.RowIndex2].Tag as BillInfo).TOTAL;
-                e.SortResult = price1.CompareTo(price2);
                 e.Handled = true;
             }
         }
@@ -169,7 +186,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         private void HistoryView_Load(object sender, EventArgs e)
         {
             UpdateTime(false);
-            dataGridView1.Sort(dataGridView1.Columns[2], ListSortDirection.Descending);
+            //dataGridView1.Sort(dataGridView1.Columns[2], ListSortDirection.Descending);
         }
 
         private void Dtp_From_ValueChanged(object sender, EventArgs e)
@@ -285,7 +302,9 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         int row_per_page = 20;
         int GetStartIndex() { return (pageSelector1.SelectedIndex - 1) * row_per_page +1; }
 
-        public void GetData(int modeSort = 0, string direction = "DESC")
+        int modeSort = 0;
+        string direction = "DESC";
+        public void GetData()
         {
             Console.WriteLine("HistoryView : GetData()");
             List<BillInfo> bills;
