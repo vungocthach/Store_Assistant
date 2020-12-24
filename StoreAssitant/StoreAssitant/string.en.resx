@@ -420,6 +420,9 @@
   <data name="Price:" xml:space="preserve">
     <value>Price:</value>
   </data>
+  <data name="ProductName" xml:space="preserve">
+    <value>ProductName</value>
+  </data>
   <data name="ProError" xml:space="preserve">
     <value>Error of product information</value>
   </data>

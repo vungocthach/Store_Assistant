@@ -53,8 +53,6 @@ namespace StoreAssitant
         {
             InitializeComponent();
 
-           
-
             Init_Event_Customize();
 
             Init_Event_BtnAddTable();
@@ -88,7 +86,7 @@ namespace StoreAssitant
                 if (item is TableControl table)
                 {
                     if (table != tableTakeHome)
-                    table.NameTable = Language.Rm.GetString("Table", Language.Culture).ToUpper() + " " + table.NameTable[table.NameTable.Length-1].ToString();
+                    table.NameTable = Language.Rm.GetString("Table", Language.Culture).ToUpper() + " " + table.Info.ID;
                 }
             }
             table = Language.Rm.GetString("Table", Language.Culture).ToUpper();

@@ -105,6 +105,7 @@ namespace StoreAssitant
 
         private void TextBox2_TextChanged(object sender, EventArgs e)
         {
+            if (!IsReadonly)
             using (DatabaseController data = new DatabaseController())
             {
                 percentDecrease = data.UseVoucher(textBox2.Text);
@@ -114,12 +115,6 @@ namespace StoreAssitant
         public FormBill(BillInfo bill)
         {
             InitializeComponent();
-            setData(bill);
-            IsReadonly = true;
-            btnCashier.Click += BtnCashier_Click;
-            btnCancel.Click += BtnCancel_Click;
-            textBox4.KeyPress += TextBox4_KeyPress;
-            this.Layout += FormBill_Layout;
 
             if (Lang != AppManager.CurrentLanguage)
             {
@@ -127,17 +122,27 @@ namespace StoreAssitant
                 SetLanguage();
             }
             Language.ChangeLanguage += VoucherView_ChangeLanguage;
+
+            setData(bill);
+            IsReadonly = true;
+            btnCashier.Click += BtnCashier_Click;
+            btnCancel.Click += BtnCancel_Click;
+            textBox4.KeyPress += TextBox4_KeyPress;
+            this.Layout += FormBill_Layout;
         }
 
         private void TextBox4_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar != (char)Keys.End && !char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            if (!IsReadonly)
             {
-                e.Handled = true;
-            }
-            if (e.Handled == true)
-            {
-                MessageBox.Show(OnlyNumber, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (e.KeyChar != (char)Keys.End && !char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+                {
+                    e.Handled = true;
+                }
+                if (e.Handled == true)
+                {
+                    MessageBox.Show(OnlyNumber, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -187,7 +192,7 @@ namespace StoreAssitant
             lbTableName.Text = Language.Rm.GetString("Table:", Language.Culture);
             lbDate.Text = Language.Rm.GetString("Time:", Language.Culture);
             lbSTT.Text = Language.Rm.GetString("Number", Language.Culture);
-            lbNameProduct.Text = Language.Rm.GetString("Product name", Language.Culture);
+            lbNameProduct.Text = Language.Rm.GetString("ProductName", Language.Culture);
             lbNumber.Text = Language.Rm.GetString("Qty", Language.Culture);
             lbSinglePrice.Text = Language.Rm.GetString("Unit price", Language.Culture);
             lbSumPrice.Text = Language.Rm.GetString("Amount", Language.Culture);
@@ -214,6 +219,7 @@ namespace StoreAssitant
             info = table;
             info.Price_Bill = info.ProductBills.Sum(i => i.NumberProduct * i.Price);
             info.Give = info.Take - info.TOTAL;
+            info.Voucher = info.Voucher.Trim();
             if (info == null)
             {
                 MessageBox.Show(ProError, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -225,13 +231,13 @@ namespace StoreAssitant
 
                 foreach (Products i in table.ProductBills)
                 {
-                    tlpProduct.Controls.Add(new Label() { Text = (tlpProduct.RowCount - 1).ToString() }, 0, tlpProduct.RowCount - 1);
-                    tlpProduct.Controls.Add(new Label() { Text = i.Name }, 1, tlpProduct.RowCount - 1);
-                    tlpProduct.Controls.Add(new Label() { Text = i.NumberProduct.ToString() }, 2, tlpProduct.RowCount - 1);
-                    tlpProduct.Controls.Add(new Label() { Text = i.Price.ToString() }, 3, tlpProduct.RowCount - 1);
-                    tlpProduct.Controls.Add(new Label() { Text = (i.NumberProduct * i.Price).ToString() }, 4, tlpProduct.RowCount - 1);
+                    tlpProduct.Controls.Add(new Label() { Text = (tlpProduct.RowCount - 1).ToString() , TextAlign = ContentAlignment.MiddleCenter }, 0, tlpProduct.RowCount - 1);
+                    tlpProduct.Controls.Add(new Label() { Text = i.Name, TextAlign = ContentAlignment.MiddleLeft }, 1, tlpProduct.RowCount - 1);
+                    tlpProduct.Controls.Add(new Label() { Text = i.NumberProduct.ToString(), TextAlign = ContentAlignment.MiddleCenter }, 2, tlpProduct.RowCount - 1);
+                    tlpProduct.Controls.Add(new Label() { Text = i.Price.ToString(), TextAlign = ContentAlignment.MiddleLeft }, 3, tlpProduct.RowCount - 1);
+                    tlpProduct.Controls.Add(new Label() { Text = (i.NumberProduct * i.Price).ToString(), TextAlign = ContentAlignment.MiddleLeft }, 4, tlpProduct.RowCount - 1);
                     tlpProduct.RowCount++;
-                    tlpProduct.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+                    //tlpProduct.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
                 }
                 //Info_PropertyChanged(this, new PropertyChangedEventArgs("init bill"));
                 Init_Bill();
@@ -260,7 +266,7 @@ namespace StoreAssitant
             textBox4.DataBindings.Add("Text", info, "Take", true, DataSourceUpdateMode.OnPropertyChanged);
             textBox5.DataBindings.Add("Text", info, "Give", true, DataSourceUpdateMode.OnPropertyChanged);
             lbTableName.Text += info.Number_table.ToString();
-            lbDate.Text = lbDate.Text + info.DAY.ToString(" dd/MM/yyyy HH:mm:ss");
+            lbDate.Text += info.DAY.ToString(" dd/MM/yyyy HH:mm:ss");
         }
 
         #endregion

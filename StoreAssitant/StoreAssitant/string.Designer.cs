@@ -979,6 +979,15 @@ namespace StoreAssitant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tên món.
+        /// </summary>
+        internal static string ProductName {
+            get {
+                return ResourceManager.GetString("ProductName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lỗi thông tin món ăn.
         /// </summary>
         internal static string ProError {

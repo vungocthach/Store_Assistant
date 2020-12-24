@@ -423,6 +423,9 @@
   <data name="Price:" xml:space="preserve">
     <value>Giá bán:</value>
   </data>
+  <data name="ProductName" xml:space="preserve">
+    <value>Tên món</value>
+  </data>
   <data name="ProError" xml:space="preserve">
     <value>Lỗi thông tin món ăn</value>
   </data>

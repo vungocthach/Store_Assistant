@@ -74,7 +74,6 @@
             this.tableView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableView1.MinimumSize = new System.Drawing.Size(377, 50);
             this.tableView1.Name = "tableView1";
-            this.tableView1.NameCashierTable = "DANH SÁCH BÀN";
             this.tableView1.Size = new System.Drawing.Size(421, 590);
             this.tableView1.TabIndex = 0;
             this.tableView1.TitleHeight = 50;

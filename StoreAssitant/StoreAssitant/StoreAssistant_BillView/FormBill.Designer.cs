@@ -99,27 +99,27 @@
             this.lbPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPay.Location = new System.Drawing.Point(5, 59);
             this.lbPay.Name = "lbPay";
-            this.lbPay.Size = new System.Drawing.Size(333, 18);
+            this.lbPay.Size = new System.Drawing.Size(331, 18);
             this.lbPay.TabIndex = 4;
             this.lbPay.Text = "Thanh toán";
             // 
             // lbTableName
             // 
             this.lbTableName.AutoSize = true;
-            this.lbTableName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTableName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTableName.Location = new System.Drawing.Point(51, 81);
             this.lbTableName.Name = "lbTableName";
-            this.lbTableName.Size = new System.Drawing.Size(42, 20);
+            this.lbTableName.Size = new System.Drawing.Size(46, 20);
             this.lbTableName.TabIndex = 6;
             this.lbTableName.Text = "Bàn:";
             // 
             // lbDate
             // 
             this.lbDate.AutoSize = true;
-            this.lbDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDate.Location = new System.Drawing.Point(293, 81);
+            this.lbDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDate.Location = new System.Drawing.Point(278, 81);
             this.lbDate.Name = "lbDate";
-            this.lbDate.Size = new System.Drawing.Size(77, 20);
+            this.lbDate.Size = new System.Drawing.Size(87, 20);
             this.lbDate.TabIndex = 7;
             this.lbDate.Text = "Thời gian:";
             // 
@@ -223,7 +223,7 @@
             this.tlpPayMoney.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
             this.tlpPayMoney.ColumnCount = 2;
             this.tlpPayMoney.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpPayMoney.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
+            this.tlpPayMoney.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 157F));
             this.tlpPayMoney.Controls.Add(this.textBox5, 1, 4);
             this.tlpPayMoney.Controls.Add(this.textBox4, 1, 3);
             this.tlpPayMoney.Controls.Add(this.textBox3, 1, 2);
@@ -251,11 +251,11 @@
             this.textBox5.BackColor = System.Drawing.SystemColors.Control;
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(346, 119);
+            this.textBox5.Location = new System.Drawing.Point(344, 119);
             this.textBox5.MaxLength = 10000000;
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(149, 15);
+            this.textBox5.Size = new System.Drawing.Size(151, 15);
             this.textBox5.TabIndex = 13;
             this.textBox5.Text = "0";
             // 
@@ -265,10 +265,10 @@
             this.textBox4.BackColor = System.Drawing.SystemColors.Control;
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(346, 88);
+            this.textBox4.Location = new System.Drawing.Point(344, 88);
             this.textBox4.MaxLength = 10000000;
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(149, 15);
+            this.textBox4.Size = new System.Drawing.Size(151, 15);
             this.textBox4.TabIndex = 12;
             this.textBox4.Text = "0";
             // 
@@ -278,11 +278,11 @@
             this.textBox3.BackColor = System.Drawing.SystemColors.Control;
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(346, 61);
+            this.textBox3.Location = new System.Drawing.Point(344, 61);
             this.textBox3.MaxLength = 10000000;
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(149, 15);
+            this.textBox3.Size = new System.Drawing.Size(151, 15);
             this.textBox3.TabIndex = 11;
             this.textBox3.Text = "0";
             // 
@@ -292,9 +292,9 @@
             this.textBox2.BackColor = System.Drawing.SystemColors.Control;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(346, 34);
+            this.textBox2.Location = new System.Drawing.Point(344, 34);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(149, 15);
+            this.textBox2.Size = new System.Drawing.Size(151, 15);
             this.textBox2.TabIndex = 10;
             this.textBox2.Text = "#######";
             // 
@@ -305,7 +305,7 @@
             this.lbPrice_Bill.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPrice_Bill.Location = new System.Drawing.Point(5, 5);
             this.lbPrice_Bill.Name = "lbPrice_Bill";
-            this.lbPrice_Bill.Size = new System.Drawing.Size(333, 18);
+            this.lbPrice_Bill.Size = new System.Drawing.Size(331, 18);
             this.lbPrice_Bill.TabIndex = 5;
             this.lbPrice_Bill.Text = "Tổng cộng";
             // 
@@ -316,7 +316,7 @@
             this.lbSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSale.Location = new System.Drawing.Point(5, 32);
             this.lbSale.Name = "lbSale";
-            this.lbSale.Size = new System.Drawing.Size(333, 18);
+            this.lbSale.Size = new System.Drawing.Size(331, 18);
             this.lbSale.TabIndex = 6;
             this.lbSale.Text = "Mã giảm giá";
             // 
@@ -327,7 +327,7 @@
             this.lbMoney_Customer.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbMoney_Customer.Location = new System.Drawing.Point(5, 86);
             this.lbMoney_Customer.Name = "lbMoney_Customer";
-            this.lbMoney_Customer.Size = new System.Drawing.Size(333, 18);
+            this.lbMoney_Customer.Size = new System.Drawing.Size(331, 18);
             this.lbMoney_Customer.TabIndex = 7;
             this.lbMoney_Customer.Text = "Tiền khách đưa";
             // 
@@ -338,7 +338,7 @@
             this.lbExchange.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbExchange.Location = new System.Drawing.Point(5, 117);
             this.lbExchange.Name = "lbExchange";
-            this.lbExchange.Size = new System.Drawing.Size(333, 18);
+            this.lbExchange.Size = new System.Drawing.Size(331, 18);
             this.lbExchange.TabIndex = 8;
             this.lbExchange.Text = "Tiền trả lại";
             // 
@@ -348,11 +348,11 @@
             this.textBox1.BackColor = System.Drawing.SystemColors.Control;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(346, 7);
+            this.textBox1.Location = new System.Drawing.Point(344, 7);
             this.textBox1.MaxLength = 10000000;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(149, 15);
+            this.textBox1.Size = new System.Drawing.Size(151, 15);
             this.textBox1.TabIndex = 9;
             this.textBox1.Text = "0";
             // 
