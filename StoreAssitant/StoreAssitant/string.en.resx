@@ -153,6 +153,9 @@
   <data name="BiggerNow" xml:space="preserve">
     <value>Day must be greater than now</value>
   </data>
+  <data name="BiggerZero" xml:space="preserve">
+    <value>BiggerZero</value>
+  </data>
   <data name="Bill code" xml:space="preserve">
     <value>Bill code</value>
   </data>

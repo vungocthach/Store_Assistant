@@ -13,9 +13,8 @@ using StoreAssitant.StoreAssistant_Helper;
 
 namespace StoreAssitant.StoreAssistant_VoucherView
 {
-    public partial class VoucherView : UserControl
+    public partial class VoucherView : UserControl, ILoadTheme
     {
-        BindingList<VoucherInfo> info;
         private string lang = "vn";
         public VoucherView()
         {
@@ -34,7 +33,17 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             btnAdd.Click += BtnAdd_Click;
             btnRemove.Click += BtnRemove_Click;
 
+            dataGridView1.CellContentClick += DataGridView1_CellClick;
             dataGridView1.AutoGenerateColumns = true;
+        }
+
+        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Rows.Count!=0)
+            {
+                dataGridView1.Rows[0].Selected = true;
+            }
+            reloadTheme(0);
         }
 
         private void VoucherView_ChangeLanguage(object sender, string e)
@@ -53,18 +62,19 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             dataGridView1.Columns[4].HeaderText = Language.Rm.GetString("Remain", Language.Culture);
             btnAdd.Text = Language.Rm.GetString("Add", Language.Culture);
             btnRemove.Text = Language.Rm.GetString("Delete", Language.Culture);
-            
         }
 
         private void BtnRemove_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count != 0)
             {
+                int index = dataGridView1.SelectedRows[0].Index;
                 using (DatabaseController data = new DatabaseController())
                 {
                     data.RemoveVoucher(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
                 }
                 dataGridView1.Rows.Remove(dataGridView1.SelectedRows[0]);
+                reloadTheme(index);
             }
         }
 
@@ -81,26 +91,26 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             {
                 if (name.Cells[0].Value.ToString() == e.Code)
                 {
-                    MessageBox.Show("Mã code này đã tồn tại");
+                    MessageBox.Show("Mã code này đã tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
-            info.Add(e);
+            int index = dataGridView1.Rows.Add(e.Code, e.ExpiryDate, e.Value, e.NumberInit, e.NumberRemain);
+            reloadTheme(index);
             using (DatabaseController data = new DatabaseController())
             {
                 data.AddVoucher(e);
             }
-            Invalidate();
         }
 
         private void VoucherView_Layout(object sender, LayoutEventArgs e)
         {
             int space = 10;
-            btnRemove.Location = new Point(this.Width - btnRemove.Width - space, this.Height - btnRemove.Height - space);
-            btnAdd.Location = new Point(this.Width - btnAdd.Width - btnRemove.Width - space*2, btnRemove.Location.Y);
-            dataGridView1.Size = new Size(this.Width, this.Height*3/4);
-            dataGridView1.Location = new Point(0, (this.Height-dataGridView1.Height)/2);
-            label1.Size = new Size(this.Width,dataGridView1.Location.Y);
+            label1.Size = new Size(this.Width, label1.Size.Height);
+            btnRemove.Location = new Point(this.Width - btnRemove.Width - space * 2, this.Height - btnRemove.Height - space);
+            btnAdd.Location = new Point(btnRemove.Location.X - btnAdd.Width - space, btnRemove.Location.Y);
+            dataGridView1.Size = new Size(this.Width <= 1024? this.Width - 20*space : this.Width * 3/5, this.Height - label1.Height - btnAdd.Size.Height - space * 5);
+            dataGridView1.Location = new Point((this.Width - dataGridView1.Width)/2, label1.Height);
         }
 
         internal void LoadDataFromDB()
@@ -108,19 +118,44 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             using (DatabaseController databaseController = new DatabaseController())
             {
                 databaseController.ConnectToSQLDatabase();
-                dataGridView1.DataSource = info = databaseController.GetVouchers();                
+                List<VoucherInfo> info = databaseController.GetVouchers();
+                for (int i = 0; i < info.Count; i++)
+                {
+                    int index = dataGridView1.Rows.Add(info[i].Code,info[i].ExpiryDate,info[i].Value,info[i].NumberInit,info[i].NumberRemain);
+                    DataGridViewRow row = dataGridView1.Rows[index];
+                    row.DefaultCellStyle.SelectionBackColor = color_Line_Selection;
+                    if (row.Index % 2 != 0) row.DefaultCellStyle.BackColor = color_Line2;
+                    else row.DefaultCellStyle.BackColor = color_Line1;
+                    row.DefaultCellStyle.ForeColor = dataGridView1.ForeColor;
+                }
             }
-
         }
+        Color color_Line1;
+        Color color_Line2;
+        Color color_Line_Selection;
 
-        private void label1_Click(object sender, EventArgs e)
+        public void LoadTheme()
         {
+            label1.ForeColor = AppManager.GetColors("Main_Plaintext");
 
+            dataGridView1.ForeColor = label1.ForeColor;
+            dataGridView1.BackgroundColor = AppManager.GetColors("Grid_Background");
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = dataGridView1.ForeColor;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = AppManager.GetColors("Grid_Header");
+            color_Line_Selection = AppManager.GetColors("Grid_Line_Selection");
+            color_Line1 = AppManager.GetColors("Grid_Line1");
+            color_Line2 = AppManager.GetColors("Grid_Line2");
         }
-
-        private void btnRemove_Click_1(object sender, EventArgs e)
+        private void reloadTheme(int indexStart)
         {
-
+            for (int i = indexStart; i < dataGridView1.Rows.Count; i++)
+            {
+                DataGridViewRow row = dataGridView1.Rows[i];
+                row.DefaultCellStyle.SelectionBackColor = color_Line_Selection;
+                if (row.Index % 2 != 0) row.DefaultCellStyle.BackColor = color_Line2;
+                else row.DefaultCellStyle.BackColor = color_Line1;
+                row.DefaultCellStyle.ForeColor = dataGridView1.ForeColor;
+            }
         }
     }
 }

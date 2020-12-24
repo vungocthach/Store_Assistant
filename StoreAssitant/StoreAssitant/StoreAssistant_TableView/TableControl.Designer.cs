@@ -35,7 +35,6 @@ namespace StoreAssitant
             this.cmsTableControl = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.tableImage_pnl = new System.Windows.Forms.Panel();
-            this.tsInformation = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsTableControl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,15 +53,14 @@ namespace StoreAssitant
             // 
             this.cmsTableControl.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmsTableControl.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsInformation,
             this.tsDelete});
             this.cmsTableControl.Name = "contextMenuStrip1";
-            this.cmsTableControl.Size = new System.Drawing.Size(138, 48);
+            this.cmsTableControl.Size = new System.Drawing.Size(181, 48);
             // 
             // tsDelete
             // 
             this.tsDelete.Name = "tsDelete";
-            this.tsDelete.Size = new System.Drawing.Size(137, 22);
+            this.tsDelete.Size = new System.Drawing.Size(180, 22);
             this.tsDelete.Text = "Delete";
             // 
             // tableImage_pnl
@@ -77,12 +75,6 @@ namespace StoreAssitant
             this.tableImage_pnl.Name = "tableImage_pnl";
             this.tableImage_pnl.Size = new System.Drawing.Size(111, 90);
             this.tableImage_pnl.TabIndex = 0;
-            // 
-            // tsInformation
-            // 
-            this.tsInformation.Name = "tsInformation";
-            this.tsInformation.Size = new System.Drawing.Size(137, 22);
-            this.tsInformation.Text = "Information";
             // 
             // TableControl
             // 
@@ -107,6 +99,5 @@ namespace StoreAssitant
         private System.Windows.Forms.Label tableName_lb;
         private System.Windows.Forms.ContextMenuStrip cmsTableControl;
         private System.Windows.Forms.ToolStripMenuItem tsDelete;
-        private System.Windows.Forms.ToolStripMenuItem tsInformation;
     }
 }

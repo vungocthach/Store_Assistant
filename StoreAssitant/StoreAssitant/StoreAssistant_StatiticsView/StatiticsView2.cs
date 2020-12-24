@@ -120,8 +120,8 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         {
             Lang = AppManager.CurrentLanguage;
             Language.InitLanguage(this);
-            groupBox1.Text = Language.Rm.GetString("List", Language.Culture);
-            groupChart.Text = Language.Rm.GetString("Chart", Language.Culture);
+            lbConfig.Text = Language.Rm.GetString("Time", Language.Culture);
+            lbChart.Text = Language.Rm.GetString("Chart", Language.Culture);
             label4.Text = Language.Rm.GetString("Unit:", Language.Culture);
             btnFilter.Text = Language.Rm.GetString("Filter", Language.Culture);
             dataGridView1.Columns[0].HeaderText = Language.Rm.GetString("Number", Language.Culture);
@@ -153,18 +153,20 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         private void Panel2_SizeChanged(object sender, EventArgs e)
         {
             Panel panel = (Panel)sender;
-            chart1.Height = panel.Height - (cbbChartMode.Location.Y + cbbChartMode.Height + cbbChartMode.Margin.Bottom) - (chart1.Margin.Top + chart1.Margin.Bottom);
-            chart1.Width = panel.Width - chart1.Margin.Left - chart1.Margin.Right;
+            panel2.Size = new Size(panel.Width - panel2.Location.X - panel2.Margin.Right, panel.Height - panel2.Location.Y - panel2.Margin.Bottom);
+            chart1.Height = panel2.Height - chart1.Location.Y - (chart1.Margin.Bottom);
+            chart1.Width = panel2.Width - chart1.Location.X - chart1.Margin.Right;
         }
 
         private void Panel1_SizeChanged(object sender, EventArgs e)
         {
             Panel panel = (Panel)sender;
+            panel1.Width = panel.Width - panel1.Location.X - panel1.Margin.Right;
             pageSelector1.Location = new Point((panel.Width - pageSelector1.Width) / 2, panel.Height - pageSelector1.Height - pageSelector1.Margin.Bottom);
 
-            dataGridView1.Height = (panel.Height - (groupBox1.Location.Y + groupBox1.Height + groupBox1.Margin.Bottom)
-                                                - ((panel.Height - pageSelector1.Location.Y) + pageSelector1.Margin.Top)
-                                                - (dataGridView1.Margin.Top + dataGridView1.Margin.Bottom));
+            dataGridView1.Height = (panel.Height - dataGridView1.Location.Y
+                                                - (dataGridView1.Margin.Bottom + pageSelector1.Margin.Top)
+                                                - ((panel.Height - pageSelector1.Location.Y)));
             dataGridView1.Width = panel.Width - dataGridView1.Margin.Left - dataGridView1.Margin.Right;
         }
 
@@ -536,8 +538,10 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                     DataGridViewRow row = dataGridView1.Rows[dataGridView1.Rows.Add (stt, string.Format(txtTimeFormat, month.Month, month.Year), string.Format("{0}VND", totalRevenue.ToString("N0")))];  
                     row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Tag = new KeyValuePair<DateTime, long>(month, totalRevenue);
+                    row.DefaultCellStyle.SelectionBackColor = color_Line_Selection;
                     if (row.Index % 2 != 0) row.DefaultCellStyle.BackColor = color_Line1;
                     else row.DefaultCellStyle.BackColor = color_Line2;
+                    row.DefaultCellStyle.ForeColor = dataGridView1.ForeColor;
                     stt++;
                     month = month.AddMonths(1);
                 }
@@ -568,8 +572,10 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                     DataGridViewRow row = dataGridView1.Rows[dataGridView1.Rows.Add(stt, string.Format(txtTimeFormat, year.Year), string.Format("{0}VND", totalRevenue.ToString("N0")))];
                     row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Tag = new KeyValuePair<DateTime, long>(year, totalRevenue);
-                    if (row.Index % 2 == 0) row.DefaultCellStyle.BackColor = Color.LightSkyBlue;
-                    else row.DefaultCellStyle.BackColor = Color.White;
+                    row.DefaultCellStyle.SelectionBackColor = color_Line_Selection;
+                    if (row.Index % 2 != 0) row.DefaultCellStyle.BackColor = color_Line1;
+                    else row.DefaultCellStyle.BackColor = color_Line2;
+                    row.DefaultCellStyle.ForeColor = dataGridView1.ForeColor;
                     stt++;
                     year = year.AddYears(1);
                 }
@@ -658,14 +664,25 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         }
         Color color_Line1;
         Color color_Line2;
+        Color color_Line_Selection;
         public void LoadTheme()
         {
-            dataGridView1.ForeColor = groupBox1.ForeColor;
+            lbChart.ForeColor = lbConfig.ForeColor = AppManager.GetColors("Title_Force");
+            lbChart.BackColor = lbConfig.BackColor = AppManager.GetColors("Title_Background");
+
+            label4.ForeColor = AppManager.GetColors("Main_Plaintext");
+
+            dataGridView1.ForeColor = label4.ForeColor;
+
             dataGridView1.BackgroundColor = AppManager.GetColors("Grid_Background");
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = dataGridView1.ForeColor;
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = AppManager.GetColors("Grid_Header");
+            color_Line_Selection = AppManager.GetColors("Grid_Line_Selection");
             color_Line1 = AppManager.GetColors("Grid_Line1");
             color_Line2 = AppManager.GetColors("Grid_Line2");
+
+            chart1.BackColor = panel2.BackColor = AppManager.GetColors("Chart_Background");
+            foreach (ChartArea area in chart1.ChartAreas) { area.BackColor = chart1.BackColor; }
         }
     }
 }

@@ -9,12 +9,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-
+using StoreAssitant.StoreAssistant_Helper;
 
 namespace StoreAssitant
 {
-    public partial class ManagerModifyView : UserControl
+    public partial class ManagerModifyView : UserControl, ILoadTheme
     {
         public ManagerModifyView()
         {
@@ -108,6 +107,12 @@ namespace StoreAssitant
                 });
                 form.ShowDialog();
             }
+        }
+
+        public void LoadTheme()
+        {
+            menuView1.LoadTheme();
+            tableView1.LoadTheme();
         }
     }
 }

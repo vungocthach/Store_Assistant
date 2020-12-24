@@ -70,6 +70,7 @@
             // 
             // tableAdd_btn
             // 
+            this.tableAdd_btn.BackColor = System.Drawing.SystemColors.Control;
             this.tableAdd_btn.BackgroundImage = global::StoreAssitant.Properties.Resources.button_add;
             this.tableAdd_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tableAdd_btn.Location = new System.Drawing.Point(117, 2);
@@ -80,6 +81,7 @@
             // 
             // tableTitle_lb
             // 
+            this.tableTitle_lb.BackColor = System.Drawing.Color.Transparent;
             this.tableTitle_lb.Font = new System.Drawing.Font("Snap ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableTitle_lb.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tableTitle_lb.Location = new System.Drawing.Point(73, 7);

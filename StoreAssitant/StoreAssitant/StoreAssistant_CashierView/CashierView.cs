@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using StoreAssitant.StoreAssistant_Helper;
 
 namespace StoreAssitant.StoreAssistant_CashierView
 {
-    public partial class CashierView : UserControl
+    public partial class CashierView : UserControl, ILoadTheme
     {
         public CashierView()
         {
@@ -19,6 +20,12 @@ namespace StoreAssitant.StoreAssistant_CashierView
 
             split_Cashier.Panel1MinSize = tableView1.MinimumSize.Width;
             split_Cashier.Panel2MinSize = menuView1.MinimumSize.Width;
+        }
+
+        public void LoadTheme()
+        {
+            menuView1.LoadTheme();
+            tableView1.LoadTheme();
         }
 
         internal void LoadDataFromDB()

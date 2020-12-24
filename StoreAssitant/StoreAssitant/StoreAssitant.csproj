@@ -378,6 +378,16 @@
       <DependentUpon>string.resx</DependentUpon>
     </Compile>
     <Compile Include="string.en.cs" />
+    <Compile Include="string.en.Designer.cs">
+      <DependentUpon>string.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="string.vn.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>string.vn.resx</DependentUpon>
+    </Compile>
     <Compile Include="TSString.cs" />
     <EmbeddedResource Include="StoreAssistant_MenuView\AddProductForm.resx">
       <DependentUpon>AddProductForm.cs</DependentUpon>
@@ -449,12 +459,18 @@
     <EmbeddedResource Include="StoreAssistant_VoucherView\VoucherView.resx">
       <DependentUpon>VoucherView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="string.en.resx" />
+    <EmbeddedResource Include="string.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>string.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="string.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>string.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="string.vn.resx" />
+    <EmbeddedResource Include="string.vn.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>string.vn.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
