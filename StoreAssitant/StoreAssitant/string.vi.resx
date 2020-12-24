@@ -147,9 +147,6 @@
   <data name="Areusure" xml:space="preserve">
     <value>Bạn chắc chắn muốn xóa tài khoản này?</value>
   </data>
-  <data name="beleo" xml:space="preserve">
-    <value />
-  </data>
   <data name="bigfile" xml:space="preserve">
     <value>File quá lớn</value>
   </data>
@@ -192,6 +189,9 @@
   <data name="Code:" xml:space="preserve">
     <value>Mã:</value>
   </data>
+  <data name="CodeIsExists" xml:space="preserve">
+    <value>Mã code đã tồn tại</value>
+  </data>
   <data name="Confirm" xml:space="preserve">
     <value>Xác nhận</value>
   </data>
@@ -206,6 +206,9 @@
   </data>
   <data name="Day" xml:space="preserve">
     <value>Ngày</value>
+  </data>
+  <data name="DayNotNow" xml:space="preserve">
+    <value>Ngày phải nhỏ hơn hôm nay</value>
   </data>
   <data name="Default" xml:space="preserve">
     <value>Mặc định</value>
@@ -227,6 +230,9 @@
   </data>
   <data name="Detailed description:" xml:space="preserve">
     <value>Mô tả chi tiết:</value>
+  </data>
+  <data name="Different" xml:space="preserve">
+    <value>Khác</value>
   </data>
   <data name="Doorsize" xml:space="preserve">
     <value>Kích thước cửa sổ</value>
@@ -252,6 +258,9 @@
   <data name="ErrorAgainPass" xml:space="preserve">
     <value>Nhập lại mật khẩu không đúng</value>
   </data>
+  <data name="ErrorBigger100M" xml:space="preserve">
+    <value>Không được vượt quá 100 triệu</value>
+  </data>
   <data name="ErrorNowPass" xml:space="preserve">
     <value>Nhập mật khẩu hiện tại không đúng</value>
   </data>
@@ -260,6 +269,9 @@
   </data>
   <data name="failDel" xml:space="preserve">
     <value>Xóa tài khoản thất bại</value>
+  </data>
+  <data name="Felmale" xml:space="preserve">
+    <value>Nữ</value>
   </data>
   <data name="Filter" xml:space="preserve">
     <value>Lọc</value>
@@ -295,7 +307,7 @@
     <value>Tiền trả lại</value>
   </data>
   <data name="Hi" xml:space="preserve">
-    <value>Xin chào,</value>
+    <value>Xin chào</value>
   </data>
   <data name="History" xml:space="preserve">
     <value> Lịch sử</value>
@@ -324,6 +336,9 @@
   <data name="Login" xml:space="preserve">
     <value>Đăng nhập</value>
   </data>
+  <data name="Male" xml:space="preserve">
+    <value>Nam</value>
+  </data>
   <data name="Manage" xml:space="preserve">
     <value>Quản Lý</value>
   </data>
@@ -343,19 +358,25 @@
     <value>Mật khẩu mới</value>
   </data>
   <data name="NewLikeOld" xml:space="preserve">
-    <value>Mật khẩu mới trùng với mật khẩu hiện tại</value>
+    <value>Mật khẩu mới phải trùng với mật khẩu hiện tại</value>
   </data>
   <data name="NoEmpty" xml:space="preserve">
-    <value>Không để trống</value>
+    <value>Không được để trống ô nhập</value>
   </data>
   <data name="Nondefine" xml:space="preserve">
     <value>Lỗi không xác định</value>
+  </data>
+  <data name="NoProductInTable" xml:space="preserve">
+    <value>Bàn trống, chưa có đồ ăn</value>
   </data>
   <data name="NoSpecialChar" xml:space="preserve">
     <value>Vui lòng không nhập các kí tự đặc biệt</value>
   </data>
   <data name="NotEnougnMOney" xml:space="preserve">
     <value>Khách chưa đưa đủ tiền</value>
+  </data>
+  <data name="Notify" xml:space="preserve">
+    <value>Thông báo</value>
   </data>
   <data name="Number" xml:space="preserve">
     <value>STT</value>

@@ -20,6 +20,12 @@ namespace StoreAssitant
         public UserInfo User { get => User; set => User = value; }
 
         string Lang = "vn";
+        string Notify = "Thông báo";
+        string NoEmpty = "Không được để trống";
+        string ErrorAgainPass = "Mật khẩu hiện tại không đúng";
+        string DayNotNow = "Ngày phải nhỏ hơn hôm nay";
+        string ErorFormat = "Sai định dạng";
+
 
         public void SetLanguage()
         {
@@ -34,6 +40,18 @@ namespace StoreAssitant
             this.Text = btn_SignUp.Text =Language.Rm.GetString("Sign Up", Language.Culture);
             lb_Signup.Text = Language.Rm.GetString("SignUpName", Language.Culture);
             lb_Signup.Text = lb_Signup.Text.ToUpper().Replace("@", Environment.NewLine);
+
+            cbx_Sex.Items.Clear();
+            cbx_Sex.Items.Add(Language.Rm.GetString("Male", Language.Culture));
+            cbx_Sex.Items.Add(Language.Rm.GetString("Felmale", Language.Culture));
+            cbx_Sex.Items.Add(Language.Rm.GetString("Different", Language.Culture));
+            cbx_Sex.SelectedIndex = 0;
+
+            Notify = Language.Rm.GetString("Notify", Language.Culture);
+            NoEmpty = Language.Rm.GetString("NoEmpty", Language.Culture);
+            ErrorAgainPass = Language.Rm.GetString("ErrorNowPass", Language.Culture);
+            DayNotNow = Language.Rm.GetString("DayNotNow", Language.Culture); 
+            ErorFormat = Language.Rm.GetString("ErorFormat", Language.Culture);
         }
 
         public void ShowUserInfo(UserInfo userInfo)
@@ -110,23 +128,23 @@ namespace StoreAssitant
         {
             if (txb_Name.Text == ""|| txb_Pass.Text == ""|| TxB_IdentityPass.Text == "" || cbx_Sex.Text == "" || txb_Phone.Text == ""|| txtUserName.Text =="")
             {
-                MessageBox.Show("Bạn chưa nhập đầy đủ thông tin!", "Thông báo", MessageBoxButtons.OK);
+                MessageBox.Show(NoEmpty, Notify, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             if (txb_Pass.Text != TxB_IdentityPass.Text)
             {
-                MessageBox.Show("Bạn nhập sai mật khẩu xác nhận!", "Thông báo", MessageBoxButtons.OK);
+                MessageBox.Show(ErrorAgainPass, Notify, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             if (dateTimeBirth.Value > DateTime.Now)
             {
-                MessageBox.Show("Nhập ngày sinh nhỏ hơn hôm nay", "Thông báo", MessageBoxButtons.OK);
+                MessageBox.Show(DayNotNow, Notify, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             if (!IsNumber(txb_Phone.Text))
             {
                 txb_Phone.BackColor = Color.Red;
-                MessageBox.Show("Sai định dạng", "Thông báo", MessageBoxButtons.OK);
+                MessageBox.Show(ErorFormat, Notify, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             txb_Phone.BackColor = Color.White;

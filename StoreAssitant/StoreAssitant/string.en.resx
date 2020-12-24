@@ -189,6 +189,9 @@
   <data name="Code:" xml:space="preserve">
     <value>Code:</value>
   </data>
+  <data name="CodeIsExists" xml:space="preserve">
+    <value>Code is exists</value>
+  </data>
   <data name="Confirm" xml:space="preserve">
     <value>Confirm</value>
   </data>
@@ -203,6 +206,9 @@
   </data>
   <data name="Day" xml:space="preserve">
     <value>Day</value>
+  </data>
+  <data name="DayNotNow" xml:space="preserve">
+    <value>Day have to smaller Today</value>
   </data>
   <data name="Default" xml:space="preserve">
     <value>Default</value>
@@ -224,6 +230,9 @@
   </data>
   <data name="Detailed description:" xml:space="preserve">
     <value>Detailed description:</value>
+  </data>
+  <data name="Different" xml:space="preserve">
+    <value>Different</value>
   </data>
   <data name="Doorsize" xml:space="preserve">
     <value>Windown size</value>
@@ -249,6 +258,9 @@
   <data name="ErrorAgainPass" xml:space="preserve">
     <value>Password incorrect, please try again</value>
   </data>
+  <data name="ErrorBigger100M" xml:space="preserve">
+    <value>Much not exceed 100 milions</value>
+  </data>
   <data name="ErrorNowPass" xml:space="preserve">
     <value>The current password is incorrect</value>
   </data>
@@ -257,6 +269,9 @@
   </data>
   <data name="failDel" xml:space="preserve">
     <value>Account was deleted failed</value>
+  </data>
+  <data name="Felmale" xml:space="preserve">
+    <value>Felmale</value>
   </data>
   <data name="Filter" xml:space="preserve">
     <value>Filter</value>
@@ -321,6 +336,9 @@
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="Male" xml:space="preserve">
+    <value>Male</value>
+  </data>
   <data name="Manage" xml:space="preserve">
     <value>Menu</value>
   </data>
@@ -348,11 +366,17 @@
   <data name="Nondefine" xml:space="preserve">
     <value>An unknown error</value>
   </data>
+  <data name="NoProductInTable" xml:space="preserve">
+    <value>No product in the table</value>
+  </data>
   <data name="NoSpecialChar" xml:space="preserve">
     <value>Please don't enter special char</value>
   </data>
   <data name="NotEnougnMOney" xml:space="preserve">
     <value>Customer not give enougn money</value>
+  </data>
+  <data name="Notify" xml:space="preserve">
+    <value>Notification</value>
   </data>
   <data name="Number" xml:space="preserve">
     <value>Number</value>

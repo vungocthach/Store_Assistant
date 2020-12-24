@@ -286,6 +286,15 @@ namespace StoreAssitant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mã code đã tồn tại.
+        /// </summary>
+        internal static string CodeIsExists {
+            get {
+                return ResourceManager.GetString("CodeIsExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Xác nhận.
         /// </summary>
         internal static string Confirm {
@@ -327,6 +336,15 @@ namespace StoreAssitant {
         internal static string Day {
             get {
                 return ResourceManager.GetString("Day", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ngày phải nhỏ hơn hôm nay.
+        /// </summary>
+        internal static string DayNotNow {
+            get {
+                return ResourceManager.GetString("DayNotNow", resourceCulture);
             }
         }
         
@@ -390,6 +408,15 @@ namespace StoreAssitant {
         internal static string Detailed_description_ {
             get {
                 return ResourceManager.GetString("Detailed description:", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Khác.
+        /// </summary>
+        internal static string Different {
+            get {
+                return ResourceManager.GetString("Different", resourceCulture);
             }
         }
         
@@ -466,6 +493,15 @@ namespace StoreAssitant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Không được vượt quá 100 triệu.
+        /// </summary>
+        internal static string ErrorBigger100M {
+            get {
+                return ResourceManager.GetString("ErrorBigger100M", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nhập mật khẩu hiện tại không đúng.
         /// </summary>
         internal static string ErrorNowPass {
@@ -489,6 +525,15 @@ namespace StoreAssitant {
         internal static string failDel {
             get {
                 return ResourceManager.GetString("failDel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nữ.
+        /// </summary>
+        internal static string Felmale {
+            get {
+                return ResourceManager.GetString("Felmale", resourceCulture);
             }
         }
         
@@ -682,6 +727,15 @@ namespace StoreAssitant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nam.
+        /// </summary>
+        internal static string Male {
+            get {
+                return ResourceManager.GetString("Male", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Quản Lý.
         /// </summary>
         internal static string Manage {
@@ -763,6 +817,15 @@ namespace StoreAssitant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bàn trống, chưa có đồ ăn.
+        /// </summary>
+        internal static string NoProductInTable {
+            get {
+                return ResourceManager.GetString("NoProductInTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vui lòng không nhập các kí tự đặc biệt.
         /// </summary>
         internal static string NoSpecialChar {
@@ -777,6 +840,15 @@ namespace StoreAssitant {
         internal static string NotEnougnMOney {
             get {
                 return ResourceManager.GetString("NotEnougnMOney", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thông báo.
+        /// </summary>
+        internal static string Notify {
+            get {
+                return ResourceManager.GetString("Notify", resourceCulture);
             }
         }
         

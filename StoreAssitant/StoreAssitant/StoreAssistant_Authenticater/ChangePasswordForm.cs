@@ -21,6 +21,7 @@ namespace StoreAssitant.StoreAssistant_Authenticater
         string ErrorAgainPass = "Nhập lại mật khẩu không đúng";
         string ErrorNowPass = "Nhập mật khẩu hiện tại không đúng";
         string NewLikeOld = "Mật khẩu mới trùng với mật khẩu hiện tại";
+        string NoEmpty = "Không để trống";
 
         void OnChangePasswordOK(object sender, EventArgs e) { this.Close(); }
 
@@ -56,11 +57,12 @@ namespace StoreAssitant.StoreAssistant_Authenticater
             label3.Text = Language.Rm.GetString("Re-enter new password", Language.Culture);
             this.Text = btn_Submit.Text = Language.Rm.GetString("Change password", Language.Culture);
             btn_Close.Text = Language.Rm.GetString("Cancel", Language.Culture);
+
             Error = Language.Rm.GetString("Error", Language.Culture);
             NewLikeOld = Language.Rm.GetString("NewLikeOld", Language.Culture);
             ErrorAgainPass = Language.Rm.GetString("ErrorAgainPass", Language.Culture);
             ErrorNowPass = Language.Rm.GetString("ErrorNowPass", Language.Culture);
-
+            NoEmpty = Language.Rm.GetString("NoEmpty", Language.Culture);
         }
 
         private void Btn_Close_Click(object sender, EventArgs e)
@@ -70,19 +72,19 @@ namespace StoreAssitant.StoreAssistant_Authenticater
 
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
-            if (txt_PassNew.Text != txt_PassNew2.Text)
+            if (string.IsNullOrEmpty(txt_PassCurrent.Text.Trim()) || string.IsNullOrEmpty(txt_PassNew.Text.Trim()) || string.IsNullOrEmpty(txt_PassNew2.Text.Trim()))
             {
-                MessageBox.Show(ErrorAgainPass, Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txt_PassNew2.SelectAll();
-                return;
-            }
-
-            if (txt_PassNew.Text.Trim() != Authenticator.CurrentUser.Pass)
-            {
-                MessageBox.Show("Mật khẩu không thể trống", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(NoEmpty, Error, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txt_PassNew.SelectAll();
                 return;
             }
+
+/*            if (txt_PassNew.Text.Trim() != Authenticator.CurrentUser.Pass)
+            {
+                MessageBox.Show(ErrorNowPass, Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt_PassNew.SelectAll();
+                return;
+            }*/
 
             if (txt_PassCurrent.Text != Authenticator.CurrentUser.Pass)
             {
@@ -95,6 +97,13 @@ namespace StoreAssitant.StoreAssistant_Authenticater
             {
                 MessageBox.Show(NewLikeOld, Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txt_PassNew.SelectAll();
+                return;
+            }
+
+            if (txt_PassNew.Text != txt_PassNew2.Text)
+            {
+                MessageBox.Show(ErrorAgainPass, Error, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt_PassNew2.SelectAll();
                 return;
             }
 

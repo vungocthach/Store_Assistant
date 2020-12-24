@@ -37,6 +37,8 @@ namespace StoreAssitant
         public FormBill()
         {
             InitializeComponent();
+            lbNameStore.Text = AppManager.StoreInformation.Name;
+            this.Layout += FormBill_Layout;
 
             if (Lang != AppManager.CurrentLanguage)
             {
@@ -49,6 +51,12 @@ namespace StoreAssitant
             btnCancel.Click += BtnCancel_Click;
             textBox4.KeyPress += TextBox4_KeyPress;
             textBox2.TextChanged += TextBox2_TextChanged;
+        }
+
+        private void FormBill_Layout(object sender, LayoutEventArgs e)
+        {
+            lbNameStore.Location = new Point((this.Width - lbNameStore.Width) / 2, lbNameStore.Location.Y);
+            lbCashier_Form.Location = new Point((this.Width - lbCashier_Form.Width) / 2, lbCashier_Form.Location.Y);
         }
 
         private void VoucherView_ChangeLanguage(object sender, string e)
@@ -111,6 +119,7 @@ namespace StoreAssitant
             btnCashier.Click += BtnCashier_Click;
             btnCancel.Click += BtnCancel_Click;
             textBox4.KeyPress += TextBox4_KeyPress;
+            this.Layout += FormBill_Layout;
 
             if (Lang != AppManager.CurrentLanguage)
             {
@@ -122,7 +131,7 @@ namespace StoreAssitant
 
         private void TextBox4_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar != (char)Keys.End && !char.IsDigit(e.KeyChar))
+            if (e.KeyChar != (char)Keys.End && !char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
             }
@@ -144,7 +153,7 @@ namespace StoreAssitant
             info = new BillInfo();
             if (info ==null)
             {
-                MessageBox.Show(ProError, Error);
+                MessageBox.Show(ProError, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else
@@ -196,7 +205,7 @@ namespace StoreAssitant
             Out = Language.Rm.GetString("Out", Language.Culture);
             Cancel = Language.Rm.GetString("Cancel", Language.Culture);
             ProError = Language.Rm.GetString("ProError", Language.Culture);
-    }
+        }
         public void setData(BillInfo table)
         {
             //
@@ -207,7 +216,7 @@ namespace StoreAssitant
             info.Give = info.Take - info.TOTAL;
             if (info == null)
             {
-                MessageBox.Show(ProError);
+                MessageBox.Show(ProError, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else
