@@ -72,8 +72,22 @@ namespace StoreAssitant.StoreAssistant_AccountView
 
             //dataGridView1.Font = new Font(dataGridView1.Font.FontFamily, 11f);
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.Font.FontFamily, dataGridView1.Font.Size + 1, FontStyle.Bold);
-
+            dataGridView1.DoubleClick += DataGridView1_DoubleClick;
             Language.ChangeLanguage += VoucherView_ChangeLanguage;
+        }
+
+        private void DataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow.Index != -1)
+            {
+                SignUp_form form = new SignUp_form();
+                form.StartPosition = FormStartPosition.CenterScreen;
+                using (DatabaseController databaseController = new DatabaseController())
+                {
+                    form.ShowUserInfo(databaseController.GetUser((dataGridView1.CurrentRow.Tag as UserInfo).UserName));
+                }
+                form.ShowDialog();
+            }
         }
 
         private void VoucherView_ChangeLanguage(object sender, string e)
@@ -157,6 +171,7 @@ namespace StoreAssitant.StoreAssistant_AccountView
         {
             int index = dataGridView1.Rows.Add(userInfo.UserName, userInfo.FullName, roles[(int)userInfo.Role]);
             DataGridViewRow row = dataGridView1.Rows[index];
+            row.Tag = userInfo;
             if (row.Index % 2 == 0) row.DefaultCellStyle.BackColor = Color.LightSkyBlue;
         }
 

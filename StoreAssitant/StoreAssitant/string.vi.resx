@@ -519,7 +519,7 @@
   <data name="User name:" xml:space="preserve">
     <value>Tên đăng nhập:</value>
   </data>
-  <data name="UserInfo@" xml:space="preserve">
+  <data name="UserInfo" xml:space="preserve">
     <value>Thông Tin@Nhân Viên</value>
   </data>
   <data name="Value(%)" xml:space="preserve">

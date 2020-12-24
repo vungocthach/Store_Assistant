@@ -446,14 +446,38 @@ namespace StoreAssitant
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[1]), SqlDbType.Binary, 32).Value = StoreAssistant_Authenticater.Authenticator.GetPass(userInfo);
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[2]), SqlDbType.SmallInt).Value = (int)userInfo.Role;
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[3]), SqlDbType.Char).Value = userInfo.Sex;
-            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[5]), SqlDbType.DateTime).Value = userInfo.Birth;
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[4]), SqlDbType.Char).Value = userInfo.Phone;
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[5]), SqlDbType.DateTime).Value = userInfo.Birth;
             cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[6]), SqlDbType.VarChar).Value = userInfo.FullName;
 
             return cmd.ExecuteNonQuery() == 1;
 #else
             return true;
 #endif
+        }
+
+        public UserInfo GetUser(string username)
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            cmd.CommandText = string.Format("SELECT {1}, {4}, {5}, {6},{7} FROM {0} WHERE {1} = @{1}_;", TB_USER, COLUMNS_TB_USER[0], COLUMNS_TB_USER[1], COLUMNS_TB_USER[2], COLUMNS_TB_USER[3], COLUMNS_TB_USER[4], COLUMNS_TB_USER[5], COLUMNS_TB_USER[6]);
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add(string.Format("@{0}_", COLUMNS_TB_USER[0]), SqlDbType.VarChar).Value = username;
+
+            UserInfo rs = new UserInfo();
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    rs.UserName = reader.GetString(0);
+                    rs.Sex = reader.GetString(1);
+                    rs.Phone = reader.GetString(2);
+                    rs.Birth = reader.GetDateTime(3);
+                    rs.FullName = reader.GetString(4);
+                }
+            }
+
+            return rs;
         }
 
         public bool CheckExistUsername(string user_name)

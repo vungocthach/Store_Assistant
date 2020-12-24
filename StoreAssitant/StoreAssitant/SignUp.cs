@@ -40,15 +40,25 @@ namespace StoreAssitant
         {
             user = userInfo;
             txtUserName.Text = userInfo.UserName;
-            txb_Pass.Text = userInfo.Pass;
+            txb_Pass.Text = "***************";
             TxB_IdentityPass.Text = txb_Pass.Text;
 
             txb_Phone.Text = userInfo.Phone;
             dateTimeBirth.Value = userInfo.Birth;
             cbx_Sex.SelectedIndex = cbx_Sex.Items.IndexOf(userInfo.Sex);
 
+            txb_Name.Text = userInfo.FullName;
+
             btn_SignUp.Visible = false;
+            SetLanguage();
             this.lb_Signup.Text = Language.Rm.GetString("UserInfo", Language.Culture).ToUpper().Replace("@", Environment.NewLine);
+            this.Text = lb_Signup.Text.Replace(Environment.NewLine, " ");
+            txtUserName.ReadOnly = txb_Pass.ReadOnly = TxB_IdentityPass.ReadOnly = txb_Phone.ReadOnly = txb_Name.ReadOnly = true;
+
+            dateTimeBirth.Enabled = false;
+            cbx_Sex.Enabled = false;
+
+            this.Invalidate();
         }
 
         private void SignUp_ChangeLanguage(object sender, string e)
@@ -76,6 +86,24 @@ namespace StoreAssitant
 
             SignUpOK = new EventHandler<UserInfo>((s,e)=> { });
             this.btn_SignUp.Click += Btn_SignUp_Click;
+            this.Disposed += SignUp_form_Disposed;
+            lb_Signup.TextChanged += Lb_Signup_TextAlignChanged;
+            this.Invalidated += SignUp_form_Invalidated;
+        }
+
+        private void SignUp_form_Invalidated(object sender, InvalidateEventArgs e)
+        {
+            lb_Signup.Location = new Point((lb_Phone.Location.X - lb_Signup.Width) / 2, lb_Signup.Location.Y);
+            lb_Signup.Invalidate();
+        }
+
+        private void Lb_Signup_TextAlignChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void SignUp_form_Disposed(object sender, EventArgs e)
+        {
+            Language.ChangeLanguage -= SignUp_ChangeLanguage;
         }
 
         private void Btn_SignUp_Click(object sender, EventArgs e)
