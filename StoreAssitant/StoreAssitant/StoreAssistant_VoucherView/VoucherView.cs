@@ -16,6 +16,8 @@ namespace StoreAssitant.StoreAssistant_VoucherView
     public partial class VoucherView : UserControl, ILoadTheme
     {
         private string lang = "vn";
+        string Error = "Lỗi";
+        string CodeIsExists = "Mã code tồn tại";
         public VoucherView()
         {
             InitializeComponent();
@@ -61,6 +63,9 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             dataGridView1.Columns[4].HeaderText = Language.Rm.GetString("Remain", Language.Culture);
             btnAdd.Text = Language.Rm.GetString("Add", Language.Culture);
             btnRemove.Text = Language.Rm.GetString("Delete", Language.Culture);
+
+            CodeIsExists = Language.Rm.GetString("CodeIsExists", Language.Culture);
+            Error = Language.Rm.GetString("Error", Language.Culture);
         }
 
         private void BtnRemove_Click(object sender, EventArgs e)
@@ -90,7 +95,7 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             {
                 if (name.Cells[0].Value.ToString() == e.Code)
                 {
-                    MessageBox.Show("Mã code này đã tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(CodeIsExists, Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }

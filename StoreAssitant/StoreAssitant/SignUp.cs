@@ -41,6 +41,12 @@ namespace StoreAssitant
             lb_Signup.Text = Language.Rm.GetString("SignUpName", Language.Culture);
             lb_Signup.Text = lb_Signup.Text.ToUpper().Replace("@", Environment.NewLine);
 
+            cbx_Sex.Items.Clear();
+            cbx_Sex.Items.Add(Language.Rm.GetString("Male", Language.Culture));
+            cbx_Sex.Items.Add(Language.Rm.GetString("Felmale", Language.Culture));
+            cbx_Sex.Items.Add(Language.Rm.GetString("Different", Language.Culture));
+            cbx_Sex.SelectedIndex = 0;
+
             Notify = Language.Rm.GetString("Notify", Language.Culture);
             NoEmpty = Language.Rm.GetString("NoEmpty", Language.Culture);
             ErrorAgainPass = Language.Rm.GetString("ErrorNowPass", Language.Culture);

@@ -286,6 +286,15 @@ namespace StoreAssitant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mã code đã tồn tại.
+        /// </summary>
+        internal static string CodeIsExists {
+            get {
+                return ResourceManager.GetString("CodeIsExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Xác nhận.
         /// </summary>
         internal static string Confirm {
@@ -403,6 +412,15 @@ namespace StoreAssitant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Khác.
+        /// </summary>
+        internal static string Different {
+            get {
+                return ResourceManager.GetString("Different", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kích thước cửa sổ.
         /// </summary>
         internal static string Doorsize {
@@ -498,6 +516,15 @@ namespace StoreAssitant {
         internal static string failDel {
             get {
                 return ResourceManager.GetString("failDel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nữ.
+        /// </summary>
+        internal static string Felmale {
+            get {
+                return ResourceManager.GetString("Felmale", resourceCulture);
             }
         }
         
@@ -687,6 +714,15 @@ namespace StoreAssitant {
         internal static string Login {
             get {
                 return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nam.
+        /// </summary>
+        internal static string Male {
+            get {
+                return ResourceManager.GetString("Male", resourceCulture);
             }
         }
         

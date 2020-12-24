@@ -189,6 +189,9 @@
   <data name="Code:" xml:space="preserve">
     <value>Code:</value>
   </data>
+  <data name="CodeIsExists" xml:space="preserve">
+    <value>Code is exists</value>
+  </data>
   <data name="Confirm" xml:space="preserve">
     <value>Confirm</value>
   </data>
@@ -228,6 +231,9 @@
   <data name="Detailed description:" xml:space="preserve">
     <value>Detailed description:</value>
   </data>
+  <data name="Different" xml:space="preserve">
+    <value>Different</value>
+  </data>
   <data name="Doorsize" xml:space="preserve">
     <value>Windown size</value>
   </data>
@@ -260,6 +266,9 @@
   </data>
   <data name="failDel" xml:space="preserve">
     <value>Account was deleted failed</value>
+  </data>
+  <data name="Felmale" xml:space="preserve">
+    <value>Felmale</value>
   </data>
   <data name="Filter" xml:space="preserve">
     <value>Filter</value>
@@ -323,6 +332,9 @@
   </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Male</value>
   </data>
   <data name="Manage" xml:space="preserve">
     <value>Menu</value>

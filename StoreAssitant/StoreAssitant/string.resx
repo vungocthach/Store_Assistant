@@ -192,6 +192,9 @@
   <data name="Code:" xml:space="preserve">
     <value>Mã:</value>
   </data>
+  <data name="CodeIsExists" xml:space="preserve">
+    <value>Mã code đã tồn tại</value>
+  </data>
   <data name="Confirm" xml:space="preserve">
     <value>Xác nhận</value>
   </data>
@@ -231,6 +234,9 @@
   <data name="Detailed description:" xml:space="preserve">
     <value>Mô tả chi tiết:</value>
   </data>
+  <data name="Different" xml:space="preserve">
+    <value>Khác</value>
+  </data>
   <data name="Doorsize" xml:space="preserve">
     <value>Kích thước cửa sổ</value>
   </data>
@@ -263,6 +269,9 @@
   </data>
   <data name="failDel" xml:space="preserve">
     <value>Xóa tài khoản thất bại</value>
+  </data>
+  <data name="Felmale" xml:space="preserve">
+    <value>Nữ</value>
   </data>
   <data name="Filter" xml:space="preserve">
     <value>Lọc</value>
@@ -326,6 +335,9 @@
   </data>
   <data name="Login" xml:space="preserve">
     <value>Đăng nhập</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Nam</value>
   </data>
   <data name="Manage" xml:space="preserve">
     <value>Quản Lý</value>
