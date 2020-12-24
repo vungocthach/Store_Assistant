@@ -45,6 +45,10 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, "10,0");
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+          
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnFilter = new System.Windows.Forms.Button();
@@ -61,6 +65,10 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             this.lbChart = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.pageSelector1 = new StoreAssitant.StoreAssistant_HistoryView.PageSelector();
+            this.namePD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numberPD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.revenue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -116,7 +124,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             this.btnFilter.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnFilter.Location = new System.Drawing.Point(337, 35);
             this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(51, 35);
+            this.btnFilter.Size = new System.Drawing.Size(72, 35);
             this.btnFilter.TabIndex = 9;
             this.btnFilter.Text = "Lọc";
             this.btnFilter.UseVisualStyleBackColor = true;
@@ -311,7 +319,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(500, 41);
+            this.label1.Location = new System.Drawing.Point(493, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 20);
             this.label1.TabIndex = 8;
@@ -360,7 +368,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             this.chart1.Size = new System.Drawing.Size(635, 413);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
-            // 
+            //
             // StatiticsView2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);

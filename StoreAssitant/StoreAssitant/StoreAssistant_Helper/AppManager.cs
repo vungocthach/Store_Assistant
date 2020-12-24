@@ -192,7 +192,9 @@ namespace StoreAssitant.StoreAssistant_Helper
                     if (CurrentWindowSize == SizeMode.FullScreen)
                     {
                         // Full-size mode
-                        mainForm.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+                        System.Drawing.Rectangle screen = System.Windows.Forms.Screen.FromControl(mainForm).WorkingArea;
+                        mainForm.Size = screen.Size;
+                        mainForm.DesktopLocation = new Point(0,0);
                     }
                     else
                     {
@@ -214,8 +216,9 @@ namespace StoreAssitant.StoreAssistant_Helper
                         // Change state to normal (not maximized)
                         mainForm.WindowState = System.Windows.Forms.FormWindowState.Normal;
                         // Re-position
-                        mainForm.DesktopLocation = new Point(mainForm.Location.X + (mainForm.Width - size.Width) / 2,
-                                                        mainForm.Location.Y + (mainForm.Height - size.Height) / 2);
+                        System.Drawing.Rectangle screen = System.Windows.Forms.Screen.FromControl(mainForm).WorkingArea;
+                        mainForm.DesktopLocation = new Point((screen.Width - size.Width) / 2,
+                                                        (screen.Height - size.Height) / 2);
                         // Change size
                         mainForm.Size = size;
                     }

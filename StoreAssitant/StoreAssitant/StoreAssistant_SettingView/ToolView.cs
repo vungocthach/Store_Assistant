@@ -23,13 +23,7 @@ namespace StoreAssitant.StoreAssistant_SettingView
             InitializeComponent();
             InitializeEventHandler();
 
-            if (Lang != AppManager.CurrentLanguage)
-            {
-                Lang = AppManager.CurrentLanguage;
-                SetLanguge();
-            }
-
-            Language.ChangeLanguage += Language_ChangeLanguage;
+             Language.ChangeLanguage += Language_ChangeLanguage;
 
           
             itemLanguage.DropDownItems.Clear();
@@ -68,6 +62,7 @@ namespace StoreAssitant.StoreAssistant_SettingView
 
         private void Language_ChangeLanguage(object sender, string e)
         {
+            if( Lang != AppManager.CurrentLanguage)
             SetLanguge();
         }
 

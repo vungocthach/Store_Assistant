@@ -43,12 +43,13 @@
             this.cbx_Sex = new System.Windows.Forms.ComboBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.lb_UserName = new System.Windows.Forms.Label();
+            this.lb_Signup = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lb_Name
             // 
             this.lb_Name.AutoSize = true;
-            this.lb_Name.BackColor = System.Drawing.Color.Orange;
+            this.lb_Name.BackColor = System.Drawing.SystemColors.Control;
             this.lb_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.lb_Name.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.lb_Name.Location = new System.Drawing.Point(405, 14);
@@ -68,7 +69,7 @@
             // lb_Pass
             // 
             this.lb_Pass.AutoSize = true;
-            this.lb_Pass.BackColor = System.Drawing.Color.Orange;
+            this.lb_Pass.BackColor = System.Drawing.SystemColors.Control;
             this.lb_Pass.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.lb_Pass.Location = new System.Drawing.Point(405, 156);
             this.lb_Pass.Name = "lb_Pass";
@@ -87,7 +88,7 @@
             // lb_ConfirmPassq
             // 
             this.lb_ConfirmPassq.AutoSize = true;
-            this.lb_ConfirmPassq.BackColor = System.Drawing.Color.Orange;
+            this.lb_ConfirmPassq.BackColor = System.Drawing.SystemColors.Control;
             this.lb_ConfirmPassq.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.lb_ConfirmPassq.Location = new System.Drawing.Point(405, 225);
             this.lb_ConfirmPassq.Name = "lb_ConfirmPassq";
@@ -108,7 +109,7 @@
             // lb_Birth
             // 
             this.lb_Birth.AutoSize = true;
-            this.lb_Birth.BackColor = System.Drawing.Color.Orange;
+            this.lb_Birth.BackColor = System.Drawing.SystemColors.Control;
             this.lb_Birth.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.lb_Birth.Location = new System.Drawing.Point(405, 295);
             this.lb_Birth.Name = "lb_Birth";
@@ -130,7 +131,7 @@
             // lb_Gender
             // 
             this.lb_Gender.AutoSize = true;
-            this.lb_Gender.BackColor = System.Drawing.Color.Orange;
+            this.lb_Gender.BackColor = System.Drawing.SystemColors.Control;
             this.lb_Gender.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.lb_Gender.Location = new System.Drawing.Point(560, 295);
             this.lb_Gender.Name = "lb_Gender";
@@ -141,7 +142,7 @@
             // lb_Phone
             // 
             this.lb_Phone.AutoSize = true;
-            this.lb_Phone.BackColor = System.Drawing.Color.Orange;
+            this.lb_Phone.BackColor = System.Drawing.SystemColors.Control;
             this.lb_Phone.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.lb_Phone.Location = new System.Drawing.Point(400, 359);
             this.lb_Phone.Name = "lb_Phone";
@@ -159,9 +160,10 @@
             // 
             // btn_SignUp
             // 
-            this.btn_SignUp.BackColor = System.Drawing.Color.PeachPuff;
-            this.btn_SignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.btn_SignUp.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btn_SignUp.BackColor = System.Drawing.Color.Orange;
+            this.btn_SignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_SignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_SignUp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_SignUp.Location = new System.Drawing.Point(402, 428);
             this.btn_SignUp.Name = "btn_SignUp";
             this.btn_SignUp.Size = new System.Drawing.Size(281, 33);
@@ -193,7 +195,7 @@
             // lb_UserName
             // 
             this.lb_UserName.AutoSize = true;
-            this.lb_UserName.BackColor = System.Drawing.Color.Orange;
+            this.lb_UserName.BackColor = System.Drawing.SystemColors.Control;
             this.lb_UserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.lb_UserName.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.lb_UserName.Location = new System.Drawing.Point(405, 76);
@@ -202,15 +204,26 @@
             this.lb_UserName.TabIndex = 15;
             this.lb_UserName.Text = "Tên Đăng Nhập :";
             // 
+            // lb_Signup
+            // 
+            this.lb_Signup.Font = new System.Drawing.Font("Microsoft Sans Serif", 24.8F, System.Drawing.FontStyle.Bold);
+            this.lb_Signup.Location = new System.Drawing.Point(29, 243);
+            this.lb_Signup.Name = "lb_Signup";
+            this.lb_Signup.Size = new System.Drawing.Size(317, 129);
+            this.lb_Signup.TabIndex = 17;
+            this.lb_Signup.Text = "ĐĂNG KÍ   THÀNH VIÊN MỚI";
+            this.lb_Signup.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // SignUp_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.BackgroundImage = global::StoreAssitant.Properties.Resources.SUPBG;
+            this.BackgroundImage = global::StoreAssitant.Properties.Resources.Background2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(756, 473);
+            this.Controls.Add(this.lb_Signup);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.lb_UserName);
             this.Controls.Add(this.btn_SignUp);
@@ -250,5 +263,6 @@
         private System.Windows.Forms.ComboBox cbx_Sex;
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.Label lb_UserName;
+        private System.Windows.Forms.Label lb_Signup;
     }
 }

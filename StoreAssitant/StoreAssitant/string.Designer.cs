@@ -826,6 +826,15 @@ namespace StoreAssitant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mật khẩu.
+        /// </summary>
+        internal static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mật khẩu:.
         /// </summary>
         internal static string Password_ {
@@ -1047,6 +1056,15 @@ namespace StoreAssitant {
         internal static string Sign_Up {
             get {
                 return ResourceManager.GetString("Sign Up", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đăng kí thành viên mới.
+        /// </summary>
+        internal static string SignUpName {
+            get {
+                return ResourceManager.GetString("SignUpName", resourceCulture);
             }
         }
         

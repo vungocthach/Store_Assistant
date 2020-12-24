@@ -32,6 +32,7 @@ namespace StoreAssitant
             lb_Gender.Text = Language.Rm.GetString("Gender:",Language.Culture);
             lb_Birth.Text = Language.Rm.GetString("Date of birth:", Language.Culture);
             this.Text = btn_SignUp.Text =Language.Rm.GetString("Sign Up", Language.Culture);
+            lb_Signup.Text = Language.Rm.GetString("SignUpName", Language.Culture);
         }
         private void SignUp_ChangeLanguage(object sender, string e)
         {

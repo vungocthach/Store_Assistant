@@ -24,6 +24,7 @@ namespace StoreAssitant
         StoreAssistant_StatiticsView.StatiticsView2 statiticsView;
         StoreAssistant_VoucherView.VoucherView voucherView;
         StoreAssistant_SettingView.SettingView settingView;
+        string Lang = "vn";
 
         public event EventHandler SignOut;
         void OnSignOut(object sender, EventArgs e) {}
@@ -48,6 +49,15 @@ namespace StoreAssitant
             this.SizeChanged += Form1_SizeChanged;
             Form1_SizeChanged(this, null);
 
+        }
+
+        public void SetLanguage()
+        {
+            if (Lang != AppManager.CurrentLanguage)
+            {
+                Lang = AppManager.CurrentLanguage;
+                toolView1.SetLanguge();
+            }
         }
 
         public void LoadTheme()
@@ -78,8 +88,23 @@ namespace StoreAssitant
                     this.Height = 1050;
                     break;
                 case StoreAssistant_SettingView.SizeMode.FullScreen:
-                    this.WindowState = FormWindowState.Maximized;
+                    System.Drawing.Rectangle screen = System.Windows.Forms.Screen.FromControl(this).WorkingArea;
+                    this.Size = screen.Size;
+                    this.DesktopLocation = new Point(0, 0);
                     break;
+            }
+        }
+
+        const int WS_MINIMIZEBOX = 0x20000;
+        const int CS_DBLCLKS = 0x8;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.Style |= WS_MINIMIZEBOX;
+                cp.ClassStyle |= CS_DBLCLKS;
+                return cp;
             }
         }
 

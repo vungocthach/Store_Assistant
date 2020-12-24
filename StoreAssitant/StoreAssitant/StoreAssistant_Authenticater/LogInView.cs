@@ -54,8 +54,8 @@ namespace StoreAssitant
         public void Load_Event()
         {
             Btn_Login.Click += Btn_Login_Click;
-            Lb_ForgotPass.Click += Lb_ForgotPass_Click;
-            //Lb_SignUp.Click += Lb_SignUp_Click;
+         
+     
             tb_Password.GotFocus += Tb_Password_GotFocus;
             tb_User.GotFocus += Tb__User_GotFocus;
         }
@@ -88,7 +88,7 @@ namespace StoreAssitant
 
         private void Tb__User_GotFocus(object sender, EventArgs e)
         {
-           if (tb_User.Text == "Tên đăng nhập")
+           if (tb_User.Text == "Tên đăng nhập" || tb_User.Text == "User name")
             {
                 tb_User.ForeColor = Color.Black;
                 tb_User.Text = "";
@@ -104,7 +104,7 @@ namespace StoreAssitant
 
         private void Tb_Password_GotFocus(object sender, EventArgs e)
         {
-            if (tb_Password.Text == "Mật khẩu")
+            if (tb_Password.Text == "Mật khẩu" || tb_Password.Text == "Password")
             {
                 tb_Password.PasswordChar = '*'; 
                 tb_Password.ForeColor = Color.Black;
@@ -118,18 +118,6 @@ namespace StoreAssitant
             }
         }
 
-        private void Lb_SignUp_Click(object sender, EventArgs e)
-        {
-            Click_SignUp(this, e);
-            MessageBox.Show("Liên hệ với đội ngũ lập trình viên để được hỗ trợ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-
-        private void Lb_ForgotPass_Click(object sender, EventArgs e)
-        {
-            CLick_FogotPass(this, e);
-            MessageBox.Show("Liên hệ với đội ngũ lập trình viên để được hỗ trợ", "Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-        }
-
         private void Btn_Login_Click(object sender, EventArgs e)
         {
             SetData();
@@ -141,7 +129,6 @@ namespace StoreAssitant
             tb_User.Text = Language.Rm.GetString("User name", Language.Culture);
             tb_Password.Text = Language.Rm.GetString("Password", Language.Culture);
             Btn_Login.Text = Language.Rm.GetString("Login", Language.Culture);
-            Lb_ForgotPass.Text = Language.Rm.GetString("Forgot password?", Language.Culture);
         }
     }
 }
