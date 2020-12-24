@@ -121,7 +121,7 @@
     <value>Account</value>
   </data>
   <data name="Account infomation" xml:space="preserve">
-    <value>Account infomation</value>
+    <value>Current Account</value>
   </data>
   <data name="Add" xml:space="preserve">
     <value>Add</value>
@@ -253,7 +253,7 @@
     <value>The current password is incorrect</value>
   </data>
   <data name="Expiry date" xml:space="preserve">
-    <value>Expiry date</value>
+    <value>Expired date</value>
   </data>
   <data name="failDel" xml:space="preserve">
     <value>Account was deleted failed</value>
@@ -280,7 +280,7 @@
     <value>From:</value>
   </data>
   <data name="Full name" xml:space="preserve">
-    <value>Full name</value>
+    <value>Full name:</value>
   </data>
   <data name="Gender:" xml:space="preserve">
     <value>Gender:</value>
@@ -307,7 +307,7 @@
     <value>Invalid phone number</value>
   </data>
   <data name="InfoSrore" xml:space="preserve">
-    <value>Store infomation </value>
+    <value>Store Infomation </value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>
@@ -322,7 +322,7 @@
     <value>Login</value>
   </data>
   <data name="Manage" xml:space="preserve">
-    <value>Manage</value>
+    <value>Menu</value>
   </data>
   <data name="Month" xml:space="preserve">
     <value>Month</value>
@@ -460,13 +460,13 @@
     <value>Statistical</value>
   </data>
   <data name="StoreInfo" xml:space="preserve">
-    <value>Store information</value>
+    <value>Store Information</value>
   </data>
   <data name="String" xml:space="preserve">
     <value>String1</value>
   </data>
   <data name="Stype:" xml:space="preserve">
-    <value>Stype:</value>
+    <value>Mode:</value>
   </data>
   <data name="SuccessChangePass" xml:space="preserve">
     <value>Password successfully changed!</value>
@@ -490,7 +490,7 @@
     <value>Take home</value>
   </data>
   <data name="Time" xml:space="preserve">
-    <value>Time</value>
+    <value>Stage</value>
   </data>
   <data name="Time:" xml:space="preserve">
     <value>Time:</value>

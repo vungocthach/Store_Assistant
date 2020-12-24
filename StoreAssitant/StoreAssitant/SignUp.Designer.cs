@@ -52,16 +52,16 @@
             this.lb_Name.BackColor = System.Drawing.SystemColors.Control;
             this.lb_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.lb_Name.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.lb_Name.Location = new System.Drawing.Point(405, 14);
+            this.lb_Name.Location = new System.Drawing.Point(451, 14);
             this.lb_Name.Name = "lb_Name";
-            this.lb_Name.Size = new System.Drawing.Size(92, 22);
+            this.lb_Name.Size = new System.Drawing.Size(97, 22);
             this.lb_Name.TabIndex = 0;
-            this.lb_Name.Text = "Họ và tên:";
+            this.lb_Name.Text = "Họ và tên :";
             // 
             // txb_Name
             // 
             this.txb_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.txb_Name.Location = new System.Drawing.Point(402, 39);
+            this.txb_Name.Location = new System.Drawing.Point(448, 39);
             this.txb_Name.Name = "txb_Name";
             this.txb_Name.Size = new System.Drawing.Size(281, 27);
             this.txb_Name.TabIndex = 1;
@@ -71,16 +71,16 @@
             this.lb_Pass.AutoSize = true;
             this.lb_Pass.BackColor = System.Drawing.SystemColors.Control;
             this.lb_Pass.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.lb_Pass.Location = new System.Drawing.Point(405, 156);
+            this.lb_Pass.Location = new System.Drawing.Point(451, 156);
             this.lb_Pass.Name = "lb_Pass";
-            this.lb_Pass.Size = new System.Drawing.Size(88, 22);
+            this.lb_Pass.Size = new System.Drawing.Size(93, 22);
             this.lb_Pass.TabIndex = 2;
-            this.lb_Pass.Text = "Mật khẩu:";
+            this.lb_Pass.Text = "Mật khẩu :";
             // 
             // txb_Pass
             // 
             this.txb_Pass.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.txb_Pass.Location = new System.Drawing.Point(404, 181);
+            this.txb_Pass.Location = new System.Drawing.Point(450, 181);
             this.txb_Pass.Name = "txb_Pass";
             this.txb_Pass.Size = new System.Drawing.Size(281, 27);
             this.txb_Pass.TabIndex = 3;
@@ -90,17 +90,17 @@
             this.lb_ConfirmPassq.AutoSize = true;
             this.lb_ConfirmPassq.BackColor = System.Drawing.SystemColors.Control;
             this.lb_ConfirmPassq.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.lb_ConfirmPassq.Location = new System.Drawing.Point(405, 225);
+            this.lb_ConfirmPassq.Location = new System.Drawing.Point(451, 225);
             this.lb_ConfirmPassq.Name = "lb_ConfirmPassq";
-            this.lb_ConfirmPassq.Size = new System.Drawing.Size(169, 22);
+            this.lb_ConfirmPassq.Size = new System.Drawing.Size(174, 22);
             this.lb_ConfirmPassq.TabIndex = 4;
-            this.lb_ConfirmPassq.Text = "Xác nhận mật khẩu:";
+            this.lb_ConfirmPassq.Text = "Xác nhận mật khẩu :";
             this.lb_ConfirmPassq.Click += new System.EventHandler(this.label3_Click);
             // 
             // TxB_IdentityPass
             // 
             this.TxB_IdentityPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.TxB_IdentityPass.Location = new System.Drawing.Point(404, 250);
+            this.TxB_IdentityPass.Location = new System.Drawing.Point(450, 250);
             this.TxB_IdentityPass.Name = "TxB_IdentityPass";
             this.TxB_IdentityPass.PasswordChar = '*';
             this.TxB_IdentityPass.Size = new System.Drawing.Size(281, 27);
@@ -111,7 +111,7 @@
             this.lb_Birth.AutoSize = true;
             this.lb_Birth.BackColor = System.Drawing.SystemColors.Control;
             this.lb_Birth.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.lb_Birth.Location = new System.Drawing.Point(405, 295);
+            this.lb_Birth.Location = new System.Drawing.Point(451, 295);
             this.lb_Birth.Name = "lb_Birth";
             this.lb_Birth.Size = new System.Drawing.Size(100, 22);
             this.lb_Birth.TabIndex = 6;
@@ -123,7 +123,7 @@
             this.dateTimeBirth.CustomFormat = "dd/MM/yyyy";
             this.dateTimeBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.dateTimeBirth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimeBirth.Location = new System.Drawing.Point(404, 320);
+            this.dateTimeBirth.Location = new System.Drawing.Point(450, 320);
             this.dateTimeBirth.Name = "dateTimeBirth";
             this.dateTimeBirth.Size = new System.Drawing.Size(105, 27);
             this.dateTimeBirth.TabIndex = 10;
@@ -133,27 +133,27 @@
             this.lb_Gender.AutoSize = true;
             this.lb_Gender.BackColor = System.Drawing.SystemColors.Control;
             this.lb_Gender.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.lb_Gender.Location = new System.Drawing.Point(560, 295);
+            this.lb_Gender.Location = new System.Drawing.Point(606, 295);
             this.lb_Gender.Name = "lb_Gender";
-            this.lb_Gender.Size = new System.Drawing.Size(81, 22);
+            this.lb_Gender.Size = new System.Drawing.Size(86, 22);
             this.lb_Gender.TabIndex = 12;
-            this.lb_Gender.Text = "Giới tính:";
+            this.lb_Gender.Text = "Giới tính :";
             // 
             // lb_Phone
             // 
             this.lb_Phone.AutoSize = true;
             this.lb_Phone.BackColor = System.Drawing.SystemColors.Control;
             this.lb_Phone.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.lb_Phone.Location = new System.Drawing.Point(400, 359);
+            this.lb_Phone.Location = new System.Drawing.Point(446, 359);
             this.lb_Phone.Name = "lb_Phone";
-            this.lb_Phone.Size = new System.Drawing.Size(47, 22);
+            this.lb_Phone.Size = new System.Drawing.Size(57, 22);
             this.lb_Phone.TabIndex = 8;
-            this.lb_Phone.Text = "SĐT";
+            this.lb_Phone.Text = "SĐT :";
             // 
             // txb_Phone
             // 
             this.txb_Phone.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.txb_Phone.Location = new System.Drawing.Point(403, 384);
+            this.txb_Phone.Location = new System.Drawing.Point(449, 384);
             this.txb_Phone.Name = "txb_Phone";
             this.txb_Phone.Size = new System.Drawing.Size(281, 27);
             this.txb_Phone.TabIndex = 11;
@@ -164,7 +164,7 @@
             this.btn_SignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_SignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_SignUp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_SignUp.Location = new System.Drawing.Point(402, 428);
+            this.btn_SignUp.Location = new System.Drawing.Point(448, 428);
             this.btn_SignUp.Name = "btn_SignUp";
             this.btn_SignUp.Size = new System.Drawing.Size(281, 33);
             this.btn_SignUp.TabIndex = 14;
@@ -179,7 +179,7 @@
             "Nam",
             "Nữ",
             "Khác"});
-            this.cbx_Sex.Location = new System.Drawing.Point(560, 322);
+            this.cbx_Sex.Location = new System.Drawing.Point(606, 322);
             this.cbx_Sex.Name = "cbx_Sex";
             this.cbx_Sex.Size = new System.Drawing.Size(126, 28);
             this.cbx_Sex.TabIndex = 13;
@@ -187,7 +187,7 @@
             // txtUserName
             // 
             this.txtUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.txtUserName.Location = new System.Drawing.Point(405, 101);
+            this.txtUserName.Location = new System.Drawing.Point(451, 110);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(281, 27);
             this.txtUserName.TabIndex = 16;
@@ -198,7 +198,7 @@
             this.lb_UserName.BackColor = System.Drawing.SystemColors.Control;
             this.lb_UserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
             this.lb_UserName.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.lb_UserName.Location = new System.Drawing.Point(405, 76);
+            this.lb_UserName.Location = new System.Drawing.Point(451, 85);
             this.lb_UserName.Name = "lb_UserName";
             this.lb_UserName.Size = new System.Drawing.Size(148, 22);
             this.lb_UserName.TabIndex = 15;
@@ -206,12 +206,16 @@
             // 
             // lb_Signup
             // 
-            this.lb_Signup.Font = new System.Drawing.Font("Microsoft Sans Serif", 24.8F, System.Drawing.FontStyle.Bold);
-            this.lb_Signup.Location = new System.Drawing.Point(29, 243);
+            this.lb_Signup.AutoSize = true;
+            this.lb_Signup.BackColor = System.Drawing.Color.LightGray;
+            this.lb_Signup.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lb_Signup.Font = new System.Drawing.Font("Times New Roman", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lb_Signup.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.lb_Signup.Location = new System.Drawing.Point(56, 265);
             this.lb_Signup.Name = "lb_Signup";
-            this.lb_Signup.Size = new System.Drawing.Size(317, 129);
+            this.lb_Signup.Size = new System.Drawing.Size(316, 84);
             this.lb_Signup.TabIndex = 17;
-            this.lb_Signup.Text = "ĐĂNG KÍ   THÀNH VIÊN MỚI";
+            this.lb_Signup.Text = "ĐĂNG KÝ\r\nTHÀNH VIÊN MỚI";
             this.lb_Signup.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // SignUp_form
@@ -239,7 +243,11 @@
             this.Controls.Add(this.lb_Pass);
             this.Controls.Add(this.txb_Name);
             this.Controls.Add(this.lb_Name);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "SignUp_form";
+            this.ShowIcon = false;
             this.Text = "Đăng ký";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -23,8 +23,7 @@ namespace StoreAssitant.StoreAssistant_SettingView
             InitializeComponent();
             InitializeEventHandler();
 
-             Language.ChangeLanguage += Language_ChangeLanguage;
-
+            Language.ChangeLanguage += Language_ChangeLanguage;
           
             itemLanguage.DropDownItems.Clear();
             foreach (LanguageMode e in Enum.GetValues(typeof(LanguageMode)))
@@ -82,7 +81,6 @@ namespace StoreAssitant.StoreAssistant_SettingView
             DelAcc = Language.Rm.GetString("DelAcc", Language.Culture);
             Project_ing = Language.Rm.GetString("Project_ing", Language.Culture);
             SuccessChangePass = Language.Rm.GetString("SuccessChangePass", Language.Culture);
-
         }
 
        

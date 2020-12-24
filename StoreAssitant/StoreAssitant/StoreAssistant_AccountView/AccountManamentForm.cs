@@ -17,6 +17,8 @@ namespace StoreAssitant.StoreAssistant_AccountView
         
         public AccountManamentForm()
         {
+
+            InitializeComponent();
             if (Lang != AppManager.CurrentLanguage)
             {
                 Lang = AppManager.CurrentLanguage;
@@ -24,7 +26,6 @@ namespace StoreAssitant.StoreAssistant_AccountView
             }
 
             Language.ChangeLanguage += Language_ChangeLanguage;
-            InitializeComponent();
             accountView1.SetData();
         }
 

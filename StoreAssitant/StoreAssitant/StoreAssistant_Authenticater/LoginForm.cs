@@ -28,6 +28,8 @@ namespace StoreAssitant
 
             logInView._Click += LogInView__Click;
             logInView.Click_SignUp += LogInView_Click_SignUp;
+
+            this.Text = Language.Rm.GetString("Login", Language.Culture);
         }
 
         private void LogInView_Click_SignUp(object sender, EventArgs e)

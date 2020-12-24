@@ -32,18 +32,17 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             this.Layout += VoucherView_Layout;
             btnAdd.Click += BtnAdd_Click;
             btnRemove.Click += BtnRemove_Click;
-
-            dataGridView1.CellContentClick += DataGridView1_CellClick;
+            dataGridView1.ColumnHeaderMouseClick += DataGridView1_ColumnHeaderMouseClick;
             dataGridView1.AutoGenerateColumns = true;
         }
 
-        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (dataGridView1.Rows.Count!=0)
+            if (dataGridView1.Rows.Count != 0)
             {
                 dataGridView1.Rows[0].Selected = true;
+                reloadTheme(0);
             }
-            reloadTheme(0);
         }
 
         private void VoucherView_ChangeLanguage(object sender, string e)
@@ -96,6 +95,7 @@ namespace StoreAssitant.StoreAssistant_VoucherView
                 }
             }
             int index = dataGridView1.Rows.Add(e.Code, e.ExpiryDate, e.Value, e.NumberInit, e.NumberRemain);
+            Console.WriteLine(index);
             reloadTheme(index);
             using (DatabaseController data = new DatabaseController())
             {
@@ -153,8 +153,8 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             {
                 DataGridViewRow row = dataGridView1.Rows[i];
                 row.DefaultCellStyle.SelectionBackColor = color_Line_Selection;
-                if (row.Index % 2 != 0) row.DefaultCellStyle.BackColor = color_Line2;
-                else row.DefaultCellStyle.BackColor = color_Line1;
+                if (row.Index % 2 != 0) row.DefaultCellStyle.BackColor = color_Line1;
+                else row.DefaultCellStyle.BackColor = color_Line2;
                 row.DefaultCellStyle.ForeColor = dataGridView1.ForeColor;
             }
         }

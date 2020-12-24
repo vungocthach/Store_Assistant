@@ -43,8 +43,8 @@ namespace StoreAssitant.StoreAssistant_AccountView
             btn_SignOut.Text = Language.Rm.GetString("Sign out", Language.Culture);
             labelTitile.Text = Language.Rm.GetString("Staff infomation", Language.Culture);
             lb_username.Text = Language.Rm.GetString("User name:", Language.Culture);
-            roles[0] = Language.Rm.GetString("Staff", Language.Culture);
-            roles[1] = Language.Rm.GetString("Manage", Language.Culture);
+            roles[0] = Language.Rm.GetString("Manage", Language.Culture);
+            roles[1] = Language.Rm.GetString("Staff", Language.Culture);
             lb_role.Text = Language.Rm.GetString("Position:", Language.Culture);
             Cannotrehibilitate = Language.Rm.GetString("Cannotrehibilitate", Language.Culture);
             Areusure = Language.Rm.GetString("Areusure", Language.Culture);
@@ -92,7 +92,7 @@ namespace StoreAssitant.StoreAssistant_AccountView
         {
             if (Authenticator.CurrentUser == null) { throw new AuthenticationException("Current user's account must not be null"); }
             txt_username.Text = Authenticator.CurrentUser.UserName;
-            txb_role .Text = string.Format("{0}", roles[(int)Authenticator.CurrentUser.Role]);
+            txb_role.Text = string.Format("{0}", roles[(int)Authenticator.CurrentUser.Role]);
             if (Authenticator.CurrentUser.Role == UserInfo.UserRole.Manager)
             {
                 gr_manager.Visible = true;

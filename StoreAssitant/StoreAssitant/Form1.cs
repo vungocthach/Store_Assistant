@@ -24,7 +24,7 @@ namespace StoreAssitant
         StoreAssistant_StatiticsView.StatiticsView2 statiticsView;
         StoreAssistant_VoucherView.VoucherView voucherView;
         StoreAssistant_SettingView.SettingView settingView;
-        string Lang = "vn";
+
 
         public event EventHandler SignOut;
         void OnSignOut(object sender, EventArgs e) {}
@@ -32,6 +32,10 @@ namespace StoreAssitant
         public Form1()
         {
             InitializeComponent();
+
+            Language.ChangeLanguage += Language_ChangeLanguage;
+
+            SetLanguage();
 
             this.Name = "mainForm";
 
@@ -52,13 +56,15 @@ namespace StoreAssitant
 
         }
 
+        private void Language_ChangeLanguage(object sender, string e)
+        {
+            SetLanguage();
+        }
+
         public void SetLanguage()
         {
-            if (Lang != AppManager.CurrentLanguage)
-            {
-                Lang = AppManager.CurrentLanguage;
-                toolView1.SetLanguge();
-            }
+            toolView1.SetLanguge();
+            tabSelector1.SetLanguage();
         }
 
         public void LoadTheme()
