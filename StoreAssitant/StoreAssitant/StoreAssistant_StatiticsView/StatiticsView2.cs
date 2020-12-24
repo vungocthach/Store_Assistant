@@ -533,6 +533,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                     DataGridViewRow row = dataGridView1.Rows[dataGridView1.Rows.Add (stt, string.Format(txtTimeFormat, month.Month, month.Year), string.Format("{0}VND", totalRevenue.ToString("N0")))];  
                     row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Tag = new KeyValuePair<DateTime, long>(month, totalRevenue);
+                    row.DefaultCellStyle.SelectionBackColor = color_Line_Selection;
                     if (row.Index % 2 != 0) row.DefaultCellStyle.BackColor = color_Line1;
                     else row.DefaultCellStyle.BackColor = color_Line2;
                     row.DefaultCellStyle.ForeColor = dataGridView1.ForeColor;
@@ -566,6 +567,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
                     DataGridViewRow row = dataGridView1.Rows[dataGridView1.Rows.Add(stt, string.Format(txtTimeFormat, year.Year), string.Format("{0}VND", totalRevenue.ToString("N0")))];
                     row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Tag = new KeyValuePair<DateTime, long>(year, totalRevenue);
+                    row.DefaultCellStyle.SelectionBackColor = color_Line_Selection;
                     if (row.Index % 2 != 0) row.DefaultCellStyle.BackColor = color_Line1;
                     else row.DefaultCellStyle.BackColor = color_Line2;
                     row.DefaultCellStyle.ForeColor = dataGridView1.ForeColor;
@@ -657,6 +659,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         }
         Color color_Line1;
         Color color_Line2;
+        Color color_Line_Selection;
         public void LoadTheme()
         {
             lbChart.ForeColor = lbConfig.ForeColor = AppManager.GetColors("Title_Force");
@@ -669,6 +672,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             dataGridView1.BackgroundColor = AppManager.GetColors("Grid_Background");
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = dataGridView1.ForeColor;
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = AppManager.GetColors("Grid_Header");
+            color_Line_Selection = AppManager.GetColors("Grid_Line_Selection");
             color_Line1 = AppManager.GetColors("Grid_Line1");
             color_Line2 = AppManager.GetColors("Grid_Line2");
 

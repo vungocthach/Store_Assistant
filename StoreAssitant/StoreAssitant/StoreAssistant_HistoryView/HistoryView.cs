@@ -285,6 +285,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         }
         Color color_Line1;
         Color color_Line2;
+        Color color_Line_Selection;
         void SetData(List<BillInfo> bills)
         {
             dataGridView1.Rows.Clear();
@@ -297,6 +298,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
                 DataGridViewRow row = dataGridView1.Rows[index];
                 row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 row.Tag = b;
+                row.DefaultCellStyle.SelectionBackColor = color_Line_Selection;
                 if ( row.Index % 2 != 0) row.DefaultCellStyle.BackColor = color_Line2;
                 else row.DefaultCellStyle.BackColor = color_Line1;
                 row.DefaultCellStyle.ForeColor = dataGridView1.ForeColor;
@@ -316,6 +318,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             dataGridView1.BackgroundColor = AppManager.GetColors("Grid_Background");
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = dataGridView1.ForeColor;
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = AppManager.GetColors("Grid_Header");
+            color_Line_Selection = AppManager.GetColors("Grid_Line_Selection");
             color_Line1 = AppManager.GetColors("Grid_Line1");
             color_Line2 = AppManager.GetColors("Grid_Line2");
 

@@ -229,7 +229,7 @@ namespace StoreAssitant.StoreAssistant_Helper
 
             // Common part
             //rs.Add("Main_Background", Color.FromArgb(255, 50, 50, 50));
-            rs.Add("Main_Background", Color.FromArgb(255, 3, 104, 187));
+            rs.Add("Main_Background", Color.FromArgb(255, 60, 60, 60));
             rs.Add("Main_Plaintext", Color.White);
             rs.Add("Title_Background", Color.DimGray);
             rs.Add("Title_Force", Color.White);
@@ -252,6 +252,7 @@ namespace StoreAssitant.StoreAssistant_Helper
             // Datagridview
             rs.Add("Grid_Header", Color.Gray);
             rs.Add("Grid_Background", Color.DarkGray);
+            rs.Add("Grid_Line_Selection", Color.FromArgb(255, 125, 94, 191));
             rs.Add("Grid_Line1", Color.DimGray);
             rs.Add("Grid_Line2", Color.SlateGray);
 
@@ -281,6 +282,7 @@ namespace StoreAssitant.StoreAssistant_Helper
             // Datagridview
             rs.Add("Grid_Header", Color.White);
             rs.Add("Grid_Background", Color.White);
+            rs.Add("Grid_Line_Selection", Color.FromArgb(255, 75, 130, 191));
             rs.Add("Grid_Line1", Color.White);
             rs.Add("Grid_Line2", Color.SkyBlue);
 
@@ -288,12 +290,38 @@ namespace StoreAssitant.StoreAssistant_Helper
             rs.Add("Chart_Background", Color.White);
             return rs;
         }
+        static Dictionary<string, Color> GetColors_Purple()
+        {
+            Dictionary<string, Color> rs = new Dictionary<string, Color>();
 
+            // Common part
+            rs.Add("Main_Background", Color.FromArgb(255, 3, 104, 187));
+            rs.Add("Main_Plaintext", Color.White);
+
+            // Tab
+            rs.Add("Tab_Selected", Color.FromArgb(255, 157, 114, 255));
+            rs.Add("Tab_Clicked", Color.FromArgb(255, 37, 195, 250));
+            rs.Add("Tab_MouseOn", Color.FromArgb(255, 206, 150, 251));
+            rs.Add("Toolbar_Background", Color.FromArgb(200, 1, 3, 38));
+
+            // Menu Item
+            rs.Add("Menuitem_Background", Color.DarkRed);
+            rs.Add("Menuitem_Selected", Color.FromArgb(255, 255, 139, 139));
+
+            // Datagridview
+            rs.Add("Grid_Header", Color.DarkBlue);
+            rs.Add("Grid_Background", Color.FromArgb(255, 3, 104, 187));
+            rs.Add("Grid_Line_Selection", Color.FromArgb(255, 92, 229, 213));
+            rs.Add("Grid_Line1", Color.FromArgb(255, 194, 76, 246));
+            rs.Add("Grid_Line2", Color.FromArgb(255, 220, 103, 255));
+
+            return rs;
+        }
         public static Color GetColors(string key)
         {
             if (colors == null || !colors.ContainsKey(key))
             {
-                throw new ArgumentOutOfRangeException("Key not exist");
+                throw new ArgumentOutOfRangeException("Key not exist: " + key);
             }
 
             return colors[key];
