@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography.X509Certificates;
 using StoreAssitant.Class_Information;
+using StoreAssitant.StoreAssistant_Helper;
 
 namespace StoreAssitant
 {
@@ -188,13 +189,12 @@ namespace StoreAssitant
                 {
                     case status.Empty:
                         defaultColor = Color.PapayaWhip;
-                        tableImage_pnl.BackColor = this.BackColor = defaultColor;
                         break;
                     case status.Using:
-                        defaultColor = Color.Cyan;
-                        tableImage_pnl.BackColor = this.BackColor = defaultColor;
+                        defaultColor = Color.FromArgb(255, 255, 255, 50);
                         break;
                 }
+                tableImage_pnl.BackColor = this.BackColor = defaultColor;
             }
         }
         #endregion

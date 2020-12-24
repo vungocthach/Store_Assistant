@@ -55,7 +55,7 @@
             // 
             // tableTakeHome
             // 
-            this.tableTakeHome.BackColor = System.Drawing.Color.PapayaWhip;
+            this.tableTakeHome.BackColor = System.Drawing.Color.Transparent;
             this.tableTakeHome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableTakeHome.ImageTable = ((System.Drawing.Image)(resources.GetObject("tableTakeHome.ImageTable")));
             this.tableTakeHome.IsManager = false;
@@ -65,6 +65,7 @@
             this.tableTakeHome.Name = "tableTakeHome";
             this.tableTakeHome.NameTable = "Mang về";
             this.tableTakeHome.Size = new System.Drawing.Size(111, 120);
+            this.tableTakeHome.Status = StoreAssitant.TableControl.status.Empty;
             this.tableTakeHome.TabIndex = 2;
             // 
             // tableAdd_btn
