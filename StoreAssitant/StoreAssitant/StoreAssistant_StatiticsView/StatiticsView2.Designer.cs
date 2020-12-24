@@ -29,6 +29,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StatiticsView2));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -44,13 +45,13 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, "10,0");
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StatiticsView2));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnFilter = new System.Windows.Forms.Button();
             this.lbConfig = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cbbStatiticsMode = new System.Windows.Forms.ComboBox();
+            this.pageSelector1 = new StoreAssitant.StoreAssistant_HistoryView.PageSelector();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.namePD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numberPD = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,7 +61,6 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             this.lbChart = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.pageSelector1 = new StoreAssitant.StoreAssistant_HistoryView.PageSelector();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -116,7 +116,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             this.btnFilter.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnFilter.Location = new System.Drawing.Point(337, 35);
             this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(51, 35);
+            this.btnFilter.Size = new System.Drawing.Size(72, 35);
             this.btnFilter.TabIndex = 9;
             this.btnFilter.Text = "Lọc";
             this.btnFilter.UseVisualStyleBackColor = true;
@@ -156,6 +156,28 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             this.cbbStatiticsMode.Name = "cbbStatiticsMode";
             this.cbbStatiticsMode.Size = new System.Drawing.Size(186, 33);
             this.cbbStatiticsMode.TabIndex = 7;
+            // 
+            // pageSelector1
+            // 
+            this.pageSelector1.BackColor = System.Drawing.Color.Transparent;
+            this.pageSelector1.ButtonFirstMargin = new System.Windows.Forms.Padding(0, 1, 0, 1);
+            this.pageSelector1.ButtonLastMargin = new System.Windows.Forms.Padding(0, 1, 0, 1);
+            this.pageSelector1.ButtonNextMargin = new System.Windows.Forms.Padding(0, 1, 0, 1);
+            this.pageSelector1.ButtonPreviousMargin = new System.Windows.Forms.Padding(0, 1, 0, 1);
+            this.pageSelector1.ImageFirst = ((System.Drawing.Bitmap)(resources.GetObject("pageSelector1.ImageFirst")));
+            this.pageSelector1.ImageLast = ((System.Drawing.Bitmap)(resources.GetObject("pageSelector1.ImageLast")));
+            this.pageSelector1.ImageNxt = ((System.Drawing.Bitmap)(resources.GetObject("pageSelector1.ImageNxt")));
+            this.pageSelector1.ImagePre = ((System.Drawing.Bitmap)(resources.GetObject("pageSelector1.ImagePre")));
+            this.pageSelector1.Location = new System.Drawing.Point(105, 463);
+            this.pageSelector1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.pageSelector1.MaximumRange = 10;
+            this.pageSelector1.Name = "pageSelector1";
+            this.pageSelector1.PageBoxFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pageSelector1.PageBoxMargin = new System.Windows.Forms.Padding(3);
+            this.pageSelector1.PageBoxSize = new System.Drawing.Size(100, 26);
+            this.pageSelector1.SelectedIndex = 1;
+            this.pageSelector1.Size = new System.Drawing.Size(210, 34);
+            this.pageSelector1.TabIndex = 0;
             // 
             // dataGridView1
             // 
@@ -286,7 +308,7 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(500, 41);
+            this.label1.Location = new System.Drawing.Point(493, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 20);
             this.label1.TabIndex = 8;
@@ -335,28 +357,6 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
             this.chart1.Size = new System.Drawing.Size(635, 413);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
-            // 
-            // pageSelector1
-            // 
-            this.pageSelector1.BackColor = System.Drawing.Color.Transparent;
-            this.pageSelector1.ButtonFirstMargin = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            this.pageSelector1.ButtonLastMargin = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            this.pageSelector1.ButtonNextMargin = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            this.pageSelector1.ButtonPreviousMargin = new System.Windows.Forms.Padding(0, 1, 0, 1);
-            this.pageSelector1.ImageFirst = ((System.Drawing.Bitmap)(resources.GetObject("pageSelector1.ImageFirst")));
-            this.pageSelector1.ImageLast = ((System.Drawing.Bitmap)(resources.GetObject("pageSelector1.ImageLast")));
-            this.pageSelector1.ImageNxt = ((System.Drawing.Bitmap)(resources.GetObject("pageSelector1.ImageNxt")));
-            this.pageSelector1.ImagePre = ((System.Drawing.Bitmap)(resources.GetObject("pageSelector1.ImagePre")));
-            this.pageSelector1.Location = new System.Drawing.Point(105, 463);
-            this.pageSelector1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.pageSelector1.MaximumRange = 10;
-            this.pageSelector1.Name = "pageSelector1";
-            this.pageSelector1.PageBoxFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pageSelector1.PageBoxMargin = new System.Windows.Forms.Padding(3);
-            this.pageSelector1.PageBoxSize = new System.Drawing.Size(100, 26);
-            this.pageSelector1.SelectedIndex = 1;
-            this.pageSelector1.Size = new System.Drawing.Size(210, 34);
-            this.pageSelector1.TabIndex = 0;
             // 
             // StatiticsView2
             // 

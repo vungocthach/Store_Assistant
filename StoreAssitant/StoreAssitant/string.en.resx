@@ -369,6 +369,9 @@
   <data name="Out" xml:space="preserve">
     <value>Exit </value>
   </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
   <data name="Password:" xml:space="preserve">
     <value>Password:</value>
   </data>
@@ -444,6 +447,9 @@
   <data name="Sign Up" xml:space="preserve">
     <value>Sign Up</value>
   </data>
+  <data name="SignUpName" xml:space="preserve">
+    <value>Registration new member </value>
+  </data>
   <data name="Staff" xml:space="preserve">
     <value>Staff</value>
   </data>
@@ -455,6 +461,9 @@
   </data>
   <data name="StoreInfo" xml:space="preserve">
     <value>Store information</value>
+  </data>
+  <data name="String" xml:space="preserve">
+    <value>String1</value>
   </data>
   <data name="Stype:" xml:space="preserve">
     <value>Stype:</value>

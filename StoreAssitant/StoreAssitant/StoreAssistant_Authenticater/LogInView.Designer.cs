@@ -32,7 +32,6 @@
             this.tb_Password = new System.Windows.Forms.TextBox();
             this.tb_User = new System.Windows.Forms.TextBox();
             this.Pn_Login = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.Lb_ForgotPass = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.Btn_Login = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel_Login)).BeginInit();
             this.kryptonPanel_Login.SuspendLayout();
@@ -44,7 +43,6 @@
             this.kryptonPanel_Login.Controls.Add(this.tb_Password);
             this.kryptonPanel_Login.Controls.Add(this.tb_User);
             this.kryptonPanel_Login.Controls.Add(this.Pn_Login);
-            this.kryptonPanel_Login.Controls.Add(this.Lb_ForgotPass);
             this.kryptonPanel_Login.Controls.Add(this.Btn_Login);
             this.kryptonPanel_Login.Location = new System.Drawing.Point(0, 1);
             this.kryptonPanel_Login.Name = "kryptonPanel_Login";
@@ -56,7 +54,8 @@
             // tb_Password
             // 
             this.tb_Password.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Password.Location = new System.Drawing.Point(47, 353);
+            this.tb_Password.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.tb_Password.Location = new System.Drawing.Point(46, 372);
             this.tb_Password.Name = "tb_Password";
             this.tb_Password.Size = new System.Drawing.Size(312, 29);
             this.tb_Password.TabIndex = 8;
@@ -65,7 +64,8 @@
             // tb_User
             // 
             this.tb_User.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_User.Location = new System.Drawing.Point(47, 312);
+            this.tb_User.ForeColor = System.Drawing.Color.Gray;
+            this.tb_User.Location = new System.Drawing.Point(46, 331);
             this.tb_User.Name = "tb_User";
             this.tb_User.Size = new System.Drawing.Size(312, 29);
             this.tb_User.TabIndex = 7;
@@ -82,17 +82,9 @@
             this.Pn_Login.StateDisabled.Color2 = System.Drawing.SystemColors.Control;
             this.Pn_Login.TabIndex = 6;
             // 
-            // Lb_ForgotPass
-            // 
-            this.Lb_ForgotPass.Location = new System.Drawing.Point(47, 425);
-            this.Lb_ForgotPass.Name = "Lb_ForgotPass";
-            this.Lb_ForgotPass.Size = new System.Drawing.Size(100, 20);
-            this.Lb_ForgotPass.TabIndex = 4;
-            this.Lb_ForgotPass.Values.Text = "Quên mật khẩu?";
-            // 
             // Btn_Login
             // 
-            this.Btn_Login.Location = new System.Drawing.Point(47, 393);
+            this.Btn_Login.Location = new System.Drawing.Point(46, 412);
             this.Btn_Login.Name = "Btn_Login";
             this.Btn_Login.OverrideDefault.Back.Color1 = System.Drawing.SystemColors.Control;
             this.Btn_Login.OverrideDefault.Border.Color1 = System.Drawing.SystemColors.Control;
@@ -128,7 +120,6 @@
         #endregion
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel_Login;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel Pn_Login;
-        private ComponentFactory.Krypton.Toolkit.KryptonLabel Lb_ForgotPass;
         public ComponentFactory.Krypton.Toolkit.KryptonButton Btn_Login;
         private System.Windows.Forms.TextBox tb_Password;
         private System.Windows.Forms.TextBox tb_User;

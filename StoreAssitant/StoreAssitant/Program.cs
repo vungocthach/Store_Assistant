@@ -17,8 +17,10 @@ namespace StoreAssitant
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
+
+            StoreAssistant_Helper.AppManager.LoadPreferences();
             LoginForm form = new LoginForm();
+            //form.se
             form.Click_Login += Form_Click_Login;
 
             Application.Run(form);
@@ -125,7 +127,6 @@ namespace StoreAssitant
                 });
                 //e.Role = UserInfo.UserRole.Cashier;
                 main_form.LoadUser();
-                StoreAssistant_Helper.AppManager.LoadPreferences();
                 main_form.LoadWindowSize();
                 main_form.Show();
                 login_form.Hide();

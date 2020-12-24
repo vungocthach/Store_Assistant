@@ -372,6 +372,9 @@
   <data name="Out" xml:space="preserve">
     <value>Thoát</value>
   </data>
+  <data name="Password" xml:space="preserve">
+    <value>Mật khẩu</value>
+  </data>
   <data name="Password:" xml:space="preserve">
     <value>Mật khẩu:</value>
   </data>
@@ -446,6 +449,9 @@
   </data>
   <data name="Sign Up" xml:space="preserve">
     <value>Đăng kí</value>
+  </data>
+  <data name="SignUpName" xml:space="preserve">
+    <value>Đăng kí thành viên mới</value>
   </data>
   <data name="Staff" xml:space="preserve">
     <value>Nhân viên</value>

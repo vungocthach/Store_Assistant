@@ -24,6 +24,7 @@ namespace StoreAssitant
         StoreAssistant_StatiticsView.StatiticsView2 statiticsView;
         StoreAssistant_VoucherView.VoucherView voucherView;
         StoreAssistant_SettingView.SettingView settingView;
+        string Lang = "vn";
 
         public event EventHandler SignOut;
         void OnSignOut(object sender, EventArgs e) {}
@@ -48,6 +49,15 @@ namespace StoreAssitant
             this.SizeChanged += Form1_SizeChanged;
             Form1_SizeChanged(this, null);
 
+        }
+
+        public void SetLanguage()
+        {
+            if (Lang != AppManager.CurrentLanguage)
+            {
+                Lang = AppManager.CurrentLanguage;
+                toolView1.SetLanguge();
+            }
         }
 
         public void LoadTheme()
