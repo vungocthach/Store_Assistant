@@ -294,8 +294,8 @@ namespace StoreAssitant.StoreAssistant_Helper
             rs.Add("Menuitem_Selected", Color.FromArgb(255, 247, 200, 59));
 
             // Datagridview
-            rs.Add("Grid_Header", Color.White);
-            rs.Add("Grid_Background", Color.White);
+            rs.Add("Grid_Header", Color.FromKnownColor(KnownColor.Honeydew));
+            rs.Add("Grid_Background", Color.FromArgb(255, 237, 225, 236));
             rs.Add("Grid_Line_Selection", Color.FromArgb(255, 75, 130, 191));
             rs.Add("Grid_Line1", Color.White);
             rs.Add("Grid_Line2", Color.SkyBlue);

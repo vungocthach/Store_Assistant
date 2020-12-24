@@ -177,6 +177,9 @@
   <data name="Chart" xml:space="preserve">
     <value>Chart</value>
   </data>
+  <data name="CheckLogOut" xml:space="preserve">
+    <value>Do you want to log out?</value>
+  </data>
   <data name="Chosse" xml:space="preserve">
     <value>Chosse picture</value>
   </data>
@@ -214,10 +217,10 @@
     <value>Default</value>
   </data>
   <data name="Define" xml:space="preserve">
-    <value>Define</value>
+    <value>Comfirm</value>
   </data>
   <data name="DelAcc" xml:space="preserve">
-    <value>Delete account</value>
+    <value>Do you want to delete account?</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
@@ -404,6 +407,9 @@
   </data>
   <data name="PAY BILL" xml:space="preserve">
     <value>PAY BILL</value>
+  </data>
+  <data name="PDName" xml:space="preserve">
+    <value>Name:</value>
   </data>
   <data name="Phone:" xml:space="preserve">
     <value>Phone:</value>

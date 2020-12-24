@@ -26,6 +26,7 @@ namespace StoreAssitant.StoreAssistant_AccountView
         string Nondefine = "Lỗi không xác định";
         string SuccessChangePass = "Đổi mật khẩu thành công!";
         string SuccessCreateAcc ="Tạo tài khoản nhân viên thành công!";
+        string define = "Xác nhận";
         void OnClickSignOut(object sender, EventArgs e) { }
 
         string[] roles = new string[2] { "Quản Lý", "Nhân viên" };
@@ -54,7 +55,8 @@ namespace StoreAssitant.StoreAssistant_AccountView
             Nondefine = Language.Rm.GetString("Nonedefine", Language.Culture);
             SuccessChangePass = Language.Rm.GetString("SuccessChangePass", Language.Culture);
             SuccessCreateAcc = Language.Rm.GetString("SuccessCreateAcc", Language.Culture);
-           
+            define = Language.Rm.GetString("Define", Language.Culture);
+
         }
         public AccountView()
         {
@@ -73,7 +75,13 @@ namespace StoreAssitant.StoreAssistant_AccountView
             //dataGridView1.Font = new Font(dataGridView1.Font.FontFamily, 11f);
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.Font.FontFamily, dataGridView1.Font.Size + 1, FontStyle.Bold);
             dataGridView1.DoubleClick += DataGridView1_DoubleClick;
+            dataGridView1.Sorted += DataGridView1_Sorted;
             Language.ChangeLanguage += VoucherView_ChangeLanguage;
+        }
+
+        private void DataGridView1_Sorted(object sender, EventArgs e)
+        {
+            LoadRowTheme();
         }
 
         private void DataGridView1_DoubleClick(object sender, EventArgs e)
@@ -133,7 +141,7 @@ namespace StoreAssitant.StoreAssistant_AccountView
         private void Btn_DeleteAccount_Click(object sender, EventArgs e)
         {
             string msg = string.Format(Cannotrehibilitate + "{0}" + Areusure, Environment.NewLine);
-            DialogResult rs = MessageBox.Show(msg, DelAcc, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult rs = MessageBox.Show(msg, define, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (rs == DialogResult.Yes)
             {
                 using (DatabaseController databaseController = new DatabaseController())
@@ -172,7 +180,14 @@ namespace StoreAssitant.StoreAssistant_AccountView
             int index = dataGridView1.Rows.Add(userInfo.UserName, userInfo.FullName, roles[(int)userInfo.Role]);
             DataGridViewRow row = dataGridView1.Rows[index];
             row.Tag = userInfo;
-            if (row.Index % 2 == 0) row.DefaultCellStyle.BackColor = Color.LightSkyBlue;
+        }
+
+        void LoadRowTheme()
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.Index % 2 == 0) row.DefaultCellStyle.BackColor = Color.LightSkyBlue;
+            }
         }
 
         void InitializeEventHandler()
