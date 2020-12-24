@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using StoreAssitant.Class_Information;
+using StoreAssitant.StoreAssistant_Helper;
 using StoreAssitant.StoreAssistant_VoucherView;
 
 namespace StoreAssitant
@@ -30,16 +32,41 @@ namespace StoreAssitant
         {
             InitializeComponent();
 
+            if (Lang != AppManager.CurrentLanguage)
+            {
+                Lang = AppManager.CurrentLanguage;
+                SetLanguage();
+            }
+            Language.ChangeLanguage += VoucherView_ChangeLanguage;
+
             btnCashier.Click += BtnCashier_Click;
             btnCancel.Click += BtnCancel_Click;
             textBox4.KeyPress += TextBox4_KeyPress;
+            textBox1.TextChanged += TextBox1_TextChanged;
+            textBox3.TextChanged += TextBox3_TextChanged;
+            textBox4.TextChanged += TextBox4_TextChanged;
+            textBox5.TextChanged += TextBox5_TextChanged;
             textBox2.TextChanged += TextBox2_TextChanged;
-            if ( Lang != Language.CultureName)
-            {
-                Lang = Language.CultureName;
-                SetLanguage();
-            }    
-            VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
+        }
+
+        private void TextBox4_TextChanged(object sender, EventArgs e)
+        {
+            textBox4.Text = string.Format("{0:N0}", textBox4.Text);
+        }
+
+        private void TextBox5_TextChanged(object sender, EventArgs e)
+        {
+            textBox5.Text = string.Format("{0:N0}", textBox5.Text);
+        }
+
+        private void TextBox3_TextChanged(object sender, EventArgs e)
+        {
+            textBox3.Text = string.Format("{0:N0}", textBox3.Text);
+        }
+
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            textBox1.Text = string.Format("{0:N0}", textBox1.Text);
         }
 
         private void VoucherView_ChangeLanguage(object sender, string e)
@@ -103,28 +130,23 @@ namespace StoreAssitant
             btnCancel.Click += BtnCancel_Click;
             textBox4.KeyPress += TextBox4_KeyPress;
 
-            if (Lang != Language.CultureName)
+            if (Lang != AppManager.CurrentLanguage)
             {
-                Lang = Language.CultureName;
+                Lang = AppManager.CurrentLanguage;
                 SetLanguage();
             }
-            VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
+            Language.ChangeLanguage += VoucherView_ChangeLanguage;
         }
 
         private void TextBox4_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((e.KeyChar > (char)Keys.D9 || e.KeyChar < (char)Keys.D0) && e.KeyChar != (char)Keys.Back && e.KeyChar != '.')
-            {
-                e.Handled = true;
-            }
-            //Edit: Alternative
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != '.')
+            if (e.KeyChar != (char)Keys.End && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
             if (e.Handled == true)
             {
-                MessageBox.Show("Chỉ được phép nhập số", "Lỗi");
+                MessageBox.Show("Chỉ được phép nhập số", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -225,7 +247,6 @@ namespace StoreAssitant
             info.Give = info.Take - info.TOTAL;            
             if (info.Give < 0)
             {
-                Console.WriteLine(info.Give);
                 textBox5.BackColor = Color.OrangeRed;
             }
             else textBox5.BackColor = System.Drawing.SystemColors.Control;

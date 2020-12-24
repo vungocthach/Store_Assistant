@@ -475,6 +475,15 @@ namespace StoreAssitant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Họ và tên.
+        /// </summary>
+        internal static string Full_name {
+            get {
+                return ResourceManager.GetString("Full name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Giới tính:.
         /// </summary>
         internal static string Gender_ {
@@ -687,6 +696,15 @@ namespace StoreAssitant {
         internal static string PlusChar {
             get {
                 return ResourceManager.GetString("PlusChar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phân quyền.
+        /// </summary>
+        internal static string Position {
+            get {
+                return ResourceManager.GetString("Position", resourceCulture);
             }
         }
         
@@ -993,6 +1011,15 @@ namespace StoreAssitant {
         internal static string Unit_price {
             get {
                 return ResourceManager.GetString("Unit price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tên đăng nhập.
+        /// </summary>
+        internal static string User_name {
+            get {
+                return ResourceManager.GetString("User name", resourceCulture);
             }
         }
         

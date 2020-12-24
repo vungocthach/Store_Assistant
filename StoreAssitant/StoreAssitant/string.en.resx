@@ -252,6 +252,9 @@
   <data name="From:" xml:space="preserve">
     <value>From:</value>
   </data>
+  <data name="Full name" xml:space="preserve">
+    <value>Full name</value>
+  </data>
   <data name="Gender:" xml:space="preserve">
     <value>Gender:</value>
   </data>
@@ -323,6 +326,9 @@
   </data>
   <data name="PlusChar" xml:space="preserve">
     <value>Please only enter the positive numbers</value>
+  </data>
+  <data name="Position" xml:space="preserve">
+    <value>Position</value>
   </data>
   <data name="Position:" xml:space="preserve">
     <value>Position:</value>
@@ -425,6 +431,9 @@
   </data>
   <data name="Unit:" xml:space="preserve">
     <value>Unit:</value>
+  </data>
+  <data name="User name" xml:space="preserve">
+    <value>User name</value>
   </data>
   <data name="User name:" xml:space="preserve">
     <value>User name:</value>

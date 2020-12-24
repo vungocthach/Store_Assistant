@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using StoreAssitant.Class_Information;
 using System.Threading;
 using StoreAssitant.StoreAssistant_VoucherView;
+using StoreAssitant.StoreAssistant_Helper;
 
 namespace StoreAssitant
 {
@@ -37,6 +38,14 @@ namespace StoreAssitant
         public TableBill()
         {
             InitializeComponent();
+
+            if (Lang != AppManager.CurrentLanguage)
+            {
+                Lang = AppManager.CurrentLanguage;
+                SetLanguage();
+            }
+            Language.ChangeLanguage += VoucherView_ChangeLanguage;
+
             this.CloseBill = new EventHandler(onCloseBill);
             this.ClickBtnCashier = new EventHandler(onClickBtnCashier);
 
@@ -47,14 +56,8 @@ namespace StoreAssitant
             TotalPrice = new SumPrice();
 
             lbPrice.DataBindings.Add("Text", TotalPrice, "Price", true, DataSourceUpdateMode.OnPropertyChanged);
-            this.MinimumSize = new Size((new TableLine()).MinimumSize.Width, (new TableLine()).MinimumSize.Height + tableTitle_pnl.MinimumSize.Height + titelLine1.MinimumSize.Height + lbSumPrice.Size.Height + Space_lbSumPrice_pnCashier*2);
-            if (Lang != Language.CultureName)
-            {
-                Lang = Language.CultureName;
-                SetLanguage();
-            }
-            else  VoucherView.ChangeLanguage += VoucherView_ChangeLanguage;
-            
+            this.MinimumSize = new Size((new TableLine()).MinimumSize.Width, 
+                (new TableLine()).MinimumSize.Height + tableTitle_pnl.MinimumSize.Height + titelLine1.MinimumSize.Height + lbSumPrice.Size.Height + Space_lbSumPrice_pnCashier*2);
         }
 
         private void VoucherView_ChangeLanguage(object sender, string e)

@@ -107,7 +107,7 @@ namespace StoreAssitant.StoreAssistant_SettingView
         public void ReloadData()
         {
             AppManager.LoadPreferences();
-            SetData(AppManager.StoreInformation, (int)AppManager.CurrentLanguage, (int)AppManager.CurrentTheme, (int)AppManager.CurrentWindowSize);
+            SetData(AppManager.StoreInformation, (int)AppManager._CurrentLanguage, (int)AppManager.CurrentTheme, (int)AppManager.CurrentWindowSize);
         }
 
         public void SetData(StoreInformation storeInformation, int language, int theme, int windowSize)

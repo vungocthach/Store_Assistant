@@ -46,7 +46,14 @@ namespace StoreAssitant.StoreAssistant_Helper
             }
         }
         static LanguageMode language = LanguageMode.VN;
-        public static LanguageMode CurrentLanguage
+        public static string CurrentLanguage
+        {
+            get
+            {
+                return language.ToString();
+            }
+        }
+        public static LanguageMode _CurrentLanguage
         {
             get
             {
@@ -105,7 +112,7 @@ namespace StoreAssitant.StoreAssistant_Helper
         public static void SaveCurrentPreferences()
         {
             StringBuilder builder = new StringBuilder();
-            builder.AppendLine(((int)CurrentLanguage).ToString());
+            builder.AppendLine(((int)_CurrentLanguage).ToString());
             builder.AppendLine(((int)CurrentTheme).ToString());
             builder.AppendLine(((int)CurrentWindowSize).ToString());
 
@@ -151,16 +158,17 @@ namespace StoreAssitant.StoreAssistant_Helper
                 }
             }
         }
-
         public static void ChangeLanguage(LanguageMode value, bool needSave = true)
         {
-            if (CurrentLanguage != value)
+            if (language != value)
             {
                 language = value;
                 if (needSave) { SaveCurrentPreferences(); }
                 //
                 // Write code change UI here
                 //
+                //AppManager.CurrentLanguage = language.ToString();
+                Language.onChangeLanguage(CurrentLanguage);
             }
         }
 
