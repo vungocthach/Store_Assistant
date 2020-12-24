@@ -157,7 +157,7 @@ namespace StoreAssitant.StoreAssistant_Helper
                         colors = GetColors_Dark();
                         break;
                     case ThemeMode.Modern:
-                        colors = GetColors_Purple();
+                        colors = GetColors_Modern();
                         break;
                     default:
                         //something wrong
@@ -297,7 +297,7 @@ namespace StoreAssitant.StoreAssistant_Helper
             rs.Add("Chart_Background", Color.White);
             return rs;
         }
-        static Dictionary<string, Color> GetColors_Purple()
+        static Dictionary<string, Color> GetColors_Modern()
         {
             Dictionary<string, Color> rs = new Dictionary<string, Color>();
 
