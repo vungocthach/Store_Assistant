@@ -194,8 +194,8 @@ namespace StoreAssitant
         {
             tableGUI_pnl.Show();
             TableControl table = (TableControl)tableGUI_pnl.Controls[SelectedTable];
-            if (table.Info.ProductInTable.Count != 0) table.Status = status.Using;
-            else table.Status = status.Empty;
+            if (table.Info.ProductInTable.Count != 0) table.Status = TableControl. status.Using;
+            else table.Status = TableControl.status.Empty;
             SelectedTable = -1;
         }
         public void AddProductInfo(ProductInfo product)

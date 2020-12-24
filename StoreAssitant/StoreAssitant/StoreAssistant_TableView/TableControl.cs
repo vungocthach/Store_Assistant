@@ -12,9 +12,9 @@ using StoreAssitant.Class_Information;
 
 namespace StoreAssitant
 {
-    public enum status { Empty, Using };
     public partial class TableControl : UserControl
     {
+        public enum status { Empty, Using };
         #region CREATE EVENTS
         [Category("My Event"),Description("When click the table control")]
         public event EventHandler ClickTableControl;

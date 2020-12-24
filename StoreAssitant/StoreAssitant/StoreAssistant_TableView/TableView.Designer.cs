@@ -65,7 +65,6 @@
             this.tableTakeHome.Name = "tableTakeHome";
             this.tableTakeHome.NameTable = "Mang về";
             this.tableTakeHome.Size = new System.Drawing.Size(111, 120);
-            this.tableTakeHome.Status = StoreAssitant.status.Empty;
             this.tableTakeHome.TabIndex = 2;
             // 
             // tableAdd_btn
