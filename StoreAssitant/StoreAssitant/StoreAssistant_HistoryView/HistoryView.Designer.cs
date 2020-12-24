@@ -42,15 +42,17 @@
             this.dtp_From = new System.Windows.Forms.DateTimePicker();
             this.dtp_To = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btn_Search = new System.Windows.Forms.Button();
             this.pageSelector1 = new StoreAssitant.StoreAssistant_HistoryView.PageSelector();
+            this.lbSearch = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lbTime = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -151,18 +153,19 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label1.Location = new System.Drawing.Point(28, 30);
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(17, 40);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 24);
+            this.label1.Size = new System.Drawing.Size(95, 25);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Từ Ngày:";
+            this.label1.Text = "Từ Ngày :";
             // 
             // dtp_From
             // 
             this.dtp_From.CustomFormat = "dd/MM/yyyy";
             this.dtp_From.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_From.Location = new System.Drawing.Point(124, 28);
+            this.dtp_From.Location = new System.Drawing.Point(113, 38);
             this.dtp_From.Name = "dtp_From";
             this.dtp_From.Size = new System.Drawing.Size(133, 29);
             this.dtp_From.TabIndex = 3;
@@ -171,7 +174,7 @@
             // 
             this.dtp_To.CustomFormat = "dd/MM/yyyy";
             this.dtp_To.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_To.Location = new System.Drawing.Point(384, 28);
+            this.dtp_To.Location = new System.Drawing.Point(361, 38);
             this.dtp_To.Name = "dtp_To";
             this.dtp_To.Size = new System.Drawing.Size(134, 29);
             this.dtp_To.TabIndex = 5;
@@ -179,69 +182,39 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label2.Location = new System.Drawing.Point(274, 30);
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(251, 40);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 24);
+            this.label2.Size = new System.Drawing.Size(108, 25);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Đến Ngày:";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.dtp_From);
-            this.groupBox1.Controls.Add(this.dtp_To);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(526, 71);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Thời Gian";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.btn_Search);
-            this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox2.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.groupBox2.Location = new System.Drawing.Point(547, 3);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(444, 71);
-            this.groupBox2.TabIndex = 8;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Tìm Kiếm";
+            this.label2.Text = "Đến Ngày :";
             // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(73, 29);
+            this.textBox1.Location = new System.Drawing.Point(71, 40);
             this.textBox1.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
             this.textBox1.MaxLength = 8;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(317, 26);
+            this.textBox1.Size = new System.Drawing.Size(326, 26);
             this.textBox1.TabIndex = 7;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label3.Location = new System.Drawing.Point(16, 29);
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(23, 40);
             this.label3.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 24);
+            this.label3.Size = new System.Drawing.Size(50, 25);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Mã:";
+            this.label3.Text = "Mã :";
             // 
             // btn_Search
             // 
-            this.btn_Search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Search.AutoSize = true;
             this.btn_Search.FlatAppearance.BorderSize = 0;
             this.btn_Search.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
@@ -249,9 +222,9 @@
             this.btn_Search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Search.Image = global::StoreAssitant.Properties.Resources.iconfinder_sale_lineal_color_cnvrt_18_3827704;
-            this.btn_Search.Location = new System.Drawing.Point(393, 26);
+            this.btn_Search.Location = new System.Drawing.Point(402, 35);
             this.btn_Search.Name = "btn_Search";
-            this.btn_Search.Size = new System.Drawing.Size(45, 32);
+            this.btn_Search.Size = new System.Drawing.Size(34, 32);
             this.btn_Search.TabIndex = 6;
             this.btn_Search.UseVisualStyleBackColor = true;
             // 
@@ -275,27 +248,79 @@
             this.pageSelector1.PageBoxMargin = new System.Windows.Forms.Padding(3);
             this.pageSelector1.PageBoxSize = new System.Drawing.Size(100, 29);
             this.pageSelector1.SelectedIndex = 1;
-            this.pageSelector1.Size = new System.Drawing.Size(277, 42);
+            this.pageSelector1.Size = new System.Drawing.Size(242, 42);
             this.pageSelector1.TabIndex = 7;
+            // 
+            // lbSearch
+            // 
+            this.lbSearch.BackColor = System.Drawing.Color.SkyBlue;
+            this.lbSearch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbSearch.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSearch.Location = new System.Drawing.Point(0, 0);
+            this.lbSearch.Name = "lbSearch";
+            this.lbSearch.Size = new System.Drawing.Size(542, 32);
+            this.lbSearch.TabIndex = 9;
+            this.lbSearch.Text = " Tìm Kiếm";
+            this.lbSearch.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbSearch.Click += new System.EventHandler(this.lbSearch_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.lbSearch);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.btn_Search);
+            this.panel1.Location = new System.Drawing.Point(533, 4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(544, 75);
+            this.panel1.TabIndex = 10;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.dtp_From);
+            this.panel2.Controls.Add(this.lbTime);
+            this.panel2.Controls.Add(this.dtp_To);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(524, 75);
+            this.panel2.TabIndex = 11;
+            // 
+            // lbTime
+            // 
+            this.lbTime.BackColor = System.Drawing.Color.SkyBlue;
+            this.lbTime.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbTime.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTime.Location = new System.Drawing.Point(0, 0);
+            this.lbTime.Name = "lbTime";
+            this.lbTime.Size = new System.Drawing.Size(522, 32);
+            this.lbTime.TabIndex = 9;
+            this.lbTime.Text = " Thời Gian";
+            this.lbTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // HistoryView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pageSelector1);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "HistoryView";
             this.Size = new System.Drawing.Size(1080, 500);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -307,10 +332,8 @@
         private System.Windows.Forms.DateTimePicker dtp_From;
         private System.Windows.Forms.DateTimePicker dtp_To;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btn_Search;
         private PageSelector pageSelector1;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn order;
@@ -318,5 +341,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn createTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn tableParent;
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
+        private System.Windows.Forms.Label lbSearch;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lbTime;
     }
 }

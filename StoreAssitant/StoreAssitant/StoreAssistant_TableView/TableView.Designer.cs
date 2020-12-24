@@ -80,6 +80,7 @@
             // 
             // tableTitle_lb
             // 
+            this.tableTitle_lb.BackColor = System.Drawing.Color.Transparent;
             this.tableTitle_lb.Font = new System.Drawing.Font("Snap ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableTitle_lb.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tableTitle_lb.Location = new System.Drawing.Point(73, 7);

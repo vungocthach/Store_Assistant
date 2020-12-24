@@ -96,6 +96,7 @@ namespace StoreAssitant
                 {
                     cashierView = new StoreAssistant_CashierView.CashierView();
                 }
+                cashierView.LoadTheme();
                 cashierView.LoadDataFromDB();
                 SelectTab(cashierView);
             }
@@ -105,6 +106,7 @@ namespace StoreAssitant
                 {
                     managerModifyView = new ManagerModifyView();
                 }
+                managerModifyView.LoadTheme();
                 managerModifyView.LoadDataFromDB();
                 SelectTab(managerModifyView);
             }

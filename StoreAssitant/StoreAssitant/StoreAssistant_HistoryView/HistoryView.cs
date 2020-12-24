@@ -56,7 +56,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             searchForm = new SearchAdvancedForm();
             searchForm.ClickedSubmitOK += SearchForm_ClickedSubmitOK;
 
-            dataGridView1.Location = new Point(dataGridView1.Margin.Left, groupBox1.Location.Y + groupBox1.Height + groupBox1.Margin.Bottom + dataGridView1.Margin.Top);
+            //dataGridView1.Location = new Point(dataGridView1.Margin.Left, dataGridView1.Location.Y);
             columnWeights = new double[] { 0.99d / 13, 3.0d / 13, 3.0d / 13, 3.0d / 13, 3.0d / 13 };
             AutoSizeColumns();
 
@@ -88,8 +88,8 @@ namespace StoreAssitant.StoreAssistant_HistoryView
         private void SetLanguge()
         {
             Language.InitLanguage(this);
-            groupBox1.Text = Language.Rm.GetString("Time", Language.Culture);
-            groupBox2.Text = Language.Rm.GetString("Search", Language.Culture);
+            lbTime.Text = Language.Rm.GetString("Time", Language.Culture);
+            lbSearch.Text = Language.Rm.GetString("Search", Language.Culture);
             label1.Text = Language.Rm.GetString("From:", Language.Culture);
             label2.Text = Language.Rm.GetString("To:", Language.Culture);
             label3.Text = Language.Rm.GetString("Code:", Language.Culture);
@@ -244,6 +244,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
 
         private void HistoryView_SizeChanged(object sender, EventArgs e)
         {
+            panel1.Width = this.Width - panel1.Location.X - panel1.Margin.Right;
             pageSelector1.Location = new Point((this.Width - pageSelector1.Width) / 2, this.Height - pageSelector1.Margin.Top - pageSelector1.Margin.Bottom - pageSelector1.Height - dataGridView1.Margin.Bottom);
             dataGridView1.Height = pageSelector1.Location.Y - dataGridView1.Location.Y - pageSelector1.Margin.Top - dataGridView1.Margin.Bottom;
             dataGridView1.Width = this.Width - dataGridView1.Margin.Left - dataGridView1.Margin.Right;
@@ -305,23 +306,26 @@ namespace StoreAssitant.StoreAssistant_HistoryView
 
         public void LoadTheme()
         {
-            groupBox1.ForeColor = AppManager.GetColors("Main_Plaintext");
-            foreach (Control control in groupBox1.Controls) { control.ForeColor = groupBox1.ForeColor; }
-            groupBox2.ForeColor = groupBox1.ForeColor;
-            foreach (Control control in groupBox2.Controls) { control.ForeColor = groupBox1.ForeColor; }
-            textBox1.BackColor = AppManager.GetColors("Main_Background");
+            panel1.ForeColor = AppManager.GetColors("Main_Plaintext");
+            foreach (Control control in panel1.Controls) { control.ForeColor = panel1.ForeColor; }
+            panel2.ForeColor = panel1.ForeColor;
+            foreach (Control control in panel2.Controls) { control.ForeColor = panel2.ForeColor; }
+            panel1.BackColor = panel2.BackColor = textBox1.BackColor = AppManager.GetColors("Main_Background");
 
-            dataGridView1.ForeColor = groupBox1.ForeColor;
+            dataGridView1.ForeColor = panel2.ForeColor;
             dataGridView1.BackgroundColor = AppManager.GetColors("Grid_Background");
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = dataGridView1.ForeColor;
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = AppManager.GetColors("Grid_Header");
             color_Line1 = AppManager.GetColors("Grid_Line1");
             color_Line2 = AppManager.GetColors("Grid_Line2");
 
-            dtp_From.CalendarForeColor = groupBox1.ForeColor;
-            dtp_From.CalendarTitleForeColor = groupBox1.ForeColor;
-            dtp_From.CalendarTrailingForeColor = groupBox1.ForeColor;
-            dtp_From.CalendarTitleBackColor = AppManager.GetColors("Main_Background");
+            lbSearch.BackColor = lbTime.BackColor = AppManager.GetColors("Title_Background");
+            lbSearch.ForeColor = lbTime.ForeColor = AppManager.GetColors("Title_Force");
+        }
+
+        private void lbSearch_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

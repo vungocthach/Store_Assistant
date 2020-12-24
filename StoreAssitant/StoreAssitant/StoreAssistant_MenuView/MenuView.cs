@@ -13,7 +13,7 @@ using System.Text.RegularExpressions;
 
 namespace StoreAssitant
 {
-    public partial class MenuView : UserControl
+    public partial class MenuView : UserControl, StoreAssistant_Helper.ILoadTheme
     {
         private static Dictionary<int, ProductInfo> productsList = null;
         public static Dictionary<int, ProductInfo> ProductsList
@@ -328,6 +328,12 @@ namespace StoreAssitant
             controlSearch.Width = this.Width - 15;
             flowLayoutPanelMenu.Location = new Point(0, Convert.ToInt32(controlSearch.Location.Y * 2.5));
             flowLayoutPanelMenu.Height = this.Height - controlSearch.Location.Y - controlSearch.Height - 5;
+        }
+
+        public void LoadTheme()
+        {
+            ControlTitle.BackColor = StoreAssistant_Helper.AppManager.GetColors("Title_Background");
+            ControlTitle.ForeColor = StoreAssistant_Helper.AppManager.GetColors("Title_Force");
         }
     }
        
