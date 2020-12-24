@@ -38,6 +38,7 @@ namespace StoreAssitant
             toolView1.SizeChanged += ToolView1_SizeChanged;
             toolView1.CheckUser();
             toolView1.ReloadData();
+            SetLanguage();
 
             pnlMenu.BackColor = Color.FromArgb(200, 240, 128, 24);
 

@@ -158,7 +158,7 @@ namespace StoreAssitant.StoreAssistant_Helper
                 }
             }
         }
-        public static void ChangeLanguage(LanguageMode value, bool needSave = true)
+        public static void ChangeLanguage(LanguageMode value, bool needSave = true, bool needCallBack = true)
         {
             if (language != value)
             {
@@ -168,6 +168,7 @@ namespace StoreAssitant.StoreAssistant_Helper
                 // Write code change UI here
                 //
                 //AppManager.CurrentLanguage = language.ToString();
+                if(needCallBack)
                 Language.onChangeLanguage(CurrentLanguage);
             }
         }
