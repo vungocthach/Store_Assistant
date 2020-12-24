@@ -43,8 +43,6 @@ namespace StoreAssitant.StoreAssistant_SettingView
                 item.Click += (s, arg) =>
                 {
                     AppManager.ChangeTheme(e);
-                    MessageBox.Show("Ứng dụng sẽ khởi động lại để đổi theme");
-                    Application.Restart();
                 };
             }
             itemWindowSize.DropDownItems.Clear();

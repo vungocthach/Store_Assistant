@@ -292,7 +292,7 @@
     <value>Give</value>
   </data>
   <data name="Hi" xml:space="preserve">
-    <value>Hi</value>
+    <value>Hi,</value>
   </data>
   <data name="History" xml:space="preserve">
     <value>History</value>
@@ -457,7 +457,7 @@
     <value>Staff infomation</value>
   </data>
   <data name="Statistical" xml:space="preserve">
-    <value>Statistical</value>
+    <value>Statistics</value>
   </data>
   <data name="StoreInfo" xml:space="preserve">
     <value>Store Information</value>

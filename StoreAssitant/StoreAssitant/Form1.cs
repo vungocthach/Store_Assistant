@@ -54,6 +54,16 @@ namespace StoreAssitant
             this.SizeChanged += Form1_SizeChanged;
             Form1_SizeChanged(this, null);
 
+            CreateView();
+        }
+
+        void CreateView()
+        {
+            cashierView = new StoreAssistant_CashierView.CashierView();
+            managerModifyView = new ManagerModifyView();
+            historyView = new StoreAssistant_HistoryView.HistoryView();
+            statiticsView = new StoreAssistant_StatiticsView.StatiticsView2();
+            voucherView = new VoucherView();
         }
 
         private void Language_ChangeLanguage(object sender, string e)
@@ -73,6 +83,11 @@ namespace StoreAssitant
             panel1.BackColor = AppManager.GetColors("Main_Background");
             tabSelector1.LoadTheme();
             toolView1.LoadTheme();
+            if (cashierView != null) { cashierView.LoadTheme(); }
+            if (managerModifyView != null) { managerModifyView.LoadTheme(); }
+            if (historyView != null) { historyView.LoadTheme(); }
+            if (statiticsView != null) { statiticsView.LoadTheme(); }
+            if (voucherView != null) { voucherView.LoadTheme(); }
         }
 
         public void LoadWindowSize()

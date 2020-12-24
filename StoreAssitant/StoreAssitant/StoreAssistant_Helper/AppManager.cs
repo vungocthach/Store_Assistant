@@ -163,6 +163,9 @@ namespace StoreAssitant.StoreAssistant_Helper
                         //something wrong
                         break;
                 }
+
+                System.Windows.Forms.Form mainForm = GetMainForm();
+                if (mainForm != null && (mainForm is Form1 form1)) { form1.LoadTheme(); }
             }
         }
         public static void ChangeLanguage(LanguageMode value, bool needSave = true, bool needCallBack = true)
