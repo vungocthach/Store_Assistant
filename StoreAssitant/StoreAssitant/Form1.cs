@@ -35,8 +35,6 @@ namespace StoreAssitant
 
             Language.ChangeLanguage += Language_ChangeLanguage;
 
-            SetLanguage();
-
             this.Name = "mainForm";
 
             toolView1.SizeChanged += ToolView1_SizeChanged;
@@ -75,6 +73,16 @@ namespace StoreAssitant
         {
             toolView1.SetLanguge();
             tabSelector1.SetLanguage();
+            /*
+            string cul = "VI";
+            if (AppManager._CurrentLanguage == StoreAssistant_SettingView.LanguageMode.VN) { cul = "VI"; }
+            else if (AppManager._CurrentLanguage == StoreAssistant_SettingView.LanguageMode.EN) { cul = "EN"; }
+            
+            System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture(cul);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = System.Threading.Thread.CurrentThread.CurrentCulture;
+            Application.CurrentCulture = System.Threading.Thread.CurrentThread.CurrentCulture;
+            */
+
         }
 
         public void LoadTheme()

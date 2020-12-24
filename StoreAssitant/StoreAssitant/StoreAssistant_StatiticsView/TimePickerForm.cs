@@ -60,12 +60,12 @@ namespace StoreAssitant.StoreAssistant_StatiticsView
         }
         private void Dtp_To_ValueChanged(object sender, EventArgs e)
         {
-            dtp_From.MaxDate = dtp_To.Value;
+            dtp_From.MaxDate = dtp_To.Value.AddDays(-1);
         }
 
         private void Dtp_From_ValueChanged(object sender, EventArgs e)
         {
-            dtp_To.MinDate = dtp_From.Value;
+            dtp_To.MinDate = dtp_From.Value.AddDays(1);
         }
 
         private void BtnDefault_Click(object sender, EventArgs e)

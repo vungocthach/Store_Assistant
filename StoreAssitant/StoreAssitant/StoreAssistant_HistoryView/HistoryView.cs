@@ -49,9 +49,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             dataGridView1.SortCompare += DataGridView1_SortCompare;
             dataGridView1.Sorted += DataGridView1_Sorted;
 
-            dtp_To.MaxDate = DateTime.Today.AddDays(1);
-            dtp_From.Value = DateTime.Today.AddYears(-1);
-            dtp_To.Value = DateTime.Now;
+            
 
             searchForm = new SearchAdvancedForm();
             searchForm.ClickedSubmitOK += SearchForm_ClickedSubmitOK;
@@ -69,13 +67,23 @@ namespace StoreAssitant.StoreAssistant_HistoryView
             //dataGridView1.ColumnSortModeChanged += DataGridView1_ColumnSortModeChanged;
 
             dtp_From.ValueChanged += Dtp_From_ValueChanged;
-            dtp_To.ValueChanged += Dtp_From_ValueChanged;
-            
+            dtp_To.ValueChanged += Dtp_To_ValueChanged;
+
+            dtp_From.Value = DateTime.Today.AddYears(-1);
+            dtp_To.Value = DateTime.Now;
+
             this.Load += HistoryView_Load;
 
             textBox1.KeyDown += TextBox1_KeyDown;
 
         }
+
+        private void Dtp_To_ValueChanged(object sender, EventArgs e)
+        {
+            dtp_From.MaxDate = dtp_To.Value.AddDays(-1);
+            UpdateTime();
+        }
+
         private void DataGridView1_ColumnSortModeChanged(object sender, DataGridViewColumnEventArgs e)
         {
             Console.WriteLine("got it");
@@ -198,6 +206,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
 
         private void Dtp_From_ValueChanged(object sender, EventArgs e)
         {
+            dtp_To.MinDate = dtp_From.Value.AddDays(1);
             UpdateTime();
         }
 
@@ -340,11 +349,8 @@ namespace StoreAssitant.StoreAssistant_HistoryView
                 DataGridViewRow row = dataGridView1.Rows[index];
                 row.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 row.Tag = b;
-                row.DefaultCellStyle.SelectionBackColor = color_Line_Selection;
-                if ( row.Index % 2 != 0) row.DefaultCellStyle.BackColor = color_Line1;
-                else row.DefaultCellStyle.BackColor = color_Line2;
-                row.DefaultCellStyle.ForeColor = dataGridView1.ForeColor;
             }
+            LoadRowTheme();
             dataGridView1.ResumeLayout();
         }
 
@@ -366,6 +372,19 @@ namespace StoreAssitant.StoreAssistant_HistoryView
 
             lbSearch.BackColor = lbTime.BackColor = AppManager.GetColors("Title_Background");
             lbSearch.ForeColor = lbTime.ForeColor = AppManager.GetColors("Title_Force");
+
+            LoadRowTheme();
+        }
+
+        void LoadRowTheme()
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                row.DefaultCellStyle.SelectionBackColor = color_Line_Selection;
+                if (row.Index % 2 != 0) row.DefaultCellStyle.BackColor = color_Line1;
+                else row.DefaultCellStyle.BackColor = color_Line2;
+                row.DefaultCellStyle.ForeColor = dataGridView1.ForeColor;
+            }
         }
 
         private void lbSearch_Click(object sender, EventArgs e)
