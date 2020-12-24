@@ -85,6 +85,19 @@ namespace StoreAssitant
             }
         }
 
+        const int WS_MINIMIZEBOX = 0x20000;
+        const int CS_DBLCLKS = 0x8;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.Style |= WS_MINIMIZEBOX;
+                cp.ClassStyle |= CS_DBLCLKS;
+                return cp;
+            }
+        }
+
         private void ToolView1_SizeChanged(object sender, EventArgs e)
         {
             toolView1.Location = new Point(this.Width - toolView1.Width - toolView1.Margin.Right, toolView1.Location.Y);
