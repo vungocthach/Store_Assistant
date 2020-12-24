@@ -114,6 +114,7 @@ namespace StoreAssitant.StoreAssistant_VoucherView
 
         internal void LoadDataFromDB()
         {
+            dataGridView1.Rows.Clear();
             using (DatabaseController databaseController = new DatabaseController())
             {
                 databaseController.ConnectToSQLDatabase();

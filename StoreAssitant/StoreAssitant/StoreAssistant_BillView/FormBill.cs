@@ -42,6 +42,7 @@ namespace StoreAssitant
             btnCashier.Click += BtnCashier_Click;
             btnCancel.Click += BtnCancel_Click;
             textBox4.KeyPress += TextBox4_KeyPress;
+            textBox2.TextChanged += TextBox2_TextChanged;
         }
 
         private void VoucherView_ChangeLanguage(object sender, string e)
@@ -259,9 +260,12 @@ namespace StoreAssitant
                 return;
             }
             isConfirm = true;
-            PrintPDF.Instance.createBill(info);
-            this.Close();
-            DatabaseController.Insert_Bill(info);
+            if (PrintPDF.Instance.createBill(info))
+            {
+                this.Close();
+                DatabaseController.Insert_Bill(info);
+                Console.WriteLine("Add bill to database success");
+            }
         }
 
         #endregion

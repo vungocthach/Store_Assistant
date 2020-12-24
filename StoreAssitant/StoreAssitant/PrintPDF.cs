@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using iTextSharp;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
@@ -17,7 +18,7 @@ namespace StoreAssitant
     class PrintPDF
     {
         static string dest = @".\Bill.pdf";
-        static string dir_font = @"C:\Users\VuNgocThach\AppData\Local\Microsoft\Windows\Fonts\vuArial.ttf"; //sẽ sửa lại cái này
+        static string dir_font = @".\Fonts\vuArial.ttf"; 
         static NumberFormatInfo nfi;
         private Rectangle defaultSize;
         FileStream os;
@@ -43,26 +44,26 @@ namespace StoreAssitant
             basef = BaseFont.CreateFont(dir_font, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             nfi = new CultureInfo("en-US", false).NumberFormat;
             nfi.NumberGroupSeparator = " ";
-
+            //open stream to write on the file
+        }
+        public bool createBill(BillInfo info)
+        {
             //check if file is open
             try
             {
-                using (FileStream r = File.OpenRead(dest)) { }
-            }
-            catch (UnauthorizedAccessException e)
-            {
-                Console.WriteLine("File is used by another process");
-                return;
+                using (FileStream r = File.OpenWrite(dest)) { }
             }
             catch (FileNotFoundException e)
             {
                 Console.WriteLine("File not exists, create new file");
             }
+            catch (Exception e)
+            {
+                Console.WriteLine("File is used by another process");
+                MessageBox.Show("Tệp tin đang được mở, vui lòng tắt tệp tin trước rồi thử lại","Lỗi",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return false;
+            }
 
-            //open stream to write on the file
-        }
-        public void createBill(BillInfo info)
-        {
             os = new FileStream(dest, FileMode.Create, FileAccess.ReadWrite, FileShare.Read);
             defaultSize = new Rectangle(PageSize.A5.Width, 312 + info.ProductBills.Count * 24 + info.ProductBills.Count(i=>i.Name.Length > 14) * 15);
             doc = new Document(defaultSize);
@@ -95,6 +96,9 @@ namespace StoreAssitant
             writer.Dispose();
 
             Process.Start(dest);
+            Console.WriteLine("Create file PDF success");
+            return true;
+
         }
         private Paragraph createTitle()
         {
