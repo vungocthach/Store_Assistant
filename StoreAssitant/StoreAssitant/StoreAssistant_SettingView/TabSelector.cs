@@ -12,6 +12,8 @@ namespace StoreAssitant.StoreAssistant_Helper
 {
     public partial class TabSelector : UserControl
     {
+        string Lang = "vn";
+
         public event EventHandler SelectedTabChanged;
         public string SelectedTabKey
         {
@@ -67,6 +69,13 @@ namespace StoreAssitant.StoreAssistant_Helper
         {
             InitializeComponent();
 
+            if (Lang != AppManager.CurrentLanguage)
+            {
+                Lang = AppManager.CurrentLanguage;
+                SetLanguage();
+            }
+
+            Language.ChangeLanguage += Language_ChangeLanguage;
             SelectedTabChanged = new EventHandler((s, e) => { });
 
             this.SizeChanged += TabSelector_SizeChanged;
@@ -81,6 +90,21 @@ namespace StoreAssitant.StoreAssistant_Helper
 
             SelectedButton = btnCashier;
             Button_Click(btnCashier, null);
+        }
+
+        private void Language_ChangeLanguage(object sender, string e)
+        {
+            SetLanguage();
+        }
+
+        private void SetLanguage()
+        {
+            Language.InitLanguage(this);
+            btnCashier.Text = Language.Rm.GetString("Cashier", Language.Culture);
+            btnHistory.Text = Language.Rm.GetString("History", Language.Culture);
+            btnManager.Text = Language.Rm.GetString("Manage", Language.Culture);
+            btnStatistic.Text = Language.Rm.GetString("Statistical", Language.Culture);
+            btnVoucher.Text = Language.Rm.GetString("Voucher", Language.Culture);
         }
 
         public void CheckUser()

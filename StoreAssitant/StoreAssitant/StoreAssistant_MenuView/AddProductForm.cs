@@ -18,7 +18,7 @@ namespace StoreAssitant
         String Lang = "vn";
         String Error = "Lỗi";
         String illegal = "Tồn tại thông tin chưa hợp lệ";
-
+        string ChangeProInf = "Thay đổi thông tin món ăn";
         public AddProductForm()
         {
             InitializeComponent();
@@ -52,7 +52,7 @@ namespace StoreAssitant
             Language.ChangeLanguage += VoucherView_ChangeLanguage;
 
             SetData(info);
-            this.Text = "Thay đổi thông tin món ăn";
+            this.Text = ChangeProInf;
             productBox1.IsReadOnlyPDName = true;
           
         }
@@ -113,6 +113,7 @@ namespace StoreAssitant
             Error = Language.Rm.GetString("Error", Language.Culture);
             illegal = Language.Rm.GetString("illegal", Language.Culture);
             this.Text = Language.Rm.GetString("AddPro", Language.Culture);
+            ChangeProInf = Language.Rm.GetString("ChangeProInf", Language.Culture);
         }
     }
 }

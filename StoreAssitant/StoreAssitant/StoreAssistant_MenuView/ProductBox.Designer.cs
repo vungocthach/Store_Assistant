@@ -68,11 +68,11 @@
             this.txtb_Name.BackColor = System.Drawing.Color.White;
             this.txtb_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtb_Name.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtb_Name.Location = new System.Drawing.Point(65, 175);
+            this.txtb_Name.Location = new System.Drawing.Point(79, 175);
             this.txtb_Name.Margin = new System.Windows.Forms.Padding(2, 8, 2, 2);
             this.txtb_Name.MaxLength = 50;
             this.txtb_Name.Name = "txtb_Name";
-            this.txtb_Name.Size = new System.Drawing.Size(238, 19);
+            this.txtb_Name.Size = new System.Drawing.Size(228, 19);
             this.txtb_Name.TabIndex = 1;
             // 
             // txtb_Price
@@ -169,7 +169,7 @@
             // label3
             // 
             this.label3.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.label3.Location = new System.Drawing.Point(60, 182);
+            this.label3.Location = new System.Drawing.Point(64, 182);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(248, 23);
             this.label3.TabIndex = 19;

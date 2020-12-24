@@ -232,6 +232,15 @@ namespace StoreAssitant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thay đổi thông tin món ăn.
+        /// </summary>
+        internal static string ChangeProInf {
+            get {
+                return ResourceManager.GetString("ChangeProInf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Biểu đồ.
         /// </summary>
         internal static string Chart {
@@ -255,6 +264,15 @@ namespace StoreAssitant {
         internal static string ChosseTime {
             get {
                 return ResourceManager.GetString("ChosseTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bạn muốn đóng ứng dụng?.
+        /// </summary>
+        internal static string CloseApp {
+            get {
+                return ResourceManager.GetString("CloseApp", resourceCulture);
             }
         }
         
@@ -322,6 +340,15 @@ namespace StoreAssitant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Xác nhận.
+        /// </summary>
+        internal static string Define {
+            get {
+                return ResourceManager.GetString("Define", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Xóa tài khoản.
         /// </summary>
         internal static string DelAcc {
@@ -367,6 +394,15 @@ namespace StoreAssitant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kích thước cửa sổ.
+        /// </summary>
+        internal static string Doorsize {
+            get {
+                return ResourceManager.GetString("Doorsize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vui lòng nhập giá trị từ 0 đến.
         /// </summary>
         internal static string Enter_From {
@@ -385,6 +421,15 @@ namespace StoreAssitant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lỗi định dạng.
+        /// </summary>
+        internal static string ErorFormat {
+            get {
+                return ResourceManager.GetString("ErorFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lỗi.
         /// </summary>
         internal static string Error {
@@ -399,6 +444,33 @@ namespace StoreAssitant {
         internal static string Error_data {
             get {
                 return ResourceManager.GetString("Error data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 404 Not Found.
+        /// </summary>
+        internal static string Error404 {
+            get {
+                return ResourceManager.GetString("Error404", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nhập lại mật khẩu không đúng.
+        /// </summary>
+        internal static string ErrorAgainPass {
+            get {
+                return ResourceManager.GetString("ErrorAgainPass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nhập mật khẩu hiện tại không đúng.
+        /// </summary>
+        internal static string ErrorNowPass {
+            get {
+                return ResourceManager.GetString("ErrorNowPass", resourceCulture);
             }
         }
         
@@ -520,6 +592,15 @@ namespace StoreAssitant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Xin chào.
+        /// </summary>
+        internal static string Hi {
+            get {
+                return ResourceManager.GetString("Hi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lịch sử.
         /// </summary>
         internal static string History {
@@ -529,11 +610,47 @@ namespace StoreAssitant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quản lí nhân sự.
+        /// </summary>
+        internal static string Human_Resource_Management {
+            get {
+                return ResourceManager.GetString("Human Resource Management", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tồn tại thông tin chưa hợp lệ.
         /// </summary>
         internal static string illegal {
             get {
                 return ResourceManager.GetString("illegal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số điện thoại không hợp lệ.
+        /// </summary>
+        internal static string illegalPhonenumber {
+            get {
+                return ResourceManager.GetString("illegalPhonenumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thông tin cửa hàng.
+        /// </summary>
+        internal static string InfoSrore {
+            get {
+                return ResourceManager.GetString("InfoSrore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ngôn ngữ.
+        /// </summary>
+        internal static string Language {
+            get {
+                return ResourceManager.GetString("Language", resourceCulture);
             }
         }
         
@@ -601,11 +718,29 @@ namespace StoreAssitant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tên cửa hàng:.
+        /// </summary>
+        internal static string Namestore_ {
+            get {
+                return ResourceManager.GetString("Namestore:", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mật khẩu mới.
         /// </summary>
         internal static string New_password {
             get {
                 return ResourceManager.GetString("New password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mật khẩu mới trùng với mật khẩu hiện tại.
+        /// </summary>
+        internal static string NewLikeOld {
+            get {
+                return ResourceManager.GetString("NewLikeOld", resourceCulture);
             }
         }
         
@@ -637,6 +772,15 @@ namespace StoreAssitant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Khách chưa đưa đủ tiền.
+        /// </summary>
+        internal static string NotEnougnMOney {
+            get {
+                return ResourceManager.GetString("NotEnougnMOney", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to STT.
         /// </summary>
         internal static string Number {
@@ -660,6 +804,24 @@ namespace StoreAssitant {
         internal static string Onlychar {
             get {
                 return ResourceManager.GetString("Onlychar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chỉ được phép nhập số.
+        /// </summary>
+        internal static string OnlyNumber {
+            get {
+                return ResourceManager.GetString("OnlyNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thoát.
+        /// </summary>
+        internal static string Out {
+            get {
+                return ResourceManager.GetString("Out", resourceCulture);
             }
         }
         
@@ -732,6 +894,24 @@ namespace StoreAssitant {
         internal static string Price_ {
             get {
                 return ResourceManager.GetString("Price:", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lỗi thông tin món ăn.
+        /// </summary>
+        internal static string ProError {
+            get {
+                return ResourceManager.GetString("ProError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Công trình đang thi công!.
+        /// </summary>
+        internal static string Project_ing {
+            get {
+                return ResourceManager.GetString("Project_ing", resourceCulture);
             }
         }
         
@@ -817,6 +997,24 @@ namespace StoreAssitant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lưu.
+        /// </summary>
+        internal static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bạn có muốn lưu thay đổi?.
+        /// </summary>
+        internal static string SaveChange {
+            get {
+                return ResourceManager.GetString("SaveChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tìm kiếm.
         /// </summary>
         internal static string Search {
@@ -876,6 +1074,15 @@ namespace StoreAssitant {
         internal static string Statistical {
             get {
                 return ResourceManager.GetString("Statistical", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thông tin của hàng.
+        /// </summary>
+        internal static string StoreInfo {
+            get {
+                return ResourceManager.GetString("StoreInfo", resourceCulture);
             }
         }
         
@@ -1083,6 +1290,24 @@ namespace StoreAssitant {
         internal static string Wanrning {
             get {
                 return ResourceManager.GetString("Wanrning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Website:.
+        /// </summary>
+        internal static string Website_ {
+            get {
+                return ResourceManager.GetString("Website:", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tuần.
+        /// </summary>
+        internal static string week {
+            get {
+                return ResourceManager.GetString("week", resourceCulture);
             }
         }
         
