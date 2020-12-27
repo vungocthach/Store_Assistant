@@ -56,7 +56,6 @@ namespace StoreAssitant.StoreAssistant_AccountView
             SuccessChangePass = Language.Rm.GetString("SuccessChangePass", Language.Culture);
             SuccessCreateAcc = Language.Rm.GetString("SuccessCreateAcc", Language.Culture);
             define = Language.Rm.GetString("Define", Language.Culture);
-
         }
         public AccountView()
         {

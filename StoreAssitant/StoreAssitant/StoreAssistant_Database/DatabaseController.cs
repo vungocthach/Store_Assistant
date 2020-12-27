@@ -1187,8 +1187,14 @@ namespace StoreAssitant
             try
             {
                 sqlConnection2.Open();
-                SqlCommand cmd2 = sqlConnection2.CreateCommand();
+
+            }
+            catch (Exception e) { throw new Exception("Cannot connect to SQL Server. Error detail: " + Environment.NewLine + e.Message); }
+
+            SqlCommand cmd2 = sqlConnection2.CreateCommand();
                 cmd2.CommandText = "select * from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME != 'sysdiagrams' and TABLE_CATALOG = 'DBStoreAssistant' order by TABLE_NAME ASC, COLUMN_NAME ASC;";
+            try
+            {
                 using (SqlDataReader reader2 = cmd2.ExecuteReader())
                 {
                     if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
@@ -1217,7 +1223,7 @@ namespace StoreAssitant
                     }
                 }
             }
-            catch (Exception e) { return false; }
+            catch (Exception e) { throw new Exception("SQL Server has wrong format"); }
         }
 
         bool IsEqual(object[] A, object[] B)
