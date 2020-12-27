@@ -246,6 +246,9 @@
   <data name="Enter_From" xml:space="preserve">
     <value>Please enter the value from</value>
   </data>
+  <data name="erDB" xml:space="preserve">
+    <value>Database has issues. Please contact database's DEV team to solve the problem or re-install SQL server.</value>
+  </data>
   <data name="ErorFormat" xml:space="preserve">
     <value>Error format </value>
   </data>
@@ -347,6 +350,9 @@
   </data>
   <data name="Month" xml:space="preserve">
     <value>Month</value>
+  </data>
+  <data name="msgChangeOK" xml:space="preserve">
+    <value>Information has been changed</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name of Pro</value>
@@ -471,6 +477,9 @@
   <data name="Search" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="ServerName" xml:space="preserve">
+    <value>Server Name</value>
+  </data>
   <data name="Setting" xml:space="preserve">
     <value>Setting</value>
   </data>
@@ -550,7 +559,7 @@
     <value>User name</value>
   </data>
   <data name="User name:" xml:space="preserve">
-    <value>User name:</value>
+    <value>Username:</value>
   </data>
   <data name="UserInfo" xml:space="preserve">
     <value>User's Information</value>

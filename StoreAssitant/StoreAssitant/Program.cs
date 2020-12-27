@@ -17,10 +17,10 @@ namespace StoreAssitant
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
+            
             StoreAssistant_Helper.AppManager.LoadPreferences();
             LoginForm form = new LoginForm();
-            //form.se
+            
             form.Click_Login += Form_Click_Login;
 
             Application.Run(form);
@@ -70,17 +70,14 @@ namespace StoreAssitant
 
         static void Test()
         {
-            Form test_form = new Form();
-            test_form.Size = new System.Drawing.Size(1080, 500);
-            StoreAssistant_Helper.AppManager.LoadPreferences();
-            var view = new StoreAssistant_SettingView.ToolView();
-            StoreAssistant_Helper.AppManager.ChangeTheme(StoreAssistant_SettingView.ThemeMode.Dark, false);
-            view.Dock = DockStyle.Top;
-
-            test_form.BackColor = StoreAssistant_Helper.AppManager.GetColors("Main_Background");
-            view.BackColor = StoreAssistant_Helper.AppManager.GetColors("Toolbar_Background");
-            view.LoadTheme();
-            test_form.Controls.Add(view);
+            DBServerForm test_form = new DBServerForm();
+            System.IO.FileInfo fileInfo = new System.IO.FileInfo("./Preferences/config_server.txt");
+            if (System.IO.File.ReadAllText(fileInfo.FullName) == string.Empty)
+            {
+                test_form.SaveData(new string[] { "-default-", "-default-", "-default-" });
+            }
+            test_form.ShowInTaskbar = true;
+            test_form.LoadData();
             Application.Run(test_form);
         }
 
@@ -125,7 +122,6 @@ namespace StoreAssitant
                         Application.Restart();
                     }
                 });
-                //e.Role = UserInfo.UserRole.Cashier;
                 main_form.LoadUser();
                 main_form.LoadWindowSize();
                 main_form.Show();

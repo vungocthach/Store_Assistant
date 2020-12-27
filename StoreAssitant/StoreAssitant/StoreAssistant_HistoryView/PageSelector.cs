@@ -162,6 +162,7 @@ namespace StoreAssitant.StoreAssistant_HistoryView
                 maximumRange = value;
                 txtPage.Text = string.Format("{0}/{1}", seletedIndex.ToString(), MaximumRange.ToString());
                 txtPage.Invalidate();
+                if (maximumRange < 1) { maximumRange = 1; }
                 if (maximumRange == 1)
                 { btnNxt.Enabled = btnFirst.Enabled = false; }
             }

@@ -13,6 +13,7 @@ namespace StoreAssitant
     public partial class LoginForm : Form
     {
         public UserInfo u;
+        DBServerForm dB;
 
         public event EventHandler<UserInfo> Click_Login;
 
@@ -24,14 +25,24 @@ namespace StoreAssitant
         {
             InitializeComponent();
 
+            dB = new DBServerForm();
+            dB.LoadData();
+            StoreAssistant_Helper.AppManager.LoadSQLServerInfo(dB.GetData());
+
             this.Icon = new Icon($"./Icons/main.ico");
 
             Click_Login += on_Click_Login;
 
             logInView._Click += LogInView__Click;
             logInView.Click_SignUp += LogInView_Click_SignUp;
+            lbDB.Click += LbDB_Click;
 
             this.Text = Language.Rm.GetString("Login", Language.Culture);
+        }
+
+        private void LbDB_Click(object sender, EventArgs e)
+        {
+            dB.ShowDialog();
         }
 
         private void LogInView_Click_SignUp(object sender, EventArgs e)

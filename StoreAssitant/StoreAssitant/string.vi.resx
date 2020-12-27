@@ -249,6 +249,9 @@
   <data name="ErorFormat" xml:space="preserve">
     <value>Lỗi định dạng</value>
   </data>
+  <data name="errDB" xml:space="preserve">
+    <value>Lỗi cơ sở dữ liệu. Vui lòng thông báo cho đội ngũ bảo trì cơ sở dữ liệu để xử lí hoặc cài đặt lại SQL Server.</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Lỗi</value>
   </data>
@@ -347,6 +350,9 @@
   </data>
   <data name="Month" xml:space="preserve">
     <value>Tháng</value>
+  </data>
+  <data name="msgChangeOK" xml:space="preserve">
+    <value>Thay đổi thông tin thành công.</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Tên món</value>
@@ -470,6 +476,9 @@
   </data>
   <data name="Search" xml:space="preserve">
     <value>Tìm kiếm</value>
+  </data>
+  <data name="ServerName" xml:space="preserve">
+    <value>Tên Server</value>
   </data>
   <data name="Setting" xml:space="preserve">
     <value>Cài Đặt</value>

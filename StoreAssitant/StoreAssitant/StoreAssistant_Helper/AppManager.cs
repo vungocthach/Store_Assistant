@@ -7,6 +7,7 @@ using System.Linq;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using StoreAssitant.StoreAssistant_SettingView;
 
 namespace StoreAssitant.StoreAssistant_Helper
@@ -242,18 +243,12 @@ namespace StoreAssitant.StoreAssistant_Helper
             Dictionary<string, Color> rs = new Dictionary<string, Color>();
 
             // Common part
-            //rs.Add("Main_Background", Color.FromArgb(255, 50, 50, 50));
             rs.Add("Main_Background", Color.FromArgb(255, 60, 60, 60));
             rs.Add("Main_Plaintext", Color.White);
             rs.Add("Title_Background", Color.DimGray);
             rs.Add("Title_Force", Color.White);
 
             // Tab
-            //rs.Add("Tab_Selected", Color.FromArgb(255, 82, 189, 0));
-            //rs.Add("Tab_Clicked", Color.FromArgb(180, 82, 189, 0));
-            //rs.Add("Tab_MouseOn", Color.FromArgb(180, 55, 128, 0));
-            //rs.Add("Toolbar_Background", Color.FromArgb(230, 55, 128, 0));
-
             rs.Add("Tab_Selected", Color.Gray);
             rs.Add("Tab_Clicked", Color.DimGray);
             rs.Add("Tab_MouseOn", Color.SlateGray);
@@ -351,7 +346,7 @@ namespace StoreAssitant.StoreAssistant_Helper
         }
         public static void AddFontFromFile(FileInfo file)
         {
-            if (!file.Exists) { throw new FileNotFoundException(); }
+            if (!file.Exists) { throw new FileNotFoundException(string.Format("Missing file: {0}", file.FullName)); }
             if (file.Extension != ".ttf") { throw new FormatException("File extension must be '*.ttf'"); }
 
             privateFont.AddFontFile(file.FullName);
@@ -379,6 +374,21 @@ namespace StoreAssitant.StoreAssistant_Helper
                 if (family.Name == familyName){ return family; }
             }
             throw new ArgumentOutOfRangeException("Font Family's name not exist");
+        }
+
+        public static void LoadSQLServerInfo(string[] data)
+        {
+            FileInfo fileInfo = new FileInfo($"./Preferences/config_server.txt");
+            if (!fileInfo.Exists) { throw new FileNotFoundException(string.Format("Missing file: {0}",fileInfo.FullName));}
+
+            if ((data[0] == data[1]) && (data[2] == "-default-") && (data[0] == data[2]))
+            {
+                DatabaseController.LoadServerConfig(@"tcp:laptrinhtrucquan.southeastasia.cloudapp.azure.com", "laptrinhtrucquan", "bangnhucthach@ktpm2019");
+            }
+            else
+            {
+                DatabaseController.LoadServerConfig(data[0], data[1], data[2]);
+            }
         }
     }
 }

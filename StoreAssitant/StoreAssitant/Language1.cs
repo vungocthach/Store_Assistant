@@ -18,10 +18,15 @@ namespace StoreAssitant
             ChangeLanguage?.Invoke(null, typelang);
         }
         public static event EventHandler<string> ChangeLanguage = new EventHandler<string>((s,e)=> { });
+        public static string GetString(string key)
+        {
+            return Rm.GetString(key, Culture);
+        }
 
         static public CultureInfo Culture { get => culture; set => culture = value; }
         //static public string CultureName { get => cultureName; set => cultureName = value; }
         static public ResourceManager Rm { get => rm; set => rm = value; }
+
         static public void InitLanguage(object type)
         {
             Type T = type.GetType();

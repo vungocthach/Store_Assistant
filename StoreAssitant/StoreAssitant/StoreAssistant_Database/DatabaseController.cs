@@ -26,10 +26,18 @@ namespace StoreAssitant
         SqlConnection connection;
         SqlCommand cmd;
 
-        string username;
-        string password;
-        string serverName;
-        string databaseName;
+        static string username = "laptrinhtrucquan";
+        static string password = "bangnhucthach@ktpm2019";
+        static string serverName = @"tcp:laptrinhtrucquan.southeastasia.cloudapp.azure.com";
+
+        string databaseName = "DBStoreAssistant";
+
+        public static void LoadServerConfig(string _serverName, string _userName, string _pass)
+        {
+            username = _userName;
+            serverName = _serverName;
+            password = _pass;
+        }
 
         string TB_INTERGER;
         string[] COLUMNS_TB_INTERGER;
@@ -48,12 +56,6 @@ namespace StoreAssitant
 
         public DatabaseController()
         {
-            username = "laptrinhtrucquan";
-            password = "bangnhucthach@ktpm2019";
-            //serverName = "tcp:52.187.161.61,2001";
-            serverName = @"tcp:laptrinhtrucquan.southeastasia.cloudapp.azure.com";
-            databaseName = "DBStoreAssistant";
-
             TB_INTERGER = "TB_INTERGER";
             COLUMNS_TB_INTERGER = new string[2] { "M_KEY", "M_VALUE" };
             TB_IMAGE = "TB_IMAGE";
@@ -95,9 +97,9 @@ namespace StoreAssitant
             catch (Exception e)
             {
 #if DEBUG
-                MessageBox.Show("StoreAssistant.DatabaseController.ConnectToSQLDatabase() error : " + e.Message);
+                throw e;
 #else
-                MessageBox.Show("Không thể kết nối đến máy chủ","Lỗi kết nối", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Cannot connect to SQL Server. Error detail: " + Environment.NewLine + e.Message);
                 Application.Restart();
 #endif
                 return false;
@@ -1176,6 +1178,77 @@ namespace StoreAssitant
         {
             Disconnect();
             connection.Dispose();
+        }
+
+        public bool CheckServerStructure(string _serverName, string _userName, string _pass)
+        {
+            SqlConnection sqlConnection2 = new SqlConnection();
+            sqlConnection2.ConnectionString = SQLStatementManager.GetConnectionString(_userName, _pass, _serverName, databaseName);
+            try
+            {
+                sqlConnection2.Open();
+                SqlCommand cmd2 = sqlConnection2.CreateCommand();
+                cmd2.CommandText = "select * from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME != 'sysdiagrams' and TABLE_CATALOG = 'DBStoreAssistant' order by TABLE_NAME ASC, COLUMN_NAME ASC;";
+                using (SqlDataReader reader2 = cmd2.ExecuteReader())
+                {
+                    if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = cmd2.CommandText;
+
+                    object[] cells = new object[reader2.FieldCount];
+                    object[] cells2 = new object[cells.Length];
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read() && reader2.Read())
+                        {
+                            reader.GetValues(cells);
+                            reader2.GetValues(cells2);
+                            while (IsEqual(cells, cells2))
+                            {
+                                if (reader2.Read())
+                                {
+                                    reader2.GetValues(cells2);
+                                }
+                                else { break; }
+                            }
+                        }
+
+                        return !reader.Read();
+                    }
+                }
+            }
+            catch (Exception e) { return false; }
+        }
+
+        bool IsEqual(object[] A, object[] B)
+        {
+            bool rs = A.Length == B.Length;
+            int i = 0;
+            while (rs && i < A.Length)
+            {
+                rs = (A[i] == B[i]);
+                i++;
+            }
+
+            return rs;
+        }
+
+        internal void CreateDefaultValue()
+        {
+            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+
+            StringBuilder builder = new StringBuilder();
+            builder.Append("IF NOT EXISTS(SELECT S_KEY FROM TB_STRING100 WHERE S_KEY = '_name') BEGIN INSERT INTO TB_STRING100(S_KEY, S_VALUE) VALUES('_name', 'NTB Quán'); END ");
+            builder.Append("IF NOT EXISTS(SELECT S_KEY FROM TB_STRING100 WHERE S_KEY = '_phone') BEGIN INSERT INTO TB_STRING100(S_KEY, S_VALUE) VALUES ('_phone', '0965903108'); END ");
+            builder.Append("IF NOT EXISTS(SELECT S_KEY FROM TB_STRING100 WHERE S_KEY = '_web') BEGIN INSERT INTO TB_STRING100(S_KEY, S_VALUE) VALUES ('_web', 'https://github.com/vungocthach/Store_Assistant'); END ");
+            builder.Append("IF NOT EXISTS(SELECT M_KEY FROM TB_INTERGER WHERE M_KEY = 'tbl_count') BEGIN INSERT INTO TB_INTERGER(M_KEY, M_VALUE) VALUES('tbl_count', 1); END ");
+            builder.Append("IF NOT EXISTS(SELECT M_KEY FROM TB_INTERGER WHERE M_KEY = 'nxt_id') BEGIN INSERT INTO TB_INTERGER(M_KEY, M_VALUE) VALUES('nxt_id', 1); END ");
+            builder.Append("IF NOT EXISTS(SELECT USERNAME FROM TB_USER WHERE USERNAME = 'admin') BEGIN INSERT INTO TB_USER(USERNAME, PASS, USER_TYPE) VALUES('admin', 0x7523C62ABDB7628C5A9DAD8F97D8D8C5C040EDE36535E531A8A3748B6CAE7E00, 0); END ");
+
+            cmd.CommandText = builder.ToString();
+            cmd.Parameters.Clear();
+
+            cmd.ExecuteNonQuery();
         }
     }
 }
