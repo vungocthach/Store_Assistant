@@ -78,7 +78,7 @@ namespace StoreAssitant
 
         public static string GetConnectionString(string username, string password, string serverName, string databaseName)
         {
-            return string.Format("User id = {0}; password = {1}; server = {2}; Initial Catalog = {3}; connection timeout = 30;",
+            return string.Format("User id = {0}; password = {1}; server = {2}; Initial Catalog = {3}; connection timeout = 5;",
                                     username, password, serverName, databaseName);
         }
 

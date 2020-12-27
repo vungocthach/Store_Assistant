@@ -45,7 +45,7 @@ namespace StoreAssitant
             this.btnDefault.Location = new System.Drawing.Point(257, 106);
             this.btnDefault.Name = "btnDefault";
             this.btnDefault.Size = new System.Drawing.Size(81, 26);
-            this.btnDefault.TabIndex = 24;
+            this.btnDefault.TabIndex = 4;
             this.btnDefault.Text = "Mặc định";
             this.btnDefault.UseVisualStyleBackColor = true;
             // 
@@ -57,7 +57,7 @@ namespace StoreAssitant
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(368, 27);
-            this.txtPassword.TabIndex = 23;
+            this.txtPassword.TabIndex = 2;
             this.txtPassword.Text = "(Default)";
             // 
             // label3
@@ -77,7 +77,7 @@ namespace StoreAssitant
             this.txtUsername.MaxLength = 100;
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(368, 27);
-            this.txtUsername.TabIndex = 21;
+            this.txtUsername.TabIndex = 1;
             this.txtUsername.Text = "(Default)";
             // 
             // label2
@@ -97,7 +97,7 @@ namespace StoreAssitant
             this.txtserver_Name.MaxLength = 100;
             this.txtserver_Name.Name = "txtserver_Name";
             this.txtserver_Name.Size = new System.Drawing.Size(368, 27);
-            this.txtserver_Name.TabIndex = 19;
+            this.txtserver_Name.TabIndex = 0;
             this.txtserver_Name.Text = "(Default)";
             // 
             // btnSave
@@ -106,7 +106,7 @@ namespace StoreAssitant
             this.btnSave.Location = new System.Drawing.Point(157, 106);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(81, 26);
-            this.btnSave.TabIndex = 18;
+            this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Lưu";
             this.btnSave.UseVisualStyleBackColor = true;
             // 

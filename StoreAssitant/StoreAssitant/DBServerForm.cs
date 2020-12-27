@@ -29,7 +29,7 @@ namespace StoreAssitant
             Language.InitLanguage(this);
 
             label1.Text = Language.GetString("ServerName") + ':';
-            label2.Text = Language.GetString("User name") + ':';
+            label2.Text = "Username:";
             label3.Text = Language.GetString("Password") + ':';
 
             btnSave.Text = Language.GetString("Save");
@@ -47,31 +47,40 @@ namespace StoreAssitant
             if ((data[0] == data[1]) && (data[2] == "-default-") && (data[0] == data[2]))
             {
                 // Use default
+                SaveData();
+                StoreAssistant_Helper.AppManager.LoadSQLServerInfo(GetData());
+                MessageBox.Show(Language.GetString("msgChangeOK"));
+                this.Close();
             }
             else
             {
                 using (DatabaseController databaseController = new DatabaseController())
                 {
-                    if (databaseController.CheckServerStructure(data[0], data[1], data[2]))
+                    try
                     {
-                        // Go on
+                        if (databaseController.CheckServerStructure(data[0], data[1], data[2]))
+                        {
+                            // Go on
+                            SaveData();
+                            StoreAssistant_Helper.AppManager.LoadSQLServerInfo(GetData());
+                            using (DatabaseController databaseController2 = new DatabaseController())
+                            {
+                                databaseController2.CreateDefaultValue();
+                            }
+                            MessageBox.Show(Language.GetString("msgChangeOK"));
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("SQL Server has wrong format", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("SQL Server has wrong format", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                    catch (Exception ex) { MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                 }
             }
 
-            SaveData();
-            StoreAssistant_Helper.AppManager.LoadSQLServerInfo(GetData());
-            using (DatabaseController databaseController = new DatabaseController())
-            {
-                databaseController.CreateDefaultValue();
-            }
-            MessageBox.Show(Language.GetString("msgChangeOK"));
-            this.Close();
+            
         }
 
         internal string[] GetData()
