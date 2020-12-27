@@ -1,12 +1,6 @@
-﻿using ComponentFactory.Krypton.Navigator;
+﻿
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using StoreAssitant.StoreAssistant_Authenticater;
 using System.Security.Authentication;
@@ -60,10 +54,13 @@ namespace StoreAssitant
         void CreateView()
         {
             cashierView = new StoreAssistant_CashierView.CashierView();
-            managerModifyView = new ManagerModifyView();
-            historyView = new StoreAssistant_HistoryView.HistoryView();
-            statiticsView = new StoreAssistant_StatiticsView.StatiticsView2();
-            voucherView = new VoucherView();
+            if (Authenticator.CurrentUser.Role == UserInfo.UserRole.Manager)
+            {
+                managerModifyView = new ManagerModifyView();
+                historyView = new StoreAssistant_HistoryView.HistoryView();
+                statiticsView = new StoreAssistant_StatiticsView.StatiticsView2();
+                voucherView = new VoucherView();
+            }
         }
 
         private void Language_ChangeLanguage(object sender, string e)
@@ -241,17 +238,6 @@ namespace StoreAssitant
             tab.Dock = DockStyle.Fill;
             tab.BackColor = Color.Transparent;
             panel1.Controls.Add(tab);
-        }
-
-        private void KryptonNavigator1_SelectedPageChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void KryptonNavigator1_GotFocus(object sender, EventArgs e)
-        {
-            KryptonNavigator navigator = (KryptonNavigator)sender;
-            navigator.SelectedPage.Focus();
         }
 
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)

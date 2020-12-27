@@ -69,10 +69,11 @@ namespace StoreAssitant.StoreAssistant_Helper
                 return windowSize;
             }
         }
-
+        internal static string GetPreferencesFolder() { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"StoreAssistant\Preferences"); }
+        static readonly string path_Setting = Path.Combine(GetPreferencesFolder(), "setting.txt");
         public static void LoadPreferences()
         {
-            string path = Path.GetFullPath("./Preferences/setting.txt");
+            string path = Path.GetFullPath(path_Setting);
 
             Console.WriteLine("Load setting from : {0}", path);
             if (File.Exists(path))
@@ -103,9 +104,9 @@ namespace StoreAssitant.StoreAssistant_Helper
             ChangeTheme(ThemeMode.Light, false);
             ChangeWindowSize(SizeMode._1366x768, false);
 
-            DirectoryInfo directory = Directory.CreateDirectory("./Preferences");
-            //string path = Path.Combine(directory.FullName, "setting.txt");
-            //File.Create(path).Close();
+            DirectoryInfo directory = Directory.CreateDirectory(Path.GetDirectoryName(path_Setting));
+            string path = Path.Combine(directory.FullName, "setting.txt");
+            File.Create(path).Close();
 
             SaveCurrentPreferences();
         }
@@ -119,7 +120,7 @@ namespace StoreAssitant.StoreAssistant_Helper
 
             byte[] bytes = Encoding.UTF8.GetBytes(builder.ToString());
 
-            string path = Path.GetFullPath("./Preferences/setting.txt");
+            string path = Path.GetFullPath(path_Setting);
 
             FileStream stream = File.OpenWrite(path);
             stream.Write(bytes, 0, bytes.Length);
@@ -378,7 +379,7 @@ namespace StoreAssitant.StoreAssistant_Helper
 
         public static void LoadSQLServerInfo(string[] data)
         {
-            FileInfo fileInfo = new FileInfo($"./Preferences/config_server.txt");
+            FileInfo fileInfo = new FileInfo(Path.Combine(GetPreferencesFolder(), "config_server.txt"));
             if (!fileInfo.Exists) { throw new FileNotFoundException(string.Format("Missing file: {0}",fileInfo.FullName));}
 
             if ((data[0] == data[1]) && (data[2] == "-default-") && (data[0] == data[2]))

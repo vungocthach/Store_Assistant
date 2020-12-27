@@ -510,6 +510,9 @@
   <data name="Stype:" xml:space="preserve">
     <value>Mode:</value>
   </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success</value>
+  </data>
   <data name="SuccessChangePass" xml:space="preserve">
     <value>Password successfully changed!</value>
   </data>

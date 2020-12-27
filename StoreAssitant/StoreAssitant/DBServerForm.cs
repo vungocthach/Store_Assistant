@@ -49,7 +49,7 @@ namespace StoreAssitant
                 // Use default
                 SaveData();
                 StoreAssistant_Helper.AppManager.LoadSQLServerInfo(GetData());
-                MessageBox.Show(Language.GetString("msgChangeOK"));
+                MessageBox.Show(Language.GetString("msgChangeOK"), Language.GetString("Success"), MessageBoxButtons.OK);
                 this.Close();
             }
             else
@@ -67,7 +67,7 @@ namespace StoreAssitant
                             {
                                 databaseController2.CreateDefaultValue();
                             }
-                            MessageBox.Show(Language.GetString("msgChangeOK"));
+                            MessageBox.Show(Language.GetString("msgChangeOK"), Language.GetString("Success"), MessageBoxButtons.OK);
                             this.Close();
                         }
                         else
@@ -88,8 +88,8 @@ namespace StoreAssitant
             return new string[] { txtserver_Name.Text, txtUsername.Text, txtPassword.Text };
         }
 
-        string path = $"./Preferences/config_server.txt";
-        char breakLineChar = (char) 1;
+        readonly string path = Path.Combine(StoreAssistant_Helper.AppManager.GetPreferencesFolder(), "config_server.txt");
+        readonly char breakLineChar = (char) 1;
 
         public byte[] GetDataKey()
         {
@@ -103,6 +103,7 @@ namespace StoreAssitant
             FileInfo fileInfo = new FileInfo(path);
             if (!fileInfo.Exists)
             {
+                Directory.CreateDirectory(Path.GetDirectoryName(path));
                 fileInfo.Create().Close();
                 SaveData(new string[] { "-default-", "-default-", "-default-" });
             }
