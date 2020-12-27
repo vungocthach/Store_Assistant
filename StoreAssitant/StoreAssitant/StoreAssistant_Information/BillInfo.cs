@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using StoreAssitant.Class_Information;
-
+/*
 namespace StoreAssitant.Backup
 {
     public class BillInfo
@@ -25,7 +25,7 @@ namespace StoreAssitant.Backup
             DAY = DateTime.Now;
         }
     }
-/*    public class Product : ProductInfo
+*//*    public class Product : ProductInfo
     {
         public int NumberProduct { get; set; } = 1;
 
@@ -35,6 +35,6 @@ namespace StoreAssitant.Backup
         public Product(ProductInfo product) : base(product.Id, product.Name, product.Price, product.Description, product.Image)
         {
         }
-    }*/
+    }*//*
 
-}
+}*/

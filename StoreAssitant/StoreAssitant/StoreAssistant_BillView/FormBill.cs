@@ -166,6 +166,7 @@ namespace StoreAssitant
                 info.Number_table = table.ID;
                 info.DAY = DateTime.Now;
                 info.Voucher = "#####";
+                info.USER_Name = StoreAssistant_Authenticater.Authenticator.CurrentUser.UserName;
                 //Thêm product vào trong bảng thanh toán
 
                 foreach(var i in table.ProductInTable)

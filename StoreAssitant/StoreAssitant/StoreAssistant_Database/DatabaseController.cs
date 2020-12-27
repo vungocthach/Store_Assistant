@@ -613,7 +613,7 @@ namespace StoreAssitant
             cmd.CommandText = string.Format("insert into BILL (Number_TB, ID_User, Vourcher, Total, Take, Give, Time) values (@Number_Tb, @Id_User,@Vourcher, @total, @Take, @Give, @Time)");
             cmd.Parameters.Clear();
             cmd.Parameters.AddWithValue(string.Format("@Number_Tb"), bill.Number_table);
-            cmd.Parameters.AddWithValue(string.Format("@Id_User"), "admin");
+            cmd.Parameters.AddWithValue(string.Format("@Id_User"), bill.USER_Name);
             cmd.Parameters.AddWithValue(string.Format("@Vourcher"), bill.Voucher);
             cmd.Parameters.AddWithValue(string.Format("@Total"), bill.TOTAL);
             cmd.Parameters.AddWithValue(string.Format("@Take"), bill.Take);
