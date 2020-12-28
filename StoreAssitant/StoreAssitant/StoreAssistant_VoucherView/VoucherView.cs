@@ -151,6 +151,7 @@ namespace StoreAssitant.StoreAssistant_VoucherView
             color_Line_Selection = AppManager.GetColors("Grid_Line_Selection");
             color_Line1 = AppManager.GetColors("Grid_Line1");
             color_Line2 = AppManager.GetColors("Grid_Line2");
+            reloadTheme(0);
         }
         private void reloadTheme(int indexStart)
         {
