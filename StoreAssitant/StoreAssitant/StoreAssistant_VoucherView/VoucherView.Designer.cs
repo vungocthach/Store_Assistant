@@ -45,7 +45,7 @@
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Snap ITC", 20F, System.Drawing.FontStyle.Bold);
+            this.label1.Font = new System.Drawing.Font("Segoe UI Black", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
@@ -124,7 +124,7 @@
             this.ExpiryDate.MinDate = new System.DateTime(1800, 1, 1, 0, 0, 0, 0);
             this.ExpiryDate.Name = "ExpiryDate";
             this.ExpiryDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ExpiryDate.Width = 167;
+            this.ExpiryDate.Width = 169;
             // 
             // Value
             // 

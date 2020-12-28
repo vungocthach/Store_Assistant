@@ -17,7 +17,7 @@ namespace StoreAssitant
 {
     class PrintPDF
     {
-        static string dest = @".\Bill.pdf";
+        static string dest = Path.Combine(AppManager.GetPreferencesFolder(), "Bill.pdf");
         static string dir_font = @".\Fonts\vuArial.ttf"; 
         static NumberFormatInfo nfi;
         private Rectangle defaultSize;
