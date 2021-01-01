@@ -46,7 +46,7 @@ namespace StoreAssitant.StoreAssistant_Helper
                 return theme;
             }
         }
-        static LanguageMode language = LanguageMode.VN;
+        static LanguageMode language = LanguageMode.VI;
         public static string CurrentLanguage
         {
             get
@@ -100,7 +100,7 @@ namespace StoreAssitant.StoreAssistant_Helper
 
         static void CreateDefaultPreferences()
         {
-            ChangeLanguage(LanguageMode.VN, false);
+            ChangeLanguage(LanguageMode.VI, false);
             ChangeTheme(ThemeMode.Light, false);
             ChangeWindowSize(SizeMode._1366x768, false);
 

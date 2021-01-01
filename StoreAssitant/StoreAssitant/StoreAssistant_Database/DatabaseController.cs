@@ -99,7 +99,7 @@ namespace StoreAssitant
 #if DEBUG
                 throw e;
 #else
-                MessageBox.Show("Cannot connect to SQL Server. Error detail: " + Environment.NewLine + e.Message);
+                MessageBox.Show(Language.GetString("errCannotConnect"), Language.GetString("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Restart();
 #endif
                 return false;
@@ -1182,48 +1182,51 @@ namespace StoreAssitant
 
         public bool CheckServerStructure(string _serverName, string _userName, string _pass)
         {
-            SqlConnection sqlConnection2 = new SqlConnection();
-            sqlConnection2.ConnectionString = SQLStatementManager.GetConnectionString(_userName, _pass, _serverName, databaseName);
-            try
+            using (SqlConnection sqlConnection2 = new SqlConnection())
             {
-                sqlConnection2.Open();
-
-            }
-            catch (Exception e) { throw new Exception("Cannot connect to SQL Server. Error detail: " + Environment.NewLine + e.Message); }
-
-            SqlCommand cmd2 = sqlConnection2.CreateCommand();
-                cmd2.CommandText = "select * from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME != 'sysdiagrams' and TABLE_CATALOG = 'DBStoreAssistant' order by TABLE_NAME ASC, COLUMN_NAME ASC;";
-            try
-            {
-                using (SqlDataReader reader2 = cmd2.ExecuteReader())
+                sqlConnection2.ConnectionString = SQLStatementManager.GetConnectionString(_userName, _pass, _serverName, databaseName);
+                try
                 {
-                    if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
-                    cmd.Parameters.Clear();
-                    cmd.CommandText = cmd2.CommandText;
+                    sqlConnection2.Open();
+                }
+                catch (Exception e) {  throw new Exception(Language.GetString("errCannotConnect"), e); }
 
-                    object[] cells = new object[reader2.FieldCount];
-                    object[] cells2 = new object[cells.Length];
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                using (SqlCommand cmd2 = sqlConnection2.CreateCommand())
+                {
+                    cmd2.CommandText = "select * from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME != 'sysdiagrams' and TABLE_CATALOG = 'DBStoreAssistant' order by TABLE_NAME ASC, COLUMN_NAME ASC;";
+                    try
                     {
-                        while (reader.Read() && reader2.Read())
+                        using (SqlDataReader reader2 = cmd2.ExecuteReader())
                         {
-                            reader.GetValues(cells);
-                            reader2.GetValues(cells2);
-                            while (IsEqual(cells, cells2))
+                            if (connection.State != ConnectionState.Open) { ConnectToSQLDatabase(); }
+                            cmd.Parameters.Clear();
+                            cmd.CommandText = cmd2.CommandText;
+
+                            object[] cells = new object[reader2.FieldCount];
+                            object[] cells2 = new object[cells.Length];
+                            using (SqlDataReader reader = cmd.ExecuteReader())
                             {
-                                if (reader2.Read())
+                                while (reader.Read() && reader2.Read())
                                 {
+                                    reader.GetValues(cells);
                                     reader2.GetValues(cells2);
+                                    while (IsEqual(cells, cells2))
+                                    {
+                                        if (reader2.Read())
+                                        {
+                                            reader2.GetValues(cells2);
+                                        }
+                                        else { break; }
+                                    }
                                 }
-                                else { break; }
+
+                                return !reader.Read();
                             }
                         }
-
-                        return !reader.Read();
                     }
+                    catch (Exception) { throw new Exception(Language.GetString("errWrongFormat")); }
                 }
             }
-            catch (Exception e) { throw new Exception("SQL Server has wrong format"); }
         }
 
         bool IsEqual(object[] A, object[] B)

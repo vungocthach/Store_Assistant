@@ -252,6 +252,9 @@
   <data name="ErorFormat" xml:space="preserve">
     <value>Error format </value>
   </data>
+  <data name="errCannotConnect" xml:space="preserve">
+    <value>Cannot connect to SQL Server. Please check the connection to Server, make sure the Server is working properly and Server's configuration is correct.</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
@@ -269,6 +272,9 @@
   </data>
   <data name="ErrorNowPass" xml:space="preserve">
     <value>The current password is incorrect</value>
+  </data>
+  <data name="errWrongFormat" xml:space="preserve">
+    <value>SQL Server has been configure uncorrectly. Please check manual-document for detail.</value>
   </data>
   <data name="Expiry date" xml:space="preserve">
     <value>Expired date</value>
@@ -353,6 +359,9 @@
   </data>
   <data name="msgChangeOK" xml:space="preserve">
     <value>Information has been changed</value>
+  </data>
+  <data name="msgMissingFile" xml:space="preserve">
+    <value>Cannot get the file</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name of Pro</value>

@@ -30,7 +30,7 @@ namespace StoreAssitant
         static public void InitLanguage(object type)
         {
             Type T = type.GetType();
-            if (AppManager._CurrentLanguage == StoreAssistant_SettingView.LanguageMode.VN)
+            if (AppManager._CurrentLanguage == StoreAssistant_SettingView.LanguageMode.VI)
             {
                 culture = CultureInfo.CreateSpecificCulture("VI");
             }

@@ -8,6 +8,6 @@ namespace StoreAssitant.StoreAssistant_SettingView
 {
     public enum LanguageMode
     {
-        VN,EN
+        VI,EN
     }
 }

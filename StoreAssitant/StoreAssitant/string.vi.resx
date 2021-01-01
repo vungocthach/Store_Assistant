@@ -249,6 +249,9 @@
   <data name="ErorFormat" xml:space="preserve">
     <value>Lỗi định dạng</value>
   </data>
+  <data name="errCannotConnect" xml:space="preserve">
+    <value>Không thể kết nối với SQL Server. Vui lòng kiểm tra kết nối đến Máy chủ, đảm bảo Máy chủ hoạt động bình thường và cấu hình Máy chủ chính xác.</value>
+  </data>
   <data name="errDB" xml:space="preserve">
     <value>Lỗi cơ sở dữ liệu. Vui lòng thông báo cho đội ngũ bảo trì cơ sở dữ liệu để xử lí hoặc cài đặt lại SQL Server.</value>
   </data>
@@ -269,6 +272,9 @@
   </data>
   <data name="ErrorNowPass" xml:space="preserve">
     <value>Nhập mật khẩu hiện tại không đúng</value>
+  </data>
+  <data name="errWrongFormat" xml:space="preserve">
+    <value>SQL Server đã tạo sai format. Vui lòng xem lại hướng dẫn cấu hình SQL Server.</value>
   </data>
   <data name="Expiry date" xml:space="preserve">
     <value>Hạn sử dụng</value>
@@ -353,6 +359,9 @@
   </data>
   <data name="msgChangeOK" xml:space="preserve">
     <value>Thay đổi thông tin thành công.</value>
+  </data>
+  <data name="msgMissingFile" xml:space="preserve">
+    <value>Không tìm thấy tập tin</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Tên món</value>

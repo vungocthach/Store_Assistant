@@ -72,11 +72,11 @@ namespace StoreAssitant
                         }
                         else
                         {
-                            MessageBox.Show("SQL Server has wrong format", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(Language.GetString("errWrongFormat"), Language.GetString("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                     }
-                    catch (Exception ex) { MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                    catch (Exception ex) { MessageBox.Show(ex.Message, Language.GetString("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error); }
                 }
             }
 
@@ -119,7 +119,7 @@ namespace StoreAssitant
         void SaveData()
         {
             FileInfo fileInfo = new FileInfo(path);
-            if (!fileInfo.Exists) { throw new FileNotFoundException(string.Format("Missing file: {0}", fileInfo.FullName)); }
+            if (!fileInfo.Exists) { throw new FileNotFoundException(Language.GetString("msgMissingFile") + " " + fileInfo.FullName); }
 
             string[] data = GetData();
 
@@ -139,7 +139,7 @@ namespace StoreAssitant
         public void SaveData(string[] a)
         {
             FileInfo fileInfo = new FileInfo(path);
-            if (!fileInfo.Exists) { throw new FileNotFoundException(string.Format("Missing file: {0}", fileInfo.FullName)); }
+            if (!fileInfo.Exists) { throw new FileNotFoundException(Language.GetString("msgMissingFile") + " " + fileInfo.FullName); }
 
             string[] data = a;
 
