@@ -13,11 +13,9 @@ namespace StoreAssitant
     {
         StoreAssistant_CashierView.CashierView cashierView;
         ManagerModifyView managerModifyView;
-        StoreAssistant_AccountView.AccountView accountView;
         StoreAssistant_HistoryView.HistoryView historyView;
         StoreAssistant_StatiticsView.StatiticsView2 statiticsView;
         StoreAssistant_VoucherView.VoucherView voucherView;
-        StoreAssistant_SettingView.SettingView settingView;
 
 
         public event EventHandler SignOut;

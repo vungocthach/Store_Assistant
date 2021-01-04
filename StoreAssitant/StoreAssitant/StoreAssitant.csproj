@@ -78,15 +78,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBServerForm.cs">
+    <Compile Include="StoreAssistant_Database\DBServerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DBServerForm.Designer.cs">
+    <Compile Include="StoreAssistant_Database\DBServerForm.Designer.cs">
       <DependentUpon>DBServerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PrintPDF.cs" />
     <Compile Include="InternetServiceHandler.cs" />
-    <Compile Include="Language1.cs" />
+    <Compile Include="StoreAssistant_Language\Language1.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -105,10 +105,10 @@
     <Compile Include="StoreAssistant_BillView\FormBill.Designer.cs">
       <DependentUpon>FormBill.cs</DependentUpon>
     </Compile>
-    <Compile Include="SignUp.cs">
+    <Compile Include="StoreAssistant_Authenticater\SignUp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SignUp.Designer.cs">
+    <Compile Include="StoreAssistant_Authenticater\SignUp.Designer.cs">
       <DependentUpon>SignUp.cs</DependentUpon>
     </Compile>
     <Compile Include="StoreAssistant_AccountView\AccountView.cs">
@@ -122,12 +122,6 @@
     </Compile>
     <Compile Include="StoreAssistant_Authenticater\ChangePasswordForm.Designer.cs">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="StoreAssistant_Authenticater\SignUpForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StoreAssistant_Authenticater\SignUpForm.Designer.cs">
-      <DependentUpon>SignUpForm.cs</DependentUpon>
     </Compile>
     <Compile Include="StoreAssistant_Helper\AppManager.cs" />
     <Compile Include="StoreAssistant_Helper\BillHistory.cs" />
@@ -233,12 +227,6 @@
       <DependentUpon>MenuView.cs</DependentUpon>
     </Compile>
     <Compile Include="StoreAssistant_SettingView\LanguageMode.cs" />
-    <Compile Include="StoreAssistant_SettingView\SettingView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="StoreAssistant_SettingView\SettingView.Designer.cs">
-      <DependentUpon>SettingView.cs</DependentUpon>
-    </Compile>
     <Compile Include="StoreAssistant_SettingView\SizeMode.cs" />
     <Compile Include="StoreAssistant_SettingView\ThemeMode.cs" />
     <Compile Include="StoreAssistant_SettingView\ToolView.cs">
@@ -290,7 +278,7 @@
     <Compile Include="StoreAssistant_MenuView\TitleControl.Designer.cs">
       <DependentUpon>TitleControl.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DBServerForm.resx">
+    <EmbeddedResource Include="StoreAssistant_Database\DBServerForm.resx">
       <DependentUpon>DBServerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_AccountView\AccountManamentForm.resx">
@@ -299,7 +287,7 @@
     <EmbeddedResource Include="StoreAssistant_BillView\FormBill.resx">
       <DependentUpon>FormBill.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SignUp.resx">
+    <EmbeddedResource Include="StoreAssistant_Authenticater\SignUp.resx">
       <DependentUpon>SignUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_AccountView\AccountView.resx">
@@ -307,9 +295,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_Authenticater\ChangePasswordForm.resx">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StoreAssistant_Authenticater\SignUpForm.resx">
-      <DependentUpon>SignUpForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_SettingView\StoreInformationSettingForm.resx">
       <DependentUpon>StoreInformationSettingForm.cs</DependentUpon>
@@ -374,13 +359,7 @@
     <Compile Include="StoreAssistant_VoucherView\VoucherView.Designer.cs">
       <DependentUpon>VoucherView.cs</DependentUpon>
     </Compile>
-    <Compile Include="StoreManager.cs" />
-    <Compile Include="string.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>string.resx</DependentUpon>
-    </Compile>
-    <Compile Include="string.en.cs" />
+    <Compile Include="StoreAssistant_Information\StoreInfo.cs" />
     <Compile Include="string.en.Designer.cs">
       <DependentUpon>string.en.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -419,9 +398,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StoreAssistant_SettingView\SettingView.resx">
-      <DependentUpon>SettingView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_SettingView\ToolView.resx">
       <DependentUpon>ToolView.cs</DependentUpon>
@@ -465,10 +441,6 @@
     <EmbeddedResource Include="string.en.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>string.en.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="string.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>string.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="string.vi.resx">
       <Generator>ResXFileCodeGenerator</Generator>
