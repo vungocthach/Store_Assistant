@@ -92,11 +92,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resource_ThemeLight.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resource_ThemeLight.resx</DependentUpon>
-    </Compile>
     <Compile Include="StoreAssistant_AccountView\AccountManamentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -297,10 +292,6 @@
     </Compile>
     <EmbeddedResource Include="DBServerForm.resx">
       <DependentUpon>DBServerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resource_ThemeLight.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource_ThemeLight.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="StoreAssistant_AccountView\AccountManamentForm.resx">
       <DependentUpon>AccountManamentForm.cs</DependentUpon>

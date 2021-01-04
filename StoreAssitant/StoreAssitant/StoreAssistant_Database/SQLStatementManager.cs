@@ -78,13 +78,13 @@ namespace StoreAssitant
 
         public static string GetConnectionString(string username, string password, string serverName, string databaseName)
         {
-            return string.Format("User id = {0}; password = {1}; server = {2}; Initial Catalog = {3}; connection timeout = 5;",
+            return string.Format("User id = {0}; password = {1}; server = {2}; Initial Catalog = {3}; Connect Timeout=3;",
                                     username, password, serverName, databaseName);
         }
 
         public static string GetConnectionString(string username, string password, string serverName, int port, string databaseName)
         {
-            return string.Format("User id = {0}; password = {1}; server = tcp:{2},{3}; Initial Catalog = {4}; connection timeout = 30;",
+            return string.Format("User id = {0}; password = {1}; server = tcp:{2},{3}; Initial Catalog = {4}; ConnectTimeout=3;",
                                     username, password, serverName, port.ToString(), databaseName);
         }
     }

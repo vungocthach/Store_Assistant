@@ -13,19 +13,17 @@ namespace StoreAssitant
     public partial class LoginForm : Form
     {
         public UserInfo u;
-        DBServerForm dB;
 
         public event EventHandler<UserInfo> Click_Login;
 
         private void on_Click_Login(object sender, UserInfo e)
         {
-
         }
         public LoginForm()
         {
             InitializeComponent();
 
-            dB = new DBServerForm();
+            DBServerForm dB = new DBServerForm();
             dB.LoadData();
             StoreAssistant_Helper.AppManager.LoadSQLServerInfo(dB.GetData());
 
@@ -42,6 +40,8 @@ namespace StoreAssitant
 
         private void LbDB_Click(object sender, EventArgs e)
         {
+            DBServerForm dB = new DBServerForm();
+            dB.LoadData();
             dB.ShowDialog();
         }
 
@@ -54,7 +54,6 @@ namespace StoreAssitant
         private void LogInView__Click(object sender, EventArgs e)
         {
             u = logInView.u;
-
             Click_Login(this, u);
         }
         
