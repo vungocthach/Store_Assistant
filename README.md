@@ -2,7 +2,7 @@
 
 Thành viên nhóm:
 + Vũ Ngọc Thạch - 19520266 - vungocthach
-+ Huỳnh Thị Minh Nhực - 19521973 - UIT.19521973 
++ Huỳnh Thị Minh Nhực - 19521973 - UIT.19521973
 + Nguyễn Phạm Duy Bằng - 19520397 - Dragnell
 
 Mã lớp: IT008.L11
@@ -10,7 +10,12 @@ Mã lớp: IT008.L11
 Giảng viên chấm điểm: Nguyễn Tấn Toàn
 
 Ngày bắt đầu: 17/9/2020
-        
+## **Thông báo: Ngừng Server Default**
+Do thiếu kinh phí duy trì nên chúng tôi sẽ ngắt Server-Default.
+
+Vui lòng xem hướng dẫn sử dụng để tự custom Server.
+
+Xin cảm ơn mọi người đã sử dụng ứng dụng.
 ### Chuẩn (Standard)
 
 + IDE: Visual Studio 2019
@@ -26,7 +31,7 @@ Ngày bắt đầu: 17/9/2020
 
 ### Đối tượng hướng tới
 
-+ Các cửa hàng kinh doanh đồ ăn, thức uống trả trước hoặc trả sau 
++ Các cửa hàng kinh doanh đồ ăn, thức uống trả trước hoặc trả sau
 
 ### Mục tiêu
 
@@ -34,30 +39,30 @@ Ngày bắt đầu: 17/9/2020
 
 ### Tính năng
 
-+ **Phân quyền quản lý** 
++ **Phân quyền quản lý**
 	>* Đăng nhập với 2 cấp Manager hoặc Cashier
 + **Thao tác với MENU của cửa hàng**
 	>* Hiển thị hình ảnh, giá cả và tên sản phẩm lên trên giao diện
 	>* Thêm/bớt sản phẩm vào danh sách bán của cửa hàng
 	>* Gọi món dễ dàng bằng 1 cú click
-	>* Thanh tìm kiếm thông minh nhanh chóng, chuẩn xác 
+	>* Thanh tìm kiếm thông minh nhanh chóng, chuẩn xác
 + **Quản lý bàn đặt món**
 	>* Hiển thị thông tin gọi món của bàn
 	>* Dễ Dàng thêm/bớt số lượng bàn vào trong danh sách
 + **Lịch sử bán hàng**
 	>* Lưu lại thông tin hóa đơn đã được bán
 + **Thống kê dữ liệu**
-	>* Tạo biểu đồ so sánh doanh thu theo mốc thời gian 
+	>* Tạo biểu đồ so sánh doanh thu theo mốc thời gian
 	>* Tổng hợp và chỉ ra các sản phẩm bán chạy trong 1 khoảng thời gian
 + **Thanh toán**
 	>* Tự động tính thuế
 	>* Tự tạo 1 hóa đơn chi tiết khi thực hiện thanh toán
-	>* Giảm giá sản phẩm theo phần trăm(%) hoặc mã giảm giá 
-	
+	>* Giảm giá sản phẩm theo phần trăm(%) hoặc mã giảm giá
+
 ### Lộ trình báo cáo
 
 Các lộ trình này được áp dụng trước các ngày báo cáo đồ án tại lớp
-+ Báo cáo lần 1: 
++ Báo cáo lần 1:
 	> **Giao diện:** hoàn thành giao diện màn hình bán hàng chính trên ứng dụng
 	>* Hình ảnh bàn ăn
 	>* Hình ảnh món ăn
@@ -79,8 +84,8 @@ Các lộ trình này được áp dụng trước các ngày báo cáo đồ á
 	>* Giao diện Voucher
 	>* Giao diện Lịch sử
 	>* Giao diện Thống kê
-	> 
-	> **Tính năng** 
+	>
+	> **Tính năng**
 	>* Tìm kiếm tên món ăn
 	>* Check mã giảm giá
 	>* Thanh toán bàn
